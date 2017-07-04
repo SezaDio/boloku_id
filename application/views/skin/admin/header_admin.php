@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>AdminLTE | Dashboard</title>
+        <title>Boloku | Dashboard</title>
         
         <!-- load bootsrap -->
         <link href="<?php echo base_url('asset/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" />
@@ -14,23 +14,11 @@
         <link href="<?php echo base_url('asset/css/style.css'); ?>" rel="stylesheet" type="text/css" />
 
         <!-- DataTables CSS --> 
-        <link href="<?php echo base_url('asset/css/jquery.dataTables.css'); ?>" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url('asset/css/jquery.dataTables.css'); ?>" rel="stylesheet" type="text/css" />
 
         <!-- bootstrap wysihtml5 - text editor -->
         <link href="<?php echo base_url('asset/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'); ?>" rel="stylesheet" type="text/css" />
-       
-        
-        
     </head>
-	<!--<script src="<?php //echo base_url('asset/js/instafeed.js-master/instafeed.min.js'); ?>" type="text/javascript"></script>
-    <script type="text/javascript">
-    var feed = new Instafeed({
-		get: 'tagged',
-		tagName: 'awesome',
-		clientId: '60e2f0527b724be4af2dc7215295ed9d'
-    });
-    feed.run();
-	</script>-->
     
     <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->

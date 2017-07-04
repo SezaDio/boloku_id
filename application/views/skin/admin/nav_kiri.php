@@ -11,19 +11,14 @@
 
                         <li>
                             <a href="<?php echo site_url('KelolaWow/index'); ?>">
-                                <i class="glyphicon glyphicon-star"></i> <span> Youth Wow </span>
+                                <i class="glyphicon glyphicon-star"></i> <span> Ngerti Rak ? </span>
                             </a>
                         </li>
 
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="glyphicon glyphicon-collapse-up"></i> <span> Youth Update </span>
-                            </a>
-                        </li>
                         
                         <li class="treeview">
                             <a href="#">
-                                <i class="glyphicon glyphicon-list-alt"></i> <span> Youth News </span>
+                                <i class="glyphicon glyphicon-list-alt"></i> <span> Event News </span>
                                 <i class="glyphicon glyphicon-menu-right pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
@@ -34,7 +29,7 @@
                         
                         <li class="treeview">
                             <a href="#">
-                                <i class="glyphicon glyphicon-book"></i><span> Youth Pepak </span>
+                                <i class="glyphicon glyphicon-book"></i><span> Pepak Semarang </span>
                                 <i class="glyphicon glyphicon-menu-right pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
@@ -42,34 +37,16 @@
                                 <li><a href="<?php echo site_url('KelolaPepak/validasi_pepak'); ?>"><i class="glyphicon glyphicon-minus"></i> Validasi Pepak</a></li>
                             </ul>
                         </li>
-                        
-                        <li class="treeview">
-                            <a href="#">
-                                <i class="glyphicon glyphicon-asterisk"></i> <span> Youth Karepmu </span>
-                                <i class="glyphicon glyphicon-menu-right pull-right"></i>
-                            </a>
-                            <ul class="treeview-menu">
-                                <li><a href="add_event.php"><i class="glyphicon glyphicon-minus"></i> Kelola Posting Karepmu     </a></li>
-                                <li><a href="event_editors.php"><i class="glyphicon glyphicon-minus"></i> Kelola Stiker</a></li>
-                            </ul>
-                        </li>
-
 
                         <li class="treeview">
                             <a href="#">
-                                <i  class="glyphicon glyphicon-shopping-cart"></i> <span> Youth Shopping </span>
-                                <i class="glyphicon glyphicon-menu-right pull-right"></i>
+                                <i class="glyphicon glyphicon-collapse-up"></i> <span> Challenge Update </span>
                             </a>
-                            <ul class="treeview-menu">
-                                <li><a href="<?php echo site_url('KelolaShopping/index'); ?>"><i class="glyphicon glyphicon-minus"></i> Kelola Shopping </a></li>
-                                <li><a href="<?php echo site_url('KelolaShopping/validasi_shopping'); ?>"><i class="glyphicon glyphicon-minus"></i> Validasi Shopping </a></li>
-                            </ul>
                         </li>
                         
-
                         <li class="treeview">
                             <a href="#">
-                                <i class="glyphicon glyphicon-th-list"></i> <span> Youth Coming Soon </span>
+                                <i class="glyphicon glyphicon-th-list"></i> <span> Event Control </span>
                                 <i class="glyphicon glyphicon-menu-right pull-right"></i>
                             </a>
                             <ul class="treeview-menu">

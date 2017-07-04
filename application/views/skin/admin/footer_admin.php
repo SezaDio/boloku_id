@@ -1,14 +1,14 @@
 	<!-- script tags ============================================================= -->
-		<script type="text/javascript" src="<?php echo base_url('asset/js/jquery.min.js'); ?>"></script>
-		<script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/bootstrap.min.js'); ?>"></script>
-		<script type="text/javascript" src="<?php echo base_url('asset/js/jquery-ui.min.js'); ?>"></script>
-		
-        <!-- AdminLTE App -->
-        <script src="<?php echo base_url('asset/js/app.js'); ?>" type="text/javascript"></script>
-        
+        <script type="text/javascript" src="<?php echo base_url('asset/js/jquery.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/bootstrap.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('asset/js/jquery-ui.min.js'); ?>"></script>
+       
         <!-- Sparkline -->
         <script src="<?php echo base_url('asset/js/sparkline/jquery.sparkline.min.js'); ?>" type="text/javascript"></script>
-
+        
+        <!-- AdminLTE App -->
+        
+       
 		<!-- DataTables --> 
 		<script src="<?php echo base_url('asset/js/jquery.dataTables.js'); ?>" type="text/javascript"></script>
 		<script>
@@ -78,8 +78,5 @@
 
         <!-- datepicker -->
         <script src="<?php echo base_url('asset/js/datepicker/bootstrap-datepicker.js'); ?>" type="text/javascript"></script>
-
-        
-		
 	</body>
 </html>
