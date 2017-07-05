@@ -4,7 +4,7 @@
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <li class="active">
-                            <a href="<?php echo base_url()?>">
+                            <a href="<?php echo site_url('AdminDashboard/index');?>">
                                  <i class="glyphicon glyphicon-dashboard"></i> <span>Dashboard</span>
                             </a>
                         </li>
@@ -14,19 +14,18 @@
                                 <i class="glyphicon glyphicon-star"></i> <span> Ngerti Rak ? </span>
                             </a>
                         </li>
-
                         
                         <li class="treeview">
                             <a href="#">
-                                <i class="glyphicon glyphicon-list-alt"></i> <span> Event News </span>
+                                <i class="glyphicon glyphicon-th-list"></i> <span> Event & News Control </span>
                                 <i class="glyphicon glyphicon-menu-right pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="<?php echo site_url('KelolaNews/index'); ?>"><i class="glyphicon glyphicon-minus"></i> Kelola News </a></li>
-                                <li><a href="<?php echo site_url('KelolaNews/validasi_news'); ?>"><i class="glyphicon glyphicon-minus"></i> Validasi News</a></li>
+                                <li><a href="<?php echo site_url('KelolaComing/index'); ?>"><i class="glyphicon glyphicon-minus"></i> Kelola Event</a></li>
+                                <li><a href="<?php echo site_url('KelolaComing/validasi_coming'); ?>"><i class="glyphicon glyphicon-minus"></i> Validasi Event</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="treeview">
                             <a href="#">
                                 <i class="glyphicon glyphicon-book"></i><span> Pepak Semarang </span>
@@ -43,16 +42,11 @@
                                 <i class="glyphicon glyphicon-collapse-up"></i> <span> Challenge Update </span>
                             </a>
                         </li>
-                        
+
                         <li class="treeview">
                             <a href="#">
-                                <i class="glyphicon glyphicon-th-list"></i> <span> Event Control </span>
-                                <i class="glyphicon glyphicon-menu-right pull-right"></i>
+                                <i class="glyphicon glyphicon-list-alt"></i> <span> Kelola Pendaftaran </span>
                             </a>
-                            <ul class="treeview-menu">
-                                <li><a href="<?php echo site_url('KelolaComing/index'); ?>"><i class="glyphicon glyphicon-minus"></i> Kelola Coming Soon</a></li>
-                                <li><a href="<?php echo site_url('KelolaComing/validasi_coming'); ?>"><i class="glyphicon glyphicon-minus"></i> Validasi Coming Soon</a></li>
-                            </ul>
                         </li>
                         
                         <li>

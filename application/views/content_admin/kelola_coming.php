@@ -2,11 +2,11 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Kelola Coming Soon
+                       Kelola Event
                     </h1>
                     <ol class="breadcrumb">
-                        <li><i class="fa fa-dashboard"></i>Youth Coming Soon</li>
-                        <li class="active">Kelola Coming Soon</li>
+                        <li><i class="fa fa-dashboard"></i>Event & News Control</li>
+                        <li class="active">Kelola Event</li>
                     </ol>
                 </section>
 
@@ -29,7 +29,7 @@
                                             </div>
                                         <?php }?>
 										<a href="<?php echo site_url('KelolaComing/tambah_coming_check/');?>">
-                                            <button type="submit" name="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i> Tambah Comming Soon</button>
+                                            <button type="submit" name="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i> Tambah Event</button>
                                         </a>
 									</div>
                                     <div class="form-group">
@@ -37,7 +37,7 @@
                                             <thead>
                                                 <tr>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">No.</th>
-                                                    <th class="title-center" style="font-size:1em; text-align:center;">Coming Soon</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Judul Event</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Posted By</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Waktu Posting</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Aksi</th>                                                        
@@ -53,6 +53,11 @@
                                                             <td><?php echo $item['posted_by'] ?></td>
                                                             <td><?php echo $item['tanggal_posting'] ?></td>
                                                             <td align="center">
+                                                                 <!-- Tombol tambah Press Release -->
+                                                                <a href="<?php //echo site_url('KelolaWow/tambah_wow_check/');?>">
+                                                                    <button type="submit" name="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" ></i> Press Release</button>
+                                                                </a>
+
                                                                 <!-- Tombol lihat detail -->
                                                                 <a href="<?php echo site_url('KelolaComing/lihat_detail_coming/'.$item['id_coming']);?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open" ></i> Detail</button></a>
 
