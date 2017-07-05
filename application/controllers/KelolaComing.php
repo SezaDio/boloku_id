@@ -158,21 +158,39 @@ class KelolaComing extends CI_Controller {
 		$this->load->library('form_validation');
 
 		$tambah = $this->input->post('submit');
-		$kategori_coming = array('Coming Soon Sains'=>'Coming Soon Sains',
-                              'Coming Soon Teknologi'=>'Coming Soon Teknologi',
-                              'Coming Soon Sejarah'=>'Coming Soon Sejarah',
-                              'Coming Soon Politik'=>'Coming Soon Politik',
-                              'Coming Soon Fiksi'=>'Coming Soon Fiksi',
-                              'Coming Soon Rekomendasi'=>'Coming Soon Rekomendasi',
-                              'Coming Soon Komunitas'=>'Coming Soon Komunitas',
-                              'Coming Soon Lain-Lain'=>'Coming Soon Lain-Lain'
+		$kategori_coming = array(
+							  'Seni'=>'Seni',
+                              'Travel dan Outdoor'=>'Travel dan Outdoor',
+                              'Bisnis'=>'Bisnis',
+                              'Science dan Teknologi'=>'Science dan Teknologi',
+                              'Sprirituality'=>'Sprirituality',
+                              'Musik'=>'Musik',
+                              'Keluarga dan Pendidikan'=>'Keluarga dan Pendidikan',
+                              'Hobi'=>'Hobi',
+                              'Lain-Lain'=>'Lain-Lain'
                               );
+		$tipe_event = array(
+							  'Attraction'=>'Attraction',
+                              'Class'=>'Class',
+                              'Conference'=>'Conference',
+                              'Expo'=>'Expo',
+                              'Festival'=>'Festival',
+                              'Game'=>'Game',
+                              'Party'=>'Party',
+                              'Performance'=>'Performance',
+                              'Seminar'=>'Seminar',
+                              'Tour'=>'Tour',
+                              'Lain-Lain'=>'Lain-Lain'
+                              );
+
 		$data['kategori_coming']= $kategori_coming;
+		$data['tipe_event']= $tipe_event;
 
 		if ($tambah == 1) 
 		{
 			$this->form_validation->set_rules('judul_coming', 'Judul', 'required');
 			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
+			$this->form_validation->set_rules('tipe', 'Tipe', 'required');
 			$this->form_validation->set_rules('deskripsi_coming', 'Deskripsi', 'required');
 
 			//Mengambil filename gambar untuk disimpan
@@ -190,6 +208,7 @@ class KelolaComing extends CI_Controller {
 					$data_coming=array(
 						'nama_coming'=>$this->input->post('judul_coming'),
 						'kategori_coming'=>$this->input->post('kategori'),
+						'tipe_event'=>$this->input->post('tipe'),
 						'deskripsi_coming'=>$this->input->post('deskripsi_coming'),
 						'tanggal_posting'=>date("Y-m-d h:i:sa"),
 						'path_gambar'=> NULL,
@@ -243,22 +262,41 @@ class KelolaComing extends CI_Controller {
 
 		$edit = $this->input->post('save');
 
-		$kategori_coming = array('Coming Soon Sains'=>'Coming Soon Sains',
-                              'Coming Soon Teknologi'=>'Coming Soon Teknologi',
-                              'Coming Soon Sejarah'=>'Coming Soon Sejarah',
-                              'Coming Soon Politik'=>'Coming Soon Politik',
-                              'Coming Soon Fiksi'=>'Coming Soon Fiksi',
-                              'Coming Soon Rekomendasi'=>'Coming Soon Rekomendasi',
-                              'Coming Soon Komunitas'=>'Coming Soon Komunitas',
-                              'Coming Soon Lain-Lain'=>'Coming Soon Lain-Lain'
+		$kategori_coming = array(
+							  'Event Seni'=>'Event Seni',
+                              'Event Travel dan Outdoor'=>'Event Travel dan Outdoor',
+                              'Event Bisnis'=>'Event Bisnis',
+                              'Event Science dan Teknologi'=>'Event Science dan Teknologi',
+                              'Event Sprirituality'=>'Event Sprirituality',
+                              'Event Musik'=>'Event Musik',
+                              'Event Keluarga dan Pendidikan'=>'Event Keluarga dan Pendidikan',
+                              'Event Hobi'=>'Event Hobi',
+                              'Event Lain-Lain'=>'Event Lain-Lain'
                               );
+		$tipe_event = array(
+							  'Attraction'=>'Attraction',
+                              'Class'=>'Class',
+                              'Conference'=>'Conference',
+                              'Expo'=>'Expo',
+                              'Festival'=>'Festival',
+                              'Game'=>'Game',
+                              'Party'=>'Party',
+                              'Performance'=>'Performance',
+                              'Seminar'=>'Seminar',
+                              'Tour'=>'Tour',
+                              'Lain-Lain'=>'Lain-Lain'
+                              );
+
 		$data['kategori_coming']= $kategori_coming;
+		$data['tipe_event']= $tipe_event;
+
 		if (isset($_POST['save']))
 		{
 			$id_coming = $this->input->post('id_coming');
 
 			$this->form_validation->set_rules('nama_coming', 'Judul', 'required');
 			$this->form_validation->set_rules('kategori_coming', 'Kategori', 'required');
+			$this->form_validation->set_rules('tipe', 'Tipe', 'required');
 			$this->form_validation->set_rules('deskripsi_coming', 'Deskripsi', 'required');
 			$this->form_validation->set_rules('posted_by', 'Posted', 'required');
 
@@ -272,6 +310,7 @@ class KelolaComing extends CI_Controller {
 			$data_coming=array(
 							'nama_coming'=>$this->input->post('nama_coming'),
 							'kategori_coming'=>$this->input->post('kategori_coming'),
+							'tipe_event'=>$this->input->post('tipe'),
 							'deskripsi_coming'=>$this->input->post('deskripsi_coming'),
 							'posted_by'=>$this->input->post('posted_by'),
 							'path_gambar'=>NULL
@@ -321,6 +360,7 @@ class KelolaComing extends CI_Controller {
 			$data_coming=array(
 							'nama_coming'=>$data['coming']->nama_coming,
 							'kategori_coming'=>$data['coming']->kategori_coming,
+							'kategori_coming'=>$data['coming']->tipe_event,
 							'deskripsi_coming'=>$data['coming']->deskripsi_coming,
 							'posted_by'=>$data['coming']->posted_by,
 							'path_gambar'=> $data['coming']->path_gambar

@@ -2,12 +2,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Tambah Coming Soon
+                       Tambah Event
                     </h1>
 					<div id="instafeed"></div>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Coming Soon</a></li>
-                        <li class="active">Tambah Coming Soon</li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Event</a></li>
+                        <li class="active">Tambah Event</li>
                     </ol>
                 </section>
 
@@ -32,10 +32,21 @@
                                                 </div>
                                             <?php }?>
                                         </div>
-										<div class="form-group">
-                                            <label for="exampleInputEmail1">Kategori   :</label><br>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Judul Event   :</label>
+                                            <input type="text" required name="judul_coming" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['judul_coming']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['judul_coming']);
+                                                }
+                                            ?>"> 
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Kategori Event  :</label><br>
                                             <select name="kategori" required class="form-control" id="kategori">
-                                                <option value="">--Pilih Kategori Coming Soon--</option>
+                                                <option value="">--Pilih Kategori Event--</option>
                                                 <?php
                                                     foreach ($kategori_coming as $key=>$kategori) 
                                                     {
@@ -52,19 +63,27 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Judul Coming Soon   :</label>
-                                            <input type="text" required name="judul_coming" class="form-control" id="exampleInputEmail1" value="<?php 
-                                                    if (isset($dataComing['judul_coming']))
+                                            <label for="exampleInputEmail1">Tipe Event  :</label><br>
+                                            <select name="tipe" required class="form-control" id="kategori">
+                                                <option value="">--Pilih Tipe Event--</option>
+                                                <?php
+                                                    foreach ($tipe_event as $key=>$tipe) 
                                                     {
-                                                        echo htmlspecialchars($dataComing['judul_coming']);
+                                                        if ($key==$dataComing['tipe_event']){
+                                                            echo '<option value="'.$key.'" selected>'.$tipe.'</option>';
+                                                        }
+                                                        else
+                                                        {
+                                                            echo '<option value="'.$key.'">'.$tipe.'</option>';   
+                                                        }
                                                     }
-                                            ?>">
-                                            
+                                                ?>
+                                            </select></br>
                                         </div>
-										
+
 										<div class="form-group">
 											<div class='box-header'>
-												 <label>Deskripsi Coming Soon :</label>
+												 <label>Deskripsi Event :</label>
 											</div>
 											<div class='box-body pad'>
 												<textarea required id="editor_wow" name="deskripsi_coming" rows="10" cols="80">
