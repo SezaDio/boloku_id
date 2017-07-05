@@ -2,12 +2,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Edit Slider
+                       Edit Challenge Update
                     </h1>
 					<div id="instafeed"></div>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Slider</a></li>
-                        <li class="active">Edit Slider</li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Challenge Update</a></li>
+                        <li class="active">Edit Challenge Update</li>
                     </ol>
                 </section>
 
@@ -22,7 +22,7 @@
                             <div class="box box-primary">
 
                                 <!-- form start -->	
-                                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaSlider/edit_slider/'.$idSlider);?>" method="POST">
+                                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaChallenge/edit_challenge/'.$idChallenge);?>" method="POST">
                                     <div class="box-body">
                                         <div style="margin-top:10px; margin-bottom:30px">
                                             <?php if($this->session->flashdata('msg_gagal')!=''){?>
@@ -35,25 +35,25 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Judul Slider :</label>
-                                            <input type="text" required name="judul_slider" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataSlider['judul_slider']); ?>">
+                                            <label for="exampleInputEmail1">Judul Challenge Update :</label>
+                                            <input type="text" required name="judul_challenge" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataChallenge['judul_challenge']); ?>">
                                         </div>
 										
 										<div class="form-group">
 											<div class='box-header'>
-												 <label>Deskripsi Slider :</label>
+												 <label>Deskripsi Challenge Update :</label>
 											</div>
 											<textarea required id="editor_wow" name="deskripsi" rows="10" cols="80">
-											    <?php echo htmlspecialchars($dataSlider['deskripsi']); ?>
+											    <?php echo htmlspecialchars($dataChallenge['deskripsi']); ?>
 											</textarea>                                    
                                         </div>
 
                                         <div class='box-header'>
-                                            <label>Content Slider :</label>
+                                            <label>Content Challenge Update :</label>
                                         </div>
 
                                         <div class='box-header'>                
-                                            <img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="<?php echo base_url('asset/upload_img_slider/'.$dataSlider['path_gambar']); ?>"/>
+                                            <img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="<?php echo base_url('asset/upload_img_challenge/'.$dataChallenge['path_gambar']); ?>"/>
                                         </div>
                                         
                                         <label class='box-header' style="color: blue;" id="ganti">Ganti Gambar ?</label><br>
@@ -62,10 +62,10 @@
 											<b><p style="color:red;">File diizinkan: jpg, jpeg, dan png (Max 2Mb)</p></b>
                                         </div>
                                     </div><!-- /.box-body -->
-                                    <input type="hidden" name="id_slider" value="<?php echo $idSlider; ?>">
+                                    <input type="hidden" name="id_challenge" value="<?php echo $idChallenge; ?>">
                                     <div class="box-footer">
                                         <button type="submit" name="save" value="1" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i> Simpan</button>
-                                       <a href="<?php echo site_url('KelolaSlider/');?>"><button type="button" name="submit" class="btn btn-danger">Batal</button>
+                                       <a href="<?php echo site_url('KelolaChallenge/');?>"><button type="button" name="submit" class="btn btn-danger">Batal</button>
                                     </div>
                                 </form>
                             </div><!-- /.box -->

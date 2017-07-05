@@ -2,12 +2,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Tambah Slider
+                       Tambah Challenge Update
                     </h1>
 					<div id="instafeed"></div>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Slider</a></li>
-                        <li class="active">Tambah Slider</li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Challenge Update</a></li>
+                        <li class="active">Tambah Challenge Update</li>
                     </ol>
                 </section>
 
@@ -21,7 +21,7 @@
                                 
                                 <!-- form start -->
 								
-                                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaSlider/tambah_slider_check/');?>" method="POST">
+                                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaChallenge/tambah_challenge_check/');?>" method="POST">
                                     <div class="box-body">
                                         <div style="margin-top:10px; margin-bottom:30px">
                                             <?php if($this->session->flashdata('msg_gagal')!=''){?>
@@ -33,11 +33,11 @@
                                             <?php }?>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Judul Slider  :</label>
-                                            <input type="text" required name="judul_slider" class="form-control" id="exampleInputEmail1" value="<?php 
-                                                    if (isset($dataSlider['judul_slider']))
+                                            <label for="exampleInputEmail1">Judul Challange Update  :</label>
+                                            <input type="text" required name="judul_challenge" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                    if (isset($dataChallenge['judul_challenge']))
                                                     {
-                                                        echo htmlspecialchars($dataSlider['judul_slider']);
+                                                        echo htmlspecialchars($dataChallenge['judul_challenge']);
                                                     }
                                             ?>">
                                             
@@ -45,14 +45,14 @@
 										
 										<div class="form-group">
 											<div class='box-header'>
-												 <label>Deskripsi Slider :</label>
+												 <label>Deskripsi Challenge Update :</label>
 											</div>
 											<div class='box-body pad'>
 												<textarea required id="editor_wow" name="deskripsi" rows="10" cols="80">
 													<?php 
-                                                        if (isset($dataSlider['deskripsi']))
+                                                        if (isset($dataChallenge['deskripsi']))
                                                         {
-                                                            echo htmlspecialchars($dataSlider['deskripsi']);
+                                                            echo htmlspecialchars($dataChallenge['deskripsi']);
                                                         }
                                                     ?>
 												</textarea>                                    
