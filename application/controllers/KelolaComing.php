@@ -31,7 +31,7 @@ class KelolaComing extends CI_Controller {
 	{
 		$id_coming = $_POST['id_coming'];
 		$this->load->model('coming_models/ComingModels');
-		$this->ComingModels->delete_produk($id_coming);
+		$this->ComingModels->delete_coming($id_coming);
 
 
 		$this->index();
@@ -190,6 +190,7 @@ class KelolaComing extends CI_Controller {
 		{
 			$this->form_validation->set_rules('judul_coming', 'Judul', 'required');
 			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
+			$this->form_validation->set_rules('posted_by', 'Penulis', 'required');
 			$this->form_validation->set_rules('tipe', 'Tipe', 'required');
 			$this->form_validation->set_rules('deskripsi_coming', 'Deskripsi', 'required');
 
@@ -211,6 +212,7 @@ class KelolaComing extends CI_Controller {
 						'tipe_event'=>$this->input->post('tipe'),
 						'deskripsi_coming'=>$this->input->post('deskripsi_coming'),
 						'tanggal_posting'=>date("Y-m-d h:i:sa"),
+						'posted_by'=>$this->input->post('posted_by'),
 						'path_gambar'=> NULL,
 						'status'=>1
 					);
@@ -263,15 +265,15 @@ class KelolaComing extends CI_Controller {
 		$edit = $this->input->post('save');
 
 		$kategori_coming = array(
-							  'Event Seni'=>'Event Seni',
-                              'Event Travel dan Outdoor'=>'Event Travel dan Outdoor',
-                              'Event Bisnis'=>'Event Bisnis',
-                              'Event Science dan Teknologi'=>'Event Science dan Teknologi',
-                              'Event Sprirituality'=>'Event Sprirituality',
-                              'Event Musik'=>'Event Musik',
-                              'Event Keluarga dan Pendidikan'=>'Event Keluarga dan Pendidikan',
-                              'Event Hobi'=>'Event Hobi',
-                              'Event Lain-Lain'=>'Event Lain-Lain'
+							  'Seni'=>'Seni',
+                              'Travel dan Outdoor'=>'Travel dan Outdoor',
+                              'Bisnis'=>'Bisnis',
+                              'Science dan Teknologi'=>'Science dan Teknologi',
+                              'Sprirituality'=>'Sprirituality',
+                              'Musik'=>'Musik',
+                              'Keluarga dan Pendidikan'=>'Keluarga dan Pendidikan',
+                              'Hobi'=>'Hobi',
+                              'Lain-Lain'=>'Lain-Lain'
                               );
 		$tipe_event = array(
 							  'Attraction'=>'Attraction',
@@ -310,10 +312,10 @@ class KelolaComing extends CI_Controller {
 			$data_coming=array(
 							'nama_coming'=>$this->input->post('nama_coming'),
 							'kategori_coming'=>$this->input->post('kategori_coming'),
-							'tipe_event'=>$this->input->post('tipe'),
+							'tipe_event'=>$this->input->post('tipe_event'),
 							'deskripsi_coming'=>$this->input->post('deskripsi_coming'),
-							'posted_by'=>$this->input->post('posted_by'),
-							'path_gambar'=>NULL
+							//'path_gambar'=>NULL,
+							'posted_by'=>$this->input->post('posted_by')
 							);
 			$data['dataComing'] = $data_coming;
 
@@ -360,7 +362,7 @@ class KelolaComing extends CI_Controller {
 			$data_coming=array(
 							'nama_coming'=>$data['coming']->nama_coming,
 							'kategori_coming'=>$data['coming']->kategori_coming,
-							'kategori_coming'=>$data['coming']->tipe_event,
+							'tipe_event'=>$data['coming']->tipe_event,
 							'deskripsi_coming'=>$data['coming']->deskripsi_coming,
 							'posted_by'=>$data['coming']->posted_by,
 							'path_gambar'=> $data['coming']->path_gambar

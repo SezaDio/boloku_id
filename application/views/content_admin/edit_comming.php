@@ -2,12 +2,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Edit Comming Soon
+                       Edit Event
                     </h1>
 					<div id="instafeed"></div>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Comming Soon</a></li>
-                        <li class="active">Edit Comming Soon</li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Event</a></li>
+                        <li class="active">Edit Event</li>
                     </ol>
                 </section>
 
@@ -35,20 +35,20 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Judul Agenda Comming Soon :</label>
+                                            <label for="exampleInputEmail1">Judul Event :</label>
                                             <input type="text" required name="nama_coming" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataComing['nama_coming']); ?>">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Penulis Agenda Comming Soon :</label>
+                                            <label for="exampleInputEmail1">Penulis Event :</label>
                                             <input type="text" required name="posted_by" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataComing['posted_by']); ?>">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Kategori Agenda Comming Soon :</label><br>
+                                            <label for="exampleInputEmail1">Kategori Event :</label><br>
                                             
-                                            <select name="kategori_coming" required class="form-control" id="kategori_coming">
-                                                <option value="">--Pilih Kategori Agenda Comming Soon--</option>
+                                            <select name="kategori" required class="form-control" id="kategori">
+                                                <option value="">--Pilih Kategori Event--</option>
                                                 <?php
                                                     foreach ($kategori_coming as $key=>$kategori) 
                                                     {
@@ -61,13 +61,31 @@
                                                         }
                                                     }
                                                 ?>
+                                            </select><br>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Tipe Event  :</label><br>
+                                            <select name="tipe" required class="form-control" id="kategori">
+                                                <option value="">--Pilih Tipe Event--</option>
+                                                <?php
+                                                    foreach ($tipe_event as $key=>$tipe) 
+                                                    {
+                                                        if ($key==$dataComing['tipe_event']){
+                                                            echo '<option value="'.$key.'" selected>'.$tipe.'</option>';
+                                                        }
+                                                        else
+                                                        {
+                                                            echo '<option value="'.$key.'">'.$tipe.'</option>';   
+                                                        }
+                                                    }
+                                                ?>
                                             </select></br>
                                         </div>
 
-										
 										<div class="form-group">
 											<div class='box-header'>
-												 <label>Deskripsi Agenda Comming Soon :</label>
+												 <label>Deskripsi Event :</label>
 											</div>
 											<textarea required id="editor_wow" name="deskripsi_coming" rows="10" cols="80">
 											    <?php echo htmlspecialchars($dataComing['deskripsi_coming']); ?>
@@ -75,11 +93,20 @@
                                         </div>
 
                                         <div class='box-header'>
-                                            <label>Poster Agenda Comming Soon :</label>
+                                            <label>Poster Event :</label>
                                         </div>
 
-                                        <div class='box-header'>                
-                                            <img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="<?php echo base_url('asset/upload_img_coming/'.$dataComing['path_gambar']); ?>"/>
+                                        <div class='box-header'>
+                                            <?php
+                                                if (empty($dataComing['path_gambar']))
+                                                {
+                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/img/empty.png').'"/>';
+                                                }
+                                                else
+                                                {
+                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/upload_img_coming/'.$dataComing['path_gambar']).'"/>';
+                                                }
+                                            ?>   
                                         </div>
                                         
                                         <label class='box-header' style="color: blue;" id="ganti">Ganti Gambar ?</label><br>

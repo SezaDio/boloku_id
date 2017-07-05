@@ -16,6 +16,9 @@
         <!-- DataTables CSS --> 
         <link href="<?php echo base_url('asset/css/jquery.dataTables.css'); ?>" rel="stylesheet" type="text/css" />
 
+        <!-- daterange picker -->
+        <link href="<?php echo base_url('asset/css/daterangepicker/daterangepicker-bs3.css'); ?>" rel="stylesheet" type="text/css" />
+
         <!-- bootstrap wysihtml5 - text editor -->
         <link href="<?php echo base_url('asset/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'); ?>" rel="stylesheet" type="text/css" />
     </head>

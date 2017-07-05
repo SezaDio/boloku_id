@@ -44,6 +44,16 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label for="exampleInputEmail1">Penulis Event   :</label>
+                                            <input type="text" required name="posted_by" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['posted_by']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['posted_by']);
+                                                }
+                                            ?>"> 
+                                        </div>
+
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Kategori Event  :</label><br>
                                             <select name="kategori" required class="form-control" id="kategori">
                                                 <option value="">--Pilih Kategori Event--</option>
@@ -79,6 +89,40 @@
                                                     }
                                                 ?>
                                             </select></br>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <!-- Date range -->
+                                            
+                                                <label>Tanggal Event :</label>
+                                                <div class="input-group">
+                                                    <div class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-calendar"></i>
+                                                    </div>
+                                                    <input type="text" required name="tgl_event" class="form-control pull-right" id="reservation"
+                                                        value="<?php
+                                                            if (isset($tgl_event))
+                                                            {
+                                                                echo $tgl_event;
+                                                            }
+                                                        ?>"/>
+                                                    <input type="hidden" id="tgl_mulai" name='tgl_mulai' value="<?php echo date('Y-m-d') ?>"
+                                                        value="<?php
+                                                            if (isset($tgl_mulai))
+                                                            {
+                                                                echo $tgl_mulai;
+                                                            }
+                                                            ?>"
+                                                    />
+                                                    <input type="hidden"  id="tgl_selesai" name='tgl_selesai' value="<?php echo date('Y-m-d') ?>"
+                                                        value="<?php
+                                                            if(isset($tgl_selesai))
+                                                            {
+                                                                echo $tgl_selesai;
+                                                            }
+                                                        ?>"/>
+                                                </div><!-- /.input group -->
+                                            
                                         </div>
 
 										<div class="form-group">

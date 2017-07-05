@@ -310,7 +310,7 @@ function setuju_pepak_ajax(id_pepak)
       }
     }
 
-function cariKata() {
+/*function cariKata() {
         var kata=document.getElementById("kata_kunci").value;
 		$.post('<?php echo site_url('KelolaPepak/cari_kata/'); ?>'+kata, function(dataKata){
 		
@@ -331,4 +331,4 @@ function cariKata() {
 			}
 			}
 		},"text");
-}
+}*/
