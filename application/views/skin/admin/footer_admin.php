@@ -1,16 +1,16 @@
 	<!-- script tags ============================================================= -->
-        <script type="text/javascript" src="<?php echo base_url('asset/js/jquery.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/bootstrap.min.js'); ?>"></script>
-        <script type="text/javascript" src="<?php echo base_url('asset/js/jquery-ui.min.js'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('asset/js/jquery.min.js?ver=b1.0'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/bootstrap.min.js?ver=b1.0'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('asset/js/jquery-ui.min.js?ver=b1.0'); ?>"></script>
        
         <!-- Sparkline -->
-        <script src="<?php echo base_url('asset/js/sparkline/jquery.sparkline.min.js'); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('asset/js/sparkline/jquery.sparkline.min.js?ver=b1.0'); ?>" type="text/javascript"></script>
         
         <!-- AdminLTE App -->
-        
+        <script src="<?php echo base_url('asset/js/app.js?ver=b1.0'); ?>" type="text/javascript"></script>
        
 		<!-- DataTables --> 
-		<script src="<?php echo base_url('asset/js/jquery.dataTables.js'); ?>" type="text/javascript"></script>
+		<script src="<?php echo base_url('asset/js/jquery.dataTables.js?ver=b1.0'); ?>" type="text/javascript"></script>
 		<script>
             $(document).ready( function () {
                 $('#dataTables-list').DataTable({
@@ -62,21 +62,21 @@
         </script>
 
         <!-- Ajax -->
-        <script src="<?php echo base_url('asset/js/ajax.js'); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('asset/js/ajax.js?ver=b1.0'); ?>" type="text/javascript"></script>
 
         <!-- CK Editor -->
-        <script src="<?php echo base_url('asset/js/ckeditor.js'); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('asset/js/ckeditor.js?ver=b1.0'); ?>" type="text/javascript"></script>
 
         <!-- Bootstrap WYSIHTML5 -->
-        <script src="<?php echo base_url('asset/js/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js'); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('asset/js/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js?ver=b1.0'); ?>" type="text/javascript"></script>
 
 		<!-- Morris.js charts -->
-        <script src="<?php echo base_url('asset/js/morris/morris.min.js'); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('asset/js/morris/morris.min.js?ver=b1.0'); ?>" type="text/javascript"></script>
 
         <!-- daterangepicker -->
-        <script src="<?php echo base_url('asset/js/daterangepicker/daterangepicker.js'); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('asset/js/daterangepicker/daterangepicker.js?ver=b1.0'); ?>" type="text/javascript"></script>
 
         <!-- datepicker -->
-        <script src="<?php echo base_url('asset/js/datepicker/bootstrap-datepicker.js'); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('asset/js/datepicker/bootstrap-datepicker.js?ver=b1.0'); ?>" type="text/javascript"></script>
 	</body>
 </html>
