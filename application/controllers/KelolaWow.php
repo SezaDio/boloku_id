@@ -39,14 +39,15 @@ class KelolaWow extends CI_Controller {
 		$this->load->library('form_validation');
 
 		$tambah = $this->input->post('submit');
-		$kategori_wow = array('Wow Sains'=>'Wow Sains',
-                              'Wow Teknologi'=>'Wow Teknologi',
-                              'Wow Sejarah'=>'Wow Sejarah',
-                              'Wow Politik'=>'Wow Politik',
-                              'Wow Fiksi'=>'Wow Fiksi',
-                              'Wow Rekomendasi'=>'Wow Rekomendasi',
-                              'Wow Komunitas'=>'Wow Komunitas',
-                              'Wow Lain-Lain'=>'Wow Lain-Lain'
+		$kategori_wow = array('Ngerti Rak Seni'=>'Ngerti Rak Seni',
+                              'Ngerti Rak Travel dan Outdoor'=>'Ngerti Rak Travel dan Outdoor',
+                              'Ngerti Rak Bisnis'=>'Ngerti Rak Bisnis',
+                              'Ngerti Rak Science dan Teknologi'=>'Ngerti Rak Science dan Teknologi',
+                              'Ngerti Rak Sprirituality'=>'Ngerti Rak Sprirituality',
+                              'Ngerti Rak Musik'=>'Ngerti Rak Musik',
+                              'Ngerti Rak Keluarga dan Pendidikan'=>'Ngerti Rak Keluarga dan Pendidikan',
+                              'Ngerti Rak Hobi'=>'Ngerti Rak Hobi',
+                              'Ngerti Rak Lain-Lain'=>'Ngerti Rak Lain-Lain'
                               );
 		$data['kategori_wow']= $kategori_wow;
 
@@ -122,14 +123,15 @@ class KelolaWow extends CI_Controller {
 
 		$edit = $this->input->post('save');
 
-		$kategori_wow = array('Wow Sains'=>'Wow Sains',
-                              'Wow Teknologi'=>'Wow Teknologi',
-                              'Wow Sejarah'=>'Wow Sejarah',
-                              'Wow Politik'=>'Wow Politik',
-                              'Wow Fiksi'=>'Wow Fiksi',
-                              'Wow Rekomendasi'=>'Wow Rekomendasi',
-                              'Wow Komunitas'=>'Wow Komunitas',
-                              'Wow Lain-Lain'=>'Wow Lain-Lain'
+		$kategori_wow = array('Ngerti Rak Seni'=>'Ngerti Rak Seni',
+                              'Ngerti Rak Travel dan Outdoor'=>'Ngerti Rak Travel dan Outdoor',
+                              'Ngerti Rak Bisnis'=>'Ngerti Rak Bisnis',
+                              'Ngerti Rak Science dan Teknologi'=>'Ngerti Rak Science dan Teknologi',
+                              'Ngerti Rak Sprirituality'=>'Ngerti Rak Sprirituality',
+                              'Ngerti Rak Musik'=>'Ngerti Rak Musik',
+                              'Ngerti Rak Keluarga dan Pendidikan'=>'Ngerti Rak Keluarga dan Pendidikan',
+                              'Ngerti Rak Hobi'=>'Ngerti Rak Hobi',
+                              'Ngerti Rak Lain-Lain'=>'Ngerti Rak Lain-Lain'
                               );
 		$data['kategori_wow']= $kategori_wow;
 		if (isset($_POST['save']))

@@ -2,12 +2,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Tambah Wow
+                       Tambah Ngerti Rak?
                     </h1>
 					<div id="instafeed"></div>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Wow</a></li>
-                        <li class="active">Tambah Wow</li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Ngerti Rak?</a></li>
+                        <li class="active">Tambah Ngerti Rak?</li>
                     </ol>
                 </section>
 
@@ -35,7 +35,7 @@
 										<div class="form-group">
                                             <label for="exampleInputEmail1">Kategori   :</label><br>
                                             <select name="kategori" required class="form-control" id="kategori">
-                                                <option value="">--Pilih Kategori Wow--</option>
+                                                <option value="">--Pilih Kategori Ngerti Rak?--</option>
                                                 <?php
                                                     foreach ($kategori_wow as $key=>$kategori) 
                                                     {
@@ -52,7 +52,7 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Judul Wow   :</label>
+                                            <label for="exampleInputEmail1">Judul Ngerti Rak?   :</label>
                                             <input type="text" required name="judul_wow" class="form-control" id="exampleInputEmail1" value="<?php 
                                                     if (isset($dataWow['judul_wow']))
                                                     {
@@ -64,7 +64,7 @@
 										
 										<div class="form-group">
 											<div class='box-header'>
-												 <label>Deskripsi Wow :</label>
+												 <label>Deskripsi Ngerti Rak? :</label>
 											</div>
 											<div class='box-body pad'>
 												<textarea required id="editor_wow" name="deskripsi_wow" rows="10" cols="80">

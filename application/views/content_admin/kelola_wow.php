@@ -2,11 +2,11 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Kelola Wow
+                       Kelola Ngerti Rak?
                     </h1>
                     <ol class="breadcrumb">
-                        <li><i class="fa fa-dashboard"></i>Youth Wow</li>
-                        <li class="active">Kelola Wow</li>
+                        <li><i class="fa fa-dashboard"></i>Ngerti Rak?</li>
+                        <li class="active">Kelola Ngerti Rak?</li>
                     </ol>
                 </section>
 
@@ -29,7 +29,7 @@
                                             </div>
                                         <?php }?>
 										<a href="<?php echo site_url('KelolaWow/tambah_wow_check/');?>">
-                                            <button type="submit" name="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" ></i> Tambah Wow</button>
+                                            <button type="submit" name="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" ></i> Tambah Ngerti Rak?</button>
                                         </a>
 									</div>
                                     <div class="form-group">
@@ -37,7 +37,7 @@
                                             <thead>
                                                 <tr>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">No.</th>
-                                                    <th class="title-center" style="font-size:1em; text-align:center;">Judul Wow</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Judul Ngerti Rak?</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Kategori</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Waktu Posting</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Aksi</th>                                                        

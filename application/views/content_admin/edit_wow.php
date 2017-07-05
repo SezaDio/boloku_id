@@ -2,12 +2,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Edit Wow
+                       Edit Ngerti Rak?
                     </h1>
 					<div id="instafeed"></div>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Wow</a></li>
-                        <li class="active">Edit Wow</li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Ngerti Rak</a></li>
+                        <li class="active">Edit Ngerti Rak?</li>
                     </ol>
                 </section>
 
@@ -37,7 +37,7 @@
                                             <label for="exampleInputEmail1">Kategori   :</label><br>
                                             
                                             <select name="kategori" required class="form-control" id="kategori">
-                                                <option value="">--Pilih Kategori Wow--</option>
+                                                <option value="">--Pilih Kategori Ngerti Rak?--</option>
                                                 <?php
                                                     foreach ($kategori_wow as $key=>$kategori) 
                                                     {
@@ -54,13 +54,13 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Judul Wow   :</label>
+                                            <label for="exampleInputEmail1">Judul Ngerti Rak?   :</label>
                                             <input type="text" required name="judul_wow" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataWow['judul_wow']); ?>">
                                         </div>
 										
 										<div class="form-group">
 											<div class='box-header'>
-												 <label>Deskripsi Wow :</label>
+												 <label>Deskripsi Ngerti Rak? :</label>
 											</div>
 											
 												<textarea required id="editor_wow" name="deskripsi_wow" rows="10" cols="80">
@@ -70,11 +70,21 @@
                                         </div>
 
                                         <div class='box-header'>
-                                            <label>Gambar Wow :</label>
+                                            <label>Gambar Ngerti Rak? :</label>
                                         </div>
 
-                                        <div class='box-header'>                
-                                                <img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="<?php echo base_url('asset/upload_img_wow/'.$dataWow['path_gambar']); ?>"/>
+                                        <div class='box-header'>   
+                                            <?php
+                                                if (empty($dataWow['path_gambar']))
+                                                {
+                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/img/empty.png').'"/>';
+                                                }
+                                                else
+                                                {
+                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/upload_img_wow/'.$dataWow['path_gambar']).'"/>';
+                                                }
+                                            ?>             
+                                            
                                         </div>
                                         
                                         <label class='box-header' style="color: blue;" id="ganti">Ganti Gambar ?</label><br>
@@ -86,7 +96,7 @@
                                     <input type="hidden" name="id_wow" value="<?php echo $idWow; ?>">
                                     <div class="box-footer">
                                         <button type="submit" name="save" value="1" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i> Simpan</button>
-                                       <a href="<?php echo site_url('KelolaWow/');?>"><button type="button" name="submit" class="btn btn-danger">Batal</button>
+                                       <a href="<?php echo site_url('KelolaWow/');?>"><button type="button" name="submit" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Batal</button>
                                     </div>
                                 </form>
                             </div><!-- /.box -->

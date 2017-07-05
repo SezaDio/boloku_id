@@ -6,65 +6,90 @@
                     </h1>
 					<div id="instafeed"></div>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i>Beranda</a></li>
-                        <li><a href="#">Pengaturan Berita</a></li>
-                        <li class="active">Tambah Berita</li>
+                        <li class="active"><a href="#"><i class="glyphicon glyphicon-dashboard"></i> Dashboard</a></li>
                     </ol>
                 </section>
 
                 <!-- Main content -->
                 <section class="content">
+                    <!-- Small boxes (Stat box) -->
                     <div class="row">
-                        <!-- left column -->
-                        <div class="col-md-8">
-                            <!-- general form elements -->
-                            <div class="box box-primary">
-                                
-                                <!-- form start -->
-								
-                                <form role="form" enctype="multipart/form-data" action="#" method="POST">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Judul Berita   :</label>
-                                            <input type="text" required name="judul_post" class="form-control" id="exampleInputEmail1" 
-											value="">
-											<small>* Maksimal 100 Karakter</small>
-                                        </div>
-										<div class="form-group">
-                                            <label for="exampleInputEmail1">Penulis   :</label>
-                                            <input type="text" required name="penulis" class="form-control" id="exampleInputEmail1"
-											value="#"
-											>
-											<small>* Maksimal 50 Karakter</small>
-                                        </div>
-										
-										<div class="form-group">
-										
-												<div class='box-header'>
-													 <label>Isi Berita :</label>
-												</div><!-- /.box-header -->
-												<div class='box-body pad'>
-													<textarea required id="editor1" name="editor1" rows="10" cols="80">
-														
-													</textarea>                                    
-												</div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputFile">Unggah File Gambar :</label>
-                                            <input accept="image/*" type="file" name="gambar" id="exampleInputFile"><br/>
-											<b><p style="color:red;">File diizinkan: jpg, jpeg, png, Max 2MB</p></b>
-                                        </div>
-                                    </div><!-- /.box-body -->
-
-                                    <div class="box-footer">
-                                        <button type="submit" name="submit" class="btn btn-primary">Simpan</button>
-                                    </div>
-                                </form>
-                            </div><!-- /.box -->
-
-                            
-                        </div><!--/.col (left) -->
-                        
-                    </div>   <!-- /.row -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-aqua">
+                                <div class="inner">
+                                    <h3>
+                                        150
+                                    </h3>
+                                    <p>
+                                        New Orders
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-bag"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="glyphicon glyphicon-circle-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-green">
+                                <div class="inner">
+                                    <h3>
+                                        53<sup style="font-size: 20px">%</sup>
+                                    </h3>
+                                    <p>
+                                        Bounce Rate
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-stats-bars"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-yellow">
+                                <div class="inner">
+                                    <h3>
+                                        44
+                                    </h3>
+                                    <p>
+                                        User Registrations
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-person-add"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div><!-- ./col -->
+                        <div class="col-lg-3 col-xs-6">
+                            <!-- small box -->
+                            <div class="small-box bg-red">
+                                <div class="inner">
+                                    <h3>
+                                        65
+                                    </h3>
+                                    <p>
+                                        Unique Visitors
+                                    </p>
+                                </div>
+                                <div class="icon">
+                                    <i class="ion ion-pie-graph"></i>
+                                </div>
+                                <a href="#" class="small-box-footer">
+                                    More info <i class="fa fa-arrow-circle-right"></i>
+                                </a>
+                            </div>
+                        </div><!-- ./col -->
+                    </div><!-- /.row -->
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
