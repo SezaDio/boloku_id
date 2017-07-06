@@ -39,6 +39,8 @@
                                                     <th class="title-center" style="font-size:1em; text-align:center;">No.</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Judul Event</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Posted By</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Kategori Event</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Tipe Event</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Waktu Posting</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Aksi</th>                                                        
                                                 </tr>
@@ -51,6 +53,8 @@
                                                             <td style="text-align: center;"><?php echo $item['id_coming'] ?></td>
                                                             <td><?php echo $item['nama_coming'] ?></td>
                                                             <td><?php echo $item['posted_by'] ?></td>
+                                                            <td><?php echo $item['kategori_coming'] ?></td>
+                                                            <td><?php echo $item['tipe_event'] ?></td>
                                                             <td><?php echo $item['tanggal_posting'] ?></td>
                                                             <td align="center">
                                                                  <!-- Tombol tambah Press Release -->

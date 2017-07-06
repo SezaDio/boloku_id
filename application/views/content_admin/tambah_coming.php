@@ -93,52 +93,93 @@
 
                                         <div class="form-group">
                                             <!-- Date range -->
-                                            
-                                                <label>Tanggal Event :</label>
-                                                <div class="input-group">
-                                                    <div class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-calendar"></i>
+                                            <label>Tanggal Event :</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </div>
+                                                <input type="text" required name="tgl_event" class="form-control pull-right" id="reservation"
+                                                    value="<?php
+                                                        if (isset($tgl_event))
+                                                        {
+                                                            echo $tgl_event;
+                                                        }
+                                                    ?>"/>
+                                                <input type="hidden" id="tgl_mulai" name='tgl_mulai' value="<?php echo date('Y-m-d') ?>"
+                                                    value="<?php
+                                                        if (isset($tgl_mulai))
+                                                        {
+                                                            echo $tgl_mulai;
+                                                        }
+                                                        ?>"
+                                                />
+                                                <input type="hidden"  id="tgl_selesai" name='tgl_selesai' value="<?php echo date('Y-m-d') ?>"
+                                                    value="<?php
+                                                        if(isset($tgl_selesai))
+                                                        {
+                                                            echo $tgl_selesai;
+                                                        }
+                                                    ?>"/>
+                                            </div><!-- /.input group -->
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class='box-header'>
+                                                <label>Jam Event Dimulai & Berakhir:</label>
+                                                <div class="col-md-12" style="margin-left:-30px;">
+                                                    <div class="col-md-4">
+                                                        <select name="tipe" required class="form-control" id="kategori" style="width: 186px;">
+                                                            <option value="">--Pilih Waktu Dimulai--</option>
+                                                            <?php
+                                                                foreach ($jam_event as $key=>$jam) 
+                                                                {
+                                                                    if ($key==$dataComing['jam_event']){
+                                                                        echo '<option value="'.$key.'" selected>'.$jam.'</option>';
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        echo '<option value="'.$key.'">'.$jam.'</option>';   
+                                                                    }
+                                                                }
+                                                            ?>
+                                                        </select>
                                                     </div>
-                                                    <input type="text" required name="tgl_event" class="form-control pull-right" id="reservation"
-                                                        value="<?php
-                                                            if (isset($tgl_event))
-                                                            {
-                                                                echo $tgl_event;
-                                                            }
-                                                        ?>"/>
-                                                    <input type="hidden" id="tgl_mulai" name='tgl_mulai' value="<?php echo date('Y-m-d') ?>"
-                                                        value="<?php
-                                                            if (isset($tgl_mulai))
-                                                            {
-                                                                echo $tgl_mulai;
-                                                            }
-                                                            ?>"
-                                                    />
-                                                    <input type="hidden"  id="tgl_selesai" name='tgl_selesai' value="<?php echo date('Y-m-d') ?>"
-                                                        value="<?php
-                                                            if(isset($tgl_selesai))
-                                                            {
-                                                                echo $tgl_selesai;
-                                                            }
-                                                        ?>"/>
-                                                </div><!-- /.input group -->
-                                            
+
+                                                    <div class="col-md-4">
+                                                        <select name="tipe" required class="form-control" id="kategori" style="width: auto;">
+                                                            <option value="">--Pilih Waktu Berakhir--</option>
+                                                            <?php
+                                                                foreach ($jam_event as $key=>$jam) 
+                                                                {
+                                                                    if ($key==$dataComing['jam_event']){
+                                                                        echo '<option value="'.$key.'" selected>'.$jam.'</option>';
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        echo '<option value="'.$key.'">'.$jam.'</option>';   
+                                                                    }
+                                                                }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
 										<div class="form-group">
 											<div class='box-header'>
 												 <label>Deskripsi Event :</label>
 											</div>
-											<div class='box-body pad'>
-												<textarea required id="editor_wow" name="deskripsi_coming" rows="10" cols="80">
-													<?php 
-                                                        if (isset($dataComing['deskripsi']))
-                                                        {
-                                                            echo htmlspecialchars($dataComing['deskripsi']);
-                                                        }
-                                                    ?>
-												</textarea>                                    
-											</div>
+											
+											<textarea required id="editor_wow" name="deskripsi_coming" rows="10" cols="80">
+												<?php 
+                                                    if (isset($dataComing['deskripsi']))
+                                                    {
+                                                        echo htmlspecialchars($dataComing['deskripsi']);
+                                                    }
+                                                ?>
+											</textarea>                                    
+											
                                         </div>
 
                                         <div class="form-group">

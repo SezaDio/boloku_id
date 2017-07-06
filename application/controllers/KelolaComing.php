@@ -183,8 +183,43 @@ class KelolaComing extends CI_Controller {
                               'Lain-Lain'=>'Lain-Lain'
                               );
 
+		$jam_event=array();
+		for ($i=0; $i<24; $i++) 
+		{ 
+	 		for ($j=0; $j<=45; $j=$j+15)
+	 		{
+	 			if ($i<=9) 
+	 			{
+	 				if ($j==0) 
+	 				{
+	 					$jam_event["0".$i.":".$j."0"]="0".$i.":".$j."0";
+	 				}
+	 				else
+	 				{
+	 					$jam_event["0".$i.":".$j.""]="0".$i.":".$j."";
+	 				}
+
+	 			 	//array_push($jam_event, "0".$i.":".$j."0" => "0".$i.":".$j."0");
+	 			}
+	 			else
+	 			{
+	 				if ($j==0) 
+	 				{
+	 					$jam_event["".$i.":".$j."0"]="".$i.":".$j."0";
+	 				}
+	 				else
+	 				{
+	 					$jam_event["".$i.":".$j.""]="".$i.":".$j."";
+	 				}
+
+	 				//array_push($jam_event, "".$i.":".$j."" => "".$i.":".$j."");	
+	 			}
+	 		}
+		}
+
 		$data['kategori_coming']= $kategori_coming;
 		$data['tipe_event']= $tipe_event;
+		$data['jam_event']= $jam_event;
 
 		if ($tambah == 1) 
 		{
