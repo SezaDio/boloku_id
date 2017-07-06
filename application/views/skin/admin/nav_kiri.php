@@ -37,7 +37,7 @@
                             </ul>
                         </li>
 
-                        <li class="treeview">
+                        <li>
                             <a href="<?php echo site_url('KelolaChallenge/index'); ?>">
                                 <i class="glyphicon glyphicon-collapse-up"></i> <span> Challenge Update </span>
                             </a>
@@ -49,12 +49,20 @@
                             </a>
                         </li>
                         
-                        <li>
-                            <a href="overview_album.php"><i class="glyphicon glyphicon-cog"></i> <span>Member Control</span></a>  
+                        <li class="treeview">
+                            <a href="#">
+								<i class="glyphicon glyphicon-cog"></i> <span>Member Control</span>
+								<i class="glyphicon glyphicon-menu-right pull-right"></i>
+							</a> 
+							<ul class="treeview-menu">
+                                <li><a href="<?php echo site_url('KelolaMember/index'); ?>"><i class="glyphicon glyphicon-minus"></i> Kelola Member</a></li>
+                                <li><a href="<?php echo site_url('KelolaMember/validasi_member'); ?>"><i class="glyphicon glyphicon-minus"></i> Validasi Member</a></li>
+                            </ul>
                         </li> 
                         
                         <li>
-                            <a href="overview_album.php"><i class="glyphicon glyphicon-cog"></i> <span>Administrator Control</span></a>  
+                            <a href="<?php echo site_url('KelolaAdmin/index'); ?>">
+							<i class="glyphicon glyphicon-cog"></i> <span>Administrator Control</span></a>  
                         </li>
                     </ul>
                 </section>
