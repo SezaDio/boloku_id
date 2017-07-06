@@ -373,7 +373,7 @@ class KelolaComing extends CI_Controller {
 			$id_coming = $this->input->post('id_coming');
 
 			$this->form_validation->set_rules('nama_coming', 'Judul', 'required');
-			$this->form_validation->set_rules('kategori_coming', 'Kategori', 'required');
+			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
 			$this->form_validation->set_rules('tipe', 'Tipe', 'required');
 			$this->form_validation->set_rules('tgl_event', 'Tanggal', 'required');
 			$this->form_validation->set_rules('jam_mulai', 'Jam', 'required');
@@ -390,8 +390,8 @@ class KelolaComing extends CI_Controller {
 
 			$data_coming=array(
 							'nama_coming'=>$this->input->post('nama_coming'),
-							'kategori_coming'=>$this->input->post('kategori_coming'),
-							'tipe_event'=>$this->input->post('tipe_event'),
+							'kategori_coming'=>$this->input->post('kategori'),
+							'tipe_event'=>$this->input->post('tipe'),
 							'tgl_mulai'=>$this->input->post('tgl_mulai'),
 							'tgl_selesai'=>$this->input->post('tgl_selesai'),
 							'jam_mulai'=>$this->input->post('jam_mulai'),
@@ -434,7 +434,7 @@ class KelolaComing extends CI_Controller {
 			}
 			else
 			{
-				$this->session->set_flashdata('msg_gagal', 'Data Youth Comming Soon gagal diperbaharui');
+				$this->session->set_flashdata('msg_gagal', 'Data Event gagal diperbaharui');
 				//$this->edit_comming_soon();
 			}
 		}

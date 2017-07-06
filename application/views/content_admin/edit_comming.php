@@ -61,12 +61,12 @@
                                                         }
                                                     }
                                                 ?>
-                                            </select><br>
+                                            </select>
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Tipe Event  :</label><br>
-                                            <select name="tipe" required class="form-control" id="kategori">
+                                            <select name="tipe" required class="form-control" id="tipe">
                                                 <option value="">--Pilih Tipe Event--</option>
                                                 <?php
                                                     foreach ($tipe_event as $key=>$tipe) 
@@ -80,7 +80,63 @@
                                                         }
                                                     }
                                                 ?>
-                                            </select></br>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <!-- Date range -->
+                                            <label>Tanggal Event :</label>
+                                            <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </div>
+                                                <input type="text" required name="tgl_event" class="form-control pull-right" id="reservation2" value="<?php echo $dataComing['tgl_mulai'] ."  s/d  ". $dataComing['tgl_selesai'];?>"/>
+                                                <input type="hidden" id="tgl_mulai" name='tgl_mulai' value="<?php echo $dataComing['tgl_mulai'];?>"/>
+                                                <input type="hidden" id="tgl_selesai" name='tgl_selesai' value="<?php echo $dataComing['tgl_selesai'];?>"/>
+                                            </div><!-- /.input group -->
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class='box-header'>
+                                                <label>Jam Event Dimulai & Berakhir:</label>
+                                                <div class="col-md-12" style="margin-left:-30px;">
+                                                    <div class="col-md-4">
+                                                        <select name="jam_mulai" required class="form-control" id="jam_mulai" style="width: 186px;">
+                                                            <option value="">--Pilih Waktu Dimulai--</option>
+                                                            <?php
+                                                                foreach ($jam_event as $key=>$jam) 
+                                                                {
+                                                                    if ($key==$dataComing['jam_mulai']){
+                                                                        echo '<option value="'.$key.'" selected>'.$jam.'</option>';
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        echo '<option value="'.$key.'">'.$jam.'</option>';   
+                                                                    }
+                                                                }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-4">
+                                                        <select name="jam_selesai" required class="form-control" id="jam_selesai" style="width: auto;">
+                                                            <option value="">--Pilih Waktu Berakhir--</option>
+                                                            <?php
+                                                                foreach ($jam_event as $key=>$jam) 
+                                                                {
+                                                                    if ($key==$dataComing['jam_selesai']){
+                                                                        echo '<option value="'.$key.'" selected>'.$jam.'</option>';
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        echo '<option value="'.$key.'">'.$jam.'</option>';   
+                                                                    }
+                                                                }
+                                                            ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
 
 										<div class="form-group">
@@ -128,3 +184,8 @@
                     </div>   <!-- /.row -->
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
+
+        
+
+                
+           

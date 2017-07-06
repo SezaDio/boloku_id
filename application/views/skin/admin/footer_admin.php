@@ -70,6 +70,14 @@
                     $('#tgl_mulai').val(start.format('YYYY-MM-DD'));
                     $('#tgl_selesai').val(end.format('YYYY-MM-DD'));
                 });
+
+                /*Edit Event Date range picker
+                $('#reservation2').daterangepicker({format: 'YYYY-MM-DD',
+                                                            startDate: '<?php //echo $dataComing['tgl_mulai'];?>',
+                                                            endDate: '<?php //echo $dataComing['tgl_selesai'];?>'},function(start, end) {
+                    $('#tgl_mulai').val(start.format('YYYY-MM-DD'));
+                    $('#tgl_selesai').val(end.format('YYYY-MM-DD'));
+                });*/
             } );
         </script>
 

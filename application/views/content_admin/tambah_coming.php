@@ -69,7 +69,7 @@
                                                         }
                                                     }
                                                 ?>
-                                            </select></br>
+                                            </select>
                                         </div>
 
                                         <div class="form-group">
@@ -88,7 +88,7 @@
                                                         }
                                                     }
                                                 ?>
-                                            </select></br>
+                                            </select>
                                         </div>
 
                                         <div class="form-group">
