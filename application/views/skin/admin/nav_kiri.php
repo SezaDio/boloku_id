@@ -38,7 +38,7 @@
                         </li>
 
                         <li class="treeview">
-                            <a href="#">
+                            <a href="<?php echo site_url('KelolaChallenge/index'); ?>">
                                 <i class="glyphicon glyphicon-collapse-up"></i> <span> Challenge Update </span>
                             </a>
                         </li>
