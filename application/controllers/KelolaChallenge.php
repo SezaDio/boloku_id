@@ -39,7 +39,7 @@ class KelolaChallenge extends CI_Controller {
 	//Publish
 	public function publish_challenge()//$id_produk
 	{
-		$id_challenge = $_POST['idchallenge'];
+		$id_challenge = $_POST['idChallenge'];
 		$this->load->model('challenge_models/ChallengeModels');
 		$this->ChallengeModels->publish_challenge($id_challenge);
 
@@ -50,7 +50,7 @@ class KelolaChallenge extends CI_Controller {
 	//Unpublish
 	public function unpublish_challenge()//$id_produk
 	{
-		$id_challenge = $_POST['idchallenge'];
+		$id_challenge = $_POST['idChallenge'];
 		$this->load->model('challenge_models/ChallengeModels');
 		$this->ChallengeModels->unpublish_challenge($id_challenge);
 

@@ -32,7 +32,8 @@
                                             <button type="submit" name="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i> Tambah Challenge Update</button>
                                         </a>
 										<input placeholder="Cari Challenge Update" name="search" class="form-control" type="text" id="kata_kunci">
-										<button onclick="cariChallenge()">Cari</button><br/><br/><br/>
+										<button onclick="cariChallenge()">Cari</button>
+										<button onclick="lihatSemua()">Lihat Semua</button><br/><br/><br/>
 										
 										<div>
 											<div class="content">
@@ -53,8 +54,9 @@
 													</div>
 													<?php } ?>
 												</div>
+												
 												<div class="row" id="hasil_search" style="display:none">
-												<h1>TEST</h1>
+													<h1>tes<input type="checkbox"></h1>
 												</div>
 											</div>
 										</div>
@@ -77,20 +79,7 @@
 					var check = document.getElementById("challenge"+idChallenge).checked;
 						if(check){
 							$.ajax({
-							url: 'KelolaChallenge/publish_challenge',
-							type: 'POST',
-							data: {idChallenge:idChallenge},
-							success: function(){
-										alert('Content berhasil di publish');
-										location.reload();
-									},
-							error: function(){
-										alert('Content gagal di publish');
-									}
-							});
-						} else{
-							$.ajax({
-							url: 'KelolaChallenge/unpublish_challenge',
+							url: 'unpublish_challenge',
 							type: 'POST',
 							data: {idChallenge:idChallenge},
 							success: function(){
@@ -101,6 +90,20 @@
 										alert('Content gagal di unpublish');
 									}
 							});
+						} else{
+							$.ajax({
+							url: 'publish_challenge',
+							type: 'POST',
+							data: {idChallenge:idChallenge},
+							success: function(){
+										alert('Content berhasil di publish');
+										location.reload();
+									},
+							error: function(){
+										alert('Content gagal di publish');
+									}
+							});
+							
 						}
 				}
 				  function parseXml(str) {
@@ -165,5 +168,10 @@
 							document.getElementById("hasil_search").innerHTML = divhasil;
 							//}
 						},"text");
+				}
+				
+				function lihatSemua(){
+					document.getElementById("challengediv").style.display = "block";
+					document.getElementById("hasil_search").style.display = "none";
 				}
 			</script>
