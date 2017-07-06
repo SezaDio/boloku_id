@@ -4,6 +4,7 @@
                     <h1>
                        Kelola Challenge Update
                     </h1>
+					
                     <ol class="breadcrumb">
                         <li><i class="fa fa-dashboard"></i>Kelola Challenge Update</li>
                     </ol>
@@ -32,13 +33,14 @@
                                         </a>
 										<input placeholder="Cari Challenge Update" name="search" class="form-control" type="text" id="kata_kunci">
 										<button onclick="cariChallenge()">Cari</button><br/><br/><br/>
+										
 										<div>
 											<div class="content">
-												<div class="row" id="challenge" style="display:block">
+												<div class="row" id="challengediv">
 													<?php foreach($listChallenge as $item){ ?>
                                                     <div class="col-md-4" style="text-align: center">
 													<div class="well" style="padding:10px">
-															<input onclick="publish(<?php echo $item['id_challenge']?>)" type="checkbox" name="challenge" id="challenge<?php echo $item['id_challenge']?>" value="<?php echo $item['id_challenge']?>" <?php if($item['status']==1){?>checked="checked"<?php } ?>>  
+														<input onclick="publish(<?php echo $item['id_challenge']?>)" type="checkbox" name="challenge" id="challenge<?php echo $item['id_challenge']?>" value="<?php echo $item['id_challenge']?>" <?php if($item['status']==1){?>checked="checked"<?php } ?>>  
 														<img height="100%" width="100%" alt="" src="<?php echo base_url('asset/upload_img_challenge/'.$item['path_gambar']); ?>">
 														<br/><?php 	echo $item['judul_challenge']; ?>
 														<br/>
@@ -127,19 +129,40 @@
 							else {
 							document.getElementById("notFound").style.display = "none";
 							document.getElementById("hasil").style.display = "block";*/
-							document.getElementById("challange").style.display = "none";
-							document.getElementById("hasil_search").style.display = "none";
+							document.getElementById("challengediv").style.display = "none";
+							document.getElementById("hasil_search").style.display = "block";
+							var divhasil='';
+							
 							for (var i = 0; i < getChallenge.length; i++) {
 							  
 							  var id_challenge = getChallenge[i].getAttribute("id_challenge");
 							  var judul_challenge = getChallenge[i].getAttribute("judul_challenge");
-							  var deskripsi = getChallange[i].getAttribute("deskripsi");
-							  var path_gambar = getChallange[i].getAttribute("path_gambar");
+							  var deskripsi = getChallenge[i].getAttribute("deskripsi");
+							  var status = getChallenge[i].getAttribute("status");
+							  var path_gambar = getChallenge[i].getAttribute("path_gambar");
+							  var ischeck='';
+							  if (status==1) {
+								ischeck += 'checked="checked"';
+							  }
+							  var getUrl = window.location;
+							  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 							  
+							  
+							  divhasil += '<div class="col-md-4" style="text-align: center">';
+							  divhasil += '<div class="well" style="padding:10px">';
+							  divhasil += '<input onclick="publish('+id_challenge+')" type="checkbox" name="challenge" id="challenge'+id_challenge+'" value="'+id_challenge+'" '+ischeck+'>';
+							  divhasil += '<img height="100%" width="100%" alt="" src="'+baseUrl+'/asset/upload_img_challenge/'+path_gambar+'">';
+							  divhasil += '<br/>'+judul_challenge+'<br/>';
+							  divhasil += '<a href="'+baseUrl+'/KelolaChallenge/edit_challenge/'+id_challenge+'"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>';
+							  divhasil += '<a href="'+baseUrl+'/KelolaChallenge/delete_challenge/'+id_challenge+'"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button></a>';
+							  
+							  
+							  divhasil += "</div></div>";
 							  
 							  //document.getElementById("arti").innerHTML = "<b>"+jawa+"</b> yang berarti <b>"+indonesia+"</b>";
 							  //document.getElementById("deskripsikata").innerHTML = "<strong>"+deskripsi_jawa+"</strong>";
 							}
+							document.getElementById("hasil_search").innerHTML = divhasil;
 							//}
 						},"text");
 				}

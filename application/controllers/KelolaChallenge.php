@@ -246,7 +246,7 @@ class KelolaChallenge extends CI_Controller {
 		$this->load->library('form_validation');
 
 		$edit = $this->input->post('save');
-
+		$data['idChallenge'] = $id_challenge;
 		if (isset($_POST['save']))
 		{
 			$id_challenge = $this->input->post('id_challenge');
@@ -350,13 +350,14 @@ class KelolaChallenge extends CI_Controller {
         
         
         $this->load->helper('xml');
-		$xml_out = '<challanges>';
+		$xml_out = '<challenges>';
         if ($get_challenge->num_rows()>0) {
             foreach ($get_challenge->result() as $row_challenge) {
                 $xml_out .= '<challenge ';
-                $xml_out .= 'id_challange="' . xml_convert($row_challenge->id_challenge) . '" ';
-                $xml_out .= 'judul_challange="' . xml_convert($row_challenge->judul_challenge) . '" ';
+                $xml_out .= 'id_challenge="' . xml_convert($row_challenge->id_challenge) . '" ';
+                $xml_out .= 'judul_challenge="' . xml_convert($row_challenge->judul_challenge) . '" ';
                 $xml_out .= 'deskripsi="' . xml_convert(($row_challenge->deskripsi)) . '" ';
+                $xml_out .= 'status="' . xml_convert(($row_challenge->status)) . '" ';
                 $xml_out .= 'path_gambar="' . xml_convert(($row_challenge->path_gambar)) . '" ';
                 $xml_out .= '/>';
             }
