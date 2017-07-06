@@ -227,6 +227,9 @@ class KelolaComing extends CI_Controller {
 			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
 			$this->form_validation->set_rules('posted_by', 'Penulis', 'required');
 			$this->form_validation->set_rules('tipe', 'Tipe', 'required');
+			$this->form_validation->set_rules('tgl_event', 'Tanggal', 'required');
+			$this->form_validation->set_rules('jam_mulai', 'Jam', 'required');
+			$this->form_validation->set_rules('jam_selesai', 'Jam', 'required');
 			$this->form_validation->set_rules('deskripsi_coming', 'Deskripsi', 'required');
 
 			//Mengambil filename gambar untuk disimpan
@@ -248,6 +251,10 @@ class KelolaComing extends CI_Controller {
 						'deskripsi_coming'=>$this->input->post('deskripsi_coming'),
 						'tanggal_posting'=>date("Y-m-d h:i:sa"),
 						'posted_by'=>$this->input->post('posted_by'),
+						'tgl_mulai'=>$this->input->post('tgl_mulai'),
+						'tgl_selesai'=>$this->input->post('tgl_selesai'),
+						'jam_mulai'=>$this->input->post('jam_mulai'),
+						'jam_selesai'=>$this->input->post('jam_selesai'),
 						'path_gambar'=> NULL,
 						'status'=>1
 					);
@@ -323,9 +330,43 @@ class KelolaComing extends CI_Controller {
                               'Tour'=>'Tour',
                               'Lain-Lain'=>'Lain-Lain'
                               );
+		$jam_event=array();
+		for ($i=0; $i<24; $i++) 
+		{ 
+	 		for ($j=0; $j<=45; $j=$j+15)
+	 		{
+	 			if ($i<=9) 
+	 			{
+	 				if ($j==0) 
+	 				{
+	 					$jam_event["0".$i.":".$j."0"]="0".$i.":".$j."0";
+	 				}
+	 				else
+	 				{
+	 					$jam_event["0".$i.":".$j.""]="0".$i.":".$j."";
+	 				}
+
+	 			 	//array_push($jam_event, "0".$i.":".$j."0" => "0".$i.":".$j."0");
+	 			}
+	 			else
+	 			{
+	 				if ($j==0) 
+	 				{
+	 					$jam_event["".$i.":".$j."0"]="".$i.":".$j."0";
+	 				}
+	 				else
+	 				{
+	 					$jam_event["".$i.":".$j.""]="".$i.":".$j."";
+	 				}
+
+	 				//array_push($jam_event, "".$i.":".$j."" => "".$i.":".$j."");	
+	 			}
+	 		}
+		}
 
 		$data['kategori_coming']= $kategori_coming;
 		$data['tipe_event']= $tipe_event;
+		$data['jam_event']= $jam_event;
 
 		if (isset($_POST['save']))
 		{
@@ -334,6 +375,9 @@ class KelolaComing extends CI_Controller {
 			$this->form_validation->set_rules('nama_coming', 'Judul', 'required');
 			$this->form_validation->set_rules('kategori_coming', 'Kategori', 'required');
 			$this->form_validation->set_rules('tipe', 'Tipe', 'required');
+			$this->form_validation->set_rules('tgl_event', 'Tanggal', 'required');
+			$this->form_validation->set_rules('jam_mulai', 'Jam', 'required');
+			$this->form_validation->set_rules('jam_selesai', 'Jam', 'required');
 			$this->form_validation->set_rules('deskripsi_coming', 'Deskripsi', 'required');
 			$this->form_validation->set_rules('posted_by', 'Posted', 'required');
 
@@ -348,6 +392,10 @@ class KelolaComing extends CI_Controller {
 							'nama_coming'=>$this->input->post('nama_coming'),
 							'kategori_coming'=>$this->input->post('kategori_coming'),
 							'tipe_event'=>$this->input->post('tipe_event'),
+							'tgl_mulai'=>$this->input->post('tgl_mulai'),
+							'tgl_selesai'=>$this->input->post('tgl_selesai'),
+							'jam_mulai'=>$this->input->post('jam_mulai'),
+							'jam_selesai'=>$this->input->post('jam_selesai'),
 							'deskripsi_coming'=>$this->input->post('deskripsi_coming'),
 							//'path_gambar'=>NULL,
 							'posted_by'=>$this->input->post('posted_by')
@@ -398,6 +446,10 @@ class KelolaComing extends CI_Controller {
 							'nama_coming'=>$data['coming']->nama_coming,
 							'kategori_coming'=>$data['coming']->kategori_coming,
 							'tipe_event'=>$data['coming']->tipe_event,
+							'tgl_mulai'=>$data['coming']->tgl_mulai,
+							'tgl_selesai'=>$data['coming']->tgl_selesai,
+							'jam_mulai'=>$data['coming']->jam_mulai,
+							'jam_selesai'=>$data['coming']->jam_selesai,
 							'deskripsi_coming'=>$data['coming']->deskripsi_coming,
 							'posted_by'=>$data['coming']->posted_by,
 							'path_gambar'=> $data['coming']->path_gambar

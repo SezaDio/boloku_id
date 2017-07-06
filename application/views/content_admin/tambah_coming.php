@@ -128,7 +128,7 @@
                                                 <label>Jam Event Dimulai & Berakhir:</label>
                                                 <div class="col-md-12" style="margin-left:-30px;">
                                                     <div class="col-md-4">
-                                                        <select name="tipe" required class="form-control" id="kategori" style="width: 186px;">
+                                                        <select name="jam_mulai" required class="form-control" id="jam_mulai" style="width: 186px;">
                                                             <option value="">--Pilih Waktu Dimulai--</option>
                                                             <?php
                                                                 foreach ($jam_event as $key=>$jam) 
@@ -146,7 +146,7 @@
                                                     </div>
 
                                                     <div class="col-md-4">
-                                                        <select name="tipe" required class="form-control" id="kategori" style="width: auto;">
+                                                        <select name="jam_selesai" required class="form-control" id="jam_selesai" style="width: auto;">
                                                             <option value="">--Pilih Waktu Berakhir--</option>
                                                             <?php
                                                                 foreach ($jam_event as $key=>$jam) 
