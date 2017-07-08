@@ -92,18 +92,18 @@ function delete_wow_ajax(id_wow)
 
 function delete_coming_ajax(id_coming)
 {
-	if (confirm("Anda yakin ingin menghapus Coming Soon ini ?"))
+	if (confirm("Anda yakin ingin menghapus Event ini beserta data didalamnya ?"))
 	{;
 		$.ajax({
 			url: 'delete_coming',
 			type: 'POST',
 			data: {id_coming:id_coming},
 			success: function(){
-						alert('Delete Coming Soon berhasil');
+						alert('Delete Event beserta data yang berkaitan berhasil');
 						location.reload();
 					},
 			error: function(){
-						alert('Delete Coming Soon gagal');
+						alert('Delete Event gagal');
 					}
 		});
 	}

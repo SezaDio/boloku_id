@@ -26,23 +26,27 @@ class KelolaComing extends CI_Controller {
 		
 	}
 
-	//Delete Data
+	//Delete Data Coming + data news dan testimoni dari halaman kelola event
 	public function delete_coming()//$id_produk
 	{
 		$id_coming = $_POST['id_coming'];
 		$this->load->model('coming_models/ComingModels');
-		$this->ComingModels->delete_coming($id_coming);
+		$this->load->model('news_models/NewsModels');
 
+		$this->ComingModels->delete_coming($id_coming);
+		$this->NewsModels->delete_news($id_coming);
 
 		$this->index();
 	}
 
-	//Delete Data detail produk
-	public function delete_detail_coming($id_coming)//
+	//Delete Data Coming + data news dan testimoni dari halaman Lihat Detail
+	public function delete_detail_coming($id_coming)
 	{
 		$this->load->model('coming_models/ComingModels');
-		$this->ComingModels->delete_coming($id_coming);
+		$this->load->model('news_models/NewsModels');
 
+		$this->ComingModels->delete_coming($id_coming);
+		$this->NewsModels->delete_news($id_coming);
 
 		$this->index();
 	}
@@ -198,8 +202,6 @@ class KelolaComing extends CI_Controller {
 	 				{
 	 					$jam_event["0".$i.":".$j.""]="0".$i.":".$j."";
 	 				}
-
-	 			 	//array_push($jam_event, "0".$i.":".$j."0" => "0".$i.":".$j."0");
 	 			}
 	 			else
 	 			{
@@ -211,8 +213,6 @@ class KelolaComing extends CI_Controller {
 	 				{
 	 					$jam_event["".$i.":".$j.""]="".$i.":".$j."";
 	 				}
-
-	 				//array_push($jam_event, "".$i.":".$j."" => "".$i.":".$j."");	
 	 			}
 	 		}
 		}
@@ -269,12 +269,12 @@ class KelolaComing extends CI_Controller {
 					$data_coming['path_gambar'] = $gbr['file_name'];
 
 					$this->db->insert('coming', $data_coming);
-					$this->session->set_flashdata('msg_berhasil', 'Data Youth Coming Soon berhasil ditambahkan');
+					$this->session->set_flashdata('msg_berhasil', 'Data Event baru berhasil ditambahkan');
 					redirect('KelolaComing');
 				}
 				else
 				{
-					$this->session->set_flashdata('msg_gagal', 'Data Youth Coming Soon gagal ditambahkan, cek type file dan ukuran file yang anda upload');
+					$this->session->set_flashdata('msg_gagal', 'Data Event baru gagal ditambahkan, cek type file dan ukuran file yang anda upload');
 					
 					$this->load->view('skin/admin/header_admin');
 					$this->load->view('skin/admin/nav_kiri');
@@ -284,7 +284,7 @@ class KelolaComing extends CI_Controller {
 			}
 			else
 			{
-				$this->session->set_flashdata('msg_gagal', 'Data Youth Coming Soon gagal ditambahkan');
+				$this->session->set_flashdata('msg_gagal', 'Data Event baru gagal ditambahkan');
 				$this->tambah_coming_check();
 			}
 		}
@@ -345,8 +345,6 @@ class KelolaComing extends CI_Controller {
 	 				{
 	 					$jam_event["0".$i.":".$j.""]="0".$i.":".$j."";
 	 				}
-
-	 			 	//array_push($jam_event, "0".$i.":".$j."0" => "0".$i.":".$j."0");
 	 			}
 	 			else
 	 			{
@@ -358,8 +356,6 @@ class KelolaComing extends CI_Controller {
 	 				{
 	 					$jam_event["".$i.":".$j.""]="".$i.":".$j."";
 	 				}
-
-	 				//array_push($jam_event, "".$i.":".$j."" => "".$i.":".$j."");	
 	 			}
 	 		}
 		}
@@ -416,19 +412,17 @@ class KelolaComing extends CI_Controller {
 						$gbr = $this->upload->data();
 						$this->crop($gbr['full_path'],$gbr['file_name']);
 						$data_coming['path_gambar'] = $gbr['file_name'];
-
-						
 					}
 					else
 					{
-						$this->session->set_flashdata('msg_gagal', 'Data Youth Comming Soon gagal diperbaharui');
+						$this->session->set_flashdata('msg_gagal', 'Data Event gagal diperbaharui');
 						$iserror = true;
 					}
 
 				}
 				if (!$iserror) {
 					$this->db->update('coming', $data_coming, array('id_coming'=>$id_coming));
-					$this->session->set_flashdata('msg_berhasil', 'Data Youth Comming Soon berhasil diperbaharui');
+					$this->session->set_flashdata('msg_berhasil', 'Data Event berhasil diperbaharui');
 					redirect('KelolaComing');
 				}
 			}

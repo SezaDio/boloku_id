@@ -148,10 +148,10 @@
 			$this->db->where('id_news',$id_news);
 			$this->db->update('news',$data);
 		}
-		//Menghapus data  news
-		function delete_news($id_news)
+		//Menghapus data news sesuai dengan event nya
+		function delete_news($id_event)
 		{
-			$this->db->where('id_news',$id_news);
+			$this->db->where('id_event',$id_event);
 			$this->db->delete('news');
 		}
 

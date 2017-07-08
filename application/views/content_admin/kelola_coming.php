@@ -58,9 +58,9 @@
                                                             <td><?php echo $item['tanggal_posting'] ?></td>
                                                             <td align="center">
                                                                  <!-- Tombol tambah Press Release -->
-                                                                <a href="<?php //echo site_url('KelolaWow/tambah_wow_check/');?>">
-                                                                    <button type="submit" name="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" ></i> Press Release</button>
-                                                                </a>
+                                                                <form  style="float: left;" role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaNews/tambah_news_check/');?>" method="POST">
+                                                                    <button value="<?php echo $item['id_coming']; ?>" name="press_release" type="submit" class="btn bg-purple"><i class="glyphicon glyphicon-plus" ></i> Press Release</button>
+                                                                </form>
 
                                                                 <!-- Tombol lihat detail -->
                                                                 <a href="<?php echo site_url('KelolaComing/lihat_detail_coming/'.$item['id_coming']);?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open" ></i> Detail</button></a>

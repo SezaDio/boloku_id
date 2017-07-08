@@ -58,23 +58,11 @@ class KelolaNews extends CI_Controller {
 		$this->load->library('form_validation');
 
 		$tambah = $this->input->post('submit');
-		$jenis_berita = $this->input->post('jenis_berita');
-
-		$kategori_news = array('Sains'=>'Sains',
-                              'Teknologi'=>'Teknologi',
-                              'Sejarah'=>'Sejarah',
-                              'Politik'=>'Politik',
-                              'Fiksi'=>'Fiksi',
-                              'Rekomendasi'=>'Rekomendasi',
-                              'Komunitas'=>'Komunitas',
-                              'Lain-Lain'=>'Lain-Lain'
-                              );
-		$data['kategori_news']= $kategori_news;
+		$id_event = $this->input->post('press_release');
 
 		if ($tambah == 1) 
 		{
 			$this->form_validation->set_rules('judul_news', 'Judul', 'required');
-			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
 			$this->form_validation->set_rules('deskripsi_news', 'Deskripsi', 'required');
 
 
@@ -93,10 +81,9 @@ class KelolaNews extends CI_Controller {
 					$data_news=array(
 						'judul_news'=>$this->input->post('judul_news'),
 						'posted_by'=>$this->input->post('posted_by'),
-						'kategori_news'=>$this->input->post('kategori'),
 						'isi_news'=>$this->input->post('deskripsi_news'),
 						'status'=>$tambah,
-						'jenis_news'=>$jenis_berita,
+						'id_event'=>$this->input->post('id_event'),
 						//'tanggal_posting'=>date("Y-m-d h:i:sa"),
 						'gambar_news'=> NULL
 					);
@@ -110,12 +97,12 @@ class KelolaNews extends CI_Controller {
 					$data_news['gambar_news'] = $gbr['file_name'];
 
 					$this->db->insert('news', $data_news);
-					$this->session->set_flashdata('msg_berhasil', 'Data Youth News berhasil ditambahkan');
-					redirect('KelolaNews');
+					$this->session->set_flashdata('msg_berhasil', 'Data Press Release berhasil ditambahkan');
+					redirect('KelolaComing');
 				}
 				else
 				{
-					$this->session->set_flashdata('msg_gagal', 'Data Youth News gagal ditambahkan, cek type file dan ukuran file yang anda upload');
+					$this->session->set_flashdata('msg_gagal', 'Data Press Release gagal ditambahkan, cek type file dan ukuran file yang anda upload');
 					
 					$this->load->view('skin/admin/header_admin');
 					$this->load->view('skin/admin/nav_kiri');
@@ -125,13 +112,13 @@ class KelolaNews extends CI_Controller {
 			}
 			else
 			{
-				$this->session->set_flashdata('msg_gagal', 'Data Youth News gagal ditambahkan');
+				$this->session->set_flashdata('msg_gagal', 'Data Press Release gagal ditambahkan');
 				$this->tambah_news_check();
 			}
 		}
 		else
 		{
-			$data['jenis'] = $jenis_berita;
+			$data['id_event'] = $id_event;
 
 			$this->load->view('skin/admin/header_admin');
 			$this->load->view('skin/admin/nav_kiri');
@@ -147,24 +134,13 @@ class KelolaNews extends CI_Controller {
 		$this->load->library('form_validation');
 
 		$edit = $this->input->post('save');
-		$jenis_berita = $this->input->post('jenis_berita');
+		$id_event = $this->input->post('id_event');
 
-		$kategori_news = array('Sains'=>'Sains',
-                              'Teknologi'=>'Teknologi',
-                              'Sejarah'=>'Sejarah',
-                              'Politik'=>'Politik',
-                              'Fiksi'=>'Fiksi',
-                              'Rekomendasi'=>'Rekomendasi',
-                              'Komunitas'=>'Komunitas',
-                              'Lain-Lain'=>'Lain-Lain'
-                              );
-		$data['kategori_news']= $kategori_news;
 		if (isset($_POST['save']))
 		{
 			$id_news = $this->input->post('id_news');
 			
 			$this->form_validation->set_rules('judul_news', 'Judul', 'required');
-			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
 			$this->form_validation->set_rules('deskripsi_news', 'Deskripsi', 'required');
 
 			//Mengambil filename gambar untuk disimpan
@@ -177,10 +153,9 @@ class KelolaNews extends CI_Controller {
 			$data_news=array(
 						'judul_news'=>$this->input->post('judul_news'),
 						'posted_by'=>$this->input->post('posted_by'),
-						'kategori_news'=>$this->input->post('kategori'),
 						'isi_news'=>$this->input->post('deskripsi_news'),
 						'status'=>$edit,
-						'jenis_news'=>$jenis_berita
+						'id_event'=>$id_event
 						//'tanggal_posting'=>date("Y-m-d h:i:sa"),
 						//'gambar_news'=> NULL
 					);
@@ -205,21 +180,21 @@ class KelolaNews extends CI_Controller {
 					}
 					else
 					{
-						$this->session->set_flashdata('msg_gagal', 'Data Youth News gagal diperbaharui');
+						$this->session->set_flashdata('msg_gagal', 'Data Press Release gagal diperbaharui');
 						$iserror = true;
 					}
 
 				}
 				if (!$iserror) {
 					$this->db->update('news', $data_news, array('id_news'=>$id_news));
-					$this->session->set_flashdata('msg_berhasil', 'Data Youth News berhasil diperbaharui');
+					$this->session->set_flashdata('msg_berhasil', 'Data Press Release berhasil diperbaharui');
 					redirect('KelolaNews');
 					
 				}
 			}
 			else
 			{
-				$this->session->set_flashdata('msg_gagal', 'Data Youth News gagal diperbaharui');
+				$this->session->set_flashdata('msg_gagal', 'Data Press Release gagal diperbaharui');
 				$this->tambah_wow_check();
 			}
 		}
@@ -230,17 +205,16 @@ class KelolaNews extends CI_Controller {
 			$data_news=array(
 						'judul_news'=>$data['news']->judul_news,
 						'posted_by'=>$data['news']->posted_by,
-						'kategori_news'=>$data['news']->kategori_news,
 						'isi_news'=>$data['news']->isi_news,
 						'status'=>$data['news']->status,
-						'jenis_news'=>$jenis_berita,
+						'id_event'=>$id_event,
 						//'tanggal_posting'=>date("Y-m-d h:i:sa"),
 						'gambar_news'=> $data['news']->gambar_news,
 					);
 			$data['dataNews'] = $data_news;
 		}
 		$data['idNews'] = $id_news;
-		$data['jenis'] = $jenis_berita;
+		$data['id_event'] = $id_event;
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/edit_news', $data);

@@ -2,12 +2,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Tambah News
+                       Tambah Press Release
                     </h1>
 					<div id="instafeed"></div>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola News</a></li>
-                        <li class="active">Tambah News</li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Event</a></li>
+                        <li class="active">Tambah Press Release</li>
                     </ol>
                 </section>
 
@@ -33,50 +33,29 @@
                                             <?php }?>
                                         </div>
 
-										<div class="form-group">
-                                            <label for="exampleInputEmail1">Kategori News :</label><br>
-                                            <select name="kategori" required class="form-control" id="kategori">
-                                                <option value="">--Pilih Kategori News--</option>
-                                                <?php
-                                                    foreach ($kategori_news as $key=>$kategori) 
-                                                    {
-                                                        if ($key==$dataNews['kategori_news']){
-                                                            echo '<option value="'.$key.'" selected>'.$kategori.'</option>';
-                                                        }
-                                                        else
-                                                        {
-                                                            echo '<option value="'.$key.'">'.$kategori.'</option>';   
-                                                        }
-                                                    }
-                                                ?>
-                                            </select></br>
-                                        </div>
-
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Penulis :</label>
-                                            <input type="text" required name="posted_by" class="form-control" id="exampleInputEmail1" value="<?php 
-                                                    if (isset($dataNews['posted_by']))
-                                                    {
-                                                        echo htmlspecialchars($dataNews['posted_by']);
-                                                    }
-                                            ?>">
-                                            
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Judul News   :</label>
+                                            <label for="exampleInputEmail1">Judul Press Release   :</label>
                                             <input type="text" required name="judul_news" class="form-control" id="exampleInputEmail1" value="<?php 
                                                     if (isset($dataNews['judul_news']))
                                                     {
                                                         echo htmlspecialchars($dataNews['judul_news']);
                                                     }
                                             ?>">
-                                            
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Penulis Press Release:</label>
+                                            <input type="text" required name="posted_by" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataNews['posted_by']))
+                                                {
+                                                    echo htmlspecialchars($dataNews['posted_by']);
+                                                }
+                                            ?>">
                                         </div>
 
 										<div class="form-group">
 											<div class='box-header'>
-												 <label>Deskripsi Wow :</label>
+												 <label>Deskripsi Press Release :</label>
 											</div>
 											<div class='box-body pad'>
 												<textarea required id="editor_wow" name="deskripsi_news" rows="10" cols="80">
@@ -99,7 +78,7 @@
                                         </div>
                                     </div><!-- /.box-body -->
 
-                                    <input type="hidden" name="jenis_berita" value="<?php echo $jenis; ?>">
+                                    <input type="hidden" name="id_event" value="<?php echo $id_event; ?>">
                                     <div class="box-footer">
                                         <button type="submit" name="submit" value="1" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i> Simpan</button>
                                     </div>
