@@ -269,8 +269,7 @@ class KelolaMember extends CI_Controller {
 							'username'=>$this->input->post('username'),
 							'nama_member'=>$this->input->post('nama_member'),
 							'email'=>$this->input->post('email'),
-							'password'=>$password,
-							'path_foto'=>NULL
+							'password'=>$password
 							);
 			$data['dataMember'] = $data_member;
 

@@ -175,6 +175,12 @@ class KelolaAdmin extends CI_Controller {
 		if (isset($_POST['save']))
 		{
 			$id_admin = $this->input->post('id_admin');
+			if($this->input->post('passwordbaru')==NULL){
+				$password=$this->input->post('passwordlama');
+			} else{
+				$password=md5($this->input->post('passwordbaru'));
+			}
+			$id_member = $this->input->post('id_member');
 
 			$this->form_validation->set_rules('username', 'Username', 'required');
 			$this->form_validation->set_rules('nama_admin', 'Nama_admin', 'required');
@@ -194,7 +200,7 @@ class KelolaAdmin extends CI_Controller {
 							'email'=>$this->input->post('email'),
 							'telfon'=>$this->input->post('telfon'),
 							'status_admin'=>$this->input->post('status_admin'),
-							'path_foto'=>NULL
+							'password'=>$password
 							);
 			$data['dataadmin'] = $data_admin;
 
@@ -244,6 +250,7 @@ class KelolaAdmin extends CI_Controller {
 							'email'=>$data['admin']->email,
 							'telfon'=>$data['admin']->telfon,
 							'status_admin'=>$data['admin']->status_admin,
+							'password'=>$data['admin']->password,
 							'path_foto'=> $data['admin']->path_foto
 							);
 			$data['dataAdmin'] = $data_admin;

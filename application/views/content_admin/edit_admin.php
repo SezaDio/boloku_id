@@ -74,6 +74,20 @@
                                             <input type="text" required name="telfon" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataAdmin['telfon']); ?>">
                                         </div>
 										
+										<div class="form-group" id="resetPassword">
+                                            <a href="#" onclick="resetPassword()"><label for="exampleInputEmail1">Reset Password ?</label></a>
+                                        </div>
+										
+										<div class="form-group" id="resetPassword2" style="display:none">
+											
+                                            <label for="exampleInputEmail1">Password Baru :</label>
+                                            <input type="hidden" required name="passwordbaru" class="form-control" id="password1">
+											
+											<label for="exampleInputEmail1">Ulangi Password Baru :</label>
+                                            <input type="hidden" required name="re_password" class="form-control" id="password2" onkeyup="validate()">
+											<br/>
+											<label for="exampleInputEmail1" id="validate-status" style="font-size:20px"></label>
+                                        </div>
 
                                         <div class='box-header'>
                                             <label>Foto Admin :</label>
@@ -90,8 +104,9 @@
                                         </div>
                                     </div><!-- /.box-body -->
                                     <input type="hidden" name="id_admin" value="<?php echo $idAdmin; ?>">
+                                    <input type="hidden" name="passwordlama" value="<?php echo htmlspecialchars($dataAdmin['password']); ?>">
                                     <div class="box-footer">
-                                        <button type="submit" name="save" value="1" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i> Simpan</button>
+                                        <button type="submit" name="save" value="1" class="btn btn-primary"id="submitSave"><i class="glyphicon glyphicon-floppy-saved"></i> Simpan</button>
                                        <a href="<?php echo site_url('KelolaAdmin/');?>"><button type="button" name="submit" class="btn btn-danger">Batal</button>
                                     </div>
                                 </form>
@@ -102,3 +117,36 @@
                     </div>   <!-- /.row -->
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
+			<script type="text/javascript">
+				function resetPassword(){
+					document.getElementById("resetPassword").style.display = "none";
+					document.getElementById("resetPassword2").style.display = "block";
+					document.getElementById("password1").type = "password";
+					document.getElementById("password2").type = "password";
+					document.getElementById("submitSave").disabled = true;
+				}
+				
+				$(document).ready(function() {
+				  $("#password2").keyup(validate);
+				});
+
+				
+				function validate() {
+				
+				  var password1 = $("#password1").val();
+				  var password2 = $("#password2").val();
+
+					
+				 
+					if(password1 == password2) {
+					   document.getElementById("validate-status").style.color = "green";
+					   $("#validate-status").text("valid"); 
+					   document.getElementById("submitSave").disabled = false;
+					}
+					else {
+						document.getElementById("validate-status").style.color = "red";
+						$("#validate-status").text("invalid");  
+					}
+					
+				}
+			</script>
