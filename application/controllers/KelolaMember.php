@@ -243,9 +243,15 @@ class KelolaMember extends CI_Controller {
 		$this->load->library('form_validation');
 
 		$edit = $this->input->post('save');
+		
 
 		if (isset($_POST['save']))
 		{
+			if($this->input->post('passwordbaru')==NULL){
+				$password=$this->input->post('passwordlama');
+			} else{
+				$password=md5($this->input->post('passwordbaru'));
+			}
 			$id_member = $this->input->post('id_member');
 
 			$this->form_validation->set_rules('username', 'Username', 'required');
@@ -263,6 +269,7 @@ class KelolaMember extends CI_Controller {
 							'username'=>$this->input->post('username'),
 							'nama_member'=>$this->input->post('nama_member'),
 							'email'=>$this->input->post('email'),
+							'password'=>$password,
 							'path_foto'=>NULL
 							);
 			$data['dataMember'] = $data_member;
@@ -311,6 +318,7 @@ class KelolaMember extends CI_Controller {
 							'username'=>$data['member']->username,
 							'nama_member'=>$data['member']->nama_member,
 							'email'=>$data['member']->email,
+							'password'=>$data['member']->password,
 							'path_foto'=> $data['member']->path_foto
 							);
 			$data['dataMember'] = $data_member;
