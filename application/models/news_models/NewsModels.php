@@ -164,4 +164,14 @@
 
 			return $this->db->get();
 		}
+
+		//Select news press release
+		function select_by_id_news($id_event)
+		{
+			$this->db->select('*');
+			$this->db->from('news');
+			$this->db->where('id_event',$id_event);
+
+			return $this->db->get();
+		}
 	}

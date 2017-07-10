@@ -226,6 +226,11 @@ class KelolaComing extends CI_Controller {
 			$this->form_validation->set_rules('judul_coming', 'Judul', 'required');
 			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
 			$this->form_validation->set_rules('posted_by', 'Penulis', 'required');
+			$this->form_validation->set_rules('institusi', 'Institusi', 'required');
+			$this->form_validation->set_rules('telepon', 'Telepon', 'required');
+			$this->form_validation->set_rules('jenis_event', 'Jenis', 'required');
+			$this->form_validation->set_rules('pendaftaran', 'Pendaftaran', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required');
 			$this->form_validation->set_rules('tipe', 'Tipe', 'required');
 			$this->form_validation->set_rules('tgl_event', 'Tanggal', 'required');
 			$this->form_validation->set_rules('jam_mulai', 'Jam', 'required');
@@ -246,11 +251,16 @@ class KelolaComing extends CI_Controller {
 
 					$data_coming=array(
 						'nama_coming'=>$this->input->post('judul_coming'),
+						'jenis_event'=>$this->input->post('jenis_event'),
+						'pendaftaran'=>$this->input->post('pendaftaran'),
 						'kategori_coming'=>$this->input->post('kategori'),
 						'tipe_event'=>$this->input->post('tipe'),
 						'deskripsi_coming'=>$this->input->post('deskripsi_coming'),
 						'tanggal_posting'=>date("Y-m-d h:i:sa"),
 						'posted_by'=>$this->input->post('posted_by'),
+						'institusi'=>$this->input->post('institusi'),
+						'telepon'=>$this->input->post('telepon'),
+						'email'=>$this->input->post('email'),
 						'tgl_mulai'=>$this->input->post('tgl_mulai'),
 						'tgl_selesai'=>$this->input->post('tgl_selesai'),
 						'jam_mulai'=>$this->input->post('jam_mulai'),
@@ -376,6 +386,9 @@ class KelolaComing extends CI_Controller {
 			$this->form_validation->set_rules('jam_selesai', 'Jam', 'required');
 			$this->form_validation->set_rules('deskripsi_coming', 'Deskripsi', 'required');
 			$this->form_validation->set_rules('posted_by', 'Posted', 'required');
+			$this->form_validation->set_rules('institusi', 'Institusi', 'required');
+			$this->form_validation->set_rules('telepon', 'Telepon', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required');
 
 			//Mengambil filename gambar untuk disimpan
 			$nmfile = "file_".time();
@@ -388,6 +401,9 @@ class KelolaComing extends CI_Controller {
 							'nama_coming'=>$this->input->post('nama_coming'),
 							'kategori_coming'=>$this->input->post('kategori'),
 							'tipe_event'=>$this->input->post('tipe'),
+							'institusi'=>$this->input->post('institusi'),
+							'telepon'=>$this->input->post('telepon'),
+							'email'=>$this->input->post('email'),
 							'tgl_mulai'=>$this->input->post('tgl_mulai'),
 							'tgl_selesai'=>$this->input->post('tgl_selesai'),
 							'jam_mulai'=>$this->input->post('jam_mulai'),
@@ -440,6 +456,9 @@ class KelolaComing extends CI_Controller {
 							'nama_coming'=>$data['coming']->nama_coming,
 							'kategori_coming'=>$data['coming']->kategori_coming,
 							'tipe_event'=>$data['coming']->tipe_event,
+							'institusi'=>$data['coming']->institusi,
+							'telepon'=>$data['coming']->telepon,
+							'email'=>$data['coming']->email,
 							'tgl_mulai'=>$data['coming']->tgl_mulai,
 							'tgl_selesai'=>$data['coming']->tgl_selesai,
 							'jam_mulai'=>$data['coming']->jam_mulai,

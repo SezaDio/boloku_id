@@ -44,13 +44,17 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Penulis Event   :</label>
-                                            <input type="text" required name="posted_by" class="form-control" id="exampleInputEmail1" value="<?php 
-                                                if (isset($dataComing['posted_by']))
-                                                {
-                                                    echo htmlspecialchars($dataComing['posted_by']);
-                                                }
-                                            ?>"> 
+                                            <label for="exampleInputEmail1">Jenis Event   :</label>
+                                            <div class="radio">
+                                                <label>
+                                                    <input style="opacity: 1;" type="radio" name="jenis_event" value=1 required>
+                                                     Gratis
+                                                </label>
+                                                <label>
+                                                    <input style="opacity: 1;" type="radio" name="jenis_event" value=0 required>
+                                                     Berbayar
+                                                </label>
+                                            </div>
                                         </div>
 
                                         <div class="form-group">
@@ -90,6 +94,47 @@
                                                 ?>
                                             </select>
                                         </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Penulis Event   :</label>
+                                            <input type="text" required name="posted_by" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['posted_by']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['posted_by']);
+                                                }
+                                            ?>"> 
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Institusi Penyelenggara Event   :</label>
+                                            <input type="text" required name="institusi" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['posted_by']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['institusi']);
+                                                }
+                                            ?>"> 
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">No. Telepon   :</label>
+                                            <input type="text" required name="telepon" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['posted_by']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['telpon']);
+                                                }
+                                            ?>"> 
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">E-mail   :</label>
+                                            <input type="email" required name="email" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['posted_by']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['email']);
+                                                }
+                                            ?>"> 
+                                        </div>
+
 
                                         <div class="form-group">
                                             <!-- Date range -->
@@ -187,7 +232,21 @@
                                             <div class="input-group">
                                                 <input class="form" type="file" name="filefoto" required >
                                             </div>
-											<b><p style="color:red;">File diizinkan: jpg, jpeg, dan png (Max 2Mb)</p></b>
+                                            <b><p style="color:red;">File diizinkan: jpg, jpeg, dan png (Max 2Mb)</p></b>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Apakah anda ingin menggunakan fasilitas pendaftaran kami ?</label>
+                                            <div class="radio">
+                                                <label>
+                                                    <input style="opacity: 1;" type="radio" name="pendaftaran" value=1 required>
+                                                     Ya
+                                                </label>
+                                                <label>
+                                                    <input style="opacity: 1;" type="radio" name="pendaftaran" value=0 required>
+                                                     Tidak
+                                                </label>
+                                            </div>
                                         </div>
                                     </div><!-- /.box-body -->
 

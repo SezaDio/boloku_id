@@ -24,7 +24,7 @@
 
                                     <!--Mulai Tampilkan Data Table-->
                                     <div class="box-body" style="align-content: center;">
-                                        <H3 style="text-align: center;"><?php echo $id_coming->nama_coming;?></H3>
+                                        <H3 style="text-align: center;"><label><?php echo $id_coming->nama_coming;?></label></H3>
                                         <p style="text-align: center;">Diposting oleh : <?php echo $id_coming->posted_by;?></p>
                                         <hr>
 
@@ -70,13 +70,82 @@
                                                         <div class="box-header">
                                                             <h4 class="box-title">
                                                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                                                                    Informasi Event
+                                                                    <label>Informasi Event</label>
                                                                 </a>
                                                             </h4>
                                                         </div>
                                                         <div id="collapseOne" class="panel-collapse collapse">
                                                             <div class="box-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                                <table class="table">
+                                                                    <tr>
+                                                                        <td>Institusi Penyelenggara</td>
+                                                                        <td>:</td>
+                                                                        <td style="text-align: left;"><?php echo $id_coming->institusi;?></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td style="width: 200px;">Kategori Event</td>
+                                                                        <td style="width: 10px;">:</td>
+                                                                        <td style="text-align: left;"><?php echo $id_coming->kategori_coming;?></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Tipe Event</td>
+                                                                        <td>:</td>
+                                                                        <td style="text-align: left;"><?php echo $id_coming->tipe_event;?></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Contact Person</td>
+                                                                        <td>:</td>
+                                                                        <td style="text-align: left;"><?php echo $id_coming->telepon;?></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>E-Mail</td>
+                                                                        <td>:</td>
+                                                                        <td style="text-align: left;"><?php echo $id_coming->email;?></td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Tanggal Event</td>
+                                                                        <td>:</td>
+                                                                        <td>
+                                                                            <?php
+                                                                                $tgl_mulai=$id_coming->tgl_mulai;
+                                                                                $tgl_selesai=$id_coming->tgl_selesai;
+
+                                                                                if ($tgl_mulai  == $tgl_selesai) 
+                                                                                {
+                                                                                    echo $tgl_mulai;   
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    echo $tgl_mulai." s/d ".$tgl_selesai;
+                                                                                }
+                                                                            ?>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Waktu Event</td>
+                                                                        <td>:</td>
+                                                                        <td>
+                                                                            <?php
+                                                                                $jam_mulai=$id_coming->jam_mulai;
+                                                                                $jam_selesai=$id_coming->jam_selesai;
+
+                                                                                if ($jam_mulai  == $jam_selesai) 
+                                                                                {
+                                                                                    echo $jam_mulai;   
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    echo $jam_mulai." s/d ".$jam_selesai;
+                                                                                }
+                                                                            ?>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Keterangan Event</td>
+                                                                        <td>:</td>
+                                                                        <td><?php echo $id_coming->deskripsi_coming;?></td>
+                                                                    </tr>
+                                                                </table>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -86,7 +155,7 @@
                                                         <div class="box-header">
                                                             <h4 class="box-title">
                                                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                                                                    Daftar Press Release News
+                                                                    <label>Daftar Press Release News</label>
                                                                 </a>
                                                             </h4>
                                                         </div>

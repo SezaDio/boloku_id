@@ -40,11 +40,6 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Penulis Event :</label>
-                                            <input type="text" required name="posted_by" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataComing['posted_by']); ?>">
-                                        </div>
-
-                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Kategori Event :</label><br>
                                             
                                             <select name="kategori" required class="form-control" id="kategori">
@@ -81,6 +76,41 @@
                                                     }
                                                 ?>
                                             </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Penulis Event :</label>
+                                            <input type="text" required name="posted_by" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataComing['posted_by']); ?>">
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Institusi Penyelenggara Event   :</label>
+                                            <input type="text" required name="institusi" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['posted_by']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['institusi']);
+                                                }
+                                            ?>"> 
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">No. Telepon   :</label>
+                                            <input type="text" required name="telepon" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['posted_by']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['telepon']);
+                                                }
+                                            ?>"> 
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">E-mail   :</label>
+                                            <input type="email" required name="email" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['posted_by']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['email']);
+                                                }
+                                            ?>"> 
                                         </div>
 
                                         <div class="form-group">
