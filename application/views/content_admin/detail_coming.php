@@ -93,6 +93,42 @@
                                                                         <td style="text-align: left;"><?php echo $id_coming->tipe_event;?></td>
                                                                     </tr>
                                                                     <tr>
+                                                                        <td>Jenis Event</td>
+                                                                        <td>:</td>
+                                                                        <td style="text-align: left;">
+                                                                            <?php 
+                                                                                $jenis_event=$id_coming->jenis_event;
+
+                                                                                if ($jenis_event == 1) 
+                                                                                {
+                                                                                    echo "Gratis";
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    echo "Berbayar";
+                                                                                }
+                                                                            ?>   
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <td>Pendaftaran</td>
+                                                                        <td>:</td>
+                                                                        <td style="text-align: left;">
+                                                                           <?php 
+                                                                                $pendaftaran=$id_coming->pendaftaran;
+
+                                                                                if ($pendaftaran == 1) 
+                                                                                {
+                                                                                    echo "Ya";
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    echo "Tidak";
+                                                                                }
+                                                                            ?>
+                                                                        </td>
+                                                                    </tr>
+                                                                    <tr>
                                                                         <td>Contact Person</td>
                                                                         <td>:</td>
                                                                         <td style="text-align: left;"><?php echo $id_coming->telepon;?></td>
@@ -161,8 +197,23 @@
                                                         </div>
                                                         <div id="collapseTwo" class="panel-collapse collapse">
                                                             <div class="box-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                                                            </div>
+                                                               <table>
+                                                                    <?php 
+                                                                        if(isset($dataNews) || is_array($dataNews))
+                                                                        {
+                                                                            foreach ($dataNews as $data) 
+                                                                            { ?>   
+                                                                                <tr>
+                                                                                    <td>
+                                                                                        <?php
+                                                                                           echo $data['judul_news'];
+                                                                                        ?>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            <?php }
+                                                                         } ?>
+                                                               </table>
+                                                            </div> 
                                                         </div>
                                                     </div>
 

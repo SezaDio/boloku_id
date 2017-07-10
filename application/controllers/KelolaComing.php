@@ -55,9 +55,11 @@ class KelolaComing extends CI_Controller {
 	public function lihat_detail_coming($id_coming)
 	{
 		$this->load->model('coming_models/ComingModels');
+		$this->load->model('news_models/NewsModels');
 
-		//Ambil id_agenda yang akan diedit
+		//Ambil id_event
 		$data['id_coming'] = $this->ComingModels->select_by_id_coming($id_coming)->row();
+		$data['dataNews'] = $this->NewsModels->select_by_id_press($id_coming)->row();
 
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');

@@ -166,11 +166,11 @@
 		}
 
 		//Select news press release
-		function select_by_id_news($id_event)
+		function select_by_id_press($id_coming)
 		{
 			$this->db->select('*');
 			$this->db->from('news');
-			$this->db->where('id_event',$id_event);
+			$this->db->where('id_event',$id_coming);
 
 			return $this->db->get();
 		}
