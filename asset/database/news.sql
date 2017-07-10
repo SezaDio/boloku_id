@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 02, 2017 at 10:48 AM
+-- Generation Time: Jul 10, 2017 at 08:57 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `youth_sm`
+-- Database: `boloku_id`
 --
 
 -- --------------------------------------------------------
@@ -31,31 +31,19 @@ CREATE TABLE IF NOT EXISTS `news` (
   `waktu_posting` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `judul_news` varchar(100) NOT NULL,
   `posted_by` varchar(50) NOT NULL,
-  `kategori_news` varchar(50) NOT NULL,
   `isi_news` text NOT NULL,
   `gambar_news` varchar(50) NOT NULL,
-  `hits` int(20) NOT NULL,
-  `suka` int(20) NOT NULL,
-  `jenis_news` int(1) NOT NULL,
-  `status` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
+  `status` int(1) NOT NULL,
+  `id_event` int(100) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `news`
 --
 
-INSERT INTO `news` (`id_news`, `waktu_posting`, `judul_news`, `posted_by`, `kategori_news`, `isi_news`, `gambar_news`, `hits`, `suka`, `jenis_news`, `status`) VALUES
-(2, '2017-05-31 06:55:00', 'Tak Ada Korban Jiwa di Insiden Sriwijaya Air Tergelincir', ' Edyna Ratna Nurmaya', 'Teknologi', 'MANOKWARI, suaramerdeka.com – Insiden pesawat Boeing 737-300 dengan nomor lambung PK-CJC milik Sriwijaya Air yang tergelincir ddi Bandar Udara Rendani Manokwari, Papua Barat, Rabu (31/5), tidak sampai menimbulkan korban jiwa.\r\n\r\nKapolres Manokwari AKBP Christian Rony mengungkapkan semua penumpang selamat. “Beberapa orang yang mengalami luka sudah dilarikan ke rumah sakit,” katanya di Manokwari, Rabu (31/5).\r\n\r\nKapolres menjelaskan ada sebanyak 146 penumpang pesawat ditambah crew pesawat tujuh orang. Dari seluruh penumpang, hanya sembilan orang yang diduga mengalami luka-luka dan harus dilarikan ke rumah sakit.\r\n\r\n“Penumpang yang luka dibawa ke rumah sakit Azhar Zahir Angkatan Laut Manokwari,” kata Kapolres lagi.\r\n\r\nKepala Rumah Sakit Azhar Zahir Mayor Laut Syarif Mustika pada wawancara terpisah mengatakan, rata-rata pasein hanya mengalami luka benturan, lebam dan sebagainya.\r\n\r\n“Tidak ada yang meninggal, tidak ada patah tulang. Hanya luka-luka ringan,” katanya.\r\n\r\nDia mengutarakan, tidak ada penumpang yang harus menjalani rawat inap di rumah sakit. Mereka cukup rawat jalan.\r\n\r\n“Soal biaya tidak usah dipikirkan, semua sudah ditanggung sama pihak Jasa Raharja,” katanya lagi.', '1212', 32, 4, 4, 1),
-(4, '2017-05-31 06:55:00', 'Tak Ada Korban Jiwa di Insiden Sriwijaya Air Tergelincir', ' Edyna Ratna Nurmaya', 'Teknologi', 'MANOKWARI, suaramerdeka.com – Insiden pesawat Boeing 737-300 dengan nomor lambung PK-CJC milik Sriwijaya Air yang tergelincir ddi Bandar Udara Rendani Manokwari, Papua Barat, Rabu (31/5), tidak sampai menimbulkan korban jiwa.\r\n\r\nKapolres Manokwari AKBP Christian Rony mengungkapkan semua penumpang selamat. “Beberapa orang yang mengalami luka sudah dilarikan ke rumah sakit,” katanya di Manokwari, Rabu (31/5).\r\n\r\nKapolres menjelaskan ada sebanyak 146 penumpang pesawat ditambah crew pesawat tujuh orang. Dari seluruh penumpang, hanya sembilan orang yang diduga mengalami luka-luka dan harus dilarikan ke rumah sakit.\r\n\r\n“Penumpang yang luka dibawa ke rumah sakit Azhar Zahir Angkatan Laut Manokwari,” kata Kapolres lagi.\r\n\r\nKepala Rumah Sakit Azhar Zahir Mayor Laut Syarif Mustika pada wawancara terpisah mengatakan, rata-rata pasein hanya mengalami luka benturan, lebam dan sebagainya.\r\n\r\n“Tidak ada yang meninggal, tidak ada patah tulang. Hanya luka-luka ringan,” katanya.\r\n\r\nDia mengutarakan, tidak ada penumpang yang harus menjalani rawat inap di rumah sakit. Mereka cukup rawat jalan.\r\n\r\n“Soal biaya tidak usah dipikirkan, semua sudah ditanggung sama pihak Jasa Raharja,” katanya lagi.', '1212', 32, 4, 1, 1),
-(5, '2017-05-31 06:55:00', 'Tak Ada Korban Jiwa di Insiden Sriwijaya Air Tergelincir', ' Edyna Ratna Nurmaya', 'Teknologi', 'MANOKWARI, suaramerdeka.com – Insiden pesawat Boeing 737-300 dengan nomor lambung PK-CJC milik Sriwijaya Air yang tergelincir ddi Bandar Udara Rendani Manokwari, Papua Barat, Rabu (31/5), tidak sampai menimbulkan korban jiwa.\r\n\r\nKapolres Manokwari AKBP Christian Rony mengungkapkan semua penumpang selamat. “Beberapa orang yang mengalami luka sudah dilarikan ke rumah sakit,” katanya di Manokwari, Rabu (31/5).\r\n\r\nKapolres menjelaskan ada sebanyak 146 penumpang pesawat ditambah crew pesawat tujuh orang. Dari seluruh penumpang, hanya sembilan orang yang diduga mengalami luka-luka dan harus dilarikan ke rumah sakit.\r\n\r\n“Penumpang yang luka dibawa ke rumah sakit Azhar Zahir Angkatan Laut Manokwari,” kata Kapolres lagi.\r\n\r\nKepala Rumah Sakit Azhar Zahir Mayor Laut Syarif Mustika pada wawancara terpisah mengatakan, rata-rata pasein hanya mengalami luka benturan, lebam dan sebagainya.\r\n\r\n“Tidak ada yang meninggal, tidak ada patah tulang. Hanya luka-luka ringan,” katanya.\r\n\r\nDia mengutarakan, tidak ada penumpang yang harus menjalani rawat inap di rumah sakit. Mereka cukup rawat jalan.\r\n\r\n“Soal biaya tidak usah dipikirkan, semua sudah ditanggung sama pihak Jasa Raharja,” katanya lagi.', '1212', 32, 2, 2, 1),
-(6, '2017-05-31 06:55:00', 'Tak Ada Korban Jiwa di Insiden Sriwijaya Air Tergelincir', ' Edyna Ratna Nurmaya', 'Teknologi', 'MANOKWARI, suaramerdeka.com – Insiden pesawat Boeing 737-300 dengan nomor lambung PK-CJC milik Sriwijaya Air yang tergelincir ddi Bandar Udara Rendani Manokwari, Papua Barat, Rabu (31/5), tidak sampai menimbulkan korban jiwa.\r\n\r\nKapolres Manokwari AKBP Christian Rony mengungkapkan semua penumpang selamat. “Beberapa orang yang mengalami luka sudah dilarikan ke rumah sakit,” katanya di Manokwari, Rabu (31/5).\r\n\r\nKapolres menjelaskan ada sebanyak 146 penumpang pesawat ditambah crew pesawat tujuh orang. Dari seluruh penumpang, hanya sembilan orang yang diduga mengalami luka-luka dan harus dilarikan ke rumah sakit.\r\n\r\n“Penumpang yang luka dibawa ke rumah sakit Azhar Zahir Angkatan Laut Manokwari,” kata Kapolres lagi.\r\n\r\nKepala Rumah Sakit Azhar Zahir Mayor Laut Syarif Mustika pada wawancara terpisah mengatakan, rata-rata pasein hanya mengalami luka benturan, lebam dan sebagainya.\r\n\r\n“Tidak ada yang meninggal, tidak ada patah tulang. Hanya luka-luka ringan,” katanya.\r\n\r\nDia mengutarakan, tidak ada penumpang yang harus menjalani rawat inap di rumah sakit. Mereka cukup rawat jalan.\r\n\r\n“Soal biaya tidak usah dipikirkan, semua sudah ditanggung sama pihak Jasa Raharja,” katanya lagi.', '1212', 32, 4, 3, 1),
-(7, '2017-05-31 06:55:00', 'Tak Ada Korban Jiwa di Insiden Sriwijaya Air Tergelincir', ' Edyna Ratna Nurmaya', 'Teknologi', 'MANOKWARI, suaramerdeka.com – Insiden pesawat Boeing 737-300 dengan nomor lambung PK-CJC milik Sriwijaya Air yang tergelincir ddi Bandar Udara Rendani Manokwari, Papua Barat, Rabu (31/5), tidak sampai menimbulkan korban jiwa.\r\n\r\nKapolres Manokwari AKBP Christian Rony mengungkapkan semua penumpang selamat. “Beberapa orang yang mengalami luka sudah dilarikan ke rumah sakit,” katanya di Manokwari, Rabu (31/5).\r\n\r\nKapolres menjelaskan ada sebanyak 146 penumpang pesawat ditambah crew pesawat tujuh orang. Dari seluruh penumpang, hanya sembilan orang yang diduga mengalami luka-luka dan harus dilarikan ke rumah sakit.\r\n\r\n“Penumpang yang luka dibawa ke rumah sakit Azhar Zahir Angkatan Laut Manokwari,” kata Kapolres lagi.\r\n\r\nKepala Rumah Sakit Azhar Zahir Mayor Laut Syarif Mustika pada wawancara terpisah mengatakan, rata-rata pasein hanya mengalami luka benturan, lebam dan sebagainya.\r\n\r\n“Tidak ada yang meninggal, tidak ada patah tulang. Hanya luka-luka ringan,” katanya.\r\n\r\nDia mengutarakan, tidak ada penumpang yang harus menjalani rawat inap di rumah sakit. Mereka cukup rawat jalan.\r\n\r\n“Soal biaya tidak usah dipikirkan, semua sudah ditanggung sama pihak Jasa Raharja,” katanya lagi.', '1212', 32, 4, 5, 1),
-(8, '2017-05-31 06:55:00', 'Tak Ada Korban Jiwa di Insiden Sriwijaya Air Tergelincir', ' Edyna Ratna Nurmaya', 'Teknologi', 'MANOKWARI, suaramerdeka.com – Insiden pesawat Boeing 737-300 dengan nomor lambung PK-CJC milik Sriwijaya Air yang tergelincir ddi Bandar Udara Rendani Manokwari, Papua Barat, Rabu (31/5), tidak sampai menimbulkan korban jiwa.\r\n\r\nKapolres Manokwari AKBP Christian Rony mengungkapkan semua penumpang selamat. “Beberapa orang yang mengalami luka sudah dilarikan ke rumah sakit,” katanya di Manokwari, Rabu (31/5).\r\n\r\nKapolres menjelaskan ada sebanyak 146 penumpang pesawat ditambah crew pesawat tujuh orang. Dari seluruh penumpang, hanya sembilan orang yang diduga mengalami luka-luka dan harus dilarikan ke rumah sakit.\r\n\r\n“Penumpang yang luka dibawa ke rumah sakit Azhar Zahir Angkatan Laut Manokwari,” kata Kapolres lagi.\r\n\r\nKepala Rumah Sakit Azhar Zahir Mayor Laut Syarif Mustika pada wawancara terpisah mengatakan, rata-rata pasein hanya mengalami luka benturan, lebam dan sebagainya.\r\n\r\n“Tidak ada yang meninggal, tidak ada patah tulang. Hanya luka-luka ringan,” katanya.\r\n\r\nDia mengutarakan, tidak ada penumpang yang harus menjalani rawat inap di rumah sakit. Mereka cukup rawat jalan.\r\n\r\n“Soal biaya tidak usah dipikirkan, semua sudah ditanggung sama pihak Jasa Raharja,” katanya lagi.', '1212', 32, 4, 6, 1),
-(9, '0000-00-00 00:00:00', 'sddgfd', 'szdfgh', 'Teknologi', '<p>xscdzczxcxz</p>\r\n', 'file_1496389864.jpg', 0, 0, 0, 0),
-(10, '2017-06-02 08:37:20', 'eaaaa', 'seza', 'Politik', '<p>eadasdasdasd</p>\r\n', 'file_1496392640.jpg', 0, 0, 0, 1),
-(11, '2017-06-02 08:39:31', 'dsadsad', 'sedfsdf', 'Fiksi', '<p>jhgjghjghjghjgh</p>\r\n', 'file_1496392771.jpg', 0, 0, 3, 1),
-(12, '2017-06-02 08:43:34', 'dseadasdasd', 'dio', 'Politik', '<p>gfdghjghjghj</p>\r\n', 'file_1496393014.jpg', 0, 0, 4, 1),
-(13, '2017-06-02 08:44:37', 'hgfhfdsadasd', 'azis', 'Lain-Lain', '<p>sdsdsfdsf</p>\r\n', 'file_1496393077.png', 0, 0, 5, 1);
+INSERT INTO `news` (`id_news`, `waktu_posting`, `judul_news`, `posted_by`, `isi_news`, `gambar_news`, `status`, `id_event`) VALUES
+(15, '2017-07-10 06:40:19', 'Press Release Lomba Anforcom', 'Seza Dio Firmansyah', '<p>asdfghjk</p>\r\n', 'file_1499528407.jpg', 1, 16),
+(16, '2017-07-10 06:40:24', 'Press Release Lomba Anforcom', 'Seza Dio Firmansyah', '<p>asdfghjk</p>\r\n', 'file_1499528407.jpg', 1, 16);
 
 --
 -- Indexes for dumped tables
@@ -75,7 +63,7 @@ ALTER TABLE `news`
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-MODIFY `id_news` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=15;
+MODIFY `id_news` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
