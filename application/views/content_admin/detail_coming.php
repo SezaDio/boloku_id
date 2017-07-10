@@ -201,12 +201,12 @@
                                                                     <?php 
                                                                         if(isset($dataNews) || is_array($dataNews))
                                                                         {
-                                                                            foreach ($dataNews as $data) 
+                                                                            foreach ($dataNews->result() as $data) 
                                                                             { ?>   
                                                                                 <tr>
                                                                                     <td>
                                                                                         <?php
-                                                                                           echo $data['judul_news'];
+                                                                                           echo $data->judul_news;
                                                                                         ?>
                                                                                     </td>
                                                                                 </tr>

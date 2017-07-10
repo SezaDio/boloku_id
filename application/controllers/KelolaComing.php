@@ -59,7 +59,7 @@ class KelolaComing extends CI_Controller {
 
 		//Ambil id_event
 		$data['id_coming'] = $this->ComingModels->select_by_id_coming($id_coming)->row();
-		$data['dataNews'] = $this->NewsModels->select_by_id_press($id_coming)->row();
+		$data['dataNews'] = $this->NewsModels->select_by_id_press($id_coming);
 
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
