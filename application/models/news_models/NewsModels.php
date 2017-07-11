@@ -162,12 +162,6 @@
 			$this->db->delete('news');
 		}
 
-		function delete_news_by_idNews($id_news)
-		{
-			$this->db->where('id_news',$id_news);
-			$this->db->delete('news');
-		}
-
 		//Select news by id_news
 		function select_by_id_news($id_news)
 		{
@@ -186,5 +180,22 @@
 			$this->db->where('id_event',$id_coming);
 
 			return $this->db->get();
+		}
+
+		//Get data testimoni by ID
+		function get_testimoni_by_id($id_coming)
+		{
+			$this->db->select('*');
+			$this->db->from('testimoni');
+			$this->db->where('id_event',$id_coming);
+
+			return $this->db->get();
+		}
+
+		//Menghapus data Testimoni
+		function delete_testimoni($id_testimoni)
+		{
+			$this->db->where('id_testimoni',$id_testimoni);
+			$this->db->delete('testimoni');
 		}
 	}

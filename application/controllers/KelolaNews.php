@@ -16,17 +16,13 @@ class KelolaNews extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->model('news_models/NewsModels');
-		$data['listNewsSm'] = $this->NewsModels->get_data_news_sm();
-		$data['listNewsYouthers'] = $this->NewsModels->get_data_news_youthers();
-		$data['listNewsRekomendasi'] = $this->NewsModels->get_data_news_rekomendasi();
-		$data['listNewsKomunitas'] = $this->NewsModels->get_data_news_komunitas();
-		$data['listNewsComming'] = $this->NewsModels->get_data_news_coming();
-		$data['listNewsYouth'] = $this->NewsModels->get_data_news_youth();
+		//$this->load->model('news_models/NewsModels');
+		$this->load->model('coming_models/ComingModels');
+		$data['listComing'] = $this->ComingModels->get_data_coming();
 			
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
-		$this->load->view('content_admin/kelola_news',$data);
+		$this->load->view('content_admin/kelola_coming', $data);
 		$this->load->view('skin/admin/footer_admin');
 	}
 
@@ -46,9 +42,7 @@ class KelolaNews extends CI_Controller {
 	{
 		$id_news = $_POST['id_news'];
 		$this->load->model('news_models/NewsModels');
-		$this->NewsModels->delete_news($id_news);
-
-		//$this->index();
+		$this->NewsModels->delete_news2($id_news);
 	}
 	
 	//Prose tambah berita
@@ -134,7 +128,7 @@ class KelolaNews extends CI_Controller {
 		$this->load->library('form_validation');
 
 		$edit = $this->input->post('save');
-		$id_event = $this->input->post('id_event');
+		//$id_event = $this->input->post('id_event');
 
 		if (isset($_POST['save']))
 		{
@@ -155,7 +149,7 @@ class KelolaNews extends CI_Controller {
 						'posted_by'=>$this->input->post('posted_by'),
 						'isi_news'=>$this->input->post('deskripsi_news'),
 						'status'=>$edit,
-						'id_event'=>$id_event
+						'id_event'=>$this->input->post('id_event')
 						//'tanggal_posting'=>date("Y-m-d h:i:sa"),
 						//'gambar_news'=> NULL
 					);
@@ -187,8 +181,8 @@ class KelolaNews extends CI_Controller {
 				}
 				if (!$iserror) {
 					$this->db->update('news', $data_news, array('id_news'=>$id_news));
-					$this->session->set_flashdata('msg_berhasil', 'Data Press Release berhasil diperbaharui');
-					redirect('KelolaNews');
+					$this->session->set_flashdata('msg_berhasil', 'Data Press Release '.$data_news['judul_news'].' pada ID Event '.$data_news['id_event'].' berhasil diperbaharui');
+					redirect('KelolaComing');
 					
 				}
 			}
@@ -207,14 +201,14 @@ class KelolaNews extends CI_Controller {
 						'posted_by'=>$data['news']->posted_by,
 						'isi_news'=>$data['news']->isi_news,
 						'status'=>$data['news']->status,
-						'id_event'=>$id_event,
+						'id_event'=>$data['news']->id_event,
 						//'tanggal_posting'=>date("Y-m-d h:i:sa"),
 						'gambar_news'=> $data['news']->gambar_news,
 					);
 			$data['dataNews'] = $data_news;
 		}
 		$data['idNews'] = $id_news;
-		$data['id_event'] = $id_event;
+		//$data['id_event'] = $id_event;
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/edit_news', $data);

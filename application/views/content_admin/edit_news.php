@@ -33,38 +33,19 @@
                                             <?php }?>
                                         </div>
 
-										<div class="form-group">
-                                            <label for="exampleInputEmail1">Kategori News :</label><br>
-                                            <select name="kategori" required class="form-control" id="kategori">
-                                                <option value="">--Pilih Kategori News--</option>
-                                                <?php
-                                                    foreach ($kategori_news as $key=>$kategori) 
-                                                    {
-                                                        if ($key==$dataNews['kategori_news']){
-                                                            echo '<option value="'.$key.'" selected>'.$kategori.'</option>';
-                                                        }
-                                                        else
-                                                        {
-                                                            echo '<option value="'.$key.'">'.$kategori.'</option>';   
-                                                        }
-                                                    }
-                                                ?>
-                                            </select></br>
-                                        </div>
-
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Penulis :</label>
-                                            <input type="text" required name="posted_by" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataNews['posted_by']); ?>">
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Judul News   :</label>
+                                            <label for="exampleInputEmail1">Judul Press Release   :</label>
                                             <input type="text" required name="judul_news" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataNews['judul_news']); ?>"> 
+                                        </div>
+
+                                         <div class="form-group">
+                                            <label for="exampleInputEmail1">Penulis Press Release :</label>
+                                            <input type="text" required name="posted_by" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataNews['posted_by']); ?>">
                                         </div>
 
 										<div class="form-group">
 											<div class='box-header'>
-												 <label>Deskripsi Wow :</label>
+												 <label>Deskripsi Press Release :</label>
 											</div>
 											<div class='box-body pad'>
 												<textarea required id="editor_wow" name="deskripsi_news" rows="10" cols="80">
@@ -80,7 +61,7 @@
                                         </div>
 
                                         <div class='box-header'>                
-                                                <img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="<?php echo base_url('asset/upload_img_news/'.$dataNews['gambar_news']); ?>"/>
+                                            <img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="<?php echo base_url('asset/upload_img_news/'.$dataNews['gambar_news']); ?>"/>
                                         </div>
                                         
                                         <label class='box-header' style="color: blue;" id="ganti">Ganti Gambar ?</label><br>
@@ -91,21 +72,14 @@
                                     </div><!-- /.box-body -->
 
                                     <input type="hidden" name="id_news" value="<?php echo $idNews; ?>">
-                                    <input type="hidden" name="jenis_berita" value="<?php echo $jenis; ?>">
+                                    <input type="hidden" name="id_event" value="<?php echo $dataNews['id_event']; ?>">
+
                                     <div class="box-footer">
-									
                                         <button type="submit" name="save" value="1" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i> Simpan</button>
-                                        <a href="<?php echo site_url('KelolaNews/');?>"><button type="button" name="submit" class="btn btn-danger">Batal</button>
+                                        <a href="<?php echo site_url('KelolaNews/');?>"><button type="button" name="submit" class="btn btn-danger">Batal</button></a>
 									</div>
                                 </form>
-								<div style="margin-top:-42px;margin-left:145px">
-									<?php if($dataNews['status']==2){?>
-										    <!-- Tombol Setuju -->
-											<a href="<?php echo site_url('KelolaNews/setuju_detail_news/'.$idNews);?>"><button id="success-button-coming" type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-ok" ></i> Setuju</button></a>
-											<!-- Tombol Hapus -->
-											<a href="<?php echo site_url('KelolaNews/tolak_detail_news/'.$idNews);?>"><button  id="delete-button-coming" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove" ></i> Tolak</button>
-									<?php } ?>
-								</div>
+								
                             </div><!-- /.box -->
                         </div><!--/.col (left) -->
 

@@ -210,7 +210,7 @@
                                                                                     </td>
                                                                                     <td style="text-align: center; padding-top: 13px;">
                                                                                         <!-- Tombol Edit -->
-                                                                                        <a href="<?php //echo site_url('KelolaComing/edit_comming_soon/'.$id_coming->id_coming);?>"><button id="edit-button-coming" type="submit" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
+                                                                                        <a href="<?php echo site_url('KelolaNews/edit_news/'.$data->id_news);?>"><button id="edit-button-coming" type="submit" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
 
                                                                                         <!-- Tombol Hapus -->
                                                                                         <button onclick="delete_news_ajax(<?php echo $data->id_news; ?>)" id="delete-button-coming" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
@@ -229,13 +229,34 @@
                                                         <div class="box-header">
                                                             <h4 class="box-title">
                                                                 <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                                                                    Daftar Testimoni
+                                                                    <label>Daftar Testimoni</label>
                                                                 </a>
                                                             </h4>
                                                         </div>
                                                         <div id="collapseThree" class="panel-collapse collapse">
                                                             <div class="box-body">
-                                                                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS. Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
+                                                                <table class="table">
+                                                                    <?php
+                                                                        if(isset($dataTestimoni) || is_array($dataTestimoni))
+                                                                        {
+                                                                            foreach ($dataTestimoni->result() as $testimoni) 
+                                                                            {?>
+                                                                                <tr>
+                                                                                    <td style="width: 500px; padding-top: 12px;">
+                                                                                        <i class="glyphicon glyphicon-user"></i> <?php echo $testimoni->penulis_testimoni; ?> || <i class="glyphicon glyphicon-calendar"></i> <?php echo $testimoni->tgl_posting; ?>
+                                                                                        <br><br>
+                                                                                        <?php echo $testimoni->isi_testimoni; ?>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <!-- Tombol Hapus -->
+                                                                                        <button onclick="delete_testimoni_ajax(<?php echo $testimoni->id_testimoni; ?>)" id="delete-button-testimoni" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                
+                                                                            <?php } 
+                                                                        }?>
+                                                                    
+                                                                </table>
                                                             </div>
                                                         </div>
                                                     </div>

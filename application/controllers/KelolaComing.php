@@ -39,6 +39,16 @@ class KelolaComing extends CI_Controller {
 		$this->index();
 	}
 
+	//delete testimoni from deatail coming
+	public function delete_testimoni()
+	{
+		$id_testimoni = $_POST['id_testimoni'];
+		$this->load->model('news_models/NewsModels');
+		$this->NewsModels->delete_testimoni($id_testimoni);
+
+		
+	}
+
 	//Delete Data Coming + data news dan testimoni dari halaman Lihat Detail
 	public function delete_detail_coming($id_coming)
 	{
@@ -60,6 +70,7 @@ class KelolaComing extends CI_Controller {
 		//Ambil id_event
 		$data['id_coming'] = $this->ComingModels->select_by_id_coming($id_coming)->row();
 		$data['dataNews'] = $this->NewsModels->select_by_id_press($id_coming);
+		$data['dataTestimoni'] = $this->NewsModels->get_testimoni_by_id($id_coming);
 
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
