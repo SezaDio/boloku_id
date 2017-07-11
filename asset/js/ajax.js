@@ -182,6 +182,25 @@ function delete_news_ajax(id_news)
 	}
 }
 
+function delete_testimoni_ajax(id_testimoni)
+{
+	if (confirm("Anda yakin ingin menghapus Testimoni ini ?"))
+	{
+		$.ajax({
+			url: 'delete_testimoni',
+			type: 'POST',
+			data: {id_testimoni:id_testimoni},
+			success: function(){
+						alert('Delete Testimoni berhasil');
+						location.reload();
+					},
+			error: function(){
+						alert('Delete Testimoni News gagal');
+					}
+		});
+	}
+}
+
 function tolak_news_ajax(id_news)
 {
 	if (confirm("Anda yakin ingin menolak News ini ?"))
