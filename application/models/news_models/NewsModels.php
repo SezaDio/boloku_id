@@ -8,7 +8,7 @@
 		}
 
 		//Mengambil data news
-		function get_data_news_sm()
+		/*function get_data_news_sm()
 		{
 			$query = $this->db->query("SELECT * FROM `news` WHERE status='1' AND jenis_news='1'");
 		
@@ -137,7 +137,7 @@
 			}
 		
 			return $result;
-		}
+		}*/
 
 		//Menyetujui data news
 		function setuju_news($id_news)
@@ -152,6 +152,19 @@
 		function delete_news($id_event)
 		{
 			$this->db->where('id_event',$id_event);
+			$this->db->delete('news');
+		}
+
+		//Menghapus data news sesuai dengan event nya
+		function delete_news2($id_news)
+		{
+			$this->db->where('id_news',$id_news);
+			$this->db->delete('news');
+		}
+
+		function delete_news_by_idNews($id_news)
+		{
+			$this->db->where('id_news',$id_news);
 			$this->db->delete('news');
 		}
 

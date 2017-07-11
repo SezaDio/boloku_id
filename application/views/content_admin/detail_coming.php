@@ -197,18 +197,25 @@
                                                         </div>
                                                         <div id="collapseTwo" class="panel-collapse collapse">
                                                             <div class="box-body">
-                                                               <table>
+                                                               <table class="table">
                                                                     <?php 
                                                                         if(isset($dataNews) || is_array($dataNews))
                                                                         {
                                                                             foreach ($dataNews->result() as $data) 
                                                                             { ?>   
                                                                                 <tr>
-                                                                                    <td>
-                                                                                        <?php
-                                                                                           echo $data->judul_news;
-                                                                                        ?>
+                                                                                    <td style="width: 400px;">
+                                                                                        <b><a href="#"><?php echo $data->judul_news; ?></a></b><br>
+                                                                                        <?php echo "Posted By: ".$data->posted_by; ?>
                                                                                     </td>
+                                                                                    <td style="text-align: center; padding-top: 13px;">
+                                                                                        <!-- Tombol Edit -->
+                                                                                        <a href="<?php //echo site_url('KelolaComing/edit_comming_soon/'.$id_coming->id_coming);?>"><button id="edit-button-coming" type="submit" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
+
+                                                                                        <!-- Tombol Hapus -->
+                                                                                        <button onclick="delete_news_ajax(<?php echo $data->id_news; ?>)" id="delete-button-coming" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
+                                                                                    </td>
+                                                                                    
                                                                                 </tr>
                                                                             <?php }
                                                                          } ?>

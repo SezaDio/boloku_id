@@ -48,7 +48,7 @@ class KelolaNews extends CI_Controller {
 		$this->load->model('news_models/NewsModels');
 		$this->NewsModels->delete_news($id_news);
 
-		$this->index();
+		//$this->index();
 	}
 	
 	//Prose tambah berita
