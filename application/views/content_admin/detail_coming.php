@@ -201,10 +201,10 @@
                                                         <div id="collapseTwo" class="panel-collapse collapse">
                                                             <div class="box-body">
                                                                <table class="table">
-                                                                    <?php 
-                                                                        if(isset($dataNews) || is_array($dataNews) || !empty($dataNews))
+                                                                    <?php
+                                                                        if(count($dataNews->result_array())>0)
                                                                         {
-                                                                            foreach ($dataNews->result() as $data) 
+                                                                            foreach ($dataNews->result() as $data)
                                                                             { ?>   
                                                                                 <tr>
                                                                                     <td style="width: 400px;">
@@ -216,7 +216,7 @@
                                                                                         <a href="<?php echo site_url('KelolaNews/edit_news/'.$data->id_news);?>"><button id="edit-button-coming" type="submit" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
 
                                                                                         <!-- Tombol Hapus -->
-                                                                                        <button onclick="delete_news_ajax(<?php echo $data->id_news; ?>)" id="delete-button-coming" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
+                                                                                        <button onclick="delete_news_ajax(<?php echo $data->id_news; ?>)" id="delete-button-coming" type="submit" class="btn btn-danger btn-sm" value=1><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
                                                                                     </td>
                                                                                 </tr>
                                                                             <?php }
@@ -224,7 +224,7 @@
                                                                          else
                                                                          {?>
                                                                             <tr>
-                                                                                <td>Ini Kosong</td>
+                                                                                <td>Data Press Release Kosong</td>
                                                                             </tr>
                                                                          <?php } ?> 
                                                                </table>
@@ -245,7 +245,7 @@
                                                             <div class="box-body">
                                                                 <table class="table">
                                                                     <?php
-                                                                        if(isset($dataTestimoni) || is_array($dataTestimoni))
+                                                                        if(count($dataTestimoni->result_array())>0)
                                                                         {
                                                                             foreach ($dataTestimoni->result() as $testimoni) 
                                                                             {?>
@@ -262,7 +262,13 @@
                                                                                 </tr>
                                                                                 
                                                                             <?php } 
-                                                                        }?>
+                                                                        }
+                                                                        else
+                                                                        {?>
+                                                                            <tr>
+                                                                                <td>Data Testimoni</td>
+                                                                            </tr>
+                                                                        <?php } ?>
                                                                     
                                                                 </table>
                                                             </div>
