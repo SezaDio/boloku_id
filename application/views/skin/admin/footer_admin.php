@@ -25,12 +25,12 @@
                     ]
                 });
                 
-                $('#dataTables-list-sm').DataTable({
+                $('#eventgratis').DataTable({
                     "columnDefs":[
                         {"orderable":false, "targets":4}
                     ]
                 });
-                $('#dataTables-list-youthers').DataTable({
+                $('#eventbayar').DataTable({
                     "columnDefs":[
                         {"orderable":false, "targets":4}
                     ]

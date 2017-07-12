@@ -2,11 +2,11 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Kelola Member
+                       Kelola Pendaftar
                     </h1>
                     <ol class="breadcrumb">
-                        <li><i class="fa fa-dashboard"></i>Youth Member</li>
-                        <li class="active">Kelola Member</li>
+                        <li><i class="fa fa-dashboard"></i><?php echo $idEvent ?></li>
+                        
                     </ol>
                 </section>
 
@@ -28,38 +28,40 @@
                                                 <?php echo $this->session->flashdata('msg_berhasil');?> 
                                             </div>
                                         <?php }?>
-										<a href="<?php echo site_url('KelolaMember/tambah_member_check/');?>">
-                                            <button type="submit" name="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus" ></i> Tambah Member</button>
-                                        </a>
 									</div>
                                     <div class="form-group">
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-list">
                                             <thead>
                                                 <tr>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">No.</th>
-                                                    <th class="title-center" style="font-size:1em; text-align:center;">Username</th>
-                                                    <th class="title-center" style="font-size:1em; text-align:center;">Nama</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Nama Pendaftar</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Email</th>
-                                                    <th class="title-center" style="font-size:1em; text-align:center;">Poin</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Telepon</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Alamat</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Aksi</th>                                                        
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php 
-                                                    foreach($listMember as $item)
-                                                    { ?>
+                                                <?php $i=0;
+                                                    foreach($listPendaftar as $item)
+                                                    { $i++;?>
                                                         <tr>
-                                                            <td style="text-align: center;"><?php echo $item['id_member'] ?></td>
-                                                            <td><?php echo $item['username'] ?></td>
-                                                            <td><?php echo $item['nama_member'] ?></td>
-                                                            <td><?php echo $item['email'];?></td>
-                                                            <td><?php echo $item['poin'];?></td>
+                                                            <td style="text-align: center;"><?php echo $i ?></td>
+                                                            <td><?php echo $item['nama_pendaftar'] ?></td>
+                                                            <td><?php echo $item['email'] ?></td>
+                                                            <td><?php echo $item['telepon'] ?></td>
+                                                            <td><?php echo $item['alamat'] ?></td>
                                                             <td align="center">
+                                                                 <!-- Tombol tambah Press Release -->
+                                                                <form  style="float: left;" role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaNews/tambah_news_check/');?>" method="POST">
+                                                                    <button value="<?php echo $item['id_pendaftar']; ?>" name="press_release" type="submit" class="btn bg-purple"><i class="glyphicon glyphicon-plus" ></i> Press Release</button>
+                                                                </form>
+
                                                                 <!-- Tombol lihat detail -->
-                                                                <a href="<?php echo site_url('KelolaMember/lihat_detail_member/'.$item['id_member']);?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open" ></i> Detail</button></a>
+                                                                <a href="<?php echo site_url('KelolaPendaftar/lihat_detail_pendaftar/'.$item['id_pendaftar']);?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open" ></i> Detail</button></a>
 
                                                                 <!-- Tombol Hapus -->
-                                                                <button onclick="delete_member_ajax(<?php echo $item['id_member']; ?>)" id="delete-button-member" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
+                                                                <button onclick="delete_coming_ajax(<?php echo $item['id_pendaftar']; ?>)" id="delete-button-coming" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
                                                             </td>
                                                         </tr>
                                                     <?php } ?>

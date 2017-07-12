@@ -43,8 +43,8 @@
                             </a>
                         </li>
 
-                        <li class="treeview">
-                            <a href="#">
+                        <li>
+                            <a href="<?php echo site_url('KelolaPendaftar/index'); ?>">
                                 <i class="glyphicon glyphicon-list-alt"></i> <span> Kelola Pendaftaran </span>
                             </a>
                         </li>
