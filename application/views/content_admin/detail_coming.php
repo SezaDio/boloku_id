@@ -35,29 +35,32 @@
                                                     <div style="height:250px; width: 250px; text-align:center;">
                                                         <img style="border: solid currentColor; height:100%" src="<?php echo base_url('asset/upload_img_coming/'.$id_coming->path_gambar); ?>">
                                                     </div><br>
-                                                    <div style="margin-left: 20px;">
-                                                        <?php if($id_coming->status==1){?>
-                                                            <!-- Tombol kembali -->
-                                                            <a href="<?php echo site_url('KelolaComing');?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-arrow-left" ></i> Kembali</button></a>
-                                                            <!-- Tombol Edit -->
-                                                            <a href="<?php echo site_url('KelolaComing/edit_comming_soon/'.$id_coming->id_coming);?>"><button id="edit-button-coming" type="submit" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
-                                                            <!-- Tombol Hapus -->
-                                                            <a href="<?php echo site_url('KelolaComing/delete_detail_coming/'.$id_coming->id_coming);?>"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button></a>
-                                                    </div>
-                                                    <div style="width: 300px;">
-                                                        <?php } else {?>
-                                                        
-                                                            <!-- Tombol kembali -->
-                                                            <a href="<?php echo site_url('KelolaComing/validasi_Coming');?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-arrow-left" ></i> Kembali</button></a>
-                                                            <!-- Tombol Edit -->
-                                                            <a href="<?php echo site_url('KelolaComing/edit_comming_soon/'.$id_coming->id_coming);?>"><button id="edit-button-coming" type="submit" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
-                                                            <!-- Tombol Setuju -->
-                                                            <a href="<?php echo site_url('KelolaComing/setuju_detail_coming/'.$id_coming->id_coming);?>"><button id="success-button-coming" type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-ok" ></i> Setuju</button></a>
-                                                            <!-- Tombol Hapus -->
-                                                            <a href="<?php echo site_url('KelolaComing/tolak_detail_coming/'.$id_coming->id_coming);?>"><button  id="delete-button-coming" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove" ></i> Tolak</button></a>
                                                     
+                                                        <?php if($id_coming->status==1){?>
+                                                            <div style="margin-left: 20px;">
+                                                                <!-- Tombol kembali -->
+                                                                <a href="<?php echo site_url('KelolaComing');?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-arrow-left" ></i> Kembali</button></a>
+                                                                <!-- Tombol Edit -->
+                                                                <a href="<?php echo site_url('KelolaComing/edit_comming_soon/'.$id_coming->id_coming);?>"><button id="edit-button-coming" type="submit" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
+                                                                <!-- Tombol Hapus -->
+                                                                <a href="<?php echo site_url('KelolaComing/delete_detail_coming/'.$id_coming->id_coming);?>"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button></a>
+                                                            </div>
+                                                    
+                                                        <?php } 
+                                                            else 
+                                                            {?>
+                                                            <div style="width: 300px;">
+                                                                <!-- Tombol kembali -->
+                                                                <a href="<?php echo site_url('KelolaComing/validasi_Coming');?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-arrow-left" ></i> Kembali</button></a>
+                                                                <!-- Tombol Edit -->
+                                                                <a href="<?php echo site_url('KelolaComing/edit_comming_soon/'.$id_coming->id_coming);?>"><button id="edit-button-coming" type="submit" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
+                                                                <!-- Tombol Setuju -->
+                                                                <a href="<?php echo site_url('KelolaComing/setuju_detail_coming/'.$id_coming->id_coming);?>"><button id="success-button-coming" type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-ok" ></i> Setuju</button></a>
+                                                                <!-- Tombol Hapus -->
+                                                                <a href="<?php echo site_url('KelolaComing/tolak_detail_coming/'.$id_coming->id_coming);?>"><button  id="delete-button-coming" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove" ></i> Tolak</button></a>
+                                                            </div>
                                                         <?php }?>
-                                                    </div>
+                                                    
                                                 </div>
                                             </div>
 
@@ -199,7 +202,7 @@
                                                             <div class="box-body">
                                                                <table class="table">
                                                                     <?php 
-                                                                        if(isset($dataNews) || is_array($dataNews))
+                                                                        if(isset($dataNews) || is_array($dataNews) || !empty($dataNews))
                                                                         {
                                                                             foreach ($dataNews->result() as $data) 
                                                                             { ?>   
@@ -215,10 +218,15 @@
                                                                                         <!-- Tombol Hapus -->
                                                                                         <button onclick="delete_news_ajax(<?php echo $data->id_news; ?>)" id="delete-button-coming" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
                                                                                     </td>
-                                                                                    
                                                                                 </tr>
                                                                             <?php }
-                                                                         } ?>
+                                                                         }
+                                                                         else
+                                                                         {?>
+                                                                            <tr>
+                                                                                <td>Ini Kosong</td>
+                                                                            </tr>
+                                                                         <?php } ?> 
                                                                </table>
                                                             </div> 
                                                         </div>
