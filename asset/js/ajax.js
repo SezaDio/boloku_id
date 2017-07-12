@@ -164,7 +164,7 @@ function delete_news_ajax(id_news)
 	if (confirm("Anda yakin ingin menghapus Press Release News ini ?"))
 	{
 		$.ajax({
-			url: 'delete_news',
+			url: '../delete_news',	
 			type: 'POST',
 			data: {id_news:id_news},
 			success: function(){
@@ -187,7 +187,7 @@ function delete_testimoni_ajax(id_testimoni)
 	if (confirm("Anda yakin ingin menghapus Testimoni ini ?"))
 	{
 		$.ajax({
-			url: 'delete_testimoni',
+			url: '../delete_testimoni',
 			type: 'POST',
 			data: {id_testimoni:id_testimoni},
 			success: function(){
