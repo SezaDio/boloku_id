@@ -209,6 +209,26 @@ class KelolaComing extends CI_Controller {
                               'Lain-Lain'=>'Lain-Lain'
                               );
 
+		$data_coming_tambah=array(
+						'nama_coming'=>'',
+						'jenis_event'=>'',
+						'pendaftaran'=>'',
+						'kategori_coming'=>'',
+						'tipe_event'=>'',
+						'deskripsi_coming'=>'',
+						'tanggal_posting'=>'',
+						'posted_by'=>'',
+						'institusi'=>'',
+						'telepon'=>'',
+						'email'=>'',
+						'tgl_mulai'=>'',
+						'tgl_selesai'=>'',
+						'jam_mulai'=>'',
+						'jam_selesai'=>'',
+						'path_gambar'=> NULL,
+						'status'=>1
+					);
+
 		$jam_event=array();
 		for ($i=0; $i<24; $i++) 
 		{ 
@@ -242,6 +262,7 @@ class KelolaComing extends CI_Controller {
 		$data['kategori_coming']= $kategori_coming;
 		$data['tipe_event']= $tipe_event;
 		$data['jam_event']= $jam_event;
+		$data['dataComing'] = $data_coming_tambah;
 
 		if ($tambah == 1) 
 		{
@@ -421,6 +442,7 @@ class KelolaComing extends CI_Controller {
 
 			$data_coming=array(
 							'nama_coming'=>$this->input->post('nama_coming'),
+							'jenis_event'=>$this->input->post('jenis_event'),
 							'kategori_coming'=>$this->input->post('kategori'),
 							'tipe_event'=>$this->input->post('tipe'),
 							'institusi'=>$this->input->post('institusi'),
@@ -431,6 +453,7 @@ class KelolaComing extends CI_Controller {
 							'jam_mulai'=>$this->input->post('jam_mulai'),
 							'jam_selesai'=>$this->input->post('jam_selesai'),
 							'deskripsi_coming'=>$this->input->post('deskripsi_coming'),
+							'pendaftaran'=>$this->input->post('pendaftaran'),
 							//'path_gambar'=>NULL,
 							'posted_by'=>$this->input->post('posted_by')
 							);
@@ -478,6 +501,7 @@ class KelolaComing extends CI_Controller {
 							'nama_coming'=>$data['coming']->nama_coming,
 							'kategori_coming'=>$data['coming']->kategori_coming,
 							'tipe_event'=>$data['coming']->tipe_event,
+							'jenis_event'=>$data['coming']->jenis_event,
 							'institusi'=>$data['coming']->institusi,
 							'telepon'=>$data['coming']->telepon,
 							'email'=>$data['coming']->email,
@@ -487,6 +511,7 @@ class KelolaComing extends CI_Controller {
 							'jam_selesai'=>$data['coming']->jam_selesai,
 							'deskripsi_coming'=>$data['coming']->deskripsi_coming,
 							'posted_by'=>$data['coming']->posted_by,
+							'pendaftaran'=>$data['coming']->pendaftaran,
 							'path_gambar'=> $data['coming']->path_gambar
 							);
 			$data['dataComing'] = $data_coming;

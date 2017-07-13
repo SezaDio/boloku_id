@@ -198,13 +198,10 @@
                                                         <div id="collapseTwo" class="panel-collapse collapse">
                                                             <div class="box-body">
                                                                <table class="table">
-<<<<<<< HEAD
-                                                                    <?php 
-                                                                        if(isset($dataNews) || is_array($dataNews))
-=======
+
+
                                                                     <?php
                                                                         if(count($dataNews->result_array())>0)
->>>>>>> origin/master
                                                                         {
                                                                             foreach ($dataNews->result() as $data)
                                                                             { ?>   
@@ -223,17 +220,13 @@
                                                                                     
                                                                                 </tr>
                                                                             <?php }
-<<<<<<< HEAD
-                                                                         } ?>
-=======
                                                                          }
                                                                          else
                                                                          {?>
                                                                             <tr>
                                                                                 <td>Data Press Release Kosong</td>
                                                                             </tr>
-                                                                         <?php } ?> 
->>>>>>> origin/master
+                                                                         <?php } ?>
                                                                </table>
                                                             </div> 
                                                         </div>

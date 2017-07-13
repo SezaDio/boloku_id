@@ -63,8 +63,7 @@
                                                     <?php } ?>
                                             </tbody>
                                         </table>
-										<input type="text" name="kata_kunci" id="kata_kunci" value="Cari"><input type="text" name="hasil" id="hasil" value="Hasil"><br />
-										<input type="button" name="btn_search" id="btn_search" onclick="cariKata();" value="Cari" class="btn btn-success"/>
+										
                                     </div>
                                 </div><!-- /.box-body -->
 
