@@ -21,6 +21,11 @@
 
         <!-- bootstrap wysihtml5 - text editor -->
         <link href="<?php echo base_url('asset/css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css'); ?>" rel="stylesheet" type="text/css" />
+
+        <script type="text/javascript" src="<?php echo base_url('asset/js/jquery.min.js?ver=b1.0'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/bootstrap.min.js?ver=b1.0'); ?>"></script>
+        <script type="text/javascript" src="<?php echo base_url('asset/js/jquery-ui.min.js?ver=b1.0'); ?>"></script>
+        
     </head>
     
     <body class="skin-blue">

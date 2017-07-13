@@ -40,6 +40,32 @@
                                         </div>
 
                                         <div class="form-group">
+                                            <label for="exampleInputEmail1">Jenis Event   :</label>
+                                            <div class="radio">
+                                                <label>
+                                                    <input style="opacity: 1;" type="radio" 
+                                                        <?php 
+                                                            if ($dataComing['jenis_event'] == 1)
+                                                            {
+                                                                echo 'checked';
+                                                            } 
+                                                        ?> name="jenis_event" value=1 required>
+                                                     Gratis
+                                                </label>
+                                                <label>
+                                                    <input style="opacity: 1;" type="radio" 
+                                                        <?php 
+                                                            if ($dataComing['jenis_event'] == 0)
+                                                            {
+                                                                echo 'checked';
+                                                            } 
+                                                        ?> name="jenis_event" value=0 required>
+                                                     Berbayar
+                                                </label>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
                                             <label for="exampleInputEmail1">Kategori Event :</label><br>
                                             
                                             <select name="kategori" required class="form-control" id="kategori">
@@ -200,11 +226,39 @@
                                             <input class="form" type="file" name="filefoto" >
 											<b><p style="color:red;">File diizinkan: jpg, jpeg, dan png (Max 2Mb)</p></b>
                                         </div>
+                                        <br>
+
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Apakah anda ingin menggunakan fasilitas pendaftaran kami ?</label>
+                                            <div class="radio">
+                                                <label>
+                                                    <input style="opacity: 1;" type="radio" 
+                                                        <?php 
+                                                            if ($dataComing['pendaftaran'] == 1)
+                                                            {
+                                                                echo 'checked';
+                                                            } 
+                                                        ?> name="pendaftaran" value=1 required>
+                                                     Ya
+                                                </label>
+                                                <label>
+                                                    <input style="opacity: 1;" type="radio" 
+                                                        <?php 
+                                                            if ($dataComing['pendaftaran'] == 0)
+                                                            {
+                                                                echo 'checked';
+                                                            } 
+                                                        ?> name="pendaftaran" value=0 required>
+                                                     Tidak
+                                                </label>
+                                            </div>
+                                        </div>
+
                                     </div><!-- /.box-body -->
                                     <input type="hidden" name="id_coming" value="<?php echo $idComing; ?>">
                                     <div class="box-footer">
                                         <button type="submit" name="save" value="1" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i> Simpan</button>
-                                       <a href="<?php echo site_url('KelolaComing/');?>"><button type="button" name="submit" class="btn btn-danger">Batal</button>
+                                       <a href="<?php echo site_url('KelolaComing/');?>"><button type="button" name="submit" class="btn btn-danger">Batal</button></a>
                                     </div>
                                 </form>
                             </div><!-- /.box -->
@@ -214,6 +268,25 @@
                     </div>   <!-- /.row -->
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
+
+            <!-- daterangepicker -->
+            <script src="<?php echo base_url('asset/js/daterangepicker/daterangepicker.js?ver=b1.0'); ?>" type="text/javascript"></script>
+
+            <script>
+                $(document).ready( function () {
+
+                    //Edit Event Date range picker
+                    $('#reservation2').daterangepicker({format: 'YYYY-MM-DD',
+                                                                startDate: '<?php echo $dataComing['tgl_mulai'];?>',
+                                                                endDate: '<?php echo $dataComing['tgl_selesai'];?>'},function(start, end) {
+                        $('#tgl_mulai').val(start.format('YYYY-MM-DD'));
+                        $('#tgl_selesai').val(end.format('YYYY-MM-DD'));
+                    });
+                });
+            </script>
+
+            
+
 
         
 

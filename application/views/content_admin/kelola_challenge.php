@@ -40,17 +40,22 @@
 												<div class="row" id="challengediv">
 													<?php foreach($listChallenge as $item){ ?>
                                                     <div class="col-md-4" style="text-align: center">
-													<div class="well" style="padding:10px">
-														<input onclick="publish(<?php echo $item['id_challenge']?>)" type="checkbox" name="challenge" id="challenge<?php echo $item['id_challenge']?>" value="<?php echo $item['id_challenge']?>" <?php if($item['status']==1){?>checked="checked"<?php } ?>>  
-														<img height="100%" width="100%" alt="" src="<?php echo base_url('asset/upload_img_challenge/'.$item['path_gambar']); ?>">
-														<br/><?php 	echo $item['judul_challenge']; ?>
-														<br/>
-														<!-- Tombol lihat detail -->
-														<a href="<?php echo site_url('KelolaChallenge/edit_challenge/'.$item['id_challenge']);?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
-														
-														<!-- Tombol Hapus -->
-														<a href="<?php echo site_url('KelolaChallenge/delete_challenge/'.$item['id_challenge']);?>"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button></a>
-													</div>
+														<div class="well" style="padding:10px">
+															
+																<input onclick="publish(<?php echo $item['id_challenge']?>)" type="checkbox" name="challenge" id="challenge<?php echo $item['id_challenge']?>" value="<?php echo $item['id_challenge']?>" <?php if($item['status']==1){?>checked="checked"<?php } ?>>  
+																<img height="100%" width="100%" alt="" src="<?php echo base_url('asset/upload_img_challenge/'.$item['path_gambar']); ?>"/>
+															
+
+															<br/>
+															<?php 	echo $item['judul_challenge']; ?>
+															<br/>
+
+															<!-- Tombol lihat detail -->
+															<a href="<?php echo site_url('KelolaChallenge/edit_challenge/'.$item['id_challenge']);?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
+															
+															<!-- Tombol Hapus -->
+															<a href="<?php echo site_url('KelolaChallenge/delete_challenge/'.$item['id_challenge']);?>"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button></a>
+														</div>
 													</div>
 													<?php } ?>
 												</div>

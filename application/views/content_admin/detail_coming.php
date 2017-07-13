@@ -201,7 +201,6 @@
 
                                                                     <?php
                                                                         if(count($dataNews->result_array())>0)
-
                                                                         {
                                                                             foreach ($dataNews->result() as $data)
                                                                             { ?>   
@@ -220,15 +219,13 @@
                                                                                     
                                                                                 </tr>
                                                                             <?php }
-
                                                                          }
                                                                          else
                                                                          {?>
                                                                             <tr>
                                                                                 <td>Data Press Release Kosong</td>
                                                                             </tr>
-                                                                         <?php } ?> 
-
+                                                                         <?php } ?>
                                                                </table>
                                                             </div> 
                                                         </div>

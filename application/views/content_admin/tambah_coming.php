@@ -64,13 +64,9 @@
                                                 <?php
                                                     foreach ($kategori_coming as $key=>$kategori) 
                                                     {
-                                                        if ($key==$dataComing['kategori_coming']){
-                                                            echo '<option value="'.$key.'" selected>'.$kategori.'</option>';
-                                                        }
-                                                        else
-                                                        {
-                                                            echo '<option value="'.$key.'">'.$kategori.'</option>';   
-                                                        }
+                                                        
+                                                        echo '<option value="'.$key.'">'.$kategori.'</option>';   
+                                                        
                                                     }
                                                 ?>
                                             </select>
@@ -83,13 +79,8 @@
                                                 <?php
                                                     foreach ($tipe_event as $key=>$tipe) 
                                                     {
-                                                        if ($key==$dataComing['tipe_event']){
-                                                            echo '<option value="'.$key.'" selected>'.$tipe.'</option>';
-                                                        }
-                                                        else
-                                                        {
-                                                            echo '<option value="'.$key.'">'.$tipe.'</option>';   
-                                                        }
+                                                      
+                                                        echo '<option value="'.$key.'">'.$tipe.'</option>';   
                                                     }
                                                 ?>
                                             </select>
@@ -120,7 +111,7 @@
                                             <input type="text" required name="telepon" class="form-control" id="exampleInputEmail1" value="<?php 
                                                 if (isset($dataComing['posted_by']))
                                                 {
-                                                    echo htmlspecialchars($dataComing['telpon']);
+                                                    echo htmlspecialchars($dataComing['telepon']);
                                                 }
                                             ?>"> 
                                         </div>
@@ -150,21 +141,10 @@
                                                             echo $tgl_event;
                                                         }
                                                     ?>"/>
-                                                <input type="hidden" id="tgl_mulai" name='tgl_mulai' value="<?php echo date('Y-m-d') ?>"
-                                                    value="<?php
-                                                        if (isset($tgl_mulai))
-                                                        {
-                                                            echo $tgl_mulai;
-                                                        }
-                                                        ?>"
-                                                />
-                                                <input type="hidden"  id="tgl_selesai" name='tgl_selesai' value="<?php echo date('Y-m-d') ?>"
-                                                    value="<?php
-                                                        if(isset($tgl_selesai))
-                                                        {
-                                                            echo $tgl_selesai;
-                                                        }
-                                                    ?>"/>
+                                                <input type="hidden" id="tgl_mulai" name='tgl_mulai' value="<?php echo date('Y-m-d') ?>" />
+                                                  
+                                                <input type="hidden"  id="tgl_selesai" name='tgl_selesai' value="<?php echo date('Y-m-d') ?>" />
+                                                    
                                             </div><!-- /.input group -->
                                         </div>
 
@@ -178,13 +158,7 @@
                                                             <?php
                                                                 foreach ($jam_event as $key=>$jam) 
                                                                 {
-                                                                    if ($key==$dataComing['jam_event']){
-                                                                        echo '<option value="'.$key.'" selected>'.$jam.'</option>';
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        echo '<option value="'.$key.'">'.$jam.'</option>';   
-                                                                    }
+                                                                    echo '<option value="'.$key.'">'.$jam.'</option>';   
                                                                 }
                                                             ?>
                                                         </select>
@@ -196,13 +170,7 @@
                                                             <?php
                                                                 foreach ($jam_event as $key=>$jam) 
                                                                 {
-                                                                    if ($key==$dataComing['jam_event']){
-                                                                        echo '<option value="'.$key.'" selected>'.$jam.'</option>';
-                                                                    }
-                                                                    else
-                                                                    {
-                                                                        echo '<option value="'.$key.'">'.$jam.'</option>';   
-                                                                    }
+                                                                    echo '<option value="'.$key.'">'.$jam.'</option>';   
                                                                 }
                                                             ?>
                                                         </select>
@@ -261,3 +229,17 @@
                     </div>   <!-- /.row -->
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
+
+            <!-- daterangepicker -->
+            <script src="<?php echo base_url('asset/js/daterangepicker/daterangepicker.js?ver=b1.0'); ?>" type="text/javascript"></script>
+
+            <script>
+                $(document).ready( function () {
+
+                //Date range picker tambah event
+                    $('#reservation').daterangepicker({format: 'YYYY-MM-DD'},function(start, end) {
+                        $('#tgl_mulai').val(start.format('YYYY-MM-DD'));
+                        $('#tgl_selesai').val(end.format('YYYY-MM-DD'));
+                    });
+                });
+            </script>
