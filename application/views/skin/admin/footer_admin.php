@@ -1,6 +1,5 @@
 	<!-- script tags ============================================================= -->
         
-       
         <!-- Sparkline -->
         <script src="<?php echo base_url('asset/js/sparkline/jquery.sparkline.min.js?ver=b1.0'); ?>" type="text/javascript"></script>
         
