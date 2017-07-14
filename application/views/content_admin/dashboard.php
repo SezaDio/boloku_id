@@ -38,7 +38,7 @@
                             <div class="small-box bg-green">
                                 <div class="inner">
                                     <h3>
-                                        53
+                                        <?php echo $jum_approve_event;?>
                                     </h3>
                                     <p>
                                         Approved Event
@@ -57,7 +57,7 @@
                             <div class="small-box bg-red">
                                 <div class="inner">
                                     <h3>
-                                        65
+                                        <?php echo $jum_pending_event;?>
                                     </h3>
                                     <p>
                                         Pending New Event
@@ -76,7 +76,7 @@
                             <div class="small-box bg-yellow">
                                 <div class="inner">
                                     <h3>
-                                        44
+                                        <?php echo $jum_pending_pepak;?>
                                     </h3>
                                     <p>
                                         Validasi Kosakata Pepak
