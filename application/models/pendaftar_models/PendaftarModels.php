@@ -20,6 +20,15 @@
 			return $query;
 		}
 		
+		function get_jenis_event($id_event){
+			$this->db->select('*');
+			$this->db->from('coming');
+			$this->db->where('id_coming',$id_event);
+
+			$query = $this->db->get();
+			return $query->row_array();
+		}
+		
 		
 		function get_data_pendaftar($id_event)
 		{
@@ -38,6 +47,16 @@
 			}
 		
 			return $result;
+		}
+		
+		function verifikasi_bayar_check($id_pendaftar)
+		{
+			$data = array(
+				'status_bayar' => 2,	
+				'verifikasi_bayar' => 2	
+			);
+			$this->db->where('id_pendaftar',$id_pendaftar);
+			$this->db->update('pendaftar',$data);
 		}
 		
 		//Mengambil data pendaftar yang butuh validasi

@@ -25,7 +25,35 @@
         <script type="text/javascript" src="<?php echo base_url('asset/js/jquery.min.js?ver=b1.0'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/bootstrap.min.js?ver=b1.0'); ?>"></script>
         <script type="text/javascript" src="<?php echo base_url('asset/js/jquery-ui.min.js?ver=b1.0'); ?>"></script>
-        
+    <style>
+	/*css modal*/
+		.modal {
+			display: none; /* Hidden by default */
+			position: fixed; /* Stay in place */
+			z-index: 2; /* Sit on top */
+			left: 0;
+			top: 0;
+			margin: auto;
+			width: 100%;
+			overflow: auto; /* Enable scroll if needed */
+			background-color: rgb(0,0,0); /* Fallback color */
+			background-color: rgba(0,0,0,0.6) /* Black w/ opacity */
+		}
+		
+		/* Modal Content/Box */
+		.modal-content {
+			background-color: #fefefe;
+			margin: 8% auto; /* 15% from the top and centered */
+			padding: 20px;
+			border: 1px solid #888;
+			width: 80%; /* Could be more or less, depending on screen size */
+			-webkit-animation-name: animatetop;
+			-webkit-animation-duration: 0.4s;
+			animation-name: animatetop;
+			animation-duration: 0.4s
+		}
+
+	</style>    
     </head>
     
     <body class="skin-blue">

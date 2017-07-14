@@ -31,6 +31,8 @@ class Kelolapendaftar extends CI_Controller {
 	{
 		$this->load->model('pendaftar_models/PendaftarModels');
 		$data['idEvent'] = $id_event;
+		$event = $this->PendaftarModels->get_jenis_event($id_event);
+		$data['jenis_event'] = $event['jenis_event'];
 		$data['listPendaftar'] = $this->PendaftarModels->get_data_pendaftar($id_event);
 		
 			
@@ -48,6 +50,42 @@ class Kelolapendaftar extends CI_Controller {
 
 
 		$this->index();
+	}
+	
+	//Verifikasi Pembayaran
+	function verifikasi_bayar($id_pendaftar){
+        header('Access-Control-Allow-Origin: *');
+        header('Content-type: text/xml');
+        
+        //var_dump($search_term); exit();
+        $get_pendaftar=$this->db->where("id_pendaftar",$id_pendaftar)->get('pendaftar');
+        
+		
+        
+        
+        $this->load->helper('xml');
+		$xml_out = '<pendaftars>';
+        if ($get_pendaftar->num_rows()>0) {
+            foreach ($get_pendaftar->result() as $row_pendaftar) {
+                $xml_out .= '<pendaftar ';
+                $xml_out .= 'id_pendaftar="' . xml_convert($row_pendaftar->id_pendaftar) . '" ';
+                $xml_out .= 'nama_pendaftar="' . xml_convert($row_pendaftar->nama_pendaftar) . '" ';
+                $xml_out .= 'email="' . xml_convert($row_pendaftar->email) . '" ';
+                $xml_out .= 'telepon="' . xml_convert($row_pendaftar->telepon) . '" ';
+                $xml_out .= 'alamat="' . xml_convert($row_pendaftar->alamat) . '" ';
+                $xml_out .= '/>';
+            }
+        }
+		
+		$xml_out .= '</challenge>';
+		
+        echo $xml_out;
+	}
+	
+	function verifikasi_bayar_check($id_pendaftar){
+		$id_pendaftar = $_POST['id_pendaftar'];
+		$this->load->model('pendaftar_models/PendaftarModels');
+		$this->PendaftarModels->verifikasi_bayar_check($id_pendaftar);
 	}
 	
 	//Lihat detail produk
