@@ -36,4 +36,20 @@
 			
 			return $result;
 		}
+
+		//Mengambil data coming coming terdekat
+		function get_data_coming_terdekat()
+		{
+			$query = $this->db->query("SELECT * FROM `coming` WHERE status='1' limit 5");
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
 	}
