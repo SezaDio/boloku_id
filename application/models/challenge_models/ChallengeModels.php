@@ -23,6 +23,13 @@
 			return $result;
 		}		
 		
+		function get_nama_challenge()
+		{
+			$query = $this->db->query("SELECT * FROM `nama_challenge` WHERE id_nama_challenge=(SELECT max(id_nama_challenge) FROM `nama_challenge`)");
+			
+			return $query->row_array();
+		}
+		
 		//Mempublish challenge
 		function publish_challenge($id_challenge)
 		{

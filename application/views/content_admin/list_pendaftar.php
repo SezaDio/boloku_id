@@ -4,9 +4,12 @@
                     <h1>
                        Kelola Pendaftar
                     </h1>
+					<h2>
+						<b><?php echo $nama_event?></b>
+					</h2>
                     <ol class="breadcrumb">
-                        <li><i class="fa fa-dashboard"></i><?php echo $idEvent ?></li>           
-                        
+                        <li><i class="fa fa-dashboard"></i>Kelola Pendaftar</li>
+                        <li class="active"><?php echo $nama_event?></li>
                     </ol>
                 </section>
 
@@ -15,7 +18,7 @@
 				    <div class="row">
 						<div class="modal"  id="verifikasi_bayar">
 							<div class="modal-content" id="verifikasi_bayar2">
-							coba
+							
 							</div>
 						</div>
 						
@@ -74,7 +77,7 @@
                                                     <?php } ?>
                                             </tbody>
                                         </table>
-										<?php echo $jenis_event ?>
+										<a href="<?php echo site_url('KelolaPendaftar');?>"><button class="btn btn-warning btn-sm" ><i class="glyphicon glyphicon-arrow-left" ></i> Kembali</button></a>
                                     </div>
                                 </div><!-- /.box-body -->
 
@@ -97,19 +100,68 @@
 	
 	function verifikasi_bayar(id_pendaftar){
 		$.post('<?php echo site_url('KelolaPendaftar/verifikasi_bayar/'); ?>'+id_pendaftar, function(dataPendaftar){
+			var getUrl = window.location;
+			var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 			var xml = parseXml(dataPendaftar);
 			var getPendaftar = xml.documentElement.getElementsByTagName("pendaftar");
 			var divhasil='';
 			for (var i = 0; i < getPendaftar.length; i++) {
 				var id_pendaftar = getPendaftar[i].getAttribute("id_pendaftar");
+				var id_event = getPendaftar[i].getAttribute("id_event");
 				var nama_pendaftar = getPendaftar[i].getAttribute("nama_pendaftar");
 				var email = getPendaftar[i].getAttribute("email");
 				var telepon = getPendaftar[i].getAttribute("telepon");
 				var alamat = getPendaftar[i].getAttribute("alamat");
+				var no_pendaftar = getPendaftar[i].getAttribute("no_pendaftar");
+				var bukti_pembayaran;
 			}
-			divhasil += '<h3>'+nama_pendaftar+'</h3>'
+			$.post('<?php echo site_url('KelolaPendaftar/get_pembayaran/'); ?>'+no_pendaftar, function(dataPembayaran){
+				var xml = parseXml(dataPembayaran);
+				var getPembayaran = xml.documentElement.getElementsByTagName("pembayaran");
+				for (var i = 0; i < getPembayaran.length; i++) {
+					bukti_pembayaran = getPembayaran[i].getAttribute("bukti_pembayaran");
+				}
+				
+			divhasil += '<b><a href="javascript:void(0)" class="close" onclick="closeVerifikasi()">&times;</a></b>';	
+			divhasil += '<div class="box-body" style="align-content: center; min-height: 450px;">';
+			divhasil += '<h1><b>Verifikasi Pembayaran</b></h1><hr>';
+			divhasil += '<div class="col-sm-4" style="padding-top: 20px; text-align: center;">';
+            divhasil += '<div style="height:250px; width: 250px">';
+            divhasil += '<img style="border: solid currentColor; height:100%" src="'+baseUrl+'/asset/upload_img_pembayaran/'+bukti_pembayaran+'"></div></div>';
+			
+			divhasil += '<div class="col-sm-8" style="padding-top: 20px;">';
+			divhasil += '<div ><div><table class="table">';
+            divhasil += '<tr><td style="width:25%;"><label>Nama</label></td>';
+			divhasil += '<td style="width:1%;"><label>:</label></td>';
+            divhasil += '<td><label> '+nama_pendaftar+' </label></td></tr></table></div></div> ';
+			
+			divhasil += '<div ><div><table class="table">';
+            divhasil += '<tr><td style="width:25%;"><label>Nomor Peserta</label></td>';
+			divhasil += '<td style="width:1%;"><label>:</label></td>';
+            divhasil += '<td><label> '+no_pendaftar+' </label></td></tr></table></div></div> ';
+			
+			divhasil += '<div ><div><table class="table">';
+            divhasil += '<tr><td style="width:25%;"><label>Event</label></td>';
+			divhasil += '<td style="width:1%;"><label>:</label></td>';
+            divhasil += '<td><label> '+id_event+' </label></td></tr></table></div></div> ';
+			
+			divhasil += '<div ><div><table class="table">';
+            divhasil += '<tr><td style="width:25%;"><label>Email</label></td>';
+			divhasil += '<td style="width:1%;"><label>:</label></td>';
+            divhasil += '<td><label> '+email+' </label></td></tr></table></div></div> ';
+			
+			divhasil += '<div ><div><table class="table">';
+            divhasil += '<tr><td style="width:25%;"><label>Telepon</label></td>';
+			divhasil += '<td style="width:1%;"><label>:</label></td>';
+            divhasil += '<td><label> '+telepon+' </label></td></tr></table></div></div> ';
+			
+			
 			divhasil += '<button onclick="verifikasi_bayar_check('+id_pendaftar+')" class="btn btn-danger btn-sm">Verifikasi</button>';
+			divhasil += '</div></div>';
+			
 			document.getElementById("verifikasi_bayar2").innerHTML = divhasil;
+			},"text");
+			
 		},"text");		
 		document.getElementById("verifikasi_bayar").style.display = "block";
 	}
@@ -127,6 +179,10 @@
 						alert('Pembayaran gagal diverifikasi');
 					}
 		});
+	}
+	
+	function closeVerifikasi(){
+		document.getElementById("verifikasi_bayar").style.display = "none";
 	}
 
 </script>

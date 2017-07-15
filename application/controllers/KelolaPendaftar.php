@@ -31,8 +31,9 @@ class Kelolapendaftar extends CI_Controller {
 	{
 		$this->load->model('pendaftar_models/PendaftarModels');
 		$data['idEvent'] = $id_event;
-		$event = $this->PendaftarModels->get_jenis_event($id_event);
+		$event = $this->PendaftarModels->get_event($id_event);
 		$data['jenis_event'] = $event['jenis_event'];
+		$data['nama_event'] = $event['nama_coming'];
 		$data['listPendaftar'] = $this->PendaftarModels->get_data_pendaftar($id_event);
 		
 			
@@ -69,15 +70,45 @@ class Kelolapendaftar extends CI_Controller {
             foreach ($get_pendaftar->result() as $row_pendaftar) {
                 $xml_out .= '<pendaftar ';
                 $xml_out .= 'id_pendaftar="' . xml_convert($row_pendaftar->id_pendaftar) . '" ';
+                $xml_out .= 'id_event="' . xml_convert($row_pendaftar->id_event) . '" ';
                 $xml_out .= 'nama_pendaftar="' . xml_convert($row_pendaftar->nama_pendaftar) . '" ';
                 $xml_out .= 'email="' . xml_convert($row_pendaftar->email) . '" ';
                 $xml_out .= 'telepon="' . xml_convert($row_pendaftar->telepon) . '" ';
                 $xml_out .= 'alamat="' . xml_convert($row_pendaftar->alamat) . '" ';
+                $xml_out .= 'no_pendaftar="' . xml_convert($row_pendaftar->no_pendaftar) . '" ';
+				
                 $xml_out .= '/>';
             }
         }
 		
-		$xml_out .= '</challenge>';
+		$xml_out .= '</pendaftars>';
+		
+        echo $xml_out;
+	}
+	
+	//Get Pembayaran
+	function get_pembayaran($no_pendaftar){
+        header('Access-Control-Allow-Origin: *');
+        header('Content-type: text/xml');
+        
+        //var_dump($search_term); exit();
+        $data_pembayaran=$this->db->where("no_peserta",$no_pendaftar)->get('pembayaran');
+        
+		
+        
+        
+        $this->load->helper('xml');
+		$xml_out = '<pembayarans>';
+        if ($data_pembayaran->num_rows()>0) {
+            foreach ($data_pembayaran->result() as $row_pembayaran) {
+                $xml_out .= '<pembayaran ';
+                $xml_out .= 'bukti_pembayaran="' . xml_convert($row_pembayaran->path_gambar) . '" ';
+				
+                $xml_out .= '/>';
+            }
+        }
+		
+		$xml_out .= '</pembayarans>';
 		
         echo $xml_out;
 	}

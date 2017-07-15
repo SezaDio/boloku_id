@@ -28,9 +28,23 @@
                                                 <?php echo $this->session->flashdata('msg_berhasil');?> 
                                             </div>
                                         <?php }?>
+										
+										<!--Nama Challenge-->
+										<div style="font-size:50px" id="nama_challenge">
+											<?php echo $nama_challenge;?> &nbsp <a style="font-size:20px" onclick="ubahNamaChallenge()"> <button class="btn btn-default btn-sm"><i class="glyphicon glyphicon-pencil" ></i>&nbsp Ubah Nama Challenge</button></a>
+										</div>
+										
+										<!--Ubah Nama Challenge-->
+										<div id="ubah_nama_challenge" style="display:none">
+											<input type="text" name="nama_challenge" id="nama_baru" value="<?php echo $nama_challenge ?>"> <a style="font-size:20px" onclick="simpanNamaChallenge()"> <button class="btn btn-default btn-sm"><i class="glyphicon glyphicon-pencil" ></i>&nbsp Simpan</button></a>
+										</div>
+										
+										<!--Tambah Challenge-->
 										<a href="<?php echo site_url('KelolaChallenge/tambah_challenge_check/');?>">
                                             <button type="submit" name="submit" class="btn btn-info"><i class="glyphicon glyphicon-plus"></i> Tambah Challenge Update</button>
                                         </a>
+										
+										<!--Form Cari-->
 										<input placeholder="Cari Challenge Update" name="search" class="form-control" type="text" id="kata_kunci">
 										<button onclick="cariChallenge()">Cari</button>
 										<button onclick="lihatSemua()">Lihat Semua</button><br/><br/><br/>
@@ -81,6 +95,38 @@
             
 			<script type="text/javascript">
 				function publish(idChallenge){
+					var check = document.getElementById("challenge"+idChallenge).checked;
+						if(check){
+							$.ajax({
+							url: 'publish_challenge',
+							type: 'POST',
+							data: {idChallenge:idChallenge},
+							success: function(){
+										alert('Content berhasil di publish');
+										location.reload();
+									},
+							error: function(){
+										alert('Content gagal di publish');
+									}
+							});
+						} else{
+							$.ajax({
+							url: 'unpublish_challenge',
+							type: 'POST',
+							data: {idChallenge:idChallenge},
+							success: function(){
+										alert('Content berhasil di unpublish');
+										location.reload();
+									},
+							error: function(){
+										alert('Content gagal di unpublish');
+									}
+							});
+							
+						}
+				}
+			
+				function publish2(idChallenge){
 					var check = document.getElementById("challenge"+idChallenge).checked;
 						if(check){
 							$.ajax({
@@ -158,7 +204,7 @@
 							  
 							  divhasil += '<div class="col-md-4" style="text-align: center">';
 							  divhasil += '<div class="well" style="padding:10px">';
-							  divhasil += '<input onclick="publish('+id_challenge+')" type="checkbox" name="challenge" id="challenge'+id_challenge+'" value="'+id_challenge+'" '+ischeck+'>';
+							  divhasil += '<input onclick="publish2('+id_challenge+')" type="checkbox" name="challenge" id="challenge'+id_challenge+'" value="'+id_challenge+'" '+ischeck+'>';
 							  divhasil += '<img height="100%" width="100%" alt="" src="'+baseUrl+'/asset/upload_img_challenge/'+path_gambar+'">';
 							  divhasil += '<br/>'+judul_challenge+'<br/>';
 							  divhasil += '<a href="'+baseUrl+'/KelolaChallenge/edit_challenge/'+id_challenge+'"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>';
@@ -178,5 +224,27 @@
 				function lihatSemua(){
 					document.getElementById("challengediv").style.display = "block";
 					document.getElementById("hasil_search").style.display = "none";
+				}
+				
+				function ubahNamaChallenge(){
+					document.getElementById("ubah_nama_challenge").style.display = "block";
+					document.getElementById("nama_challenge").style.display = "none";
+				}
+				
+				function simpanNamaChallenge(){
+					var namaBaru = document.getElementById("nama_baru").value;
+					$.ajax({
+						url: 'ubah_nama_challenge',
+						type: 'POST',
+						data: {namaBaru:namaBaru},
+						success: function(){
+								alert('Nama challenge berhasil diubah');
+								location.reload();
+						},
+						error: function(){
+								alert('Nama challenge gagal diubah');
+						}
+				    });
+					
 				}
 			</script>

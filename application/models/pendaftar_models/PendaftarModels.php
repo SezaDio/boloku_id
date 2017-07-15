@@ -20,7 +20,7 @@
 			return $query;
 		}
 		
-		function get_jenis_event($id_event){
+		function get_event($id_event){
 			$this->db->select('*');
 			$this->db->from('coming');
 			$this->db->where('id_coming',$id_event);

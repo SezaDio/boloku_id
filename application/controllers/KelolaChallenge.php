@@ -18,6 +18,8 @@ class KelolaChallenge extends CI_Controller {
 	{
 		$this->load->model('challenge_models/ChallengeModels');
 		$data['listChallenge'] = $this->ChallengeModels->get_data_challenge();
+		$namaChallenge= $this->ChallengeModels->get_nama_challenge();
+		$data['nama_challenge'] = $namaChallenge['nama_challenge'];
 			
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
@@ -53,6 +55,20 @@ class KelolaChallenge extends CI_Controller {
 		$id_challenge = $_POST['idChallenge'];
 		$this->load->model('challenge_models/ChallengeModels');
 		$this->ChallengeModels->unpublish_challenge($id_challenge);
+
+
+		$this->index();
+	}
+	
+	//Publish
+	public function ubah_nama_challenge()//$id_produk
+	{
+		$nama_challenge = $_POST['namaBaru'];
+		$data = array(
+			'nama_challenge' => $nama_challenge
+		);
+
+		$this->db->insert('nama_challenge', $data);
 
 
 		$this->index();
