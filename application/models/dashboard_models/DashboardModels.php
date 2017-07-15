@@ -52,4 +52,25 @@
 		
 			return $result;
 		}
+
+		//Mengambil data jumlah member untuk grafik
+		function get_data_jumlah_member()
+		{
+			
+		    $query =$this->db->query("SELECT count(tahun) as jumlah FROM prestasi group by tahun");
+
+		    $bln = array();
+		    $bln['name'] = 'tahun';
+		    $rows['name'] = 'Jumlah';
+		    while ($r = mysql_fetch_array($result)) {
+		        $bln['data'][] = $r['tahun'];
+		        $rows['data'][] = $r['jumlah'];
+		    }
+
+			$rslt = array();
+
+			array_push($rslt, $bln);
+			array_push($rslt, $rows);
+			print json_encode($rslt, JSON_NUMERIC_CHECK);
+		}	
 	}

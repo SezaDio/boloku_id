@@ -102,7 +102,7 @@
                                 </div>
                                 <div class="box-body">
                                     <!-- panggil grafik ocit -->
-                                    <div id="container" class="chart tab-pane active" style="min-width: 400px; height: 400px; margin: 0 auto">
+                                    <div id="container" class="chart" style="min-width: 400px; height: 360px; margin: 0 auto">
                                     </div>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
@@ -168,7 +168,7 @@
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
 
-            <!--chartnya ocit
-            <script src="<?php //echo base_url('asset/js/highcharts.js?ver=b1.0'); ?>"></script>
-            <script src="<?php //echo base_url('asset/js/exporting.js?ver=b1.0'); ?>"></script>
-            <script src="<?php //echo base_url('asset/js/grafik_tahun.js?ver=b1.0'); ?>"></script>-->
+            
+            <script src="<?php echo base_url('asset/js/highcharts.js?ver=b1.0'); ?>"></script>
+            <script src="<?php echo base_url('asset/js/exporting.js?ver=b1.0'); ?>"></script>
+           <script src="<?php echo base_url('asset/js/grafik_tahun.js?ver=b1.0'); ?>"></script>
