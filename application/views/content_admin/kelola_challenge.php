@@ -90,9 +90,6 @@
 										</div>
 										
 									</div>
-                                    <div class="form-group">
-                                        
-                                    </div>
                                 </div><!-- /.box-body -->
 
                             </div><!-- /.box -->
