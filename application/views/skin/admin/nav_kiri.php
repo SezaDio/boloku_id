@@ -1,4 +1,4 @@
-<aside class="left-side sidebar-offcanvas">
+<aside style="position: fixed;" class="left-side sidebar-offcanvas">
                 <!-- sidebar: style can be found in sidebar.less -->
                 <section class="sidebar">
                     <!-- sidebar menu: : style can be found in sidebar.less -->
