@@ -168,7 +168,10 @@
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
 
+            <script type="text/javascript">
+                var data_member_url = "<?php echo site_url('AdminDashboard/get_data_jumlah_member'); ?>";
+            </script>
             
             <script src="<?php echo base_url('asset/js/highcharts.js?ver=b1.0'); ?>"></script>
             <script src="<?php echo base_url('asset/js/exporting.js?ver=b1.0'); ?>"></script>
-           <script src="<?php echo base_url('asset/js/grafik_tahun.js?ver=b1.0'); ?>"></script>
+            <script src="<?php echo base_url('asset/js/grafik_tahun.js?ver=b1.0'); ?>"></script>

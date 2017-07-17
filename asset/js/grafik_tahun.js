@@ -7,22 +7,21 @@ $(document).ready
                 type: 'line'
             },
             title: {
-                text: 'Persebaran Perolehan Prestasi',
+                text: 'Jumlah Member boloku.id',
                 x: -20 //center
             },
             subtitle: {
-                text: 'Berdasarkan Tahun',
+                text: 'Berdasarkan Minggu',
                 x: -20
             },
             xAxis: {
-                categories: [],
                 title: {
-                    text: 'Tahun'
+                    text: 'Minggu'
                 }
             },
             yAxis: {
                 title: {
-                    text: 'Jumlah Prestasi'
+                    text: 'Jumlah Member'
                 },
                 plotLines: [{
                     value: 0,
@@ -32,7 +31,7 @@ $(document).ready
             },
             tooltip: {
                 formatter: function() {
-                    return '<b>Tahun '+ this.x +'</b><br/>'+
+                    return '<b>Minggu '+ this.x +'</b><br/>'+
                         this.y ;
                 }
             },
@@ -44,7 +43,7 @@ $(document).ready
             },
             series: []
         };
-        $.getJSON("data-basic-colm.php", function(json) {
+        $.getJSON(data_member_url, function(json) {
             options.xAxis.categories = json[0]['data']; //xAxis: {categories: []}
             options.series[0] = json[1];
             chart = new Highcharts.Chart(options);

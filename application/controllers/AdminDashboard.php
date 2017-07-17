@@ -39,5 +39,24 @@ class AdminDashboard extends CI_Controller {
 		$this->index();
 	}
 
+	public function get_data_jumlah_member()
+	{
+		$this->load->model('dashboard_models/DashboardModels');
+
+		$data['jumlah_member']=$this->DashboardModels->get_data_jumlah_member();
+
+		foreach ($data['jumlah_member'] as $key=>$data_jumlah_member) 
+		{
+			$data_jumlah['data'][] = intval($data_jumlah_member);
+			$data_minggu['data'][] = strval($key);
+		}
+
+		$rslt = array();
+		array_push($rslt, $data_minggu);
+		array_push($rslt, $data_jumlah);
+
+		print json_encode($rslt);
+
+	}
 
 }
