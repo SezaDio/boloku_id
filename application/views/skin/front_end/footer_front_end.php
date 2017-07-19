@@ -25,10 +25,9 @@
                         <div class="copyright"><span>&copy; 2017 All rights reserved.  Designed By <a href="">Youth.SM</a></span></div>
                         <ul>
                            <li><a href="#">Home </a></li>
-                           <li><a href="#">About Us</a></li>
-                           <li><a href="#">Blog</a></li>
+                           <li><a href="#">Event</a></li>
+                           <li><a href="#">Ngerti Rak ?</a></li>
                            <li><a href="#">FAQ</a></li>
-                           <li><a href="#">Privacy Policy </a></li>
                            <li><a href="#">Contact Us</a></li>
                         </ul>
                      </div>
@@ -62,7 +61,7 @@
           $(function () {
             // Slideshow 1
             $("#slider1").responsiveSlides({
-              maxwidth: 900,
+              maxwidth: 1350,
               speed: 800,
               before: function(){},
               after: function(){}
