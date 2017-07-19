@@ -2,12 +2,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Edit Ngerti Rak?
+                       Edit Artikel
                     </h1>
 					<div id="instafeed"></div>
                     <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Ngerti Rak</a></li>
-                        <li class="active">Edit Ngerti Rak?</li>
+                        <li><a href="#"><i class="fa fa-dashboard"></i>Kelola Artikel</a></li>
+                        <li class="active">Edit Artikel</li>
                     </ol>
                 </section>
 
@@ -31,57 +31,43 @@
                                 </div>
                                 <!-- form start -->
 								
-                                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaWow/edit_wow/'.$idWow);?>" method="POST">
+                                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaArtikel/edit_artikel/'.$idArtikel);?>" method="POST">
                                     <div class="box-body">
-										<div class="form-group">
-                                            <label for="exampleInputEmail1">Kategori   :</label><br>
-                                            
-                                            <select name="kategori" required class="form-control" id="kategori">
-                                                <option value="">--Pilih Kategori Ngerti Rak?--</option>
-                                                <?php
-                                                    foreach ($kategori_wow as $key=>$kategori) 
-                                                    {
-                                                        if ($key==$dataWow['kategori_wow']){
-                                                            echo '<option value="'.$key.'" selected>'.$kategori.'</option>';
-                                                        }
-                                                        else
-                                                        {
-                                                            echo '<option value="'.$key.'">'.$kategori.'</option>';   
-                                                        }
-                                                    }
-                                                ?>
-                                            </select></br>
+										
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Judul Artikel :</label>
+                                            <input type="text" required name="judul_artikel" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataArtikel['judul_artikel']); ?>">
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Judul Ngerti Rak?   :</label>
-                                            <input type="text" required name="judul_wow" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataWow['judul_wow']); ?>">
+                                            <label for="exampleInputEmail1">Penulis Artikel :</label>
+                                            <input type="text" required name="penulis_artikel" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataArtikel['penulis_artikel']); ?>">
                                         </div>
 										
 										<div class="form-group">
 											<div class='box-header'>
-												 <label>Deskripsi Ngerti Rak? :</label>
+												 <label>Isi Artikel:</label>
 											</div>
 											
-												<textarea required id="editor_wow" name="deskripsi_wow" rows="10" cols="80">
-												    <?php echo htmlspecialchars($dataWow['deskripsi']); ?>
+												<textarea required id="editor_wow" name="isi_artikel" rows="10" cols="80">
+												    <?php echo htmlspecialchars($dataArtikel['isi_artikel']); ?>
 												</textarea>                                    
 											
                                         </div>
 
                                         <div class='box-header'>
-                                            <label>Gambar Ngerti Rak? :</label>
+                                            <label>Gambar Artikel :</label>
                                         </div>
 
                                         <div class='box-header'>   
                                             <?php
-                                                if (empty($dataWow['path_gambar']))
+                                                if (empty($dataArtikel['path_gambar']))
                                                 {
                                                     echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/img/empty.png').'"/>';
                                                 }
                                                 else
                                                 {
-                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/upload_img_wow/'.$dataWow['path_gambar']).'"/>';
+                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/upload_img_artikel/'.$dataArtikel['path_gambar']).'"/>';
                                                 }
                                             ?>             
                                             
@@ -93,10 +79,10 @@
 											<b><p style="color:red;">File diizinkan: jpg, jpeg, dan png (Max 2Mb)</p></b>
                                         </div>
                                     </div><!-- /.box-body -->
-                                    <input type="hidden" name="id_wow" value="<?php echo $idWow; ?>">
+                                    <input type="hidden" name="id_artikel" value="<?php echo $idArtikel; ?>">
                                     <div class="box-footer">
                                         <button type="submit" name="save" value="1" class="btn btn-primary"><i class="glyphicon glyphicon-floppy-saved"></i> Simpan</button>
-                                       <a href="<?php echo site_url('KelolaWow/');?>"><button type="button" name="submit" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Batal</button></a>
+                                       <a href="<?php echo site_url('KelolaArtikel/');?>"><button type="button" name="submit" class="btn btn-danger"><i class="glyphicon glyphicon-remove"></i> Batal</button></a>
                                     </div>
                                 </form>
                             </div><!-- /.box -->

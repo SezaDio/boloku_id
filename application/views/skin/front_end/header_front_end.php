@@ -6,7 +6,7 @@
       <meta name="description" content="">
       <meta name="author" content="Wong Kongkow">
 
-      <title> Wong Kongkow </title>
+      <title> boloku.id </title>
 
       <link rel="shortcut icon" href="<?php echo base_url('asset/img/favicon.ico'); ?>" type="image/x-icon">
       <link rel="icon" href="<?php echo base_url('asset/img/favicon.ico'); ?>" type="image/x-icon">

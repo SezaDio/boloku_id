@@ -62,7 +62,7 @@
         </script>
 
         <!-- Ajax -->
-        <script src="<?php echo base_url('asset/js/ajax.js?ver=b1.0'); ?>" type="text/javascript"></script>
+        <script src="<?php echo base_url('asset/js/ajax.js?ver=b2.0'); ?>" type="text/javascript"></script>
 
         <!-- CK Editor -->
         <script src="<?php echo base_url('asset/js/ckeditor.js?ver=b1.0'); ?>" type="text/javascript"></script>

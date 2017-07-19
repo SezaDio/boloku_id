@@ -318,6 +318,29 @@ function setuju_pepak_ajax(id_pepak)
 	}
 }
 
+function delete_artikel_ajax(id_artikel)
+{
+	if (confirm("Anda yakin ingin menghapus Artikel ini ?"))
+	{
+		$.ajax({
+			url: 'KelolaArtikel/delete_artikel',
+			type: 'POST',
+			data: {id_artikel:id_artikel},
+			success: function(){
+						alert('Delete Artikel berhasil');
+						location.reload();
+					},
+			error: function(){
+						alert('Delete Artikel gagal');
+					}
+		});
+	}
+	else
+	{
+		alert(id_produk + "Gagal dihapus");
+	}
+}
+
 
     function parseXml(str) {
       if (window.ActiveXObject) {

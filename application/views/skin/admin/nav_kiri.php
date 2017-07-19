@@ -44,6 +44,18 @@
                         </li>
 
                         <li>
+                            <a href="<?php echo site_url('KelolaArtikel/index'); ?>">
+                                <i class="glyphicon glyphicon-collapse-up"></i> <span> Kelola Artikel </span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-collapse-up"></i> <span> Kelola Stiker </span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="<?php echo site_url('KelolaPendaftar/index'); ?>">
                                 <i class="glyphicon glyphicon-list-alt"></i> <span> Kelola Pendaftaran </span>
                             </a>
