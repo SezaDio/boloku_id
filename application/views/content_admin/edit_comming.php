@@ -227,7 +227,33 @@
 											<b><p style="color:red;">File diizinkan: jpg, jpeg, dan png (Max 2Mb)</p></b>
                                         </div>
                                         <br>
-
+										
+										<div class="form-group">
+                                            <label for="exampleInputEmail1">Seat   :</label>
+                                            <div class="radio">
+                                                <label>
+                                                    <input style="opacity: 1;" type="radio" name="seat" value=1 required onclick="limitedSeat()" <?php if($dataComing['seat']==1){?> checked="checked" <?php } ?>>
+                                                     Limited Seat
+                                                </label>
+                                                &nbsp &nbsp <label>
+                                                    <input style="opacity: 1;" type="radio" name="seat" value=0 required onclick="openSeat()" <?php if($dataComing['seat']==0){?> checked="checked" <?php } ?>>
+                                                     Open Seat
+                                                </label>
+                                            </div>
+                                        </div>
+										
+										
+										<div class="form-group" id="limitedseat" <?php if($dataComing['seat']==0){ ?> style="display:none" <?php } ?>>
+                                            <label for="exampleInputEmail1">Jumlah Seat  :</label>
+                                            <input type="text" required name="jumlah_seat" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['jumlah_seat']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['jumlah_seat']);
+                                                }
+                                            ?>"> 
+                                        </div>
+										
+										
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Apakah anda ingin menggunakan fasilitas pendaftaran kami ?</label>
                                             <div class="radio">
@@ -283,6 +309,14 @@
                         $('#tgl_selesai').val(end.format('YYYY-MM-DD'));
                     });
                 });
+				
+				function limitedSeat(){
+					document.getElementById("limitedseat").style.display = "block";
+				}
+				
+				function openSeat(){
+					document.getElementById("limitedseat").style.display = "none";
+				}
             </script>
 
             

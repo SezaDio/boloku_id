@@ -128,6 +128,31 @@
                                                                             ?>
                                                                         </td>
                                                                     </tr>
+																	<tr>
+                                                                        <td>Seat</td>
+                                                                        <td>:</td>
+                                                                        <td style="text-align: left;">
+                                                                           <?php 
+                                                                                $seat=$id_coming->seat;
+
+                                                                                if ($seat == 1) 
+                                                                                {
+                                                                                    echo "Limited Seat";
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    echo "Open Seat";
+                                                                                }
+                                                                            ?>
+                                                                        </td>
+                                                                    </tr>
+																	<?php if($id_coming->seat==1){?>
+																	<tr>
+                                                                        <td>Jumlah Seat</td>
+                                                                        <td>:</td>
+                                                                        <td style="text-align: left;"><?php echo $id_coming->jumlah_seat;?></td>
+                                                                    </tr>
+																	<?php } ?>
                                                                     <tr>
                                                                         <td>Contact Person</td>
                                                                         <td>:</td>

@@ -194,6 +194,30 @@
 											</textarea>                                    
 											
                                         </div>
+										
+										<div class="form-group">
+                                            <label for="exampleInputEmail1">Seat   :</label>
+                                            <div class="radio">
+                                                <label>
+                                                    <input style="opacity: 1;" type="radio" name="seat" value=1 required onclick="limitedSeat()">
+                                                     Limited Seat
+                                                </label>
+                                                &nbsp &nbsp <label>
+                                                    <input style="opacity: 1;" type="radio" name="seat" value=0 required onclick="openSeat()">
+                                                     Open Seat
+                                                </label>
+                                            </div>
+                                        </div>
+										
+										<div class="form-group" id="limitedseat" style="display:none">
+                                            <label for="exampleInputEmail1">Jumlah Seat  :</label>
+                                            <input type="text" required name="jumlah_seat" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['seat']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['seat']);
+                                                }
+                                            ?>"> 
+                                        </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputFile">Unggah File Gambar :</label>
@@ -242,4 +266,12 @@
                         $('#tgl_selesai').val(end.format('YYYY-MM-DD'));
                     });
                 });
+				
+				function limitedSeat(){
+					document.getElementById("limitedseat").style.display = "block";
+				}
+				
+				function openSeat(){
+					document.getElementById("limitedseat").style.display = "none";
+				}
             </script>

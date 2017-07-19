@@ -263,6 +263,13 @@ class KelolaComing extends CI_Controller {
 		$data['tipe_event']= $tipe_event;
 		$data['jam_event']= $jam_event;
 		$data['dataComing'] = $data_coming_tambah;
+		
+		$seat=$this->input->post('seat');
+		if($seat==1){
+			$jumlah_seat=$this->input->post('jumlah_seat');
+		} else{
+			$jumlah_seat=0;
+		}
 
 		if ($tambah == 1) 
 		{
@@ -279,6 +286,7 @@ class KelolaComing extends CI_Controller {
 			$this->form_validation->set_rules('jam_mulai', 'Jam', 'required');
 			$this->form_validation->set_rules('jam_selesai', 'Jam', 'required');
 			$this->form_validation->set_rules('deskripsi_coming', 'Deskripsi', 'required');
+			$this->form_validation->set_rules('seat', 'Seat', 'required');
 
 			//Mengambil filename gambar untuk disimpan
 			$nmfile = "file_".time();
@@ -309,6 +317,8 @@ class KelolaComing extends CI_Controller {
 						'jam_mulai'=>$this->input->post('jam_mulai'),
 						'jam_selesai'=>$this->input->post('jam_selesai'),
 						'path_gambar'=> NULL,
+						'seat'=> $seat,
+						'jumlah_seat'=> $jumlah_seat,
 						'status'=>1
 					);
 					$data['dataComing'] = $data_coming;
@@ -439,6 +449,13 @@ class KelolaComing extends CI_Controller {
 			$config['allowed_types'] = 'jpg|png|jpeg';
 			$config['max_size'] = '4000'; //kb
 			$config['file_name'] = $nmfile;
+			
+			$seat=$this->input->post('seat');
+			if($seat==1){
+				$jumlah_seat=$this->input->post('jumlah_seat');
+			} else{
+				$jumlah_seat=0;
+			}
 
 			$data_coming=array(
 							'nama_coming'=>$this->input->post('nama_coming'),
@@ -454,6 +471,8 @@ class KelolaComing extends CI_Controller {
 							'jam_selesai'=>$this->input->post('jam_selesai'),
 							'deskripsi_coming'=>$this->input->post('deskripsi_coming'),
 							'pendaftaran'=>$this->input->post('pendaftaran'),
+							'seat'=>$seat,
+							'jumlah_seat'=>$jumlah_seat,
 							//'path_gambar'=>NULL,
 							'posted_by'=>$this->input->post('posted_by')
 							);
@@ -511,6 +530,8 @@ class KelolaComing extends CI_Controller {
 							'jam_selesai'=>$data['coming']->jam_selesai,
 							'deskripsi_coming'=>$data['coming']->deskripsi_coming,
 							'posted_by'=>$data['coming']->posted_by,
+							'seat'=>$data['coming']->seat,
+							'jumlah_seat'=>$data['coming']->jumlah_seat,
 							'pendaftaran'=>$data['coming']->pendaftaran,
 							'path_gambar'=> $data['coming']->path_gambar
 							);

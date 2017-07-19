@@ -54,6 +54,12 @@
                                 <i class="glyphicon glyphicon-collapse-up"></i> <span> Kelola Stiker </span>
                             </a>
                         </li>
+						
+						<li>
+                            <a href="<?php echo site_url('KelolaHeader/index'); ?>">
+                                <i class="glyphicon glyphicon-collapse-up"></i> <span> Kelola Header </span>
+                            </a>
+                        </li>
 
                         <li>
                             <a href="<?php echo site_url('KelolaPendaftar/index'); ?>">
