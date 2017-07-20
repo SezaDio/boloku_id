@@ -135,144 +135,39 @@
                   </ul>
                   <ul class="menu-links pull-right">
 
-                     <!--Menu Wong Kongkow Home-->
+                     <!--Menu boloku Home-->
                      <li class="active">
                         <a href="<?php echo base_url(''); ?>">
                            <span class="text">  Home </span>
                         </a>
                      </li>
 
-                     <!--Menu Wong Kongkow Wow-->
+                     <!--Menu boloku Wow-->
                      <li>
                         <a href="<?php //echo base_url('FrontControl_Wow'); ?>">
                            <span class="text">  Event </span> 
                         </a>
                      </li>
 
-                     <!--Menu Wong Kongkow Shopping-->
+                     <!--Menu boloku Shopping-->
                      <li>
                         <a href="<?php echo base_url('FrontControl_NgertiRak'); ?>">
                            <span class="text"> Ngerti Rak ? </span>
                         </a>
                      </li>
 
-                     <!--Menu Wong Kongkow Karepmu-->
+                     <!--Menu boloku Karepmu-->
                      <li>
                         <a href="#">
                            <span class="text"> FAQ </span>
                         </a>
                      </li>
 
-                     <!--Menu Wong Kongkow Contact-->
+                     <!--Menu boloku Contact-->
                      <li>
-                        <a href="javascript:void (0)">
-                        <span class="text">Contact Us</span>
+                        <a href="<?php echo base_url('FrontControl_ContactUs'); ?>">
+                           <span class="text"> Contact Us </span>
                         </a>
-                        <div class="drop-down-medium col-md-8 col-md-pull-1">
-                           <div class="col-sm-3">
-                              <div class="list-items">
-                                 <h4>Blog Pages</h4>
-                                 <ul>
-                                    <li>
-                                       <a href="blog-grids.html"> <i class="ti-angle-right"></i> Blog Grid</a>
-                                       <hr>
-                                    </li>
-                                    <li>
-                                       <a href="blog-grids-2.html"> <i class="ti-angle-right"></i> Blog Grid 2</a>
-                                       <hr>
-                                    </li>
-                                    <li>
-                                       <a href="blog-listing.html"> <i class="ti-angle-right"></i> Blog Listing</a>
-                                       <hr>
-                                    </li>
-                                    <li>
-                                       <a href="blog-grids-small.html"> <i class="ti-angle-right"></i> Blog Grid Small</a>
-                                       <hr>
-                                    </li>
-                                 </ul>
-                              </div>
-                           </div>
-                           <div class="col-sm-3">
-                              <div class="list-items">
-                                 <h4>Detail Pages</h4>
-                                 <ul>
-                                    <li>
-                                       <a href="standard-post.html"> <i class="ti-angle-right"></i> Statndard Post</a>
-                                       <hr>
-                                    </li>
-                                    <li>
-                                       <a href="standard-post2.html"> <i class="ti-angle-right"></i> Statndard Post 2</a>
-                                       <hr>
-                                    </li>
-                                    <li>
-                                       <a href="standard-post-full.html"> <i class="ti-angle-right"></i> Full Width Image</a>
-                                       <hr>
-                                    </li>
-                                    <li>
-                                       <a href="standard-post-full-width.html"> <i class="ti-angle-right"></i> Full Width Post</a>
-                                       <hr>
-                                    </li>
-                                 </ul>
-                              </div>
-                           </div>
-                           <div class="col-sm-3">
-                              <div class="list-items">
-                                 <h4>Extra Pages</h4>
-                                 <ul>
-                                    <li>
-                                       <a href="about.html"> <i class="ti-angle-right"></i> About</a>
-                                       <hr>
-                                    </li>
-                     
-                                    <li>
-                                       <a href="contact.html"> <i class="ti-angle-right"></i> Contact</a>
-                                       <hr>
-                                    </li>
-                                    <li>
-                                       <a href="contact-2.html"> <i class="ti-angle-right"></i> Contact 2</a>
-                                       <hr>
-                                    </li>
-                                    <li>
-                                       <a href="404.html"> <i class="ti-angle-right"></i> 404 Pages</a>
-                                       <hr>
-                                    </li>
-                                 </ul>
-                              </div>
-                           </div>
-                           <div class="col-sm-3">
-                              <div class="list-items">
-                                 <h4>Order List</h4>
-                                 <ol>
-                                    <li>
-                                       <a href="auther-posts.html">Auther Posts</a>
-                                       <hr>
-                                    </li>
-                                    <li>
-                                       <a href="#">Items</a>
-                                       <hr>
-                                    </li>
-                                    <li>
-                                       <a href="#">Items</a>
-                                       <hr>
-                                    </li>
-                                    <li>
-                                       <a href="#">Items</a>
-                                       <hr>
-                                    </li>
-                                 </ol>
-                              </div>
-                           </div>
-                           <div class="clearfix"></div>
-                           <div class="col-sm-12">
-                              <h4>Paragraph</h4>
-                              <p>
-                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab corporis eaque eos esse
-                                 exercitationem fuga, id laudantium maiores officiis perferendis quidem veniam? Ducimus
-                                 esse excepturi hic provident sunt velit voluptas?
-                                 <a href="#">Readmore...</a>
-                              </p>
-                           </div>
-                        </div>
                      </li>
                   </ul>
 
