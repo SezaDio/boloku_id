@@ -151,7 +151,7 @@
 
                      <!--Menu Wong Kongkow Shopping-->
                      <li>
-                        <a href="<?php //echo base_url('FrontControl_Shopping'); ?>">
+                        <a href="<?php echo base_url('FrontControl_NgertiRak'); ?>">
                            <span class="text"> Ngerti Rak ? </span>
                         </a>
                      </li>

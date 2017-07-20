@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class FrontControl_Wow extends CI_Controller {
+class FrontControl_NgertiRak extends CI_Controller {
 
    public function _construct()
    {
@@ -18,8 +18,8 @@ class FrontControl_Wow extends CI_Controller {
    {
       $select=3;
 
-      $this->load->view('skin/front_end/header_menu_front_end', $select);
-      $this->load->view('content_front_end/wow_page');
+      $this->load->view('skin/front_end/header_front_end');
+      $this->load->view('content_front_end/ngerti_rak_page');
       $this->load->view('skin/front_end/footer_front_end');
    }
 }

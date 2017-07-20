@@ -299,7 +299,7 @@
                      <!--Fitur Artikel-->
                      <div class="widget widget-bg">
                         <div class="heading">
-                           <h2 class="main-heading"><strong>Recent Article</strong></h2>
+                           <h2 class="main-heading"><strong>Artikel</strong></h2>
                            <span class="heading-ping"></span>
                            <span class="heading-read-more">
                               <a href="#" class="btn btn-black">See all</a>
@@ -347,7 +347,7 @@
                      <!--Fitur Update challenge Instagram-->
                      <div class="widget widget-bg ">
                         <div class="heading">
-                           <h2 class="main-heading"><strong>Challenge Update</strong></h2>
+                           <h2 class="main-heading"><strong>boloku.id</strong></h2>
                            <span class="heading-ping"></span>
                         </div>
                         <div class="featured-post-slider-single-post owl-carousel owl-theme" style="margin-top: -10px;">
