@@ -42,6 +42,7 @@
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Kategori Event</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Tipe Event</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Waktu Posting</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Top Event</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Aksi</th>                                                        
                                                 </tr>
                                             </thead>
@@ -56,6 +57,7 @@
                                                             <td><?php echo $item['kategori_coming'] ?></td>
                                                             <td><?php echo $item['tipe_event'] ?></td>
                                                             <td><?php echo $item['tanggal_posting'] ?></td>
+                                                            <td><input type="checkbox" id="coming<?php echo $item['id_coming'] ?>" onclick="topEvent(<?php echo $item['id_coming'] ?>)" <?php if($item['top_event']==1){?> checked="checked" <?php } ?>></td>
                                                             <td align="center">
                                                                  <!-- Tombol tambah Press Release -->
                                                                 <form  style="float: left;" role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaNews/tambah_news_check/');?>" method="POST">
@@ -80,6 +82,40 @@
                     </div>   <!-- /.row -->
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
+			<script>
+			function topEvent(idComing){
+					var check = document.getElementById("coming"+idComing).checked;
+						if(check){
+							$.ajax({
+							url: 'KelolaComing/top_event',
+							type: 'POST',
+							data: {idComing:idComing},
+							success: function(){
+										alert('Event berhasil menjadi Top Event');
+										location.reload();
+									},
+							error: function(){
+										alert('Event gagal menjadi Top Event');
+									}
+							});
+						} else{
+							$.ajax({
+							url: 'KelolaComing/untop_event',
+							type: 'POST',
+							data: {idComing:idComing},
+							success: function(){
+										alert('Event berhasil diubah menjadi event biasa');
+										location.reload();
+									},
+							error: function(){
+										alert('Event berhasil diubah menjadi event biasa');
+									}
+							});
+							
+						}
+				}
+			
+			</script>
 
 
             

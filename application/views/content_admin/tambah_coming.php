@@ -211,7 +211,7 @@
 										
 										<div class="form-group" id="limitedseat" style="display:none">
                                             <label for="exampleInputEmail1">Jumlah Seat  :</label>
-                                            <input type="text" required name="jumlah_seat" class="form-control" id="exampleInputEmail1" value="<?php 
+                                            <input type="text" 	name="jumlah_seat" class="form-control" id="exampleInputEmail1" value="<?php 
                                                 if (isset($dataComing['seat']))
                                                 {
                                                     echo htmlspecialchars($dataComing['seat']);

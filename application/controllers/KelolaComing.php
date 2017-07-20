@@ -319,6 +319,7 @@ class KelolaComing extends CI_Controller {
 						'path_gambar'=> NULL,
 						'seat'=> $seat,
 						'jumlah_seat'=> $jumlah_seat,
+						'top_event'=> 2,
 						'status'=>1
 					);
 					$data['dataComing'] = $data_coming;
@@ -532,6 +533,7 @@ class KelolaComing extends CI_Controller {
 							'posted_by'=>$data['coming']->posted_by,
 							'seat'=>$data['coming']->seat,
 							'jumlah_seat'=>$data['coming']->jumlah_seat,
+							'top_event'=>$data['coming']->top_event,
 							'pendaftaran'=>$data['coming']->pendaftaran,
 							'path_gambar'=> $data['coming']->path_gambar
 							);
@@ -547,17 +549,70 @@ class KelolaComing extends CI_Controller {
 	}
 	
 	function crop($img,$filename){
+		
 		$name = $img;
 		$myImage = imagecreatefromjpeg($name);
 		list($width, $height) = getimagesize($name);
-		//Create the zoom_out and cropped image
-		$myImageCrop =  imagecreatetruecolor(900, 550);
-		 
-		// Fill the two images
-		$b=imagecopyresampled($myImageCrop,$myImage,0,0,0,291 ,$width,$height,$width,$height);	
+		//get percent to resize to 900x550
+		if($width<=$height){
+			$percent = 800/$width;
+			$newwidth = $width * $percent;
+			$newheight = $height * $percent;
+			if($newheight<550){
+				$percent2 = 550/$newheight;
+				$newwidth = $newwidth * $percent2;
+				$newheight = $newheight * $percent2;
+			}
+		} else {
+			$percent = 550/$height;
+			$newwidth = $width * $percent;
+			$newheight = $height * $percent;
+			if($newwidth<800){
+				$percent2 = 800/$newwidth;
+				$newwidth = $newwidth * $percent2;
+				$newheight = $newheight * $percent2;
+			}
+		}
+		
+		
+		// resize image
+		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		imagecopyresized($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		imagejpeg($thumb,"./asset/upload_img_coming/resize_".$filename);
+		
+		// crop thumb
+		$imgThumb = './asset/upload_img_coming/resize_'.$filename;
+		$myThumb = imagecreatefromjpeg($imgThumb);
+		list($width, $height) = getimagesize($imgThumb);
+		$myThumbCrop =  imagecreatetruecolor(800, 550);
+		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
+		unlink('./asset/upload_img_coming/resize_'.$filename);
 		 
 		// Save the two images created
 		$fileName="thumb_".$filename;
-		imagejpeg( $myImageCrop,"./asset/upload_img_coming/".$fileName );
+		imagejpeg( $myThumbCrop,"./asset/upload_img_coming/".$fileName );
+		
+	}
+	
+	//Publish
+	public function top_event()
+	{
+		$id_coming = $_POST['idComing'];
+		$this->load->model('coming_models/ComingModels');
+		$this->ComingModels->top_event($id_coming);
+
+
+		$this->index();
+	}
+	
+	//Unpublish
+	public function untop_event()
+	{
+		$id_coming = $_POST['idComing'];
+		$this->load->model('coming_models/ComingModels');
+		$this->ComingModels->untop_event($id_coming);
+
+
+		$this->index();
 	}
 }

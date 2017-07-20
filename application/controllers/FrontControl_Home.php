@@ -19,13 +19,12 @@ class FrontControl_Home extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->model('home_models/HomeModels');
 		$data['listSlider'] = $this->HomeModels->get_data_slider();
-		/*$data['headNews'] = $this->HomeModels->get_head_news();
-		$data['headComming'] = $this->HomeModels->get_head_comming();
-		$data['headShopping'] = $this->HomeModels->get_head_shopping();
-		$data['newsYouther'] = $this->HomeModels->get_news_youther();
-		$data['newsRecommend'] = $this->HomeModels->get_news_recommend();
-		$data['newsCommunity'] = $this->HomeModels->get_news_community();
-		$data['newsSM'] = $this->HomeModels->get_news_SM();*/
+		$data['listTopEvent'] = $this->HomeModels->get_top_event();
+		$data['listNewEvent'] = $this->HomeModels->get_new_event();
+		$data['listNgertiRak'] = $this->HomeModels->get_ngerti_rak();
+		$data['namaChallenge'] = $this->HomeModels->get_nama_challenge();
+		$data['listChallenge'] = $this->HomeModels->get_challenge();
+		$data['listArtikel'] = $this->HomeModels->get_artikel();
 		$this->load->view('skin/front_end/welcome', $data);
 	}
 	

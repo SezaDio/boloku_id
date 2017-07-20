@@ -5,7 +5,7 @@
                <ul class="rslides" id="slider1" style="max-height: 400px; max-width: 1350px;">
 			         <?php foreach($listSlider as $item){ ?>
                     <li>
-                        <img alt="" src="<?php echo base_url('asset/upload_img_slider/'.$item['path_gambar']); ?>">
+                        <img alt="" src="<?php echo base_url('asset/upload_img_header/'.$item['path_gambar']); ?>">
                     </li>
 			         <?php } ?>
                </ul>
@@ -35,23 +35,13 @@
          <div class="container-flude">
             <div class="row">
                <div class="col-md-12 col-xs-12 col-sm-12" style="padding-bottom: 20px;">
-      
+				<?php foreach($listTopEvent as $topevent){ ?>
                   <div class="item col-md-4">
-                     <a href="<?php echo base_url('asset/img/1.jpg'); ?>" class="tt-lightbox"> 
-                        <img class="img-responsive center-block" alt="" src="<?php echo base_url('asset/img/1.jpg'); ?>"> 
+                     <a href="#" class="tt-lightbox"> 
+                        <img class="img-responsive center-block" alt="" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$topevent['path_gambar']); ?>"> 
                      </a>
                   </div>
-                  <div class="item col-md-4">
-                     <a href="<?php echo base_url('asset/img/1.jpg'); ?>" class="tt-lightbox"> 
-                        <img class="img-responsive center-block" alt="" src="<?php echo base_url('asset/img/1.jpg'); ?>"> 
-                     </a>
-                  </div>
-                  <div class="item col-md-4">
-                     <a href="<?php echo base_url('asset/img/1.jpg'); ?>" class="tt-lightbox"> 
-                        <img class="img-responsive center-block" alt="" src="<?php echo base_url('asset/img/1.jpg'); ?>"> 
-                     </a>
-                  </div>
-                                    
+                <?php } ?>                    
                </div>
             </div>
          </div>
@@ -76,13 +66,13 @@
 
                      <!---Main content New Event ditampilkan 8 buah-->
                      <div class="row">
-						      <?php //foreach($newsSM->result() as $SM){ ?>
+						   <?php foreach($listNewEvent as $newevent){ ?>
                            <article class="col-md-6 col-sm-6 col-xs-12">
                               <div class="grid-1">
                                  <div class="picture">
                                     <div class="category-image">
                                        <a href="standard-post.html">
-                                       <img alt="" class="img-responsive" src="<?php echo base_url('asset/img/1.jpg'); ?>">
+                                       <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$newevent['path_gambar']); ?>">
                                        </a>
                                        <div class="catname">
                                           <a class="btn btn-green" href="#">
@@ -99,18 +89,18 @@
                                  <div class="detail">
                                     <div class="caption">
                                        <h5>
-                                          <a href="standard-post.html"><?php //echo $SM->judul_news;?></a>
+                                          <a href="standard-post.html"><?php echo $newevent['nama_coming'];?></a>
                                        </h5>
                                     </div>
                                     <ul class="post-tools">
-                                       <li> by <a href=""> <strong> <?php //echo $SM->posted_by;?></strong> </a></li>
+                                       <li> by <a href=""> <strong> <?php echo $newevent['posted_by'];?></strong> </a></li>
                                        <li>  5 Hours Ago </li>
                                        <li><a href=""> <i class="ti-thought"></i> 57</a> </li>
                                     </ul>
                                  </div>
                               </div>
                            </article>
-						      <?php //} ?>
+						      <?php } ?>
                      </div>
 
                      <!--Pagination untuk halaman new event-->
@@ -147,16 +137,17 @@
                            <span class="heading-ping"></span>
                         </div>
                         <div class="featured-post-slider-single-post owl-carousel owl-theme" style="margin-top: -10px;">
+						<?php foreach($listNgertiRak as $ngertirak){ ?>
                            <div class="item">
                               <div class="latest-news-grid grid-1">
                                  <div class="picture">
                                     <div class="category-image">
                                        <a href="standard-post.html">
-                                       <img alt="" class="img-responsive" src="<?php echo base_url('asset/img/19.jpg'); ?>">
+                                       <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_wow/'.$ngertirak['path_gambar']); ?>">
                                        </a>
                                        <div class="catname">
                                           <a class="btn btn-maroon" href="#">
-                                             <div>Sports</div>
+                                             <div><?php echo $ngertirak['kategori_wow'];?></div>
                                           </a>
                                        </div>
                                     </div>
@@ -164,11 +155,11 @@
                                  <div class="detail">
                                     <div class="caption" style="text-align: center;">
                                        <h5>
-                                          <a href="#">Computer issue forces ground-stop for United Airlines in the U.S.</a>
+                                          <a href="#"><?php echo $ngertirak['judul_wow'];?></a>
                                        </h5>
                                     </div>
                                     <p style="text-align: center; font-size: inherit;">
-                                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitation .
+                                       <?php echo $ngertirak['deskripsi'];?>
                                     </p><br>
                                     <div class="col-md-12" style="text-align: center;">
                                        <a href="" class="btn btn-colored-blog"> See More</a>
@@ -176,93 +167,7 @@
                                  </div>
                               </div>
                            </div>
-                           <div class="item">
-                              <div class="latest-news-grid grid-1">
-                                 <div class="picture">
-                                    <div class="category-image">
-                                       <a href="standard-post.html">
-                                       <img alt="" class="img-responsive" src="<?php //echo base_url('asset/img/19.jpg'); ?>">
-                                       </a>
-                                       <div class="catname">
-                                          <a class="btn btn-green" href="#">
-                                             <div>Travel</div>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="detail">
-                                    <div class="caption" style="text-align: center;">
-                                       <h5>
-                                          <a href="#">Computer issue forces ground-stop for United Airlines in the U.S.</a>
-                                       </h5>
-                                    </div>
-                                    <p style="text-align: center; font-size: inherit;">
-                                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitation .
-                                    </p><br>
-                                    <div class="col-md-12" style="text-align: center;">
-                                       <a href="" class="btn btn-colored-blog"> Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="item">
-                              <div class="latest-news-grid grid-1">
-                                 <div class="picture">
-                                    <div class="category-image">
-                                       <a href="standard-post.html">
-                                       <img alt="" class="img-responsive" src="<?php //echo base_url('asset/img/19.jpg'); ?>">
-                                       </a>
-                                       <div class="catname">
-                                          <a class="btn btn-maroon" href="#">
-                                             <div>Sports</div>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="detail">
-                                    <div class="caption" style="text-align: center;">
-                                       <h5>
-                                          <a href="#">Computer issue forces ground-stop for United Airlines in the U.S.</a>
-                                       </h5>
-                                    </div>
-                                    <p style="text-align: center; font-size: inherit;">
-                                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitation .
-                                    </p><br>
-                                    <div class="col-md-12" style="text-align: center;">
-                                       <a href="" class="btn btn-colored-blog"> Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="item">
-                              <div class="latest-news-grid grid-1">
-                                 <div class="picture">
-                                    <div class="category-image">
-                                       <a href="standard-post.html">
-                                       <img alt="" class="img-responsive" src="<?php //echo base_url('asset/img/19.jpg'); ?>">
-                                       </a>
-                                       <div class="catname">
-                                          <a class="btn btn-lightblue" href="#">
-                                             <div>technology</div>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="detail">
-                                    <div class="caption" style="text-align: center;">
-                                       <h5>
-                                          <a href="#">Computer issue forces ground-stop for United Airlines in the U.S.</a>
-                                       </h5>
-                                    </div>
-                                    <p style="text-align: center; font-size: inherit;">
-                                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitation .
-                                    </p><br>
-                                    <div class="col-md-12" style="text-align: center;">
-                                       <a href="" class="btn btn-colored-blog"> Read More</a>
-                                    </div>
-                                 </div>
-                              </div>
-                           </div>
+                        <?php } ?>   
                         </div>
                      </div>
 
@@ -306,158 +211,49 @@
                            </span>
                         </div>
                         <ul class="tabs-posts">
+						<?php foreach($listArtikel as $artikel){ ?>
                            <li>
-                              <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/img/small-2.jpg'); ?>"></a> </div>
-                              <div class="caption"> <a href="standard-post.html">The assault on federally supported </a> </div>
+                              <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb_'.$artikel['path_gambar']); ?>"></a> </div>
+                              <div class="caption"> <a href="#"><?php echo $artikel['judul_artikel']; ?></a> </div>
                               <ul class="post-tools">
                                  <li title="Comments"> <i class="ti-thought"></i> 105 </li>
                               </ul>
                            </li>
-                           <li>
-                              <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/img/small-2.jpg'); ?>"></a> </div>
-                              <div class="caption"> <a href="standard-post.html">Taco Bell's newest creation may be the grossest fast food invention yet</a> </div>
-                              <ul class="post-tools">
-                                 <li title="Comments"><a href=""> <i class="ti-thought"></i> 35</a> </li>
-                              </ul>
-                           </li>
-                           <li>
-                              <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/img/small-2.jpg'); ?>"></a> </div>
-                              <div class="caption"> <a href="standard-post.html">MBD just hired a big shot to run its virtual reality division</a> </div>
-                              <ul class="post-tools">
-                                 <li title="Comments"> <a href=""><i class="ti-thought"></i> 163</a> </li>
-                              </ul>
-                           </li>
-                           <li>
-                              <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/img/small-2.jpg'); ?>"></a> </div>
-                              <div class="caption"> <a href="standard-post.html">Get a stern talking-to from your parents with Kit Kat's Lunar</a> </div>
-                              <ul class="post-tools">
-                                 <li title="Comments"> <a href=""><i class="ti-thought"></i> 953</a> </li>
-                              </ul>
-                           </li>
-                           <li>
-                              <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/img/small-2.jpg'); ?>"></a> </div>
-                              <div class="caption"> <a href="standard-post.html">Presidential campaigns is too odd</a> </div>
-                              <ul class="post-tools">
-                                 <li title="Comments"> <a href=""><i class="ti-thought"></i> 305 </a></li>
-                              </ul>
-                           </li>
+						<?php } ?>
                         </ul>
                      </div>
 
                      <!--Fitur Update challenge Instagram-->
                      <div class="widget widget-bg ">
                         <div class="heading">
-                           <h2 class="main-heading"><strong>Challenge Update</strong></h2>
+                           <h2 class="main-heading"><strong><?php foreach($namaChallenge->result() as $namachallenge){ echo $namachallenge->nama_challenge; }?></strong></h2>
                            <span class="heading-ping"></span>
                         </div>
                         <div class="featured-post-slider-single-post owl-carousel owl-theme" style="margin-top: -10px;">
+						<?php foreach($listChallenge as $challenge){ ?>
                            <div class="item">
                               <div class="latest-news-grid grid-1">
                                  <div class="picture">
                                     <div class="category-image">
                                        <a href="standard-post.html">
-                                       <img alt="" class="img-responsive" src="<?php echo base_url('asset/img/19.jpg'); ?>">
+                                       <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_challenge/'.$challenge['path_gambar']); ?>">
                                        </a>
-                                       <div class="catname">
-                                          <a class="btn btn-maroon" href="#">
-                                             <div>Sports</div>
-                                          </a>
-                                       </div>
                                     </div>
                                  </div>
                                  <div class="detail">
                                     <div class="caption" style="text-align: center;">
                                        <h5>
-                                          <a href="#">Computer issue forces ground-stop for United Airlines in the U.S.</a>
+                                          <a href="#"><?php echo $challenge['judul_challenge'];?></a>
                                        </h5>
                                     </div>
                                     <p style="text-align: center; font-size: inherit;">
-                                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitation .
+                                       <?php echo $challenge['deskripsi'];?>
                                     </p><br>
                                     
                                  </div>
                               </div>
                            </div>
-                           <div class="item">
-                              <div class="latest-news-grid grid-1">
-                                 <div class="picture">
-                                    <div class="category-image">
-                                       <a href="standard-post.html">
-                                       <img alt="" class="img-responsive" src="<?php //echo base_url('asset/img/19.jpg'); ?>">
-                                       </a>
-                                       <div class="catname">
-                                          <a class="btn btn-green" href="#">
-                                             <div>Travel</div>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="detail">
-                                    <div class="caption" style="text-align: center;">
-                                       <h5>
-                                          <a href="#">Computer issue forces ground-stop for United Airlines in the U.S.</a>
-                                       </h5>
-                                    </div>
-                                    <p style="text-align: center; font-size: inherit;">
-                                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitation .
-                                    </p><br>
-                                   
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="item">
-                              <div class="latest-news-grid grid-1">
-                                 <div class="picture">
-                                    <div class="category-image">
-                                       <a href="standard-post.html">
-                                       <img alt="" class="img-responsive" src="<?php //echo base_url('asset/img/19.jpg'); ?>">
-                                       </a>
-                                       <div class="catname">
-                                          <a class="btn btn-maroon" href="#">
-                                             <div>Sports</div>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="detail">
-                                    <div class="caption" style="text-align: center;">
-                                       <h5>
-                                          <a href="#">Computer issue forces ground-stop for United Airlines in the U.S.</a>
-                                       </h5>
-                                    </div>
-                                    <p style="text-align: center; font-size: inherit;">
-                                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitation .
-                                    </p><br>
-                                    
-                                 </div>
-                              </div>
-                           </div>
-                           <div class="item">
-                              <div class="latest-news-grid grid-1">
-                                 <div class="picture">
-                                    <div class="category-image">
-                                       <a href="standard-post.html">
-                                       <img alt="" class="img-responsive" src="<?php //echo base_url('asset/img/19.jpg'); ?>">
-                                       </a>
-                                       <div class="catname">
-                                          <a class="btn btn-lightblue" href="#">
-                                             <div>technology</div>
-                                          </a>
-                                       </div>
-                                    </div>
-                                 </div>
-                                 <div class="detail">
-                                    <div class="caption" style="text-align: center;">
-                                       <h5>
-                                          <a href="#">Computer issue forces ground-stop for United Airlines in the U.S.</a>
-                                       </h5>
-                                    </div>
-                                    <p style="text-align: center; font-size: inherit;">
-                                       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim minim veniam, quis nostrud exercitation .
-                                    </p><br>
-                                 </div>
-                              </div>
-                           </div>
+						<?php } ?>   
                         </div>
                      </div>
                   </aside>

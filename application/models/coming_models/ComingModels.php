@@ -71,4 +71,24 @@
 		{
 			$this->db->insert('coming', $data_coming);
 		}
+		
+		//Mempublish coming
+		function top_event($id_coming)
+		{
+			$data = array(
+				'top_event' => 1	
+			);
+			$this->db->where('id_coming',$id_coming);
+			$this->db->update('coming',$data);
+		}
+		
+		//Me unpublish coming
+		function untop_event($id_coming)
+		{
+			$data = array(
+				'top_event' => 2	
+			);
+			$this->db->where('id_coming',$id_coming);
+			$this->db->update('coming',$data);
+		}
 	}

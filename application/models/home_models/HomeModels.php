@@ -10,7 +10,7 @@
 		//Mengambil data slider slider
 		function get_data_slider()
 		{
-			$query = $this->db->query("SELECT * FROM `slider` WHERE status='1'");
+			$query = $this->db->query("SELECT * FROM `header` WHERE status='1'");
 		
 			$indeks = 0;
 			$result = array();
@@ -21,7 +21,84 @@
 			}
 		
 			return $result;
-		}		
+		}	
+
+		function get_top_event()
+		{
+			$query = $this->db->query("SELECT * FROM `coming` WHERE top_event='1'");
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}	
+
+		function get_new_event(){
+			$query = $this->db->order_by('id_coming','DESC')->select('*')->where('status',1)->get('coming');
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+		
+		function get_ngerti_rak(){
+			$query = $this->db->order_by('id_wow','DESC')->select('*')->get('wow');
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+		
+		function get_nama_challenge(){
+			$query = $this->db->query("SELECT * FROM `nama_challenge` WHERE id_nama_challenge=(SELECT max(id_nama_challenge) FROM `nama_challenge`)");
+		
+			return $query;
+		}
+		
+		function get_challenge(){
+			$query = $this->db->order_by('id_challenge','DESC')->select('*')->get('challenge');
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+		
+		function get_artikel(){
+			$query = $this->db->limit(5)->order_by('id_artikel','DESC')->select('*')->get('artikel');
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
 		
 		function get_head_news()
 		{
