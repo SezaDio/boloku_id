@@ -204,7 +204,7 @@
                      <!--Fitur Artikel-->
                      <div class="widget widget-bg">
                         <div class="heading">
-                           <h2 class="main-heading"><strong>Recent Article</strong></h2>
+                           <h2 class="main-heading"><strong>Artikel</strong></h2>
                            <span class="heading-ping"></span>
                            <span class="heading-read-more">
                               <a href="#" class="btn btn-black">See all</a>
