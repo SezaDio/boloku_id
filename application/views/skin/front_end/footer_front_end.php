@@ -22,7 +22,7 @@
                <div class="row">
                   <div class="col-md-12 col-sm-12 col-xs-12">
                      <div class="footer-footer-area">
-                        <div class="copyright"><span>&copy; 2017 All rights reserved.  Designed By <a href="">Youth.SM</a></span></div>
+                        <div class="copyright"><span>&copy; 2017 All rights reserved.  Designed By <a href="">boloku.id</a></span></div>
                         <ul>
                            <li><a href="#">Home </a></li>
                            <li><a href="#">Event</a></li>
