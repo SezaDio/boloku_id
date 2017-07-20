@@ -101,7 +101,7 @@
 
                               </div>
                         </li>
-                        <li> <i class="ti-calendar"></i> <?php echo date('D-M-Y') ?></li>
+                        <li> <i class="ti-calendar"></i> <?php echo date('d-M-Y') ?></li>
                      </ul>
                   </div>
                </div>
@@ -144,7 +144,7 @@
 
                      <!--Menu boloku Wow-->
                      <li>
-                        <a href="<?php //echo base_url('FrontControl_Wow'); ?>">
+                        <a href="<?php echo base_url('FrontControl_Event'); ?>">
                            <span class="text">  Event </span> 
                         </a>
                      </li>
