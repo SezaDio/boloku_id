@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 05, 2017 at 08:07 AM
+-- Generation Time: Jul 20, 2017 at 04:46 PM
 -- Server version: 10.1.21-MariaDB
 -- PHP Version: 5.6.30
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `youth_sm`
+-- Database: `boloku_id`
 --
 
 -- --------------------------------------------------------
@@ -40,9 +40,9 @@ CREATE TABLE `challenge` (
 --
 
 INSERT INTO `challenge` (`id_challenge`, `judul_challenge`, `deskripsi`, `tanggal_posting`, `path_gambar`, `status`) VALUES
-(17, 'Challenge 1', '<p>Challenge 2</p>\r\n', '2017-07-05 00:20:17', 'file_1499232017.JPG', 1),
-(18, 'Challenge 2', '<p>Challenge 2</p>\r\n', '2017-07-05 00:20:43', 'file_1499232043.jpg', 1),
-(19, 'Challenge 3', '<p>Challenge 3</p>\r\n', '2017-07-05 00:40:21', 'file_1499233221.jpg', 1);
+(22, 'Setetes darah berarti untuk sesama', '<p>Donor darah #tunjukkanaksimu!</p>\r\n', '2017-07-19 20:52:16', 'file_1500558736.jpg', 1),
+(23, 'Takjil gratis untuk sesama', '<p>takjil gratis #tunjukkanaksimu!</p>\r\n', '2017-07-19 20:53:01', 'file_1500558781.jpg', 1),
+(24, 'Para relawan', '<p>para relawan #tunjukkanaksimu!</p>\r\n', '2017-07-19 20:53:45', 'file_1500558825.jpg', 1);
 
 --
 -- Indexes for dumped tables
@@ -62,7 +62,7 @@ ALTER TABLE `challenge`
 -- AUTO_INCREMENT for table `challenge`
 --
 ALTER TABLE `challenge`
-  MODIFY `id_challenge` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_challenge` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
