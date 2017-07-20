@@ -270,6 +270,13 @@ class KelolaComing extends CI_Controller {
 		} else{
 			$jumlah_seat=0;
 		}
+		
+		$jenis_event=$this->input->post('jenis_event');
+		if($jenis_event==0){
+			$harga=$this->input->post('harga');
+		} else{
+			$harga=0;
+		}
 
 		if ($tambah == 1) 
 		{
@@ -303,6 +310,7 @@ class KelolaComing extends CI_Controller {
 					$data_coming=array(
 						'nama_coming'=>$this->input->post('judul_coming'),
 						'jenis_event'=>$this->input->post('jenis_event'),
+						'harga'=>$harga,
 						'pendaftaran'=>$this->input->post('pendaftaran'),
 						'kategori_coming'=>$this->input->post('kategori'),
 						'tipe_event'=>$this->input->post('tipe'),
@@ -457,10 +465,18 @@ class KelolaComing extends CI_Controller {
 			} else{
 				$jumlah_seat=0;
 			}
-
+			
+			$jenis_event=$this->input->post('jenis_event');
+			if($jenis_event==0){
+				$harga=$this->input->post('harga');
+			} else{
+				$harga=0;
+			}
+			
 			$data_coming=array(
 							'nama_coming'=>$this->input->post('nama_coming'),
 							'jenis_event'=>$this->input->post('jenis_event'),
+							'harga'=>$harga,
 							'kategori_coming'=>$this->input->post('kategori'),
 							'tipe_event'=>$this->input->post('tipe'),
 							'institusi'=>$this->input->post('institusi'),
@@ -521,6 +537,7 @@ class KelolaComing extends CI_Controller {
 							'nama_coming'=>$data['coming']->nama_coming,
 							'kategori_coming'=>$data['coming']->kategori_coming,
 							'tipe_event'=>$data['coming']->tipe_event,
+							'harga'=>$data['coming']->harga,
 							'jenis_event'=>$data['coming']->jenis_event,
 							'institusi'=>$data['coming']->institusi,
 							'telepon'=>$data['coming']->telepon,

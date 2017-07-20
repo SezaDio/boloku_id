@@ -47,14 +47,24 @@
                                             <label for="exampleInputEmail1">Jenis Event   :</label>
                                             <div class="radio">
                                                 <label>
-                                                    <input style="opacity: 1;" type="radio" name="jenis_event" value=1 required>
+                                                    <input style="opacity: 1;" type="radio" name="jenis_event" value=1 required onclick="gratis()">
                                                      Gratis
                                                 </label>
                                                 <label>
-                                                    <input style="opacity: 1;" type="radio" name="jenis_event" value=0 required>
+                                                    <input style="opacity: 1;" type="radio" name="jenis_event" value=0 required onclick="bayar()">
                                                      Berbayar
                                                 </label>
                                             </div>
+                                        </div>
+										
+										<div class="form-group" id="jenis_event" style="display:none">
+                                            <label for="exampleInputEmail1">Harga Tiket Masuk  :</label>
+                                            <input type="text" 	name="harga" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['harga']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['harga']);
+                                                }
+                                            ?>"> 
                                         </div>
 
                                         <div class="form-group">
@@ -273,5 +283,13 @@
 				
 				function openSeat(){
 					document.getElementById("limitedseat").style.display = "none";
+				}
+				
+				function bayar(){
+					document.getElementById("jenis_event").style.display = "block";
+				}
+				
+				function gratis(){
+					document.getElementById("jenis_event").style.display = "none";
 				}
             </script>

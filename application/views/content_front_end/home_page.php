@@ -143,7 +143,7 @@
                                  <div class="picture">
                                     <div class="category-image">
                                        <a href="standard-post.html">
-                                       <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_wow/'.$ngertirak['path_gambar']); ?>">
+                                       <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_wow/thumb_'.$ngertirak['path_gambar']); ?>">
                                        </a>
                                        <div class="catname">
                                           <a class="btn btn-maroon" href="#">
@@ -236,7 +236,7 @@
                                  <div class="picture">
                                     <div class="category-image">
                                        <a href="standard-post.html">
-                                       <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_challenge/'.$challenge['path_gambar']); ?>">
+                                       <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_challenge/thumb_'.$challenge['path_gambar']); ?>">
                                        </a>
                                     </div>
                                  </div>

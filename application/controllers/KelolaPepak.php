@@ -78,9 +78,6 @@ class KelolaPepak extends CI_Controller {
 		$id_pepak = $_POST['id_pepak'];
 		$this->load->model('pepak_models/PepakModels');
 		$this->PepakModels->setuju_pepak($id_pepak);
-		$sub_setuju = "Youth pepak";
-		$msg_setuju = "Posting yang anda masukan di Youth pepak telah disetujui";
-		$this->kirim_email($sub_setuju,$msg_setuju);
 		$this->validasi_pepak();
 	}
 	
@@ -89,9 +86,6 @@ class KelolaPepak extends CI_Controller {
 	{
 		$this->load->model('pepak_models/PepakModels');
 		$this->PepakModels->setuju_pepak($id_pepak);
-		$sub_setuju = "Youth pepak";
-		$msg_setuju = "Posting yang anda masukan di Youth pepak Soon telah disetujui";
-		$this->kirim_email($sub_setuju,$msg_setuju);
 		$this->validasi_pepak();
 	}
 	
@@ -101,9 +95,6 @@ class KelolaPepak extends CI_Controller {
 		$id_pepak = $_POST['id_pepak'];
 		$this->load->model('pepak_models/PepakModels');
 		$this->PepakModels->delete_pepak($id_pepak);
-		$sub_tolak = "Youth pepak";
-		$msg_tolak = "Posting yang anda masukan di Youth pepak Soon telah ditolak";
-		$this->kirim_email($sub_tolak,$msg_tolak);
 		$this->validasi_pepak();
 	}
 	
@@ -112,9 +103,6 @@ class KelolaPepak extends CI_Controller {
 	{
 		$this->load->model('pepak_models/PepakModels');
 		$this->PepakModels->delete_pepak($id_pepak);
-		$sub_tolak = "Youth pepak";
-		$msg_tolak = "Posting yang anda masukan di Youth pepak Soon telah ditolak";
-		$this->kirim_email($sub_tolak,$msg_tolak);
 		$this->validasi_pepak();
 	}
 	

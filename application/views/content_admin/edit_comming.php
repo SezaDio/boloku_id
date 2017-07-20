@@ -43,7 +43,7 @@
                                             <label for="exampleInputEmail1">Jenis Event   :</label>
                                             <div class="radio">
                                                 <label>
-                                                    <input style="opacity: 1;" type="radio" 
+                                                    <input style="opacity: 1;" type="radio" onclick="gratis()"
                                                         <?php 
                                                             if ($dataComing['jenis_event'] == 1)
                                                             {
@@ -53,7 +53,7 @@
                                                      Gratis
                                                 </label>
                                                 <label>
-                                                    <input style="opacity: 1;" type="radio" 
+                                                    <input style="opacity: 1;" type="radio" onclick="bayar()"
                                                         <?php 
                                                             if ($dataComing['jenis_event'] == 0)
                                                             {
@@ -64,7 +64,17 @@
                                                 </label>
                                             </div>
                                         </div>
-
+										
+										<div class="form-group" id="jenis_event" <?php if($dataComing['jenis_event']==0){?>style="display:display"<?php } ?>>
+                                            <label for="exampleInputEmail1">Harga Tiket Masuk  :</label>
+                                            <input type="text" 	name="harga" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['harga']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['harga']);
+                                                }
+                                            ?>"> 
+                                        </div>
+										
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Kategori Event :</label><br>
                                             
@@ -316,6 +326,14 @@
 				
 				function openSeat(){
 					document.getElementById("limitedseat").style.display = "none";
+				}
+				
+				function bayar(){
+					document.getElementById("jenis_event").style.display = "block";
+				}
+				
+				function gratis(){
+					document.getElementById("jenis_event").style.display = "none";
 				}
             </script>
 

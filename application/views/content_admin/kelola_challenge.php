@@ -242,7 +242,7 @@
 				function simpanNamaChallenge(){
 					var namaBaru = document.getElementById("nama_baru").value;
 					$.ajax({
-						url: 'ubah_nama_challenge',
+						url: 'KelolaChallenge/ubah_nama_challenge',
 						type: 'POST',
 						data: {namaBaru:namaBaru},
 						success: function(){

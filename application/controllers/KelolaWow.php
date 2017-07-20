@@ -82,7 +82,7 @@ class KelolaWow extends CI_Controller {
 				{
 					//echo "Masuk";
 					$gbr = $this->upload->data();
-
+					$this->crop($gbr['full_path'],$gbr['file_name']);
 					$data_wow['path_gambar'] = $gbr['file_name'];
 
 					$this->db->insert('wow', $data_wow);
@@ -171,7 +171,7 @@ class KelolaWow extends CI_Controller {
 					{
 						//echo "Masuk";
 						$gbr = $this->upload->data();
-
+						$this->crop($gbr['full_path'],$gbr['file_name']);
 						$data_wow['path_gambar'] = $gbr['file_name'];
 
 						
@@ -227,6 +227,52 @@ class KelolaWow extends CI_Controller {
 
 
 		$this->index();
+	}
+	
+	function crop($img,$filename){
+		
+		$name = $img;
+		$myImage = imagecreatefromjpeg($name);
+		list($width, $height) = getimagesize($name);
+		//get percent to resize to 900x550
+		if($width<=$height){
+			$percent = 800/$width;
+			$newwidth = $width * $percent;
+			$newheight = $height * $percent;
+			if($newheight<550){
+				$percent2 = 550/$newheight;
+				$newwidth = $newwidth * $percent2;
+				$newheight = $newheight * $percent2;
+			}
+		} else {
+			$percent = 550/$height;
+			$newwidth = $width * $percent;
+			$newheight = $height * $percent;
+			if($newwidth<800){
+				$percent2 = 800/$newwidth;
+				$newwidth = $newwidth * $percent2;
+				$newheight = $newheight * $percent2;
+			}
+		}
+		
+		
+		// resize image
+		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		imagecopyresized($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		imagejpeg($thumb,"./asset/upload_img_wow/resize_".$filename);
+		
+		// crop thumb
+		$imgThumb = './asset/upload_img_wow/resize_'.$filename;
+		$myThumb = imagecreatefromjpeg($imgThumb);
+		list($width, $height) = getimagesize($imgThumb);
+		$myThumbCrop =  imagecreatetruecolor(800, 550);
+		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
+		unlink('./asset/upload_img_wow/resize_'.$filename);
+		 
+		// Save the two images created
+		$fileName="thumb_".$filename;
+		imagejpeg( $myThumbCrop,"./asset/upload_img_wow/".$fileName );
+		
 	}
 		
 }
