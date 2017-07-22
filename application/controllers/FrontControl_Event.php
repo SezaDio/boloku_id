@@ -22,4 +22,11 @@ class FrontControl_Event extends CI_Controller {
       $this->load->view('content_front_end/event_page');
       $this->load->view('skin/front_end/footer_front_end');
    }
+
+   public function event_click()
+   {
+      $this->load->view('skin/front_end/header_front_end');
+      $this->load->view('content_front_end/event_click_page');
+      $this->load->view('skin/front_end/footer_front_end');
+   }
 }

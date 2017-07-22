@@ -91,7 +91,7 @@
 	                        <div class="row">
 	                          
 	                           <div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">
-	                           	 <a href="#">
+	                           	 <a href="<?php echo base_url('FrontControl_Event/event_click'); ?>">
 	                              <ul>
 	                              	<div class="col-md-12" style="padding: 10px;">
 		                                 <li class="col-md-4 col-sm-3 col-xs-12 nopadding">
@@ -100,13 +100,13 @@
 		                                 </li>
 		                                 <li class="col-md-8 col-sm-9 col-xs-12">
 		                                    <div class="desc post-content">
-		                                       <h5><a href="#">Samsung Galaxy S8 will reportedly launch in April, and LG G6 will suffer for it </a></h5>
+		                                       <h5><a href="<?php echo base_url('FrontControl_Event/event_click'); ?>">Samsung Galaxy S8 will reportedly launch in April, and LG G6 will suffer for it </a></h5>
 		                                       <ul class="post-tools">
 		                                          <li>by <a href=""><strong> Arsoo</strong> </a></li>
 		                                          <li>  May 10, 2017 </li>
 		                                          
 		                                       </ul>
-		                                       <p> Vestibulum non mauris nisi. Suspen disse suscipit auctor tortor eu ullamcorper. Suspend isse finibus id mi et venenatis. Aenean eu urna et tellus tempus sagittis sed vel mi. Vestibulum elit nunc Aenean eu urna et tellus tempus Aenean eu urna et tellus tempus Aenean eu urna et <a href="" class="readmore"><strong>Read More</strong></a> </p>
+		                                       <p> Vestibulum non mauris nisi. Suspen disse suscipit auctor tortor eu ullamcorper. Suspend isse finibus id mi et venenatis. Aenean eu urna et tellus tempus sagittis sed vel mi. Vestibulum elit nunc Aenean eu urna et tellus tempus Aenean eu urna et tellus tempus Aenean eu urna et <a href="<?php echo base_url('FrontControl_Event/event_click'); ?>" class="readmore"><strong>Read More</strong></a> </p>
 			                                   <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
 			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-green btn-small"><i class="ti-money"></i> Berbayar</a>
 			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-dark-red">Musik</a>
@@ -173,7 +173,7 @@
 	                              </ul>
 	                             </a>
 	                           </div>
-	                           
+
 	                           <div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">
 	                           	 <a href="#">
 	                              <ul>
@@ -192,9 +192,11 @@
 		                                       </ul>
 		                                       <p> Vestibulum non mauris nisi. Suspen disse suscipit auctor tortor eu ullamcorper. Suspend isse finibus id mi et venenatis. Aenean eu urna et tellus tempus sagittis sed vel mi. Vestibulum elit nunc Aenean eu urna et tellus tempus Aenean eu urna et tellus tempus Aenean eu urna et <a href="" class="readmore"><strong>Read More</strong></a> </p>
 			                                   <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-green btn-small"><i class="ti-money"></i> Berbayar</a>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-dark-red">Musik</a>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-orange">Spirituality</a>
+			                                   <div class="catname">
+				                                   <a style="margin-top: -25px;" href="#" class=" btn btn-green btn-small"><i class="ti-money"></i> Berbayar</a>
+				                                   <a style="margin-top: -25px;" href="#" class=" btn btn-dark-red">Musik</a>
+				                                   <a style="margin-top: -25px;" href="#" class=" btn btn-orange">Spirituality</a>
+		                                    	</div>
 		                                    </div>
 		                                 </li>
 		                            </div>
