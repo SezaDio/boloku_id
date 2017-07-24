@@ -89,119 +89,35 @@
                			 <div class="col-md-1"></div>
 	                     <article class="col-md-10 col-sm-12 col-xs-12">
 	                        <div class="row">
-	                          
+	                        <?php foreach($listEvent as $event){ ?>
 	                           <div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">
-	                           	 <a href="<?php echo base_url('FrontControl_Event/event_click'); ?>">
+	                           	 <a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>">
 	                              <ul>
 	                              	<div class="col-md-12" style="padding: 10px;">
 		                                 <li class="col-md-4 col-sm-3 col-xs-12 nopadding">
-		                                    <div class="thumb"> <img src="<?php echo base_url('asset/img/11.jpg'); ?>" alt="">
+		                                    <div class="thumb"> <img src="<?php echo base_url('asset/upload_img_coming/thumb_'.$event['path_gambar']); ?>" alt="">
 		                                    </div>
 		                                 </li>
 		                                 <li class="col-md-8 col-sm-9 col-xs-12">
 		                                    <div class="desc post-content">
-		                                       <h5><a href="<?php echo base_url('FrontControl_Event/event_click'); ?>">Samsung Galaxy S8 will reportedly launch in April, and LG G6 will suffer for it </a></h5>
+		                                       <h5><a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>"><?php echo $event['nama_coming'];?></a></h5>
 		                                       <ul class="post-tools">
-		                                          <li>by <a href=""><strong> Arsoo</strong> </a></li>
-		                                          <li>  May 10, 2017 </li>
+		                                          <li>by <a href=""><strong> <?php echo $event['posted_by'];?></strong> </a></li>
+		                                          <li>  <?php echo $event['tanggal_posting'];?></li>
 		                                          
 		                                       </ul>
-		                                       <p> Vestibulum non mauris nisi. Suspen disse suscipit auctor tortor eu ullamcorper. Suspend isse finibus id mi et venenatis. Aenean eu urna et tellus tempus sagittis sed vel mi. Vestibulum elit nunc Aenean eu urna et tellus tempus Aenean eu urna et tellus tempus Aenean eu urna et <a href="<?php echo base_url('FrontControl_Event/event_click'); ?>" class="readmore"><strong>Read More</strong></a> </p>
+		                                       <p> <?php echo $event['deskripsi_coming'];?><a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>" class="readmore"><strong>Read More</strong></a> </p>
 			                                   <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-green btn-small"><i class="ti-money"></i> Berbayar</a>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-dark-red">Musik</a>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-orange">Spirituality</a>
+			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-green btn-small"><i class="ti-money"></i> <?php if($event['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?></a>
+			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-dark-red"><?php echo $event['kategori_coming']; ?></a>
+			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-orange"><?php echo $event['tipe_event']; ?></a>
 		                                    </div>
 		                                 </li>
 		                            </div>
 	                              </ul>
 	                             </a>
 	                           </div>
-		                       
-	                           <div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">
-	                           	 <a href="#">
-	                              <ul>
-	                              	<div class="col-md-12" style="padding: 10px;">
-		                                 <li class="col-md-4 col-sm-3 col-xs-12 nopadding">
-		                                    <div class="thumb"> <img src="<?php echo base_url('asset/img/11.jpg'); ?>" alt="">
-		                                    </div>
-		                                 </li>
-		                                 <li class="col-md-8 col-sm-9 col-xs-12">
-		                                    <div class="desc post-content">
-		                                       <h5><a href="#">Samsung Galaxy S8 will reportedly launch in April, and LG G6 will suffer for it </a></h5>
-		                                       <ul class="post-tools">
-		                                          <li>by <a href=""><strong> Arsoo</strong> </a></li>
-		                                          <li>  May 10, 2017 </li>
-		                                          
-		                                       </ul>
-		                                       <p> Vestibulum non mauris nisi. Suspen disse suscipit auctor tortor eu ullamcorper. Suspend isse finibus id mi et venenatis. Aenean eu urna et tellus tempus sagittis sed vel mi. Vestibulum elit nunc Aenean eu urna et tellus tempus Aenean eu urna et tellus tempus Aenean eu urna et <a href="" class="readmore"><strong>Read More</strong></a> </p>
-			                                   <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-green btn-small"><i class="ti-money"></i> Berbayar</a>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-dark-red">Musik</a>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-orange">Spirituality</a>
-		                                    </div>
-		                                 </li>
-		                            </div>
-	                              </ul>
-	                             </a>
-	                           </div>
-
-	                           <div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">
-	                           	 <a href="#">
-	                              <ul>
-	                              	<div class="col-md-12" style="padding: 10px;">
-		                                 <li class="col-md-4 col-sm-3 col-xs-12 nopadding">
-		                                    <div class="thumb"> <img src="<?php echo base_url('asset/img/11.jpg'); ?>" alt="">
-		                                    </div>
-		                                 </li>
-		                                 <li class="col-md-8 col-sm-9 col-xs-12">
-		                                    <div class="desc post-content">
-		                                       <h5><a href="#">Samsung Galaxy S8 will reportedly launch in April, and LG G6 will suffer for it </a></h5>
-		                                       <ul class="post-tools">
-		                                          <li>by <a href=""><strong> Arsoo</strong> </a></li>
-		                                          <li>  May 10, 2017 </li>
-		                                          
-		                                       </ul>
-		                                       <p> Vestibulum non mauris nisi. Suspen disse suscipit auctor tortor eu ullamcorper. Suspend isse finibus id mi et venenatis. Aenean eu urna et tellus tempus sagittis sed vel mi. Vestibulum elit nunc Aenean eu urna et tellus tempus Aenean eu urna et tellus tempus Aenean eu urna et <a href="" class="readmore"><strong>Read More</strong></a> </p>
-			                                   <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-green btn-small"><i class="ti-money"></i> Berbayar</a>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-dark-red">Musik</a>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-orange">Spirituality</a>
-		                                    </div>
-		                                 </li>
-		                            </div>
-	                              </ul>
-	                             </a>
-	                           </div>
-
-	                           <div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">
-	                           	 <a href="#">
-	                              <ul>
-	                              	<div class="col-md-12" style="padding: 10px;">
-		                                 <li class="col-md-4 col-sm-3 col-xs-12 nopadding">
-		                                    <div class="thumb"> <img src="<?php echo base_url('asset/img/11.jpg'); ?>" alt="">
-		                                    </div>
-		                                 </li>
-		                                 <li class="col-md-8 col-sm-9 col-xs-12">
-		                                    <div class="desc post-content">
-		                                       <h5><a href="#">Samsung Galaxy S8 will reportedly launch in April, and LG G6 will suffer for it </a></h5>
-		                                       <ul class="post-tools">
-		                                          <li>by <a href=""><strong> Arsoo</strong> </a></li>
-		                                          <li>  May 10, 2017 </li>
-		                                          
-		                                       </ul>
-		                                       <p> Vestibulum non mauris nisi. Suspen disse suscipit auctor tortor eu ullamcorper. Suspend isse finibus id mi et venenatis. Aenean eu urna et tellus tempus sagittis sed vel mi. Vestibulum elit nunc Aenean eu urna et tellus tempus Aenean eu urna et tellus tempus Aenean eu urna et <a href="" class="readmore"><strong>Read More</strong></a> </p>
-			                                   <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-green btn-small"><i class="ti-money"></i> Berbayar</a>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-dark-red">Musik</a>
-			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-orange">Spirituality</a>
-		                                    </div>
-		                                 </li>
-		                            </div>
-	                              </ul>
-	                             </a>
-	                           </div>
-
+		                    <?php } ?>   
 	                           <div class="pagination-holder">
 	                           <nav>
 	                              <ul class="pagination">

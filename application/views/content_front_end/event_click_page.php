@@ -9,8 +9,8 @@
 	                             <div class="col-md-6">
 		                             <div class="picture">
 		                             	<div style="padding-top: 15px; margin-bottom: 15px;" class="ad-div style-box">
-				                           <a href="<?php echo base_url('asset/img/19.jpg'); ?>" class="tt-lightbox">
-				                              <img alt="" class="img-responsive" src="<?php echo base_url('asset/img/19.jpg'); ?>">
+				                           <a href="<?php echo base_url('asset/upload_img_coming/'.$path_gambar); ?>" class="tt-lightbox">
+				                              <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$path_gambar); ?>">
 				                           </a>
 				                        </div>
 		                             </div>
@@ -18,11 +18,11 @@
 	                             <div class="detail">
 	                                <div class="caption" style="text-align: center;">
 	                                   <h5>
-	                                      <a href="#"><label>Computer issue forces ground-stop for United Airlines in the U.S.</label></a>
+	                                      <a href="#"><label><?php echo $nama_event; ?></label></a>
 	                                   </h5>
 	                                </div>
 	                                <p style="text-align: center; font-size: inherit;">
-	                                   by <strong> Seza </strong> / on <strong> March 10, 2017</strong>
+	                                   by <strong> <?php echo $posted_by; ?> </strong> / on <strong> <?php echo $tanggal_posting; ?></strong>
 	                                </p><br><br>
 	                                
 	                                <div class="col-md-12" style="text-align: center;">
@@ -32,8 +32,8 @@
 	                                </div><br><br><br>
 
 	                                <hr style="border: solid 1px #f44a56; opacity: 0.4;">
-	                                <a style="margin-top: -15px;" href="#" class=" btn btn-dark-red">Musik</a>
-			                        <a style="margin-top: -15px;" href="#" class=" btn btn-orange">Spirituality</a>
+	                                <a style="margin-top: -15px;" href="#" class=" btn btn-dark-red"><?php echo $kategori_event; ?></a>
+			                        <a style="margin-top: -15px;" href="#" class=" btn btn-orange"><?php echo $tipe_event; ?></a>
 	                             </div>
 	                          </div>
 	                       </div>
@@ -62,22 +62,22 @@
 	                                	<tr>
 	                                		<td>Harga Tiket</td>
 	                                		<td>:</td>
-	                                		<td></td>
+	                                		<td><?php if($jenis_event==0){ echo $harga;} else { echo "-";}?></td>
 	                                	</tr>
 	                                	<tr>
 	                                		<td>Jumlah Seat</td>
 	                                		<td>:</td>
-	                                		<td></td>
+	                                		<td><?php if($seat==1){ echo $jumlah_seat;} else { echo "-";}?></td>
 	                                	</tr>
 	                                	<tr>
 	                                		<td>Contact Person</td>
 	                                		<td>:</td>
-	                                		<td></td>
+	                                		<td><?php echo $telepon;?></td>
 	                                	</tr>
 	                                	<tr>
 	                                		<td>Email</td>
 	                                		<td>:</td>
-	                                		<td></td>
+	                                		<td><?php echo $email;?></td>
 	                                	</tr>
 	                                </table>
 	                                <div class="col-md-12" style="text-align: center;">
@@ -119,7 +119,7 @@
 			                                 <div class="tab-pane active" id="popular" role="tabpanel">
 			                                    <div class="caption">
 			                                    	<br>
-			                                    	<p>Vestibulum non mauris nisi. <br> Suspen disse suscipit auctor tortor eu ullamcorper. Suspend isse finibus id mi et venenatis. Aenean eu urna et tellus tempus sagittis sed vel mi. Vestibulum elit nunc Aenean eu urna et tellus tempus Aenean eu urna et tellus tempus Aenean eu urna et</p> 
+			                                    	<p><?php echo $deskripsi_event; ?></p> 
 			                                    </div>
 			                                 </div>
 
@@ -127,6 +127,7 @@
 			                                 <div class="tab-pane" id="testimoni" role="tabpanel">
 			                                    <div class="reviews">
 							                        <h3>Total Coments (46)</h3>
+													<?php foreach($listTestimoni as $testimoni){?>
 						                            <div style="padding-top: 10px;" class="col-md-12 comment-info">
 						                                 <div class="col-md-2">
 						                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="<?php echo base_url('asset/img/author3.jpg'); ?>" alt="author">
@@ -134,34 +135,18 @@
 						                                 
 						                                 <div class="author-desc">
 						                                    <div class="author-title">
-						                                       <strong><a href="">Rebbica Alex</a></strong>
+						                                       <strong><a href=""><?php echo $testimoni['penulis_testimoni']?></a></strong>
 						                                       <ul class="list-inline pull-right">
-						                                          <li style="color: black;"><label>22 Feb 2016</label></li>
+						                                          <li style="color: black;"><label><?php echo $testimoni['tgl_posting']; ?></label></li>
 						                                       </ul>
 						                                    </div>
 						                                    <div class="col-md-10">
-						                                    	<p>You wanna be where everyboody knows Your name. And a we knooow Flipper lives in a world full of wonder flying there-under under the sea creepy and kooky.</p>
+						                                    	<p><?php echo $testimoni['isi_testimoni']; ?></p>
 						                                    </div>
 						                                 </div>
 						                            </div> 
-
-						                            <div style="padding-top: 10px;" class="col-md-12 comment-info">
-						                                 <div class="col-md-2">
-						                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="<?php echo base_url('asset/img/author3.jpg'); ?>" alt="author">
-						                                 </div>
-						                                 
-						                                 <div class="author-desc">
-						                                    <div class="author-title">
-						                                       <strong><a href="">Rebbica Alex</a></strong>
-						                                       <ul class="list-inline pull-right">
-						                                          <li style="color: black;"><label>22 Feb 2016</label></li>
-						                                       </ul>
-						                                    </div>
-						                                    <div class="col-md-10">
-						                                    	<p>You wanna be where everyboody knows Your name. And a we knooow Flipper lives in a world full of wonder flying there-under under the sea creepy and kooky.</p>
-						                                    </div>
-						                                 </div>
-						                            </div>
+													<?php } ?>
+						                            
 							                     </div>
 							                     <br><br>
 							                     <!--Form comentar baru-->
@@ -199,21 +184,14 @@
 			                                 <!--Tab Liputan-->
 			                                 <div class="tab-pane" id="liputan" role="tabpanel">
 			                                    <ul class="tabs-posts">
+												<?php foreach($listPressRelease as $pressrelease){?>
 			                                       <li>
-			                                          <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/img/small-2.jpg'); ?>"></a> </div>
-			                                          <div class="caption"> <a href="#">The assault on federally supported </a> </div>
+			                                          <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_nes/thumb'.$pressrelease['gambar_news']); ?>"></a> </div>
+			                                          <div class="caption"> <a href="#"><?php echo $pressrelease['judul_news']; ?> </a> </div>
 			                                          <ul class="post-tools">
 			                                             <li title="Comments"> <i class="ti-thought"></i> 105 </li>
 			                                          </ul>
-			                                       </li>
-			                                       <li>
-			                                          <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/img/small-2.jpg'); ?>"></a> </div>
-			                                          <div class="caption"> <a href="#">The assault on federally supported </a> </div>
-			                                          <ul class="post-tools">
-			                                             <li title="Comments"> <i class="ti-thought"></i> 105 </li>
-			                                          </ul>
-			                                       </li>
-			                                       
+			                                    <?php } ?>   
 			                                    </ul>
 			                                 </div>
 			                              </div>

@@ -17,16 +17,46 @@ class FrontControl_Event extends CI_Controller {
    public function index()
    {
       $select=2;
-
+	  $this->load->model('home_models/HomeModels');
+	  $data['listEvent'] = $this->HomeModels->get_event();
+	 
       $this->load->view('skin/front_end/header_front_end');
-      $this->load->view('content_front_end/event_page');
+      $this->load->view('content_front_end/event_page',$data);
       $this->load->view('skin/front_end/footer_front_end');
    }
 
-   public function event_click()
+   public function event_click($id_event)
    {
+	  $this->load->model('home_models/HomeModels');
+	  $event = $this->HomeModels->get_event_byid($id_event);
+	  
+	  $data['id_event'] = $event['id_coming'];
+	  $data['nama_event'] = $event['nama_coming'];
+	  $data['deskripsi_event'] = $event['deskripsi_coming'];
+	  $data['posted_by'] = $event['posted_by'];
+	  $data['institusi'] = $event['institusi'];
+	  $data['telepon'] = $event['telepon'];
+	  $data['email'] = $event['email'];
+	  $data['tanggal_posting'] = $event['tanggal_posting'];
+	  $data['path_gambar'] = $event['path_gambar'];
+	  $data['kategori_event'] = $event['kategori_coming'];
+	  $data['tipe_event'] = $event['tipe_event'];
+	  $data['tgl_mulai'] = $event['tgl_mulai'];
+	  $data['jam_mulai'] = $event['jam_mulai'];
+	  $data['tgl_selesai'] = $event['tgl_selesai'];
+	  $data['jam_selesai'] = $event['jam_selesai'];
+	  $data['pendaftaran'] = $event['pendaftaran'];
+	  $data['jenis_event'] = $event['jenis_event'];
+	  $data['seat'] = $event['seat'];
+	  $data['jumlah_seat'] = $event['jumlah_seat'];
+	  $data['harga'] = $event['harga'];
+	  $data['kota_lokasi'] = $event['kota_lokasi'];
+	  
+	  $data['listPressRelease'] = $this->HomeModels->get_press_release($id_event);
+	  $data['listTestimoni'] = $this->HomeModels->get_testimoni($id_event);
+	  
       $this->load->view('skin/front_end/header_front_end');
-      $this->load->view('content_front_end/event_click_page');
+      $this->load->view('content_front_end/event_click_page',$data);
       $this->load->view('skin/front_end/footer_front_end');
    }
 }

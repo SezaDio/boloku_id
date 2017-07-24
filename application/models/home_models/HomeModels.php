@@ -100,6 +100,58 @@
 			return $result;
 		}
 		
+		function get_event()
+		{
+			$query = $this->db->query("SELECT * FROM `coming` WHERE status='1'");
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+		
+		function get_event_byid($id_coming)
+		{
+			$query = $this->db->where('id_coming',$id_coming)->get('coming');
+				
+			return $query->row_array();
+		}
+		
+		function get_press_release($id_coming)
+		{
+			$query = $this->db->where('id_event',$id_coming)->get('news');
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+		
+		function get_testimoni($id_coming)
+		{
+			$query = $this->db->where('id_event',$id_coming)->get('testimoni');
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+		
 		function get_head_news()
 		{
 			$query = $this->db->query("SELECT * FROM `news` WHERE id_news=(SELECT max(id_news) FROM `news`)");
