@@ -60,7 +60,7 @@
                      <ul>
                         <li class="dropdown" role="presentation">
                               <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href=""><i class="ti-user"></i> Sign In <span class="caret"></span></a>
-                              <div class="dropdown-menu" style="width: 250px; padding: 2px;">
+                              <div class="dropdown-menu" style="margin-left: -40px; width: 250px; padding: 2px;">
                                     <div style="background-color: steelblue; text-align:center; padding:5px; border-radius:inherit;" >
                                        <label>Sign In Member</label>
                                     </div>
@@ -84,6 +84,7 @@
                                        </div><br>
                                        <button class="btn btn-colored-blog pull-right" type="submit" name="login"><span class="glyphicon glyphicon-log-in"></span> Sign In</button>
                                        <p class="omb_forgotPwd" style="color:blue; font-size:small; padding:6px;"><a style="color:blue;" href="#">Forgot password?</a></p>
+                                       
                                        <!--
                                        <div class="col-sm-4 omb_login"><hr class="omb_hrOr"></div>      
                                        <div class="col-sm-4" style="margin-top: 9px"><p style="color:black;">OR</p></div>
@@ -98,7 +99,10 @@
                                           </div>
                                        </div>-->
                                     </form>
-
+                                    <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
+                                    <a href="<?php echo site_url('KelolaMember/registrasi_member_baru');?>">
+                                       <button style="padding: 10px; margin-top: -15px; width: 100%;" class="btn btn-warning" type="submit" name="login"> Kamu Bukan Boloku ?</button>
+                                    </a>
                               </div>
                         </li>
                         <li> <i class="ti-calendar"></i> <?php echo date('d-M-Y') ?></li>

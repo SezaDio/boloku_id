@@ -331,4 +331,12 @@ class KelolaMember extends CI_Controller {
 		$this->load->view('skin/admin/footer_admin');
 	}
 
+	//Masuk ke halaman registrasi
+	public function registrasi_member_baru()
+	{
+		$this->load->view('skin/front_end/header_front_end');
+        $this->load->view('content_front_end/register_member_page');
+        $this->load->view('skin/front_end/footer_front_end');
+	}
+
 }
