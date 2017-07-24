@@ -176,7 +176,8 @@
 					                                    </div>
 					                                    <form class="col-md-10" role="form" enctype="multipart/form-data" action="<?php //echo site_url('KelolaArtikel/tambah_artikel_check/');?>" method="POST">
 					                                    	
-															<textarea required name="komentar" rows="3" cols="90"></textarea>
+															<textarea style="width: 100%" required name="komentar" rows="3"></textarea>
+																
 															<br>    
 															<a href="" class="btn btn-colored-blog"><i class="glyphicon glyphicon-send"></i> Kirim </a>
 
