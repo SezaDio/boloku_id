@@ -192,11 +192,9 @@
 		                                       </ul>
 		                                       <p> Vestibulum non mauris nisi. Suspen disse suscipit auctor tortor eu ullamcorper. Suspend isse finibus id mi et venenatis. Aenean eu urna et tellus tempus sagittis sed vel mi. Vestibulum elit nunc Aenean eu urna et tellus tempus Aenean eu urna et tellus tempus Aenean eu urna et <a href="" class="readmore"><strong>Read More</strong></a> </p>
 			                                   <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
-			                                   <div class="catname">
-				                                   <a style="margin-top: -25px;" href="#" class=" btn btn-green btn-small"><i class="ti-money"></i> Berbayar</a>
-				                                   <a style="margin-top: -25px;" href="#" class=" btn btn-dark-red">Musik</a>
-				                                   <a style="margin-top: -25px;" href="#" class=" btn btn-orange">Spirituality</a>
-		                                    	</div>
+			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-green btn-small"><i class="ti-money"></i> Berbayar</a>
+			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-dark-red">Musik</a>
+			                                   <a style="margin-top: -25px;" href="#" class=" btn btn-orange">Spirituality</a>
 		                                    </div>
 		                                 </li>
 		                            </div>
