@@ -339,4 +339,12 @@ class KelolaMember extends CI_Controller {
         $this->load->view('skin/front_end/footer_front_end');
 	}
 
+	//Masuk ke dashboard member
+	public function dashboard_member()
+	{
+		$this->load->view('skin/front_end/header_front_end');
+        $this->load->view('content_front_end/member_area_dashboard');
+        $this->load->view('skin/front_end/footer_front_end');
+	}
+
 }
