@@ -39,12 +39,18 @@
       <link href="<?php echo base_url('asset/css/owl.carousel.css'); ?>" rel="stylesheet" type="text/css">
       <link href="<?php echo base_url('asset/css/owl.theme.default.css'); ?>" rel="stylesheet" type="text/css">
 
+      <!-- daterange picker -->
+      <link href="<?php echo base_url('asset/css/daterangepicker/daterangepicker-bs3.css'); ?>" rel="stylesheet" type="text/css" />
 
       <!-- Theme Color -->
       <link rel="stylesheet" id="color" href="<?php echo base_url('asset/css/colors/defualt.css'); ?>">
 
       <!-- For Style Switcher -->
       <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
+
+      <script type="text/javascript" src="<?php echo base_url('asset/js/jquery.min.js'); ?>"></script>
+      <!-- Bootstrap Core Js --> 
+      <script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/bootstrap.min.js'); ?>"></script>
    </head>
 
    <body>

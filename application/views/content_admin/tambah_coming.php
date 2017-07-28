@@ -212,7 +212,7 @@
                                                     <input style="opacity: 1;" type="radio" name="seat" value=1 required onclick="limitedSeat()">
                                                      Limited Seat
                                                 </label>
-                                                &nbsp &nbsp <label>
+                                                <label>
                                                     <input style="opacity: 1;" type="radio" name="seat" value=0 required onclick="openSeat()">
                                                      Open Seat
                                                 </label>

@@ -15,15 +15,23 @@
                             </a>
                         </li>
                         
-                        <li class="treeview">
+                        <li>
                             <a href="#">
-                                <i class="glyphicon glyphicon-th-list"></i> <span> Event & News Control </span>
-                                <i class="glyphicon glyphicon-menu-right pull-right"></i>
+                                <i class="glyphicon glyphicon-certificate"></i> <span> Kelola Stiker </span>
                             </a>
-                            <ul class="treeview-menu">
-                                <li><a href="<?php echo site_url('KelolaComing/index'); ?>"><i class="glyphicon glyphicon-minus"></i> Kelola Event</a></li>
-                                <li><a href="<?php echo site_url('KelolaComing/validasi_coming'); ?>"><i class="glyphicon glyphicon-minus"></i> Validasi Event</a></li>
-                            </ul>
+                        </li>
+
+                        <li>
+                            <a href="<?php echo site_url('KelolaArtikel/index'); ?>">
+                                <i class="glyphicon glyphicon-file"></i> <span> Kelola Artikel </span>
+                            </a>
+                        </li>
+
+						
+						<li>
+                            <a href="<?php echo site_url('KelolaHeader/index'); ?>">
+                                <i class="glyphicon glyphicon-picture"></i> <span> Kelola Header </span>
+                            </a>
                         </li>
 
                         <li class="treeview">
@@ -43,29 +51,24 @@
                             </a>
                         </li>
 
-                        <li>
-                            <a href="<?php echo site_url('KelolaArtikel/index'); ?>">
-                                <i class="glyphicon glyphicon-collapse-up"></i> <span> Kelola Artikel </span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="#">
-                                <i class="glyphicon glyphicon-collapse-up"></i> <span> Kelola Stiker </span>
-                            </a>
-                        </li>
-						
-						<li>
-                            <a href="<?php echo site_url('KelolaHeader/index'); ?>">
-                                <i class="glyphicon glyphicon-collapse-up"></i> <span> Kelola Header </span>
-                            </a>
-                        </li>
 
                         <li>
                             <a href="<?php echo site_url('KelolaPendaftar/index'); ?>">
                                 <i class="glyphicon glyphicon-list-alt"></i> <span> Kelola Pendaftaran </span>
                             </a>
                         </li>
+                        
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="glyphicon glyphicon-th-list"></i> <span> Event & News Control </span>
+                                <i class="glyphicon glyphicon-menu-right pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="<?php echo site_url('KelolaComing/index'); ?>"><i class="glyphicon glyphicon-minus"></i> Kelola Event</a></li>
+                                <li><a href="<?php echo site_url('KelolaComing/validasi_coming'); ?>"><i class="glyphicon glyphicon-minus"></i> Validasi Event</a></li>
+                            </ul>
+                        </li>
+
                         
                         <li class="treeview">
                             <a href="#">

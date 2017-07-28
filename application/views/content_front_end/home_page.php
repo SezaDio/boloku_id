@@ -206,15 +206,13 @@
                         <div class="heading">
                            <h2 class="main-heading"><strong>Artikel</strong></h2>
                            <span class="heading-ping"></span>
-                           <span class="heading-read-more">
-                              <a href="#" class="btn btn-black">See all</a>
-                           </span>
+                           
                         </div>
                         <ul class="tabs-posts">
 						<?php foreach($listArtikel as $artikel){ ?>
                            <li>
-                              <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb_'.$artikel['path_gambar']); ?>"></a> </div>
-                              <div class="caption"> <a href="#"><?php echo $artikel['judul_artikel']; ?></a> </div>
+                              <div class="pic"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel'); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb_'.$artikel['path_gambar']); ?>"></a> </div>
+                              <div class="caption"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel'); ?>"><?php echo $artikel['judul_artikel']; ?></a> </div>
                               <ul class="post-tools">
                                  <li title="Comments"> <i class="ti-thought"></i> 105 </li>
                               </ul>

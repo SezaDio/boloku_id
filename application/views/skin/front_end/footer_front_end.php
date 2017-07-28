@@ -45,13 +45,35 @@
       <!-- ======================================== script tags =============================================== -->
 
       <!-- Core Jquery --> 
-      <script type="text/javascript" src="<?php echo base_url('asset/js/jquery.min.js'); ?>"></script>
+      
+      <script type="text/javascript">
+        $("#event-baru-content").hide();
+        $("#edit-profil-content").hide();
+
+        $("#dashboard-member").click(function(){
+            $("#event-baru-content").hide();
+            $("#dashboard-content").show();
+            $("#edit-profil-content").hide();
+        });
+
+        $("#tambah-event").click(function(){
+            $("#event-baru-content").show();
+            $("#dashboard-content").hide();
+            $("#edit-profil-content").hide();
+        });
+
+         $("#edit-profil").click(function(){
+            $("#event-baru-content").hide();
+            $("#dashboard-content").hide();
+            $("#edit-profil-content").show();
+        });
+
+     </script>
 
       <!-- Mega Menu Script -->
       <script src="<?php echo base_url('asset/js/megaMenu.min.js'); ?>" type="text/javascript"></script>
 
-      <!-- Bootstrap Core Js --> 
-      <script type="text/javascript" src="<?php echo base_url('asset/bootstrap/js/bootstrap.min.js'); ?>"></script>
+      
 
       <!-- Slider Js --> 
       <script type="text/javascript" src="<?php echo base_url('asset/js/slider/responsiveslides.min.js'); ?>"></script>

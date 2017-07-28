@@ -18,7 +18,7 @@ class FrontControl_NgertiRak extends CI_Controller {
    {
       $select=3;
 	  
-	  $this->load->model('home_models/HomeModels');
+	   $this->load->model('home_models/HomeModels');
       $data['listNgertiRak'] = $this->HomeModels->get_ngerti_rak();
       $this->load->view('skin/front_end/header_front_end');
       $this->load->view('content_front_end/ngerti_rak_page',$data);

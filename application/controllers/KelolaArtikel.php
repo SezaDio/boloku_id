@@ -200,6 +200,14 @@ class KelolaArtikel extends CI_Controller {
 
 		$this->index();
 	}
+
+	//Fungsi Baca artikel di halaman front end
+	public function halaman_baca_artikel()
+	{
+      $this->load->view('skin/front_end/header_front_end');
+      $this->load->view('content_front_end/artikel_read_page');
+      $this->load->view('skin/front_end/footer_front_end');
+	}
 	
 	function crop($img,$filename){
 		
