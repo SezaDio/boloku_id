@@ -151,7 +151,7 @@
                            <span class="text">  Home </span>
                         </a>
                      </li>
-
+                     
                      <!--Menu boloku Wow-->
                      <li>
                         <a href="<?php echo base_url('FrontControl_Event'); ?>">
@@ -168,7 +168,7 @@
 
                      <!--Menu boloku Karepmu-->
                      <li>
-                        <a href="#">
+                        <a href="<?php echo base_url('FrontControl_Faq'); ?>">
                            <span class="text"> FAQ </span>
                         </a>
                      </li>
