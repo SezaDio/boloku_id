@@ -131,7 +131,7 @@
                   <ul class="menu-logo hidden-md">
                      <li>
                         <a href="#">
-                        <img src="<?php echo base_url('asset/img/logo-small.png'); ?>" class="img-responsive" alt="logo">
+                        <img src="<?php echo base_url('asset/img/logo_boloku.png'); ?>" class="img-responsive" alt="logo">
                         </a>
                      </li>
                   </ul>
@@ -151,7 +151,7 @@
                            <span class="text">  Home </span>
                         </a>
                      </li>
-                     
+
                      <!--Menu boloku Wow-->
                      <li>
                         <a href="<?php echo base_url('FrontControl_Event'); ?>">

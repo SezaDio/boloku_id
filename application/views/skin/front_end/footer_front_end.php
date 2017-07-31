@@ -4,7 +4,7 @@
                <div class="row">
                   <div class="col-md-12 col-sm-12 col-xs-12">
                      <div class="footer-block">
-                        <img src="<?php echo base_url('asset/img/logo-footer.png'); ?>" alt="" class="logo-footer">
+                        <img src="<?php echo base_url('asset/img/logo_boloku_putih.png'); ?>" alt="" class="logo-footer">
                         <div class="social-media-icons">
                            <ul>
                               <li> <a href=""><i class="ti-facebook"></i></a></li>

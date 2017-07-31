@@ -1,4 +1,4 @@
-	<section class="my-breadcrumb">
+	<section class="my-breadcrumb" style="background-image: url(asset/img/eventsbanner2-960x250.jpg);">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
@@ -9,7 +9,7 @@
       </section>
 
       <!-- Event Search Feature -->
-      <div class="color-switcher" id="choose_color" style="width:300px;"> <a href="#." class="picker_close"><i class="fa fa-angle-right"></i></a>
+      <div class="color-switcher" id="choose_color" style="width:300px;"> <a href="#." class="picker_close"><i class="glyphicon glyphicon-search"></i></a>
         <h5>Cari Event . . .</h5>
         <div class="col-md-12">
         	<form role="form" enctype="multipart/form-data" action="<?php //echo site_url('KelolaWow/edit_wow/'.$idWow);?>" method="POST">
@@ -68,8 +68,8 @@
                     <div class="form-group">                     
                         <select name="harga_event" placeholder="Lokasi Event" required class="form-control" id="kategori">
                         	<option value="" disabled selected>Harga Event</option>
-                            <option value="Gratis">Gratis</option>
-                            <option value="Berbayar">Berbayar</option>
+                            <option value="Gratis">Free</option>
+                            <option value="Berbayar">Paid</option>
                         </select>
                     </div>
                     <div class="form-group">
