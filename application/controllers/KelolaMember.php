@@ -163,6 +163,7 @@ class KelolaMember extends CI_Controller {
 			$this->form_validation->set_rules('username', 'Username', 'required');
 			$this->form_validation->set_rules('nama_member', 'Nama Member', 'required');
 			$this->form_validation->set_rules('email', 'Email', 'required');
+			$this->form_validation->set_rules('telepon', 'Telepon', 'required');
 
 			/*if ($this->form_validation->run() == TRUE)
 			{*/		$data_member=array(
@@ -171,7 +172,7 @@ class KelolaMember extends CI_Controller {
 						'password'=>md5($this->input->post('nama_member')),
 						'email'=>$this->input->post('email'),
 						'date_join'=>date("Y-m-d h:i:sa"),
-						'poin'=>0,
+						'telepon'=>$this->input->post('telelpon'),
 						'path_foto'=>0,
 						'status'=>1
 					);
@@ -257,6 +258,7 @@ class KelolaMember extends CI_Controller {
 			$this->form_validation->set_rules('username', 'Username', 'required');
 			$this->form_validation->set_rules('nama_member', 'Nama_Member', 'required');
 			$this->form_validation->set_rules('email', 'email', 'required');
+			$this->form_validation->set_rules('telepon', 'Telepon', 'required');
 
 			//Mengambil filename gambar untuk disimpan
 			$nmfile = "file_".time();
@@ -269,6 +271,7 @@ class KelolaMember extends CI_Controller {
 							'username'=>$this->input->post('username'),
 							'nama_member'=>$this->input->post('nama_member'),
 							'email'=>$this->input->post('email'),
+							'telepon'=>$this->input->post('telepon'),
 							'password'=>$password
 							);
 			$data['dataMember'] = $data_member;
