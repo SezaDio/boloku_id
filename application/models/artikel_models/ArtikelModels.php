@@ -46,4 +46,5 @@
 
 			return $this->db->get();
 		}
+		
 	}

@@ -80,8 +80,8 @@
                                           </a>
                                        </div>
                                        <div class="hover-show-div">
-                                          <a href="" class="post-type">
-                                          <i class="ti-music-alt"></i>
+                                          <a href="" class="post-type" style="color:white">
+										  Tanggal
                                           </a>
                                        </div>
                                     </div>
@@ -211,8 +211,8 @@
                         <ul class="tabs-posts">
 						<?php foreach($listArtikel as $artikel){ ?>
                            <li>
-                              <div class="pic"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel'); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb_'.$artikel['path_gambar']); ?>"></a> </div>
-                              <div class="caption"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel'); ?>"><?php echo $artikel['judul_artikel']; ?></a> </div>
+                              <div class="pic"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel'); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
+                              <div class="caption"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><?php echo $artikel['judul_artikel']; ?></a> </div>
                               <ul class="post-tools">
                                  <li title="Comments"> <i class="ti-thought"></i> 105 </li>
                               </ul>

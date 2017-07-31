@@ -27,5 +27,26 @@
 
 			return $this->db->get();
 		}
+		
+		// Cek keberadaan user di sistem
+		function check_member_account($username, $password)
+		{
+			$this->db->select('*');
+			$this->db->from('member');
+			$this->db->where('username', $username);
+			$this->db->where('password', md5($password));
+
+			return $this->db->get();
+		}
+
+		//Mengambil data user
+		function get_member($id_member)
+		{
+			$this->db->select('*');
+			$this->db->from('member');
+			$this->db->where('id_member', $id_member);
+
+			return $this->db->get();
+		}
 
 	}

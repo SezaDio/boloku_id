@@ -67,7 +67,42 @@
             $("#dashboard-content").hide();
             $("#edit-profil-content").show();
         });
-
+		
+		function loginMember(){
+			var username = $("#username_login").val();
+			var password = $("#password_login").val();
+			
+			$.ajax({
+			url: 'FrontControl_Home/login_member',	
+			type: 'POST',
+			data: {username:username,password:password},
+			success: function(data){
+						if(data=="TRUE"){
+						alert('berhasil login');
+						}
+					},
+			error: function(){
+						alert('GAGAL');
+					}
+					
+			});
+		}
+		
+		function logout(){
+			$.ajax({
+			url: 'FrontControl_Home/logout_member',
+			success: function(){
+					alert('Logout Berhasil');
+					window.location.href = "/boloku_id";
+						
+					},
+			error: function(){
+						alert('Logout Gagal');
+					}
+					
+			});
+		}
+		
      </script>
 
       <!-- Mega Menu Script -->

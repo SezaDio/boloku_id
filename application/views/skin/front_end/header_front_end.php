@@ -65,13 +65,23 @@
                   <div class="col-md-6 col-sm-9 col-xs-12">
                      <ul>
                         <li class="dropdown" role="presentation">
-                              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href=""><i class="ti-user"></i> Sign In <span class="caret"></span></a>
+                              <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href=""><i class="ti-user"></i> <?php if(isset($this->session->userdata['is_logged_in'])){echo $this->session->userdata['username'];} else {?>Sign In <?php } ?><span class="caret"></span></a>
                               <div class="dropdown-menu" style="margin-left: -40px; width: 250px; padding: 2px;">
+									<?php if(isset($this->session->userdata['is_logged_in'])) {?>
+									<div style="background-color: steelblue; text-align:center; padding:5px; border-radius:inherit;" >
+                                       <label><?php echo $this->session->userdata['nama_member'] ?></label>
+                                    </div>
+									
+									<button class="btn btn-colored-blog" type="submit" name="profil" ><span class="glyphicon glyphicon-log-in"></span>Lihat Profilmu</button>
+									<button class="btn btn-colored-blog" type="submit" name="logout" onclick="logout()"><span class="glyphicon glyphicon-log-in"></span>Logout</button>
+									<?php } else {?>
                                     <div style="background-color: steelblue; text-align:center; padding:5px; border-radius:inherit;" >
                                        <label>Sign In Member</label>
                                     </div>
-                                    <form style="padding:10px;" class="omb_loginForm" id="form-login" action="<?php //echo site_url('Account/login'); ?>" autocomplete="on" method="POST">
+                                    <form style="padding:10px;" class="omb_loginForm" id="form-login" action="<?php echo site_url('Account/login_member'); ?>" autocomplete="on" method="POST">
                                        <?php 
+											echo $this->session->flashdata('notification');
+											echo $this->session->userdata('is_logged_in');
                                              //$this->load->library('form_validation');
                                              //echo validation_errors(); 
                                        ?>
@@ -80,13 +90,13 @@
                                        
                                        <div class="input-group">
                                              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                             <input type="text" class="form-control" name="username" placeholder="username" required value="<?php //echo set_value('username'); ?>">
+                                             <input type="text" class="form-control" name="username" id="username_login" placeholder="username" required value="<?php //echo set_value('username'); ?>">
                                        </div>
                                        <span class="help-block"></span>
                                                                      
                                        <div class="input-group">
                                              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                             <input  type="password" class="form-control" name="password" placeholder="Password" required value="<?php //echo set_value('password'); ?>">
+                                             <input  type="password" class="form-control" name="password" id="password_login" placeholder="Password" required value="<?php //echo set_value('password'); ?>">
                                        </div><br>
                                        <button class="btn btn-colored-blog pull-right" type="submit" name="login"><span class="glyphicon glyphicon-log-in"></span> Sign In</button>
                                        <p class="omb_forgotPwd" style="color:blue; font-size:small; padding:6px;"><a style="color:blue;" href="#">Forgot password?</a></p>
@@ -109,6 +119,7 @@
                                     <a href="<?php echo site_url('KelolaMember/registrasi_member_baru');?>">
                                        <button style="padding: 10px; margin-top: -15px; width: 100%;" class="btn btn-warning" type="submit" name="login"> Kamu Bukan Boloku ?</button>
                                     </a>
+									<?php } ?>
                               </div>
                         </li>
                         <li> <i class="ti-calendar"></i> <?php echo date('d-M-Y') ?></li>

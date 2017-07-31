@@ -338,13 +338,485 @@ class KelolaMember extends CI_Controller {
         $this->load->view('content_front_end/register_member_page');
         $this->load->view('skin/front_end/footer_front_end');
 	}
+	
+	function member_baru_check() {
+        $this->load->model('member_models/MemberModels');
+		$this->load->library('form_validation');
+
+		$tambah = $this->input->post('submit');
+
+		if ($tambah == 1) 
+		{
+			$this->form_validation->set_rules('username', 'Username', 'required');
+			$this->form_validation->set_rules('nama_member', 'Nama Member', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required');
+			$this->form_validation->set_rules('password', 'Password', 'required');
+
+			/*if ($this->form_validation->run() == TRUE)
+			{*/		$data_member=array(
+						'username'=>$this->input->post('username'),
+						'nama_member'=>$this->input->post('nama_member'),
+						'password'=>md5($this->input->post('password')),
+						'email'=>$this->input->post('email'),
+						'date_join'=>date("Y-m-d h:i:sa"),
+						'poin'=>0,
+						'path_foto'=>0,
+						'status'=>2
+					);
+					$data['dataMember'] = $data_member;
+				if($this->db->insert('member', $data_member))
+				{
+					$this->session->set_flashdata('msg_berhasil', 'Data member berhasil ditambahkan');
+					redirect('FrontControl_Home');
+				}
+				else
+				{
+					$this->session->set_flashdata('msg_gagal', 'Data member gagal ditambahkan');
+					
+					$this->load->view('skin/front_end/header_front_end');
+					$this->load->view('content_front_end/register_member_page',$data);
+					$this->load->view('skin/front_end/footer_front_end');
+				}
+			/*}
+			else
+			{
+				$this->session->set_flashdata('msg_gagal', 'Data Youth member gagal ditambahkan');
+				$this->tambah_member_check();
+			}*/
+		}
+		else
+		{
+			$this->load->view('skin/front_end/header_front_end');
+			$this->load->view('content_front_end/register_member_page');
+			$this->load->view('skin/front_end/footer_front_end');
+		}     
+		
+	}
 
 	//Masuk ke dashboard member
 	public function dashboard_member()
 	{
+		$id_member = 5;
+		$this->load->model('member_models/MemberModels');
+		
+		
+		$member=$this->MemberModels->select_by_id_member($id_member);
+		$data['id_member'] = $member['id_member'];
+		$data['nama_member'] = $member['nama_member'];
+		$data['username'] = $member['username'];
+		$data['email'] = $member['email'];
+		$data['telepon'] = $member['telepon'];
+		$data['path_foto'] = $member['path_foto'];
+		$data['password'] = $member['password'];
+		
+		$kategori_coming = array(
+							  'Seni'=>'Seni',
+                              'Travel dan Outdoor'=>'Travel dan Outdoor',
+                              'Bisnis'=>'Bisnis',
+                              'Science dan Teknologi'=>'Science dan Teknologi',
+                              'Sprirituality'=>'Sprirituality',
+                              'Musik'=>'Musik',
+                              'Keluarga dan Pendidikan'=>'Keluarga dan Pendidikan',
+                              'Hobi'=>'Hobi',
+                              'Lain-Lain'=>'Lain-Lain'
+                              );
+		$tipe_event = array(
+							  'Attraction'=>'Attraction',
+                              'Class'=>'Class',
+                              'Conference'=>'Conference',
+                              'Expo'=>'Expo',
+                              'Festival'=>'Festival',
+                              'Game'=>'Game',
+                              'Party'=>'Party',
+                              'Performance'=>'Performance',
+                              'Seminar'=>'Seminar',
+                              'Tour'=>'Tour',
+                              'Lain-Lain'=>'Lain-Lain'
+                              );
+
+		$data_coming_tambah=array(
+						'nama_coming'=>'',
+						'jenis_event'=>'',
+						'pendaftaran'=>'',
+						'kategori_coming'=>'',
+						'tipe_event'=>'',
+						'deskripsi_coming'=>'',
+						'tanggal_posting'=>'',
+						'posted_by'=>'',
+						'institusi'=>'',
+						'telepon'=>'',
+						'email'=>'',
+						'tgl_mulai'=>'',
+						'tgl_selesai'=>'',
+						'jam_mulai'=>'',
+						'jam_selesai'=>'',
+						'path_gambar'=> NULL,
+						'status'=>1
+					);
+
+		$jam_event=array();
+		for ($i=0; $i<24; $i++) 
+		{ 
+	 		for ($j=0; $j<=45; $j=$j+15)
+	 		{
+	 			if ($i<=9) 
+	 			{
+	 				if ($j==0) 
+	 				{
+	 					$jam_event["0".$i.":".$j."0"]="0".$i.":".$j."0";
+	 				}
+	 				else
+	 				{
+	 					$jam_event["0".$i.":".$j.""]="0".$i.":".$j."";
+	 				}
+	 			}
+	 			else
+	 			{
+	 				if ($j==0) 
+	 				{
+	 					$jam_event["".$i.":".$j."0"]="".$i.":".$j."0";
+	 				}
+	 				else
+	 				{
+	 					$jam_event["".$i.":".$j.""]="".$i.":".$j."";
+	 				}
+	 			}
+	 		}
+		}
+
+		$data['kategori_coming']= $kategori_coming;
+		$data['tipe_event']= $tipe_event;
+		$data['jam_event']= $jam_event;
+		
+		
+		$data['listEvent'] = $this->MemberModels->event_by_id_member($id_member);
+		
 		$this->load->view('skin/front_end/header_front_end');
-        $this->load->view('content_front_end/member_area_dashboard');
+        $this->load->view('content_front_end/member_area_dashboard',$data);
         $this->load->view('skin/front_end/footer_front_end');
+	}
+	
+	function tambah_event() {
+        $this->load->model('coming_models/ComingModels');
+		$this->load->library('form_validation');
+
+		$tambah = $this->input->post('submit');
+		$kategori_coming = array(
+							  'Seni'=>'Seni',
+                              'Travel dan Outdoor'=>'Travel dan Outdoor',
+                              'Bisnis'=>'Bisnis',
+                              'Science dan Teknologi'=>'Science dan Teknologi',
+                              'Sprirituality'=>'Sprirituality',
+                              'Musik'=>'Musik',
+                              'Keluarga dan Pendidikan'=>'Keluarga dan Pendidikan',
+                              'Hobi'=>'Hobi',
+                              'Lain-Lain'=>'Lain-Lain'
+                              );
+		$tipe_event = array(
+							  'Attraction'=>'Attraction',
+                              'Class'=>'Class',
+                              'Conference'=>'Conference',
+                              'Expo'=>'Expo',
+                              'Festival'=>'Festival',
+                              'Game'=>'Game',
+                              'Party'=>'Party',
+                              'Performance'=>'Performance',
+                              'Seminar'=>'Seminar',
+                              'Tour'=>'Tour',
+                              'Lain-Lain'=>'Lain-Lain'
+                              );
+
+		$data_coming_tambah=array(
+						'nama_coming'=>'',
+						'jenis_event'=>'',
+						'pendaftaran'=>'',
+						'kategori_coming'=>'',
+						'tipe_event'=>'',
+						'deskripsi_coming'=>'',
+						'tanggal_posting'=>'',
+						'posted_by'=>'',
+						'institusi'=>'',
+						'telepon'=>'',
+						'email'=>'',
+						'tgl_mulai'=>'',
+						'tgl_selesai'=>'',
+						'jam_mulai'=>'',
+						'jam_selesai'=>'',
+						'path_gambar'=> NULL,
+						'status'=>1
+					);
+
+		$jam_event=array();
+		for ($i=0; $i<24; $i++) 
+		{ 
+	 		for ($j=0; $j<=45; $j=$j+15)
+	 		{
+	 			if ($i<=9) 
+	 			{
+	 				if ($j==0) 
+	 				{
+	 					$jam_event["0".$i.":".$j."0"]="0".$i.":".$j."0";
+	 				}
+	 				else
+	 				{
+	 					$jam_event["0".$i.":".$j.""]="0".$i.":".$j."";
+	 				}
+	 			}
+	 			else
+	 			{
+	 				if ($j==0) 
+	 				{
+	 					$jam_event["".$i.":".$j."0"]="".$i.":".$j."0";
+	 				}
+	 				else
+	 				{
+	 					$jam_event["".$i.":".$j.""]="".$i.":".$j."";
+	 				}
+	 			}
+	 		}
+		}
+
+		$data['kategori_coming']= $kategori_coming;
+		$data['tipe_event']= $tipe_event;
+		$data['jam_event']= $jam_event;
+		$data['dataComing'] = $data_coming_tambah;
+		
+		$seat=$this->input->post('seat');
+		if($seat==1){
+			$jumlah_seat=$this->input->post('jumlah_seat');
+		} else{
+			$jumlah_seat=0;
+		}
+		
+		$jenis_event=$this->input->post('jenis_event');
+		if($jenis_event==0){
+			$harga=$this->input->post('harga');
+		} else{
+			$harga=0;
+		}
+
+			$this->form_validation->set_rules('judul_coming', 'Judul', 'required');
+			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
+			$this->form_validation->set_rules('nama_member', 'Penulis', 'required');
+			//$this->form_validation->set_rules('institusi', 'Institusi', 'required');
+			//$this->form_validation->set_rules('telepon', 'Telepon', 'required');
+			$this->form_validation->set_rules('jenis_event', 'Jenis', 'required');
+			//$this->form_validation->set_rules('pendaftaran', 'Pendaftaran', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required');
+			$this->form_validation->set_rules('tipe', 'Tipe', 'required');
+			$this->form_validation->set_rules('tgl_event', 'Tanggal', 'required');
+			$this->form_validation->set_rules('jam_mulai', 'Jam', 'required');
+			$this->form_validation->set_rules('jam_selesai', 'Jam', 'required');
+			$this->form_validation->set_rules('deskripsi_coming', 'Deskripsi', 'required');
+			$this->form_validation->set_rules('seat', 'Seat', 'required');
+
+			//Mengambil filename gambar untuk disimpan
+			$nmfile = "file_".time();
+			$config['upload_path'] = './asset/upload_img_coming/';
+			$config['allowed_types'] = 'jpg|png|jpeg';
+			$config['max_size'] = '4000'; //kb
+			$config['file_name'] = $nmfile;
+
+			//value id_koridor berisi beberapa data, sehingga dilakukan split dengan explode
+			if (($this->form_validation->run() == TRUE) AND (!empty($_FILES['filefoto']['name'])))
+			{
+				$gbr = NULL;
+
+					$data_coming=array(
+						'id_member'=>$this->input->post('id_member'),
+						'nama_coming'=>$this->input->post('judul_coming'),
+						'jenis_event'=>$this->input->post('jenis_event'),
+						'harga'=>$harga,
+						'pendaftaran'=>0,
+						'kategori_coming'=>$this->input->post('kategori'),
+						'tipe_event'=>$this->input->post('tipe'),
+						'deskripsi_coming'=>$this->input->post('deskripsi_coming'),
+						'tanggal_posting'=>date("Y-m-d h:i:sa"),
+						'posted_by'=>$this->input->post('nama_member'),
+						'institusi'=>0,
+						'telepon'=>0,
+						'email'=>$this->input->post('email'),
+						'tgl_mulai'=>$this->input->post('tgl_mulai'),
+						'tgl_selesai'=>$this->input->post('tgl_selesai'),
+						'jam_mulai'=>$this->input->post('jam_mulai'),
+						'jam_selesai'=>$this->input->post('jam_selesai'),
+						'path_gambar'=> NULL,
+						'seat'=> $seat,
+						'jumlah_seat'=> $jumlah_seat,
+						'top_event'=> 2,
+						'status'=>2
+					);
+					$data['dataComing'] = $data_coming;
+				$this->load->library('upload', $config);
+				if($this->upload->do_upload('filefoto'))
+				{
+					//echo "Masuk";
+					$gbr = $this->upload->data();
+					$this->crop($gbr['full_path'],$gbr['file_name']);
+
+					$data_coming['path_gambar'] = $gbr['file_name'];
+
+					$this->db->insert('coming', $data_coming);
+					$this->session->set_flashdata('msg_berhasil', 'Data Event baru berhasil ditambahkan');
+					redirect('KelolaMember/dashboard_member');
+				}
+				else
+				{
+					$this->session->set_flashdata('msg_gagal', 'Data Event baru gagal ditambahkan, cek type file dan ukuran file yang anda upload');
+					
+					$this->load->view('skin/front_end/header_front_end');
+					$this->load->view('content_front_end/member_area_dashboard',$data);
+					$this->load->view('skin/front_end/footer_front_end');
+				}
+			}
+			else
+			{
+				$this->session->set_flashdata('msg_gagal', 'Data Event baru gagal ditambahkan');
+				$this->tambah_event();
+			}
+		
+		
+	}
+	
+	public function edit_member_area($id_member) 
+	{
+		$this->load->model('member_models/MemberModels');
+		$this->load->library('form_validation');
+	
+		if($this->input->post('edit_password')==NULL){
+			$password=$this->input->post('passwordlama');
+		} else{
+			$password=md5($this->input->post('edit_password'));
+		}
+			
+
+		//Mengambil filename gambar untuk disimpan
+		$nmfile = "file_".time();
+		$config['upload_path'] = './asset/upload_img_member/';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		$config['max_size'] = '4000'; //kb
+		$config['file_name'] = $nmfile;
+
+		$data_member=array(
+			'username'=>$this->input->post('edit_username'),
+			'nama_member'=>$this->input->post('edit_nama_member'),
+			'email'=>$this->input->post('edit_email'),
+			'password'=>$password
+			);
+		$data['dataMember'] = $data_member;
+
+		$gbr = NULL;
+		$iserror = false;
+		if ((!empty($_FILES['filefoto']['name']))) {
+			
+			$this->load->library('upload', $config);
+			if($this->upload->do_upload('filefoto'))
+			{
+				//echo "Masuk";
+				$gbr = $this->upload->data();
+
+				$data_member['path_foto'] = $gbr['file_name'];
+
+				
+			}
+			else
+			{
+				$this->session->set_flashdata('msg_gagal', 'Data member gagal diperbaharui');
+				$iserror = true;
+			}
+
+		}
+			$this->db->update('member', $data_member, array('id_member'=>$id_member));
+			print_r($data_member);
+			$this->session->set_flashdata('msg_berhasil', 'Data member berhasil diperbaharui');
+			redirect('KelolaMember/dashboard_member');
+		
+			
+	}
+	
+	function validate_passlama(){
+		if(isset($_POST['password2'])){
+		echo md5($_POST['password2']);
+		}
+		
+	}
+	
+	
+	function crop($img,$filename){
+		
+		$name = $img;
+		$myImage = imagecreatefromjpeg($name);
+		$myImage83 = imagecreatefromjpeg($name);
+		list($width, $height) = getimagesize($name);
+		//get percent to resize to 900x550
+		if($width<=$height){
+			$percent = 800/$width;
+			$newwidth = $width * $percent;
+			$newheight = $height * $percent;
+			if($newheight<550){
+				$percent2 = 550/$newheight;
+				$newwidth = $newwidth * $percent2;
+				$newheight = $newheight * $percent2;
+			}
+			
+			$percent83 = 83/$width;
+			$newwidth83 = $width * $percent83;
+			$newheight83 = $height * $percent83;
+			if($newheight83<83){
+				$percent83b = 83/$newheight83;
+				$newwidth83 = $newwidth83 * $percent83b;
+				$newheight83 = $newheight83 * $percent83b;
+			}
+			
+		} else {
+			$percent = 550/$height;
+			$newwidth = $width * $percent;
+			$newheight = $height * $percent;
+			if($newwidth<800){
+				$percent2 = 800/$newwidth;
+				$newwidth = $newwidth * $percent2;
+				$newheight = $newheight * $percent2;
+			}
+			
+			$percent83 = 83/$height;
+			$newwidth83 = $width * $percent83;
+			$newheight83 = $height * $percent83;
+			if($newwidth83<83){
+				$percent83b = 83/$newwidth83;
+				$newwidth83 = $newwidth83 * $percent83b;
+				$newheight83 = $newheight83 * $percent83b;
+			}
+		}
+		
+		
+		// resize image
+		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		$thumb83 = imagecreatetruecolor($newwidth83, $newheight83);
+		imagecopyresized($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		imagecopyresized($thumb83, $myImage83, 0, 0, 0, 0, $newwidth83, $newheight83, $width, $height);
+		imagejpeg($thumb,"./asset/upload_img_coming/resize_".$filename);
+		imagejpeg($thumb83,"./asset/upload_img_coming/resize83_".$filename);
+		
+		// crop thumb
+		$imgThumb = './asset/upload_img_coming/resize_'.$filename;
+		$imgThumb83 = './asset/upload_img_coming/resize83_'.$filename;
+		$myThumb = imagecreatefromjpeg($imgThumb);
+		$myThumb83 = imagecreatefromjpeg($imgThumb83);
+		list($width, $height) = getimagesize($imgThumb);
+		list($width83, $height83) = getimagesize($imgThumb83);
+		$myThumbCrop =  imagecreatetruecolor(800, 550);
+		$myThumbCrop83 =  imagecreatetruecolor(83,83);
+		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
+		imagecopyresampled($myThumbCrop83,$myThumb83,0,0,0,0 ,$width83,$height83,$width83,$height83);
+		unlink('./asset/upload_img_coming/resize_'.$filename);
+		unlink('./asset/upload_img_coming/resize83_'.$filename);
+		 
+		// Save the two images created
+		$fileName="thumb_".$filename;
+		$fileName83="thumb83_".$filename;
+		imagejpeg( $myThumbCrop,"./asset/upload_img_coming/".$fileName );
+		imagejpeg( $myThumbCrop83,"./asset/upload_img_coming/".$fileName83 );
+		
 	}
 
 }

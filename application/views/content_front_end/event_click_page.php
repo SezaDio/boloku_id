@@ -151,13 +151,14 @@
 							                     <br><br>
 							                     <!--Form comentar baru-->
 							                     <div style="padding-top: 10px;" class="col-md-12 comment-info">
-					                                 <div class="col-md-2">
-					                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="<?php echo base_url('asset/img/author3.jpg'); ?>" alt="author">
+												 <?php if($this->session->userdata['is_logged_in']){?>
+												  <div class="col-md-2">
+					                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="" alt="author">
 					                                 </div>
 					                                 
 					                                 <div class="author-desc">
 					                                    <div class="author-title">
-					                                       <strong><a href="">Rebbica Alex</a></strong>
+					                                       <strong><a href=""><?php echo $this->session->userdata['nama_member']?></a></strong>
 					                                    </div>
 					                                    <form class="col-md-10" role="form" enctype="multipart/form-data" action="<?php //echo site_url('KelolaArtikel/tambah_artikel_check/');?>" method="POST">
 					                                    	
@@ -178,6 +179,7 @@
 														  	</ul>
 					                                    </form>
 					                                 </div>
+											     <?php } ?>
 						                         </div>
 			                                 </div>
 
@@ -186,7 +188,7 @@
 			                                    <ul class="tabs-posts">
 												<?php foreach($listPressRelease as $pressrelease){?>
 			                                       <li>
-			                                          <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_nes/thumb'.$pressrelease['gambar_news']); ?>"></a> </div>
+			                                          <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_news/thumb_'.$pressrelease['gambar_news']); ?>"></a> </div>
 			                                          <div class="caption"> <a href="#"><?php echo $pressrelease['judul_news']; ?> </a> </div>
 			                                          <ul class="post-tools">
 			                                             <li title="Comments"> <i class="ti-thought"></i> 105 </li>

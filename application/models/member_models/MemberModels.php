@@ -59,11 +59,24 @@
 		//Select member by id member
 		function select_by_id_member($id_member)
 		{
-			$this->db->select('*');
-			$this->db->from('member');
-			$this->db->where('id_member',$id_member);
+			$query = $this->db->where('id_member',$id_member)->get('member');
 
-			return $this->db->get();
+			return $query->row_array();
+		}
+		
+		function event_by_id_member($id_member)
+		{
+			$query = $this->db->where('id_member',$id_member)->get('coming');
+
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
 		}
 		
 		//Menambah data youth member

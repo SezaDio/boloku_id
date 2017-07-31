@@ -632,4 +632,6 @@ class KelolaComing extends CI_Controller {
 
 		$this->index();
 	}
+	
+	
 }

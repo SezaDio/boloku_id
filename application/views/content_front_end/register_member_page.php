@@ -22,37 +22,52 @@
 		       					<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
 		       			  	</div>
 		                  	<div class="contact-form">
-			                     <form  method="post" action="#">
+			                     <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaMember/member_baru_check/');?>" method="POST">
 			                        <div class="col-md-6 col-sm-6 col-xs-12">
 			                           <div class="form-group">
-			                              <input placeholder="Nama Lengkap" id="name" name="nama_lengkap" class="form-control" required="" type="text">
+			                              <input placeholder="Nama Lengkap" id="name" name="nama_member" class="form-control" required="" type="text" value="<?php 
+                                                    if (isset($dataMember['nama_member']))
+                                                    {
+                                                        echo htmlspecialchars($dataMember['nama_member']);
+                                                    }
+                                            ?>">
 			                           </div>
 			                        </div>
 			                        <div class="col-md-6 col-sm-6 col-xs-12">
 			                           <div class="form-group">
-			                              <input placeholder="Username" id="email" name="username" class="form-control" required="" type="email">
+			                              <input placeholder="Username" id="username" name="username" class="form-control" required="" type="text" value="<?php 
+                                                    if (isset($dataMember['username']))
+                                                    {
+                                                        echo htmlspecialchars($dataMember['username']);
+                                                    }
+                                            ?>">
 			                           </div>
 			                        </div>
 			                        <div class="col-md-6 col-sm-6 col-xs-12">
 			                           <div class="form-group">
-			                              <input placeholder="Email" id="phone" name="email" class="form-control" required="" type="text">
+			                              <input placeholder="Email" id="email" name="email" class="form-control" required="" type="email" value="<?php 
+                                                    if (isset($dataMember['email']))
+                                                    {
+                                                        echo htmlspecialchars($dataMember['email']);
+                                                    }
+                                            ?>">
 			                           </div>
 			                        </div>
 			                        <div class="col-md-6 col-sm-6 col-xs-12">
 			                           <div class="form-group">
-			                              <input placeholder="Nomor Telepon" id="subject" name="telepon" class="form-control" required="" type="text">
+			                              <input placeholder="Nomor Telepon" id="telepon" name="telepon" class="form-control" required="" type="text">
 			                           </div>
 			                        </div>
 			                        <div class="col-md-3"></div>
 			                        <div class="col-md-6 col-sm-12 col-xs-12">
 			                           <div class="form-group">
-			                              <textarea cols="12" rows="1" placeholder="Password" id="message" name="password" class="form-control" required></textarea>
+			                              <textarea cols="12" rows="1" placeholder="Password" id="message" name="password" class="form-control" required ></textarea>
 			                           </div>
 			                        </div>
 			                        <div class="col-md-3"></div>
 
 			                        <div style="padding-top: 20px;" class="col-md-7 col-sm-12 col-xs-12">
-			                            <button class="btn btn-colored-blog pull-right" type="submit"><i class="glyphicon glyphicon-registration-mark"></i> Dadi Bolomu</button>
+			                            <button class="btn btn-colored-blog pull-right" type="submit" value="1" name="submit"><i class="glyphicon glyphicon-registration-mark"></i> Dadi Bolomu</button>
 			                        </div>
 		                           	<div class="col-md-3"></div>
 			                     </form>

@@ -202,56 +202,97 @@ class KelolaArtikel extends CI_Controller {
 	}
 
 	//Fungsi Baca artikel di halaman front end
-	public function halaman_baca_artikel()
+	public function halaman_baca_artikel($id_artikel)
 	{
+	  $this->load->model('artikel_models/ArtikelModels');
+	  $artikel = $this->ArtikelModels->select_by_id_artikel($id_artikel)->row_array();
+	  $data['id_artikel'] = $artikel['id_artikel'];
+	  $data['judul_artikel'] = $artikel['judul_artikel'];
+	  $data['penulis_artikel'] = $artikel['penulis_artikel'];
+	  $data['isi_artikel'] = $artikel['isi_artikel'];
+	  $data['path_gambar'] = $artikel['path_gambar'];
+	  $data['tanggal_posting'] = $artikel['tanggal_posting'];
+	  
+	  $data['listArtikel'] = $this->ArtikelModels->get_data_artikel();
+	  
       $this->load->view('skin/front_end/header_front_end');
-      $this->load->view('content_front_end/artikel_read_page');
+      $this->load->view('content_front_end/artikel_read_page',$data);
       $this->load->view('skin/front_end/footer_front_end');
 	}
 	
 	function crop($img,$filename){
 		
 		$name = $img;
+		$myImage85 = imagecreatefromjpeg($name);
 		$myImage = imagecreatefromjpeg($name);
 		list($width, $height) = getimagesize($name);
 		//get percent to resize to 900x550
 		if($width<=$height){
-			$percent = 85/$width;
+			$percent = 800/$width;
 			$newwidth = $width * $percent;
 			$newheight = $height * $percent;
-			if($newheight<85){
-				$percent2 = 85/$newheight;
+			if($newheight<550){
+				$percent2 = 550/$newheight;
 				$newwidth = $newwidth * $percent2;
 				$newheight = $newheight * $percent2;
 			}
+			
+			$percent85 = 85/$width;
+			$newwidth85 = $width * $percent85;
+			$newheight85 = $height * $percent85;
+			if($newheight85<85){
+				$percent85b = 85/$newheight85;
+				$newwidth85 = $newwidth85 * $percent85b;
+				$newheight85 = $newheight85 * $percent85b;
+			}
 		} else {
-			$percent = 85/$height;
+			$percent = 550/$height;
 			$newwidth = $width * $percent;
 			$newheight = $height * $percent;
-			if($newwidth<85){
-				$percent2 = 85/$newwidth;
+			if($newwidth85<800){
+				$percent2 = 800/$newwidth;
 				$newwidth = $newwidth * $percent2;
 				$newheight = $newheight * $percent2;
+			}
+			
+			$percent85 = 85/$height;
+			$newwidth85 = $width * $percent85;
+			$newheight85 = $height * $percent85;
+			if($newwidth85<85){
+				$percent85b = 85/$newwidth85;
+				$newwidth85 = $newwidth85 * $percent85b;
+				$newheight85 = $newheight85 * $percent85b;
 			}
 		}
 		
 		
 		// resize image
 		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		$thumb85 = imagecreatetruecolor($newwidth85, $newheight85);
 		imagecopyresized($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		imagecopyresized($thumb85, $myImage85, 0, 0, 0, 0, $newwidth85, $newheight85, $width, $height);
 		imagejpeg($thumb,"./asset/upload_img_artikel/resize_".$filename);
+		imagejpeg($thumb85,"./asset/upload_img_artikel/resize85_".$filename);
 		
 		// crop thumb
 		$imgThumb = './asset/upload_img_artikel/resize_'.$filename;
+		$imgThumb85 = './asset/upload_img_artikel/resize85_'.$filename;
 		$myThumb = imagecreatefromjpeg($imgThumb);
+		$myThumb85 = imagecreatefromjpeg($imgThumb85);
 		list($width, $height) = getimagesize($imgThumb);
-		$myThumbCrop =  imagecreatetruecolor(85, 85);
+		list($width85, $height85) = getimagesize($imgThumb85);
+		$myThumbCrop =  imagecreatetruecolor(800,550);
+		$myThumbCrop85 =  imagecreatetruecolor(85, 85);
 		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
+		imagecopyresampled($myThumbCrop85,$myThumb85,0,0,0,0 ,$width85,$height85,$width85,$height85);
 		unlink('./asset/upload_img_artikel/resize_'.$filename);
+		unlink('./asset/upload_img_artikel/resize85_'.$filename);
 		 
 		// Save the two images created
 		$fileName="thumb_".$filename;
+		$fileName85="thumb85_".$filename;
 		imagejpeg( $myThumbCrop,"./asset/upload_img_artikel/".$fileName );
+		imagejpeg( $myThumbCrop85,"./asset/upload_img_artikel/".$fileName85 );
 		
 	}
 }

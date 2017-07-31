@@ -23,13 +23,13 @@
 			                             <div class="picture">
 			                             	<div style="margin-bottom: 15px;" class="ad-div style-box">
 					                           <a href="<?php echo base_url('asset/img/author3.jpg'); ?>" class="tt-lightbox">
-					                              <img alt="" class="img-responsive" src="<?php echo base_url('asset/img/author3.jpg'); ?>">
+					                              <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_member/'.$path_foto); ?>">
 					                           </a>
 					                        </div>
 			                             </div>
 			                             <div class="caption" style="text-align: center;">
 		                                   <h5 style="font-size: 1.2em;">
-		                                      <label>Seza Dio Firmansyah</label>
+		                                      <label><?php echo $nama_member?></label>
 		                                   </h5>
 		                                 </div>
 		                            </div>
@@ -77,12 +77,15 @@
 	                             		<h4><strong>My Published Event</strong></h4>
 	                             		<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
 	                             	</div>
-	                             	<div class="col-md-6">
+									<?php foreach($listEvent as $event){ ?>
+	                             	
+									
+									<div class="col-md-6">
 	                             		<div class="col-md-2" style="text-align: center;"> 
-	                             			<img alt="" src="<?php echo base_url('asset/img/small-2.jpg'); ?>">
+	                             			<img alt="" src="<?php echo base_url('asset/upload_img_coming/thumb83_'.$event['path_gambar']); ?>">
 	                             		</div>
 	                                    <div style="padding-left: 50px;" class="caption">
-	                                    	<a href="<?php //echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>"><label>Color Run With Pak Ganjar</label></a>
+	                                    	<a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>"><label><?php echo $event['nama_coming'];?></label></a>
 	                                    </div>
 	                                    <ul style="padding-left: 50px;" class="post-tools">
 	                                        <li title="Testimoni"> <i class="ti-thought"></i> 105 </li>
@@ -90,10 +93,9 @@
 	                                        <li title="Disukai"> <i class="glyphicon glyphicon-thumbs-up"></i> 105 </li>
 	                                    </ul>
 	                                    <br>
-	                                    <a style="margin-left: 50px; margin-top: -25px;" href="#" class=" btn btn-xs btn-green"><i class="ti-money"></i> Berbayar</a>
-	                                   	<a style="margin-top: -25px;" href="#" class=" btn btn-xs btn-dark-red">Seminar</a>
-	                                   	<a style="margin-top: -25px;" href="#" class=" btn btn-xs btn-orange">Hobi</a>
-	                                   	
+	                                    <a style="margin-left: 50px; margin-top: -25px;" href="#" class=" btn btn-xs btn-green"><i class="ti-money"></i> <?php if($event['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?></a>
+	                                   	<a style="margin-top: -25px;" href="#" class=" btn btn-xs btn-dark-red"><?php echo $event['kategori_coming']; ?></a>
+	                                   	<a style="margin-top: -25px;" href="#" class=" btn btn-xs btn-orange"><?php echo $event['tipe_event']; ?></a>
 	                                </div>
 	                                <br>
 	                                <div class="col-md-6" style="text-align: right;">
@@ -101,10 +103,16 @@
                                         <a href="<?php //echo site_url('KelolaComing/edit_comming_soon/'.$id_coming->id_coming);?>"><button id="edit-button-coming" type="submit" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
                                         <!-- Tombol Hapus -->
                                         <a  href="<?php //echo site_url('KelolaComing/delete_detail_coming/'.$id_coming->id_coming);?>"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button></a>
+										<?php if($event['status']==2){?>
+										<br/>
+										<br/>
+										<a  href="#" class=" btn btn-xs btn-dark-red"><b>Menunggu Verifikasi</b></a>
+										<?php } ?>
 	                                </div>
 	                                <div class="col-md-12">
 	                             		<hr style="border: solid 1px grey; margin-top: auto; opacity: 0.3;"></hr>
 	                             	</div>
+									<?php } ?>
 	                             </div>
 
 	                             <!--Content menu buat event baru-->
@@ -115,10 +123,15 @@
 	                             	</div>
 	                             	<div class="col-md-12 col-sm-8 col-xs-12 nopadding" style="padding:10px;"">
 					                  <div class="contact-form">
-					                     <form  method="post" action="#">
+					                      <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaMember/tambah_event/');?>" method="POST">
 					                        <div class="col-md-12 col-sm-6 col-xs-12">
 					                           <div class="form-group">
-					                              <input required placeholder="Nama Kegiatanmu" id="name" name="nama_event" class="form-control" required type="text">
+					                              <input required placeholder="Nama Kegiatanmu" id="name" name="judul_coming" class="form-control" required type="text" value="<?php 
+													if (isset($dataComing['judul_coming']))
+													{
+														echo htmlspecialchars($dataComing['judul_coming']);
+													}
+													?>"> 
 					                           </div>
 
 					                           <div class="row">
@@ -177,12 +190,12 @@
 				                                            <select name="kategori" required class="form-control" id="kategori">
 				                                                <option value="">--Pilih Kategori Event--</option>
 				                                                <?php
-				                                                    /*foreach ($kategori_coming as $key=>$kategori) 
+				                                                    foreach ($kategori_coming as $key=>$kategori) 
 				                                                    {
 				                                                        
 				                                                        echo '<option value="'.$key.'">'.$kategori.'</option>';   
 				                                                        
-				                                                    }*/
+				                                                    }
 				                                                ?>
 				                                            </select>
 				                                        </div>
@@ -194,11 +207,11 @@
 				                                            <select name="tipe" required class="form-control" id="kategori">
 				                                                <option value="">--Pilih Tipe Event--</option>
 				                                                <?php
-				                                                    /*foreach ($tipe_event as $key=>$tipe) 
+				                                                    foreach ($tipe_event as $key=>$tipe) 
 				                                                    {
 				                                                      
 				                                                        echo '<option value="'.$key.'">'.$tipe.'</option>';   
-				                                                    }*/
+				                                                    }
 				                                                ?>
 				                                            </select>
 				                                        </div>
@@ -237,10 +250,10 @@
 			                                                        <select name="jam_mulai" required class="form-control" id="jam_mulai" style="width: auto;">
 			                                                            <option value="">--Waktu Dimulai--</option>
 			                                                            <?php
-			                                                                /*foreach ($jam_event as $key=>$jam) 
+			                                                                foreach ($jam_event as $key=>$jam) 
 			                                                                {
 			                                                                    echo '<option value="'.$key.'">'.$jam.'</option>';   
-			                                                                }*/
+			                                                                }
 			                                                            ?>
 			                                                        </select>
 			                                                    </div>
@@ -248,11 +261,11 @@
 			                                                    <div class="col-md-6">
 			                                                        <select name="jam_selesai" required class="form-control" id="jam_selesai" style="width: auto;">
 			                                                            <option value="">--Waktu Berakhir--</option>
-			                                                            <?php /*
+			                                                            <?php 
 			                                                                foreach ($jam_event as $key=>$jam) 
 			                                                                {
 			                                                                    echo '<option value="'.$key.'">'.$jam.'</option>';   
-			                                                                } */
+			                                                                } 
 			                                                            ?>
 			                                                        </select>
 			                                                    </div>
@@ -265,7 +278,8 @@
 		                                        	<div class="col-md-6">
 				                                        <div class="form-group">
 				                                            <label for="exampleInputEmail1">Kota Lokasi Event :</label><br>
-				                                            <select name="kategori" required class="form-control" id="kategori">
+															<input type="text" name="kota">
+				                                            <!--<select name="kategori" required class="form-control" id="kategori">
 				                                                <option value="">--Pilih Kota--</option>
 				                                                <?php
 				                                                    /*foreach ($kategori_coming as $key=>$kategori) 
@@ -275,7 +289,7 @@
 				                                                        
 				                                                    }*/
 				                                                ?>
-				                                            </select>
+				                                            </select>-->
 				                                        </div>
 				                                    </div>
 				                                    <div class="col-md-6">
@@ -287,13 +301,16 @@
 				                                    </div>
 				                                </div>
 											</div>
-					                        
+					                        <input type="hidden" name="id_member" value="<?php echo $id_member; ?>">
+					                        <input type="hidden" name="nama_member" value="<?php echo $nama_member; ?>">
+					                        <input type="hidden" name="email" value="<?php echo $email; ?>">
+					                        <input type="hidden" name="passwordlama" value="<?php echo $password; ?>" id="passwordlama">
 					                        <div class="col-md-12 col-sm-12 col-xs-12">
 					                           <div class="form-group">
-					                              <textarea cols="12" rows="5" placeholder="Keterangan tambahan event . . ." id="message" name="message" class="form-control" required></textarea>
+					                              <textarea cols="12" rows="5" placeholder="Keterangan tambahan event . . ." id="message" name="deskripsi_coming" class="form-control" required></textarea>
 					                           </div>
 					                           <div class="form-group">
-					                              <button class="btn btn-colored-blog pull-right" type="submit"><i class="glyphicon glyphicon-send"></i> Submit Event</button>
+					                              <button class="btn btn-colored-blog pull-right" type="submit" value="1"><i class="glyphicon glyphicon-send"></i> Submit Event</button>
 					                           </div>
 					                        </div>
 					                     </form>
@@ -309,20 +326,20 @@
 	                             	</div>
 	                             	<div class="col-md-12 col-sm-8 col-xs-12 nopadding" style="padding:10px;"">
 					                  <div class="contact-form">
-					                     <form  method="post" action="#">
+					                      <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaMember/edit_member_area/'.$id_member);?>" method="POST">
 					                     	<div class="row">
 						                        <div style="text-align: center;" class="col-md-4 col-sm-6 col-xs-12">
 						                        	<div class='box-header'>
-						                        		<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="<?php echo base_url('asset/img/author3.jpg'); ?>"/>
+						                        		
 			                                            <?php
-			                                                /*if (empty($dataComing['path_gambar']))
+			                                                if (empty($path_foto))
 			                                                {
-			                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/img/empty.png').'"/>';
+			                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/img/author3.jpg').'"/>';
 			                                                }
 			                                                else
 			                                                {
-			                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/upload_img_coming/'.$dataComing['path_gambar']).'"/>';
-			                                                }*/
+			                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/upload_img_member/'.$path_foto).'"/>';
+			                                                }
 			                                            ?>   
 			                                        </div>
 			                                       
@@ -340,13 +357,13 @@
 								                        <div class="col-md-6 col-sm-6 col-xs-12">
 								                        	<div class="form-group">
 								                        	  <label>Nama Lengkap :</label>
-								                              <input required id="name" name="nama_member" class="form-control" required type="text">
+								                              <input required id="name" name="edit_nama_member" class="form-control" required type="text" value="<?php echo $nama_member?>">
 								                           </div>
 								                        </div>
 								                        <div class="col-md-6 col-sm-6 col-xs-12">
 								                        	<div class="form-group">
 								                        	  <label>Username :</label>
-								                              <input required id="name" name="username" class="form-control" required type="text">
+								                              <input required id="name" name="edit_username" class="form-control" required type="text" value="<?php echo $username?>">
 								                           </div>
 								                        </div>
 								                    </div>
@@ -354,16 +371,49 @@
 								                        <div class="col-md-6 col-sm-6 col-xs-12">
 								                        	<div class="form-group">
 								                        	  <label>E-Mail :</label>
-								                              <input required id="name" name="email" class="form-control" required type="text">
+								                              <input required id="name" name="edit_email" class="form-control" required type="text" value="<?php echo $email?>">
 								                           </div>
 								                        </div>
 								                        <div class="col-md-6 col-sm-6 col-xs-12">
 								                        	<div class="form-group">
 								                        	  <label>Telepon :</label>
-								                              <input required id="name" name="telepon" class="form-control" required type="text">
+								                              <input required id="name" name="edit_telepon" class="form-control" required type="text" value="<?php echo $telepon?>">
 								                           </div>
 								                        </div>
 								                    </div>
+													
+													<div class="row" id="editPassword">
+														<div class="col-md-4 col-sm-4 col-xs-12">
+															<div class="form-group">
+																<a href="#" onclick="editPassword()"><label>Ubah Password ?</label></a>
+															</div>
+														</div>
+													
+													</div>
+													
+													<div class="row" id="editPassword2" style="display:none">
+														<div class="col-md-4 col-sm-4 col-xs-12">
+								                        	<div class="form-group">
+								                        	  <label>Password Lama :</label>
+								                              <input required id="password_lama" name="password_lama" class="form-control" required type="text" >
+								                           </div>
+								                        </div>
+								                        <div class="col-md-4 col-sm-4 col-xs-12">
+								                        	<div class="form-group">
+								                        	  <label>Password Baru :</label>
+								                              <input required id="edit_password" name="edit_password" class="form-control" required type="text" >
+								                           </div>
+								                        </div>
+								                        <div class="col-md-4 col-sm-4 col-xs-12">
+								                        	<div class="form-group">
+								                        	  <label>Ulangi Password :</label>
+								                              <input required id="ulangi_password" name="ulangi_password" class="form-control" required type="text" >
+								                           </div>
+								                        </div>
+								                    </div>
+													<label for="exampleInputEmail1" id="validate-passlama" style="font-size:20px"></label>
+													<br/>
+													<label for="exampleInputEmail1" id="validate-passsama" style="font-size:20px"></label>
 								                    <div class="row">
 								                        <div class="col-md-6 col-sm-6 col-xs-12">
 								                        	
@@ -371,7 +421,7 @@
 								                        <div class="col-md-6 col-sm-6 col-xs-12">
 								                        	<br>
 								                        	<div class="form-group">
-								                              <button class="btn btn-colored-blog pull-right" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Simpan</button>
+								                              <button class="btn btn-colored-blog pull-right" type="submit" value="1" class="btn btn-primary" id="submitSave"><i class="glyphicon glyphicon-floppy-disk"></i> Simpan</button>
 								                           </div>
 								                        </div>
 								                    </div>
@@ -398,6 +448,7 @@
 	  <script src="<?php echo base_url('asset/js/daterangepicker/daterangepicker.js?ver=b1.0'); ?>" type="text/javascript"></script>
 
 	  <script type="text/javascript">
+		var check_passlama = 0;
 	  	function bayar()
 	  	{
 			document.getElementById("jenis_event").style.display = "block";
@@ -431,6 +482,82 @@
                 $('#tgl_selesai').val(end.format('YYYY-MM-DD'));
             });
         });
+		
+		function editPassword(){
+			document.getElementById("editPassword").style.display = "none";
+			document.getElementById("editPassword2").style.display = "block";
+			document.getElementById("password_lama").type = "password";
+			document.getElementById("edit_password").type = "password";
+			document.getElementById("ulangi_password").type = "password";
+			document.getElementById("submitSave").disabled = true;
+			
+		}
+		
+		$(document).ready(function() {
+		  $("#ulangi_password").keyup(validate);
+		});
+		
+		$(document).ready(function() {
+		  $("#password_lama").keyup(validate_passlama);
+		});
+
+		
+		function validate() {
+		
+		  var password1 = $("#edit_password").val();
+		  var password2 = $("#ulangi_password").val();
+
+			if(password1 == password2) {
+			   document.getElementById("validate-passsama").style.color = "green";
+			   $("#validate-passsama").text("Password valid"); 
+			   check_passsama = 1;
+			   if(check_passlama==1){
+					document.getElementById("submitSave").disabled = false;
+			   }
+			}
+			else {
+				document.getElementById("validate-passsama").style.color = "red";
+				$("#validate-passsama").text("Password tidak sama");  
+				document.getElementById("submitSave").disabled = true;
+			}
+			
+		}
+		
+		function validate_passlama() {
+		
+		  var password1 = $("#passwordlama").val();
+		  var password2 = $("#password_lama").val();
+		  $.ajax({
+			url: 'validate_passlama',	
+			type: 'POST',
+			data: {password2:password2},
+			success: function(password){
+						alert(password);
+						password2 = password;
+						if(password1 == password2) {
+						   document.getElementById("validate-passlama").style.color = "green";
+						   $("#validate-passlama").text("Password lama benar"); 
+						   check_passlama = 1;
+						   if(check_passsama==1)
+								document.getElementById("submitSave").disabled = false;
+						   {}
+						}
+						else {
+							document.getElementById("validate-passlama").style.color = "red";
+							$("#validate-passlama").text("Password lama salah");  
+							document.getElementById("submitSave").disabled = true;
+						}
+					},
+			error: function(){
+						alert('GAGAL');
+					}
+					
+			});
+			
+		 
+			
+			
+		}
 	  </script>
 
 

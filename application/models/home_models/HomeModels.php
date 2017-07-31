@@ -7,6 +7,18 @@
 			parent::_construct();
 		}
 
+		function login_member($username, $password) {
+			$this->db->where('username', $username);
+			$this->db->where('password', md5($password));
+			$query=$this->db->get('member');
+			if ($query->num_rows()>0) {
+				return $query->row_array();
+			}
+			else {
+				return FALSE;
+			}
+		}
+		
 		//Mengambil data slider slider
 		function get_data_slider()
 		{

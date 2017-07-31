@@ -13,81 +13,36 @@
             <div class="row">
                <div class="col-md-8 col-sm-12 col-xs-12">
                   <div class="post-entry">
-                     <h2>Canon's new cameras are perfect for Casey Neistat wannabes </h2>
+                     <h2><?php echo $judul_artikel; ?></h2>
                      
                      <ul class="post-tools">
-                        <li> by <a href=""> <strong> Arsoo</strong> </a></li>
-                        <li> March 01, 2016 </li>
+                        <li> by <a href=""> <strong><?php echo $penulis_artikel;?></strong> </a></li>
+                        <li> <?php echo $tanggal_posting; ?></li>
                         <li><i class="ti-thought"></i> 157</li>
                         <li> <i class="ti-eye"></i> 2563 </li>
                      </ul>
                      <ul class="social-share">
                         <li class="facebook"> <a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
                      </ul>
-                     <div class="picture"> <img alt="" class="img-responsive" src="<?php echo base_url('asset/img/52.jpg'); ?>"> </div>
+                     <div class="picture"> <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb_'.$path_gambar); ?>"> </div>
 
                      <!--Kotak Content Artikel-->
-                     <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        aliquip. 
-                     </p>
-                     <p>Pellentesque habitant morbi tristique senectus et netus et
-                        malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat
-                        vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit
-                        amet quam egestas semper. Aenean ultricies mi vitae est. Mauris
-                        placerat eleifend leo. Quisque sit amet est et sapien ullamcorper
-                        pharetra. Vestibulum erat wisi, condimentum sed, commodo vitae,
-                        ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt
-                        condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac
-                        dui. Donec non enim in turpis pulvinar facilisis. Ut felis.
-                     </p>
-                     
-                     <p>Ut felis. Praesent dapibus, neque id cursus faucibus,
-                        tortor neque egestas augue, eu vulputate magna eros eu erat.
-                        Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan
-                        porttitor, facilisis luctus, metus
-                     </p>
-                     <p>Pellentesque habitant morbi tristique senectus et
-                        netus et malesuada fames ac turpis egestas. Vestibulum tortor
-                        quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec
-                        eu libero sit amet quam egestas semper. Aenean ultricies mi vitae
-                        est.Mauris placerat eleifend leo. Quisque sit amet est et sapien
-                        ullamcorper pharetra. Vestibulum erat wisi, condimentum sed,
-                        commodo vitae, ornare sit amet, wisi.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        aliquip. labore et dolore magna aliqua. Ut enim
-                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        aliquip.
-                     </p>
-                     <p>
-                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        aliquip. labore et dolore magna aliqua. Ut enim
-                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        aliquip.
-                     </p>
-                     
-                     <p>Labore et dolore magna aliqua. Ut enim
-                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        aliquip. labore et dolore magna aliqua. Ut enim
-                        ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                        aliquip.
-                     </p>
+                     <?php echo $isi_artikel;?>
                      <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
 
                      <!--Kotak Komentar-->                     
                      <div class="reviews">
                         <h3>Total Coments (46)</h3>
                         <!--Form comentar baru-->
+						
 	                     <div style="padding-top: 10px;" class="col-md-12 comment-info">
-                             <div class="col-md-2">
-                             	<img style="width: 100%;" class="pull-left" src="<?php echo base_url('asset/img/author3.jpg'); ?>" alt="author">
+                        <?php if(isset($this->session->userdata['is_logged_in'])){?>     
+							 <div class="col-md-2">
+                             	<img style="width: 100%;" class="pull-left" src="" alt="author">
                              </div>
                              <div class="author-desc">
                                 <div class="author-title">
-                                   <strong><a href="">Rebbica Alex</a></strong>
+                                   <strong><a href=""><?php echo $this->session->userdata['nama_member'];?></a></strong>
                                 </div>
                                 <form class="col-md-10" role="form" enctype="multipart/form-data" action="<?php //echo site_url('KelolaArtikel/tambah_artikel_check/');?>" method="POST">
                                 	
@@ -108,6 +63,7 @@
 								  	</ul>
                                 </form>
                              </div>
+							 <?php } ?>
                          </div>
                      </div>
                   </div>
@@ -121,48 +77,16 @@
                            <span class="heading-ping"></span>
                         </div>
                         <ul class="tabs-posts">
-						<?php //foreach($listArtikel as $artikel){ ?>
+						<?php foreach($listArtikel as $artikel){ ?>
                            <li>
-                              <div class="pic"> <a href="#"><img alt="" class="img-responsive" src="<?php echo base_url('asset/img/small-2.jpg'); ?>"></a> </div>
-                              <div class="caption"> <a href="standard-post.html">Get a stern talking-to from your parents with Kit Kat's Lunar</a> </div>
+                              <div class="pic"> <a href="#"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
+                              <div class="caption"> <a href="standard-post.html"><?php echo $artikel['judul_artikel'];?></a> </div>
                               <ul class="post-tools">
-                                 <li>  January 21, 2016 </li>
+                                 <li>  <?php echo $artikel['tanggal_posting'];?> </li>
                                  <li title="Comments"> <i class="ti-thought"></i> 953 </li>
                               </ul>
                            </li>
-                           <li>
-                              <div class="pic"> <a href="#"><img alt="" class="img-responsive" src="<?php echo base_url('asset/img/small-2.jpg'); ?>"></a> </div>
-                              <div class="caption"> <a href="standard-post.html">Get a stern talking-to from your parents with Kit Kat's Lunar</a> </div>
-                              <ul class="post-tools">
-                                 <li>  January 21, 2016 </li>
-                                 <li title="Comments"> <i class="ti-thought"></i> 953 </li>
-                              </ul>
-                           </li>
-                           <li>
-                              <div class="pic"> <a href="#"><img alt="" class="img-responsive" src="<?php echo base_url('asset/img/small-2.jpg'); ?>"></a> </div>
-                              <div class="caption"> <a href="standard-post.html">Get a stern talking-to from your parents with Kit Kat's Lunar</a> </div>
-                              <ul class="post-tools">
-                                 <li>  January 21, 2016 </li>
-                                 <li title="Comments"> <i class="ti-thought"></i> 953 </li>
-                              </ul>
-                           </li>
-                           <li>
-                              <div class="pic"> <a href="#"><img alt="" class="img-responsive" src="<?php echo base_url('asset/img/small-2.jpg'); ?>"></a> </div>
-                              <div class="caption"> <a href="standard-post.html">Get a stern talking-to from your parents with Kit Kat's Lunar</a> </div>
-                              <ul class="post-tools">
-                                 <li>  January 21, 2016 </li>
-                                 <li title="Comments"> <i class="ti-thought"></i> 953 </li>
-                              </ul>
-                           </li>
-                           <li>
-                              <div class="pic"> <a href="#"><img alt="" class="img-responsive" src="<?php echo base_url('asset/img/small-2.jpg'); ?>"></a> </div>
-                              <div class="caption"> <a href="standard-post.html">Get a stern talking-to from your parents with Kit Kat's Lunar</a> </div>
-                              <ul class="post-tools">
-                                 <li>  January 21, 2016 </li>
-                                 <li title="Comments"> <i class="ti-thought"></i> 953 </li>
-                              </ul>
-                           </li>
-						<?php //} ?>
+                         <?php } ?>
                         </ul>
                      </div>
                   </div>
