@@ -151,7 +151,7 @@
 							                     <br><br>
 							                     <!--Form comentar baru-->
 							                     <div style="padding-top: 10px;" class="col-md-12 comment-info">
-												 <?php if($this->session->userdata['is_logged_in']){?>
+												 <?php if(isset( $this->session->userdata['is_logged_in'])){?>
 												  <div class="col-md-2">
 					                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="" alt="author">
 					                                 </div>
