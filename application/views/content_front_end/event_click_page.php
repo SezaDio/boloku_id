@@ -3,43 +3,60 @@
             <div class="row">
                <div class="col-md-12 col-sm-12 col-xs-12">
 	                <div class="parallel-post-style">
-	                	<div class="col-md-9 col-sm-4 col-xs-12">
+	                	<div class="col-md-8 col-sm-4 col-xs-12">
 	                       <div class="item" style="box-shadow: 0 1px 5px grey;">
 	                          <div class="latest-news-grid grid-1">
-	                             <div class="col-md-6">
-		                             <div class="picture">
-		                             	<div style="padding-top: 15px; margin-bottom: 15px;" class="ad-div style-box">
-				                           <a href="<?php echo base_url('asset/upload_img_coming/'.$path_gambar); ?>" class="tt-lightbox">
-				                              <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$path_gambar); ?>">
-				                           </a>
-				                        </div>
-		                             </div>
-	                             </div>
-	                             <div class="detail">
-	                                <div class="caption" style="text-align: center;">
-	                                   <h5>
-	                                      <a href="#"><label><?php echo $nama_event; ?></label></a>
-	                                   </h5>
-	                                </div>
-	                                <p style="text-align: center; font-size: inherit;">
-	                                   by <strong> <?php echo $posted_by; ?> </strong> / on <strong> <?php echo $tanggal_posting; ?></strong>
-	                                </p><br><br>
-	                                
-	                                <div class="col-md-12" style="text-align: center;">
-	                                	<button style="color:white;" class="btn btn-success" type="submit"><i class="glyphicon glyphicon-thumbs-up"></i> 100</button>
-	                                	<button style="color:white;" class="btn btn-warning" type="submit"><i class="glyphicon glyphicon-eye-open"></i> 100</button>
-	                                	<button style="color:white;" class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-share"></i> 100</button>
-	                                </div><br><br><br>
+	                          	<div class="row">
+	                          		<div class="col-md-12">
+			                            <div class="col-md-6">
+				                             <div class="picture">
+				                             	<div style="padding-top: 15px; margin-bottom: 15px;" class="ad-div style-box">
+						                           <a href="<?php echo base_url('asset/upload_img_coming/'.$path_gambar); ?>" class="tt-lightbox">
+						                              <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$path_gambar); ?>">
+						                           </a>
+						                        </div>
+				                             </div>
+			                            </div>
 
-	                                <hr style="border: solid 1px #f44a56; opacity: 0.4;">
-	                                <a style="margin-top: -15px;" href="#" class=" btn btn-dark-red"><?php echo $kategori_event; ?></a>
-			                        <a style="margin-top: -15px;" href="#" class=" btn btn-orange"><?php echo $tipe_event; ?></a>
-	                             </div>
+			                            <div class="col-md-6">
+				                            <div class="detail">
+				                                <div class="caption" style="text-align: center;">
+				                                   <h5>
+				                                      <a href="#"><label><?php echo $nama_event; ?></label></a>
+				                                   </h5>
+				                                </div>
+				                                <p style="text-align: center; font-size: inherit;">
+				                                   by <strong> <?php echo $posted_by; ?> </strong> / on <strong> <?php echo $tanggal_posting; ?></strong>
+				                                </p><br><br>
+				                                
+				                               
+				                                <div class="col-md-12" style="text-align: center;">
+				                                	<button value="<?php echo $like; ?>" onclick="update_like_ajax(<?php echo $id_event; ?>)" style="color:white;" class="btn btn-success" type="submit"><i class="glyphicon glyphicon-thumbs-up"></i> <span id="like"> <?php echo $like; ?></span></button>
+
+
+				                                	<button style="color:white;" class="btn btn-warning" type="submit"><i class="glyphicon glyphicon-eye-open"></i> <?php echo $hits; ?></button>
+				                                	<button style="color:white;" class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-share"></i> Share</button>
+				                                </div>
+				                            </div>
+				                        </div>
+				                    </div>
+		                        </div>
+
+		                        <div class="row" style="padding-bottom: 20px">
+		                        	<div class="col-md-12">
+		                        		<div class="col-md-12">
+		                        		<hr style="border: solid 1px #f44a56; opacity: 0.4;">
+		                                <a style="margin-top: -15px;" href="#" class=" btn btn-dark-red"><?php echo "#".$kategori_event; ?></a>
+				                        <a style="margin-top: -15px;" href="#" class=" btn btn-orange"><?php echo "#". $tipe_event; ?></a>
+		                        		</div>
+		                        	</div>
+		                        </div>
+
 	                          </div>
 	                       </div>
 	            		</div>
 
-	            		<div class="col-md-3 col-sm-4 col-xs-12">
+	            		<div class="col-md-4 col-sm-4 col-xs-12">
 	                       <div class="item" style="box-shadow: 0 1px 5px grey;">
 	                          <div class="latest-news-grid grid-1">
 	                             <div class="detail">
@@ -52,43 +69,72 @@
 	                                	<tr>
 	                                		<td style="width: 120px;">Tanggal Event</td>
 	                                		<td>:</td>
-	                                		<td></td>
+	                                		<td>
+	                                			<?php
+                                                    $tgl_mulai=date('d-F-Y', strtotime($tgl_mulai));
+                                                    $tgl_selesai=date('d-F-Y', strtotime($tgl_selesai));
+
+                                                    if ($tgl_mulai  == $tgl_selesai) 
+                                                    {
+                                                        echo $tgl_mulai;   
+                                                    }
+                                                    else
+                                                    {
+                                                        echo $tgl_mulai." s/d ".$tgl_selesai;
+                                                    }
+                                                ?>
+	                                		</td>
 	                                	</tr>
 	                                	<tr>
 	                                		<td>Waktu Event</td>
 	                                		<td>:</td>
-	                                		<td></td>
+	                                		<td>
+	                                			<?php
+                                                    if ($jam_mulai  == $jam_selesai) 
+                                                    {
+                                                        echo $jam_mulai;   
+                                                    }
+                                                    else
+                                                    {
+                                                        echo $jam_mulai." s/d ".$jam_selesai;
+                                                    }
+                                                ?>
+	                                		</td>
 	                                	</tr>
 	                                	<tr>
 	                                		<td>Harga Tiket</td>
 	                                		<td>:</td>
-	                                		<td><?php if($jenis_event==0){ echo $harga;} else { echo "-";}?></td>
+	                                		<td><?php if($jenis_event==0){ echo "Rp ".$harga;} else { echo "Free";}?></td>
 	                                	</tr>
 	                                	<tr>
 	                                		<td>Jumlah Seat</td>
 	                                		<td>:</td>
-	                                		<td><?php if($seat==1){ echo $jumlah_seat;} else { echo "-";}?></td>
+	                                		<td><?php if($seat==1){ echo $jumlah_seat;} else { echo "Open Seat";}?></td>
 	                                	</tr>
 	                                	<tr>
 	                                		<td>Contact Person</td>
 	                                		<td>:</td>
 	                                		<td><?php echo $telepon;?></td>
 	                                	</tr>
-	                                	<tr>
-	                                		<td>Email</td>
-	                                		<td>:</td>
-	                                		<td><?php echo $email;?></td>
-	                                	</tr>
+	                                	
 	                                </table>
+	                                <hr style="border: solid 1px #f44a56; opacity: 0.4;">
+	                                
 	                                <div class="col-md-12" style="text-align: center;">
-                                       <a style="width: 100%;" href="" class="btn btn-colored-blog"> Daftar </a>
+	                                	<?php
+	                                		if($pendaftaran == 1)
+	                                		{ ?>
+                                       			<a style="height: 53px; font-size: 1.7em; width: 100%;" href="" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
+	                                  <?php }
+
+	                                	?>
                                     </div>
 	                             </div>
 	                          </div>
 	                       </div>
 	            		</div>
 
-	            		<div class="col-md-9 col-sm-4 col-xs-12" id="sidebar">
+	            		<div class="col-md-8 col-sm-4 col-xs-12" id="sidebar">
 	                       <div class="item" style="box-shadow: 0 1px 5px grey;">
 	                          <div class="latest-news-grid grid-1">
 	                             <div class="widget widget-bg">
@@ -119,44 +165,57 @@
 			                                 <div class="tab-pane active" id="popular" role="tabpanel">
 			                                    <div class="caption">
 			                                    	<br>
-			                                    	<p><?php echo $deskripsi_event; ?></p> 
+			                                    	<?php
+			                                    		$deskripsi_event = trim($deskripsi_event);
+			                                    		if (empty($deskripsi_event))
+			                                    		{
+			                                    			echo "<p style='text-align: center;'>Tidak ada deskripsi tambahan terkait event ini</p>";
+			                                    		}
+			                                    		else
+			                                    		{ ?>
+			                                    			<p><?php echo $deskripsi_event; ?></p>
+			                                      <?php } ?>
+			                                    	
 			                                    </div>
 			                                 </div>
 
 			                                 <!--Tab Testimoni-->
 			                                 <div class="tab-pane" id="testimoni" role="tabpanel">
 			                                    <div class="reviews">
-							                        <h3>Total Coments (46)</h3>
+							                        <h3>Total Testimoni (<?php echo $jumlahTestimoni; ?>)</h3>
 													<?php foreach($listTestimoni as $testimoni){?>
-						                            <div style="padding-top: 10px;" class="col-md-12 comment-info">
-						                                 <div class="col-md-2">
-						                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="<?php echo base_url('asset/img/author3.jpg'); ?>" alt="author">
-						                                 </div>
-						                                 
-						                                 <div class="author-desc">
-						                                    <div class="author-title">
-						                                       <strong><a href=""><?php echo $testimoni['penulis_testimoni']?></a></strong>
-						                                       <ul class="list-inline pull-right">
-						                                          <li style="color: black;"><label><?php echo $testimoni['tgl_posting']; ?></label></li>
-						                                       </ul>
-						                                    </div>
-						                                    <div class="col-md-10">
-						                                    	<p><?php echo $testimoni['isi_testimoni']; ?></p>
-						                                    </div>
-						                                 </div>
-						                            </div> 
+							                            <div style="padding-top: 10px;" class="col-md-12 comment-info">
+							                                 <div class="col-md-2">
+							                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="<?php echo base_url('asset/img/author3.jpg'); ?>" alt="author">
+							                                 </div>
+							                                 
+							                                 <div class="author-desc">
+							                                    <div class="author-title">
+							                                       <strong><a href=""><?php echo $testimoni['penulis_testimoni']?></a></strong>
+							                                       <ul class="list-inline pull-right">
+							                                          <li style="color: black;"><label><?php echo $testimoni['tgl_posting']; ?></label></li>
+							                                       </ul>
+							                                    </div>
+							                                    <div class="col-md-10">
+							                                    	<p><?php echo $testimoni['isi_testimoni']; ?></p>
+							                                    </div>
+							                                 </div>
+							                                 <br><br>
+							                           	 	<hr style="border: solid 1px #f44a56; opacity: 0.4;">
+							                            </div>
+
 													<?php } ?>
 						                            
 							                     </div>
 							                     <br><br>
 							                     <!--Form comentar baru-->
 							                     <div style="padding-top: 10px;" class="col-md-12 comment-info">
-												 <?php if(isset( $this->session->userdata['is_logged_in'])){?>
-												  <div class="col-md-2">
+												 	<?php if(isset( $this->session->userdata['is_logged_in'])){?>
+												  	<div class="col-md-2">
 					                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="" alt="author">
-					                                 </div>
-					                                 
-					                                 <div class="author-desc">
+					                                </div>
+
+					                                <div class="author-desc">
 					                                    <div class="author-title">
 					                                       <strong><a href=""><?php echo $this->session->userdata['nama_member']?></a></strong>
 					                                    </div>
@@ -178,24 +237,33 @@
 															    <li><a href="#">Separated link</a></li>
 														  	</ul>
 					                                    </form>
-					                                 </div>
+					                                </div>
 											     <?php } ?>
 						                         </div>
 			                                 </div>
 
 			                                 <!--Tab Liputan-->
 			                                 <div class="tab-pane" id="liputan" role="tabpanel">
-			                                    <ul class="tabs-posts">
-												<?php foreach($listPressRelease as $pressrelease){?>
-			                                       <li>
-			                                          <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_news/thumb_'.$pressrelease['gambar_news']); ?>"></a> </div>
-			                                          <div class="caption"> <a href="#"><?php echo $pressrelease['judul_news']; ?> </a> </div>
-			                                          <ul class="post-tools">
-			                                             <li title="Comments"> <i class="ti-thought"></i> 105 </li>
-			                                          </ul>
-			                                    <?php } ?>   
-			                                    </ul>
-			                                 </div>
+			                                 	<?php
+		                                    		if (empty($listPressRelease))
+		                                    		{
+		                                    			echo "<br>";
+		                                    			echo "<p style='text-align: center;'>Belum ada liputan terkait event ini</p>";
+		                                    		}
+		                                    		else
+		                                    		{ ?>
+		                                    			<ul class="tabs-posts">
+														<?php foreach($listPressRelease as $pressrelease){?>
+					                                       <li>
+					                                          <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_news/thumb_'.$pressrelease['gambar_news']); ?>"></a> </div>
+					                                          <div class="caption"> <a href="#"><?php echo $pressrelease['judul_news']; ?> </a> </div>
+					                                          <ul class="post-tools">
+					                                             <li title="Comments"> <i class="ti-thought"></i> 105 </li>
+					                                          </ul>
+					                                    <?php } ?>   
+					                                    </ul>
+		                                      <?php } ?>
+		                                    </div>
 			                              </div>
 			                           </div>
 			                        </div>

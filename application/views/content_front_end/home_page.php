@@ -17,30 +17,61 @@
       <section class="photo-gallery-section">
          <div class="col-md-1"></div>
          
-            <div class="col-sm-3">
-               <hr class="omb_hrOr" style="border-top-width: 2px; border-color: #f44a56;">
+         <div class="col-sm-3">
+            <hr class="omb_hrOr" style="border-top-width: 2px; border-color: #f44a56;">
+         </div>
+         <div class="col-sm-4">
+            <div class="heading colored" style="background-color: white;">
+               <h5 class="main-heading" style="float: unset; text-align: center; border-color: #f44a56; color: #f44a56;border-radius: 10px;">
+                  <Strong>Top Event</Strong>
+               </h5>
             </div>
-             <div class="col-sm-4">
-               <div class="heading colored" style="background-color: white;">
-                  <h5 class="main-heading" style="float: unset; text-align: center; border-color: #f44a56; color: #f44a56;border-radius: 10px;">
-                     <Strong>Top Event</Strong>
-                  </h5>
-               </div>
-            </div>
-             <div class="col-sm-3">
-               <hr class="omb_hrOr" style="border-top-width: 2px; border-color: #f44a56;">
-            </div>
-         
+         </div>
+         <div class="col-sm-3">
+            <hr class="omb_hrOr" style="border-top-width: 2px; border-color: #f44a56;">
+         </div>
+      
          <div class="col-md-1"></div>
          <div class="container-flude">
             <div class="row">
                <div class="col-md-12 col-xs-12 col-sm-12" style="padding-bottom: 20px;">
-				<?php foreach($listTopEvent as $topevent){ ?>
-                  <div class="item col-md-4">
-                     <a href="#" class="tt-lightbox"> 
-                        <img class="img-responsive center-block" alt="" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$topevent['path_gambar']); ?>"> 
-                     </a>
-                  </div>
+				  <?php foreach($listTopEvent as $topevent){ ?>
+                  <a href="<?php echo site_url('FrontControl_Event/event_click/'.$topevent['id_coming']); ?>">
+                     <div class="item col-md-4" style="padding-bottom: 10px; text-align: center;">
+                        <div class="picture">
+                           <div class="category-image">
+                              <a href="<?php echo site_url('FrontControl_Event/event_click/'.$topevent['id_coming']); ?>"> 
+                                 <img style="border: solid 3px #444;" class="img-responsive" alt="" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$topevent['path_gambar']); ?>"> 
+                              </a>
+                           </div>
+                        </div>
+                        <div class="post-content" style="background-color: #444;">
+                           <div class="catname">
+                              <a href="#" class=" btn btn-green btn-xs"><i class="ti-money"></i> <?php if($topevent['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?></a>
+                              <a class="btn btn-purple btn-xs" href="">
+                                 <div># Tipe</div>
+                              </a>
+                              <a class="btn btn-purple btn-xs" href="">
+                                 <div># Kategori</div>
+                              </a>
+                           </div>
+                           <h4 style="color: white;"> <a href="<?php echo site_url('FrontControl_Event/event_click/'.$topevent['id_coming']); ?>" style="color: white;"> <?php echo $topevent['nama_coming']; ?> </a> </h4>
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="col-md-2"></div>
+                                    <div class="col-md-8" style="margin-left: 30px;">
+                                       <ul class="post-tools">
+                                          <li style="color: white;"> By <a href=""><strong style="color: white;"> <?php echo $topevent['posted_by']; ?></strong></a> </li>
+                                          <li> <a style="color: white;" href=""><i class="glyphicon glyphicon-thumbs-up"></i> 23</a> </li>
+                                          <li style="color: white;"><i class="glyphicon glyphicon-eye-open"></i> 23</li>
+                                       </ul>
+                                    </div>
+                                 <div class="col-md-2"></div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </a>
                 <?php } ?>                    
                </div>
             </div>
@@ -59,7 +90,7 @@
                            <h2 class="main-heading"><strong>New Event</strong></h2>
                            <span class="heading-ping"></span>
                            <span class="heading-read-more">
-                              <a href="#" class="btn btn-black">See all</a>
+                              <a href="<?php echo site_url('FrontControl_Event'); ?>" class="btn btn-black">See all</a>
                            </span>
                         </div>
                      </div>
@@ -67,12 +98,13 @@
                      <!---Main content New Event ditampilkan 8 buah-->
                      <div class="row">
 						   <?php foreach($listNewEvent as $newevent){ ?>
+                        <a href="<?php echo site_url('FrontControl_Event/event_click/'.$newevent['id_coming']); ?>">
                            <article class="col-md-6 col-sm-6 col-xs-12">
                               <div class="grid-1">
                                  <div class="picture">
                                     <div class="category-image">
-                                       <a href="standard-post.html">
-                                       <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$newevent['path_gambar']); ?>">
+                                       <a href="<?php echo base_url('FrontControl_Event/event_click/'.$newevent['id_coming']); ?>">
+                                          <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$newevent['path_gambar']); ?>">
                                        </a>
                                        <div class="catname">
                                           <a class="btn btn-green" href="#">
@@ -81,7 +113,7 @@
                                        </div>
                                        <div class="hover-show-div">
                                           <a href="" class="post-type" style="color:white">
-										  Tanggal
+										              Tanggal
                                           </a>
                                        </div>
                                     </div>
@@ -89,40 +121,26 @@
                                  <div class="detail">
                                     <div class="caption">
                                        <h5>
-                                          <a href="standard-post.html"><?php echo $newevent['nama_coming'];?></a>
+                                          <a href="<?php echo base_url('FrontControl_Event/event_click/'.$newevent['id_coming']); ?>"><?php echo $newevent['nama_coming'];?></a>
                                        </h5>
                                     </div>
                                     <ul class="post-tools">
-                                       <li> by <a href=""> <strong> <?php echo $newevent['posted_by'];?></strong> </a></li>
-                                       <li>  5 Hours Ago </li>
-                                       <li><a href=""> <i class="ti-thought"></i> 57</a> </li>
+                                       <li> by <a href="#"> <strong> <?php echo $newevent['posted_by'];?></strong> </a></li>
+                                       <li><i class="glyphicon glyphicon-thumbs-up"></i> 57</a></li>
+                                       <li><i class="glyphicon glyphicon-eye-open"></i> 57</a></li>
+                                       
                                     </ul>
                                  </div>
                               </div>
                            </article>
+                        </a>
 						      <?php } ?>
                      </div>
 
                      <!--Pagination untuk halaman new event-->
                      <div class="pagination-holder">
                         <nav>
-                           <ul class="pagination">
-                              <li>
-                                 <a aria-label="Previous" href=" #"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a>
-                              </li>
-                              <li class="active">
-                                 <a href=" #">1 <span class="sr-only">(current)</span></a>
-                              </li>
-                              <li>
-                                 <a href=" #">2</a>
-                              </li>
-                              <li>
-                                 <a href=" #">3</a>
-                              </li>
-                              <li>
-                                 <a aria-label="Next" href=" #"><span aria-hidden="true"><i class="fa fa-angle-right"></i></span></a>
-                              </li>
-                           </ul>
+                           <?php echo $pagination; ?>
                         </nav>
                      </div>
                   </div>
@@ -142,8 +160,8 @@
                               <div class="latest-news-grid grid-1">
                                  <div class="picture">
                                     <div class="category-image">
-                                       <a href="standard-post.html">
-                                       <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_wow/thumb_'.$ngertirak['path_gambar']); ?>">
+                                       <a href="#">
+                                          <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_wow/thumb_'.$ngertirak['path_gambar']); ?>">
                                        </a>
                                        <div class="catname">
                                           <a class="btn btn-maroon" href="#">
@@ -155,14 +173,14 @@
                                  <div class="detail">
                                     <div class="caption" style="text-align: center;">
                                        <h5>
-                                          <a href="#"><?php echo $ngertirak['judul_wow'];?></a>
+                                          <?php echo $ngertirak['judul_wow'];?>
                                        </h5>
                                     </div>
                                     <p style="text-align: center; font-size: inherit;">
                                        <?php echo $ngertirak['deskripsi'];?>
                                     </p><br>
                                     <div class="col-md-12" style="text-align: center;">
-                                       <a href="" class="btn btn-colored-blog"> See More</a>
+                                       <a href="<?php echo site_url('FrontControl_NgertiRak'); ?>" class="btn btn-colored-blog"> See More</a>
                                     </div>
                                  </div>
                               </div>
@@ -178,10 +196,10 @@
                            <span class="heading-ping"></span> 
                         </div>
                         <div class="search-widget">
-                              <div class="form-group">
-                                 <input placeholder="Goleki" name="search" class="form-control" type="text" id="kata_kunci">
-                                 <button onclick="cariKata()"> <i class="fa fa-search"></i></button>
-                              </div>
+                           <div class="form-group">
+                              <input placeholder="Goleki" name="search" class="form-control" type="text" id="kata_kunci">
+                              <button onclick="cariKata()"> <i class="fa fa-search"></i></button>
+                           </div>
                         </div>
       						<div class="detail" style="background:white; padding:10px; display:none" id="notFound">
       							<p>Kata tidak ditemukan !</p>
@@ -211,9 +229,11 @@
                         <ul class="tabs-posts">
 						<?php foreach($listArtikel as $artikel){ ?>
                            <li>
-                              <div class="pic"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel'); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
+                              <div class="pic"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
                               <div class="caption"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><?php echo $artikel['judul_artikel']; ?></a> </div>
                               <ul class="post-tools">
+                                 <li><i class="glyphicon glyphicon-thumbs-up"></i> 57</a></li>
+                                 <li><i class="glyphicon glyphicon-eye-open"></i> 57</a></li>
                                  <li title="Comments"> <i class="ti-thought"></i> 105 </li>
                               </ul>
                            </li>

@@ -163,5 +163,8 @@
       
       <!-- Template Custom Js --> 
       <script src="<?php echo base_url('asset/js/custom.js'); ?>" type="text/javascript"></script> 
+
+      <!-- Ajax -->
+      <script src="<?php echo base_url('asset/js/ajax.js'); ?>" type="text/javascript"></script>
    </body>
 </html>

@@ -50,8 +50,8 @@
 			return $result;
 		}	
 
-		function get_new_event(){
-			$query = $this->db->order_by('id_coming','DESC')->select('*')->where('status',1)->get('coming');
+		function get_new_event($number, $offset){
+			$query = $this->db->order_by('id_coming','DESC')->select('*')->where('status',1)->get('coming', $number, $offset);
 		
 			$indeks = 0;
 			$result = array();
@@ -62,6 +62,12 @@
 			}
 		
 			return $result;
+		}
+
+		//get jumlah data new event
+		function jumlah_data_new_event()
+		{
+			return $this->db->get('coming')->num_rows();
 		}
 		
 		function get_ngerti_rak(){
@@ -132,6 +138,13 @@
 			$query = $this->db->where('id_coming',$id_coming)->get('coming');
 				
 			return $query->row_array();
+		}
+
+		function jumlah_testimoni($id_coming)
+		{
+			$query = $this->db->where('id_event',$id_coming)->get('testimoni');
+				
+			return $query->num_rows();
 		}
 		
 		function get_press_release($id_coming)
@@ -211,5 +224,17 @@
 			$query = $this->db->query("SELECT * FROM `news` WHERE id_news=(SELECT max(id_news) FROM `news` WHERE jenis_news='6')");
 			
 			return $query;
+		}
+
+		function update_hits($where, $data, $table)
+		{
+			$this->db->where($where);
+			$this->db->update($table, $data);
+		}
+
+		function update_like($where, $data, $table)
+		{
+			$this->db->where($where);
+			$this->db->update($table, $data);
 		}
 	}

@@ -45,8 +45,7 @@
       <!-- Theme Color -->
       <link rel="stylesheet" id="color" href="<?php echo base_url('asset/css/colors/defualt.css'); ?>">
 
-      <!-- For Style Switcher -->
-      <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
+      
 
       <script type="text/javascript" src="<?php echo base_url('asset/js/jquery.min.js'); ?>"></script>
       <!-- Bootstrap Core Js --> 

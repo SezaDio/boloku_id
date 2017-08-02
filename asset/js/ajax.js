@@ -318,6 +318,20 @@ function setuju_pepak_ajax(id_pepak)
 	}
 }
 
+function update_like_ajax(id_event)
+{
+	$.ajax({
+			url: '../update_like/'+id_event,
+			type: 'POST',
+			data: {id_event:id_event},
+			success: function(){
+						var like = $('#like').html();
+						like = parseInt(like)+1;
+						$('#like').html(like);
+					}
+		});
+}
+
 function delete_artikel_ajax(id_artikel)
 {
 	if (confirm("Anda yakin ingin menghapus Artikel ini ?"))

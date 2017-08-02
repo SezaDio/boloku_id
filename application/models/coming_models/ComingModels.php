@@ -91,4 +91,5 @@
 			$this->db->where('id_coming',$id_coming);
 			$this->db->update('coming',$data);
 		}
+
 	}
