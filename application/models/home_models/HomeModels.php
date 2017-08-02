@@ -120,7 +120,7 @@
 		
 		function get_event()
 		{
-			$query = $this->db->query("SELECT * FROM `coming` WHERE status='1'");
+			$query = $this->db->order_by('tgl_mulai','DESC')->where('status',1)->get('coming');
 		
 			$indeks = 0;
 			$result = array();

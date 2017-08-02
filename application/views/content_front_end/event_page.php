@@ -75,8 +75,8 @@
                     <div class="form-group">                     
                         <select name="cari_by_harga" placeholder="Harga Event" required class="form-control" id="cari_harga">
                         	<option value="All">--Harga Event--</option>
-                            <option value="1">Free</option>
-                            <option value="0">Paid</option>
+                            <option value="1">Gratis</option>
+                            <option value="0">Berbayar</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -95,6 +95,7 @@
                			 <div class="col-md-1"></div>
 	                     <article class="col-md-10 col-sm-12 col-xs-12">
 	                        <div class="row" id="div_all">
+							
 	                        <?php foreach($listEvent as $event){ ?>
 	                           <div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">
 	                           	 <a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>">
@@ -183,11 +184,17 @@
 		
 			var xml = parseXml(dataEvent);
 			var getEvent = xml.documentElement.getElementsByTagName("event");
-						
+			if(value==1){value="Gratis";} 
+			if(value==0) {value="Berbayar";}			
 			document.getElementById("div_all").style.display = "none";
 			document.getElementById("div_kategori").style.display = "block";
 			var divkategori='';
 			divkategori += '<div class="parallel-post-style">';
+			divkategori += '<div class="alert alert-success alert-dismissable">';
+                    divkategori += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" onclick="byAll()">&times;</span></button>';
+                    divkategori += '<div><h3><b>'+getEvent.length+'</b> event untuk pencarian <b>'+value+'</b></h3><br/></div>';
+                divkategori += '</div>';
+			
 			for (var i = 0; i < getEvent.length; i++) {
 			  
 			  var id_event = getEvent[i].getAttribute("id_event");
@@ -256,11 +263,24 @@
 		
 			var xml = parseXml(dataEvent);
 			var getEvent = xml.documentElement.getElementsByTagName("event");
-						
+			
+			if(lokasi=="All"){lokasi='';}
+			if(kategori=="All"){kategori='';}
+			if(tipe=="All"){tipe='';}
+			if(date=="All"){date='';}
+			
+			if(harga==1){harga='Gratis';}
+			if(harga==0){harga='Berbayar';}
+			if(harga=="All"){harga='';}
 			document.getElementById("div_all").style.display = "none";
 			document.getElementById("div_kategori").style.display = "block";
 			var divkategori='';
 			divkategori += '<div class="parallel-post-style">';
+				divkategori += '<div class="alert alert-success alert-dismissable">';
+                    divkategori += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" onclick="byAll()">&times;</span></button>';
+                    divkategori += '<div><h3><b>'+getEvent.length+'</b> event untuk pencarian <b><i>'+lokasi+'</i></b>&nbsp<b><i>'+kategori+'</i></b>&nbsp<b></i>'+tipe+'</i></b>&nbsp<b><i>'+date+'</i></b>&nbsp<b><i>'+harga+'</i></b></h3><br/></div>';                          
+                divkategori += '</div>';
+			
 			for (var i = 0; i < getEvent.length; i++) {
 			  
 			  var id_event = getEvent[i].getAttribute("id_event");

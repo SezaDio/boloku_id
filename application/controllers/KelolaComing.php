@@ -642,7 +642,7 @@ class KelolaComing extends CI_Controller {
 		$value=str_replace('%20',' ',$value);
         //var_dump($search_term); exit();
 		$data = array($label.' =' => $this->db->escape_like_str($value), 'status =' => 1 );
-        $get_event=$this->db->where($data)->order_by('id_coming','DESC')->get('coming');
+        $get_event=$this->db->where($data)->order_by('tgl_coming','DESC')->get('coming');
 			
         $this->load->helper('xml');
 		$xml_out = '<events>';
@@ -701,7 +701,7 @@ class KelolaComing extends CI_Controller {
         //var_dump($search_term); exit();
 		
 		
-        $get_event=$this->db->query('SELECT * FROM `coming` WHERE '.$data.'');
+        $get_event=$this->db->query('SELECT * FROM `coming` WHERE '.$data.' ORDER BY tgl_mulai DESC');
 			
         $this->load->helper('xml');
 		$xml_out = '<events>';
