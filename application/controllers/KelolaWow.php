@@ -229,6 +229,36 @@ class KelolaWow extends CI_Controller {
 		$this->index();
 	}
 	
+	function by_kategori($ngerti){
+		$ngerti=str_replace('%20',' ',$ngerti);
+        header('Access-Control-Allow-Origin: *');
+        header('Content-type: text/xml');
+        
+        //var_dump($search_term); exit();
+        $get_ngerti=$this->db->like('kategori_wow',$this->db->escape_like_str($ngerti))->order_by('id_wow','DESC')->get('wow');
+        
+		
+        
+        
+        $this->load->helper('xml');
+		$xml_out = '<ngertis>';
+        if ($get_ngerti->num_rows()>0) {
+            foreach ($get_ngerti->result() as $row_ngerti) {
+                $xml_out .= '<ngerti ';
+                $xml_out .= 'id_ngerti="' . xml_convert($row_ngerti->id_wow) . '" ';
+                $xml_out .= 'judul_ngerti="' . xml_convert($row_ngerti->judul_wow) . '" ';
+                $xml_out .= 'deskripsi="' . xml_convert(($row_ngerti->deskripsi)) . '" ';
+                $xml_out .= 'tanggal_posting="' . xml_convert(($row_ngerti->tanggal_posting)) . '" ';
+                $xml_out .= 'path_gambar="' . xml_convert(($row_ngerti->path_gambar)) . '" ';
+                $xml_out .= '/>';
+            }
+        }
+		
+		$xml_out .= '</ngerti>';
+		
+        echo $xml_out;
+	}
+	
 	function crop($img,$filename){
 		
 		$name = $img;

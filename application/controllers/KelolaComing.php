@@ -633,5 +633,98 @@ class KelolaComing extends CI_Controller {
 		$this->index();
 	}
 	
+	function by_label(){
+        header('Access-Control-Allow-Origin: *');
+        header('Content-type: text/xml');
+        $label=$_POST['label'];
+        $value=$_POST['value'];
+		$label=str_replace('%20',' ',$label);
+		$value=str_replace('%20',' ',$value);
+        //var_dump($search_term); exit();
+		$data = array($label.' =' => $this->db->escape_like_str($value), 'status =' => 1 );
+        $get_event=$this->db->where($data)->order_by('id_coming','DESC')->get('coming');
+			
+        $this->load->helper('xml');
+		$xml_out = '<events>';
+        if ($get_event->num_rows()>0) {
+            foreach ($get_event->result() as $row_event) {
+                $xml_out .= '<event ';
+                $xml_out .= 'id_event="' . xml_convert($row_event->id_coming) . '" ';
+                $xml_out .= 'nama_event="' . xml_convert($row_event->nama_coming) . '" ';
+                $xml_out .= 'deskripsi_event="' . xml_convert(($row_event->deskripsi_coming)) . '" ';
+                $xml_out .= 'posted_by="' . xml_convert(($row_event->posted_by)) . '" ';
+                $xml_out .= 'tanggal_posting="' . xml_convert(($row_event->tanggal_posting)) . '" ';
+                $xml_out .= 'kategori_event="' . xml_convert(($row_event->kategori_coming)) . '" ';
+                $xml_out .= 'tipe_event="' . xml_convert(($row_event->tipe_event)) . '" ';
+                $xml_out .= 'jenis_event="' . xml_convert(($row_event->jenis_event)) . '" ';
+                $xml_out .= 'path_gambar="' . xml_convert(($row_event->path_gambar)) . '" ';
+                $xml_out .= '/>';
+            }
+        }
+		
+		$xml_out .= '</events>';
+		
+        echo $xml_out;
+	}
 	
+	function cari_event(){
+        header('Access-Control-Allow-Origin: *');
+        header('Content-type: text/xml');
+        $lokasi=$_POST['lokasi'];
+        $kategori=$_POST['kategori'];
+        $tipe=$_POST['tipe'];
+        $date=$_POST['date'];
+        $harga=$_POST['harga'];
+		
+		
+		$data = '';
+		$data .= 'status = 1';
+		$today = date('y-m-d');
+		$date=str_replace('%20',' ',$date);
+		
+			if($date=='Today'){$data .= ' AND tgl_mulai = "'.$today.'"';}
+			if($date=='Tomorrow'){$data .= ' AND tgl_mulai = curdate() + INTERVAL 1 DAY';}
+			if($date=='This Week'){$data .= ' AND YEARWEEK(`tgl_mulai`)=YEARWEEK(NOW())';}
+			if($date=='Next Week'){$data .= ' AND YEARWEEK(`tgl_mulai`)=(YEARWEEK(NOW()) + 1)';}
+			if($date=='This Month'){$data .= ' AND MONTH(`tgl_mulai`)=(MONTH(NOW()))';}
+		
+		$lokasi=str_replace('%20',' ',$lokasi);
+		if($lokasi!='All'){$data .= ' AND kota_lokasi = "'.$lokasi.'"';}
+		$kategori=str_replace('%20',' ',$kategori);
+		if($kategori!='All'){$data .= ' AND kategori_coming = "'.$kategori.'"';}
+		$tipe=str_replace('%20',' ',$tipe);
+		if($tipe!='All'){$data .= ' AND tipe_event = "'.$tipe.'"';}
+		
+			
+		$harga=str_replace('%20',' ',$harga);
+		if($harga!='All'){$data .= ' AND jenis_event = "'.$harga.'"';}
+        //var_dump($search_term); exit();
+		
+		
+        $get_event=$this->db->query('SELECT * FROM `coming` WHERE '.$data.'');
+			
+        $this->load->helper('xml');
+		$xml_out = '<events>';
+        if ($get_event->num_rows()>0) {
+            foreach ($get_event->result() as $row_event) {
+                $xml_out .= '<event ';
+                $xml_out .= 'id_event="' . xml_convert($row_event->id_coming) . '" ';
+                $xml_out .= 'nama_event="' . xml_convert($row_event->nama_coming) . '" ';
+                $xml_out .= 'deskripsi_event="' . xml_convert(($row_event->deskripsi_coming)) . '" ';
+                $xml_out .= 'posted_by="' . xml_convert(($row_event->posted_by)) . '" ';
+                $xml_out .= 'tanggal_posting="' . xml_convert(($row_event->tanggal_posting)) . '" ';
+                $xml_out .= 'tgl_mulai="' . xml_convert(($row_event->tgl_mulai)) . '" ';
+                $xml_out .= 'kategori_event="' . xml_convert(($row_event->kategori_coming)) . '" ';
+                $xml_out .= 'tipe_event="' . xml_convert(($row_event->tipe_event)) . '" ';
+                $xml_out .= 'jenis_event="' . xml_convert(($row_event->jenis_event)) . '" ';
+                $xml_out .= 'kota_lokasi="' . xml_convert(($row_event->kota_lokasi)) . '" ';
+                $xml_out .= 'path_gambar="' . xml_convert(($row_event->path_gambar)) . '" ';
+                $xml_out .= '/>';
+            }
+        }
+		
+		$xml_out .= '</events>';
+		
+        echo $xml_out;
+	}
 }
