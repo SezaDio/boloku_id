@@ -62,8 +62,8 @@
                                     <div class="col-md-8" style="margin-left: 30px;">
                                        <ul class="post-tools">
                                           <li style="color: white;"> By <a href=""><strong style="color: white;"> <?php echo $topevent['posted_by']; ?></strong></a> </li>
-                                          <li> <a style="color: white;" href=""><i class="glyphicon glyphicon-thumbs-up"></i> 23</a> </li>
-                                          <li style="color: white;"><i class="glyphicon glyphicon-eye-open"></i> 23</li>
+                                          <li> <a style="color: white;" href=""><i class="glyphicon glyphicon-thumbs-up"></i> <?php echo $topevent['like']; ?></a> </li>
+                                          <li style="color: white;"><i class="glyphicon glyphicon-eye-open"></i> <?php echo $topevent['hits']; ?></li>
                                        </ul>
                                     </div>
                                  <div class="col-md-2"></div>
@@ -126,8 +126,8 @@
                                     </div>
                                     <ul class="post-tools">
                                        <li> by <a href="#"> <strong> <?php echo $newevent['posted_by'];?></strong> </a></li>
-                                       <li><i class="glyphicon glyphicon-thumbs-up"></i> 57</a></li>
-                                       <li><i class="glyphicon glyphicon-eye-open"></i> 57</a></li>
+                                       <li><i class="glyphicon glyphicon-thumbs-up"></i> <?php echo $newevent['like'];?></a></li>
+                                       <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $newevent['hits'];?></a></li>
                                        
                                     </ul>
                                  </div>

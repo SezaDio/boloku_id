@@ -241,7 +241,7 @@ class Kelolapendaftar extends CI_Controller {
 			{
 				
 					$data_pendaftar=array(
-						'id_event'=>1,
+						'id_event'=>$id_event,
 						'nama_pendaftar'=>$this->input->post('nama_pendaftar'),
 						'email'=>$this->input->post('email'),
 						'telepon'=>$this->input->post('telepon'),
@@ -266,6 +266,50 @@ class Kelolapendaftar extends CI_Controller {
 			$this->load->view('skin/admin/nav_kiri');
 			$this->load->view('content_admin/tambah_pendaftar');
 			$this->load->view('skin/admin/footer_admin');
+		}     
+		
+	}
+
+	function tambah_pendaftar_check_front($id_event) {
+        $this->load->model('pendaftar_models/pendaftarModels');
+		$this->load->library('form_validation');
+		$tambah = $this->input->post('submit');
+		if ($tambah == 1) 
+		{
+			$this->form_validation->set_rules('nama_pendaftar', 'Nama', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required');
+			$this->form_validation->set_rules('telepon', 'Telepon', 'required');
+			$this->form_validation->set_rules('alamat', 'Alamat', 'required');
+
+			//value id_koridor berisi beberapa data, sehingga dilakukan split dengan explode
+			if (($this->form_validation->run() == TRUE))
+			{
+				
+					$data_pendaftar=array(
+						'id_event'=>$id_event,
+						'nama_pendaftar'=>$this->input->post('nama_pendaftar'),
+						'email'=>$this->input->post('email'),
+						'telepon'=>$this->input->post('telepon'),
+						'alamat'=>$this->input->post('alamat'),
+						'no_pendaftar'=>12312
+					);
+					$data['dataPendaftar'] = $data_pendaftar;
+					
+					$this->db->insert('pendaftar', $data_pendaftar);
+					redirect('KelolaPendaftar');
+				
+			}
+			else
+			{
+				$this->session->set_flashdata('msg_gagal', 'Data pendaftar gagal ditambahkan');
+				$this->tambah_pendaftar_check();
+			}
+		}
+		else
+		{
+			$this->load->view('skin/front_end/header_front_end');
+			$this->load->view('content_front_end/mendaftar_ikut_event_page');
+			$this->load->view('skin/front_end/footer_front_end');
 		}     
 		
 	}
@@ -392,6 +436,28 @@ class Kelolapendaftar extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/edit_pendaftar', $data);
 		$this->load->view('skin/admin/footer_admin');
+	}
+
+	//tambah pendaftar soon
+	public function mendaftar_event($id_event)
+	{
+		$this->load->model('pendaftar_models/PendaftarModels');
+		$this->load->model('home_models/HomeModels');
+	  	$ikutEvent = $this->HomeModels->get_event_byid($id_event);
+
+	  	$data['id_event'] = $ikutEvent['id_coming'];
+	  	$data['nama_event'] = $ikutEvent['nama_coming'];
+		$data['tgl_mulai'] = $ikutEvent['tgl_mulai'];
+		$data['jam_mulai'] = $ikutEvent['jam_mulai'];
+		$data['tgl_selesai'] = $ikutEvent['tgl_selesai'];
+		$data['jam_selesai'] = $ikutEvent['jam_selesai'];
+		$data['kota_lokasi'] = $ikutEvent['kota_lokasi'];
+		$data['jenis_event'] = $ikutEvent['jenis_event'];
+		$data['harga'] = $ikutEvent['harga'];
+
+		$this->load->view('skin/front_end/header_front_end');
+      	$this->load->view('content_front_end/mendaftar_ikut_event_page', $data);
+      	$this->load->view('skin/front_end/footer_front_end');
 	}
 
 }

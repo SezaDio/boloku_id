@@ -124,7 +124,7 @@
 	                                	<?php
 	                                		if($pendaftaran == 1)
 	                                		{ ?>
-                                       			<a style="height: 53px; font-size: 1.7em; width: 100%;" href="" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
+                                       			<a style="height: 53px; font-size: 1.7em; width: 100%;" href="<?php echo base_url('KelolaPendaftar/mendaftar_event/'.$id_event); ?>" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
 	                                  <?php }
 
 	                                	?>
