@@ -354,6 +354,8 @@ class KelolaMember extends CI_Controller {
 			$this->form_validation->set_rules('nama_member', 'Nama Member', 'required');
 			$this->form_validation->set_rules('email', 'Email', 'required');
 			$this->form_validation->set_rules('password', 'Password', 'required');
+			$this->form_validation->set_rules('pertanyaan', 'Pertanyaan', 'required');
+			$this->form_validation->set_rules('jawaban', 'Jawaban', 'required');
 
 			/*if ($this->form_validation->run() == TRUE)
 			{*/		$data_member=array(
@@ -361,6 +363,8 @@ class KelolaMember extends CI_Controller {
 						'nama_member'=>$this->input->post('nama_member'),
 						'password'=>md5($this->input->post('password')),
 						'email'=>$this->input->post('email'),
+						'pertanyaan_rahasia'=>$this->input->post('pertanyaan'),
+						'jawaban_rahasia'=>$this->input->post('jawaban'),
 						'date_join'=>date("Y-m-d h:i:sa"),
 						'poin'=>0,
 						'path_foto'=>0,
@@ -394,6 +398,13 @@ class KelolaMember extends CI_Controller {
 			$this->load->view('skin/front_end/footer_front_end');
 		}     
 		
+	}
+	
+	public function reset_password_member()
+	{
+		$this->load->view('skin/front_end/header_front_end');
+        $this->load->view('content_front_end/reset_password_member');
+        $this->load->view('skin/front_end/footer_front_end');
 	}
 
 	//Masuk ke dashboard member
@@ -739,7 +750,44 @@ class KelolaMember extends CI_Controller {
 	
 	function validate_passlama(){
 		if(isset($_POST['password2'])){
+
 		echo md5($_POST['password2']);
+		
+		}
+		
+	}
+	
+	function validate_username(){
+		if(isset($_POST['username'])){
+		$username = $_POST['username'];
+		$query = $this->db->where('username',$username)->get('member');
+		$check = sizeof($query->row_array());
+		echo $check;
+		}
+		
+	}
+	
+	function get_pertanyaan(){
+		if(isset($_POST['username'])){
+		$username = $_POST['username'];
+		$query = $this->db->select('pertanyaan_rahasia, jawaban_rahasia')->where('username',$username)->get('member');
+		echo json_encode($query->row_array());
+		}
+		
+	}
+	
+	function reset_password(){
+		if(isset($_POST['password_baru'])&&isset($_POST['username'])){
+			$password_baru = md5($_POST['password_baru']);
+			$username = $_POST['username'];
+			$data = array (
+				'password' => $password_baru
+			);
+			if($this->db->update('member',$data,array('username' => $username))){
+				echo TRUE;
+			} else {
+				echo FALSE;
+			}
 		}
 		
 	}

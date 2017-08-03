@@ -98,7 +98,7 @@
                                              <input  type="password" class="form-control" name="password" id="password_login" placeholder="Password" required value="<?php //echo set_value('password'); ?>">
                                        </div><br>
                                        <button class="btn btn-colored-blog pull-right" type="submit" name="login"><span class="glyphicon glyphicon-log-in"></span> Sign In</button>
-                                       <p class="omb_forgotPwd" style="color:blue; font-size:small; padding:6px;"><a style="color:blue;" href="#">Forgot password?</a></p>
+                                       <p class="omb_forgotPwd" style="color:blue; font-size:small; padding:6px;"><a href="<?php echo site_url('KelolaMember/reset_password_member');?>" style="color:blue;" >Forgot password?</a></p>
                                        
                                        <!--
                                        <div class="col-sm-4 omb_login"><hr class="omb_hrOr"></div>      
