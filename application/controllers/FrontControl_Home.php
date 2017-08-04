@@ -59,6 +59,8 @@ class FrontControl_Home extends CI_Controller {
 
 		//$data['listNewEvent'] = $this->HomeModels->get_new_event();
 
+		$data['active'] = 1;
+
 		$data['listSlider'] = $this->HomeModels->get_data_slider();
 		$data['listTopEvent'] = $this->HomeModels->get_top_event();
 		$data['listNgertiRak'] = $this->HomeModels->get_ngerti_rak();

@@ -115,9 +115,16 @@
 		                                       </ul>
 		                                       <p> <?php echo $event['deskripsi_coming'];?><a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>" class="readmore"><strong>Read More</strong></a> </p>
 			                                   <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
-			                                   <a style="margin-top: -25px;" href="javascript:void(0)" class=" btn btn-green btn-small" onclick="byLabel('jenis_event','<?php echo $event['jenis_event']?>')"><i class="ti-money"></i> <?php if($event['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?></a>
-			                                   <a style="margin-top: -25px;" href="javascript:void(0)" class=" btn btn-dark-red" onclick="byLabel('kategori_coming','<?php echo $event['kategori_coming']?>')"><?php echo $event['kategori_coming']; ?></a>
-			                                   <a style="margin-top: -25px;" href="javascript:void(0)" class=" btn btn-orange" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"><?php echo $event['tipe_event']; ?></a>
+
+			                                   	<div class="row">
+			                                   		<div class="col-md-12">
+					                                   	<a style="margin-top: -25px;" href="javascript:void(0)" class=" btn btn-green btn-small" onclick="byLabel('jenis_event','<?php echo $event['jenis_event']?>')"><i class="ti-money"></i> <?php if($event['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?></a>
+
+					                                   	<a style="margin-top: -25px;" href="javascript:void(0)" class=" btn btn-dark-red" onclick="byLabel('kategori_coming','<?php echo $event['kategori_coming']?>')"><?php echo $event['kategori_coming']; ?></a>
+					                                   	
+					                                   	<a style="margin-top: -25px;" href="javascript:void(0)" class=" btn btn-orange" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"><?php echo $event['tipe_event']; ?></a>
+					                                </div>
+				                                </div>
 		                                    </div>
 		                                 </li>
 		                            </div>

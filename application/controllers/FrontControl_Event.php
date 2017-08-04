@@ -16,17 +16,18 @@ class FrontControl_Event extends CI_Controller {
 
    public function index()
    {
-      $select=2;
+      $data['active']=2;
 	  $this->load->model('home_models/HomeModels');
 	  $data['listEvent'] = $this->HomeModels->get_event();
 	 
-      $this->load->view('skin/front_end/header_front_end');
+      $this->load->view('skin/front_end/header_front_end',$data);
       $this->load->view('content_front_end/event_page',$data);
       $this->load->view('skin/front_end/footer_front_end');
    }
 
    public function event_click($id_event)
    {
+   	  $data['active']=2;
 	  $this->load->model('home_models/HomeModels');
 	  $event = $this->HomeModels->get_event_byid($id_event);
 	  
@@ -64,7 +65,7 @@ class FrontControl_Event extends CI_Controller {
 	  $data['listPressRelease'] = $this->HomeModels->get_press_release($id_event);
 	  $data['listTestimoni'] = $this->HomeModels->get_testimoni($id_event);
 	  
-      $this->load->view('skin/front_end/header_front_end');
+      $this->load->view('skin/front_end/header_front_end',$data);
       $this->load->view('content_front_end/event_click_page',$data);
       $this->load->view('skin/front_end/footer_front_end');
    }

@@ -56,7 +56,7 @@
 	                                       </div>
 	                                    </div>
 	                                 </div>
-	                                 <div class="detail">
+	                                 <div class="detail" style="padding: 15px;">
 	                                    <div class="caption" style="text-align: center;">
 	                                       <h5>
 	                                          <a href="#"><?php echo $ngertirak['judul_wow'];?></a>

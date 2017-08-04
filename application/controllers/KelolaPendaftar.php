@@ -270,7 +270,9 @@ class Kelolapendaftar extends CI_Controller {
 		
 	}
 
-	function tambah_pendaftar_check_front($id_event) {
+	function tambah_pendaftar_check_front($id_event) 
+	{
+		$data['active']=2;
         $this->load->model('pendaftar_models/pendaftarModels');
 		$this->load->library('form_validation');
 		$tambah = $this->input->post('submit');
@@ -296,18 +298,18 @@ class Kelolapendaftar extends CI_Controller {
 					$data['dataPendaftar'] = $data_pendaftar;
 					
 					$this->db->insert('pendaftar', $data_pendaftar);
-					redirect('KelolaPendaftar');
+					redirect('KelolaPendaftar/mendaftar_event/'.$id_event);
 				
 			}
 			else
 			{
 				$this->session->set_flashdata('msg_gagal', 'Data pendaftar gagal ditambahkan');
-				$this->tambah_pendaftar_check();
+				$this->tambah_pendaftar_check_front();
 			}
 		}
 		else
 		{
-			$this->load->view('skin/front_end/header_front_end');
+			$this->load->view('skin/front_end/header_front_end',$data);
 			$this->load->view('content_front_end/mendaftar_ikut_event_page');
 			$this->load->view('skin/front_end/footer_front_end');
 		}     
@@ -441,9 +443,17 @@ class Kelolapendaftar extends CI_Controller {
 	//tambah pendaftar soon
 	public function mendaftar_event($id_event)
 	{
+		$data['active']=2;
 		$this->load->model('pendaftar_models/PendaftarModels');
 		$this->load->model('home_models/HomeModels');
 	  	$ikutEvent = $this->HomeModels->get_event_byid($id_event);
+
+	  	if ($ikutEvent['pendaftaran']==0)
+	  	{
+	  		show_404();
+	  		return;
+	  	}
+
 
 	  	$data['id_event'] = $ikutEvent['id_coming'];
 	  	$data['nama_event'] = $ikutEvent['nama_coming'];
@@ -455,7 +465,7 @@ class Kelolapendaftar extends CI_Controller {
 		$data['jenis_event'] = $ikutEvent['jenis_event'];
 		$data['harga'] = $ikutEvent['harga'];
 
-		$this->load->view('skin/front_end/header_front_end');
+		$this->load->view('skin/front_end/header_front_end', $data);
       	$this->load->view('content_front_end/mendaftar_ikut_event_page', $data);
       	$this->load->view('skin/front_end/footer_front_end');
 	}

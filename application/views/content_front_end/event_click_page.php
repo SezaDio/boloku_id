@@ -32,10 +32,15 @@
 				                               
 				                                <div class="col-md-12" style="text-align: center;">
 				                                	<button value="<?php echo $like; ?>" onclick="update_like_ajax(<?php echo $id_event; ?>)" style="color:white;" class="btn btn-success" type="submit"><i class="glyphicon glyphicon-thumbs-up"></i> <span id="like"> <?php echo $like; ?></span></button>
+													
+													<button style="color:white;" class="btn btn-warning" type="submit"><i class="glyphicon glyphicon-eye-open"></i> <?php echo $hits; ?></button>
+				                                	
+				                                	<a title="facebook" href="http://www.facebook.com/sharer.php?u=<?php echo current_url(); ?>" target="_blank">
+				                                		<button style="color:white;" class="btn btn-primary" type="submit"><i class="fa fa-facebook"></i> </button>
+				                                	</a>
+								                    <a title="google +" href="https://plus.google.com/share?url=<?php echo current_url(); ?>" target="_blank"><button style="color:white;" class="btn btn-danger" type="submit"><i class="fa fa-google"></i></button></a>
 
-
-				                                	<button style="color:white;" class="btn btn-warning" type="submit"><i class="glyphicon glyphicon-eye-open"></i> <?php echo $hits; ?></button>
-				                                	<button style="color:white;" class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-share"></i> Share</button>
+								                    <a title="twitter" href="http://twitter.com/share?url=<?php echo current_url(); ?>" target="_blank"><button style="color:white;" class="btn btn-info" type="submit"><i class="fa fa-twitter"></i></button></a>
 				                                </div>
 				                            </div>
 				                        </div>

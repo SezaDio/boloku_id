@@ -1,3 +1,4 @@
+<?php if(!isset($active)){$active=0;} ?>
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -156,35 +157,45 @@
                   <ul class="menu-links pull-right">
 
                      <!--Menu boloku Home-->
-                     <li class="active">
+                     <li <?php if($active==1){
+                           echo "class='active'";
+                        } ?> >
                         <a href="<?php echo base_url(''); ?>">
                            <span class="text">  Home </span>
                         </a>
                      </li>
 
                      <!--Menu boloku Wow-->
-                     <li>
+                     <li <?php if($active==2){
+                           echo "class='active'";
+                        } ?>>
                         <a href="<?php echo base_url('FrontControl_Event'); ?>">
                            <span class="text">  Event </span> 
                         </a>
                      </li>
 
                      <!--Menu boloku Shopping-->
-                     <li>
+                     <li <?php if($active==3){
+                           echo "class='active'";
+                        } ?>>
                         <a href="<?php echo base_url('FrontControl_NgertiRak'); ?>">
                            <span class="text"> Ngerti Rak ? </span>
                         </a>
                      </li>
 
                      <!--Menu boloku Karepmu-->
-                     <li>
+                     <li <?php if($active==4){
+                           echo "class='active'";
+                        } ?>>
                         <a href="<?php echo base_url('FrontControl_Faq'); ?>">
                            <span class="text"> FAQ </span>
                         </a>
                      </li>
 
                      <!--Menu boloku Contact-->
-                     <li>
+                     <li <?php if($active==5){
+                           echo "class='active'";
+                        } ?>>
                         <a href="<?php echo base_url('FrontControl_ContactUs'); ?>">
                            <span class="text"> Contact Us </span>
                         </a>

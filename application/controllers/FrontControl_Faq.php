@@ -16,10 +16,10 @@ class FrontControl_Faq extends CI_Controller {
 
    public function index()
    {
-      $select=5;
+      $data['active']=4;
 
-      $this->load->view('skin/front_end/header_front_end');
-      $this->load->view('content_front_end/faq_page');
+      $this->load->view('skin/front_end/header_front_end',$data);
+      $this->load->view('content_front_end/faq_page', $data);
       $this->load->view('skin/front_end/footer_front_end');
    }
 }

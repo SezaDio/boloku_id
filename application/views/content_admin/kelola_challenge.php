@@ -143,7 +143,7 @@
 					var check = document.getElementById("challenge"+idChallenge).checked;
 						if(check){
 							$.ajax({
-							url: 'unpublish_challenge',
+							url: 'KelolaChallange/unpublish_challenge',
 							type: 'POST',
 							data: {idChallenge:idChallenge},
 							success: function(){
@@ -156,7 +156,7 @@
 							});
 						} else{
 							$.ajax({
-							url: 'publish_challenge',
+							url: 'KelolaChallange/publish_challenge',
 							type: 'POST',
 							data: {idChallenge:idChallenge},
 							success: function(){
@@ -242,7 +242,7 @@
 				function simpanNamaChallenge(){
 					var namaBaru = document.getElementById("nama_baru").value;
 					$.ajax({
-						url: 'KelolaChallenge/ubah_nama_challenge',
+						url: 'ubah_nama_challenge',
 						type: 'POST',
 						data: {namaBaru:namaBaru},
 						success: function(){
