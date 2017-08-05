@@ -87,7 +87,7 @@
 					var check = document.getElementById("coming"+idComing).checked;
 						if(check){
 							$.ajax({
-							url: 'KelolaComing/top_event',
+							url: '../KelolaComing/top_event',
 							type: 'POST',
 							data: {idComing:idComing},
 							success: function(){
@@ -100,7 +100,7 @@
 							});
 						} else{
 							$.ajax({
-							url: 'KelolaComing/untop_event',
+							url: '../KelolaComing/untop_event',
 							type: 'POST',
 							data: {idComing:idComing},
 							success: function(){

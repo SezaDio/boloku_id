@@ -612,10 +612,11 @@ class KelolaMember extends CI_Controller {
 			$this->form_validation->set_rules('judul_coming', 'Judul', 'required');
 			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
 			$this->form_validation->set_rules('nama_member', 'Penulis', 'required');
-			//$this->form_validation->set_rules('institusi', 'Institusi', 'required');
+			$this->form_validation->set_rules('institusi', 'Institusi', 'required');
 			//$this->form_validation->set_rules('telepon', 'Telepon', 'required');
 			$this->form_validation->set_rules('jenis_event', 'Jenis', 'required');
-			//$this->form_validation->set_rules('pendaftaran', 'Pendaftaran', 'required');
+			$this->form_validation->set_rules('institusi', 'Institusi', 'required');
+			$this->form_validation->set_rules('pendaftaran', 'Pendaftaran', 'required');
 			$this->form_validation->set_rules('email', 'Email', 'required');
 			$this->form_validation->set_rules('tipe', 'Tipe', 'required');
 			$this->form_validation->set_rules('tgl_event', 'Tanggal', 'required');
@@ -623,6 +624,7 @@ class KelolaMember extends CI_Controller {
 			$this->form_validation->set_rules('jam_selesai', 'Jam', 'required');
 			$this->form_validation->set_rules('deskripsi_coming', 'Deskripsi', 'required');
 			$this->form_validation->set_rules('seat', 'Seat', 'required');
+			$this->form_validation->set_rules('kota', 'Kota Lokasi', 'required');
 
 			//Mengambil filename gambar untuk disimpan
 			$nmfile = "file_".time();
@@ -641,19 +643,21 @@ class KelolaMember extends CI_Controller {
 						'nama_coming'=>$this->input->post('judul_coming'),
 						'jenis_event'=>$this->input->post('jenis_event'),
 						'harga'=>$harga,
-						'pendaftaran'=>0,
+						'pendaftaran'=>$this->input->post('pendaftaran'),
 						'kategori_coming'=>$this->input->post('kategori'),
 						'tipe_event'=>$this->input->post('tipe'),
 						'deskripsi_coming'=>$this->input->post('deskripsi_coming'),
 						'tanggal_posting'=>date("Y-m-d h:i:sa"),
 						'posted_by'=>$this->input->post('nama_member'),
-						'institusi'=>0,
+						'institusi'=>$this->input->post('institusi'),
 						'telepon'=>0,
 						'email'=>$this->input->post('email'),
 						'tgl_mulai'=>$this->input->post('tgl_mulai'),
 						'tgl_selesai'=>$this->input->post('tgl_selesai'),
 						'jam_mulai'=>$this->input->post('jam_mulai'),
 						'jam_selesai'=>$this->input->post('jam_selesai'),
+						'kota_lokasi'=>$this->input->post('kota'),
+						'alamat'=>$this->input->post('alamat'),
 						'path_gambar'=> NULL,
 						'seat'=> $seat,
 						'jumlah_seat'=> $jumlah_seat,

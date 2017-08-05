@@ -107,7 +107,7 @@ class KelolaComing extends CI_Controller {
 		$this->ComingModels->setuju_coming($id_coming);
 		$sub_setuju = "Youth coming";
 		$msg_setuju = "Posting yang anda masukan di Youth coming telah disetujui";
-		$this->kirim_email($sub_setuju,$msg_setuju);
+		//$this->kirim_email($sub_setuju,$msg_setuju);
 		$this->validasi_coming();
 	}
 	
@@ -118,7 +118,7 @@ class KelolaComing extends CI_Controller {
 		$this->ComingModels->setuju_coming($id_coming);
 		$sub_setuju = "Youth coming";
 		$msg_setuju = "Posting yang anda masukan di Youth Coming Soon telah disetujui";
-		$this->kirim_email($sub_setuju,$msg_setuju);
+		//$this->kirim_email($sub_setuju,$msg_setuju);
 		$this->validasi_coming();
 	}
 	
@@ -130,7 +130,7 @@ class KelolaComing extends CI_Controller {
 		$this->ComingModels->delete_coming($id_coming);
 		$sub_tolak = "Youth coming";
 		$msg_tolak = "Posting yang anda masukan di Youth Coming Soon telah ditolak";
-		$this->kirim_email($sub_tolak,$msg_tolak);
+		//$this->kirim_email($sub_tolak,$msg_tolak);
 		$this->validasi_coming();
 	}
 	
@@ -141,7 +141,7 @@ class KelolaComing extends CI_Controller {
 		$this->ComingModels->delete_coming($id_coming);
 		$sub_tolak = "Youth coming";
 		$msg_tolak = "Posting yang anda masukan di Youth Coming Soon telah ditolak";
-		$this->kirim_email($sub_tolak,$msg_tolak);
+		//$this->kirim_email($sub_tolak,$msg_tolak);
 		$this->validasi_coming();
 	}
 	
@@ -726,5 +726,27 @@ class KelolaComing extends CI_Controller {
 		$xml_out .= '</events>';
 		
         echo $xml_out;
+	}
+	
+	function get_data_event(){
+		if(isset($_POST['id_event'])){
+		$id_event = $_POST['id_event'];
+		$query = $this->db->select('*')->where('id_coming',$id_event)->get('coming');
+		echo json_encode($query->row_array());
+		}
+		
+	}
+	
+	function update_event(){
+		if(isset($_POST['id_event'])){
+		$id_event = $_POST['id_event'];
+			if(isset($_POST['dataEvent'])){
+			$data_event = $_POST['dataEvent'];
+			$this->db->where('id_coming',$id_event);
+			$this->db->update('coming',$data_event);
+			}
+		
+		}
+		
 	}
 }
