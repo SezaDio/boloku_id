@@ -1,4 +1,4 @@
-	<section class="my-breadcrumb" style="background-image: url(asset/img/eventsbanner2-960x250.jpg);">
+	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/eventsbanner2-960x250.jpg') ; ?>) !important ;">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
@@ -132,27 +132,11 @@
 	                             </a>
 	                           </div>
 		                    <?php } ?>   
-	                           <div class="pagination-holder">
-	                           <nav>
-	                              <ul class="pagination">
-	                                 <li>
-	                                    <a aria-label="Previous" href=" #"><span aria-hidden="true"><i class="fa fa-angle-left"></i></span></a>
-	                                 </li>
-	                                 <li class="active">
-	                                    <a href=" #">1 <span class="sr-only">(current)</span></a>
-	                                 </li>
-	                                 <li>
-	                                    <a href=" #">2</a>
-	                                 </li>
-	                                 <li>
-	                                    <a href=" #">3</a>
-	                                 </li>
-	                                 <li>
-	                                    <a aria-label="Next" href=" #"><span aria-hidden="true"><i class="fa fa-angle-right"></i></span></a>
-	                                 </li>
-	                              </ul>
-	                           </nav>
-	                        </div>
+	                           	<div class="pagination-holder">
+		                           <nav>
+		                              <?php echo $pagination; ?>
+		                           </nav>
+	                        	</div>
 							</div>
 							<div class="row" id="div_kategori"></div>
 	                     </article>
@@ -285,7 +269,7 @@
 			divkategori += '<div class="parallel-post-style">';
 				divkategori += '<div class="alert alert-success alert-dismissable">';
                     divkategori += '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" onclick="byAll()">&times;</span></button>';
-                    divkategori += '<div><h3><b>'+getEvent.length+'</b> event untuk pencarian <b><i>'+lokasi+'</i></b>&nbsp<b><i>'+kategori+'</i></b>&nbsp<b></i>'+tipe+'</i></b>&nbsp<b><i>'+date+'</i></b>&nbsp<b><i>'+harga+'</i></b></h3><br/></div>';                          
+                    divkategori += '<div><h4><b>'+getEvent.length+'</b> event untuk pencarian <b><i>'+lokasi+'</i></b>&nbsp<b><i>'+kategori+'</i></b>&nbsp<b></i>'+tipe+'</i></b>&nbsp<b><i>'+date+'</i></b>&nbsp<b><i>'+harga+'</i></b></h4><br/></div>';                          
                 divkategori += '</div>';
 			
 			for (var i = 0; i < getEvent.length; i++) {

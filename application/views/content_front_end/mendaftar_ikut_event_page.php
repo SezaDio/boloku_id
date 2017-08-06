@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="col-md-8" style="border-right: solid 1px #f44a56; border-left: solid 1px #f44a56; text-align: center;">
                                    <h3><strong><?php echo $nama_event; ?></strong></h3>
-                                   <h5><?php echo $kota_lokasi; ?></h5>
+                                   <h5><?php echo $alamat.", ".$kota_lokasi; ?></h5>
                                 </div>
                                 <div class="col-md-2" style="padding-top: 14px; text-align: center;">
                                      <?php
@@ -137,6 +137,18 @@
                                       <div class="col-md-4"></div>
                                     </div>
                                  </div>
+
+                                 <input style="display: none;" type="text" name="seat" value=<?php 
+                                                                    if($seat==1)
+                                                                    { 
+                                                                      echo $jumlah_seat;
+                                                                    } 
+                                                                    else 
+                                                                    { 
+                                                                      $jumlah_seat = 0;
+                                                                      echo $jumlah_seat;
+                                                                    }
+                                                                ?>>
 
                                  <div class="row">
                                    <div class="col-md-12 col-sm-12 col-xs-12" style="padding-top: 10px; padding-bottom: 10px;">

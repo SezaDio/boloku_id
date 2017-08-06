@@ -206,13 +206,20 @@ class KelolaArtikel extends CI_Controller {
 	{
 	  $this->load->model('artikel_models/ArtikelModels');
 	  $artikel = $this->ArtikelModels->select_by_id_artikel($id_artikel)->row_array();
+	  
+	  $hits = $artikel['hits'] + 1;
+	  $data_hits = array('hits' => $hits);
+	  $where = array('id_artikel' => $id_artikel);
+	  $this->db->update('artikel', $data_hits, $where);
+	  
 	  $data['id_artikel'] = $artikel['id_artikel'];
 	  $data['judul_artikel'] = $artikel['judul_artikel'];
 	  $data['penulis_artikel'] = $artikel['penulis_artikel'];
 	  $data['isi_artikel'] = $artikel['isi_artikel'];
 	  $data['path_gambar'] = $artikel['path_gambar'];
 	  $data['tanggal_posting'] = $artikel['tanggal_posting'];
-	  
+	  $data['hits'] = $artikel['hits'];
+
 	  $data['listArtikel'] = $this->ArtikelModels->get_data_artikel();
 	  
       $this->load->view('skin/front_end/header_front_end');

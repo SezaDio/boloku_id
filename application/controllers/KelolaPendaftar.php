@@ -276,6 +276,7 @@ class Kelolapendaftar extends CI_Controller {
         $this->load->model('pendaftar_models/pendaftarModels');
 		$this->load->library('form_validation');
 		$tambah = $this->input->post('submit');
+		$seat = $this->input->post('seat');
 		if ($tambah == 1) 
 		{
 			$this->form_validation->set_rules('nama_pendaftar', 'Nama', 'required');
@@ -286,20 +287,31 @@ class Kelolapendaftar extends CI_Controller {
 			//value id_koridor berisi beberapa data, sehingga dilakukan split dengan explode
 			if (($this->form_validation->run() == TRUE))
 			{
+				$seat=$this->input->post('seat');
+				$data_pendaftar=array(
+					'id_event'=>$id_event,
+					'nama_pendaftar'=>$this->input->post('nama_pendaftar'),
+					'email'=>$this->input->post('email'),
+					'telepon'=>$this->input->post('telepon'),
+					'alamat'=>$this->input->post('alamat'),
+					'no_pendaftar'=>12312
+				);
+				$data['dataPendaftar'] = $data_pendaftar;
 				
-					$data_pendaftar=array(
-						'id_event'=>$id_event,
-						'nama_pendaftar'=>$this->input->post('nama_pendaftar'),
-						'email'=>$this->input->post('email'),
-						'telepon'=>$this->input->post('telepon'),
-						'alamat'=>$this->input->post('alamat'),
-						'no_pendaftar'=>12312
-					);
-					$data['dataPendaftar'] = $data_pendaftar;
-					
-					$this->db->insert('pendaftar', $data_pendaftar);
-					redirect('KelolaPendaftar/mendaftar_event/'.$id_event);
-				
+				$this->db->insert('pendaftar', $data_pendaftar);
+
+				if ($seat != 0)
+				{
+					$seat = $seat-1;
+					$this->db->update('coming', array('jumlah_seat'=>$seat), array('id_coming'=>$id_event));
+					$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
+					redirect('FrontControl_Event/event_click/'.$id_event);
+				}
+				else
+				{
+					$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
+					redirect('FrontControl_Event/event_click/'.$id_event);
+				}
 			}
 			else
 			{
@@ -462,8 +474,11 @@ class Kelolapendaftar extends CI_Controller {
 		$data['tgl_selesai'] = $ikutEvent['tgl_selesai'];
 		$data['jam_selesai'] = $ikutEvent['jam_selesai'];
 		$data['kota_lokasi'] = $ikutEvent['kota_lokasi'];
+		$data['alamat'] = $ikutEvent['alamat'];
 		$data['jenis_event'] = $ikutEvent['jenis_event'];
 		$data['harga'] = $ikutEvent['harga'];
+		$data['seat'] = $ikutEvent['seat'];
+		$data['jumlah_seat'] = $ikutEvent['jumlah_seat'];
 
 		$this->load->view('skin/front_end/header_front_end', $data);
       	$this->load->view('content_front_end/mendaftar_ikut_event_page', $data);

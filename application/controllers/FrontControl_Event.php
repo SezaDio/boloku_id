@@ -16,9 +16,48 @@ class FrontControl_Event extends CI_Controller {
 
    public function index()
    {
+   	  $this->load->helper('url');
+	  $this->load->library('pagination');
       $data['active']=2;
 	  $this->load->model('home_models/HomeModels');
-	  $data['listEvent'] = $this->HomeModels->get_event();
+
+	  //Paginasi halaman event page
+	  	$jumlah_data = $this->HomeModels->jumlah_data_new_event();
+		$config['base_url'] = site_url('FrontControl_Event/index/');
+		$config['total_rows'] = $jumlah_data;
+		$config['per_page'] = 5;
+		$config['uri_segment'] = 3;
+		$choice = $config['total_rows'] / $config['per_page'];
+		$config['num_links'] = floor($choice);
+
+		//configuration for bootsrap pagination class
+		$config['full_tag_open'] = '<ul class="pagination">';
+		$config['full_tag_close'] = '</ul>';
+		$config['first_link'] = false;
+		$config['last_link'] = false;
+		$config['first_tag_open'] = '<li>';
+		$config['first_tag_close'] = '</li>';
+		$config['prev_link'] = '&laquo';
+		$config['prev_tag_open'] = '<li class="prev">';
+		$config['prev_tag_close'] = '</li>';
+		$config['next_link'] = '&raquo';
+		$config['next_tag_open'] = '<li>';
+		$config['next_tag_close'] = '</li>';
+		$config['last_tag_open'] = '<li>';
+		$config['last_tag_close'] = '</li>';
+		$config['cur_tag_open'] = '<li class="active"><a href="#">';
+		$config['cur_tag_close'] = '</a></li>';
+		$config['num_tag_open'] = '<li>';
+		$config['num_tag_close'] = '</li>';
+
+		$this->pagination->initialize($config);
+		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+
+		//panggil model get daftar new event data		
+		$data['listEvent'] = $this->HomeModels->get_event($config['per_page'], $data['page']);
+
+		//create links pagination
+		$data['pagination'] = $this->pagination->create_links();
 	 
       $this->load->view('skin/front_end/header_front_end',$data);
       $this->load->view('content_front_end/event_page',$data);
@@ -60,6 +99,7 @@ class FrontControl_Event extends CI_Controller {
 	  $data['jumlah_seat'] = $event['jumlah_seat'];
 	  $data['harga'] = $event['harga'];
 	  $data['kota_lokasi'] = $event['kota_lokasi'];
+	  $data['alamat'] = $event['alamat'];
 	  
 	  $data['jumlahTestimoni'] = $this->HomeModels->jumlah_testimoni($id_event);
 	  $data['listPressRelease'] = $this->HomeModels->get_press_release($id_event);

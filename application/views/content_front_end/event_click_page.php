@@ -3,6 +3,13 @@
             <div class="row">
                <div class="col-md-12 col-sm-12 col-xs-12">
 	                <div class="parallel-post-style">
+	                	<?php if($this->session->flashdata('msg_berhasil')!=''){?>
+                            <div class="alert alert-success alert-dismissable">
+                                <i class="glyphicon glyphicon-ok"></i>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <?php echo $this->session->flashdata('msg_berhasil');?> 
+                            </div>
+                        <?php }?>
 	                	<div class="col-md-8 col-sm-4 col-xs-12">
 	                       <div class="item" style="box-shadow: 0 1px 5px grey;">
 	                          <div class="latest-news-grid grid-1">
@@ -105,6 +112,11 @@
                                                     }
                                                 ?>
 	                                		</td>
+	                                	</tr>
+	                                	<tr>
+	                                		<td>Alamat</td>
+	                                		<td>:</td>
+	                                		<td><?php echo $alamat; ?></td>
 	                                	</tr>
 	                                	<tr>
 	                                		<td>Harga Tiket</td>

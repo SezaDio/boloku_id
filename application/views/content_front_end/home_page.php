@@ -49,10 +49,10 @@
                            <div class="catname">
                               <a href="#" class=" btn btn-green btn-xs"><i class="ti-money"></i> <?php if($topevent['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?></a>
                               <a class="btn btn-purple btn-xs" href="">
-                                 <div># Tipe</div>
+                                 <div># <?php echo $topevent['tipe_event'] ?></div>
                               </a>
                               <a class="btn btn-purple btn-xs" href="">
-                                 <div># Kategori</div>
+                                 <div># <?php echo $topevent['kategori_coming'] ?></div>
                               </a>
                            </div>
                            <h4 style="color: white;"> <a href="<?php echo site_url('FrontControl_Event/event_click/'.$topevent['id_coming']); ?>" style="color: white;"> <?php echo $topevent['nama_coming']; ?> </a> </h4>
@@ -107,14 +107,22 @@
                                           <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$newevent['path_gambar']); ?>">
                                        </a>
                                        <div class="catname">
-                                          <a class="btn btn-green" href="#">
-                                             <div>SM</div>
+                                          <a href="#" class=" btn btn-green btn-xs"><i class="ti-money"></i> <?php if($newevent['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?></a>
+                                          <a class="btn btn-purple btn-xs" href="">
+                                             <div># <?php echo $newevent['tipe_event'] ?></div>
+                                          </a>
+                                          <a class="btn btn-purple btn-xs" href="">
+                                             <div># <?php echo $newevent['kategori_coming'] ?></div>
                                           </a>
                                        </div>
-                                       <div class="hover-show-div">
-                                          <a href="" class="post-type" style="color:white">
-										              Tanggal
-                                          </a>
+                                       <?php
+                                          $tanggal_mulai = strtotime($newevent['tgl_mulai']);
+                                          $tanggal = date("j", $tanggal_mulai);
+                                          $bulan = date("M", $tanggal_mulai);
+                                       ?>
+                                       <div class="hover-show-div" style="border: solid 1px black;">
+                                          <div style="text-align: center; width: 60px; padding: 5px; background-color: #f44a56; color: white; font-size: 1.5em;"><?php echo $bulan; ?></div>
+                                          <div style="font-size: 2em; text-align: center; padding: 5px; background-color: white;"><strong><?php echo $tanggal; ?></strong></div>
                                        </div>
                                     </div>
                                  </div>
@@ -232,8 +240,7 @@
                               <div class="pic"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
                               <div class="caption"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><?php echo $artikel['judul_artikel']; ?></a> </div>
                               <ul class="post-tools">
-                                 <li><i class="glyphicon glyphicon-thumbs-up"></i> 57</a></li>
-                                 <li><i class="glyphicon glyphicon-eye-open"></i> 57</a></li>
+                                 <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $artikel['hits'];?></a></li>
                                  <li title="Comments"> <i class="ti-thought"></i> 105 </li>
                               </ul>
                            </li>

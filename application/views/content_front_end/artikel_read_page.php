@@ -18,11 +18,21 @@
                      <ul class="post-tools">
                         <li> by <a href=""> <strong><?php echo $penulis_artikel;?></strong> </a></li>
                         <li> <?php echo $tanggal_posting; ?></li>
-                        <li><i class="ti-thought"></i> 157</li>
-                        <li> <i class="ti-eye"></i> 2563 </li>
+                        <li><i class="ti-thought"></i> 2563 </li>
+                        <li> <i class="ti-eye"></i> <?php echo $hits; ?> </li>
                      </ul>
                      <ul class="social-share">
-                        <li class="facebook"> <a href=""><i class="fa fa-facebook"></i> Facebook</a></li>
+                        <li class="facebook">
+                          <a title="facebook" href="http://www.facebook.com/sharer.php?u=<?php echo current_url(); ?>" target="_blank">
+                            <i class="fa fa-facebook"></i> 
+                          </a>
+                        </li>
+                        <li class="twitter">
+                          <a title="twitter" href="http://twitter.com/share?url=<?php echo current_url(); ?>" target="_blank"><i class="fa fa-twitter"></i></a>
+                        </li>
+                        <li class="google">
+                          <a title="google +" href="https://plus.google.com/share?url=<?php echo current_url(); ?>" target="_blank"><i class="fa fa-google"></i></a>
+                        </li>
                      </ul>
                      <div class="picture"> <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb_'.$path_gambar); ?>"> </div>
 
@@ -82,7 +92,7 @@
                               <div class="pic"> <a href="#"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
                               <div class="caption"> <a href="standard-post.html"><?php echo $artikel['judul_artikel'];?></a> </div>
                               <ul class="post-tools">
-                                 <li>  <?php echo $artikel['tanggal_posting'];?> </li>
+                                 <li title="Like"><i class="glyphicon glyphicon-eye-open"></i><?php echo $artikel['hits'];?> </li>
                                  <li title="Comments"> <i class="ti-thought"></i> 953 </li>
                               </ul>
                            </li>

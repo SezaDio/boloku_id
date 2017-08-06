@@ -64,6 +64,21 @@
 			return $result;
 		}
 
+		function get_event($number, $offset)
+		{
+			$query = $this->db->order_by('tgl_mulai','DESC')->select('*')->where('status',1)->get('coming', $number, $offset);
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+
 		//get jumlah data new event
 		function jumlah_data_new_event()
 		{
@@ -118,20 +133,6 @@
 			return $result;
 		}
 		
-		function get_event()
-		{
-			$query = $this->db->order_by('tgl_mulai','DESC')->where('status',1)->get('coming');
-		
-			$indeks = 0;
-			$result = array();
-			
-			foreach ($query->result_array() as $row)
-			{
-				$result[$indeks++] = $row;
-			}
-		
-			return $result;
-		}
 		
 		function get_event_byid($id_coming)
 		{
