@@ -205,6 +205,7 @@ class KelolaArtikel extends CI_Controller {
 	public function halaman_baca_artikel($id_artikel)
 	{
 	  $this->load->model('artikel_models/ArtikelModels');
+	  $this->load->model('home_models/HomeModels');
 	  $artikel = $this->ArtikelModels->select_by_id_artikel($id_artikel)->row_array();
 	  
 	  $hits = $artikel['hits'] + 1;
@@ -219,8 +220,11 @@ class KelolaArtikel extends CI_Controller {
 	  $data['path_gambar'] = $artikel['path_gambar'];
 	  $data['tanggal_posting'] = $artikel['tanggal_posting'];
 	  $data['hits'] = $artikel['hits'];
+	  $data['jml_komentar'] = $artikel['jml_komentar'];
 
 	  $data['listArtikel'] = $this->ArtikelModels->get_data_artikel();
+	  $data['jumlahKomentar'] = $this->HomeModels->jumlah_Komentar($id_artikel);
+	  $data['listKomentar'] = $this->HomeModels->get_komentar($id_artikel);
 	  
       $this->load->view('skin/front_end/header_front_end');
       $this->load->view('content_front_end/artikel_read_page',$data);
@@ -301,5 +305,24 @@ class KelolaArtikel extends CI_Controller {
 		imagejpeg( $myThumbCrop,"./asset/upload_img_artikel/".$fileName );
 		imagejpeg( $myThumbCrop85,"./asset/upload_img_artikel/".$fileName85 );
 		
+	}
+	
+	function tambah_komentar($id_member){
+		$data_komentar=array(
+			'id_member'=>$id_member,
+			'id_artikel'=>$this->input->post('id_artikel'),
+			'isi_komentar'=>$this->input->post('isi_komentar'),
+			
+		);
+		if($this->db->insert('komentar', $data_komentar)){
+			$jml_komentar = $this->input->post('jml_komentar') + 1;
+			$data_jml_komentar = array('jml_komentar' => $jml_komentar);
+			$where = array('id_artikel' => $id_artikel);
+			$this->db->update('artikel', $data_jml_komentar, $where);
+			$this->session->set_flashdata('msg_berhasil', 'Komentar baru berhasil ditambahkan');
+			redirect('KelolaArtikel/halaman_baca_artikel/'.$this->input->post('id_artikel'));
+			
+		}
+			
 	}
 }

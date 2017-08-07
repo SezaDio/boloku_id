@@ -410,7 +410,8 @@ class KelolaMember extends CI_Controller {
 	//Masuk ke dashboard member
 	public function dashboard_member()
 	{
-		$id_member = 5;
+		if($this->session->userdata('is_logged_in')){
+		$id_member = $this->session->userdata('id_member');
 		$this->load->model('member_models/MemberModels');
 		
 		
@@ -508,6 +509,9 @@ class KelolaMember extends CI_Controller {
 		$this->load->view('skin/front_end/header_front_end');
         $this->load->view('content_front_end/member_area_dashboard',$data);
         $this->load->view('skin/front_end/footer_front_end');
+		} else {
+			redirect(site_url());
+		}
 	}
 	
 	function tambah_event() {
@@ -719,6 +723,7 @@ class KelolaMember extends CI_Controller {
 			'username'=>$this->input->post('edit_username'),
 			'nama_member'=>$this->input->post('edit_nama_member'),
 			'email'=>$this->input->post('edit_email'),
+			'telepon'=>$this->input->post('edit_telepon'),
 			'password'=>$password
 			);
 		$data['dataMember'] = $data_member;

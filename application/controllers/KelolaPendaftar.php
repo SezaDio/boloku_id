@@ -294,6 +294,8 @@ class Kelolapendaftar extends CI_Controller {
 					'email'=>$this->input->post('email'),
 					'telepon'=>$this->input->post('telepon'),
 					'alamat'=>$this->input->post('alamat'),
+					'status_bayar'=>0,
+					'verifikasi_bayar'=>0,
 					'no_pendaftar'=>12312
 				);
 				$data['dataPendaftar'] = $data_pendaftar;

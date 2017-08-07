@@ -642,7 +642,7 @@ class KelolaComing extends CI_Controller {
 		$value=str_replace('%20',' ',$value);
         //var_dump($search_term); exit();
 		$data = array($label.' =' => $this->db->escape_like_str($value), 'status =' => 1 );
-        $get_event=$this->db->where($data)->order_by('tgl_coming','DESC')->get('coming');
+        $get_event=$this->db->where($data)->order_by('tgl_mulai','DESC')->get('coming');
 			
         $this->load->helper('xml');
 		$xml_out = '<events>';
@@ -748,5 +748,20 @@ class KelolaComing extends CI_Controller {
 		
 		}
 		
+	}
+	
+	function tambah_testimoni($id_member){
+		$data_testimoni=array(
+			'id_member'=>$id_member,
+			'id_event'=>$this->input->post('id_event'),
+			'isi_testimoni'=>$this->input->post('isi_testimoni'),
+			
+		);
+		if($this->db->insert('testimoni', $data_testimoni)){
+			$this->session->set_flashdata('msg_berhasil', 'Testimoni baru berhasil ditambahkan');
+			redirect('FrontControl_Event/event_click/'.$this->input->post('id_event'));
+			
+		}
+			
 	}
 }

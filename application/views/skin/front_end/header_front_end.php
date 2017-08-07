@@ -72,8 +72,8 @@
                                        <label><?php echo $this->session->userdata['nama_member'] ?></label>
                                     </div>
 									
-									<button class="btn btn-colored-blog" type="submit" name="profil" ><span class="glyphicon glyphicon-log-in"></span>Lihat Profilmu</button>
-									<button class="btn btn-colored-blog" type="submit" name="logout" onclick="logout()"><span class="glyphicon glyphicon-log-in"></span>Logout</button>
+									<button class="btn btn-colored-blog" type="submit" name="profil" ><a href="<?php echo site_url('KelolaMember/dashboard_member'); ?>"><span class="glyphicon glyphicon-log-in"></span>Lihat Profilmu</a></button>
+									<button class="btn btn-colored-blog" type="submit" name="logout"><a href="<?php echo site_url('Account/logout_member'); ?>"><span class="glyphicon glyphicon-log-in"></span>Logout</a></button>
 									<?php } else {?>
                                     <div style="background-color: steelblue; text-align:center; padding:5px; border-radius:inherit;" >
                                        <label>Sign In Member</label>

@@ -75,7 +75,7 @@
 										<div class="col-md-3"></div>
 										<div class="col-md-6 col-sm-12 col-xs-12">
 											<h4 color="green">Password berhasil di reset.</h4>
-											<a href="<?php echo base_url();?>" class="btn btn-colored-green"><i class="glyphicon glyphicon-home"></i> Home </a>
+											<button class="btn btn-colored-blog"><a href="<?php echo base_url();?>"><i class="glyphicon glyphicon-home"></i> Home </a></button>
 										
 										</div>
 										<div class="col-md-3"></div>
