@@ -58,8 +58,180 @@
 		                        	<div class="col-md-12">
 		                        		<div class="col-md-12">
 		                        		<hr style="border: solid 1px #f44a56; opacity: 0.4;">
-		                                <a style="margin-top: -15px;" href="#" class=" btn btn-dark-red"><?php echo "#".$kategori_event; ?></a>
-				                        <a style="margin-top: -15px;" href="#" class=" btn btn-orange"><?php echo "#". $tipe_event; ?></a>
+		                        		<?php
+		                                    if ($tipe_event == "Attraction")
+		                                    { ?>
+		                                       <a style="margin-top: -15px;" class="btn btn-yellow" href="">
+		                                          <div>
+		                                             # <?php echo $tipe_event; ?>
+		                                          </div>
+		                                       </a>
+		                              <?php }
+		                                    elseif ($tipe_event == "Class")
+		                                    { ?>
+		                                       <a style="margin-top: -15px;" class="btn btn-grey" href="">
+		                                          <div>
+		                                             # <?php echo $tipe_event; ?>
+		                                          </div>
+		                                       </a>
+		                              <?php }
+		                                    elseif ($tipe_event == "Conference")
+		                                    { ?>
+		                                       <a style="margin-top: -15px;" class="btn btn-dark-blue" href="">
+		                                          <div>
+		                                             # <?php echo $tipe_event; ?>
+		                                          </div>
+		                                       </a>
+		                              <?php }
+		                                    elseif ($tipe_event == "Expo")
+		                                    { ?>
+		                                       <a style="margin-top: -15px;" class="btn btn-dark-red" href="">
+		                                          <div>
+		                                             # <?php echo $tipe_event; ?>
+		                                          </div>
+		                                       </a>
+		                              <?php }
+		                                    elseif ($tipe_event == "Festival")
+		                                    { ?>
+		                                       <a style="margin-top: -15px;" class="btn btn-orange" href="">
+		                                          <div>
+		                                             # <?php echo $tipe_event; ?>
+		                                          </div>
+		                                       </a>
+		                              <?php }
+		                                    elseif ($tipe_event == "Game")
+		                                    { ?>
+		                                       <a style="margin-top: -15px;" class="btn btn-green" href="">
+		                                          <div>
+		                                             # <?php echo $tipe_event; ?>
+		                                          </div>
+		                                       </a>
+		                              <?php }
+		                                    elseif ($tipe_event == "Party")
+		                                    { ?>
+		                                       <a style="margin-top: -15px;" class="btn btn-red" href="">
+		                                          <div>
+		                                             # <?php echo $tipe_event; ?>
+		                                          </div>
+		                                       </a>
+		                              <?php }
+		                                    elseif ($tipe_event == "Performance")
+		                                    { ?>
+		                                       <a style="margin-top: -15px;" class="btn btn-purple" href="">
+		                                          <div>
+		                                             # <?php echo $tipe_event; ?>
+		                                          </div>
+		                                       </a>
+		                              <?php }
+		                                    elseif ($tipe_event == "Seminar")
+		                                    { ?>
+		                                       <a style="margin-top: -15px;" class="btn btn-blue" href="">
+		                                          <div>
+		                                             # <?php echo $tipe_event; ?>
+		                                          </div>
+		                                       </a>
+		                              <?php }
+		                                    elseif ($tipe_event == "Tour")
+		                                    { ?>
+		                                       <a style="margin-top: -15px;" class="btn btn-dark-green" href="">
+		                                          <div>
+		                                             # <?php echo $tipe_event; ?>
+		                                          </div>
+		                                       </a>
+		                              <?php }
+		                                    elseif ($tipe_event == "Lain-Lain")
+		                                    { ?>
+		                                       <a style="margin-top: -15px;" class="btn btn-gray" href="">
+		                                          <div>
+		                                             # <?php echo $tipe_event; ?>
+		                                          </div>
+		                                       </a>
+		                              <?php } 
+		                                 ?>
+				                        
+		                                <!--Label Kategori event-->
+			                              <?php
+			                                    if ($kategori_event == "Seni")
+			                                    { ?>
+			                                       <a style="margin-top: -15px;" class="btn btn-purple" href="">
+			                                          <div>
+			                                             # <?php echo $kategori_event; ?>
+			                                          </div>
+			                                       </a>
+			                              <?php }
+			                                    elseif ($kategori_event == "Hobi")
+			                                    { ?>
+			                                       <a style="margin-top: -15px;" class="btn btn-orange" href="">
+			                                          <div>
+			                                             # <?php echo $kategori_event; ?>
+			                                          </div>
+			                                       </a>
+			                              <?php }
+			                                    elseif ($kategori_event == "Bisnis")
+			                                    { ?>
+			                                       <a style="margin-top: -15px;" class="btn btn-primary" href="">
+			                                          <div>
+			                                             # <?php echo $kategori_event; ?>
+			                                          </div>
+			                                       </a>
+			                              <?php }
+			                                    elseif ($kategori_event == "Musik")
+			                                    { ?>
+			                                       <a style="margin-top: -15px;" class="btn btn-dark-red" href="">
+			                                          <div>
+			                                             # <?php echo $kategori_event; ?>
+			                                          </div>
+			                                       </a>
+			                              <?php }
+			                                    elseif ($kategori_event == "Spirituality")
+			                                    { ?>
+			                                       <a style="margin-top: -15px;" class="btn btn-yellow" href="">
+			                                          <div>
+			                                             # <?php echo $kategori_event; ?>
+			                                          </div>
+			                                       </a>
+			                              <?php }
+			                                    elseif ($kategori_event == "Travel dan Outdoor")
+			                                    { ?>
+			                                       <a style="margin-top: -15px;" class="btn btn-green" href="">
+			                                          <div>
+			                                             # <?php echo $kategori_event; ?>
+			                                          </div>
+			                                       </a>
+			                              <?php }
+			                                    elseif ($kategori_event == "Science dan Technology")
+			                                    { ?>
+			                                       <a style="margin-top: -15px;" class="btn btn-dark-green" href="">
+			                                          <div>
+			                                             # <?php echo $kategori_event; ?>
+			                                          </div>
+			                                       </a>
+			                              <?php }
+			                                    elseif ($kategori_event == "Keluarga dan Pendidikan")
+			                                    { ?>
+			                                       <a style="margin-top: -15px;" class="btn btn-blue" href="">
+			                                          <div>
+			                                             # <?php echo $$kategori_event; ?>
+			                                          </div>
+			                                       </a>
+			                              <?php }
+			                                    elseif ($kategori_event == "Seminar")
+			                                    { ?>
+			                                       <a style="margin-top: -15px;" class="btn btn-blue" href="">
+			                                          <div>
+			                                             # <?php echo $kategori_event; ?>
+			                                          </div>
+			                                       </a>
+			                              <?php }
+			                                    elseif ($kategori_event == "Lain-Lain")
+			                                    { ?>
+			                                       <a style="margin-top: -15px;" class="btn btn-gray" href="">
+			                                          <div>
+			                                             # <?php echo $kategori_event; ?>
+			                                          </div>
+			                                       </a>
+			                              <?php } 
+			                                 ?>
 		                        		</div>
 		                        	</div>
 		                        </div>
