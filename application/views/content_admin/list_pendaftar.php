@@ -65,12 +65,12 @@
                                                             <td><?php echo $item['telepon'] ?></td>
                                                             <td><?php echo $item['alamat'] ?></td>
 															<?php if($jenis_event==0){?>
-                                                            <td style="text-align:center"><?php if($item['status_bayar']==1){?> <b style="color:red">Belum Bayar</b> <?php } else {?> <b style="color:green">Sudah Bayar</b> <?php } ?></td>
+                                                            <td style="text-align:center"><?php if($item['status_bayar']==0){?> <b style="color:red">Belum Bayar</b> <?php } elseif ($item['status_bayar']==1){?><b style="color:red">Menunggu Verifikasi</b> <?php } else {?> <b style="color:green">Sudah Bayar</b> <?php } ?></td>
 															<?php }?>
                                                             <td align="center">
                                                                 <!-- Tombol lihat detail -->
 																<?php if($jenis_event==0){?>
-																        <a href="#"><button <?php if($item['verifikasi_bayar']==1){?>class="btn btn-danger btn-sm" onclick="verifikasi_bayar(<?php echo $item['id_pendaftar']?>)"<?php } else {?>class="btn btn-success btn-sm" disabled<?php } ?>><i class="glyphicon glyphicon-eye-open" ></i>Verifikasi Bayar</button></a>
+																        <a href="#"><button <?php if($item['status_bayar']==0){?>class="btn btn-danger btn-sm" disabled="disabled" <?php } elseif($item['status_bayar']==1) {?> class="btn btn-danger btn-sm" onclick="verifikasi_bayar(<?php echo $item['id_pendaftar']?>)" <?php } else {?>class="btn btn-success btn-sm" disabled<?php } ?>><i class="glyphicon glyphicon-eye-open" ></i>Verifikasi Bayar</button></a>
 																<?php }?>
                                                             </td>
                                                         </tr>

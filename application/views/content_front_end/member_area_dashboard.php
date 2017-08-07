@@ -327,6 +327,7 @@
 					                        <input type="hidden" name="id_member" value="<?php echo $id_member; ?>">
 					                        <input type="hidden" name="nama_member" value="<?php echo $nama_member; ?>">
 					                        <input type="hidden" name="email" value="<?php echo $email; ?>">
+					                        <input type="hidden" name="telepon" value="<?php echo $telepon; ?>">
 					                        <input type="hidden" name="passwordlama" value="<?php echo $password; ?>" id="passwordlama">
 					                        <div class="col-md-12 col-sm-12 col-xs-12">
 					                           <div class="form-group">
@@ -380,13 +381,13 @@
 								                        <div class="col-md-6 col-sm-6 col-xs-12">
 								                        	<div class="form-group">
 								                        	  <label>Nama Lengkap :</label>
-								                              <input required id="name" name="edit_nama_member" class="form-control" required type="text" value="<?php echo $nama_member?>">
+								                              <input required id="nama_lengkap" name="edit_nama_member" class="form-control" required type="text" value="<?php echo $nama_member?>">
 								                           </div>
 								                        </div>
 								                        <div class="col-md-6 col-sm-6 col-xs-12">
 								                        	<div class="form-group">
 								                        	  <label>Username :</label>
-								                              <input required id="name" name="edit_username" class="form-control" required type="text" value="<?php echo $username?>">
+								                              <input required id="username" name="edit_username" class="form-control" required type="text" value="<?php echo $username?>">
 								                           </div>
 								                        </div>
 								                    </div>
@@ -408,7 +409,7 @@
 													<div class="row" id="editPassword">
 														<div class="col-md-4 col-sm-4 col-xs-12">
 															<div class="form-group">
-																<a href="#" onclick="editPassword()"><label>Ubah Password ?</label></a>
+																<a href="javascript:void(0)" onclick="editPassword()"><label>Ubah Password ?</label></a>
 															</div>
 														</div>
 													
@@ -418,22 +419,24 @@
 														<div class="col-md-4 col-sm-4 col-xs-12">
 								                        	<div class="form-group">
 								                        	  <label>Password Lama :</label>
-								                              <input required id="password_lama" name="password_lama" class="form-control" required type="text" >
+								                              <input id="password_lama" name="password_lama" class="form-control" type="text" >
 								                           </div>
 								                        </div>
 								                        <div class="col-md-4 col-sm-4 col-xs-12">
 								                        	<div class="form-group">
 								                        	  <label>Password Baru :</label>
-								                              <input required id="edit_password" name="edit_password" class="form-control" required type="text" >
+								                              <input id="edit_password" name="edit_password" class="form-control" type="text" >
 								                           </div>
 								                        </div>
 								                        <div class="col-md-4 col-sm-4 col-xs-12">
 								                        	<div class="form-group">
 								                        	  <label>Ulangi Password :</label>
-								                              <input required id="ulangi_password" name="ulangi_password" class="form-control" required type="text" >
+								                              <input id="ulangi_password" name="ulangi_password" class="form-control" type="text" >
 								                           </div>
 								                        </div>
 								                    </div>
+													<label for="exampleInputEmail1" id="validate_username" style="font-size:20px"></label>
+													<br/>
 													<label for="exampleInputEmail1" id="validate-passlama" style="font-size:20px"></label>
 													<br/>
 													<label for="exampleInputEmail1" id="validate-passsama" style="font-size:20px"></label>
@@ -659,6 +662,7 @@
 					                        <input type="hidden" name="id_member" value="<?php echo $id_member; ?>">
 					                        <input type="hidden" name="nama_member" value="<?php echo $nama_member; ?>">
 					                        <input type="hidden" name="email" value="<?php echo $email; ?>">
+					                        <input type="hidden" name="telepon" value="<?php echo $telepon; ?>">
 					                        <input type="hidden" name="passwordlama" value="<?php echo $password; ?>" id="passwordlama">
 					                        <div class="col-md-12 col-sm-12 col-xs-12">
 					                           <div class="form-group">
@@ -780,7 +784,6 @@
 			type: 'POST',
 			data: {password2:password2},
 			success: function(password){
-						alert(password);
 						password2 = password;
 						if(password1 == password2) {
 						   document.getElementById("validate-passlama").style.color = "green";
@@ -943,6 +946,43 @@
 			}
 			});
 			
+		}
+		
+		$(document).ready(function() {
+		  $("#username").keyup(validateUsername);
+	  });
+	  
+	  function validateUsername() {
+		
+		  var username1 = $("#username").val();
+		  var username = $("#username").val();
+		  if(username==''){
+			$("#validate_username").text("* Username masih kosong"); 
+			document.getElementById("submitSave").disabled = true;
+		  }
+		  else{
+		  $.ajax({
+			url: 'validate_username',	
+			type: 'POST',
+			data: {username:username},
+			success: function(dataUsername){
+						if(dataUsername!=0) {
+						   document.getElementById("validate_username").style.color = "red";
+						   $("#validate_username").text("* Username tidak tersedia"); 
+						   document.getElementById("submitSave").disabled = true;
+						}
+						else {
+							document.getElementById("validate_username").style.color = "green";
+							$("#validate_username").text("* Username tersedia");  
+							document.getElementById("submitSave").disabled = false;
+						}
+					},
+			error: function(){
+						alert('GAGAL');
+					}
+					
+			});}
+		
 		}
 	  </script>
 

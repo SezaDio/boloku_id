@@ -380,7 +380,7 @@
 							                                 
 							                                 <div class="author-desc">
 							                                    <div class="author-title">
-							                                       <strong><a href=""><?php echo $testimoni['penulis_testimoni']?></a></strong>
+							                                       <strong><a href=""><?php echo $testimoni['nama_member']?></a></strong>
 							                                       <ul class="list-inline pull-right">
 							                                          <li style="color: black;"><label><?php echo $testimoni['tgl_posting']; ?></label></li>
 							                                       </ul>
@@ -406,14 +406,16 @@
 
 					                                <div class="author-desc">
 					                                    <div class="author-title">
-					                                       <strong><a href=""><?php echo $this->session->userdata['nama_member']?></a></strong>
+					                                       <strong><a href=""><?php echo $this->session->userdata('nama_member')?></a></strong>
 					                                    </div>
-					                                    <form class="col-md-10" role="form" enctype="multipart/form-data" action="<?php //echo site_url('KelolaArtikel/tambah_artikel_check/');?>" method="POST">
+					                                    <form class="col-md-10" role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaComing/tambah_testimoni/'.$this->session->userdata('id_member'));?>" method="POST">
 					                                    	
-															<textarea style="width: 100%" required name="komentar" rows="3"></textarea>
+															<textarea style="width: 100%" required name="isi_testimoni" rows="3"></textarea>
 																
-															<br>    
-															<a href="" class="btn btn-colored-blog"><i class="glyphicon glyphicon-send"></i> Kirim </a>
+															<br>
+															<input type="hidden" name="id_event" value="<?php echo $id_event?>">	
+															<button class="btn btn-colored-blog" type="submit" value="1" name="submit"><i class="glyphicon glyphicon-send"></i> Kirim </a></button>
+															
 
 														  	<button style="float: right;" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 														    	Stiker <span class="caret"></span>

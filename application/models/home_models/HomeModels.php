@@ -163,9 +163,31 @@
 			return $result;
 		}
 		
+		function jumlah_komentar($id_artikel)
+		{
+			$query = $this->db->where('id_artikel',$id_artikel)->get('komentar');
+				
+			return $query->num_rows();
+		}
+		
 		function get_testimoni($id_coming)
 		{
-			$query = $this->db->where('id_event',$id_coming)->get('testimoni');
+			$query = $this->db->select('testimoni.id_testimoni, testimoni.id_member, testimoni.isi_testimoni, testimoni.tgl_posting, testimoni.id_event, member.nama_member, member.path_foto')->join('member','testimoni.id_member = member.id_member','left')->where('testimoni.id_event',$id_coming)->get('testimoni');
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+		
+		function get_komentar($id_artikel)
+		{
+			$query = $this->db->select('komentar.id_komentar, komentar.id_member, komentar.isi_komentar, komentar.tgl_posting, komentar.id_artikel, member.nama_member, member.path_foto')->join('member','komentar.id_member = member.id_member','left')->where('komentar.id_artikel',$id_artikel)->get('komentar');
 		
 			$indeks = 0;
 			$result = array();
