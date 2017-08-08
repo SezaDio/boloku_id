@@ -105,24 +105,50 @@
 		                                    <div class="thumb"> <img src="<?php echo base_url('asset/upload_img_coming/thumb_'.$event['path_gambar']); ?>" alt="">
 		                                    </div>
 		                                 </li>
+
+		                                 <?php
+	                                          $tanggal_mulai = strtotime($event['tgl_mulai']);
+	                                          $tanggal = date("j", $tanggal_mulai);
+	                                          $bulan = date("M", $tanggal_mulai);
+                                       	 ?>
+	                                       <div class="hover-show-div" style="margin-top: -12px; border: solid 1px black;">
+	                                          <div style="text-align: center; width: 60px; padding: 5px; background-color: #f44a56; color: white; font-size: 1.5em;"><?php echo $bulan; ?></div>
+	                                          <div style="font-size: 2em; text-align: center; padding: 5px; background-color: white;"><strong><?php echo $tanggal; ?></strong></div>
+	                                       </div>
+
 		                                 <li class="col-md-8 col-sm-9 col-xs-12">
 		                                    <div class="desc post-content">
-		                                       <h5><a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>"><?php echo $event['nama_coming'];?></a></h5>
-		                                       <ul class="post-tools">
-		                                          <li>by <a href=""><strong> <?php echo $event['posted_by'];?></strong> </a></li>
-		                                          <li>  <?php echo $event['tanggal_posting'];?></li>
-		                                          
-		                                       </ul>
-		                                       <p> <?php echo $event['deskripsi_coming'];?><a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>" class="readmore"><strong>Read More</strong></a> </p>
+		                                    	<div style="padding-top: 3px;">
+			                                       	
+			                                       	<a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>"><h3><strong><?php echo $event['nama_coming'];?></strong></h3></a>
+			                                       	
+			                                       <ul class="post-tools">
+			                                          <li>by <a href=""><strong> <?php echo $event['posted_by'];?></strong> </a></li>
+			                                          <li><i class="glyphicon glyphicon-thumbs-up"></i> <?php echo $event['like'];?></a></li>
+	                                       			  <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $event['hits'];?></a></li>
+			                                       </ul>
+			                                    </div>
+		                                       <br>
+		                                       <div class="col-md-12" style="padding-left: unset;">
+			                                       <p>
+			                                       		<?php 
+															$isi=strip_tags($event['deskripsi_coming']);
+															$isi=substr($isi,0,400);
+															echo $isi;
+														?>
+														. . . 
+			                                       		<a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>" class="readmore"><strong>Read More</strong></a> 
+			                                       	</p>
+			                                    </div>
 			                                   <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
 
 			                                   	<div class="row">
 			                                   		<div class="col-md-12">
-					                                   	<a style="margin-top: -25px;" href="javascript:void(0)" class=" btn btn-green btn-small" onclick="byLabel('jenis_event','<?php echo $event['jenis_event']?>')"><i class="ti-money"></i> <?php if($event['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?></a>
+					                                   	<a style="margin-top: -20px;" href="javascript:void(0)" class=" btn btn-green btn-small" onclick="byLabel('jenis_event','<?php echo $event['jenis_event']?>')"><i class="ti-money"></i> <?php if($event['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?></a>
 
-					                                   	<a style="margin-top: -25px;" href="javascript:void(0)" class=" btn btn-dark-red" onclick="byLabel('kategori_coming','<?php echo $event['kategori_coming']?>')"><?php echo $event['kategori_coming']; ?></a>
+					                                   	<a style="margin-top: -20px;" href="javascript:void(0)" class=" btn btn-dark-red" onclick="byLabel('kategori_coming','<?php echo $event['kategori_coming']?>')"><?php echo $event['kategori_coming']; ?></a>
 					                                   	
-					                                   	<a style="margin-top: -25px;" href="javascript:void(0)" class=" btn btn-orange" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"><?php echo $event['tipe_event']; ?></a>
+					                                   	<a style="margin-top: -20px;" href="javascript:void(0)" class=" btn btn-orange" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"><?php echo $event['tipe_event']; ?></a>
 					                                </div>
 				                                </div>
 		                                    </div>

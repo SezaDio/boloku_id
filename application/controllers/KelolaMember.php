@@ -179,7 +179,7 @@ class KelolaMember extends CI_Controller {
 					$data['dataMember'] = $data_member;
 				if($this->db->insert('member', $data_member))
 				{
-					$this->session->set_flashdata('msg_berhasil', 'Data member berhasil ditambahkan');
+					$this->session->set_flashdata('msg_berhasil', 'Selamat, kowe wis dadi boloku ndes. Monggo LOGIN');
 					redirect('KelolaMember');
 				}
 				else

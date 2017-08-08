@@ -9,8 +9,8 @@
 
       <title> boloku.id </title>
 
-      <link rel="shortcut icon" href="<?php echo base_url('asset/img/favicon.ico'); ?>" type="image/x-icon">
-      <link rel="icon" href="<?php echo base_url('asset/img/favicon.ico'); ?>" type="image/x-icon">
+      <link rel="shortcut icon" href="<?php echo base_url('asset/img/Icon Web.ico'); ?>" type="image/x-icon">
+      <link rel="icon" href="<?php echo base_url('asset/img/Icon Web.ico'); ?>" type="image/x-icon">
 
       <!-- Core Bootstrap File -->
       <link href="<?php echo base_url('asset/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" />

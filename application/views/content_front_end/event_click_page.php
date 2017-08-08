@@ -29,14 +29,14 @@
 				                            <div class="detail">
 				                                <div class="caption" style="text-align: center;">
 				                                   <h5>
-				                                      <a href="#"><label><?php echo $nama_event; ?></label></a>
+				                                      <a href="#"><h3><strong><?php echo $nama_event; ?></strong></h3></a>
 				                                   </h5>
 				                                </div>
 				                                <p style="text-align: center; font-size: inherit;">
-				                                   by <strong> <?php echo $posted_by; ?> </strong> / on <strong> <?php echo $tanggal_posting; ?></strong>
-				                                </p><br><br>
-				                                
-				                               
+				                                	Diselenggarakan oleh: <br><strong><?php echo $institusi; ?></strong><br>by <strong> <?php echo $posted_by; ?> </strong> / on <strong> <?php echo $tanggal_posting; ?></strong>
+				                                   
+				                                </p><br>
+				                             
 				                                <div class="col-md-12" style="text-align: center;">
 				                                	<button value="<?php echo $like; ?>" onclick="update_like_ajax(<?php echo $id_event; ?>)" style="color:white;" class="btn btn-success" type="submit"><i class="glyphicon glyphicon-thumbs-up"></i> <span id="like"> <?php echo $like; ?></span></button>
 													
@@ -133,7 +133,7 @@
 		                              <?php }
 		                                    elseif ($tipe_event == "Tour")
 		                                    { ?>
-		                                       <a style="margin-top: -15px;" class="btn btn-dark-green" href="">
+		                                       <a style="margin-top: -15px;" class="btn btn-success" href="">
 		                                          <div>
 		                                             # <?php echo $tipe_event; ?>
 		                                          </div>
@@ -391,6 +391,7 @@
 							                                 </div>
 							                                 <br><br>
 							                           	 	<hr style="border: solid 1px #f44a56; opacity: 0.4;">
+
 							                            </div>
 
 													<?php } ?>
@@ -399,37 +400,43 @@
 							                     <br><br>
 							                     <!--Form comentar baru-->
 							                     <div style="padding-top: 10px;" class="col-md-12 comment-info">
-												 	<?php if(isset( $this->session->userdata['is_logged_in'])){?>
-												  	<div class="col-md-2">
-					                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="" alt="author">
-					                                </div>
+												 	<?php 
+												 		if(isset( $this->session->userdata['is_logged_in']))
+												 		{?>
+														  	<div class="col-md-2">
+							                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="" alt="author">
+							                                </div>
 
-					                                <div class="author-desc">
-					                                    <div class="author-title">
-					                                       <strong><a href=""><?php echo $this->session->userdata('nama_member')?></a></strong>
-					                                    </div>
-					                                    <form class="col-md-10" role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaComing/tambah_testimoni/'.$this->session->userdata('id_member'));?>" method="POST">
-					                                    	
-															<textarea style="width: 100%" required name="isi_testimoni" rows="3"></textarea>
-																
-															<br>
-															<input type="hidden" name="id_event" value="<?php echo $id_event?>">	
-															<button class="btn btn-colored-blog" type="submit" value="1" name="submit"><i class="glyphicon glyphicon-send"></i> Kirim </a></button>
-															
+							                                <div class="author-desc">
+							                                    <div class="author-title">
+							                                       <strong><a href=""><?php echo $this->session->userdata('nama_member')?></a></strong>
+							                                    </div>
+							                                    <form class="col-md-10" role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaComing/tambah_testimoni/'.$this->session->userdata('id_member'));?>" method="POST">
+							                                    	
+																	<textarea style="width: 100%" required name="isi_testimoni" rows="3"></textarea>
+																		
+																	<br>
+																	<input type="hidden" name="id_event" value="<?php echo $id_event?>">	
+																	<button class="btn btn-colored-blog" type="submit" value="1" name="submit"><i class="glyphicon glyphicon-send"></i> Kirim </a></button>
+																	
 
-														  	<button style="float: right;" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-														    	Stiker <span class="caret"></span>
-														  	</button><br>
-														  	<ul style="float: right;" class="dropdown-menu">
-															    <li><a href="#">Action</a></li>
-															    <li><a href="#">Another action</a></li>
-															    <li><a href="#">Something else here</a></li>
-															    <li role="separator" class="divider"></li>
-															    <li><a href="#">Separated link</a></li>
-														  	</ul>
-					                                    </form>
-					                                </div>
-											     <?php } ?>
+																  	<button style="float: right;" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+																    	Stiker <span class="caret"></span>
+																  	</button><br>
+																  	<ul style="float: right;" class="dropdown-menu">
+																	    <li><a href="#">Action</a></li>
+																	    <li><a href="#">Another action</a></li>
+																	    <li><a href="#">Something else here</a></li>
+																	    <li role="separator" class="divider"></li>
+																	    <li><a href="#">Separated link</a></li>
+																  	</ul>
+							                                    </form>
+							                                </div>
+											     	<?php } 
+											     		  else
+											     		  {
+											     		  	echo "<p style='text-align: center;'>Silahkan Login terlebih dahulu untuk memberikan Testimoni.</p>";
+											     		  }?>
 						                         </div>
 			                                 </div>
 

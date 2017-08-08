@@ -45,6 +45,15 @@
                               </a>
                            </div>
                         </div>
+                        <?php
+                           $tanggal_mulai = strtotime($topevent['tgl_mulai']);
+                           $tanggal = date("j", $tanggal_mulai);
+                           $bulan = date("M", $tanggal_mulai);
+                        ?>
+                        <div class="hover-show-div" style="margin-right: 12px; margin-top: -12px; border: solid 1px black;">
+                           <div style="text-align: center; width: 60px; padding: 5px; background-color: #f44a56; color: white; font-size: 1.5em;"><?php echo $bulan; ?></div>
+                           <div style="font-size: 2em; text-align: center; padding: 5px; background-color: white;"><strong><?php echo $tanggal; ?></strong></div>
+                        </div>
                         <div class="post-content" style="background-color: #444;">
                            <div class="catname">
                               <a href="#" class=" btn btn-green btn-xs"><i class="ti-money"></i> <?php if($topevent['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?></a>
@@ -598,8 +607,8 @@
                               <div class="latest-news-grid grid-1">
                                  <div class="picture">
                                     <div class="category-image">
-                                       <a href="standard-post.html">
-                                       <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_challenge/thumb_'.$challenge['path_gambar']); ?>">
+                                       <a href="<?php echo base_url('asset/upload_img_challenge/thumb_'.$challenge['path_gambar']); ?>">
+                                          <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_challenge/thumb_'.$challenge['path_gambar']); ?>">
                                        </a>
                                     </div>
                                  </div>

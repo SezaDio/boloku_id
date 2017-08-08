@@ -19,14 +19,14 @@
                             <div class="small-box bg-aqua">
                                 <div class="inner">
                                     <h3>
-                                        150
+                                        <?php echo $jum_pesan; ?>
                                     </h3>
                                     <p>
-                                        New Orders
+                                        Message
                                     </p>
                                 </div>
                                 <div class="icon">
-                                    <i class="ion ion-bag"></i>
+                                    <i class="glyphicon glyphicon-envelope"></i>
                                 </div>
                                 <a href="#" class="small-box-footer">
                                     More info <i class="glyphicon glyphicon-circle-arrow-right"></i>

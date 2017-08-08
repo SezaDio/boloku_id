@@ -1,12 +1,3 @@
-	  <section class="my-breadcrumb">
-         <div class="container page-banner">
-            <div class="row">
-               <div class="col-sm-12 col-md-12 col-xs-12">
-                  <h1>Reset Password</h1>
-               </div>
-            </div>
-         </div>
-      </section>
 
       <!--Main Content-->
       <section>
@@ -16,15 +7,13 @@
                		<div class="section listing">
                			 <div class="col-md-1"></div>
 
-	                    <div class="col-md-10 col-sm-8 col-xs-12 nopadding" style="box-shadow: 0 1px 10px #f44a56;">
+	                    <div class="col-md-10 col-sm-8 col-xs-12 nopadding" style="border-top: solid 1px #f44a56; border-bottom: solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">
 		               	  	<div style="text-align: center;">
 		       					<h3><strong>Formulir Reset Password</h3>
 		       					<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
 		       			  	</div>
 		                  	<div class="contact-form">
-			                     
-			                        
-									
+			                   
 									<div id="div_username">
 			                        <div class="col-md-3"></div>
 			                        <div class="col-md-6 col-sm-12 col-xs-12">
@@ -33,8 +22,8 @@
 			                           </div>
 									   <b><div class="form-group" id="validate_username"></div></b>
 									   
-									    <div style="padding-top: 20px;" class="col-md-7 col-sm-12 col-xs-12">
-			                            <button class="btn btn-colored-blog pull-right" type="submit" value="1" name="submit" id="submit_username" onclick="openPertanyaan()"><i class="glyphicon glyphicon-registration-mark"></i>Submit</button>
+									    <div style="padding-top: 20px; padding-bottom: 20px;" class="col-md-7 col-sm-12 col-xs-12">
+			                            	<button class="btn btn-colored-blog pull-right" type="submit" value="1" name="submit" id="submit_username" onclick="openPertanyaan()"><i class="glyphicon glyphicon-registration-mark"></i>Submit</button>
 										</div>
 			                        </div>
 			                        <div class="col-md-3"></div>
@@ -65,7 +54,7 @@
 												  <b><div class="form-group" id="validate_password"></div></b>
 											   </div>
 											<div style="padding-top: 20px;" class="col-md-7 col-sm-12 col-xs-12">
-											<button class="btn btn-colored-blog pull-right" type="submit" value="1" name="submit" id="submit_password" onclick="resetpassword()"><i class="glyphicon glyphicon-registration-mark"></i>Submit</button>
+												<button class="btn btn-colored-blog pull-right" type="submit" value="1" name="submit" id="submit_password" onclick="resetpassword()"><i class="glyphicon glyphicon-registration-mark"></i>Submit</button>
 											</div>
 										</div>
 										<div class="col-md-3"></div>
