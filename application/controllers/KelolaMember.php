@@ -720,7 +720,7 @@ class KelolaMember extends CI_Controller {
 			$password=md5($this->input->post('edit_password'));
 		}
 			
-
+		
 		//Mengambil filename gambar untuk disimpan
 		$nmfile = "file_".time();
 		$config['upload_path'] = './asset/upload_img_member/';
@@ -746,7 +746,7 @@ class KelolaMember extends CI_Controller {
 			{
 				//echo "Masuk";
 				$gbr = $this->upload->data();
-
+				$this->crop_member($gbr['full_path'],$gbr['file_name']);
 				$data_member['path_foto'] = $gbr['file_name'];
 
 				
@@ -759,7 +759,7 @@ class KelolaMember extends CI_Controller {
 
 		}
 			$this->db->update('member', $data_member, array('id_member'=>$id_member));
-			print_r($data_member);
+			
 			$this->session->set_flashdata('msg_berhasil', 'Data member berhasil diperbaharui');
 			redirect('KelolaMember/dashboard_member');
 		
@@ -885,6 +885,82 @@ class KelolaMember extends CI_Controller {
 		$fileName83="thumb83_".$filename;
 		imagejpeg( $myThumbCrop,"./asset/upload_img_coming/".$fileName );
 		imagejpeg( $myThumbCrop83,"./asset/upload_img_coming/".$fileName83 );
+		
+	}
+	
+	function crop_member($img,$filename){
+		
+		$name = $img;
+		$myImage85 = imagecreatefromjpeg($name);
+		$myImage = imagecreatefromjpeg($name);
+		list($width, $height) = getimagesize($name);
+		//get percent to resize to 900x550
+		if($width<=$height){
+			$percent = 800/$width;
+			$newwidth = $width * $percent;
+			$newheight = $height * $percent;
+			if($newheight<550){
+				$percent2 = 550/$newheight;
+				$newwidth = $newwidth * $percent2;
+				$newheight = $newheight * $percent2;
+			}
+			
+			$percent85 = 85/$width;
+			$newwidth85 = $width * $percent85;
+			$newheight85 = $height * $percent85;
+			if($newheight85<85){
+				$percent85b = 85/$newheight85;
+				$newwidth85 = $newwidth85 * $percent85b;
+				$newheight85 = $newheight85 * $percent85b;
+			}
+		} else {
+			$percent = 550/$height;
+			$newwidth = $width * $percent;
+			$newheight = $height * $percent;
+			if($newwidth85<800){
+				$percent2 = 800/$newwidth;
+				$newwidth = $newwidth * $percent2;
+				$newheight = $newheight * $percent2;
+			}
+			
+			$percent85 = 85/$height;
+			$newwidth85 = $width * $percent85;
+			$newheight85 = $height * $percent85;
+			if($newwidth85<85){
+				$percent85b = 85/$newwidth85;
+				$newwidth85 = $newwidth85 * $percent85b;
+				$newheight85 = $newheight85 * $percent85b;
+			}
+		}
+		
+		
+		// resize image
+		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		$thumb85 = imagecreatetruecolor($newwidth85, $newheight85);
+		imagecopyresized($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		imagecopyresized($thumb85, $myImage85, 0, 0, 0, 0, $newwidth85, $newheight85, $width, $height);
+		imagejpeg($thumb,"./asset/upload_img_member/resize_".$filename);
+		imagejpeg($thumb85,"./asset/upload_img_member/resize85_".$filename);
+		
+		// crop thumb
+		$imgThumb = './asset/upload_img_member/resize_'.$filename;
+		$imgThumb85 = './asset/upload_img_member/resize85_'.$filename;
+		$myThumb = imagecreatefromjpeg($imgThumb);
+		$myThumb85 = imagecreatefromjpeg($imgThumb85);
+		list($width, $height) = getimagesize($imgThumb);
+		list($width85, $height85) = getimagesize($imgThumb85);
+		$myThumbCrop =  imagecreatetruecolor(800,550);
+		$myThumbCrop85 =  imagecreatetruecolor(85, 85);
+		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
+		imagecopyresampled($myThumbCrop85,$myThumb85,0,0,0,0 ,$width85,$height85,$width85,$height85);
+		unlink('./asset/upload_img_member/resize_'.$filename);
+		unlink('./asset/upload_img_member/resize85_'.$filename);
+		 
+		// Save the two images created
+		$fileName="thumb_".$filename;
+		$fileName85="thumb85_".$filename;
+		imagejpeg( $myThumbCrop,"./asset/upload_img_member/".$fileName );
+		imagejpeg( $myThumbCrop85,"./asset/upload_img_member/".$fileName85 );
 		
 	}
 

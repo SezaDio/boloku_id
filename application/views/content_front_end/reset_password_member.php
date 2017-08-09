@@ -23,7 +23,7 @@
 									   <b><div class="form-group" id="validate_username"></div></b>
 									   
 									    <div style="padding-top: 20px; padding-bottom: 20px;" class="col-md-7 col-sm-12 col-xs-12">
-			                            	<button class="btn btn-colored-blog pull-right" type="submit" value="1" name="submit" id="submit_username" onclick="openPertanyaan()"><i class="glyphicon glyphicon-registration-mark"></i>Submit</button>
+			                            	<button class="btn btn-colored-blog pull-right" type="submit" value="1" name="submit" id="submit_username" onclick="openPertanyaan()" disabled="disabled"><i class="glyphicon glyphicon-registration-mark"></i>Submit</button>
 										</div>
 			                        </div>
 			                        <div class="col-md-3"></div>
@@ -37,7 +37,7 @@
 										<b><div class="form-group" id="jawaban_rahasia"></div></b>
 										
 										<div style="padding-top: 20px;" class="col-md-7 col-sm-12 col-xs-12">
-			                            <button class="btn btn-colored-blog pull-right" type="submit" value="1" name="submit" id="submit_jawaban" onclick="openReset()"><i class="glyphicon glyphicon-registration-mark"></i>Submit</button>
+			                            <button class="btn btn-colored-blog pull-right" type="submit" value="1" name="submit" id="submit_jawaban" onclick="openReset()" disabled="disabled"><i class="glyphicon glyphicon-registration-mark"></i>Submit</button>
 										</div>
 									</div>
 									<div class="col-md-3"></div>
@@ -54,7 +54,7 @@
 												  <b><div class="form-group" id="validate_password"></div></b>
 											   </div>
 											<div style="padding-top: 20px;" class="col-md-7 col-sm-12 col-xs-12">
-												<button class="btn btn-colored-blog pull-right" type="submit" value="1" name="submit" id="submit_password" onclick="resetpassword()"><i class="glyphicon glyphicon-registration-mark"></i>Submit</button>
+												<button class="btn btn-colored-blog pull-right" type="submit" value="1" name="submit" id="submit_password" onclick="resetpassword()" disabled="disabled"><i class="glyphicon glyphicon-registration-mark"></i>Submit</button>
 											</div>
 										</div>
 										<div class="col-md-3"></div>

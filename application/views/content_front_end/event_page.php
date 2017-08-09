@@ -222,6 +222,8 @@
 			  var kategori_event = getEvent[i].getAttribute("kategori_event");
 			  var tipe_event = getEvent[i].getAttribute("tipe_event");
 			  var jenis_event = getEvent[i].getAttribute("jenis_event");
+			  var tanggal = getEvent[i].getAttribute("tanggal");
+			  var bulan = getEvent[i].getAttribute("bulan");
 			  var path_gambar = getEvent[i].getAttribute("path_gambar");
 			  		  
 			  var jenis='';
@@ -244,6 +246,10 @@
 		                    divkategori += '<li class="col-md-4 col-sm-3 col-xs-12 nopadding">';
 		                        divkategori += '<div class="thumb"> <img src="'+baseUrl+'/asset/upload_img_coming/thumb_'+path_gambar+'" alt=""></div>';
 		                    divkategori += '</li>';
+							divkategori += '<div class="hover-show-div" style="margin-top: -12px; border: solid 1px black;">';
+	                             divkategori += '<div style="text-align: center; width: 60px; padding: 5px; background-color: #f44a56; color: white; font-size: 1.5em;">'+bulan+'</div>';
+	                             divkategori += '<div style="font-size: 2em; text-align: center; padding: 5px; background-color: white;"><strong>'+tanggal+'</strong></div>';
+	                        divkategori += '</div>';
 		                    divkategori += '<li class="col-md-8 col-sm-9 col-xs-12">';
 								divkategori += '<div class="desc post-content">';
 									divkategori += '<h5><a href="'+baseUrl+'/FrontControl_Event/event_click/'+id_event+'">'+nama_event+'</a></h5>';
@@ -307,6 +313,8 @@
 			  var tanggal_posting = getEvent[i].getAttribute("tanggal_posting");
 			  var kategori_event = getEvent[i].getAttribute("kategori_event");
 			  var tipe_event = getEvent[i].getAttribute("tipe_event");
+			  var tanggal = getEvent[i].getAttribute("tanggal");
+			  var bulan = getEvent[i].getAttribute("bulan");
 			  var jenis_event = getEvent[i].getAttribute("jenis_event");
 			  var path_gambar = getEvent[i].getAttribute("path_gambar");
 			  		  
@@ -330,6 +338,10 @@
 		                    divkategori += '<li class="col-md-4 col-sm-3 col-xs-12 nopadding">';
 		                        divkategori += '<div class="thumb"> <img src="'+baseUrl+'/asset/upload_img_coming/thumb_'+path_gambar+'" alt=""></div>';
 		                    divkategori += '</li>';
+							divkategori += '<div class="hover-show-div" style="margin-top: -12px; border: solid 1px black;">';
+	                             divkategori += '<div style="text-align: center; width: 60px; padding: 5px; background-color: #f44a56; color: white; font-size: 1.5em;">'+bulan+'</div>';
+	                             divkategori += '<div style="font-size: 2em; text-align: center; padding: 5px; background-color: white;"><strong>'+tanggal+'</strong></div>';
+	                        divkategori += '</div>';
 		                    divkategori += '<li class="col-md-8 col-sm-9 col-xs-12">';
 								divkategori += '<div class="desc post-content">';
 									divkategori += '<h5><a href="'+baseUrl+'/FrontControl_Event/event_click/'+id_event+'">'+nama_event+'</a></h5>';

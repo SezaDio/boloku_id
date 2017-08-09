@@ -375,7 +375,7 @@
 													<?php foreach($listTestimoni as $testimoni){?>
 							                            <div style="padding-top: 10px;" class="col-md-12 comment-info">
 							                                 <div class="col-md-2">
-							                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="<?php echo base_url('asset/img/author3.jpg'); ?>" alt="author">
+							                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="<?php echo base_url('asset/upload_img_member/thumb85_'.$testimoni['path_foto']); ?>" alt="author">
 							                                 </div>
 							                                 
 							                                 <div class="author-desc">
@@ -389,7 +389,7 @@
 							                                    	<p><?php echo $testimoni['isi_testimoni']; ?></p>
 							                                    </div>
 							                                 </div>
-							                                 <br><br>
+							                                 <br><br><br>
 							                           	 	<hr style="border: solid 1px #f44a56; opacity: 0.4;">
 
 							                            </div>
@@ -404,7 +404,7 @@
 												 		if(isset( $this->session->userdata['is_logged_in']))
 												 		{?>
 														  	<div class="col-md-2">
-							                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="" alt="author">
+							                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="<?php echo base_url('asset/upload_img_member/thumb85_'.$this->session->userdata('path_foto')); ?>" alt="author">
 							                                </div>
 
 							                                <div class="author-desc">

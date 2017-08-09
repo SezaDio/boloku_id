@@ -116,6 +116,7 @@ class Account extends CI_Controller
 									'id_member' => $temp_account->id_member,
 									'username' => $temp_account->username,
 									'nama_member' => $temp_account->nama_member,
+									'path_foto' => $temp_account->path_foto,
 									'is_logged_in' => true
 								);
 				$this->session->set_userdata($array_items);

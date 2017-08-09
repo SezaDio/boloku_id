@@ -46,7 +46,7 @@
 						<?php foreach($listKomentar as $komentar){?>
 							<div style="padding-top: 10px;" class="col-md-12 comment-info">
 								 <div class="col-md-2">
-									<img style="width: 100%;" class="pull-left hidden-xs" src="<?php echo base_url('asset/img/author3.jpg'); ?>" alt="author">
+									<img style="width: 100%;" class="pull-left hidden-xs" src="<?php echo base_url('asset/upload_img_member/thumb85_'.$komentar['path_foto']); ?>" alt="author">
 								 </div>
 								 
 								 <div class="author-desc">
@@ -59,9 +59,10 @@
 									<div class="col-md-10">
 										<p><?php echo $komentar['isi_komentar']; ?></p>
 									</div>
-								 </div>
-								 <br><br>
+									<br><br><br>
 								<hr style="border: solid 1px #f44a56; opacity: 0.4;">
+								 </div>
+								 
 							</div>
 
 						<?php } ?>
@@ -70,7 +71,7 @@
 	                     <div style="padding-top: 10px;" class="col-md-12 comment-info">
                         <?php if(isset($this->session->userdata['is_logged_in'])){?>     
 							 <div class="col-md-2">
-                             	<img style="width: 100%;" class="pull-left" src="" alt="author">
+                             	<img style="width: 100%;" class="pull-left" src="<?php echo base_url('asset/upload_img_member/thumb85_'.$this->session->userdata('path_foto')); ?>" alt="author">
                              </div>
                              <div class="author-desc">
                                 <div class="author-title">

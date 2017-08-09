@@ -648,6 +648,10 @@ class KelolaComing extends CI_Controller {
 		$xml_out = '<events>';
         if ($get_event->num_rows()>0) {
             foreach ($get_event->result() as $row_event) {
+				
+	            $tanggal = date("j", strtotime($row_event->tgl_mulai));
+	            $bulan = date("M", strtotime($row_event->tgl_mulai));
+				
                 $xml_out .= '<event ';
                 $xml_out .= 'id_event="' . xml_convert($row_event->id_coming) . '" ';
                 $xml_out .= 'nama_event="' . xml_convert($row_event->nama_coming) . '" ';
@@ -657,6 +661,8 @@ class KelolaComing extends CI_Controller {
                 $xml_out .= 'kategori_event="' . xml_convert(($row_event->kategori_coming)) . '" ';
                 $xml_out .= 'tipe_event="' . xml_convert(($row_event->tipe_event)) . '" ';
                 $xml_out .= 'jenis_event="' . xml_convert(($row_event->jenis_event)) . '" ';
+                $xml_out .= 'tanggal="' . xml_convert(($tanggal)) . '" ';
+                $xml_out .= 'bulan="' . xml_convert(($bulan)) . '" ';
                 $xml_out .= 'path_gambar="' . xml_convert(($row_event->path_gambar)) . '" ';
                 $xml_out .= '/>';
             }
@@ -707,6 +713,10 @@ class KelolaComing extends CI_Controller {
 		$xml_out = '<events>';
         if ($get_event->num_rows()>0) {
             foreach ($get_event->result() as $row_event) {
+				
+				$tanggal = date("j", strtotime($row_event->tgl_mulai));
+	            $bulan = date("M", strtotime($row_event->tgl_mulai));
+				
                 $xml_out .= '<event ';
                 $xml_out .= 'id_event="' . xml_convert($row_event->id_coming) . '" ';
                 $xml_out .= 'nama_event="' . xml_convert($row_event->nama_coming) . '" ';
@@ -717,6 +727,8 @@ class KelolaComing extends CI_Controller {
                 $xml_out .= 'kategori_event="' . xml_convert(($row_event->kategori_coming)) . '" ';
                 $xml_out .= 'tipe_event="' . xml_convert(($row_event->tipe_event)) . '" ';
                 $xml_out .= 'jenis_event="' . xml_convert(($row_event->jenis_event)) . '" ';
+				$xml_out .= 'tanggal="' . xml_convert(($tanggal)) . '" ';
+                $xml_out .= 'bulan="' . xml_convert(($bulan)) . '" ';
                 $xml_out .= 'kota_lokasi="' . xml_convert(($row_event->kota_lokasi)) . '" ';
                 $xml_out .= 'path_gambar="' . xml_convert(($row_event->path_gambar)) . '" ';
                 $xml_out .= '/>';

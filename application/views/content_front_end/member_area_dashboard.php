@@ -315,6 +315,7 @@
 															<input placeholder="Alamat" type="text" name="alamat" class="form-control">
 				                                        </div>
 				                                    </div>
+													
 													<div class="col-md-6">
 			                                            <label for="exampleInputFile">Unggah File Gambar Poster :</label>
 			                                            <div class="input-group">
@@ -328,7 +329,7 @@
 					                        <input type="hidden" name="nama_member" value="<?php echo $nama_member; ?>">
 					                        <input type="hidden" name="email" value="<?php echo $email; ?>">
 					                        <input type="hidden" name="telepon" value="<?php echo $telepon; ?>">
-					                        <input type="hidden" name="passwordlama" value="<?php echo $password; ?>" id="passwordlama">
+					                        
 					                        <div class="col-md-12 col-sm-12 col-xs-12">
 					                           <div class="form-group">
 					                              <textarea cols="12" rows="5" placeholder="Keterangan tambahan event . . ." id="message" name="deskripsi_coming" class="form-control" required></textarea>
@@ -442,7 +443,7 @@
 													<label for="exampleInputEmail1" id="validate-passsama" style="font-size:20px"></label>
 								                    <div class="row">
 								                        <div class="col-md-6 col-sm-6 col-xs-12">
-								                        	
+								                        	<input type="hidden" name="passwordlama" value="<?php echo $password; ?>" id="passwordlama">
 								                        </div>
 								                        <div class="col-md-6 col-sm-6 col-xs-12">
 								                        	<br>
@@ -663,7 +664,6 @@
 					                        <input type="hidden" name="nama_member" value="<?php echo $nama_member; ?>">
 					                        <input type="hidden" name="email" value="<?php echo $email; ?>">
 					                        <input type="hidden" name="telepon" value="<?php echo $telepon; ?>">
-					                        <input type="hidden" name="passwordlama" value="<?php echo $password; ?>" id="passwordlama">
 					                        <div class="col-md-12 col-sm-12 col-xs-12">
 					                           <div class="form-group">
 					                              <textarea cols="12" rows="5" placeholder="Keterangan tambahan event . . ." id="edit_deskripsi_event" name="edit_deskripsi_coming" class="form-control" required></textarea>
