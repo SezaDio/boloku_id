@@ -1,4 +1,4 @@
-	<section class="my-breadcrumb" style="background-image: url(asset/img/banner-contact-us.jpg);">
+	<section class="my-breadcrumb" style="background-image: url(asset/img/contact_us.jpg);">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">

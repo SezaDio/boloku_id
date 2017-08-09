@@ -753,9 +753,10 @@ class KelolaComing extends CI_Controller {
 		if(isset($_POST['id_event'])){
 		$id_event = $_POST['id_event'];
 			if(isset($_POST['dataEvent'])){
-			$data_event = $_POST['dataEvent'];
-			$this->db->where('id_coming',$id_event);
-			$this->db->update('coming',$data_event);
+				$data_event = $_POST['dataEvent'];
+				$this->db->where('id_coming',$id_event);
+				$this->db->update('coming',$data_event);
+				redirect(site_url()	);
 			}
 		
 		}

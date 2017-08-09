@@ -22,9 +22,20 @@
 	                                <div class="col-md-12">
 			                             <div class="picture">
 			                             	<div style="margin-bottom: 15px;" class="ad-div style-box">
-					                           <a href="<?php echo base_url('asset/img/author3.jpg'); ?>" class="tt-lightbox">
-					                              <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_member/'.$path_foto); ?>">
-					                           </a>
+			                             		<?php
+                                                if (empty($path_foto))
+                                                {
+                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/img/empty.png').'"/>';
+                                                }
+                                                else
+                                                {
+                                                	echo '<a href="'.base_url('asset/img/author3.jpg').'" class="tt-lightbox">
+						                              <img alt="" class="img-responsive" src="'.base_url('asset/upload_img_member/'.$path_foto).'">';
+						                           	echo "</a>";
+                                                }
+                                            ?>
+
+					                           
 					                        </div>
 			                             </div>
 			                             <div class="caption" style="text-align: center;">
@@ -59,7 +70,7 @@
 	                                </table>
 	                                <hr style="margin-top: auto; border: solid 1px #f44a56; opacity: 0.4;">
 	                                <div class="col-md-12" style="text-align: center;">
-                                       <a style="width: 100%;" href="" class="btn btn-colored-blog"><i class="glyphicon glyphicon-log-out"></i> Sign Out </a>
+                                       <a style="width: 100%;" href="<?php echo base_url('Account/logout_member	');?>" class="btn btn-colored-blog"><i class="glyphicon glyphicon-log-out"></i> Sign Out </a>
                                     </div>
 	                             </div>
 	                          </div>
@@ -299,11 +310,10 @@
 				                                        </div>
 				                                    </div>
 													<div class="col-md-4">
-														<div class="form-group">
+														
 															<label for="exampleInputEmail1">Gunakan fasilitas pendaftaran ? </label><br>
 															<input style="opacity: 1;" type="radio" name="pendaftaran" value=1 required ><label>Ya</label>&nbsp&nbsp&nbsp&nbsp
 															<label><input style="opacity: 1;" type="radio" name="pendaftaran" value=0 required >Tidak</label>
-														</div>
 														
 													</div>
 				                                    
@@ -634,11 +644,11 @@
 				                                    </div>
 													
 													<div class="col-md-4">
-														<div class="form-group">
-															<label for="exampleInputEmail1">Gunakan fasilitas pendaftaran ? </label><br>
-															<input style="opacity: 1;" type="radio" name="edit_pendaftaran" value=1 required id="edit_pendaftaran_ya"><label>Ya</label>&nbsp&nbsp&nbsp&nbsp
-															<label><input style="opacity: 1;" type="radio" name="edit_pendaftaran" value=0 required id="edit_pendaftaran_tidak">Tidak</label>
-														</div>
+														
+														<label for="exampleInputEmail1">Gunakan fasilitas pendaftaran ? </label><br>
+														<input style="opacity: 1;" type="radio" name="edit_pendaftaran" value=1 required id="edit_pendaftaran_ya"><label>Ya</label>&nbsp&nbsp&nbsp&nbsp
+														<label><input style="opacity: 1;" type="radio" name="edit_pendaftaran" value=0 required id="edit_pendaftaran_tidak">Tidak</label>
+														
 														
 													</div>
 				                                    
@@ -726,14 +736,7 @@
             });
         });
 		
-		$(document).ready( function () {
-
-        //Date range picker tambah event
-            $('#reservation2').daterangepicker({format: 'YYYY-MM-DD'},function(start, end) {
-                $('#edit_tgl_mulai').val(start.format('YYYY-MM-DD'));
-                $('#edit_tgl_selesai').val(end.format('YYYY-MM-DD'));
-            });
-        });
+		
 		
 		function editPassword(){
 			document.getElementById("editPassword").style.display = "none";
@@ -879,7 +882,16 @@
 						/*edit harga*/
 						$("#edit_jumlah_seat").val(jumlah_seat);
 						
-						
+						$(document).ready( function () {
+
+				        //Date range picker tambah event
+				            $('#reservation2').daterangepicker({format: 'YYYY-MM-DD',startDate: tgl_mulai,
+				                                                                endDate: tgl_selesai},function(start, end) {
+				                $('#edit_tgl_mulai').val(start.format('YYYY-MM-DD'));
+				                $('#edit_tgl_selesai').val(end.format('YYYY-MM-DD'));
+				            });
+				        });
+
 					},
 			error: function(){
 						alert('GAGAL');
@@ -943,6 +955,8 @@
 			data: {id_event:id_event,dataEvent:dataEvent},
 			dataType: "json",
 			success: function(data){
+				alert('Data event berhasil di update');	
+				location.reload();
 			}
 			});
 			

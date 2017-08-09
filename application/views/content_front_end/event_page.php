@@ -1,8 +1,8 @@
-	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/eventsbanner2-960x250.jpg') ; ?>) !important ;">
+	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/banner_event.jpg') ; ?>); !important ;">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
-                  <h1>Event</h1>
+                  <h1 style="color: white;">Event</h1>
                </div>
             </div>
          </div>
