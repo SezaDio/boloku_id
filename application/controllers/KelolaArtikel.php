@@ -313,15 +313,11 @@ class KelolaArtikel extends CI_Controller {
 			'isi_komentar'=>$this->input->post('isi_komentar'),
 			
 		);
-		if($this->db->insert('komentar', $data_komentar)){
-			$jml_komentar = $this->input->post('jml_komentar') + 1;
-			$data_jml_komentar = array('jml_komentar' => $jml_komentar);
-			$where = array('id_artikel' => $id_artikel);
-			$this->db->update('artikel', $data_jml_komentar, $where);
-			$this->session->set_flashdata('msg_berhasil', 'Komentar baru berhasil ditambahkan');
-			redirect('KelolaArtikel/halaman_baca_artikel/'.$this->input->post('id_artikel'));
+		$this->db->insert('komentar', $data_komentar);
+		$this->session->set_flashdata('msg_berhasil', 'Komentar baru berhasil ditambahkan');
+		redirect('KelolaArtikel/halaman_baca_artikel/'.$this->input->post('id_artikel'));
 			
-		}
+		
 			
 	}
 }

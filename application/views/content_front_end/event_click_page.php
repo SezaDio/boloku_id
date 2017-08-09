@@ -193,7 +193,7 @@
 			                              <?php }
 			                                    elseif ($kategori_event == "Travel dan Outdoor")
 			                                    { ?>
-			                                       <a style="margin-top: -15px;" class="btn btn-green" href="">
+			                                       <a style="margin-top: -15px;" class="btn btn-success" href="">
 			                                          <div>
 			                                             # <?php echo $kategori_event; ?>
 			                                          </div>

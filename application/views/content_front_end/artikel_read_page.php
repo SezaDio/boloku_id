@@ -81,8 +81,8 @@
 									<textarea style="width: 100%" required name="isi_komentar" rows="3"></textarea>
 										
 									<br>    
-									<input type="hidden" name="id_artikel" value="<?php echo $id_artikel?>">	
-									<input type="hidden" name="jml_komentar" value="<?php echo $jml_komentar?>">	
+									<input type="hidden" name="id_artikel" value="<?php echo $id_artikel; ?>">	
+									<input type="hidden" name="jml_komentar" value="<?php echo $jumlahKomentar; ?>">	
 									<button class="btn btn-colored-blog" type="submit" value="1" name="submit"><i class="glyphicon glyphicon-send"></i> Kirim </a></button>
 
 								  	<button style="float: right;" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

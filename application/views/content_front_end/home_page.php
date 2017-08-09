@@ -133,7 +133,7 @@
                               <?php }
                                     elseif ($topevent['tipe_event'] == "Tour")
                                     { ?>
-                                       <a class="btn btn-dark-green btn-xs" href="">
+                                       <a class="btn btn-success btn-xs" href="">
                                           <div>
                                              # <?php echo $topevent['tipe_event'] ?>
                                           </div>
@@ -191,15 +191,15 @@
                                           </div>
                                        </a>
                               <?php }
-                                    elseif ($topevent['kategori_coming'] == "Travel & Outdoor")
+                                    elseif ($topevent['kategori_coming'] == "Travel dan Outdoor")
                                     { ?>
-                                       <a class="btn btn-green btn-xs" href="">
+                                       <a class="btn btn-success btn-xs" href="">
                                           <div>
                                              # <?php echo $topevent['kategori_coming'] ?>
                                           </div>
                                        </a>
                               <?php }
-                                    elseif ($topevent['kategori_coming'] == "Science & Technology")
+                                    elseif ($topevent['kategori_coming'] == "Science dan Technology")
                                     { ?>
                                        <a class="btn btn-dark-green btn-xs" href="">
                                           <div>
@@ -207,7 +207,7 @@
                                           </div>
                                        </a>
                               <?php }
-                                    elseif ($topevent['kategori_coming'] == "Keluarga & Pendidikan")
+                                    elseif ($topevent['kategori_coming'] == "Keluarga dan Pendidikan")
                                     { ?>
                                        <a class="btn btn-blue btn-xs" href="">
                                           <div>

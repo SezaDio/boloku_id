@@ -60,7 +60,7 @@
                         
                         <li class="treeview">
                             <a href="#">
-                                <i class="glyphicon glyphicon-th-list"></i> <span> Event & News Control </span>
+                                <i class="glyphicon glyphicon-th-list"></i> <span> Kelola Event & News</span>
                                 <i class="glyphicon glyphicon-menu-right pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
@@ -72,7 +72,7 @@
                         
                         <li class="treeview">
                             <a href="#">
-								<i class="glyphicon glyphicon-cog"></i> <span>Member Control</span>
+								<i class="glyphicon glyphicon-user"></i> <span> Member Control</span>
 								<i class="glyphicon glyphicon-menu-right pull-right"></i>
 							</a> 
 							<ul class="treeview-menu">

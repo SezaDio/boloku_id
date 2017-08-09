@@ -11,7 +11,7 @@
 		function get_data_wow()
 		{
 			
-			$query = $this->db->query("SELECT * FROM `wow`");
+			$query = $this->db->query("SELECT * FROM `wow` DESC");
 		
 			$indeks = 0;
 			$result = array();
@@ -47,12 +47,15 @@
 			return $this->db->get();
 		}
 
-
-		
-		//Mengambil data shopping yang butuh validasi
-		function get_data_produk_pend()
+		//get jumlah data ngerti rak
+		function jumlah_data_ngerti_rak()
 		{
-			$query = $this->db->query("SELECT * FROM `shopping` WHERE status='2'");
+			return $this->db->get('wow')->num_rows();
+		}
+
+		function get_ngerti_rak($number, $offset)
+		{
+			$query = $this->db->order_by('tanggal_posting','DESC')->select('*')->get('wow', $number, $offset);
 		
 			$indeks = 0;
 			$result = array();
@@ -64,22 +67,4 @@
 		
 			return $result;
 		}
-
-		//Menghapus data  produk shopping
-		function setuju_produk($id_produk)
-		{
-			$data = array(
-				'status' => 1	
-			);
-			$this->db->where('id_produk',$id_produk);
-			$this->db->update('shopping',$data);
-		}
-		
-		//Menghapus data  produk shopping
-		function delete_produk($id_produk)
-		{
-			$this->db->where('id_produk',$id_produk);
-			$this->db->delete('shopping');
-		}
-
 	}

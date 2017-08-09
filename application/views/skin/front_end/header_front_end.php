@@ -69,11 +69,11 @@
                               <div class="dropdown-menu" style="margin-left: -40px; width: 250px; padding: 2px;">
 									<?php if(isset($this->session->userdata['is_logged_in'])) {?>
 									<div style="background-color: steelblue; text-align:center; padding:5px; border-radius:inherit;" >
-                                       <label><?php echo $this->session->userdata['nama_member'] ?></label>
-                                    </div>
-									
-									<button class="btn btn-colored-blog" type="submit" name="profil" ><a href="<?php echo site_url('KelolaMember/dashboard_member'); ?>"><span class="glyphicon glyphicon-log-in"></span>Lihat Profilmu</a></button>
-									<button class="btn btn-colored-blog" type="submit" name="logout"><a href="<?php echo site_url('Account/logout_member'); ?>"><span class="glyphicon glyphicon-log-in"></span>Logout</a></button>
+                              <label><?php echo $this->session->userdata['nama_member'] ?></label>
+                           </div>   
+									<br>
+									<a href="<?php echo site_url('KelolaMember/dashboard_member'); ?>"><button class="btn btn-warning" type="submit" name="profil" ><span class="glyphicon glyphicon-log-in"></span> Lihat Profilmu</button></a>
+									<button class="btn btn-colored-blog" type="submit" name="logout"><a href="<?php echo site_url('Account/logout_member'); ?>"><span class="glyphicon glyphicon-log-out"></span> Logout</a></button>
 									<?php } else {?>
                                     <div style="background-color: steelblue; text-align:center; padding:5px; border-radius:inherit;" >
                                        <label>Sign In Member</label>

@@ -1,4 +1,4 @@
-      <section class="my-breadcrumb" style="background-image: url(asset/img/banner-books.jpg);">
+      <section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/banner-books.jpg') ; ?>);">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
@@ -74,10 +74,16 @@
                     		
 
 	                    </div>
+						<!--Pagination untuk halaman new event-->
+	                    <div class="pagination-holder">
+	                        <nav>
+	                           <?php echo $pagination; ?>
+	                        </nav>
+	                    </div>
                		</div>
 					<div class="row" id="div_kategori" style="display:none">
 	                    
-					<div>
+					</div>
             	</div>
 
             	
