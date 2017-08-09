@@ -52,8 +52,17 @@ class KelolaMember extends CI_Controller {
 		$this->load->model('member_models/MemberModels');
 
 		//Ambil id_agenda yang akan diedit
-		$data['id_member'] = $this->MemberModels->select_by_id_member($id_member)->row();
-
+		
+		$member=$this->MemberModels->select_by_id_member($id_member);
+		$data['id_member'] = $member['id_member'];
+		$data['nama_member'] = $member['nama_member'];
+		$data['username'] = $member['username'];
+		$data['email'] = $member['email'];
+		$data['telepon'] = $member['telepon'];
+		$data['status'] = $member['status'];
+		$data['date_join'] = $member['date_join'];
+		$data['path_foto'] = $member['path_foto'];
+		
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/detail_member', $data);

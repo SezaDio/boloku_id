@@ -27,7 +27,7 @@
                                             <!--Gambar Produk-->
                                             <div class="col-sm-4" style="padding-top: 20px; text-align: center;">
                                                 <div style="height:250px; width: 250px">
-                                                    <img style="border: solid currentColor; height:100%" src="<?php echo base_url('asset/upload_img_member/'.$id_member->path_foto); ?>">
+                                                    <img style="border: solid currentColor; height:100%" src="<?php echo base_url('asset/upload_img_member/'.$path_foto); ?>">
                                                 </div>
                                             </div>
 
@@ -40,7 +40,7 @@
                                                             <tr>
                                                                 <td style="width:25%;"><label>Username</label></td>
                                                                 <td style="width:1%;"><label>:</label></td>
-                                                                <td><label> <?php echo $id_member->username;?> </label></td>
+                                                                <td><label> <?php echo $username?> </label></td>
                                                             </tr>
                                                         </table>
                                                     </div>
@@ -52,7 +52,7 @@
                                                             <tr>
                                                                 <td style="width:25%;"><label>Nama</label></td>
                                                                 <td style="width:1%;"><label>:</label></td>
-                                                                <td><label> <?php echo $id_member->nama_member;?> </label></td>
+                                                                <td><label> <?php echo $nama_member;?> </label></td>
                                                             </tr>
                                                         </table>
                                                     </div>
@@ -64,31 +64,7 @@
                                                             <tr>
                                                                 <td style="width:25%;"><label>Email</label></td>
                                                                 <td style="width:1%;"><label>:</label></td>
-                                                                <td><label> <?php echo $id_member->email;?> </label></td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                </div> 
-												<div >
-                                                    <div>
-                                                        <table class="table">
-                                                            
-                                                            <tr>
-                                                                <td style="width:25%;"><label>Jumlah Poin</label></td>
-                                                                <td style="width:1%;"><label>:</label></td>
-                                                                <td><label> <?php echo $id_member->poin;?> </label></td>
-                                                            </tr>
-                                                        </table>
-                                                    </div>
-                                                </div> 
-												<div >
-                                                    <div>
-                                                        <table class="table">
-                                                            
-                                                            <tr>
-                                                                <td style="width:25%;"><label>Jumlah Post</label></td>
-                                                                <td style="width:1%;"><label>:</label></td>
-                                                                <td><label> <?php //echo $id_member->poin;?> </label></td>
+                                                                <td><label> <?php echo $email;?> </label></td>
                                                             </tr>
                                                         </table>
                                                     </div>
@@ -100,7 +76,7 @@
                                                             <tr>
                                                                 <td style="width:25%;"><label>Date Join</label></td>
                                                                 <td style="width:1%;"><label>:</label></td>
-                                                                <td><label> <?php echo $id_member->date_join;?> </label></td>
+                                                                <td><label> <?php echo $date_join;?> </label></td>
                                                             </tr>
                                                         </table>
                                                     </div>
@@ -114,13 +90,13 @@
                                 </div><!-- /.box -->
                             </div><!--/.col (left) -->
                             <div class="col-md-4" style="padding-left: 155px; position: absolute; margin-top: 390px;">
-                                <?php if($id_member->status==1){?>
+                                <?php if($status==1){?>
                                     <!-- Tombol kembali -->
 									<a href="<?php echo site_url('KelolaMember');?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-arrow-left" ></i> Kembali</button></a>
                                     <!-- Tombol Edit -->
-                                    <a href="<?php echo site_url('KelolaMember/edit_member/'.$id_member->id_member);?>"><button id="edit-button-member" type="submit" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
+                                    <a href="<?php echo site_url('KelolaMember/edit_member/'.$id_member);?>"><button id="edit-button-member" type="submit" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
 									<!-- Tombol Hapus -->
-									<a href="<?php echo site_url('KelolaMember/delete_detail_member/'.$id_member->id_member);?>"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button></a>
+									<a href="<?php echo site_url('KelolaMember/delete_detail_member/'.$id_member);?>"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button></a>
                             </div>
                                 <?php } else {?>
                             <div class="col-md-10" style="position: absolute; margin-left: -47px;">    
@@ -128,9 +104,9 @@
                                     <a href="<?php echo site_url('KelolaMember/validasi_member');?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-arrow-left" ></i> Kembali</button></a>
                                
                                     <!-- Tombol Setuju -->
-                                    <a href="<?php echo site_url('KelolaMember/setuju_detail_member/'.$id_member->id_member);?>"><button id="success-button-member" type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-ok" ></i> Setuju</button></a>
+                                    <a href="<?php echo site_url('KelolaMember/setuju_detail_member/'.$id_member);?>"><button id="success-button-member" type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-ok" ></i> Setuju</button></a>
                                     <!-- Tombol Hapus -->
-                                    <a href="<?php echo site_url('KelolaComing/tolak_detail_member/'.$id_member->id_member);?>"><button  id="delete-button-member" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove" ></i> Tolak</button>
+                                    <a href="<?php echo site_url('KelolaComing/tolak_detail_member/'.$id_member);?>"><button  id="delete-button-member" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove" ></i> Tolak</button>
                             </div>
                                 <?php }?>
                             
