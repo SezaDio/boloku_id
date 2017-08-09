@@ -905,11 +905,11 @@ class KelolaMember extends CI_Controller {
 				$newheight = $newheight * $percent2;
 			}
 			
-			$percent85 = 85/$width;
+			$percent85 = 300/$width;
 			$newwidth85 = $width * $percent85;
 			$newheight85 = $height * $percent85;
-			if($newheight85<85){
-				$percent85b = 85/$newheight85;
+			if($newheight85<300){
+				$percent85b = 300/$newheight85;
 				$newwidth85 = $newwidth85 * $percent85b;
 				$newheight85 = $newheight85 * $percent85b;
 			}
@@ -923,11 +923,11 @@ class KelolaMember extends CI_Controller {
 				$newheight = $newheight * $percent2;
 			}
 			
-			$percent85 = 85/$height;
+			$percent85 = 300/$height;
 			$newwidth85 = $width * $percent85;
 			$newheight85 = $height * $percent85;
-			if($newwidth85<85){
-				$percent85b = 85/$newwidth85;
+			if($newwidth85<300){
+				$percent85b = 300/$newwidth85;
 				$newwidth85 = $newwidth85 * $percent85b;
 				$newheight85 = $newheight85 * $percent85b;
 			}
@@ -950,7 +950,7 @@ class KelolaMember extends CI_Controller {
 		list($width, $height) = getimagesize($imgThumb);
 		list($width85, $height85) = getimagesize($imgThumb85);
 		$myThumbCrop =  imagecreatetruecolor(800,550);
-		$myThumbCrop85 =  imagecreatetruecolor(85, 85);
+		$myThumbCrop85 =  imagecreatetruecolor(300, 300);
 		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
 		imagecopyresampled($myThumbCrop85,$myThumb85,0,0,0,0 ,$width85,$height85,$width85,$height85);
 		unlink('./asset/upload_img_member/resize_'.$filename);
