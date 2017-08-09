@@ -70,7 +70,7 @@
                                                             <td align="center">
                                                                 <!-- Tombol lihat detail -->
 																<?php if($jenis_event==0){?>
-																        <a href="#"><button <?php if($item['status_bayar']==0){?>class="btn btn-danger btn-sm" disabled="disabled" <?php } elseif($item['status_bayar']==1) {?> class="btn btn-danger btn-sm" onclick="verifikasi_bayar(<?php echo $item['id_pendaftar']?>)" <?php } else {?>class="btn btn-success btn-sm" disabled<?php } ?>><i class="glyphicon glyphicon-eye-open" ></i>Verifikasi Bayar</button></a>
+																        <a href="#"><button <?php if($item['status_bayar']==0){?>class="btn btn-danger btn-sm" disabled="disabled" <?php } elseif($item['status_bayar']==1) {?> class="btn btn-danger btn-sm" onclick="verifikasi_bayar(<?php echo $item['id_pendaftar']?>)" <?php } else {?>class="btn btn-success btn-sm" disabled<?php } ?>><i class="glyphicon glyphicon-eye-open" ></i> Verifikasi Bayar</button></a>
 																<?php }?>
                                                             </td>
                                                         </tr>

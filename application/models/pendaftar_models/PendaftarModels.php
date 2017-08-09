@@ -52,8 +52,8 @@
 		function verifikasi_bayar_check($id_pendaftar)
 		{
 			$data = array(
-				'status_bayar' => 2,	
-				'verifikasi_bayar' => 2	
+				'status_bayar' => 2
+				
 			);
 			$this->db->where('id_pendaftar',$id_pendaftar);
 			$this->db->update('pendaftar',$data);

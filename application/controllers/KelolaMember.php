@@ -372,10 +372,10 @@ class KelolaMember extends CI_Controller {
 						'nama_member'=>$this->input->post('nama_member'),
 						'password'=>md5($this->input->post('password')),
 						'email'=>$this->input->post('email'),
+						'telepon'=>$this->input->post('telepon'),
 						'pertanyaan_rahasia'=>$this->input->post('pertanyaan'),
 						'jawaban_rahasia'=>$this->input->post('jawaban'),
 						'date_join'=>date("Y-m-d h:i:sa"),
-						'poin'=>0,
 						'path_foto'=>0,
 						'status'=>2
 					);

@@ -33,17 +33,18 @@
                                         </a>
 									</div>
                                     <div class="form-group">
+
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-list">
                                             <thead>
                                                 <tr>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">No.</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Judul Event</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Posted By</th>
-                                                    <th class="title-center" style="font-size:1em; text-align:center;">Kategori Event</th>
-                                                    <th class="title-center" style="font-size:1em; text-align:center;">Tipe Event</th>
+                                                    <th style="text-align: center; width: 80px;" class="title-center" style="font-size:1em; text-align:center;">Kategori Event</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Waktu Posting</th>
+                                                    <th style="text-align: center; width: 70px;" class="title-center" style="font-size:1em; text-align:center;">Jumlah Like & Hits</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Top Event</th>
-                                                    <th class="title-center" style="font-size:1em; text-align:center;">Aksi</th>                                                        
+                                                    <th style="text-align: center; width: 250px;" class="title-center" style="font-size:1em; text-align:center;">Aksi</th>                                                        
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -55,9 +56,14 @@
                                                             <td><?php echo $item['nama_coming'] ?></td>
                                                             <td><?php echo $item['posted_by'] ?></td>
                                                             <td><?php echo $item['kategori_coming'] ?></td>
-                                                            <td><?php echo $item['tipe_event'] ?></td>
                                                             <td><?php echo $item['tanggal_posting'] ?></td>
-                                                            <td><input type="checkbox" id="coming<?php echo $item['id_coming'] ?>" onclick="topEvent(<?php echo $item['id_coming'] ?>)" <?php if($item['top_event']==1){?> checked="checked" <?php } ?>></td>
+                                                            <td style="text-align: center;"><?php 
+                                                                    $jumlah_like_hits = $item['like'] + $item['hits']; 
+                                                                    echo $jumlah_like_hits;
+                                                                ?>
+                                                            </td>
+                                                            <td style="text-align: center;"><input type="checkbox" id="coming<?php echo $item['id_coming'] ?>" onclick="topEvent(<?php echo $item['id_coming'] ?>)" <?php if($item['top_event']==1){?> checked="checked" <?php } ?>></td>
+
                                                             <td align="center">
                                                                  <!-- Tombol tambah Press Release -->
                                                                 <form  style="float: left;" role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaNews/tambah_news_check/');?>" method="POST">
@@ -87,7 +93,7 @@
 					var check = document.getElementById("coming"+idComing).checked;
 						if(check){
 							$.ajax({
-							url: '../KelolaComing/top_event',
+							url: 'KelolaComing/top_event',
 							type: 'POST',
 							data: {idComing:idComing},
 							success: function(){
@@ -100,7 +106,7 @@
 							});
 						} else{
 							$.ajax({
-							url: '../KelolaComing/untop_event',
+							url: 'KelolaComing/untop_event',
 							type: 'POST',
 							data: {idComing:idComing},
 							success: function(){

@@ -28,7 +28,7 @@
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Username</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Nama</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Email</th>
-                                                    <th class="title-center" style="font-size:1em; text-align:center;">Poin</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Telepon</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Aksi</th>                                                        
                                                 </tr>
                                             </thead>
@@ -41,7 +41,7 @@
                                                             <td><?php echo $item['username'] ?></td>
                                                             <td><?php echo $item['nama_member'] ?></td>
                                                             <td><?php echo $item['email'];?></td>
-                                                            <td><?php echo $item['poin'];?></td>
+                                                            <td><?php echo $item['telepon'];?></td>
                                                             <td align="center">
                                                                 <!-- Tombol lihat detail -->
                                                                 <a href="<?php echo site_url('KelolaMember/lihat_detail_member/'.$item['id_member']);?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-eye-open" ></i> Detail</button></a>

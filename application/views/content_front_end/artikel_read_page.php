@@ -42,7 +42,7 @@
 
                      <!--Kotak Komentar-->                     
                      <div class="reviews">
-                        <h3>Total Coments (<?php echo $jml_komentar; ?>)</h3>
+                        <h3>Total Coments (<?php echo $jumlahKomentar; ?>)</h3>
 						<?php foreach($listKomentar as $komentar){?>
 							<div style="padding-top: 10px;" class="col-md-12 comment-info">
 								 <div class="col-md-2">

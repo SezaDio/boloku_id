@@ -220,7 +220,6 @@ class KelolaArtikel extends CI_Controller {
 	  $data['path_gambar'] = $artikel['path_gambar'];
 	  $data['tanggal_posting'] = $artikel['tanggal_posting'];
 	  $data['hits'] = $artikel['hits'];
-	  $data['jml_komentar'] = $artikel['jml_komentar'];
 
 	  $data['listArtikel'] = $this->ArtikelModels->get_data_artikel();
 	  $data['jumlahKomentar'] = $this->HomeModels->jumlah_Komentar($id_artikel);
