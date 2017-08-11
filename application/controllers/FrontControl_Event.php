@@ -121,4 +121,18 @@ class FrontControl_Event extends CI_Controller {
 	    $where = array('id_coming' => $id_event);
 	    $this->HomeModels->update_like($where, $data_like, 'coming');
    }
+   
+   function get_labelvalue(){
+		if(isset($_POST['label']) && isset($_POST['value'])){
+		$label = $_POST['label'];
+		$value = $_POST['value'];
+		$this->session->set_userdata('label',$label);
+		$this->session->set_userdata('value',$value);
+		}
+   }
+   
+   function hapus_session_label(){
+		$this->session->sess_destroy('label');
+		$this->session->sess_destroy('value');
+   }
 }

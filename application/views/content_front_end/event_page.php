@@ -1,3 +1,12 @@
+	<script>
+		window.onload = function(){
+			if($("#label").val()!=''){
+				byLabel($("#label").val(),$("#value").val());
+			}};
+	
+	</script>
+	<input type="hidden" id="label" value="<?php if($this->session->userdata('label')!=null){ echo $this->session->userdata('label');}?>">
+	<input type="hidden" id="value" value="<?php if($this->session->userdata('value')!=null){ echo $this->session->userdata('value');}?>">
 	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/banner_event.jpg') ; ?>); !important ;">
          <div class="container page-banner">
             <div class="row">
@@ -197,6 +206,7 @@
 	  }
 					
 	  function byLabel(label,value){
+	  <?php $this->session->unset_userdata('label');$this->session->unset_userdata('value');?>
 		$.post('<?php echo site_url('KelolaComing/by_label/'); ?>', {label: label,value:value}, function(dataEvent){
 		
 			var xml = parseXml(dataEvent);
