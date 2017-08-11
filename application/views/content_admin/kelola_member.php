@@ -5,7 +5,7 @@
                        Kelola Member
                     </h1>
                     <ol class="breadcrumb">
-                        <li><i class="fa fa-dashboard"></i>Youth Member</li>
+                        <li><i class="fa fa-dashboard"></i>Member Control</li>
                         <li class="active">Kelola Member</li>
                     </ol>
                 </section>

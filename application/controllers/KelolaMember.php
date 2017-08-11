@@ -433,7 +433,7 @@ class KelolaMember extends CI_Controller {
 		if($this->session->userdata('is_logged_in')){
 		$id_member = $this->session->userdata('id_member');
 		$this->load->model('member_models/MemberModels');
-		
+		$this->load->model('home_models/HomeModels');
 		
 		$member=$this->MemberModels->select_by_id_member($id_member);
 		$data['id_member'] = $member['id_member'];
@@ -523,9 +523,9 @@ class KelolaMember extends CI_Controller {
 		$data['tipe_event']= $tipe_event;
 		$data['jam_event']= $jam_event;
 		
-		
 		$data['listEvent'] = $this->MemberModels->event_by_id_member($id_member);
-		
+		//$data['jumlahTestimoni'] = $this->HomeModels->jumlah_testimoni();
+
 		$this->load->view('skin/front_end/header_front_end');
         $this->load->view('content_front_end/member_area_dashboard',$data);
         $this->load->view('skin/front_end/footer_front_end');

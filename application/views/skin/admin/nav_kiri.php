@@ -10,11 +10,17 @@
                         </li>
 
                         <li>
+                            <a href="<?php echo site_url('KelolaFaq/index'); ?>">
+                                <i class="glyphicon glyphicon-question-sign"></i> <span> Kelola FAQ </span>
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="<?php echo site_url('KelolaWow/index'); ?>">
                                 <i class="glyphicon glyphicon-star"></i> <span> Ngerti Rak ? </span>
                             </a>
                         </li>
-                        
+
                         <li>
                             <a href="#">
                                 <i class="glyphicon glyphicon-certificate"></i> <span> Kelola Stiker </span>

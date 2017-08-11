@@ -16,6 +16,8 @@ class FrontControl_Faq extends CI_Controller {
 
    public function index()
    {
+      $this->load->model('faq_models/FaqModels');
+      $data['listFaq'] = $this->FaqModels->get_data_faq();
       $data['active']=4;
 
       $this->load->view('skin/front_end/header_front_end',$data);

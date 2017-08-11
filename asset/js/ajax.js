@@ -337,7 +337,7 @@ function delete_artikel_ajax(id_artikel)
 	if (confirm("Anda yakin ingin menghapus Artikel ini ?"))
 	{
 		$.ajax({
-			url: 'KelolaArtikel/delete_artikel',
+			url: 'delete_artikel',
 			type: 'POST',
 			data: {id_artikel:id_artikel},
 			success: function(){
@@ -352,6 +352,29 @@ function delete_artikel_ajax(id_artikel)
 	else
 	{
 		alert(id_produk + "Gagal dihapus");
+	}
+}
+
+function delete_faq_ajax(id_faq)
+{
+	if (confirm("Anda yakin ingin menghapus FAQ ini ?"))
+	{
+		$.ajax({
+			url: 'KelolaFaq/delete_faq',
+			type: 'POST',
+			data: {id_faq:id_faq},
+			success: function(){
+						alert('Delete FAQ berhasil');
+						location.reload();
+					},
+			error: function(){
+						alert('Delete FAQ gagal');
+					}
+		});
+	}
+	else
+	{
+		alert(id_faq + "Gagal dihapus");
 	}
 }
 

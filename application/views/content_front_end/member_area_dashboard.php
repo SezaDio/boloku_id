@@ -29,8 +29,8 @@
                                                 }
                                                 else
                                                 {
-                                                	echo '<a href="'.base_url('asset/img/author3.jpg').'" class="tt-lightbox">
-						                              <img alt="" class="img-responsive" src="'.base_url('asset/upload_img_member/'.$path_foto).'">';
+                                                	echo '<a href="'.base_url('asset/upload_img_member/'.$path_foto).'" class="tt-lightbox">
+						                              <img style="max-height: 250px; width:100%; border: solid 1px black" alt="" class="img-responsive" src="'.base_url('asset/upload_img_member/'.$path_foto).'">';
 						                           	echo "</a>";
                                                 }
                                             ?>
@@ -99,9 +99,9 @@
 	                                    	<a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>"><label><?php echo $event['nama_coming'];?></label></a>
 	                                    </div>
 	                                    <ul style="padding-left: 10px;" class="post-tools">
-	                                        <li title="Testimoni"> <i class="ti-thought"></i> 105 </li>
-	                                        <li title="Dilihat"> <i class="glyphicon glyphicon-eye-open"></i> 105 </li>
-	                                        <li title="Disukai"> <i class="glyphicon glyphicon-thumbs-up"></i> 105 </li>
+	                                        <li title="Testimoni"> <i class="ti-thought"></i> 15 </li>
+	                                        <li title="Dilihat"> <i class="glyphicon glyphicon-eye-open"></i> <?php echo $event['hits']; ?> </li>
+	                                        <li title="Disukai"> <i class="glyphicon glyphicon-thumbs-up"></i> <?php echo $event['like']; ?> </li>
 	                                    </ul>
 	                                    <br>
 	                                    <a style="margin-left: 10px; margin-top: -25px;" href="#" class=" btn btn-xs btn-green"><i class="ti-money"></i> <?php if($event['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?></a>

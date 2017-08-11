@@ -128,7 +128,7 @@
 					var check = document.getElementById("header"+idHeader).checked;
 						if(check){
 							$.ajax({
-							url: 'KelolaHeader/publish_header',
+							url: 'publish_header',
 							type: 'POST',
 							data: {idHeader:idHeader},
 							success: function(){
@@ -141,7 +141,7 @@
 							});
 						} else{
 							$.ajax({
-							url: 'KelolaHeader/unpublish_header',
+							url: 'unpublish_header',
 							type: 'POST',
 							data: {idHeader:idHeader},
 							success: function(){
@@ -160,7 +160,7 @@
 					var check = document.getElementById("header"+idHeader).checked;
 						if(check){
 							$.ajax({
-							url: 'KelolaHeader/unpublish_header',
+							url: 'unpublish_header',
 							type: 'POST',
 							data: {idHeader:idHeader},
 							success: function(){
@@ -173,7 +173,7 @@
 							});
 						} else{
 							$.ajax({
-							url: 'KelolaHeader/publish_header',
+							url: 'publish_header',
 							type: 'POST',
 							data: {idHeader:idHeader},
 							success: function(){
