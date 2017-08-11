@@ -36,17 +36,22 @@
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Username :</label>
-                                            <input type="text" required name="username" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataMember['username']); ?>">
+                                            <input type="text" required name="username" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($username); ?>">
                                         </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nama Member :</label>
-                                            <input type="text" required name="nama_member" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataMember['nama_member']); ?>">
+                                            <input type="text" required name="nama_member" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($nama_member); ?>">
                                         </div>
 										
 										<div class="form-group">
                                             <label for="exampleInputEmail1">Email :</label>
-                                            <input type="text" required name="email" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataMember['email']); ?>">
+                                            <input type="text" required name="email" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($email); ?>">
+                                        </div>
+										
+										<div class="form-group">
+                                            <label for="exampleInputEmail1">Telepon :</label>
+                                            <input type="text" required name="telepon" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($telepon); ?>">
                                         </div>
 										
 										<div class="form-group" id="resetPassword">
@@ -70,7 +75,7 @@
                                         </div>
 
                                         <div class='box-header'>                
-                                            <img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="<?php echo base_url('asset/upload_img_member/'.$dataMember['path_foto']); ?>"/>
+                                            <img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="<?php echo base_url('asset/upload_img_member/'.$path_foto); ?>"/>
                                         </div>
                                         
                                         <label class='box-header' style="color: blue;" id="ganti">Ganti Gambar ?</label><br>
@@ -80,7 +85,7 @@
                                         </div>
                                     </div><!-- /.box-body -->
                                     <input type="hidden" name="id_member" value="<?php echo $idMember; ?>">
-                                    <input type="hidden" name="passwordlama" value="<?php echo htmlspecialchars($dataMember['password']); ?>">
+                                    <input type="hidden" name="passwordlama" value="<?php echo htmlspecialchars($password); ?>">
                                     <div class="box-footer">
                                         <button type="submit" name="save" value="1" class="btn btn-primary" id="submitSave"><i class="glyphicon glyphicon-floppy-saved"></i> Simpan</button>
                                        <a href="<?php echo site_url('KelolaMember/');?>"><button type="button" name="submit" class="btn btn-danger">Batal</button>

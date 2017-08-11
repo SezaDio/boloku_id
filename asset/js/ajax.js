@@ -366,6 +366,24 @@ function delete_artikel_ajax(id_artikel)
       }
     }
 
+	function delete_member_ajax(id_member)
+	{
+		if (confirm("Anda yakin ingin menghapus data member ini ?"))
+		{
+			$.ajax({
+				url: '../delete_member',
+				type: 'POST',
+				data: {id_member:id_member},
+				success: function(){
+							alert('Delete data member berhasil');
+							location.reload();
+						},
+				error: function(){
+							alert('Delete data member gagal');
+						}
+			});
+		}
+	}
 /*function cariKata() {
         var kata=document.getElementById("kata_kunci").value;
 		$.post('<?php echo site_url('KelolaPepak/cari_kata/'); ?>'+kata, function(dataKata){

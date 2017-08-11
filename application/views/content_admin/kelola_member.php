@@ -73,6 +73,26 @@
                     </div>   <!-- /.row -->
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
+			<script>
+			function delete_member_ajax(id_member)
+	{
+		if (confirm("Anda yakin ingin menghapus data member ini ?"))
+		{
+			$.ajax({
+				url: 'KelolaMember/delete_member',
+				type: 'POST',
+				data: {id_member:id_member},
+				success: function(){
+							alert('Delete data member berhasil');
+							location.reload();
+						},
+				error: function(){
+							alert('Delete data member gagal');
+						}
+			});
+		}
+	}
+			</script>
 
 
             

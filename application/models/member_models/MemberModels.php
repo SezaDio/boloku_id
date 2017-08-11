@@ -64,6 +64,13 @@
 			return $query->row_array();
 		}
 		
+		function select_by_id($id_member)
+		{
+			$query = $this->db->where('id_member',$id_member)->get('member');
+
+			return $query;
+		}
+		
 		function event_by_id_member($id_member)
 		{
 			$query = $this->db->where('id_member',$id_member)->get('coming');

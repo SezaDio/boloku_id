@@ -154,7 +154,7 @@
 		
 		function validateJawaban(){
 			var jawaban = $("#jawaban").val();
-			if(jawaban==jawaban_rahasia) {
+			if(jawaban.toLowerCase()==jawaban_rahasia.toLowerCase()) {
 			   document.getElementById("jawaban_rahasia").style.color = "green";
 			   $("#jawaban_rahasia").text("* Jawaban benar"); 
 			   document.getElementById("submit_jawaban").disabled = false;

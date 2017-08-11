@@ -43,7 +43,7 @@ class KelolaMember extends CI_Controller {
 		$this->MemberModels->delete_member($id_member);
 
 
-		$this->index();
+		redirect(site_url('KelolaMember'));
 	}
 	
 	//Lihat detail produk
@@ -276,6 +276,12 @@ class KelolaMember extends CI_Controller {
 			$config['max_size'] = '4000'; //kb
 			$config['file_name'] = $nmfile;
 
+			$data['username'] = $this->input->post('username');
+			$data['nama_member'] = $this->input->post('nama_member');
+			$data['email'] = $this->input->post('email');
+			$data['telepon'] = $this->input->post('telepon');
+			$data['password'] = $password;
+			
 			$data_member=array(
 							'username'=>$this->input->post('username'),
 							'nama_member'=>$this->input->post('nama_member'),
@@ -283,7 +289,7 @@ class KelolaMember extends CI_Controller {
 							'telepon'=>$this->input->post('telepon'),
 							'password'=>$password
 							);
-			$data['dataMember'] = $data_member;
+			
 
 			//value id_koridor berisi beberapa data, sehingga dilakukan split dengan explode
 			if (($this->form_validation->run() == TRUE))
@@ -323,16 +329,21 @@ class KelolaMember extends CI_Controller {
 		}
 		else
 		{
-			$data['member'] = $this->MemberModels->select_by_id_member($id_member)->row();
-
-			$data_member=array(
+			$member = $this->MemberModels->select_by_id_member($id_member);
+			$data['username'] = $member['username'];
+			$data['nama_member'] = $member['nama_member'];
+			$data['email'] = $member['email'];
+			$data['telepon'] = $member['telepon'];
+			$data['password'] = $member['password'];
+			$data['path_foto'] = $member['path_foto'];
+			/*$data_member=array(
 							'username'=>$data['member']->username,
 							'nama_member'=>$data['member']->nama_member,
 							'email'=>$data['member']->email,
 							'password'=>$data['member']->password,
 							'path_foto'=> $data['member']->path_foto
 							);
-			$data['dataMember'] = $data_member;
+			$data['dataMember'] = $data_member;*/
 
 
 		}
