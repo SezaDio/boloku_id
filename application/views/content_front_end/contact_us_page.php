@@ -2,7 +2,7 @@
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
-                  <h1>Contact Us</h1>
+                  <h1>&nbsp;</h1>
                </div>
             </div>
          </div>
@@ -31,8 +31,17 @@
                            				<h2 class="main-heading"><strong>Profil Kami</strong></h2>
                            			</div>
 	                                 
-                                    <div class="caption" style="text-align: center;">
-                                       Profil singkat mengenai boloku.id . . .
+                                    <div class="caption">
+                                       <div class="row">
+                                          <div class="col-md-12">
+                                             <div class="col-md-3"></div>
+                                             <div class="col-md-6">
+                                                <a href="<?php echo base_url(''); ?>"><img src="<?php echo base_url('asset/img/Logo_Boloku_new.png'); ?>" class="img-responsive" alt="logo"></a>
+                                             </div>
+                                             <div class="col-md-3"></div>
+                                          </div>
+                                       </div>
+                                       <br>Kami adalah portal informasi berbasis IT yang memfasilitasi kebutuhan dalam publikasi, pendaftaran, dan pembayaran event di Indonesia. Untuk bekerjasama dalam promosi event, silahkan mendaftar terlebih dahulu sebagai member boloku.id 
                                     </div>
                                     	                                 
 	                              </div>

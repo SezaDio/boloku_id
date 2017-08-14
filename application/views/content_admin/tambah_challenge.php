@@ -21,7 +21,7 @@
                                 
                                 <!-- form start -->
 								
-                                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaChallenge/tambah_challenge_check/');?>" method="POST">
+                                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('Kelolachallenge/tambah_challenge_check/');?>" method="POST">
                                     <div class="box-body">
                                         <div style="margin-top:10px; margin-bottom:30px">
                                             <?php if($this->session->flashdata('msg_gagal')!=''){?>

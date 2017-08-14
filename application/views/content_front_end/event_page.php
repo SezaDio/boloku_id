@@ -7,11 +7,11 @@
 	</script>
 	<input type="hidden" id="label" value="<?php if($this->session->userdata('label')!=null){ echo $this->session->userdata('label');}?>">
 	<input type="hidden" id="value" value="<?php if($this->session->userdata('value')!=null){ echo $this->session->userdata('value');}?>">
-	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/banner_event.jpg') ; ?>); !important ;">
+	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/bannerevent.jpg') ; ?>); !important ;">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
-                  <h1 style="color: white;">Event</h1>
+                  <h1 style="color: white;">&nbsp;</h1>
                </div>
             </div>
          </div>
@@ -342,11 +342,11 @@
 			  var getUrl = window.location;
 			  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 			  divkategori += '<div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">';
-	            divkategori += '<a href="'+baseUrl+'/FrontControl_Event/event_click/'+id_event+'">'
+	            divkategori += '<a href="'+BASE_URL+'/FrontControl_Event/event_click/'+id_event+'">'
 	                divkategori += '<ul>';
 	                    divkategori += '<div class="col-md-12" style="padding: 10px;">';
 		                    divkategori += '<li class="col-md-4 col-sm-3 col-xs-12 nopadding">';
-		                        divkategori += '<div class="thumb"> <img src="'+baseUrl+'/asset/upload_img_coming/thumb_'+path_gambar+'" alt=""></div>';
+		                        divkategori += '<div class="thumb"> <img src="'+BASE_URL+'/asset/upload_img_coming/thumb_'+path_gambar+'" alt=""></div>';
 		                    divkategori += '</li>';
 							divkategori += '<div class="hover-show-div" style="margin-top: -12px; border: solid 1px black;">';
 	                             divkategori += '<div style="text-align: center; width: 60px; padding: 5px; background-color: #f44a56; color: white; font-size: 1.5em;">'+bulan+'</div>';

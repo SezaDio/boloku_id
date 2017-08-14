@@ -86,12 +86,12 @@ class KelolaWow extends CI_Controller {
 					$data_wow['path_gambar'] = $gbr['file_name'];
 
 					$this->db->insert('wow', $data_wow);
-					$this->session->set_flashdata('msg_berhasil', 'Data Youth Wow berhasil ditambahkan');
+					$this->session->set_flashdata('msg_berhasil', 'Data Ngerti Rak berhasil ditambahkan');
 					redirect('KelolaWow');
 				}
 				else
 				{
-					$this->session->set_flashdata('msg_gagal', 'Data Youth Wow gagal ditambahkan, cek type file dan ukuran file yang anda upload');
+					$this->session->set_flashdata('msg_gagal', 'Data Ngerti Rak gagal ditambahkan, cek type file dan ukuran file yang anda upload');
 					
 					$this->load->view('skin/admin/header_admin');
 					$this->load->view('skin/admin/nav_kiri');
@@ -101,7 +101,7 @@ class KelolaWow extends CI_Controller {
 			}
 			else
 			{
-				$this->session->set_flashdata('msg_gagal', 'Data Youth Wow gagal ditambahkan');
+				$this->session->set_flashdata('msg_gagal', 'Data Ngerti Rak gagal ditambahkan');
 				$this->tambah_wow_check();
 			}
 		}

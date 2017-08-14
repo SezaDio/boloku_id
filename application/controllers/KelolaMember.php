@@ -637,7 +637,7 @@ class KelolaMember extends CI_Controller {
 			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
 			$this->form_validation->set_rules('nama_member', 'Penulis', 'required');
 			$this->form_validation->set_rules('institusi', 'Institusi', 'required');
-			//$this->form_validation->set_rules('telepon', 'Telepon', 'required');
+			$this->form_validation->set_rules('telepon', 'Telepon', 'required');
 			$this->form_validation->set_rules('jenis_event', 'Jenis', 'required');
 			$this->form_validation->set_rules('institusi', 'Institusi', 'required');
 			$this->form_validation->set_rules('pendaftaran', 'Pendaftaran', 'required');
@@ -674,7 +674,7 @@ class KelolaMember extends CI_Controller {
 						'tanggal_posting'=>date("Y-m-d h:i:sa"),
 						'posted_by'=>$this->input->post('nama_member'),
 						'institusi'=>$this->input->post('institusi'),
-						'telepon'=>0,
+						'telepon'=>$this->input->post('telepon'),
 						'email'=>$this->input->post('email'),
 						'tgl_mulai'=>$this->input->post('tgl_mulai'),
 						'tgl_selesai'=>$this->input->post('tgl_selesai'),
@@ -699,7 +699,7 @@ class KelolaMember extends CI_Controller {
 					$data_coming['path_gambar'] = $gbr['file_name'];
 
 					$this->db->insert('coming', $data_coming);
-					$this->session->set_flashdata('msg_berhasil', 'Data Event baru berhasil ditambahkan');
+					$this->session->set_flashdata('msg_berhasil', 'Data Event kamu berhasil disimpan, Admin kami akan melakukan verifikasi terhadap data event mu dalam kurun waktu 1 x 24 jam.');
 					redirect('KelolaMember/dashboard_member');
 				}
 				else

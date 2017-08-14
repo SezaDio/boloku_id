@@ -47,6 +47,8 @@
       <!-- Core Jquery --> 
       
       <script type="text/javascript">
+      var BASE_URL = "<?php echo base_url(); ?>";
+
         $("#event-baru-content").hide();
         $("#edit-profil-content").hide();
 

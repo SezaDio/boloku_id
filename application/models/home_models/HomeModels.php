@@ -51,7 +51,7 @@
 		}	
 
 		function get_new_event($number, $offset){
-			$query = $this->db->order_by('id_coming','DESC')->select('*')->where('status',1)->get('coming', $number, $offset);
+			$query = $this->db->order_by('tanggal_posting','DESC')->select('*')->where('status',1)->get('coming', $number, $offset);
 		
 			$indeks = 0;
 			$result = array();

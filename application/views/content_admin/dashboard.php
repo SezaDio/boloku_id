@@ -143,7 +143,7 @@
                                                     </small>
                                                     <!-- General tools such as edit or delete-->
                                                     <div class="tools">
-                                                        <a href="#" target="_blank" title="Lihat">
+                                                        <a href="<?php echo site_url('FrontControl_Event/event_click/'.$event_terdekat['id_coming']);?>" target="_blank" title="Lihat">
                                                             <i class="glyphicon glyphicon-eye-open"></i>
                                                         </a>
                                                         <a href="<?php echo site_url('KelolaComing/edit_comming_soon/'.$event_terdekat['id_coming']);?>" title="Edit">

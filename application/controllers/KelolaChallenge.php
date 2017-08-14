@@ -228,7 +228,7 @@ class KelolaChallenge extends CI_Controller {
 					$data_challenge['path_gambar'] = $gbr['file_name'];
 					$this->db->insert('challenge', $data_challenge);
 					$this->session->set_flashdata('msg_berhasil', $data_challenge['path_gambar']);
-					redirect('Kelolachallenge');
+					redirect('KelolaChallenge');
 				}
 				else
 				{
@@ -300,7 +300,6 @@ class KelolaChallenge extends CI_Controller {
 						$this->crop($gbr['full_path'],$gbr['file_name']);
 						$data_challenge['path_gambar'] = $gbr['file_name'];
 
-						
 					}
 					else
 					{
@@ -312,7 +311,7 @@ class KelolaChallenge extends CI_Controller {
 				if (!$iserror) {
 					$this->db->update('challenge', $data_challenge, array('id_challenge'=>$id_challenge));
 					$this->session->set_flashdata('msg_berhasil', 'Data konten challenge berhasil diperbaharui');
-					redirect('Kelolachallenge');
+					redirect('KelolaChallenge');
 				}
 			}
 			else

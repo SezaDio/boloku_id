@@ -1,8 +1,8 @@
-	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/Article.jpg') ; ?>);">
+	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/article.jpg') ; ?>);">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
-                  <h1>Artikel</h1>
+                  <h1>&nbsp;</h1>
                </div>
             </div>
          </div>
@@ -13,10 +13,10 @@
             <div class="row">
                <div class="col-md-8 col-sm-12 col-xs-12">
                   <div class="post-entry">
-                     <h2><?php echo $judul_artikel; ?></h2>
+                     <h2><?php echo htmlspecialchars($judul_artikel); ?></h2>
                      
                      <ul class="post-tools">
-                        <li> by <a href=""> <strong><?php echo $penulis_artikel;?></strong> </a></li>
+                        <li> by <a href=""> <strong><?php echo htmlspecialchars($penulis_artikel); ?></strong> </a></li>
                         <li> <?php echo $tanggal_posting; ?></li>
                         <li><i class="ti-thought"></i> <?php echo $jumlahKomentar ?> </li>
                         <li> <i class="ti-eye"></i> <?php echo $hits; ?> </li>
@@ -39,7 +39,7 @@
                      <div class="picture"> <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb_'.$path_gambar); ?>"> </div>
 
                      <!--Kotak Content Artikel-->
-                     <?php echo $isi_artikel;?>
+                     <?php echo htmlspecialchars($isi_artikel);?>
                      <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
 
                      <!--Kotak Komentar-->                     
@@ -53,13 +53,13 @@
 								 
 								            <div class="author-desc">
             									<div class="author-title">
-            									   <strong><a href=""><?php echo $komentar['nama_member']?></a></strong>
+            									   <strong><a href=""><?php echo htmlspecialchars($komentar['nama_member']);?></a></strong>
             									   <ul class="list-inline pull-right">
             										  <li style="color: black;"><label><?php echo $komentar['tgl_posting']; ?></label></li>
             									   </ul>
             									</div>
             									<div class="col-md-10">
-            										<p><?php echo $komentar['isi_komentar']; ?></p>
+            										<p><?php echo htmlspecialchars($komentar['isi_komentar']); ?></p>
             									</div>
 									            <br><br><br>
                             </div>

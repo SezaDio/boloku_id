@@ -141,7 +141,7 @@
                   </ul>
                   <ul class="menu-logo hidden-md">
                      <li>
-                        <a href="#">
+                        <a href="<?php echo base_url(''); ?>">
                            <img style="padding: 5px;" src="<?php echo base_url('asset/img/logo_boloku.png'); ?>" class="img-responsive" alt="logo">
                         </a>
                      </li>

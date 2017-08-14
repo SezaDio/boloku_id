@@ -20,7 +20,18 @@
                             <div class="box box-primary">
                                 
                                 <!-- form start -->
-								
+                                <script type="text/javascript">
+                                    $(document).ready(function(){
+                                        $('#karakter').keyup(function(){
+                                            var len = this.value.length;
+                                            if(len >= 200)
+                                            {
+                                                this.value = this.value.substring(0, 200);
+                                            }
+                                            $('#hitung').text(200 - len);
+                                        }); 
+                                    });
+                                </script>
                                 <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaWow/tambah_wow_check/');?>" method="POST">
                                     <div class="box-body">
                                         <div style="margin-top:10px; margin-bottom:30px">
@@ -74,7 +85,8 @@
                                                             echo htmlspecialchars($dataWow['deskripsi']);
                                                         }
                                                     ?>
-												</textarea>                                    
+												</textarea>
+                                                <span id='hitung'>200 </span>Karakter Tersisa                                 
 											</div>
                                         </div>
 
@@ -98,3 +110,7 @@
                     </div>   <!-- /.row -->
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
+
+
+
+            

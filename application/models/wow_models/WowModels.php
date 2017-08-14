@@ -11,7 +11,7 @@
 		function get_data_wow()
 		{
 			
-			$query = $this->db->query("SELECT * FROM `wow` DESC");
+			$query = $this->db->order_by('tanggal_posting','DESC')->select('*')->get('wow');
 		
 			$indeks = 0;
 			$result = array();

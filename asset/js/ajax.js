@@ -113,6 +113,8 @@ function delete_coming_ajax(id_coming)
 	}
 }
 
+
+
 function tolak_coming_ajax(id_coming)
 {
 	if (confirm("Anda yakin ingin menolak Coming Soon ini ?"))

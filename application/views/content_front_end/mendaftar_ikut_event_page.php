@@ -1,8 +1,8 @@
-     <section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/event_registration.jpg') ; ?>);">
+     <section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/eventregistration.jpg') ; ?>);">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
-                  <h1>Ticket Page</h1>
+                  <h1>&nbsp;</h1>
                </div>
             </div>
          </div>

@@ -1,8 +1,8 @@
-	<section class="my-breadcrumb">
+	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/memberarea.jpg') ; ?>);">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
-                  <h1>Profil Mu</h1>
+                  <h1>&nbsp;</h1>
                </div>
             </div>
          </div>
@@ -83,48 +83,83 @@
 	                          <div class="latest-news-grid grid-1">
 
 	                          	<!--Content menu riwayat event member-->
-	                             <div id="dashboard-content" class="detail">
+	                            <div id="dashboard-content" class="detail">
 	                             	<div class="col-md-12">
+	                            		<?php if($this->session->flashdata('msg_berhasil')!=''){?>
+							                <div class="alert alert-success alert-dismissable">
+							                     <i class="glyphicon glyphicon-ok"></i>
+							                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							                     <?php echo $this->session->flashdata('msg_berhasil');?> 
+							                </div>
+						            	<?php }?>
 	                             		<h4><strong>My Published Event</strong></h4>
 	                             		<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
 	                             	</div>
-									<?php foreach($listEvent as $event){ ?>
-	                             	
-									
-									<div class="col-md-9">
-	                             		<div class="col-md-2" style="text-align: center;"> 
-	                             			<img alt="" src="<?php echo base_url('asset/upload_img_coming/thumb83_'.$event['path_gambar']); ?>">
-	                             		</div>
-	                                    <div style="padding-left: 10px;" class="caption">
-	                                    	<a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>"><label><?php echo $event['nama_coming'];?></label></a>
-	                                    </div>
-	                                    <ul style="padding-left: 10px;" class="post-tools">
-	                                        <li title="Testimoni"> <i class="ti-thought"></i> 15 </li>
-	                                        <li title="Dilihat"> <i class="glyphicon glyphicon-eye-open"></i> <?php echo $event['hits']; ?> </li>
-	                                        <li title="Disukai"> <i class="glyphicon glyphicon-thumbs-up"></i> <?php echo $event['like']; ?> </li>
-	                                    </ul>
-	                                    <br>
-	                                    <a style="margin-left: 10px; margin-top: -25px;" href="#" class=" btn btn-xs btn-green"><i class="ti-money"></i> <?php if($event['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?></a>
-	                                   	<a style="margin-top: -25px;" href="#" class=" btn btn-xs btn-dark-red"><?php echo $event['kategori_coming']; ?></a>
-	                                   	<a style="margin-top: -25px;" href="#" class=" btn btn-xs btn-orange"><?php echo $event['tipe_event']; ?></a>
-	                                </div>
-	                                <br>
-	                                <div class="col-md-3" style="text-align: right;">
-	                                	<!-- Tombol Edit -->
-                                        <a href="javascript:void(0)" onclick="editEvent(<?php echo $event['id_coming']?>)"><button id="edit-button-coming" type="submit" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button></a>
-                                        <!-- Tombol Hapus -->
-                                        <a  href="<?php //echo site_url('KelolaComing/delete_detail_coming/'.$id_coming->id_coming);?>"><button class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button></a>
-										<?php if($event['status']==2){?>
-										<br/>
-										<br/>
-										<a  href="#" class=" btn btn-xs btn-dark-red"><b>Menunggu Verifikasi</b></a>
-										<?php } ?>
-	                                </div>
-	                                <div class="col-md-12">
-	                             		<hr style="border: solid 1px grey; margin-top: auto; opacity: 0.3;"></hr>
-	                             	</div>
-									<?php } ?>
-	                             </div>
+									<?php
+										if (empty($listEvent)) 
+										{
+											echo "<h5 style='text-align: center;'>Belum ada event yang pernah kamu publish . . .</h5s>";
+										}
+										else
+										{
+											foreach($listEvent as $event)
+											{ ?>
+												<div class="row">
+													<div class="col-md-8">
+					                             		<div class="col-md-2" style="padding-bottom: 10px; text-align: center;"> 
+					                             			<img alt="" src="<?php echo base_url('asset/upload_img_coming/thumb83_'.$event['path_gambar']); ?>">
+					                             		</div>
+					                                    <div style="padding-left: 10px;" class="caption">
+					                                    	<a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>"><label><?php echo $event['nama_coming'];?></label></a><span><?php 
+															if($event['status']==2)
+															{?>
+																
+																<label  href="#" class=" btn btn-xs btn-dark-red"><b>Menunggu Verifikasi</b></label>
+													  <?php }
+													  		else
+													  		{ ?>
+													  			
+																<label href="#" class=" btn btn-xs btn-success"><b>Publish</b></label>
+													  <?php } ?></span>
+					                                    </div>
+					                                    <ul style="padding-left: 10px;" class="post-tools">
+					                                        <li title="Testimoni"> <i class="ti-thought"></i> 15 </li>
+					                                        <li title="Dilihat"> <i class="glyphicon glyphicon-eye-open"></i> <?php echo $event['hits']; ?> </li>
+					                                        <li title="Disukai"> <i class="glyphicon glyphicon-thumbs-up"></i> <?php echo $event['like']; ?> </li>
+					                                    </ul>
+					                                    <br>
+			                                     		<a style="margin-left: 10px; margin-top: -25px;" href="#" class=" btn btn-xs btn-green"><i class="ti-money"></i> <?php if($event['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?></a>
+					                                   	<a style="margin-top: -25px;" href="#" class=" btn btn-xs btn-dark-red"><?php echo $event['kategori_coming']; ?></a>
+					                                   	<a style="margin-top: -25px;" href="#" class=" btn btn-xs btn-orange"><?php echo $event['tipe_event']; ?></a>                                  	
+					                                </div>
+					                                <br>
+					                                <div class="col-md-4" style="text-align: right; padding-bottom: 20px; padding-right: 30px;">
+		                                				<!-- Tombol Download Rekap Pendaftar -->
+		                                        		<button style="
+		                                        			<?php if ($event['pendaftaran'] ==1)
+		                                        	 		{
+		                                        	 			echo "display: content;";
+		                                        	 		}
+		                                        	 		else
+		                                        	 		{
+		                                        	 			echo "display: none;";
+		                                        	 		}
+		                                        	 		?>"  id="edit-button-coming" type="submit" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-download-alt" ></i> Data Pendaftar</button>
+				                                	
+					                                	<!-- Tombol Edit -->
+				                                       <button onclick="editEvent(<?php echo $event['id_coming']?>)" id="edit-button-coming" type="submit" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button>
+				                                    	
+				                                    	<!-- Tombol Hapus -->
+				                                        <button onclick="delete_coming_dashboard_member_ajax(<?php echo $event['id_coming']; ?>)" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
+					                                </div>
+					                            </div>
+
+				                                <div class="col-md-12">
+				                             		<hr style="border: solid 1px grey; margin-top: auto; opacity: 0.3;"></hr>
+				                             	</div>
+											<?php } 
+										} ?>
+	                            </div>
 
 	                             <!--Content menu buat event baru-->
 	                             <div style="display: none;" id="event-baru-content" class="detail">
@@ -134,16 +169,39 @@
 	                             	</div>
 	                             	<div class="col-md-12 col-sm-8 col-xs-12 nopadding" style="padding:10px;"">
 					                  <div class="contact-form">
+
 					                      <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaMember/tambah_event/');?>" method="POST">
 					                        <div class="col-md-12 col-sm-6 col-xs-12">
 					                           <div class="form-group">
-					                              <input required placeholder="Nama Kegiatanmu" id="name" name="judul_coming" class="form-control" required type="text" value="<?php 
+					                           	   <label for="exampleInputEmail1">Nama Event :</label><br>
+					                              <input required id="name" name="judul_coming" class="form-control" required type="text" value="<?php 
 													if (isset($dataComing['judul_coming']))
 													{
 														echo htmlspecialchars($dataComing['judul_coming']);
 													}
 													?>"> 
 					                           </div>
+
+					                           <div class="row">
+													<div class="col-md-4">
+				                                        <div class="form-group">
+				                                            <label for="exampleInputEmail1">Institusi Penyelenggara :</label><br>
+															<input required type="text" name="institusi" class="form-control">
+				                                        </div>
+				                                    </div>
+													<div class="col-md-4">
+				                                        <div class="form-group">
+				                                            <label for="exampleInputEmail1">E-mail :</label><br>
+															<input required type="email" name="email" class="form-control">
+				                                        </div>
+				                                    </div>
+				                                    <div class="col-md-4">
+				                                        <div class="form-group">
+				                                            <label for="exampleInputEmail1">Nomor Telepon :</label><br>
+															<input required type="number" name="telepon" class="form-control">
+				                                        </div>
+				                                    </div>
+												</div>
 
 					                           <div class="row">
 						                            <div class="col-md-2">
@@ -195,6 +253,21 @@
 			                                    <br>
 
 		                                        <div class="row">
+				                                    <div class="col-md-6">
+				                                        <div class="form-group">
+				                                            <label for="exampleInputEmail1">Tipe Event  :</label><br>
+				                                            <select name="tipe" required class="form-control" id="kategori">
+				                                                <option value="">--Pilih Tipe Event--</option>
+				                                                <?php
+				                                                    foreach ($tipe_event as $key=>$tipe) 
+				                                                    {
+				                                                      
+				                                                        echo '<option value="'.$key.'">'.$tipe.'</option>';   
+				                                                    }
+				                                                ?>
+				                                            </select>
+				                                        </div>
+				                                    </div>
 		                                        	<div class="col-md-6">
 				                                        <div class="form-group">
 				                                            <label for="exampleInputEmail1">Kategori Event  :</label><br>
@@ -206,22 +279,6 @@
 				                                                        
 				                                                        echo '<option value="'.$key.'">'.$kategori.'</option>';   
 				                                                        
-				                                                    }
-				                                                ?>
-				                                            </select>
-				                                        </div>
-				                                    </div>
-
-				                                    <div class="col-md-6">
-				                                        <div class="form-group">
-				                                            <label for="exampleInputEmail1">Tipe Event  :</label><br>
-				                                            <select name="tipe" required class="form-control" id="kategori">
-				                                                <option value="">--Pilih Tipe Event--</option>
-				                                                <?php
-				                                                    foreach ($tipe_event as $key=>$tipe) 
-				                                                    {
-				                                                      
-				                                                        echo '<option value="'.$key.'">'.$tipe.'</option>';   
 				                                                    }
 				                                                ?>
 				                                            </select>
@@ -286,16 +343,10 @@
 			                                    </div>
 
 			                                    <div class="row">
-		                                        	<div class="col-md-4">
-				                                        <div class="form-group">
-				                                            <label for="exampleInputEmail1">Institusi Penyelenggara :</label><br>
-															<input placeholder="Institusi" type="text" name="institusi" class="form-control">
-				                                        </div>
-				                                    </div>
-													<div class="col-md-4">
+													<div class="col-md-6">
 				                                        <div class="form-group">
 				                                            <label for="exampleInputEmail1">Kota Lokasi Event :</label><br>
-															<input placeholder="Kota Lokasi" type="text" name="kota" class="form-control">
+															<input required type="text" name="kota" class="form-control">
 				                                            <!--<select name="kategori" required class="form-control" id="kategori">
 				                                                <option value="">--Pilih Kota--</option>
 				                                                <?php
@@ -309,23 +360,20 @@
 				                                            </select>-->
 				                                        </div>
 				                                    </div>
-													<div class="col-md-4">
-														
-															<label for="exampleInputEmail1">Gunakan fasilitas pendaftaran ? </label><br>
-															<input style="opacity: 1;" type="radio" name="pendaftaran" value=1 required ><label>Ya</label>&nbsp&nbsp&nbsp&nbsp
-															<label><input style="opacity: 1;" type="radio" name="pendaftaran" value=0 required >Tidak</label>
-														
-													</div>
-				                                    
-				                                </div>
-												<div class="row">
-													<div class="col-md-6">
-				                                        <div class="form-group">
-				                                            <label for="exampleInputEmail1">Alamat :</label><br>
-															<input placeholder="Alamat" type="text" name="alamat" class="form-control">
+		                                        	<div class="col-md-6">
+		                                        		<div class="form-group">
+				                                            <label for="exampleInputEmail1">Alamat Event :</label><br>
+															<input required type="text" name="alamat" class="form-control">
 				                                        </div>
 				                                    </div>
-													
+				                                </div>
+
+												<div class="row">
+													<div class="col-md-6">
+														<label for="exampleInputEmail1">Gunakan fasilitas pendaftaran ? </label><br>
+														<input style="opacity: 1;" type="radio" name="pendaftaran" value=1 required ><label>Ya</label>
+														<label><input style="opacity: 1;" type="radio" name="pendaftaran" value=0 required >Tidak</label>
+													</div>
 													<div class="col-md-6">
 			                                            <label for="exampleInputFile">Unggah File Gambar Poster :</label>
 			                                            <div class="input-group">
@@ -337,12 +385,11 @@
 											</div>
 					                        <input type="hidden" name="id_member" value="<?php echo $id_member; ?>">
 					                        <input type="hidden" name="nama_member" value="<?php echo $nama_member; ?>">
-					                        <input type="hidden" name="email" value="<?php echo $email; ?>">
-					                        <input type="hidden" name="telepon" value="<?php echo $telepon; ?>">
 					                        
 					                        <div class="col-md-12 col-sm-12 col-xs-12">
 					                           <div class="form-group">
-					                              <textarea cols="12" rows="5" placeholder="Keterangan tambahan event . . ." id="message" name="deskripsi_coming" class="form-control" required></textarea>
+					                           	  <label for="exampleInputFile">Keterangan Tambahan Event :</label>
+					                              <textarea cols="12" rows="5" id="message" name="deskripsi_coming" class="form-control" required></textarea>
 					                           </div>
 					                           <div class="form-group">
 					                              <button class="btn btn-colored-blog pull-right" type="submit" value="1"><i class="glyphicon glyphicon-send"></i> Submit Event</button>
@@ -997,6 +1044,29 @@
 					
 			});}
 		
+		}
+
+		function delete_coming_dashboard_member_ajax(id_coming)
+		{
+			if (confirm("Anda yakin ingin menghapus Event ini beserta data didalamnya ?"))
+			{;
+				$.ajax({
+					url: '../KelolaComing/delete_coming',
+					type: 'POST',
+					data: {id_coming:id_coming},
+					success: function(){
+								alert('Delete Event beserta data yang berkaitan berhasil');
+								location.reload();
+							},
+					error: function(){
+								alert('Delete Event gagal');
+							}
+				});
+			}
+			else
+			{
+				alert(id_coming + "Gagal dihapus");
+			}
 		}
 	  </script>
 

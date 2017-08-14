@@ -370,34 +370,37 @@
 
 			                                 <!--Tab Testimoni-->
 			                                 <div class="tab-pane" id="testimoni" role="tabpanel">
-			                                    <div class="reviews">
-							                        <h3>Total Testimoni (<?php echo $jumlahTestimoni; ?>)</h3>
-													<?php foreach($listTestimoni as $testimoni){?>
-							                            <div style="padding-top: 10px;" class="col-md-12 comment-info">
+			                                    
+						                        <h3>Total Testimoni (<?php echo $jumlahTestimoni; ?>)</h3>
+												<?php foreach($listTestimoni as $testimoni){?>
+													<div class="row">
+							                            <div style="padding-bottom: 20px; padding-top: 10px;" class="col-md-12">
 							                                 <div class="col-md-2">
 							                                 	<img style="width: 100%;" class="pull-left" src="<?php echo base_url('asset/upload_img_member/thumb85_'.$testimoni['path_foto']); ?>" alt="author">
 							                                 </div>
 							                                 
-							                                 <div class="author-desc">
-							                                    <div class="author-title">
-							                                       <strong><a href=""><?php echo $testimoni['nama_member']?></a></strong>
-							                                       <ul class="list-inline pull-right">
-							                                          <li style="color: black;"><label><?php echo $testimoni['tgl_posting']; ?></label></li>
-							                                       </ul>
-							                                    </div>
+							                                 <div class="col-md-10">
+							                                 	<div class="row">
+							                                 		<div class="col-md-12">
+									                                    <div class="col-md-8">
+									                                       <strong><?php echo $testimoni['nama_member']?></strong>
+									                                    </div>
+									                                    <div class="col-md-4 pull-right">
+								                                           <label><?php echo $testimoni['tgl_posting']; ?></label>
+								                                       	</div>
+								                                    </div>
+								                                </div>
 							                                    <div class="col-md-10">
 							                                    	<p><?php echo $testimoni['isi_testimoni']; ?></p>
 							                                    </div>
 							                                 </div>
-							                                 <br><br><br>
-							                           	 	<hr style="border: solid 1px #f44a56; opacity: 0.4;">
-
+							                                 
 							                            </div>
-
-													<?php } ?>
-						                            
-							                     </div>
+							                           	<hr style="border: solid 1px #f44a56; opacity: 0.4;">
+							                        </div>
+												<?php } ?>
 							                     <br><br>
+
 							                     <!--Form comentar baru-->
 							                     <div style="padding-top: 10px;" class="col-md-12 comment-info">
 												 	<?php 
