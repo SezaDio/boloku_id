@@ -20,6 +20,7 @@ class FrontControl_Event extends CI_Controller {
 	  $this->load->library('pagination');
       $data['active']=2;
 	  $this->load->model('home_models/HomeModels');
+	  $this->load->model('coming_models/ComingModels');
 
 	  //Paginasi halaman event page
 	  	$jumlah_data = $this->HomeModels->jumlah_data_new_event();
@@ -59,15 +60,18 @@ class FrontControl_Event extends CI_Controller {
 		//create links pagination
 		$data['pagination'] = $this->pagination->create_links();
 	 
-      $this->load->view('skin/front_end/header_front_end',$data);
-      $this->load->view('content_front_end/event_page',$data);
-      $this->load->view('skin/front_end/footer_front_end');
+	 	$data['kotaLokasi'] = $this->ComingModels->kota_lokasi();
+
+      	$this->load->view('skin/front_end/header_front_end',$data);
+      	$this->load->view('content_front_end/event_page',$data);
+      	$this->load->view('skin/front_end/footer_front_end');
    }
 
    public function event_click($id_event)
    {
    	  $data['active']=2;
 	  $this->load->model('home_models/HomeModels');
+	  
 	  $event = $this->HomeModels->get_event_byid($id_event);
 	  
 	  $hits = $event['hits'] + 1;
@@ -98,7 +102,7 @@ class FrontControl_Event extends CI_Controller {
 	  $data['like'] = $event['like'];
 	  $data['jumlah_seat'] = $event['jumlah_seat'];
 	  $data['harga'] = $event['harga'];
-	  $data['kota_lokasi'] = $event['kota_lokasi'];
+	  $data['kota_lokasi'] = $event['id_lokasi'];
 	  $data['alamat'] = $event['alamat'];
 	  
 	  $data['jumlahTestimoni'] = $this->HomeModels->jumlah_testimoni($id_event);

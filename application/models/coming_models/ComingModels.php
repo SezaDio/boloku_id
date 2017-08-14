@@ -92,4 +92,28 @@
 			$this->db->update('coming',$data);
 		}
 
+		function kota_lokasi()
+		{
+			$query = $this->db->query("SELECT * FROM `inf_lokasi` WHERE lokasi_propinsi!=0 AND lokasi_kabupatenkota!=0 AND lokasi_kecamatan=0 AND lokasi_kelurahan=0 ORDER BY lokasi_nama ASC");
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$row['lokasi_kode']] = $row;
+			}
+		
+			return $result;
+		}
+
+		function select_by_id_kota($lokasi_kode)
+		{
+			$this->db->select('*');
+			$this->db->from('inf_lokasi');
+			$this->db->where('lokasi_kode',$lokasi_kode);
+			$namaKota = $this->db->get()->row();
+			return $namaKota->lokasi_nama;
+		}
+
 	}

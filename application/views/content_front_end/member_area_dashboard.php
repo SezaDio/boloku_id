@@ -85,13 +85,22 @@
 	                          	<!--Content menu riwayat event member-->
 	                            <div id="dashboard-content" class="detail">
 	                             	<div class="col-md-12">
-	                            		<?php if($this->session->flashdata('msg_berhasil')!=''){?>
+	                            		<?php 
+	                            			if($this->session->flashdata('msg_berhasil')!=''){?>
 							                <div class="alert alert-success alert-dismissable">
 							                     <i class="glyphicon glyphicon-ok"></i>
 							                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							                     <?php echo $this->session->flashdata('msg_berhasil');?> 
 							                </div>
-						            	<?php }?>
+						            	<?php }
+						            		  elseif($this->session->flashdata('msg_gagal')!=''){ ?>
+						            		  
+						            			<div class="alert alert-success alert-dismissable">
+								                     <i class="glyphicon glyphicon-ok"></i>
+								                     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								                     <?php echo $this->session->flashdata('msg_gagal');?> 
+								                </div>
+						            	<?php } ?>
 	                             		<h4><strong>My Published Event</strong></h4>
 	                             		<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
 	                             	</div>
@@ -346,18 +355,18 @@
 													<div class="col-md-6">
 				                                        <div class="form-group">
 				                                            <label for="exampleInputEmail1">Kota Lokasi Event :</label><br>
-															<input required type="text" name="kota" class="form-control">
-				                                            <!--<select name="kategori" required class="form-control" id="kategori">
-				                                                <option value="">--Pilih Kota--</option>
+															<!--<input required type="text" name="kota" class="form-control">-->
+				                                            <select name="kota" required class="form-control" id="kota">
+				                                                <option value="">--Pilih Kota Lokasi--</option>
 				                                                <?php
-				                                                    /*foreach ($kategori_coming as $key=>$kategori) 
+				                                                    foreach ($kotaLokasi as $key=>$kota) 
 				                                                    {
 				                                                        
-				                                                        echo '<option value="'.$key.'">'.$kategori.'</option>';   
+				                                                        echo '<option value="'.$key.'">'.$kota['lokasi_nama'].'</option>';   
 				                                                        
-				                                                    }*/
+				                                                    }
 				                                                ?>
-				                                            </select>-->
+				                                            </select>
 				                                        </div>
 				                                    </div>
 		                                        	<div class="col-md-6">

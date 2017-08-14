@@ -695,7 +695,7 @@ class KelolaComing extends CI_Controller {
 			if($date=='This Month'){$data .= ' AND MONTH(`tgl_mulai`)=(MONTH(NOW()))';}
 		
 		$lokasi=str_replace('%20',' ',$lokasi);
-		if($lokasi!='All'){$data .= ' AND kota_lokasi = "'.$lokasi.'"';}
+		if($lokasi!='All'){$data .= ' AND id_lokasi = "'.$lokasi.'"';}
 		$kategori=str_replace('%20',' ',$kategori);
 		if($kategori!='All'){$data .= ' AND kategori_coming = "'.$kategori.'"';}
 		$tipe=str_replace('%20',' ',$tipe);
@@ -729,7 +729,7 @@ class KelolaComing extends CI_Controller {
                 $xml_out .= 'jenis_event="' . xml_convert(($row_event->jenis_event)) . '" ';
 				$xml_out .= 'tanggal="' . xml_convert(($tanggal)) . '" ';
                 $xml_out .= 'bulan="' . xml_convert(($bulan)) . '" ';
-                $xml_out .= 'kota_lokasi="' . xml_convert(($row_event->kota_lokasi)) . '" ';
+                $xml_out .= 'id_lokasi="' . xml_convert(($row_event->id_lokasi)) . '" ';
                 $xml_out .= 'path_gambar="' . xml_convert(($row_event->path_gambar)) . '" ';
                 $xml_out .= '/>';
             }

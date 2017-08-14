@@ -459,6 +459,8 @@ class Kelolapendaftar extends CI_Controller {
 		$data['active']=2;
 		$this->load->model('pendaftar_models/PendaftarModels');
 		$this->load->model('home_models/HomeModels');
+		$this->load->model('coming_models/ComingModels');
+
 	  	$ikutEvent = $this->HomeModels->get_event_byid($id_event);
 
 	  	if ($ikutEvent['pendaftaran']==0)
@@ -474,12 +476,14 @@ class Kelolapendaftar extends CI_Controller {
 		$data['jam_mulai'] = $ikutEvent['jam_mulai'];
 		$data['tgl_selesai'] = $ikutEvent['tgl_selesai'];
 		$data['jam_selesai'] = $ikutEvent['jam_selesai'];
-		$data['kota_lokasi'] = $ikutEvent['kota_lokasi'];
+		$data['kota_lokasi'] = $ikutEvent['id_lokasi'];
 		$data['alamat'] = $ikutEvent['alamat'];
 		$data['jenis_event'] = $ikutEvent['jenis_event'];
 		$data['harga'] = $ikutEvent['harga'];
 		$data['seat'] = $ikutEvent['seat'];
 		$data['jumlah_seat'] = $ikutEvent['jumlah_seat'];
+
+		$data['namaKota'] = $this->ComingModels->select_by_id_kota($data['kota_lokasi']);
 
 		$this->load->view('skin/front_end/header_front_end', $data);
       	$this->load->view('content_front_end/mendaftar_ikut_event_page', $data);

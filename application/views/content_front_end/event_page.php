@@ -24,14 +24,14 @@
                 <div class="box-body">
 					<div class="form-group">                     
                         <select name="cari_by_lokasi" placeholder="Lokasi Event" required class="form-control" id="cari_lokasi">
-                            <option value="All">--Lokasi Event--</option>
-                            <option value="Semarang">Semarang</option>
-                            <option value="Jakarta">Jakarta</option>
-                            <option value="Jogja">Jogja</option>
-                            <option value="Bandung">Bandung</option>
-                            <option value="Surabaya">Surabaya</option>
-                            <option value="Bogor">Bogor</option>
-                            <option value="Padang">Padang</option>
+                            <option value="">--Pilih Lokasi Kota--</option>
+                            <?php
+                                foreach ($kotaLokasi as $key=>$kota) 
+                                {
+                                  
+                                    echo '<option value="'.$key.'">'.$kota['lokasi_nama'].'</option>';   
+                                }
+                            ?>
                         </select>
                     </div>
 

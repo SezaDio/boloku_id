@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 4.2.11
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 28, 2017 at 03:56 PM
--- Server version: 5.5.27
--- PHP Version: 5.5.37
+-- Generation Time: Aug 14, 2017 at 11:49 AM
+-- Server version: 5.6.21
+-- PHP Version: 5.6.3
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `ucc`
+-- Database: `boloku_id`
 --
 
 -- --------------------------------------------------------
@@ -27,20 +27,14 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `inf_lokasi` (
-  `lokasi_ID` int(11) NOT NULL AUTO_INCREMENT,
+`lokasi_ID` int(11) NOT NULL,
   `lokasi_kode` varchar(50) NOT NULL DEFAULT '',
   `lokasi_nama` varchar(100) NOT NULL DEFAULT '',
   `lokasi_propinsi` int(2) NOT NULL,
   `lokasi_kabupatenkota` int(2) unsigned zerofill DEFAULT NULL,
   `lokasi_kecamatan` int(2) unsigned zerofill NOT NULL,
-  `lokasi_kelurahan` int(4) unsigned zerofill NOT NULL,
-  PRIMARY KEY (`lokasi_ID`),
-  KEY `lokasi_kode` (`lokasi_kode`),
-  KEY `lokasi_propinsi` (`lokasi_propinsi`),
-  KEY `lokasi_kabupatenkota` (`lokasi_kabupatenkota`),
-  KEY `lokasi_kecamatan` (`lokasi_kecamatan`),
-  KEY `lokasi_kelurahan` (`lokasi_kelurahan`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=68427 ;
+  `lokasi_kelurahan` int(4) unsigned zerofill NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=68427 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `inf_lokasi`
@@ -68550,6 +68544,25 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (68425, '64.74.03.1002', 'GUNUNG TELIHAN', 64, 74, 03, 1002),
 (68426, '64.74.03.1003', 'KANAAN', 64, 74, 03, 1003);
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `inf_lokasi`
+--
+ALTER TABLE `inf_lokasi`
+ ADD PRIMARY KEY (`lokasi_ID`), ADD KEY `lokasi_kode` (`lokasi_kode`), ADD KEY `lokasi_propinsi` (`lokasi_propinsi`), ADD KEY `lokasi_kabupatenkota` (`lokasi_kabupatenkota`), ADD KEY `lokasi_kecamatan` (`lokasi_kecamatan`), ADD KEY `lokasi_kelurahan` (`lokasi_kelurahan`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `inf_lokasi`
+--
+ALTER TABLE `inf_lokasi`
+MODIFY `lokasi_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=68427;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

@@ -78,15 +78,14 @@
 												 <label>Deskripsi Ngerti Rak? :</label>
 											</div>
 											<div class='box-body pad'>
-												<textarea required id="editor_wow" name="deskripsi_wow" rows="10" cols="80">
-													<?php 
+												<textarea required id="karakter" name="deskripsi_wow" rows="10" cols="80"><?php 
                                                         if (isset($dataWow['deskripsi']))
                                                         {
                                                             echo htmlspecialchars($dataWow['deskripsi']);
                                                         }
-                                                    ?>
-												</textarea>
-                                                <span id='hitung'>200 </span>Karakter Tersisa                                 
+                                                    ?></textarea>
+                                                <br>
+                                                <strong style="color: red;" id='hitung'>200</strong> Karakter Tersisa                                 
 											</div>
                                         </div>
 

@@ -199,7 +199,7 @@
 			                                          </div>
 			                                       </a>
 			                              <?php }
-			                                    elseif ($kategori_event == "Science dan Technology")
+			                                    elseif ($kategori_event == "Science dan Teknologi")
 			                                    { ?>
 			                                       <a style="margin-top: -15px;" class="btn btn-dark-green" href="">
 			                                          <div>

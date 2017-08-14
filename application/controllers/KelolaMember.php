@@ -434,7 +434,9 @@ class KelolaMember extends CI_Controller {
 		$id_member = $this->session->userdata('id_member');
 		$this->load->model('member_models/MemberModels');
 		$this->load->model('home_models/HomeModels');
+		$this->load->model('coming_models/ComingModels');
 		
+		$data['kotaLokasi'] = $this->ComingModels->kota_lokasi();
 		$member=$this->MemberModels->select_by_id_member($id_member);
 		$data['id_member'] = $member['id_member'];
 		$data['nama_member'] = $member['nama_member'];
@@ -634,21 +636,20 @@ class KelolaMember extends CI_Controller {
 		}
 
 			$this->form_validation->set_rules('judul_coming', 'Judul', 'required');
-			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
-			$this->form_validation->set_rules('nama_member', 'Penulis', 'required');
 			$this->form_validation->set_rules('institusi', 'Institusi', 'required');
+			$this->form_validation->set_rules('email', 'Email', 'required');
 			$this->form_validation->set_rules('telepon', 'Telepon', 'required');
 			$this->form_validation->set_rules('jenis_event', 'Jenis', 'required');
-			$this->form_validation->set_rules('institusi', 'Institusi', 'required');
-			$this->form_validation->set_rules('pendaftaran', 'Pendaftaran', 'required');
-			$this->form_validation->set_rules('email', 'Email', 'required');
+			$this->form_validation->set_rules('seat', 'Seat', 'required');
 			$this->form_validation->set_rules('tipe', 'Tipe', 'required');
+			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
 			$this->form_validation->set_rules('tgl_event', 'Tanggal', 'required');
 			$this->form_validation->set_rules('jam_mulai', 'Jam', 'required');
 			$this->form_validation->set_rules('jam_selesai', 'Jam', 'required');
+			$this->form_validation->set_rules('kota', 'Kota', 'required');
+			$this->form_validation->set_rules('alamat', 'Alamat', 'required');
+			$this->form_validation->set_rules('pendaftaran', 'Pendaftaran', 'required');
 			$this->form_validation->set_rules('deskripsi_coming', 'Deskripsi', 'required');
-			$this->form_validation->set_rules('seat', 'Seat', 'required');
-			$this->form_validation->set_rules('kota', 'Kota Lokasi', 'required');
 
 			//Mengambil filename gambar untuk disimpan
 			$nmfile = "file_".time();
@@ -680,7 +681,7 @@ class KelolaMember extends CI_Controller {
 						'tgl_selesai'=>$this->input->post('tgl_selesai'),
 						'jam_mulai'=>$this->input->post('jam_mulai'),
 						'jam_selesai'=>$this->input->post('jam_selesai'),
-						'kota_lokasi'=>$this->input->post('kota'),
+						'id_lokasi'=>$this->input->post('kota'),
 						'alamat'=>$this->input->post('alamat'),
 						'path_gambar'=> NULL,
 						'seat'=> $seat,
@@ -713,8 +714,9 @@ class KelolaMember extends CI_Controller {
 			}
 			else
 			{
-				$this->session->set_flashdata('msg_gagal', 'Data Event baru gagal ditambahkan');
-				$this->tambah_event();
+				$error = validation_errors('<div class="error">','</div>');
+				$this->session->set_flashdata('msg_gagal', $error);
+				redirect('KelolaMember/dashboard_member');
 			}
 		
 		

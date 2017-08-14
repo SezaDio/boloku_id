@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="col-md-8" style="border-right: solid 1px #f44a56; border-left: solid 1px #f44a56; text-align: center;">
                                    <h3><strong><?php echo $nama_event; ?></strong></h3>
-                                   <h5><?php echo $alamat.", ".$kota_lokasi; ?></h5>
+                                   <h5><?php echo $alamat.", ".$namaKota; ?></h5>
                                 </div>
                                 <div class="col-md-2" style="padding-top: 14px; text-align: center;">
                                      <?php

@@ -290,7 +290,7 @@
 										  <?php }
 												elseif ($newevent['tipe_event'] == "Class")
 												{ ?>
-												   <a class="btn btn-grey btn-xs" href="javascript:void(0)" onclick="byLabel('tipe_event','Class')">
+												   <a class="btn btn-gray btn-xs" href="javascript:void(0)" onclick="byLabel('tipe_event','Class')">
 													  <div>
 														 # <?php echo $newevent['tipe_event'] ?>
 													  </div>
@@ -420,9 +420,9 @@
 													  </div>
 												   </a>
 										  <?php }
-												elseif ($newevent['kategori_coming'] == "Science dan Technology")
+												elseif ($newevent['kategori_coming'] == "Science dan Teknologi")
 												{ ?>
-												   <a class="btn btn-dark-green btn-xs" href="javascript:void(0)" onclick="byLabel('kategori_coming','Science dana Technology')">
+												   <a class="btn btn-green btn-xs" href="javascript:void(0)" onclick="byLabel('kategori_coming','Science dana Technology')">
 													  <div>
 														 # <?php echo $newevent['kategori_coming'] ?>
 													  </div>
