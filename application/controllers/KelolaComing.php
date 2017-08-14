@@ -651,11 +651,13 @@ class KelolaComing extends CI_Controller {
 				
 	            $tanggal = date("j", strtotime($row_event->tgl_mulai));
 	            $bulan = date("M", strtotime($row_event->tgl_mulai));
+				$deskripsi=strip_tags($row_event->deskripsi_coming);
+				$deskripsi=substr($deskripsi,0,400);
 				
                 $xml_out .= '<event ';
                 $xml_out .= 'id_event="' . xml_convert($row_event->id_coming) . '" ';
                 $xml_out .= 'nama_event="' . xml_convert($row_event->nama_coming) . '" ';
-                $xml_out .= 'deskripsi_event="' . xml_convert(($row_event->deskripsi_coming)) . '" ';
+                $xml_out .= 'deskripsi_event="' . xml_convert(($deskripsi)) . '" ';
                 $xml_out .= 'posted_by="' . xml_convert(($row_event->posted_by)) . '" ';
                 $xml_out .= 'tanggal_posting="' . xml_convert(($row_event->tanggal_posting)) . '" ';
                 $xml_out .= 'kategori_event="' . xml_convert(($row_event->kategori_coming)) . '" ';
@@ -676,6 +678,7 @@ class KelolaComing extends CI_Controller {
 	function cari_event(){
         header('Access-Control-Allow-Origin: *');
         header('Content-type: text/xml');
+        $nama=$_POST['nama'];
         $lokasi=$_POST['lokasi'];
         $kategori=$_POST['kategori'];
         $tipe=$_POST['tipe'];
@@ -694,6 +697,8 @@ class KelolaComing extends CI_Controller {
 			if($date=='Next Week'){$data .= ' AND YEARWEEK(`tgl_mulai`)=(YEARWEEK(NOW()) + 1)';}
 			if($date=='This Month'){$data .= ' AND MONTH(`tgl_mulai`)=(MONTH(NOW()))';}
 		
+		$nama=str_replace('%20',' ',$nama);
+		if($nama!=''){$data .= ' AND nama_coming LIKE "%'.$this->db->escape_like_str($nama).'%"';}
 		$lokasi=str_replace('%20',' ',$lokasi);
 		if($lokasi!='All'){$data .= ' AND id_lokasi = "'.$lokasi.'"';}
 		$kategori=str_replace('%20',' ',$kategori);
@@ -701,13 +706,13 @@ class KelolaComing extends CI_Controller {
 		$tipe=str_replace('%20',' ',$tipe);
 		if($tipe!='All'){$data .= ' AND tipe_event = "'.$tipe.'"';}
 		
-			
 		$harga=str_replace('%20',' ',$harga);
 		if($harga!='All'){$data .= ' AND jenis_event = "'.$harga.'"';}
         //var_dump($search_term); exit();
 		
-		
-        $get_event=$this->db->query('SELECT * FROM `coming` WHERE '.$data.' ORDER BY tgl_mulai DESC');
+		//print_r($data);
+        $get_event=$this->db->where($data)->order_by('tgl_mulai','DESC')->get('coming');
+        //$get_event=$this->db->query('SELECT * FROM `coming` WHERE '.$data.' ORDER BY tgl_mulai DESC');
 			
         $this->load->helper('xml');
 		$xml_out = '<events>';
@@ -716,11 +721,13 @@ class KelolaComing extends CI_Controller {
 				
 				$tanggal = date("j", strtotime($row_event->tgl_mulai));
 	            $bulan = date("M", strtotime($row_event->tgl_mulai));
-				
+				$deskripsi=strip_tags($row_event->deskripsi_coming);
+				$deskripsi=substr($deskripsi,0,400);
+								
                 $xml_out .= '<event ';
                 $xml_out .= 'id_event="' . xml_convert($row_event->id_coming) . '" ';
                 $xml_out .= 'nama_event="' . xml_convert($row_event->nama_coming) . '" ';
-                $xml_out .= 'deskripsi_event="' . xml_convert(($row_event->deskripsi_coming)) . '" ';
+                $xml_out .= 'deskripsi_event="' . xml_convert(($deskripsi)) . '" ';
                 $xml_out .= 'posted_by="' . xml_convert(($row_event->posted_by)) . '" ';
                 $xml_out .= 'tanggal_posting="' . xml_convert(($row_event->tanggal_posting)) . '" ';
                 $xml_out .= 'tgl_mulai="' . xml_convert(($row_event->tgl_mulai)) . '" ';

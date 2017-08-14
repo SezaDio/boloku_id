@@ -22,6 +22,9 @@
         <h5>Cari Event . . .</h5>
         <div class="col-md-12">
                 <div class="box-body">
+					<div class="form=group">
+						<input name="cari_by_nama" placeholder="--Nama Event--" class="form-control" id="cari_nama">
+					</div><br/>
 					<div class="form-group">                     
                         <select name="cari_by_lokasi" placeholder="Lokasi Event" required class="form-control" id="cari_lokasi">
                             <option value="">--Pilih Lokasi Kota--</option>
@@ -248,7 +251,7 @@
 			  var value_tipe = "'"+tipe_event+"'";
 			  
 			  var getUrl = window.location;
-			  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+			  var baseUrl = getUrl .protocol + "//" + getUrl.pathname.split('/')[1];
 			  divkategori += '<div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">';
 	            divkategori += '<a href="'+baseUrl+'/FrontControl_Event/event_click/'+id_event+'">'
 	                divkategori += '<ul>';
@@ -286,13 +289,14 @@
 	  }
 	  
 	  function cariEvent(){
+		var nama = $("#cari_nama").val();
 		var lokasi = $("#cari_lokasi").val();
 		var kategori = $("#cari_kategori").val();
 		var tipe = $("#cari_tipe").val();
 		var date = $("#cari_date").val();
 		var harga = $("#cari_harga").val();
 		
-		$.post('<?php echo site_url('KelolaComing/cari_event/'); ?>', {lokasi:lokasi,kategori:kategori,tipe:tipe,date:date,harga:harga}, function(dataEvent){
+		$.post('<?php echo site_url('KelolaComing/cari_event/'); ?>', {nama:nama,lokasi:lokasi,kategori:kategori,tipe:tipe,date:date,harga:harga}, function(dataEvent){
 		
 			var xml = parseXml(dataEvent);
 			var getEvent = xml.documentElement.getElementsByTagName("event");
@@ -340,7 +344,8 @@
 			  var value_tipe = "'"+tipe_event+"'";
 			  
 			  var getUrl = window.location;
-			  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+			  var baseUrl = getUrl .protocol + "//" + getUrl.pathname.split('/')[1];
+			  
 			  divkategori += '<div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">';
 	            divkategori += '<a href="'+BASE_URL+'/FrontControl_Event/event_click/'+id_event+'">'
 	                divkategori += '<ul>';
