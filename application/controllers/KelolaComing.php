@@ -821,7 +821,6 @@ class KelolaComing extends CI_Controller {
         $date=$_POST['date'];
         $harga=$_POST['harga'];
 		
-		
 		$data = '';
 		$data .= 'status = 1';
 		$today = date('y-m-d');
@@ -854,7 +853,6 @@ class KelolaComing extends CI_Controller {
 		$xml_out = '<events>';
         if ($get_event->num_rows()>0) {
             foreach ($get_event->result() as $row_event) {
-				$nama_lokasi = $this->ComingModels->select_by_id_kota($row_event->id_lokasi);
 				$tanggal = date("j", strtotime($row_event->tgl_mulai));
 	            $bulan = date("M", strtotime($row_event->tgl_mulai));
 				$deskripsi=strip_tags($row_event->deskripsi_coming);
@@ -873,7 +871,6 @@ class KelolaComing extends CI_Controller {
 				$xml_out .= 'tanggal="' . xml_convert(($tanggal)) . '" ';
                 $xml_out .= 'bulan="' . xml_convert(($bulan)) . '" ';
                 $xml_out .= 'id_lokasi="' . xml_convert(($row_event->id_lokasi)) . '" ';
-                $xml_out .= 'nama_lokasi="' . xml_convert($nama_lokasi) . '" ';
                 $xml_out .= 'path_gambar="' . xml_convert(($row_event->path_gambar)) . '" ';
                 $xml_out .= '/>';
             }
