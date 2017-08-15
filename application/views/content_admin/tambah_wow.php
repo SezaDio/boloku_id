@@ -78,6 +78,7 @@
 												 <label>Deskripsi Ngerti Rak? :</label>
 											</div>
 											<div class='box-body pad'>
+                                                <b><p style="color:red;">* Panjang maksimal untuk isi ngerti rak maksimal 200 karakter</p></b>
 												<textarea required id="karakter" name="deskripsi_wow" rows="10" cols="80"><?php 
                                                         if (isset($dataWow['deskripsi']))
                                                         {

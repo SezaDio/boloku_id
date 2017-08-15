@@ -198,4 +198,21 @@
 			$this->db->where('id_testimoni',$id_testimoni);
 			$this->db->delete('testimoni');
 		}
+
+		//Mengambil data news
+		function get_data_news()
+		{
+			
+			$query = $this->db->query("SELECT * FROM `news`");
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
 	}

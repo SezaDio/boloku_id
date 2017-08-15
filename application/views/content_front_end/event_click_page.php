@@ -457,7 +457,7 @@
 														<?php foreach($listPressRelease as $pressrelease){?>
 					                                       <li>
 					                                          <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_news/thumb_'.$pressrelease['gambar_news']); ?>"></a> </div>
-					                                          <div class="caption"> <a href="#"><?php echo $pressrelease['judul_news']; ?> </a> </div>
+					                                          <div class="caption"> <a href="<?php echo base_url('KelolaNews/halaman_baca_artikel_pra_event/'.$pressrelease['id_news']); ?>"><?php echo $pressrelease['judul_news']; ?> </a> </div>
 					                                          <ul class="post-tools">
 					                                             <li title="Comments"> <i class="ti-thought"></i> 105 </li>
 					                                          </ul>

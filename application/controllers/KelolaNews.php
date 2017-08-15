@@ -215,6 +215,37 @@ class KelolaNews extends CI_Controller {
 		$this->load->view('skin/admin/footer_admin');
 	}
 
+	//Fungsi Baca artikel di halaman front end
+	public function halaman_baca_artikel_pra_event($id_news)
+	{
+	  $this->load->model('news_models/NewsModels');
+	  $this->load->model('home_models/HomeModels');
+	  $news = $this->NewsModels->select_by_id_news($id_news)->row_array();
+	  
+	  $hits = $news['hits'] + 1;
+	  $data_hits = array('hits' => $hits);
+	  $where = array('id_news' => $id_news);
+	  $this->db->update('news', $data_hits, $where);
+	  
+	  $data['id_news'] = $news['id_news'];
+	  $data['judul_news'] = $news['judul_news'];
+	  $data['posted_by'] = $news['posted_by'];
+	  $data['isi_news'] = $news['isi_news'];
+	  $data['gambar_news'] = $news['gambar_news'];
+	  $data['waktu_posting'] = $news['waktu_posting'];
+	  $data['hits'] = $news['hits'];
+
+	  $id_artikel = $id_news;
+
+	  $data['listArtikel'] = $this->NewsModels->get_data_news();
+	  $data['jumlahKomentar'] = $this->HomeModels->jumlah_Komentar($id_artikel);
+	  $data['listKomentar'] = $this->HomeModels->get_komentar($id_artikel);
+	  
+      $this->load->view('skin/front_end/header_front_end');
+      $this->load->view('content_front_end/liputan_pra_event_read_page',$data);
+      $this->load->view('skin/front_end/footer_front_end');
+	}
+
 	//Validasi news
 	public function validasi_news()
 	{

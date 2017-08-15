@@ -36,7 +36,7 @@
 							<?php foreach($listNgertiRak as $ngertirak){?>
 	                    	<div class="col-md-4 col-sm-4 col-xs-12">
 	                           <div class="item" style="box-shadow: 0 1px 10px #f44a56;">
-	                              <div class="latest-news-grid grid-1">
+	                              <div class="latest-news-grid grid-1" style="height: 486px;">
 	                                 <div class="picture">
 	                                    <div class="category-image">
 	                                       
