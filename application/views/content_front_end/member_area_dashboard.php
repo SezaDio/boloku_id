@@ -48,21 +48,21 @@
 	                                <table class="table">
 	                                	<tr>
 	                                		<td style="padding: inherit;">
-                                				<a id="dashboard-member" style="text-align: left; width: 100%;" href="javascript:void(0)" class="btn btn-colored-blog-member-area">
+                                				<a id="dashboard-member" style="text-align: left; width: 100%;" href="javascript:void(0)" class="btn btn-colored-blog-member-area" onclick="closeEdit()">
                                 					<i class="glyphicon glyphicon-dashboard"></i> My Published Event
                                 				</a>
 	                                		</td>
 	                                	</tr>
 	                                	<tr>
 	                                		<td style="padding: inherit;">
-	                                			<a id="tambah-event" style="text-align: left; width: 100%;" href="javascript:void(0)" class="btn btn-colored-blog-member-area">
+	                                			<a id="tambah-event" style="text-align: left; width: 100%;" href="javascript:void(0)" class="btn btn-colored-blog-member-area" onclick="closeEdit()">
 	                                				<i class="glyphicon glyphicon-plus"></i> Buat Event Baru 
 	                                			</a>
 	                                		</td>
 	                                	</tr>
 	                                	<tr>
 	                                		<td style="padding: inherit;">
-	                                			<a id="edit-profil" style="text-align: left; width: 100%;" href="javascript:void(0)" class="btn btn-colored-blog-member-area">
+	                                			<a id="edit-profil" style="text-align: left; width: 100%;" href="javascript:void(0)" class="btn btn-colored-blog-member-area" onclick="closeEdit()">
 	                                				<i class="glyphicon glyphicon-pencil"></i> Edit Profilmu
 	                                			</a>
 	                                		</td>
@@ -85,6 +85,7 @@
 	                          	<!--Content menu riwayat event member-->
 	                            <div id="dashboard-content" class="detail">
 	                             	<div class="col-md-12">
+										
 	                            		<?php 
 	                            			if($this->session->flashdata('msg_berhasil')!=''){?>
 							                <div class="alert alert-success alert-dismissable">
@@ -384,6 +385,7 @@
 														<label><input style="opacity: 1;" type="radio" name="pendaftaran" value=0 required >Tidak</label>
 													</div>
 													<div class="col-md-6">
+														
 			                                            <label for="exampleInputFile">Unggah File Gambar Poster :</label>
 			                                            <div class="input-group">
 			                                                <input class="form" type="file" name="filefoto" required >
@@ -544,27 +546,48 @@
 	                             	</div>
 	                             	<div class="col-md-12 col-sm-8 col-xs-12 nopadding" style="padding:10px;"">
 					                  <div class="contact-form">
-					                      
+					                    <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaComing/edit_event/');?>" method="POST">  
 					                        <div class="col-md-12 col-sm-6 col-xs-12">
 					                           <div class="form-group">
+												  <label for="exampleInputEmail1">Nama Event :</label><br>
 					                              <input id="edit_nama" name="edit_nama_event" class="form-control" required type="text" > 
 					                           </div>
-
+											   <div class="row">
+													<div class="col-md-4">
+														<div class="form-group">
+															<label for="exampleInputEmail1">Institusi Penyelenggara :</label><br>
+															<input required type="text" name="edit_institusi" id="edit_institusi" class="form-control">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label for="exampleInputEmail1">Email :</label><br>
+															<input required type="email" name="edit_email" id="edit_email" class="form-control">
+														</div>
+													</div>
+													<div class="col-md-4">
+														<div class="form-group">
+															<label for="exampleInputEmail1">Telepon :</label><br>
+															<input required type="number" name="edit_telepon" id="edit_telepon" class="form-control">
+														</div>
+													</div>
+											   </div>
 					                           <div class="row">
 						                            <div class="col-md-2">
 			                                            <label for="exampleInputEmail1">Jenis Event   :</label>
 			                                        </div>
+													
 			                                        <div class="col-md-4">
 		                                                <label>
-		                                                    <input style="opacity: 1;" type="radio" name="jenis_event" value=1 required onclick="gratis()" id="edit_jenis_gratis">
+		                                                    <input style="opacity: 1;" type="radio" name="edit_jenis_event" value=1 required onclick="gratis2()" id="edit_jenis_gratis">
 		                                                     Gratis
 		                                                </label>
 		                                                <label>
-		                                                    <input style="opacity: 1;" type="radio" name="jenis_event" value=0 required onclick="bayar()" id="edit_jenis_berbayar">
+		                                                    <input style="opacity: 1;" type="radio" name="edit_jenis_event" value=0 required onclick="bayar2()" id="edit_jenis_berbayar">
 		                                                     Berbayar
 		                                                </label><br>
-		                                                <div class="form-group" id="form_harga" style="display:none">
-				                                            <input type="number" placeholder="Harga Tiket Masuk"	name="harga" class="form-control" id="edit_harga"> 
+		                                                <div class="form-group" id="edit_jenis_event" style="display:none">
+				                                            <input type="number" placeholder="Harga Tiket Masuk"	name="edit_harga" class="form-control" id="edit_harga"> 
 				                                        </div>
 			                                        </div>
 			                                       
@@ -573,15 +596,15 @@
 			                                        </div>
 			                                        <div class="col-md-4">
 		                                                <label>
-		                                                    <input style="opacity: 1;" type="radio" name="seat" value=1 required onclick="limitedSeat()" id="edit_seat_limit">
+		                                                    <input style="opacity: 1;" type="radio" name="edit_seat" value=1 required onclick="limitedSeat2()" id="edit_seat_limit">
 		                                                     Limited Seat
 		                                                </label>
 		                                                <label>
-		                                                    <input style="opacity: 1;" type="radio" name="seat" value=0 required onclick="openSeat()" id="edit_seat_open">
+		                                                    <input style="opacity: 1;" type="radio" name="edit_seat" value=0 required onclick="openSeat2()" id="edit_seat_open">
 		                                                     Open Seat
 		                                                </label>
-		                                                <div class="form-group" id="limitedseat" style="display:none">
-				                                            <input placeholder="Jumlah Seat" type="number" 	name="jumlah_seat" class="form-control" id="exampleInputEmail1" id="edit_jumlah_seat"> 
+		                                                <div class="form-group" id="edit_seat" style="display:none">
+				                                            <input placeholder="Jumlah Seat" type="number" 	name="edit_jumlah_seat" class="form-control" id="edit_jumlah_seat"> 
 				                                        </div>
 			                                        </div>
 				                                    
@@ -592,6 +615,21 @@
 		                                        <div class="row">
 		                                        	<div class="col-md-6">
 				                                        <div class="form-group">
+				                                            <label for="exampleInputEmail1">Tipe Event  :</label><br>
+				                                            <select name="edit_tipe" required class="form-control" id="kategori">
+				                                                <option value="">--Pilih Tipe Event--</option>
+				                                                <?php
+				                                                    foreach ($tipe_event as $key=>$tipe) 
+				                                                    {
+				                                                      
+				                                                        echo '<option value="'.$key.'" id="tipe_'.$key.'">'.$tipe.'</option>';   
+				                                                    }
+				                                                ?>
+				                                            </select>
+				                                        </div>
+				                                    </div>
+													<div class="col-md-6">
+				                                        <div class="form-group">
 				                                            <label for="exampleInputEmail1">Kategori Event  :</label><br>
 				                                            <select name="edit_kategori" required class="form-control" id="kategori">
 				                                                <option value="">--Pilih Kategori Event--</option>
@@ -601,22 +639,6 @@
 				                                                        
 				                                                        echo '<option value="'.$key.'" id="kategori_'.$key.'">'.$kategori.'</option>';   
 				                                                        
-				                                                    }
-				                                                ?>
-				                                            </select>
-				                                        </div>
-				                                    </div>
-
-				                                    <div class="col-md-6">
-				                                        <div class="form-group">
-				                                            <label for="exampleInputEmail1">Tipe Event  :</label><br>
-				                                            <select name="edit_tipe" required class="form-control" id="kategori">
-				                                                <option value="">--Pilih Tipe Event--</option>
-				                                                <?php
-				                                                    foreach ($tipe_event as $key=>$tipe) 
-				                                                    {
-				                                                      
-				                                                        echo '<option value="'.$key.'" id="tipe_'.$key.'">'.$tipe.'</option>';   
 				                                                    }
 				                                                ?>
 				                                            </select>
@@ -675,13 +697,8 @@
 			                                    </div>
 
 			                                    <div class="row">
-		                                        	<div class="col-md-4">
-				                                        <div class="form-group">
-				                                            <label for="exampleInputEmail1">Institusi Penyelenggara :</label><br>
-															<input type="text" name="edit_institusi" id="edit_institusi" class="form-control">
-				                                        </div>
-				                                    </div>
-													<div class="col-md-4">
+		                                        	
+													<div class="col-md-6">
 				                                        <div class="form-group">
 				                                            <label for="exampleInputEmail1">Kota Lokasi Event :</label><br>
 															<input type="text" name="edit_kota" id="edit_kota" class="form-control">
@@ -698,8 +715,18 @@
 				                                            </select>-->
 				                                        </div>
 				                                    </div>
+													<div class="col-md-6">
+				                                        <div class="form-group">
+				                                            <label for="exampleInputEmail1">Alamat  :</label><br>
+															<input type="text" name="edit_alamat" id="edit_alamat" class="form-control">
+				                                        </div>
+				                                    </div>
 													
-													<div class="col-md-4">
+				                                    
+				                                </div>
+												<div class="row">													
+													
+													<div class="col-md-6">
 														
 														<label for="exampleInputEmail1">Gunakan fasilitas pendaftaran ? </label><br>
 														<input style="opacity: 1;" type="radio" name="edit_pendaftaran" value=1 required id="edit_pendaftaran_ya"><label>Ya</label>&nbsp&nbsp&nbsp&nbsp
@@ -707,21 +734,23 @@
 														
 														
 													</div>
-				                                    
-				                                </div>
-												<div class="row">													
 													<div class="col-md-6">
-				                                        <div class="form-group">
-				                                            <label for="exampleInputEmail1">Alamat  :</label><br>
-															<input type="text" name="edit_alamat" id="edit_alamat" class="form-control">
-				                                        </div>
-				                                    </div>
-													<div class="col-md-6">
-			                                            <label for="exampleInputFile">Unggah File Gambar Poster :</label>
-			                                            <div class="input-group">
-			                                                <input class="form" type="file" name="filefoto" required >
-			                                            </div>
-			                                            <p style="margin-top: auto; font-size: 1.0em; color:red;">*Tipe file diizinkan: jpg, jpeg, dan png (Max 2Mb)</p>
+														<label for="exampleInputEmail1">Poster Event</label><br>
+														<div class="row">
+															<div class="col-md-3">
+																<img alt="" id="gambar_event" >
+															</div>
+															<div class="col-md-9" id="trig_ganti_gambar" >
+																<a onclick="gantiGambar()"><label for="exampleInputEmail1">Ingin ganti poster ?</label></a>
+															</div>
+															<div class="col-md-9" id="ganti_gambar" style="display:none">
+																<label for="exampleInputFile">Unggah File Gambar Poster :</label>
+																<div class="input-group">
+																	<input class="form" type="file" name="filefoto">
+																</div>
+																<p style="margin-top: auto; font-size: 1.0em; color:red;">*Tipe file diizinkan: jpg, jpeg, dan png (Max 2Mb)</p>
+															</div>
+														</div>
 				                                    </div>
 												</div>
 											</div>
@@ -736,11 +765,11 @@
 					                           </div>
 					                           <div class="form-group">
 					                              
-					                              <button class="btn btn-colored-blog pull-right" onclick="simpanEvent()"><i class="glyphicon glyphicon-send"></i> Simpan Event</button>
+					                              <button class="btn btn-colored-blog pull-right" value="2" type="submit"><i class="glyphicon glyphicon-send"></i> Simpan Event</button>
 												  <button class="btn btn-colored-blog " onclick="batal()"><i class="glyphicon glyphicon-arrow-left"></i> Kembali</button>
 					                           </div>
 					                        </div>
-					                     
+					                    </form> 
 					                  </div>
 					               </div>
 	                             </div>
@@ -775,6 +804,25 @@
 				
 		function openSeat(){
 			document.getElementById("limitedseat").style.display = "none";
+		}
+		
+		function bayar2()
+	  	{
+			document.getElementById("edit_jenis_event").style.display = "block";
+		}
+				
+		function gratis2()
+		{
+			document.getElementById("edit_jenis_event").style.display = "none";
+		}
+
+		function limitedSeat2()
+		{
+			document.getElementById("edit_seat").style.display = "block";
+		}
+				
+		function openSeat2(){
+			document.getElementById("edit_seat").style.display = "none";
 		}
 
 		// Script untuk onchange ganti gambar
@@ -834,6 +882,11 @@
 			
 		}
 		
+		function gantiGambar(){
+			document.getElementById("ganti_gambar").style.display = "block";
+			document.getElementById("trig_ganti_gambar").style.display = "none";
+		}
+		
 		function validate_passlama() {
 		
 		  var password1 = $("#passwordlama").val();
@@ -868,10 +921,17 @@
 			
 			
 		}
+		function closeEdit(){
+			document.getElementById("kolom1").style.display = "block";
+			document.getElementById("kolom2").style.display = "none";
+		}
+		
 		
 		function editEvent(id_event){
 			document.getElementById("kolom1").style.display = "none";
 			document.getElementById("kolom2").style.display = "block";
+			var getUrl = window.location;
+			var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
 			$.ajax({
 			url: '../KelolaComing/get_data_event',	
 			type: 'POST',
@@ -902,7 +962,6 @@
 						var alamat = dataEvent.alamat;
 						var path_gambar = dataEvent.path_gambar;
 						
-
 						$("#nama_event").text(nama_event);
 						$("#edit_id_event").val(id_event);
 						$("#edit_nama").val(nama_event);
@@ -918,9 +977,12 @@
 						$("#edit_deskripsi_event").val(deskripsi_event);
 						$("#edit_alamat").val(alamat);
 						$("#edit_institusi").val(institusi);
+						$("#edit_email").val(email);
+						$("#edit_telepon").val(telepon);
+						$("#gambar_event").attr("src",""+baseUrl+"/asset/upload_img_coming/thumb83_"+path_gambar+"");
 						
 						/*edit jenis event*/
-						if (jenis_event==0){document.getElementById("edit_jenis_berbayar").checked = true;} 
+						if (jenis_event==0){document.getElementById("edit_jenis_berbayar").checked = true; document.getElementById("edit_jenis_event").style.display = "block";} 
 						else {document.getElementById("edit_jenis_gratis").checked = true;}
 						
 						/*edit harga*/
@@ -928,14 +990,13 @@
 						
 						/*edit jenis event*/
 						if (seat==0){document.getElementById("edit_seat_open").checked = true;} 
-						else {document.getElementById("edit_seat_limit").checked = true;}
-							
+						else {document.getElementById("edit_seat_limit").checked = true; document.getElementById("edit_seat").style.display = "block";}
+						
 						/*edit pendaftaran*/
 						if (pendaftaran==1){document.getElementById("edit_pendaftaran_ya").checked = true;} 
 						else {document.getElementById("edit_pendaftaran_tidak").checked = true;}
 						
-						
-						/*edit harga*/
+						/*edit seat*/
 						$("#edit_jumlah_seat").val(jumlah_seat);
 						
 						$(document).ready( function () {
@@ -999,7 +1060,7 @@
 				jam_mulai : $("#edit_jam_mulai").val(),
 				jam_selesai : $("#edit_jam_selesai").val(),
 				institusi : $("#edit_institusi").val(),
-				kota_lokasi : $("#edit_kota").val(),
+				id_lokasi : $("#edit_kota").val(),
 				alamat : $("#edit_alamat").val(),
 				deskripsi_coming : $("#edit_deskripsi_event").val(),
 				
@@ -1010,9 +1071,8 @@
 			type: 'POST',
 			data: {id_event:id_event,dataEvent:dataEvent},
 			dataType: "json",
-			success: function(data){
-				alert('Data event berhasil di update');	
-				location.reload();
+			success: function(data1){
+				alert(data1);	
 			}
 			});
 			
@@ -1020,7 +1080,7 @@
 		
 		$(document).ready(function() {
 		  $("#username").keyup(validateUsername);
-	  });
+		});
 	  
 	  function validateUsername() {
 		

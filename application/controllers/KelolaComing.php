@@ -565,10 +565,116 @@ class KelolaComing extends CI_Controller {
 		$this->load->view('skin/admin/footer_admin');
 	}
 	
+	public function edit_event() 
+	{
+		$this->load->model('coming_models/ComingModels');
+		$this->load->library('form_validation');
+
+		
+			$id_coming = $this->input->post('edit_id_event');
+
+			$this->form_validation->set_rules('edit_nama_event', 'Judul', 'required');
+			$this->form_validation->set_rules('edit_kategori', 'Kategori', 'required');
+			$this->form_validation->set_rules('edit_tipe', 'Tipe', 'required');
+			$this->form_validation->set_rules('edit_tgl_mulai', 'Tanggal Mulai', 'required');
+			$this->form_validation->set_rules('edit_tgl_selesai', 'Tanggal Selesai', 'required');
+			$this->form_validation->set_rules('edit_jam_mulai', 'Jam', 'required');
+			$this->form_validation->set_rules('edit_jam_selesai', 'Jam', 'required');
+			$this->form_validation->set_rules('edit_deskripsi_coming', 'Deskripsi', 'required');
+			$this->form_validation->set_rules('nama_member', 'Posted', 'required');
+			$this->form_validation->set_rules('edit_institusi', 'Institusi', 'required');
+			//$this->form_validation->set_rules('edit_kota', 'Kota Lokasi', 'required');
+			//$this->form_validation->set_rules('edit_telepon', 'Telepon', 'required');
+			//$this->form_validation->set_rules('edit_email', 'Email', 'required');
+			$this->form_validation->set_rules('edit_alamat', 'Alamat', 'required');
+
+			//Mengambil filename gambar untuk disimpan
+			$nmfile = "file_".time();
+			$config['upload_path'] = './asset/upload_img_coming/';
+			$config['allowed_types'] = 'jpg|png|jpeg';
+			$config['max_size'] = '4000'; //kb
+			$config['file_name'] = $nmfile;
+			
+			$seat=$this->input->post('edit_seat');
+			if($seat==1){
+				$jumlah_seat=$this->input->post('edit_jumlah_seat');
+			} else{
+				$jumlah_seat=0;
+			}
+			
+			$jenis_event=$this->input->post('edit_jenis_event');
+			if($jenis_event==0){
+				$harga=$this->input->post('edit_harga');
+			} else{
+				$harga=0;
+			}
+			
+			$data_coming=array(
+							'nama_coming'=>$this->input->post('edit_nama_event'),
+							'jenis_event'=>$this->input->post('edit_jenis_event'),
+							'harga'=>$harga,
+							'kategori_coming'=>$this->input->post('edit_kategori'),
+							'tipe_event'=>$this->input->post('edit_tipe'),
+							'institusi'=>$this->input->post('edit_institusi'),
+							'telepon'=>$this->input->post('edit_telepon'),
+							'email'=>$this->input->post('edit_email'),
+							'tgl_mulai'=>$this->input->post('edit_tgl_mulai'),
+							'tgl_selesai'=>$this->input->post('edit_tgl_selesai'),
+							'jam_mulai'=>$this->input->post('edit_jam_mulai'),
+							'jam_selesai'=>$this->input->post('edit_jam_selesai'),
+							'deskripsi_coming'=>$this->input->post('edit_deskripsi_coming'),
+							'pendaftaran'=>$this->input->post('edit_pendaftaran'),
+							'id_lokasi'=>$this->input->post('edit_kota'),
+							'alamat'=>$this->input->post('edit_alamat'),
+							'seat'=>$seat,
+							'jumlah_seat'=>$jumlah_seat,
+							//'path_gambar'=>NULL,
+							'posted_by'=>$this->input->post('posted_by')
+							);
+			$data['dataComing'] = $data_coming;
+
+			//value id_koridor berisi beberapa data, sehingga dilakukan split dengan explode
+			if (($this->form_validation->run() == TRUE))
+			{
+				$gbr = NULL;
+				$iserror = false;
+				if ((!empty($_FILES['filefoto']['name']))) {
+					
+					$this->load->library('upload', $config);
+					if($this->upload->do_upload('filefoto'))
+					{
+						//echo "Masuk";
+						$gbr = $this->upload->data();
+						$this->crop($gbr['full_path'],$gbr['file_name']);
+						$data_coming['path_gambar'] = $gbr['file_name'];
+					}
+					else
+					{
+						$this->session->set_flashdata('msg_gagal', 'Data Event gagal diperbaharui');
+						$iserror = true;
+					}
+
+				}
+				if (!$iserror) {
+					$this->db->update('coming', $data_coming, array('id_coming'=>$id_coming));
+					$this->session->set_flashdata('msg_berhasil', 'Data Event berhasil diperbaharui');
+					redirect(site_url('KelolaMember/dashboard_member'));
+				}
+			}
+			else
+			{
+				echo validation_errors();
+				$this->session->set_flashdata('msg_gagal', 'Data Event gagal diperbaharui');
+				//redirect(site_url('KelolaMember/dashboard_member'));
+			}
+		
+	}
+	
 	function crop($img,$filename){
 		
 		$name = $img;
 		$myImage = imagecreatefromjpeg($name);
+		$myImage83 = imagecreatefromjpeg($name);
 		list($width, $height) = getimagesize($name);
 		//get percent to resize to 900x550
 		if($width<=$height){
@@ -580,6 +686,16 @@ class KelolaComing extends CI_Controller {
 				$newwidth = $newwidth * $percent2;
 				$newheight = $newheight * $percent2;
 			}
+			
+			$percent83 = 83/$width;
+			$newwidth83 = $width * $percent83;
+			$newheight83 = $height * $percent83;
+			if($newheight83<83){
+				$percent83b = 83/$newheight83;
+				$newwidth83 = $newwidth83 * $percent83b;
+				$newheight83 = $newheight83 * $percent83b;
+			}
+			
 		} else {
 			$percent = 550/$height;
 			$newwidth = $width * $percent;
@@ -589,25 +705,45 @@ class KelolaComing extends CI_Controller {
 				$newwidth = $newwidth * $percent2;
 				$newheight = $newheight * $percent2;
 			}
+			
+			$percent83 = 83/$height;
+			$newwidth83 = $width * $percent83;
+			$newheight83 = $height * $percent83;
+			if($newwidth83<83){
+				$percent83b = 83/$newwidth83;
+				$newwidth83 = $newwidth83 * $percent83b;
+				$newheight83 = $newheight83 * $percent83b;
+			}
 		}
 		
 		
 		// resize image
 		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		$thumb83 = imagecreatetruecolor($newwidth83, $newheight83);
 		imagecopyresized($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		imagecopyresized($thumb83, $myImage83, 0, 0, 0, 0, $newwidth83, $newheight83, $width, $height);
 		imagejpeg($thumb,"./asset/upload_img_coming/resize_".$filename);
+		imagejpeg($thumb83,"./asset/upload_img_coming/resize83_".$filename);
 		
 		// crop thumb
 		$imgThumb = './asset/upload_img_coming/resize_'.$filename;
+		$imgThumb83 = './asset/upload_img_coming/resize83_'.$filename;
 		$myThumb = imagecreatefromjpeg($imgThumb);
+		$myThumb83 = imagecreatefromjpeg($imgThumb83);
 		list($width, $height) = getimagesize($imgThumb);
+		list($width83, $height83) = getimagesize($imgThumb83);
 		$myThumbCrop =  imagecreatetruecolor(800, 550);
+		$myThumbCrop83 =  imagecreatetruecolor(83,83);
 		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
+		imagecopyresampled($myThumbCrop83,$myThumb83,0,0,0,0 ,$width83,$height83,$width83,$height83);
 		unlink('./asset/upload_img_coming/resize_'.$filename);
+		unlink('./asset/upload_img_coming/resize83_'.$filename);
 		 
 		// Save the two images created
 		$fileName="thumb_".$filename;
+		$fileName83="thumb83_".$filename;
 		imagejpeg( $myThumbCrop,"./asset/upload_img_coming/".$fileName );
+		imagejpeg( $myThumbCrop83,"./asset/upload_img_coming/".$fileName83 );
 		
 	}
 	
@@ -713,12 +849,12 @@ class KelolaComing extends CI_Controller {
 		//print_r($data);
         $get_event=$this->db->where($data)->order_by('tgl_mulai','DESC')->get('coming');
         //$get_event=$this->db->query('SELECT * FROM `coming` WHERE '.$data.' ORDER BY tgl_mulai DESC');
-			
+		$this->load->model('coming_models/ComingModels');
         $this->load->helper('xml');
 		$xml_out = '<events>';
         if ($get_event->num_rows()>0) {
             foreach ($get_event->result() as $row_event) {
-				
+				$nama_lokasi = $this->ComingModels->select_by_id_kota($row_event->id_lokasi);
 				$tanggal = date("j", strtotime($row_event->tgl_mulai));
 	            $bulan = date("M", strtotime($row_event->tgl_mulai));
 				$deskripsi=strip_tags($row_event->deskripsi_coming);
@@ -737,6 +873,7 @@ class KelolaComing extends CI_Controller {
 				$xml_out .= 'tanggal="' . xml_convert(($tanggal)) . '" ';
                 $xml_out .= 'bulan="' . xml_convert(($bulan)) . '" ';
                 $xml_out .= 'id_lokasi="' . xml_convert(($row_event->id_lokasi)) . '" ';
+                $xml_out .= 'nama_lokasi="' . xml_convert($nama_lokasi) . '" ';
                 $xml_out .= 'path_gambar="' . xml_convert(($row_event->path_gambar)) . '" ';
                 $xml_out .= '/>';
             }
@@ -763,7 +900,7 @@ class KelolaComing extends CI_Controller {
 				$data_event = $_POST['dataEvent'];
 				$this->db->where('id_coming',$id_event);
 				$this->db->update('coming',$data_event);
-				redirect(site_url()	);
+				echo "data berhasil di update";
 			}
 		
 		}

@@ -27,7 +27,7 @@
 					</div><br/>
 					<div class="form-group">                     
                         <select name="cari_by_lokasi" placeholder="Lokasi Event" required class="form-control" id="cari_lokasi">
-                            <option value="">--Pilih Lokasi Kota--</option>
+                            <option value="All">--Pilih Lokasi Kota--</option>
                             <?php
                                 foreach ($kotaLokasi as $key=>$kota) 
                                 {
@@ -295,7 +295,6 @@
 		var tipe = $("#cari_tipe").val();
 		var date = $("#cari_date").val();
 		var harga = $("#cari_harga").val();
-		
 		$.post('<?php echo site_url('KelolaComing/cari_event/'); ?>', {nama:nama,lokasi:lokasi,kategori:kategori,tipe:tipe,date:date,harga:harga}, function(dataEvent){
 		
 			var xml = parseXml(dataEvent);
@@ -331,6 +330,7 @@
 			  var bulan = getEvent[i].getAttribute("bulan");
 			  var jenis_event = getEvent[i].getAttribute("jenis_event");
 			  var path_gambar = getEvent[i].getAttribute("path_gambar");
+			  var nama_lokasi = getEvent[i].getAttribute("nama_lokasi");
 			  		  
 			  var jenis='';
 			  if (jenis_event==0) {jenis += 'Berbayar';}
