@@ -137,7 +137,7 @@
 			  if (kategori=='Lain-Lain') {label += '<a href="#" class=" btn btn-red"><div>Lain-Lain</div></a>';}
 			  
 			  var getUrl = window.location;
-			  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+			  var baseUrl = getUrl .protocol + "//" + getUrl.pathname.split('/')[1];
 			  
 			  
 			  

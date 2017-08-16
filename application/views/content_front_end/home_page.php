@@ -696,7 +696,8 @@
 	
 	function byLabel(label,value){
 		var getUrl = window.location;
-		var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+		var baseUrl = getUrl .protocol + "//"+ getUrl.pathname.split('/')[1];
+		
 		$.ajax({
 				url: ''+baseUrl+'/FrontControl_Event/get_labelvalue',
 				type: 'POST',

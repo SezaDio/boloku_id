@@ -101,7 +101,7 @@
 	function verifikasi_bayar(id_pendaftar){
 		$.post('<?php echo site_url('KelolaPendaftar/verifikasi_bayar/'); ?>'+id_pendaftar, function(dataPendaftar){
 			var getUrl = window.location;
-			var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+			var baseUrl = getUrl .protocol + "//"+ getUrl.pathname.split('/')[1];
 			var xml = parseXml(dataPendaftar);
 			var getPendaftar = xml.documentElement.getElementsByTagName("pendaftar");
 			var divhasil='';

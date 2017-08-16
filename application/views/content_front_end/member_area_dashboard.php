@@ -931,7 +931,7 @@
 			document.getElementById("kolom1").style.display = "none";
 			document.getElementById("kolom2").style.display = "block";
 			var getUrl = window.location;
-			var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+			var baseUrl = getUrl .protocol + "//"+ getUrl.pathname.split('/')[1];
 			$.ajax({
 			url: '../KelolaComing/get_data_event',	
 			type: 'POST',
