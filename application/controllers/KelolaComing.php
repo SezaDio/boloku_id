@@ -259,7 +259,7 @@ class KelolaComing extends CI_Controller {
 	 			}
 	 		}
 		}
-
+		$data['kotaLokasi'] = $this->ComingModels->kota_lokasi();
 		$data['kategori_coming']= $kategori_coming;
 		$data['tipe_event']= $tipe_event;
 		$data['jam_event']= $jam_event;
@@ -295,6 +295,8 @@ class KelolaComing extends CI_Controller {
 			$this->form_validation->set_rules('jam_selesai', 'Jam', 'required');
 			$this->form_validation->set_rules('deskripsi_coming', 'Deskripsi', 'required');
 			$this->form_validation->set_rules('seat', 'Seat', 'required');
+			$this->form_validation->set_rules('kota', 'Lokasi Kota', 'required');
+			$this->form_validation->set_rules('alamat', 'Alamat', 'required');
 
 			//Mengambil filename gambar untuk disimpan
 			$nmfile = "file_".time();
@@ -329,6 +331,8 @@ class KelolaComing extends CI_Controller {
 						'seat'=> $seat,
 						'jumlah_seat'=> $jumlah_seat,
 						'top_event'=> 2,
+						'id_lokasi'=>$this->input->post('kota'),
+						'alamat'=>$this->input->post('alamat'),
 						'status'=>1
 					);
 					$data['dataComing'] = $data_coming;
@@ -432,7 +436,7 @@ class KelolaComing extends CI_Controller {
 	 			}
 	 		}
 		}
-
+		$data['kotaLokasi'] = $this->ComingModels->kota_lokasi();
 		$data['kategori_coming']= $kategori_coming;
 		$data['tipe_event']= $tipe_event;
 		$data['jam_event']= $jam_event;
@@ -452,6 +456,8 @@ class KelolaComing extends CI_Controller {
 			$this->form_validation->set_rules('institusi', 'Institusi', 'required');
 			$this->form_validation->set_rules('telepon', 'Telepon', 'required');
 			$this->form_validation->set_rules('email', 'Email', 'required');
+			$this->form_validation->set_rules('kota', 'Kota Lokasi', 'required');
+			$this->form_validation->set_rules('alamat', 'Alamat', 'required');
 
 			//Mengambil filename gambar untuk disimpan
 			$nmfile = "file_".time();
@@ -491,6 +497,8 @@ class KelolaComing extends CI_Controller {
 							'pendaftaran'=>$this->input->post('pendaftaran'),
 							'seat'=>$seat,
 							'jumlah_seat'=>$jumlah_seat,
+							'id_lokasi'=>$this->input->post('kota'),
+							'alamat'=>$this->input->post('alamat'),							
 							//'path_gambar'=>NULL,
 							'posted_by'=>$this->input->post('posted_by')
 							);
@@ -551,6 +559,8 @@ class KelolaComing extends CI_Controller {
 							'posted_by'=>$data['coming']->posted_by,
 							'seat'=>$data['coming']->seat,
 							'jumlah_seat'=>$data['coming']->jumlah_seat,
+							'id_lokasi'=>$data['coming']->id_lokasi,
+							'alamat'=>$data['coming']->alamat,
 							'top_event'=>$data['coming']->top_event,
 							'pendaftaran'=>$data['coming']->pendaftaran,
 							'path_gambar'=> $data['coming']->path_gambar

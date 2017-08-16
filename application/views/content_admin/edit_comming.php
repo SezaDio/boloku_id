@@ -262,7 +262,34 @@
                                                 }
                                             ?>"> 
                                         </div>
+										<div class="form-group">
+											<label>Kota Lokasi :</label>
+											<select name="kota" required class="form-control" id="kota" >
+												<option value="">--Pilih Kota Lokasi--</option>
+												<?php
+													foreach ($kotaLokasi as $key=>$kota) 
+													{
+														if($dataComing['id_lokasi']==$key){
+															echo '<option value="'.$key.'" selected="selected">'.$kota['lokasi_nama'].'</option>';   
+														} else{
+															echo '<option value="'.$key.'">'.$kota['lokasi_nama'].'</option>';   
+														}
+														
+													}
+												?>
+											</select>
+                                        </div>
 										
+										
+										<div class="form-group">
+                                            <label for="exampleInputEmail1">Alamat  :</label>
+                                            <input type="text" required name="alamat" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['alamat']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['alamat']);
+                                                }
+                                            ?>"> 
+                                        </div>
 										
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Apakah anda ingin menggunakan fasilitas pendaftaran kami ?</label>

@@ -701,18 +701,18 @@
 													<div class="col-md-6">
 				                                        <div class="form-group">
 				                                            <label for="exampleInputEmail1">Kota Lokasi Event :</label><br>
-															<input type="text" name="edit_kota" id="edit_kota" class="form-control">
-				                                            <!--<select name="kategori" required class="form-control" id="kategori">
-				                                                <option value="">--Pilih Kota--</option>
+															<select name="edit_kota" required class="form-control" id="edit_kota">
+				                                                <option value="">--Pilih Kota Lokasi--</option>
 				                                                <?php
-				                                                    /*foreach ($kategori_coming as $key=>$kategori) 
+				                                                    foreach ($kotaLokasi as $key=>$kota) 
 				                                                    {
 				                                                        
-				                                                        echo '<option value="'.$key.'">'.$kategori.'</option>';   
+				                                                        echo '<option value="'.$key.'" id="kota'.$key.'">'.$kota['lokasi_nama'].'</option>';   
 				                                                        
-				                                                    }*/
+				                                                    }
 				                                                ?>
-				                                            </select>-->
+				                                            </select>
+															
 				                                        </div>
 				                                    </div>
 													<div class="col-md-6">
@@ -956,12 +956,11 @@
 						var posted_by = dataEvent.posted_by;
 						var seat = dataEvent.seat;
 						var jumlah_seat	= dataEvent.jumlah_seat;
-						var kota_lokasi	= dataEvent.kota_lokasi;
+						var kota_lokasi	= dataEvent.id_lokasi;
 						var top_event = dataEvent.top_event;
 						var pendaftaran = dataEvent.pendaftaran;
 						var alamat = dataEvent.alamat;
 						var path_gambar = dataEvent.path_gambar;
-						
 						$("#nama_event").text(nama_event);
 						$("#edit_id_event").val(id_event);
 						$("#edit_nama").val(nama_event);
@@ -970,6 +969,7 @@
 						document.getElementById("tipe_"+tipe_event+"").selected = true;
 						document.getElementById("jam_mulai_"+jam_mulai+"").selected = true;
 						document.getElementById("jam_selesai_"+jam_selesai+"").selected = true;
+						document.getElementById("kota"+kota_lokasi+"").selected = true;
 						
 						$("#edit_kota").val(kota_lokasi);
 						$("#edit_tgl_mulai").val(tgl_mulai);

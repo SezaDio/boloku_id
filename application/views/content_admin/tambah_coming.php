@@ -228,6 +228,30 @@
                                                 }
                                             ?>"> 
                                         </div>
+										<div class="form-group">
+											<label>Kota Lokasi :</label>
+											<select name="kota" required class="form-control" id="kota" >
+												<option value="">--Pilih Kota Lokasi--</option>
+												<?php
+													foreach ($kotaLokasi as $key=>$kota) 
+													{
+														
+														echo '<option value="'.$key.'">'.$kota['lokasi_nama'].'</option>';   
+														
+													}
+												?>
+											</select>
+                                        </div>
+										
+										<div class="form-group">
+                                            <label for="exampleInputEmail1">Alamat  :</label>
+                                            <input required type="text" 	name="alamat" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                if (isset($dataComing['alamat']))
+                                                {
+                                                    echo htmlspecialchars($dataComing['alamat']);
+                                                }
+                                            ?>"> 
+                                        </div>
 
                                         <div class="form-group">
                                             <label for="exampleInputFile">Unggah File Gambar :</label>
