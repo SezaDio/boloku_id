@@ -251,7 +251,7 @@
 			  var value_tipe = "'"+tipe_event+"'";
 			  
 			  var getUrl = window.location;
-			  var baseUrl = getUrl .protocol + "//" + getUrl.pathname.split('/')[1];
+			  var baseUrl = getUrl .protocol + "//"+ getUrl.host;
 			  divkategori += '<div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">';
 	            divkategori += '<a href="'+baseUrl+'/FrontControl_Event/event_click/'+id_event+'">'
 	                divkategori += '<ul>';
@@ -344,7 +344,7 @@
 			  var value_tipe = "'"+tipe_event+"'";
 			  
 			  var getUrl = window.location;
-			  var baseUrl = getUrl .protocol + "//" + getUrl.pathname.split('/')[1];
+			  var baseUrl = getUrl .protocol + "//"+ getUrl.host;
 			  
 			  divkategori += '<div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">';
 	            divkategori += '<a href="'+baseUrl+'/FrontControl_Event/event_click/'+id_event+'">'

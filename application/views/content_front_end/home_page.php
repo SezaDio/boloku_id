@@ -696,14 +696,14 @@
 	
 	function byLabel(label,value){
 		var getUrl = window.location;
-		var baseUrl = getUrl .protocol + "//"+ getUrl.pathname.split('/')[1];
-		
+		var baseUrl = getUrl .protocol + "//"+ getUrl.host;
+      
 		$.ajax({
 				url: ''+baseUrl+'/FrontControl_Event/get_labelvalue',
 				type: 'POST',
 				data: {label:label,value:value},
 				success: function(){
-					window.location.href = "/boloku_id/FrontControl_Event";
+					window.location.href = "/FrontControl_Event";
 				}
 		});
 	}

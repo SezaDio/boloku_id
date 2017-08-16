@@ -137,11 +137,8 @@
 			  if (kategori=='Lain-Lain') {label += '<a href="#" class=" btn btn-red"><div>Lain-Lain</div></a>';}
 			  
 			  var getUrl = window.location;
-			  var baseUrl = getUrl .protocol + "//" + getUrl.pathname.split('/')[1];
-			  
-			  
-			  
-			  
+			  var baseUrl = getUrl .protocol + "//"+ getUrl.host;
+		 
 			  divkategori += '<div class="col-md-4 col-sm-4 col-xs-12">';
 	            divkategori += '<div class="item" style="box-shadow: 0 1px 10px #f44a56;">';
 	                divkategori += '<div class="latest-news-grid grid-1">';
