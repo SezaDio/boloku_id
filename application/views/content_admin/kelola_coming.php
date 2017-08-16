@@ -79,6 +79,7 @@
                                                         </tr>
                                                     <?php } ?>
                                             </tbody>
+											<input type="hidden" value="<?php echo $jumlahTop;?>" id="jumlah_top">
                                         </table>
                                     </div>
                                 </div><!-- /.box-body -->
@@ -90,20 +91,28 @@
             </aside><!-- /.right-side -->
 			<script>
 			function topEvent(idComing){
+					var jumlahTop = document.getElementById("jumlah_top").value;
 					var check = document.getElementById("coming"+idComing).checked;
 						if(check){
-							$.ajax({
-							url: 'top_event',
-							type: 'POST',
-							data: {idComing:idComing},
-							success: function(){
-										alert('Event berhasil menjadi Top Event');
-										location.reload();
-									},
-							error: function(){
-										alert('Event gagal menjadi Top Event');
-									}
-							});
+							if(jumlahTop < 3){
+								$.ajax({
+								url: 'top_event',
+								type: 'POST',
+								data: {idComing:idComing},
+								success: function(){
+											alert('Event berhasil menjadi Top Event');
+											location.reload();
+										},
+								error: function(){
+											alert('Event gagal menjadi Top Event');
+											
+										}
+								});
+							} else{
+								alert("Maksimal 3 Top Event !\nUbah salah satu event menjadi event biasa !");
+								location.reload();
+								
+							}
 						} else{
 							$.ajax({
 							url: 'untop_event',

@@ -18,7 +18,8 @@ class KelolaComing extends CI_Controller {
 	{
 		$this->load->model('coming_models/ComingModels');
 		$data['listComing'] = $this->ComingModels->get_data_coming();
-			
+		$data['jumlahTop'] = $this->ComingModels->jumlah_top();	
+		
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/kelola_coming', $data);

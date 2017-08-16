@@ -115,5 +115,12 @@
 			$namaKota = $this->db->get()->row();
 			return $namaKota->lokasi_nama;
 		}
+		
+		function jumlah_top()
+		{
+			$query = $this->db->where('top_event',1)->get('coming');
+				
+			return $query->num_rows();
+		}
 
 	}
