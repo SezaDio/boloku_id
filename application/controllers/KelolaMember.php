@@ -827,8 +827,28 @@ class KelolaMember extends CI_Controller {
 	function crop($img,$filename){
 		
 		$name = $img;
+		if(preg_match("/.jpg/i", "$name")){
 		$myImage = imagecreatefromjpeg($name);
 		$myImage83 = imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		$myImage = imagecreatefromjpeg($name);
+		$myImage83 = imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		$myImage = Imagecreatefromjpeg($name);
+		$myImage83 = Imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.png/i", "$name")){
+		$myImage = imagecreatefrompng($name);
+		$myImage83 = imagecreatefrompng($name);
+		
+		}
+		if(preg_match("/.gif/i", "$name")){
+		$myImage = imagecreatefromgif($name);
+		$myImage83 = imagecreatefromgif($name);
+		}
+		
 		list($width, $height) = getimagesize($name);
 		//get percent to resize to 900x550
 		if($width<=$height){
@@ -876,36 +896,100 @@ class KelolaMember extends CI_Controller {
 		$thumb83 = imagecreatetruecolor($newwidth83, $newheight83);
 		imagecopyresized($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 		imagecopyresized($thumb83, $myImage83, 0, 0, 0, 0, $newwidth83, $newheight83, $width, $height);
+		
+		if(preg_match("/.jpg/i", "$name")){
 		imagejpeg($thumb,"./asset/upload_img_coming/resize_".$filename);
 		imagejpeg($thumb83,"./asset/upload_img_coming/resize83_".$filename);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		imagejpeg($thumb,"./asset/upload_img_coming/resize_".$filename);
+		imagejpeg($thumb83,"./asset/upload_img_coming/resize83_".$filename);
+		}
+		if(preg_match("/.png/i", "$name")){
+		imagepng($thumb,"./asset/upload_img_coming/resize_".$filename);
+		imagepng($thumb83,"./asset/upload_img_coming/resize83_".$filename);
+		}
+		
+		
 		
 		// crop thumb
 		$imgThumb = './asset/upload_img_coming/resize_'.$filename;
 		$imgThumb83 = './asset/upload_img_coming/resize83_'.$filename;
+		
+		if(preg_match("/.jpg/i", "$name")){
 		$myThumb = imagecreatefromjpeg($imgThumb);
 		$myThumb83 = imagecreatefromjpeg($imgThumb83);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		$myThumb = imagecreatefromjpeg($imgThumb);
+		$myThumb83 = imagecreatefromjpeg($imgThumb83);
+		}
+		if(preg_match("/.png/i", "$name")){
+		$myThumb = imagecreatefrompng($imgThumb);
+		$myThumb83 = imagecreatefrompng($imgThumb83);
+		}
+		
+		
 		list($width, $height) = getimagesize($imgThumb);
 		list($width83, $height83) = getimagesize($imgThumb83);
 		$myThumbCrop =  imagecreatetruecolor(800, 550);
 		$myThumbCrop83 =  imagecreatetruecolor(83,83);
 		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
 		imagecopyresampled($myThumbCrop83,$myThumb83,0,0,0,0 ,$width83,$height83,$width83,$height83);
+		
+		if(preg_match("/.png/i", "$name")){
+		imagesavealpha($myThumbCrop, true);
+		imagesavealpha($myThumbCrop83, true);
+		$color = imagecolorallocatealpha($myThumbCrop, 0, 0, 0, 127);
+		$color83 = imagecolorallocatealpha($myThumbCrop83, 0, 0, 0, 127);
+		imagefill($myThumbCrop, 0, 0, $color);
+		imagefill($myThumbCrop83, 0, 0, $color83);
+		}
 		unlink('./asset/upload_img_coming/resize_'.$filename);
 		unlink('./asset/upload_img_coming/resize83_'.$filename);
 		 
 		// Save the two images created
 		$fileName="thumb_".$filename;
 		$fileName83="thumb83_".$filename;
+		
+		if(preg_match("/.jpg/i", "$name")){
 		imagejpeg( $myThumbCrop,"./asset/upload_img_coming/".$fileName );
 		imagejpeg( $myThumbCrop83,"./asset/upload_img_coming/".$fileName83 );
-		
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		imagejpeg( $myThumbCrop,"./asset/upload_img_coming/".$fileName );
+		imagejpeg( $myThumbCrop83,"./asset/upload_img_coming/".$fileName83 );
+		}
+		if(preg_match("/.png/i", "$name")){
+		imagepng( $myThumbCrop,"./asset/upload_img_coming/".$fileName );
+		imagepng( $myThumbCrop83,"./asset/upload_img_coming/".$fileName83 );
+		}
 	}
 	
 	function crop_member($img,$filename){
 		
 		$name = $img;
-		$myImage85 = imagecreatefromjpeg($name);
+		if(preg_match("/.jpg/i", "$name")){
 		$myImage = imagecreatefromjpeg($name);
+		$myImage85 = imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		$myImage = imagecreatefromjpeg($name);
+		$myImage85 = imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		$myImage = Imagecreatefromjpeg($name);
+		$myImage85 = Imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.png/i", "$name")){
+		$myImage = imagecreatefrompng($name);
+		$myImage85 = imagecreatefrompng($name);
+		
+		}
+		if(preg_match("/.gif/i", "$name")){
+		$myImage = imagecreatefromgif($name);
+		$myImage85 = imagecreatefromgif($name);
+		}
 		list($width, $height) = getimagesize($name);
 		//get percent to resize to 900x550
 		if($width<=$height){
@@ -952,28 +1036,69 @@ class KelolaMember extends CI_Controller {
 		$thumb85 = imagecreatetruecolor($newwidth85, $newheight85);
 		imagecopyresized($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 		imagecopyresized($thumb85, $myImage85, 0, 0, 0, 0, $newwidth85, $newheight85, $width, $height);
+		if(preg_match("/.jpg/i", "$name")){
 		imagejpeg($thumb,"./asset/upload_img_member/resize_".$filename);
 		imagejpeg($thumb85,"./asset/upload_img_member/resize85_".$filename);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		imagejpeg($thumb,"./asset/upload_img_member/resize_".$filename);
+		imagejpeg($thumb85,"./asset/upload_img_member/resize85_".$filename);
+		}
+		if(preg_match("/.png/i", "$name")){
+		imagepng($thumb,"./asset/upload_img_member/resize_".$filename);
+		imagepng($thumb85,"./asset/upload_img_member/resize85_".$filename);
+		}
 		
 		// crop thumb
 		$imgThumb = './asset/upload_img_member/resize_'.$filename;
 		$imgThumb85 = './asset/upload_img_member/resize85_'.$filename;
+		if(preg_match("/.jpg/i", "$name")){
 		$myThumb = imagecreatefromjpeg($imgThumb);
 		$myThumb85 = imagecreatefromjpeg($imgThumb85);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		$myThumb = imagecreatefromjpeg($imgThumb);
+		$myThumb85 = imagecreatefromjpeg($imgThumb85);
+		}
+		if(preg_match("/.png/i", "$name")){
+		$myThumb = imagecreatefrompng($imgThumb);
+		$myThumb85 = imagecreatefrompng($imgThumb85);
+		}
+		
 		list($width, $height) = getimagesize($imgThumb);
 		list($width85, $height85) = getimagesize($imgThumb85);
 		$myThumbCrop =  imagecreatetruecolor(800,550);
 		$myThumbCrop85 =  imagecreatetruecolor(300, 300);
 		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
 		imagecopyresampled($myThumbCrop85,$myThumb85,0,0,0,0 ,$width85,$height85,$width85,$height85);
+		
+		if(preg_match("/.png/i", "$name")){
+		imagesavealpha($myThumbCrop, true);
+		imagesavealpha($myThumbCrop85, true);
+		$color = imagecolorallocatealpha($myThumbCrop, 0, 0, 0, 127);
+		$color85 = imagecolorallocatealpha($myThumbCrop83, 0, 0, 0, 127);
+		imagefill($myThumbCrop, 0, 0, $color);
+		imagefill($myThumbCrop85, 0, 0, $color85);
+		}
 		unlink('./asset/upload_img_member/resize_'.$filename);
 		unlink('./asset/upload_img_member/resize85_'.$filename);
 		 
 		// Save the two images created
 		$fileName="thumb_".$filename;
 		$fileName85="thumb85_".$filename;
+		if(preg_match("/.jpg/i", "$name")){
 		imagejpeg( $myThumbCrop,"./asset/upload_img_member/".$fileName );
 		imagejpeg( $myThumbCrop85,"./asset/upload_img_member/".$fileName85 );
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		imagejpeg( $myThumbCrop,"./asset/upload_img_member/".$fileName );
+		imagejpeg( $myThumbCrop85,"./asset/upload_img_member/".$fileName85 );
+		}
+		if(preg_match("/.png/i", "$name")){
+		imagepng( $myThumbCrop,"./asset/upload_img_member/".$fileName );
+		imagepng( $myThumbCrop85,"./asset/upload_img_member/".$fileName85 );
+		}
+		
 		
 	}
 

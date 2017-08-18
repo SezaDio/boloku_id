@@ -96,7 +96,7 @@
 						if(check){
 							if(jumlahTop < 3){
 								$.ajax({
-								url: 'top_event',
+								url: 'KelolaComing/top_event',
 								type: 'POST',
 								data: {idComing:idComing},
 								success: function(){
@@ -115,7 +115,7 @@
 							}
 						} else{
 							$.ajax({
-							url: 'untop_event',
+							url: 'KelolaComing/untop_event',
 							type: 'POST',
 							data: {idComing:idComing},
 							success: function(){

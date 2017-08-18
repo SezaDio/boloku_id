@@ -516,6 +516,7 @@ class KelolaComing extends CI_Controller {
 						//echo "Masuk";
 						$gbr = $this->upload->data();
 						$this->crop($gbr['full_path'],$gbr['file_name']);
+						$this->crop_png($gbr['full_path'],$gbr['file_name']);
 						$data_coming['path_gambar'] = $gbr['file_name'];
 					}
 					else
@@ -683,8 +684,28 @@ class KelolaComing extends CI_Controller {
 	function crop($img,$filename){
 		
 		$name = $img;
+		if(preg_match("/.jpg/i", "$name")){
 		$myImage = imagecreatefromjpeg($name);
 		$myImage83 = imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		$myImage = imagecreatefromjpeg($name);
+		$myImage83 = imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		$myImage = Imagecreatefromjpeg($name);
+		$myImage83 = Imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.png/i", "$name")){
+		$myImage = imagecreatefrompng($name);
+		$myImage83 = imagecreatefrompng($name);
+		
+		}
+		if(preg_match("/.gif/i", "$name")){
+		$myImage = imagecreatefromgif($name);
+		$myImage83 = imagecreatefromgif($name);
+		}
+		
 		list($width, $height) = getimagesize($name);
 		//get percent to resize to 900x550
 		if($width<=$height){
@@ -732,28 +753,154 @@ class KelolaComing extends CI_Controller {
 		$thumb83 = imagecreatetruecolor($newwidth83, $newheight83);
 		imagecopyresized($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 		imagecopyresized($thumb83, $myImage83, 0, 0, 0, 0, $newwidth83, $newheight83, $width, $height);
+		
+		if(preg_match("/.jpg/i", "$name")){
 		imagejpeg($thumb,"./asset/upload_img_coming/resize_".$filename);
 		imagejpeg($thumb83,"./asset/upload_img_coming/resize83_".$filename);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		imagejpeg($thumb,"./asset/upload_img_coming/resize_".$filename);
+		imagejpeg($thumb83,"./asset/upload_img_coming/resize83_".$filename);
+		}
+		if(preg_match("/.png/i", "$name")){
+		imagepng($thumb,"./asset/upload_img_coming/resize_".$filename);
+		imagepng($thumb83,"./asset/upload_img_coming/resize83_".$filename);
+		}
+		
+		
 		
 		// crop thumb
 		$imgThumb = './asset/upload_img_coming/resize_'.$filename;
 		$imgThumb83 = './asset/upload_img_coming/resize83_'.$filename;
+		
+		if(preg_match("/.jpg/i", "$name")){
 		$myThumb = imagecreatefromjpeg($imgThumb);
 		$myThumb83 = imagecreatefromjpeg($imgThumb83);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		$myThumb = imagecreatefromjpeg($imgThumb);
+		$myThumb83 = imagecreatefromjpeg($imgThumb83);
+		}
+		if(preg_match("/.png/i", "$name")){
+		$myThumb = imagecreatefrompng($imgThumb);
+		$myThumb83 = imagecreatefrompng($imgThumb83);
+		}
+		
+		
 		list($width, $height) = getimagesize($imgThumb);
 		list($width83, $height83) = getimagesize($imgThumb83);
 		$myThumbCrop =  imagecreatetruecolor(800, 550);
 		$myThumbCrop83 =  imagecreatetruecolor(83,83);
 		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
 		imagecopyresampled($myThumbCrop83,$myThumb83,0,0,0,0 ,$width83,$height83,$width83,$height83);
+		
+		if(preg_match("/.png/i", "$name")){
+		imagesavealpha($myThumbCrop, true);
+		imagesavealpha($myThumbCrop83, true);
+		$color = imagecolorallocatealpha($myThumbCrop, 0, 0, 0, 127);
+		$color83 = imagecolorallocatealpha($myThumbCrop83, 0, 0, 0, 127);
+		imagefill($myThumbCrop, 0, 0, $color);
+		imagefill($myThumbCrop83, 0, 0, $color83);
+		}
 		unlink('./asset/upload_img_coming/resize_'.$filename);
 		unlink('./asset/upload_img_coming/resize83_'.$filename);
 		 
 		// Save the two images created
 		$fileName="thumb_".$filename;
 		$fileName83="thumb83_".$filename;
+		
+		if(preg_match("/.jpg/i", "$name")){
 		imagejpeg( $myThumbCrop,"./asset/upload_img_coming/".$fileName );
 		imagejpeg( $myThumbCrop83,"./asset/upload_img_coming/".$fileName83 );
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		imagejpeg( $myThumbCrop,"./asset/upload_img_coming/".$fileName );
+		imagejpeg( $myThumbCrop83,"./asset/upload_img_coming/".$fileName83 );
+		}
+		if(preg_match("/.png/i", "$name")){
+		imagepng( $myThumbCrop,"./asset/upload_img_coming/".$fileName );
+		imagepng( $myThumbCrop83,"./asset/upload_img_coming/".$fileName83 );
+		}
+		
+		
+	}
+	
+	
+	
+	function crop_png(){
+
+		$name = 'E:/Drive/qwini/Capture.jpg';
+		if(preg_match("/.jpg/i", "$name")){
+		$myImage = imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		$myImage = imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		$myImage = Imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.png/i", "$name")){
+		$myImage = imagecreatefrompng($name);
+		print_r("tes");
+		}
+		if(preg_match("/.gif/i", "$name")){
+		$myImage = imagecreatefromgif($name);
+		}
+		//$myImage = imagecreatefrompng($name);
+		list($width, $height) = getimagesize($name);
+		print_r($width);
+		//echo file_get_contents('E:/Drive/qwini/qwini_lingkaran.png');
+		if($width<=$height){
+			$percent = 800/$width;
+			$newwidth = $width * $percent;
+			$newheight = $height * $percent;
+			if($newheight<550){
+				$percent2 = 550/$newheight;
+				$newwidth = $newwidth * $percent2;
+				$newheight = $newheight * $percent2;
+			}
+			
+			
+		} else {
+			$percent = 550/$height;
+			$newwidth = $width * $percent;
+			$newheight = $height * $percent;
+			if($newwidth<800){
+				$percent2 = 800/$newwidth;
+				$newwidth = $newwidth * $percent2;
+				$newheight = $newheight * $percent2;
+			}
+			
+		}
+		
+		
+		// resize image
+		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		
+		imagecopyresized($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		
+		imagepng($thumb,"E:/Drive/qwini/resize.png");
+		
+		
+		// crop thumb
+		$imgThumb = 'E:/Drive/qwini/resize.png';
+		
+		$myThumb = imagecreatefrompng($imgThumb);
+		
+		list($width, $height) = getimagesize($imgThumb);
+		
+		$myThumbCrop =  imagecreatetruecolor(800, 550);
+		
+		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
+		imagesavealpha($myThumbCrop, true);
+		$color = imagecolorallocatealpha($myThumbCrop, 0, 0, 0, 127);
+		imagefill($myThumbCrop, 0, 0, $color);
+		
+		// Save the two images created
+		
+		
+		imagepng( $myThumbCrop,"E:/Drive/qwini/coba.png" );
+		
 		
 	}
 	
@@ -928,4 +1075,6 @@ class KelolaComing extends CI_Controller {
 		}
 			
 	}
+	
+	
 }
