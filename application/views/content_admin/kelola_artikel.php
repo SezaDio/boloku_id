@@ -38,6 +38,7 @@
                                                     <th class="title-center" style="font-size:1em; text-align:center;">No.</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Judul Artikel</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Penulis Artikel</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Hits</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Waktu Posting</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Aksi</th>
                                                 </tr>
@@ -50,8 +51,12 @@
                                                             <td style="text-align: center;"><?php echo $item['id_artikel'] ?></td>
                                                             <td><?php echo $item['judul_artikel'] ?></td>
                                                             <td><?php echo $item['penulis_artikel'] ?></td>
+                                                            <td><?php echo $item['hits'] ?></td>
                                                             <td><?php echo $item['tanggal_posting'] ?></td>
                                                             <td align="center">
+                                                            <!-- Tombol kelola Komentar -->
+                                                                <a href="<?php echo site_url('KelolaArtikel/kelola_komentar/'.$item['id_artikel']);?>"><button class="btn bg-maroon btn-sm"> Kelola Komentar </button></a>
+
                                                                 <!-- Tombol lihat detail -->
                                                                 <a href="<?php echo site_url('KelolaArtikel/edit_artikel/'.$item['id_artikel']);?>"><button class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit </button></a>
 

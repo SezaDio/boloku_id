@@ -269,19 +269,19 @@
                                                             <div class="box-body">
                                                                 <table class="table">
                                                                     <?php
-                                                                        if(count($dataTestimoni->result_array())>0)
+                                                                        if(count($dataTestimoni)>0)
                                                                         {
-                                                                            foreach ($dataTestimoni->result() as $testimoni) 
+                                                                            foreach ($dataTestimoni as $testimoni) 
                                                                             {?>
                                                                                 <tr>
                                                                                     <td style="width: 500px; padding-top: 12px;">
-                                                                                        <i class="glyphicon glyphicon-user"></i> <?php echo $testimoni->penulis_testimoni; ?> || <i class="glyphicon glyphicon-calendar"></i> <?php echo $testimoni->tgl_posting; ?>
+                                                                                        <i class="glyphicon glyphicon-user"></i> <?php echo $testimoni['nama_member']; ?> || <i class="glyphicon glyphicon-calendar"></i> <?php echo $testimoni['tgl_posting']; ?>
                                                                                         <br><br>
-                                                                                        <?php echo $testimoni->isi_testimoni; ?>
+                                                                                        <?php echo $testimoni['isi_testimoni']; ?>
                                                                                     </td>
                                                                                     <td>
                                                                                         <!-- Tombol Hapus -->
-                                                                                        <button onclick="delete_testimoni_ajax(<?php echo $testimoni->id_testimoni; ?>)" id="delete-button-testimoni" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
+                                                                                        <button onclick="delete_testimoni_ajax(<?php echo $testimoni['id_testimoni']; ?>)" id="delete-button-testimoni" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-trash" ></i> Hapus</button>
                                                                                     </td>
                                                                                 </tr>
                                                                                 

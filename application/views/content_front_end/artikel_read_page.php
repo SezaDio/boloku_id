@@ -39,7 +39,7 @@
                      <div class="picture"> <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb_'.$path_gambar); ?>"> </div>
 
                      <!--Kotak Content Artikel-->
-                     <?php echo htmlspecialchars($isi_artikel);?>
+                     <?php echo $isi_artikel;?>
                      <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
 
                      <!--Kotak Komentar-->                     

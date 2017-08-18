@@ -81,8 +81,9 @@
                               <form class="col-md-10" role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaArtikel/tambah_komentar/'.$this->session->userdata('id_member'));?>" method="POST">  
                                 <textarea style="width: 100%" required name="isi_komentar" rows="3"></textarea>
                                 <br>    
-                                <input type="hidden" name="id_artikel" value="<?php echo $id_artikel; ?>">  
-                                <input type="hidden" name="jml_komentar" value="<?php echo $jumlahKomentar; ?>">  
+                                <input type="hidden" name="id_news" value="<?php echo $id_news; ?>">  
+                                <input type="hidden" name="jml_komentar" value="<?php echo $jumlahKomentar; ?>">
+                                <input type="hidden" name="nama_member" value="<?php echo $this->session->userdata('nama_member'); ?>">  
                                 <button class="btn btn-colored-blog" type="submit" value="1" name="submit"><i class="glyphicon glyphicon-send"></i> Kirim </a></button>
 
                                 <button style="float: right;" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

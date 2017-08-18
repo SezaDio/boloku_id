@@ -203,6 +203,25 @@ function delete_testimoni_ajax(id_testimoni)
 	}
 }
 
+function delete_komentar_ajax(id_komentar)
+{
+	if (confirm("Anda yakin ingin menghapus komentar ini ?"))
+	{
+		$.ajax({
+			url: '../delete_komentar',
+			type: 'POST',
+			data: {id_komentar:id_komentar},
+			success: function(){
+						alert('Delete Komentar Artikel berhasil');
+						location.reload();
+					},
+			error: function(){
+						alert('Delete Komentar Artikel gagal');
+					}
+		});
+	}
+}
+
 function tolak_news_ajax(id_news)
 {
 	if (confirm("Anda yakin ingin menolak News ini ?"))

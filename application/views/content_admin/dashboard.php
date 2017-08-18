@@ -28,7 +28,7 @@
                                 <div class="icon">
                                     <i class="glyphicon glyphicon-envelope"></i>
                                 </div>
-                                <a href="#" class="small-box-footer">
+                                <a href="<?php echo site_url('FrontControl_ContactUs/kelola_message'); ?>" class="small-box-footer">
                                     More info <i class="glyphicon glyphicon-circle-arrow-right"></i>
                                 </a>
                             </div>

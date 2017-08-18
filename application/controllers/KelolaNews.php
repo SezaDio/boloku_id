@@ -246,6 +246,17 @@ class KelolaNews extends CI_Controller {
       $this->load->view('skin/front_end/footer_front_end');
 	}
 
+	function tambah_komentar_liputan($id_member){
+		$data_komentar=array(
+			'id_member'=>$id_member,
+			'id_artikel'=>$this->input->post('id_news'),
+			'isi_komentar'=>$this->input->post('isi_komentar'),
+		);
+		$this->db->insert('komentar', $data_komentar);
+		$this->session->set_flashdata('msg_berhasil', 'Komentar baru berhasil ditambahkan');
+		redirect('KelolaNews/halaman_baca_artikel_pra_event/'.$this->input->post('id_news'));	
+	}
+
 	//Validasi news
 	public function validasi_news()
 	{

@@ -40,6 +40,12 @@
                             </a>
                         </li>
 
+                        <li>
+                            <a href="<?php echo site_url('FrontControl_ContactUs/kelola_message'); ?>">
+                                <i class="glyphicon glyphicon-envelope"></i> <span> Kelola Message </span>
+                            </a>
+                        </li>
+
                         <li class="treeview">
                             <a href="#">
                                 <i class="glyphicon glyphicon-book"></i><span> Pepak Semarang </span>

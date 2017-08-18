@@ -315,9 +315,25 @@ class KelolaArtikel extends CI_Controller {
 		);
 		$this->db->insert('komentar', $data_komentar);
 		$this->session->set_flashdata('msg_berhasil', 'Komentar baru berhasil ditambahkan');
-		redirect('KelolaArtikel/halaman_baca_artikel/'.$this->input->post('id_artikel'));
-			
-		
-			
+		redirect('KelolaArtikel/halaman_baca_artikel/'.$this->input->post('id_artikel'));	
+	}
+
+	function kelola_komentar($id_artikel)
+	{
+		$this->load->model('artikel_models/ArtikelModels');
+		$data['listKomentar'] = $this->ArtikelModels->get_komentar($id_artikel);
+
+		$this->load->view('skin/admin/header_admin');
+		$this->load->view('skin/admin/nav_kiri');
+		$this->load->view('content_admin/kelola_komentar_artikel', $data);
+		$this->load->view('skin/admin/footer_admin');
+	}
+
+	//delete komentar artikel
+	public function delete_komentar()
+	{
+		$id_komentar = $_POST['id_komentar'];
+		$this->load->model('artikel_models/ArtikelModels');
+		$this->ArtikelModels->delete_komentar($id_komentar);
 	}
 }

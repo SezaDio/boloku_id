@@ -68,4 +68,67 @@ class FrontControl_ContactUs extends CI_Controller {
          $this->load->view('skin/front_end/footer_front_end');
       }
    }
+
+   function kelola_message()
+   {
+      $this->load->model('contactUs_models/ContactUsModels');
+      $data['listPesan'] = $this->ContactUsModels->get_data_pesan();
+         
+      $this->load->view('skin/admin/header_admin');
+      $this->load->view('skin/admin/nav_kiri');
+      $this->load->view('content_admin/kelola_message', $data);
+      $this->load->view('skin/admin/footer_admin');
+   }
+
+   //Fungsi untuk delete ajax artikel
+   public function delete_pesan()
+   {
+      $id_pesan = $_POST['id_pesan'];
+      $this->load->model('contactUs_models/ContactUsModels');
+      $this->ContactUsModels->delete_pesan($id_pesan);
+   }
+
+   function balas_pesan($id_pesan)
+   {
+      $this->load->model('contactUs_models/ContactUsModels');
+      $data['pesan'] = $this->ContactUsModels->select_data_pesan_byId($id_pesan)->row();
+         
+      $this->load->view('skin/admin/header_admin');
+      $this->load->view('skin/admin/nav_kiri');
+      $this->load->view('content_admin/balas_pesan', $data);
+      $this->load->view('skin/admin/footer_admin');
+   }
+
+   //Setujui coming
+   public function kirim_pesan()
+   {
+      $sub_setuju = "boloku.id";
+      $email = $this->input->post('email');
+      $msg = $this->input->post('isi_pesan');
+      $this->kirim_email($sub_setuju, $msg, $email);
+   }
+
+   //kirim email
+   function kirim_email($sub, $msg, $email) {
+      $config['protocol'] = 'smtp';
+      $config['smtp_host'] = 'ssl://smtp.googlemail.com'; //change this
+      $config['smtp_port'] = '465';
+      $config['smtp_user'] = 'bolokuid@gmail.com'; //change this
+      $config['smtp_pass'] = 'masbondan'; //change this
+      $config['mailtype'] = 'html';
+      $config['charset'] = 'iso-8859-1';
+      $config['smtp_crypto'] = 'tls';
+      $config['wordwrap'] = TRUE;
+      $config['newline'] = "\r\n"; //use double quotes to comply with RFC 822 standard
+      $this->load->library('email'); // load email library
+      $this->email->initialize($config);
+      $this->email->from('bolokuid@gmail.com', 'admin');
+      $this->email->to($email);
+      $this->email->subject($sub);
+      $this->email->message($msg);
+      if ($this->email->send())
+         echo "Mail Sent!";
+      else
+         show_error($this->email->print_debugger());
+    }
 }
