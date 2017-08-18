@@ -16,7 +16,13 @@
                         <div class="col-md-12">
                             <!-- general form elements -->
                             <div class="box box-primary">
-							
+							    <?php if($this->session->flashdata('msg_berhasil')!=''){?>
+                                    <div class="alert alert-success alert-dismissable">
+                                        <i class="glyphicon glyphicon-ok"></i>
+                                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <?php echo $this->session->flashdata('msg_berhasil');?> 
+                                    </div>
+                                <?php }?>
                                 <!--Mulai Tampilkan Data Table-->
                                 <div class="box-body">
                                     <div class="form-group">

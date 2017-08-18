@@ -111,23 +111,24 @@ class FrontControl_ContactUs extends CI_Controller {
    //kirim email
    function kirim_email($sub, $msg, $email) {
       $config['protocol'] = 'smtp';
-      $config['smtp_host'] = 'ssl://smtp.googlemail.com'; //change this
+      $config['smtp_host'] = 'smtp.googlemail.com'; //change this
       $config['smtp_port'] = '465';
       $config['smtp_user'] = 'bolokuid@gmail.com'; //change this
       $config['smtp_pass'] = 'masbondan'; //change this
       $config['mailtype'] = 'html';
       $config['charset'] = 'iso-8859-1';
-      $config['smtp_crypto'] = 'tls';
+      $config['smtp_crypto'] = 'ssl';
       $config['wordwrap'] = TRUE;
       $config['newline'] = "\r\n"; //use double quotes to comply with RFC 822 standard
       $this->load->library('email'); // load email library
       $this->email->initialize($config);
-      $this->email->from('bolokuid@gmail.com', 'admin');
+      $this->email->from('bolokuid@gmail.com', 'boloku.id');
       $this->email->to($email);
       $this->email->subject($sub);
       $this->email->message($msg);
       if ($this->email->send())
-         echo "Mail Sent!";
+         $this->session->set_flashdata('msg_berhasil', 'Pesan balasan telah terkirim.');
+         redirect('FrontControl_ContactUs/kelola_message');
       else
          show_error($this->email->print_debugger());
     }
