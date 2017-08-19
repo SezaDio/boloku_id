@@ -49,6 +49,19 @@
 			return $result;
 		}
 		
+		function get_jumlah_pendaftar($id_event)
+		{
+			$this->db->select('*');
+			$this->db->from('pendaftar');
+			$this->db->where('id_event',$id_event);
+
+			$query = $this->db->get();
+		
+			
+		
+			return $query->num_rows();
+		}
+		
 		function verifikasi_bayar_check($id_pendaftar)
 		{
 			$data = array(

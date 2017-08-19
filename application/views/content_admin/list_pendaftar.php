@@ -45,6 +45,7 @@
                                                 <tr>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">No.</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Nama Pendaftar</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">No Pendaftaran</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Email</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Telepon</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Alamat</th>
@@ -61,6 +62,7 @@
                                                         <tr>
                                                             <td style="text-align: center;"><?php echo $i ?></td>
                                                             <td><?php echo $item['nama_pendaftar'] ?></td>
+                                                            <td><?php echo $item['no_pendaftar'] ?></td>
                                                             <td><?php echo $item['email'] ?></td>
                                                             <td><?php echo $item['telepon'] ?></td>
                                                             <td><?php echo $item['alamat'] ?></td>

@@ -273,10 +273,11 @@ class Kelolapendaftar extends CI_Controller {
 	function tambah_pendaftar_check_front($id_event) 
 	{
 		$data['active']=2;
-        $this->load->model('pendaftar_models/pendaftarModels');
+        $this->load->model('pendaftar_models/PendaftarModels');
 		$this->load->library('form_validation');
 		$tambah = $this->input->post('submit');
 		$seat = $this->input->post('seat');
+		
 		if ($tambah == 1) 
 		{
 			$this->form_validation->set_rules('nama_pendaftar', 'Nama', 'required');
@@ -288,6 +289,19 @@ class Kelolapendaftar extends CI_Controller {
 			if (($this->form_validation->run() == TRUE))
 			{
 				$seat=$this->input->post('seat');
+				$no_pendaftar = $this->PendaftarModels->get_jumlah_pendaftar($id_event) + 1;
+				if($no_pendaftar<10){
+					$no_pendaftar = '00000'.$no_pendaftar;
+				} elseif($no_pendaftar<100){
+					$no_pendaftar = '0000'.$no_pendaftar;
+				} elseif($no_pendaftar<1000){
+					$no_pendaftar = '000'.$no_pendaftar;
+				} elseif($no_pendaftar<10000){
+					$no_pendaftar = '00'.$no_pendaftar;
+				} else{
+					$no_pendaftar = '0'.$no_pendaftar;
+				}
+				$kode = substr(md5($this->input->post('nama_pendaftar')), 0, 4);
 				$data_pendaftar=array(
 					'id_event'=>$id_event,
 					'nama_pendaftar'=>$this->input->post('nama_pendaftar'),
@@ -295,7 +309,7 @@ class Kelolapendaftar extends CI_Controller {
 					'telepon'=>$this->input->post('telepon'),
 					'alamat'=>$this->input->post('alamat'),
 					'status_bayar'=>0,
-					'no_pendaftar'=>12312
+					'no_pendaftar'=>$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode)
 				);
 				$data['dataPendaftar'] = $data_pendaftar;
 				
@@ -488,6 +502,110 @@ class Kelolapendaftar extends CI_Controller {
 		$this->load->view('skin/front_end/header_front_end', $data);
       	$this->load->view('content_front_end/mendaftar_ikut_event_page', $data);
       	$this->load->view('skin/front_end/footer_front_end');
+	}
+	
+	function upload_bukti_bayar(){
+		$this->load->model('pendaftar_models/PendaftarModels');
+		$this->load->view('skin/front_end/header_front_end');
+      	$this->load->view('content_front_end/upload_bukti_bayar');
+      	$this->load->view('skin/front_end/footer_front_end');
+	}
+	
+	function validate_no_peserta(){
+		$data = array();
+		if(isset($_POST['no_peserta'])){
+		$no_pendaftar = $_POST['no_peserta'];
+		$query = $this->db->where('no_pendaftar',$no_pendaftar)->get('pendaftar');
+		foreach ($query->result() as $row){
+			$data += array('id_pendaftar' => $row->id_pendaftar,
+							'nama_pendaftar' => $row->nama_pendaftar,
+							'email' => $row->email,
+							'telepon' => $row->telepon,
+							'alamat' => $row->alamat
+			);
+		}
+		$query2 = $this->db->select('id_event')->where('no_pendaftar',$no_pendaftar)->get('pendaftar');
+		foreach ($query2->result() as $row2){
+			$query3 = $this->db->select('nama_coming, harga, tgl_mulai, tgl_selesai')->where('id_coming',$row2->id_event)->get('coming');
+			foreach ($query3->result() as $row3){
+			$tgl_mulai=date('d-F-Y', strtotime($row3->tgl_mulai));
+            $tgl_selesai=date('d-F-Y', strtotime($row3->tgl_selesai));
+			$data += array('nama_event' => $row3->nama_coming,
+							'harga' => $row3->harga,
+							'tgl_mulai' => $tgl_mulai,
+							'tgl_selesai' => $tgl_selesai
+			);
+			
+		}
+		}
+		
+		
+		$data += array('check' => sizeof($query->row_array())
+		);
+		echo json_encode($data);
+		}
+		
+	}
+	
+	function upload_bukti() {
+        
+		$this->load->library('form_validation');
+
+
+			$this->form_validation->set_rules('no_peserta', 'No Peserta', 'required');
+			//Mengambil filename gambar untuk disimpan
+			$nmfile = "file_".time();
+			$config['upload_path'] = './asset/upload_img_pembayaran/';
+			$config['allowed_types'] = 'jpg|png|jpeg';
+			$config['max_size'] = '4000'; //kb
+			$config['file_name'] = $nmfile;
+
+			//value id_koridor berisi beberapa data, sehingga dilakukan split dengan explode
+			if (($this->form_validation->run() == TRUE) AND (!empty($_FILES['filefoto']['name'])))
+			{
+				$gbr = NULL;
+
+					$data_bukti=array(
+						'no_peserta'=>$this->input->post('no_peserta'),
+						'tanggal_upload'=>date("Y-m-d h:i:sa"),
+						'path_gambar'=> NULL
+					);
+					$data['dataBukti'] = $data_bukti;
+				$this->load->library('upload', $config);
+				if($this->upload->do_upload('filefoto'))
+				{
+					//echo "Masuk";
+					$gbr = $this->upload->data();
+					
+
+					$data_bukti['path_gambar'] = $gbr['file_name'];
+					$this->db->insert('pembayaran', $data_bukti);
+					$data = array(
+						'status_bayar' => 1
+						
+					);
+					$this->db->where('no_pendaftar',$this->input->post('no_peserta'));
+					$this->db->update('pendaftar',$data);
+					$this->session->set_flashdata('msg_berhasil', 'Bukti pembayaran kamu berhasil diupload, Admin kami akan melakukan verifikasi terhadap bukti pembayaran dalam kurun waktu 1 x 24 jam.');
+					redirect(site_url());
+				}
+				else
+				{
+					$this->session->set_flashdata('msg_gagal', 'Data Event baru gagal ditambahkan, cek type file dan ukuran file yang anda upload');
+					
+					$this->load->view('skin/front_end/header_front_end');
+					$this->load->view('content_front_end/upload_bukti_bayar');
+					$this->load->view('skin/front_end/footer_front_end');
+				}
+			}
+			else
+			{
+				$error = validation_errors('<div class="error">','</div>');
+				$this->session->set_flashdata('msg_gagal', $error);
+				redirect('KelolaMember/dashboard_member');
+			}
+		
+		
 	}
 
 }
