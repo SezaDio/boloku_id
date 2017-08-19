@@ -22,7 +22,7 @@
                         </li>
 
                         <li>
-                            <a href="#">
+                             <a href="<?php echo site_url('KelolaStiker/index'); ?>">
                                 <i class="glyphicon glyphicon-certificate"></i> <span> Kelola Stiker </span>
                             </a>
                         </li>
