@@ -33,7 +33,7 @@
                                                 </div>
                                             <?php }?>
                                         </div>
-
+										<?php if($dataAdmin['status_admin']!='Super Admin'){?>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Status Admin :</label><br>
                                             
@@ -53,7 +53,9 @@
                                                 ?>
                                             </select></br>
                                         </div>
-										
+										<?php } else {?>
+										<input type="hidden" value="<?php echo $dataAdmin['status_admin'];?>" name="status_admin">
+										<?php } ?>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Username :</label>
                                             <input type="text" required name="username" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataAdmin['username']); ?>">
