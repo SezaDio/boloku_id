@@ -271,7 +271,7 @@
 						   <?php foreach($listNewEvent as $newevent){ ?>
                         <a href="<?php echo site_url('FrontControl_Event/event_click/'.$newevent['id_coming']); ?>">
                            <article class="col-md-6 col-sm-6 col-xs-12">
-                              <div class="grid-1" style="background-color: white;">
+                              <div class="grid-1" style="box-shadow: 0 1px 1px grey; background-color: white;">
                                  <div class="picture">
                                     <div class="category-image">
                                        <a href="<?php echo base_url('FrontControl_Event/event_click/'.$newevent['id_coming']); ?>">

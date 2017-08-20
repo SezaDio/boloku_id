@@ -16,7 +16,7 @@
 
 	                	<!--Kolom kiri untuk navigasi menu member area-->
 	                	<div class="col-md-3 col-sm-4 col-xs-12">
-	                       <div class="item" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 6px #f44a56;">
+	                       <div class="item" style="background-color: white; border-top:solid 1px #f44a56; box-shadow: 0 1px 6px #f44a56;">
 	                          <div class="latest-news-grid grid-1">
 	                             <div class="detail">
 	                                <div class="col-md-12">
@@ -79,7 +79,7 @@
 
 	            		<!--Content kolom kanan Riwayat Event, edit profile, edit event, dan post event baru-->
 	            		<div class="col-md-9 col-sm-4 col-xs-12" id="kolom1">
-	                       <div class="item" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 6px #f44a56;">
+	                       <div class="item" style="background-color: white; border-top:solid 1px #f44a56; box-shadow: 0 1px 6px #f44a56;">
 	                          <div class="latest-news-grid grid-1">
 
 	                          	<!--Content menu riwayat event member-->
@@ -175,7 +175,7 @@
 	                            </div>
 
 	                             <!--Content menu buat event baru-->
-	                             <div style="display: none;" id="event-baru-content" class="detail">
+	                             <div style="background-color: white; display: none;" id="event-baru-content" class="detail">
 	                             	<div class="col-md-12">
 	                             		<h4><strong>Buat Event Baru</strong></h4>
 	                             		<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
@@ -415,7 +415,7 @@
 	                             </div>
 
 	                             <!--Content menu edit profil member-->
-	                             <div style="display: none;" id="edit-profil-content" class="detail">
+	                             <div style="background-color: white; display: none;" id="edit-profil-content" class="detail">
 	                             	<div class="col-md-12">
 	                             		<h4><strong>Edit Profil</strong></h4>
 	                             		<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
@@ -538,7 +538,7 @@
 	                    </div>
 						
 						<div class="col-md-9 col-sm-4 col-xs-12" id="kolom2" style="display:none"> 
-	                       <div class="item" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 6px #f44a56;">
+	                       <div class="item" style="background-color: white; border-top:solid 1px #f44a56; box-shadow: 0 1px 6px #f44a56;">
 	                          <div class="latest-news-grid grid-1">
 								<!--Content menu buat event baru-->
 	                             <div id="edit-event-content" class="detail">

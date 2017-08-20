@@ -25,7 +25,7 @@
 
 	                    	<!--Profil boloku.id-->
 	                    	<div class="col-md-6 col-sm-6 col-xs-12" style="padding-bottom: 15px;">
-	                    		<div class="item" style="padding:10px; box-shadow: 0 1px 2px grey;">
+	                    		<div class="item" style="background-color: white; padding:10px; box-shadow: 0 1px 2px grey;">
 	                              <div class="latest-news-grid grid-1">
 	                                <div class="heading colored">
                            				<h2 class="main-heading"><strong>Profil Kami</strong></h2>
@@ -50,7 +50,7 @@
 
 	                    	<!--Info Sekretariat-->
 	                    	<div class="col-md-6 col-sm-6 col-xs-12" style="padding-bottom: 15px;">
-	                    		<div class="item" style="padding:10px; box-shadow: 0 1px 1px grey;">
+	                    		<div class="item" style="background-color: white; padding:10px; box-shadow: 0 1px 1px grey;">
 	                              <div class="latest-news-grid grid-1">
 	                              	<div class="heading colored">
                            				<h2 class="main-heading"><strong>Sekretariat boloku.id</strong></h2>
@@ -117,10 +117,10 @@
                <div class="col-md-2 col-sm-6 col-xs-12">
                   
                </div>
-               <div class="col-md-8 col-sm-8 col-xs-12 nopadding" style="padding:10px; box-shadow: 0 1px 1px grey;">
-               	  <div class="heading colored">
-       				<h2 class="main-heading"><strong>Hubungi Kami</strong></h2>
-       			  </div>
+               <div class="col-md-8 col-sm-8 col-xs-12 nopadding" style="background-color: white; padding:10px; box-shadow: 0 1px 1px grey;">
+               	<div class="heading colored">
+       				   <h2 class="main-heading"><strong>Hubungi Kami</strong></h2>
+       			   </div>
                   <div class="contact-form">
                      <!--Captcha Script-->
                      <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -143,12 +143,12 @@
                            <div class="col-md-12">
                               <div class="col-md-6 col-sm-6 col-xs-12">
                                  <div class="form-group">
-                                    <input placeholder="Nama Anda" id="name" name="nama_lengkap" class="form-control" required="" type="text">
+                                    <input placeholder="Nama Anda" id="name" name="nama_lengkap" class="form-control" required type="text">
                                  </div>
                               </div>
                               <div class="col-md-6 col-sm-6 col-xs-12">
                                  <div class="form-group">
-                                    <input placeholder="Email" id="email" name="email" class="form-control" required="" type="email">
+                                    <input placeholder="Email" id="email" name="email" class="form-control" required type="email">
                                  </div>
                               </div>
                            </div>
@@ -157,12 +157,12 @@
                            <div class="col-md-12">
                               <div class="col-md-6 col-sm-6 col-xs-12">
                                  <div class="form-group">
-                                    <input placeholder="Telepon" id="phone" name="telepon" class="form-control" required="" type="text">
+                                    <input placeholder="Telepon" id="phone" name="telepon" class="form-control" required type="text">
                                  </div>
                               </div>
                               <div class="col-md-6 col-sm-6 col-xs-12">
                                  <div class="form-group">
-                                    <input placeholder="Subject" id="subject" name="subject" class="form-control" required="" type="text">
+                                    <input placeholder="Subject" id="subject" name="subject" class="form-control" required type="text">
                                  </div>
                               </div>
                            </div>

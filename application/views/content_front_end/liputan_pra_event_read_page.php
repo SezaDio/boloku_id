@@ -12,7 +12,7 @@
          <div class="container">
             <div class="row">
                <div class="col-md-8 col-sm-12 col-xs-12">
-                  <div class="post-entry">
+                  <div class="post-entry" style="padding: 20px; background-color: white;">
                      <h2><?php echo htmlspecialchars($judul_news); ?></h2>
                      
                      <ul class="post-tools">
@@ -43,7 +43,7 @@
                      <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
 
                      <!--Kotak Komentar-->                     
-                     <div class="reviews">
+                     <div class="reviews" style="background-color: white;">
                         <h3>Total Coments (<?php echo $jumlahKomentar; ?>)</h3>
                         <?php foreach($listKomentar as $komentar){?>
                           <div style="padding-top: 10px;" class="col-md-12 comment-info">
@@ -68,7 +68,7 @@
                         <?php } ?>
 
                        <!--Form comentar baru-->
-                       <div style="padding-top: 10px;" class="col-md-12 comment-info">
+                       <div style="margin-top: -10px; background-color: white; padding-top: 10px;" class="col-md-12 comment-info">
                           <?php if(isset($this->session->userdata['is_logged_in']))
                           {?>     
                             <div class="col-md-2">
@@ -106,7 +106,7 @@
                <div class="col-md-4 col-sm-2 col-xs-12">
                   <div class="ad-placement">
                      <!--Fitur Artikel-->
-                     <div class="widget widget-bg">
+                     <div class="widget widget-bg" style="background-color: white;">
                         <div class="heading">
                            <h2 class="main-heading"><strong>Artikel Lainnya</strong></h2>
                            <span class="heading-ping"></span>

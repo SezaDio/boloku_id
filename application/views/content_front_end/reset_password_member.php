@@ -7,7 +7,7 @@
                		<div class="section listing">
                			 <div class="col-md-1"></div>
 
-	                    <div class="col-md-10 col-sm-8 col-xs-12 nopadding" style="border-top: solid 1px #f44a56; border-bottom: solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">
+	                    <div class="col-md-10 col-sm-8 col-xs-12 nopadding" style="background-color: white; border-top: solid 1px #f44a56; border-bottom: solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">
 		               	  	<div style="text-align: center;">
 		       					<h3><strong>Formulir Reset Password</h3>
 		       					<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
