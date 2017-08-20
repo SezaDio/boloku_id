@@ -271,7 +271,7 @@
 						   <?php foreach($listNewEvent as $newevent){ ?>
                         <a href="<?php echo site_url('FrontControl_Event/event_click/'.$newevent['id_coming']); ?>">
                            <article class="col-md-6 col-sm-6 col-xs-12">
-                              <div class="grid-1">
+                              <div class="grid-1" style="background-color: white;">
                                  <div class="picture">
                                     <div class="category-image">
                                        <a href="<?php echo base_url('FrontControl_Event/event_click/'.$newevent['id_coming']); ?>">
@@ -457,18 +457,19 @@
                                        </div>
                                     </div>
                                  </div>
-                                 <div class="detail">
+                                 <div class="detail" style="padding-left: 20px;">
                                     <div class="caption">
                                        <h5>
                                           <a href="<?php echo base_url('FrontControl_Event/event_click/'.$newevent['id_coming']); ?>"><?php echo $newevent['nama_coming'];?></a>
                                        </h5>
                                     </div>
+                                    
                                     <ul class="post-tools">
                                        <li> by <a href="#"> <strong> <?php echo $newevent['posted_by'];?></strong> </a></li>
                                        <li><i class="glyphicon glyphicon-thumbs-up"></i> <?php echo $newevent['like'];?></a></li>
                                        <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $newevent['hits'];?></a></li>
-                                       
                                     </ul>
+                                       
                                  </div>
                               </div>
                            </article>

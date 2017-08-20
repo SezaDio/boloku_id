@@ -144,17 +144,20 @@
 					                                </div>
 					                                <br>
 					                                <div class="col-md-4" style="text-align: right; padding-bottom: 20px; padding-right: 30px;">
+
 		                                				<!-- Tombol Download Rekap Pendaftar -->
-		                                        		<button style="
-		                                        			<?php if ($event['pendaftaran'] ==1)
-		                                        	 		{
-		                                        	 			echo "display: content;";
-		                                        	 		}
-		                                        	 		else
-		                                        	 		{
-		                                        	 			echo "display: none;";
-		                                        	 		}
-		                                        	 		?>"  id="edit-button-coming" type="submit" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-download-alt" ></i> Data Pendaftar</button>
+		                                				<a href="<?php echo site_url("KelolaPendaftar/export_excel_respon/".$event['id_coming']); ?>" id="btn_export">
+			                                        		<button style="
+			                                        			<?php if ($event['pendaftaran'] ==1)
+			                                        	 		{
+			                                        	 			echo "display: content;";
+			                                        	 		}
+			                                        	 		else
+			                                        	 		{
+			                                        	 			echo "display: none;";
+			                                        	 		}
+			                                        	 		?>"  id="edit-button-coming" type="submit" class="btn btn-info btn-sm"><i class="glyphicon glyphicon-download-alt" ></i> Data Pendaftar</button>
+			                                        	 </a>
 				                                	
 					                                	<!-- Tombol Edit -->
 				                                       <button onclick="editEvent(<?php echo $event['id_coming']?>)" id="edit-button-coming" type="submit" class="btn btn-warning btn-sm"><i class="glyphicon glyphicon-pencil" ></i> Edit</button>

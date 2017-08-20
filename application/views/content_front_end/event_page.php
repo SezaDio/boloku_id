@@ -109,7 +109,7 @@
 	                        <div class="row" id="div_all">
 							
 	                        <?php foreach($listEvent as $event){ ?>
-	                           <div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">
+	                           <div class="grid-1" style="background-color: white; border-top:solid 1px #f44a56;">
 	                           	 <a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>">
 	                              <ul>
 	                              	<div class="col-md-12" style="padding: 10px;">
@@ -252,7 +252,7 @@
 			  
 			  var getUrl = window.location;
 			  var baseUrl = getUrl .protocol + "//"+ getUrl.host;
-			  divkategori += '<div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">';
+			  divkategori += '<div class="grid-1" style="border-top:solid 1px #f44a56; background-color: white;">';
 	            divkategori += '<a href="'+baseUrl+'/FrontControl_Event/event_click/'+id_event+'">'
 	                divkategori += '<ul>';
 	                    divkategori += '<div class="col-md-12" style="padding: 10px;">';
@@ -346,7 +346,7 @@
 			  var getUrl = window.location;
 			  var baseUrl = getUrl .protocol + "//"+ getUrl.host;
 			  
-			  divkategori += '<div class="grid-1" style="border-top:solid 1px #f44a56; box-shadow: 0 1px 10px #f44a56;">';
+			  divkategori += '<div class="grid-1" style="border-top:solid 1px #f44a56; background-color: white;">';
 	            divkategori += '<a href="'+baseUrl+'/FrontControl_Event/event_click/'+id_event+'">'
 	                divkategori += '<ul>';
 	                    divkategori += '<div class="col-md-12" style="padding: 10px;">';

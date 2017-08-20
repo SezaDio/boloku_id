@@ -108,7 +108,7 @@
      </script>
 
       <!-- Mega Menu Script -->
-      <script src="<?php echo base_url('asset/js/megaMenu.min.js'); ?>" type="text/javascript"></script>
+      <script src="<?php echo base_url('asset/js/megaMenu.min.js?v=2'); ?>" type="text/javascript"></script>
 
       
 

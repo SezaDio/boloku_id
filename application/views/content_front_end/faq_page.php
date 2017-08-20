@@ -17,7 +17,7 @@
      				<div class="col-md-12">
      					<div class="col-md-1"></div>
 	                	<div class="col-md-10 col-sm-6 col-xs-12" style="padding-bottom: 15px;">
-	                		<div class="item" style="padding:10px;">
+	                		<div class="item" style="background-color: white; padding:10px;">
                    			<h3 class="main-heading"><strong><?php echo $faq['pertanyaan']; ?></strong></h3>
                             <div class="caption">
                                <h5><?php echo $faq['jawaban']; ?></h5>

@@ -35,7 +35,7 @@
 	                    <div class="parallel-post-style">
 							<?php foreach($listNgertiRak as $ngertirak){?>
 	                    	<div class="col-md-4 col-sm-4 col-xs-12">
-	                           <div class="item" style="box-shadow: 0 1px 10px #f44a56;">
+	                           <div class="item" style="box-shadow: 0 1px 10px #f44a56; background-color: white;">
 	                              <div class="latest-news-grid grid-1" style="height: 486px;">
 	                                 <div class="picture">
 	                                    <div class="category-image">
@@ -140,7 +140,7 @@
 			  var baseUrl = getUrl .protocol + "//"+ getUrl.host;
 		 
 			  divkategori += '<div class="col-md-4 col-sm-4 col-xs-12">';
-	            divkategori += '<div class="item" style="box-shadow: 0 1px 10px #f44a56;">';
+	            divkategori += '<div class="item" style="box-shadow: 0 1px 10px #f44a56; background-color: white;">';
 	                divkategori += '<div class="latest-news-grid grid-1">';
 	                    divkategori += '<div class="picture">';
 	                        divkategori += '<div class="category-image">';
@@ -150,7 +150,7 @@
 	                            divkategori += '</div>';
 	                        divkategori += '</div>';
 	                    divkategori += '</div>';
-	                    divkategori += '<div class="detail">';
+	                    divkategori += '<div class="detail" style="padding: 15px;">';
 	                        divkategori += '<div class="caption" style="text-align: center;">';
 	                            divkategori += '<h5><a href="#">'+judul_ngerti+'</a></h5>';
 	                        divkategori += '</div>';

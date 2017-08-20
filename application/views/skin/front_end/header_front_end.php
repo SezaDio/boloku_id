@@ -19,7 +19,7 @@
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/css/megaMenu.css'); ?>">
 
       <!-- Template Core Css -->
-      <link href="<?php echo base_url('asset/css/style_front_end.css'); ?>" rel="stylesheet" type="text/css">
+      <link href="<?php echo base_url('asset/css/style_front_end.css?v=3'); ?>" rel="stylesheet" type="text/css">
       <link href="<?php echo base_url('asset/css/breakingNews.css'); ?>" rel="stylesheet" type="text/css">
       <link href="<?php echo base_url('asset/css/magnific-popup.css'); ?>" rel="stylesheet" type="text/css">
 
@@ -131,7 +131,7 @@
       </section>
 
       <!--Navigation Bar-->
-      <section class="menu-container-section">
+      <section class="menu-container-section" style="background-color: white;">
          <nav id="menu-3" class="megaMenu">
             <div class="nav-container">
                <div class="sticky-container">
