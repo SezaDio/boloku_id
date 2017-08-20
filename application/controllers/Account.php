@@ -29,7 +29,7 @@ class Account extends CI_Controller
 
 		//Baca inputan username dan password
 		$username = $this->input->post('username', 'true');
-		$password = $this->input->post('password','true');
+		$password = md5($this->input->post('password','true'));
 
 		$temp_account = $this->userModel->check_user_account($username, $password)->row();
 
@@ -48,13 +48,13 @@ class Account extends CI_Controller
 			{
 				//Jika akun ditemukan, set session
 				$array_items = array(
-									'id_user' => $temp_account->id_user,
+									'id_admin' => $temp_account->id_admin,
 									'username' => $temp_account->username,
-									'logged_in' => true
+									'admin_logged_in' => true
 								);
 				$this->session->set_userdata($array_items);
 
-				redirect(site_url('account/halaman_sukses'));
+				redirect(site_url('AdminDashboard'));
 			}
 			else
 			{

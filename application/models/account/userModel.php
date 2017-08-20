@@ -11,7 +11,7 @@
 		function check_user_account($username, $password)
 		{
 			$this->db->select('*');
-			$this->db->from('user');
+			$this->db->from('admin');
 			$this->db->where('username', $username);
 			$this->db->where('password', $password);
 
