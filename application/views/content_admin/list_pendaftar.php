@@ -40,6 +40,9 @@
                                         <?php }?>
 									</div>
                                     <div class="form-group">
+                                    	<div style="margin-right:1px; padding-bottom:15px; margin-top:-20px;">
+                                    		<a href="<?php echo site_url("KelolaPendaftar/export_excel_respon/".$idEvent) ?>" class="btn btn-primary" id="btn_export"><i class="glyphicon glyphicon-download"></i> Export ke Excel</a>
+                                    	</div>
                                         <table class="table table-striped table-bordered table-hover" id="dataTables-list">
                                             <thead>
                                                 <tr>

@@ -608,4 +608,17 @@ class Kelolapendaftar extends CI_Controller {
 		
 	}
 
+	public function export_excel_respon($id_event)
+	{
+		$this->load->helper('export_xlsx_helper');
+		$this->load->model('pendaftar_models/PendaftarModels');
+
+		$event = $this->PendaftarModels->get_event($id_event);
+		$nama_event = $event['nama_coming'];
+		$jenis_event = $event['jenis_event'];
+		$data['listPendaftar'] = $this->PendaftarModels->get_data_pendaftar($id_event);
+	
+		do_export_xlsx($data['listPendaftar'], $nama_event, $jenis_event);
+	}
+
 }
