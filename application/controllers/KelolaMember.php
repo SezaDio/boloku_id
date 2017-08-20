@@ -16,6 +16,7 @@ class KelolaMember extends CI_Controller {
 
 	public function index()
 	{
+		if($this->session->userdata('admin_logged_in')){
 		$this->load->model('member_models/MemberModels');
 		$data['listMember'] = $this->MemberModels->get_data_member();
 			
@@ -23,6 +24,9 @@ class KelolaMember extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/kelola_member', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Delete Data
@@ -48,7 +52,7 @@ class KelolaMember extends CI_Controller {
 	
 	//Lihat detail produk
 	public function lihat_detail_member($id_member)
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('member_models/MemberModels');
 
 		//Ambil id_agenda yang akan diedit
@@ -67,11 +71,14 @@ class KelolaMember extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/detail_member', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Validasi member
 	public function validasi_member()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('member_models/MemberModels');
 		$data['listMember'] = $this->MemberModels->get_data_member_pend();
 			
@@ -79,6 +86,9 @@ class KelolaMember extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/validasi_member', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	//Setujui member
@@ -152,16 +162,20 @@ class KelolaMember extends CI_Controller {
 	
 	//tambah member soon
 	public function tambah_member()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('member_models/MemberModels');
 
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/tambah_member');
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	function tambah_member_check() {
+		if($this->session->userdata('admin_logged_in')){
         $this->load->model('member_models/MemberModels');
 		$this->load->library('form_validation');
 
@@ -214,6 +228,9 @@ class KelolaMember extends CI_Controller {
 			$this->load->view('content_admin/tambah_member');
 			$this->load->view('skin/admin/footer_admin');
 		}     
+		} else {
+			redirect(site_url('Account'));
+		}
 		
 	}
 	
@@ -248,7 +265,7 @@ class KelolaMember extends CI_Controller {
     }
 	//Fungsi melakukan update pada database
 	public function edit_member($id_member) 
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('member_models/MemberModels');
 		$this->load->library('form_validation');
 
@@ -352,6 +369,9 @@ class KelolaMember extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/edit_member', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Masuk ke halaman registrasi

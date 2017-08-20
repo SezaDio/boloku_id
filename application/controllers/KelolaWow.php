@@ -14,7 +14,7 @@ class KelolaWow extends CI_Controller {
 	}
 	
 	public function index()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('wow_models/WowModels');
 		$data['listWow'] = $this->WowModels->get_data_wow();
 			
@@ -22,19 +22,26 @@ class KelolaWow extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/kelola_wow', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	public function tambah_wow()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('wow_models/WowModels');
 
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/tambah_wow');
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	function tambah_wow_check() {
+		if($this->session->userdata('admin_logged_in')){
         $this->load->model('wow_models/WowModels');
 		$this->load->library('form_validation');
 
@@ -112,12 +119,14 @@ class KelolaWow extends CI_Controller {
 			$this->load->view('content_admin/tambah_wow',$data);
 			$this->load->view('skin/admin/footer_admin');
 		}     
-		
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	//Fungsi melakukan update pada database
 	public function edit_wow($id_wow) 
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('wow_models/WowModels');
 		$this->load->library('form_validation');
 
@@ -216,6 +225,9 @@ class KelolaWow extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/edit_wow', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else{
+			redirect(site_url('Account'));
+		}
 	}
 
 

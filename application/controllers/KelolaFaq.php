@@ -15,7 +15,7 @@
 		}
 
 		public function index()
-		{
+		{	if($this->session->userdata('admin_logged_in')){
 			$this->load->model('faq_models/FaqModels');
 			$data['listFaq'] = $this->FaqModels->get_data_faq();
 				
@@ -23,10 +23,13 @@
 			$this->load->view('skin/admin/nav_kiri');
 			$this->load->view('content_admin/kelola_faq', $data);
 			$this->load->view('skin/admin/footer_admin');
+			} else {
+				redirect(site_url('Account'));
+			}
 		}
 
 		function tambah_faq_check() 
-		{
+		{	if($this->session->userdata('admin_logged_in')){
 	        $this->load->model('artikel_models/ArtikelModels');
 			$this->load->library('form_validation');
 
@@ -67,11 +70,14 @@
 				$this->load->view('content_admin/tambah_faq');
 				$this->load->view('skin/admin/footer_admin');
 			}     
+			} else{
+				redirect(site_url('Account'));
+			}
 		}
 
 		//Fungsi melakukan update pada database
 		public function edit_faq($id_faq) 
-		{
+		{	if($this->session->userdata('admin_logged_in')){
 			$this->load->model('faq_models/FaqModels');
 			$this->load->library('form_validation');
 
@@ -119,15 +125,22 @@
 			$this->load->view('skin/admin/nav_kiri');
 			$this->load->view('content_admin/edit_faq', $data);
 			$this->load->view('skin/admin/footer_admin');
+			} else {
+				redirect(site_url('Account'));
+			}
 		}
 
 		//Fungsi untuk delete ajax artikel
 		public function delete_faq()//$id_produk
 		{
+			if($this->session->userdata('admin_logged_in')){
 			$id_faq = $_POST['id_faq'];
 			$this->load->model('faq_models/FaqModels');
 			$this->FaqModels->delete_faq($id_faq);
 
 			$this->index();
+			} else {
+				redirect(site_url('Account'));
+			}
 		}
 	}

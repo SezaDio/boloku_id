@@ -15,7 +15,7 @@ class Kelolaheader extends CI_Controller {
 	}
 
 	public function index()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('header_models/HeaderModels');
 		$data['listHeaderEvent'] = $this->HeaderModels->get_header_event();
 		$data['listHeaderNonEvent'] = $this->HeaderModels->get_header_nonevent();
@@ -24,7 +24,9 @@ class Kelolaheader extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/kelola_header', $data);
 		$this->load->view('skin/admin/footer_admin');
-		
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Delete Data
@@ -85,7 +87,7 @@ class Kelolaheader extends CI_Controller {
 	
 	//Lihat detail produk
 	public function lihat_detail_header($id_header)
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('header_models/HeaderModels');
 
 		//Ambil id_agenda yang akan diedit
@@ -95,6 +97,9 @@ class Kelolaheader extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/detail_header', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Validasi header
@@ -180,7 +185,7 @@ class Kelolaheader extends CI_Controller {
 	
 	//tambah header soon
 	public function tambah_header()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('header_models/HeaderModels');
 		
 		$q_pt=$this->db->get('coming');        
@@ -189,9 +194,13 @@ class Kelolaheader extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/tambah_header');
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	function tambah_header_check() {
+		if($this->session->userdata('admin_logged_in')){
         $this->load->model('header_models/HeaderModels');
 		$this->load->library('form_validation');
 		$tambah = $this->input->post('submit');
@@ -263,12 +272,14 @@ class Kelolaheader extends CI_Controller {
 			$this->load->view('content_admin/tambah_header',$data);
 			$this->load->view('skin/admin/footer_admin');
 		}     
-		
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Fungsi melakukan update pada database
 	public function edit_header($id_header) 
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('header_models/HeaderModels');
 		$this->load->library('form_validation');
 		
@@ -359,6 +370,9 @@ class Kelolaheader extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/edit_header', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	function crop($img,$filename){

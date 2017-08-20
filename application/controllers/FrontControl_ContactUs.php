@@ -70,7 +70,7 @@ class FrontControl_ContactUs extends CI_Controller {
    }
 
    function kelola_message()
-   {
+   { if($this->session->userdata('admin_logged_in')){
       $this->load->model('contactUs_models/ContactUsModels');
       $data['listPesan'] = $this->ContactUsModels->get_data_pesan();
          
@@ -78,6 +78,9 @@ class FrontControl_ContactUs extends CI_Controller {
       $this->load->view('skin/admin/nav_kiri');
       $this->load->view('content_admin/kelola_message', $data);
       $this->load->view('skin/admin/footer_admin');
+	  } else {
+		redirect(site_url('Account'));
+	  }
    }
 
    //Fungsi untuk delete ajax artikel
@@ -89,7 +92,7 @@ class FrontControl_ContactUs extends CI_Controller {
    }
 
    function balas_pesan($id_pesan)
-   {
+   {	if($this->session->userdata('admin_logged_in')){
       $this->load->model('contactUs_models/ContactUsModels');
       $data['pesan'] = $this->ContactUsModels->select_data_pesan_byId($id_pesan)->row();
          
@@ -97,6 +100,9 @@ class FrontControl_ContactUs extends CI_Controller {
       $this->load->view('skin/admin/nav_kiri');
       $this->load->view('content_admin/balas_pesan', $data);
       $this->load->view('skin/admin/footer_admin');
+	  } else {
+		redirect(site_url('Account'));
+	  }
    }
 
    //Setujui coming
@@ -126,10 +132,10 @@ class FrontControl_ContactUs extends CI_Controller {
       $this->email->to($email);
       $this->email->subject($sub);
       $this->email->message($msg);
-      if ($this->email->send())
+      if ($this->email->send()){
          $this->session->set_flashdata('msg_berhasil', 'Pesan balasan telah terkirim.');
-         redirect('FrontControl_ContactUs/kelola_message');
-      else
-         show_error($this->email->print_debugger());
+         redirect('FrontControl_ContactUs/kelola_message');}
+      else{
+         show_error($this->email->print_debugger());}
     }
 }

@@ -15,6 +15,7 @@ class AdminDashboard extends CI_Controller {
 
 	public function index()
 	{
+		if($this->session->userdata('admin_logged_in')){
 		$this->load->helper('url');
 		$this->load->model('dashboard_models/DashboardModels');
 
@@ -25,6 +26,9 @@ class AdminDashboard extends CI_Controller {
 		$data['daftar_event_terdekat'] = $this->DashboardModels->get_data_coming_terdekat();
 
 		$this->load->view('skin/admin/welcome', $data);
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Delete Data Coming + data news dan testimoni dari halaman Lihat Detail

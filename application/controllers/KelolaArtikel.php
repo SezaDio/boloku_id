@@ -15,6 +15,7 @@ class KelolaArtikel extends CI_Controller {
 
 	public function index()
 	{
+		if($this->session->userdata('admin_logged_in')){
 		$this->load->model('artikel_models/ArtikelModels');
 		$data['listArtikel'] = $this->ArtikelModels->get_data_artikel();
 			
@@ -22,9 +23,13 @@ class KelolaArtikel extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/kelola_artikel', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	function tambah_artikel_check() {
+		if($this->session->userdata('admin_logged_in')){
         $this->load->model('artikel_models/ArtikelModels');
 		$this->load->library('form_validation');
 
@@ -102,12 +107,15 @@ class KelolaArtikel extends CI_Controller {
 			$this->load->view('content_admin/tambah_artikel',$data);
 			$this->load->view('skin/admin/footer_admin');
 		}     
+		} else {
+			redirect(site_url('Account'));
+		}
 		
 	}
 
 	//Fungsi melakukan update pada database
 	public function edit_artikel($id_artikel) 
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('artikel_models/ArtikelModels');
 		$this->load->library('form_validation');
 
@@ -189,6 +197,9 @@ class KelolaArtikel extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/edit_artikel', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else{
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Fungsi untuk delete ajax artikel
@@ -319,7 +330,7 @@ class KelolaArtikel extends CI_Controller {
 	}
 
 	function kelola_komentar($id_artikel)
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('artikel_models/ArtikelModels');
 		$data['listKomentar'] = $this->ArtikelModels->get_komentar($id_artikel);
 
@@ -327,6 +338,9 @@ class KelolaArtikel extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/kelola_komentar_artikel', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//delete komentar artikel

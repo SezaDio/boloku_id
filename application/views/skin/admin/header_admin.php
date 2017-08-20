@@ -79,22 +79,22 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span>Seza Dio F. <i class="caret"></i></span>
+                                <span><?php echo $this->session->userdata('nama_admin');?><i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                    <img src="<?php echo base_url('asset/img/circle.png'); ?>" class="img-circle" alt="User Image">
+                                    <img src="<?php echo base_url('asset/upload_img_admin/'.$this->session->userdata('path_foto')); ?>" class="img-circle" alt="User Image">
                                     <p>
                                         Administrator
-                                        <small>Last login : <?php //$login= $result_last_login->fetch_object(); echo $login->login_terakhir;?></small>
+                                        
                                     </p>
                                 </li>
                                 <!-- Menu Body -->
                                 <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-right">
-                                        <a href="logout.php" class="btn btn-danger btn-sm">Keluar</a>
+                                        <a href="<?php echo base_url('Account/logout');?>" class="btn btn-danger btn-sm">Keluar</a>
                                     </div>
                                 </li>
                             </ul>

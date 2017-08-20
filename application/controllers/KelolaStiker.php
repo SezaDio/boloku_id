@@ -15,7 +15,7 @@ class KelolaStiker extends CI_Controller {
 	}
 
 	public function index()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('stiker_models/stikerModels');
 		$data['listStiker'] = $this->stikerModels->get_data_stiker();
 	
@@ -24,7 +24,9 @@ class KelolaStiker extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/kelola_stiker', $data);
 		$this->load->view('skin/admin/footer_admin');
-		
+		} else{
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Delete Data
@@ -85,7 +87,7 @@ class KelolaStiker extends CI_Controller {
 	
 	//Lihat detail produk
 	public function lihat_detail_stiker($id_stiker)
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('stiker_models/stikerModels');
 
 		//Ambil id_agenda yang akan diedit
@@ -95,11 +97,15 @@ class KelolaStiker extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/detail_stiker', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Validasi stiker
 	public function validasi_stiker()
 	{
+		
 		$this->load->model('stiker_models/stikerModels');
 		$data['listStiker'] = $this->stikerModels->get_data_stiker_pend();
 			
@@ -180,16 +186,20 @@ class KelolaStiker extends CI_Controller {
 	
 	//tambah stiker soon
 	public function tambah_stiker()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('stiker_models/stikerModels');
 
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/tambah_stiker');
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	function tambah_stiker_check() {
+		if($this->session->userdata('admin_logged_in')){
         $this->load->model('stiker_models/stikerModels');
 		$this->load->library('form_validation');
 		$tambah = $this->input->post('submit');
@@ -252,12 +262,15 @@ class KelolaStiker extends CI_Controller {
 			$this->load->view('content_admin/tambah_stiker');
 			$this->load->view('skin/admin/footer_admin');
 		}     
-		
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Fungsi melakukan update pada database
 	public function edit_stiker($id_stiker) 
 	{
+		if($this->session->userdata('admin_logged_in')){
 		$this->load->model('stiker_models/stikerModels');
 		$this->load->library('form_validation');
 
@@ -337,6 +350,9 @@ class KelolaStiker extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/edit_stiker', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	function crop($img,$filename){

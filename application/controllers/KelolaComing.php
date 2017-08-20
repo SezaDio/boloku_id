@@ -15,7 +15,7 @@ class KelolaComing extends CI_Controller {
 	}
 
 	public function index()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('coming_models/ComingModels');
 		$data['listComing'] = $this->ComingModels->get_data_coming();
 		$data['jumlahTop'] = $this->ComingModels->jumlah_top();	
@@ -24,6 +24,9 @@ class KelolaComing extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/kelola_coming', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 		
 	}
 
@@ -70,7 +73,7 @@ class KelolaComing extends CI_Controller {
 	
 	//Lihat detail produk
 	public function lihat_detail_coming($id_coming)
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('coming_models/ComingModels');
 		$this->load->model('news_models/NewsModels');
 		$this->load->model('home_models/HomeModels');
@@ -84,12 +87,14 @@ class KelolaComing extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/detail_coming', $data);
 		$this->load->view('skin/admin/footer_admin');
-
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Validasi coming
 	public function validasi_coming()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('coming_models/ComingModels');
 		$data['listComing'] = $this->ComingModels->get_data_coming_pend();
 			
@@ -97,6 +102,9 @@ class KelolaComing extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/validasi_coming', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	//Setujui coming
@@ -170,16 +178,20 @@ class KelolaComing extends CI_Controller {
 	
 	//tambah coming soon
 	public function tambah_coming()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('coming_models/ComingModels');
 
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/tambah_coming');
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	function tambah_coming_check() {
+		if($this->session->userdata('admin_logged_in')){
         $this->load->model('coming_models/ComingModels');
 		$this->load->library('form_validation');
 
@@ -371,12 +383,14 @@ class KelolaComing extends CI_Controller {
 			$this->load->view('content_admin/tambah_coming',$data);
 			$this->load->view('skin/admin/footer_admin');
 		}     
-		
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Fungsi melakukan update pada database
 	public function edit_comming_soon($id_coming) 
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('coming_models/ComingModels');
 		$this->load->library('form_validation');
 
@@ -516,7 +530,6 @@ class KelolaComing extends CI_Controller {
 						//echo "Masuk";
 						$gbr = $this->upload->data();
 						$this->crop($gbr['full_path'],$gbr['file_name']);
-						$this->crop_png($gbr['full_path'],$gbr['file_name']);
 						$data_coming['path_gambar'] = $gbr['file_name'];
 					}
 					else
@@ -574,10 +587,13 @@ class KelolaComing extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/edit_comming', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	public function edit_event() 
-	{
+	{	
 		$this->load->model('coming_models/ComingModels');
 		$this->load->library('form_validation');
 
@@ -827,82 +843,6 @@ class KelolaComing extends CI_Controller {
 	
 	
 	
-	function crop_png(){
-
-		$name = 'E:/Drive/qwini/Capture.jpg';
-		if(preg_match("/.jpg/i", "$name")){
-		$myImage = imagecreatefromjpeg($name);
-		}
-		if(preg_match("/.jpeg/i", "$name")){
-		$myImage = imagecreatefromjpeg($name);
-		}
-		if(preg_match("/.jpeg/i", "$name")){
-		$myImage = Imagecreatefromjpeg($name);
-		}
-		if(preg_match("/.png/i", "$name")){
-		$myImage = imagecreatefrompng($name);
-		print_r("tes");
-		}
-		if(preg_match("/.gif/i", "$name")){
-		$myImage = imagecreatefromgif($name);
-		}
-		//$myImage = imagecreatefrompng($name);
-		list($width, $height) = getimagesize($name);
-		print_r($width);
-		//echo file_get_contents('E:/Drive/qwini/qwini_lingkaran.png');
-		if($width<=$height){
-			$percent = 800/$width;
-			$newwidth = $width * $percent;
-			$newheight = $height * $percent;
-			if($newheight<550){
-				$percent2 = 550/$newheight;
-				$newwidth = $newwidth * $percent2;
-				$newheight = $newheight * $percent2;
-			}
-			
-			
-		} else {
-			$percent = 550/$height;
-			$newwidth = $width * $percent;
-			$newheight = $height * $percent;
-			if($newwidth<800){
-				$percent2 = 800/$newwidth;
-				$newwidth = $newwidth * $percent2;
-				$newheight = $newheight * $percent2;
-			}
-			
-		}
-		
-		
-		// resize image
-		$thumb = imagecreatetruecolor($newwidth, $newheight);
-		
-		imagecopyresized($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-		
-		imagepng($thumb,"E:/Drive/qwini/resize.png");
-		
-		
-		// crop thumb
-		$imgThumb = 'E:/Drive/qwini/resize.png';
-		
-		$myThumb = imagecreatefrompng($imgThumb);
-		
-		list($width, $height) = getimagesize($imgThumb);
-		
-		$myThumbCrop =  imagecreatetruecolor(800, 550);
-		
-		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
-		imagesavealpha($myThumbCrop, true);
-		$color = imagecolorallocatealpha($myThumbCrop, 0, 0, 0, 127);
-		imagefill($myThumbCrop, 0, 0, $color);
-		
-		// Save the two images created
-		
-		
-		imagepng( $myThumbCrop,"E:/Drive/qwini/coba.png" );
-		
-		
-	}
 	
 	//Publish
 	public function top_event()

@@ -16,6 +16,7 @@ class Kelolapendaftar extends CI_Controller {
 
 	public function index()
 	{
+		if($this->session->userdata('admin_logged_in')){
 		$this->load->model('pendaftar_models/PendaftarModels');
 		$data['listEventGratis'] = $this->PendaftarModels->get_data_event_gratis();
 		$data['listEventBayar'] = $this->PendaftarModels->get_data_event_bayar();
@@ -24,11 +25,14 @@ class Kelolapendaftar extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/kelola_pendaftar', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//List pendaftar
 	public function list_pendaftar($id_event)
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('pendaftar_models/PendaftarModels');
 		$data['idEvent'] = $id_event;
 		$event = $this->PendaftarModels->get_event($id_event);
@@ -41,6 +45,9 @@ class Kelolapendaftar extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/list_pendaftar', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Delete Data detail produk
@@ -60,10 +67,6 @@ class Kelolapendaftar extends CI_Controller {
         
         //var_dump($search_term); exit();
         $get_pendaftar=$this->db->where("id_pendaftar",$id_pendaftar)->get('pendaftar');
-        
-		
-        
-        
         $this->load->helper('xml');
 		$xml_out = '<pendaftars>';
         if ($get_pendaftar->num_rows()>0) {
@@ -93,10 +96,6 @@ class Kelolapendaftar extends CI_Controller {
         
         //var_dump($search_term); exit();
         $data_pembayaran=$this->db->where("no_peserta",$no_pendaftar)->get('pembayaran');
-        
-		
-        
-        
         $this->load->helper('xml');
 		$xml_out = '<pembayarans>';
         if ($data_pembayaran->num_rows()>0) {
@@ -122,6 +121,7 @@ class Kelolapendaftar extends CI_Controller {
 	//Lihat detail produk
 	public function lihat_detail_pendaftar($id_pendaftar)
 	{
+		if($this->session->userdata('admin_logged_in')){
 		$this->load->model('pendaftar_models/PendaftarModels');
 
 		//Ambil id_agenda yang akan diedit
@@ -131,6 +131,9 @@ class Kelolapendaftar extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/detail_pendaftar', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Validasi pendaftar
@@ -217,15 +220,20 @@ class Kelolapendaftar extends CI_Controller {
 	//tambah pendaftar soon
 	public function tambah_pendaftar()
 	{
+		if($this->session->userdata('admin_logged_in')){
 		$this->load->model('pendaftar_models/PendaftarModels');
 
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/tambah_pendaftar');
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	function tambah_pendaftar_check() {
+		if($this->session->userdata('admin_logged_in')){
         $this->load->model('pendaftar_models/pendaftarModels');
 		$this->load->library('form_validation');
 		$tambah = $this->input->post('submit');
@@ -267,7 +275,9 @@ class Kelolapendaftar extends CI_Controller {
 			$this->load->view('content_admin/tambah_pendaftar');
 			$this->load->view('skin/admin/footer_admin');
 		}     
-		
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	function tambah_pendaftar_check_front($id_event) 

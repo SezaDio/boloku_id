@@ -93,10 +93,12 @@
                             </ul>
                         </li> 
                         
+						<?php if($this->session->userdata('status_admin')=='Super Admin'){?>
                         <li>
                             <a href="<?php echo site_url('KelolaAdmin/index'); ?>">
 							<i class="glyphicon glyphicon-cog"></i> <span>Administrator Control</span></a>  
                         </li>
+						<?php } ?>
                     </ul>
                 </section>
                 <!-- /.sidebar -->

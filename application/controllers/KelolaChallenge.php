@@ -16,6 +16,7 @@ class KelolaChallenge extends CI_Controller {
 
 	public function index()
 	{
+		if($this->session->userdata('admin_logged_in')){
 		$this->load->model('challenge_models/ChallengeModels');
 		$data['listChallenge'] = $this->ChallengeModels->get_data_challenge();
 		$namaChallenge= $this->ChallengeModels->get_nama_challenge();
@@ -25,7 +26,9 @@ class KelolaChallenge extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/kelola_challenge', $data);
 		$this->load->view('skin/admin/footer_admin');
-		
+		} else{
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Delete Data
@@ -86,7 +89,7 @@ class KelolaChallenge extends CI_Controller {
 	
 	//Lihat detail produk
 	public function lihat_detail_challenge($id_challenge)
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('challenge_models/ChallengeModels');
 
 		//Ambil id_agenda yang akan diedit
@@ -96,11 +99,14 @@ class KelolaChallenge extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/detail_challenge', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Validasi challenge
 	public function validasi_challenge()
-	{
+	{	
 		$this->load->model('challenge_models/ChallengeModels');
 		$data['listChallenge'] = $this->ChallengeModels->get_data_challenge_pend();
 			
@@ -181,17 +187,21 @@ class KelolaChallenge extends CI_Controller {
 	
 	//tambah challenge soon
 	public function tambah_challenge()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('challenge_models/ChallengeModels');
 
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/tambah_challenge');
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	function tambah_challenge_check() {
-        $this->load->model('challenge_models/ChallengeModels');
+        if($this->session->userdata('admin_logged_in')){
+		$this->load->model('challenge_models/ChallengeModels');
 		$this->load->library('form_validation');
 		$tambah = $this->input->post('submit');
 		if ($tambah == 1) 
@@ -253,12 +263,14 @@ class KelolaChallenge extends CI_Controller {
 			$this->load->view('content_admin/tambah_challenge');
 			$this->load->view('skin/admin/footer_admin');
 		}     
-		
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Fungsi melakukan update pada database
 	public function edit_challenge($id_challenge) 
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('challenge_models/ChallengeModels');
 		$this->load->library('form_validation');
 
@@ -338,6 +350,9 @@ class KelolaChallenge extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/edit_challenge', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	function crop($img,$filename){

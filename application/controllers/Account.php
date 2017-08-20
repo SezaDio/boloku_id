@@ -50,6 +50,9 @@ class Account extends CI_Controller
 				$array_items = array(
 									'id_admin' => $temp_account->id_admin,
 									'username' => $temp_account->username,
+									'nama_admin' => $temp_account->nama_admin,
+									'status_admin' => $temp_account->status_admin,
+									'path_foto' => $temp_account->path_foto,
 									'admin_logged_in' => true
 								);
 				$this->session->set_userdata($array_items);

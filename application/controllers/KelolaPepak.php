@@ -15,7 +15,7 @@ class KelolaPepak extends CI_Controller {
 	}
 
 	public function index()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('pepak_models/PepakModels');
 		$data['listPepak'] = $this->PepakModels->get_data_pepak();
 			
@@ -23,6 +23,9 @@ class KelolaPepak extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/kelola_pepak', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Delete Data
@@ -48,7 +51,9 @@ class KelolaPepak extends CI_Controller {
 	
 	//Lihat detail produk
 	public function lihat_detail_pepak($id_pepak)
-	{
+	{	if($this->session->userdata('admin_logged_in')){
+	
+		
 		$this->load->model('pepak_models/PepakModels');
 
 		//Ambil id_agenda yang akan diedit
@@ -58,11 +63,14 @@ class KelolaPepak extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/detail_pepak', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else{
+			redirect(site_url('Account'));
+		}
 	}
 
 	//Validasi pepak
 	public function validasi_pepak()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('pepak_models/PepakModels');
 		$data['listPepak'] = $this->PepakModels->get_data_pepak_pend();
 			
@@ -70,6 +78,9 @@ class KelolaPepak extends CI_Controller {
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/validasi_pepak', $data);
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	//Setujui pepak
@@ -131,16 +142,20 @@ class KelolaPepak extends CI_Controller {
 	
 	//tambah pepak soon
 	public function tambah_pepak()
-	{
+	{	if($this->session->userdata('admin_logged_in')){
 		$this->load->model('pepak_models/PepakModels');
 
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
 		$this->load->view('content_admin/tambah_pepak');
 		$this->load->view('skin/admin/footer_admin');
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	function tambah_pepak_check() {
+		if($this->session->userdata('admin_logged_in')){
         $this->load->model('pepak_models/PepakModels');
 		$this->load->library('form_validation');
 
@@ -188,7 +203,9 @@ class KelolaPepak extends CI_Controller {
 			$this->load->view('content_admin/tambah_pepak');
 			$this->load->view('skin/admin/footer_admin');
 		}     
-		
+		} else {
+			redirect(site_url('Account'));
+		}
 	}
 	
 	function cari_kata($kata) {
