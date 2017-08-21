@@ -1,5 +1,5 @@
 
-      <section class="zerogrid-section">
+      <section class="zerogrid-section" style="padding-bottom: 30px;">
          <div class="container-fluid">
             <div class="row">
                <ul class="rslides" id="slider1" style="max-height: 400px; max-width: 1350px;">
@@ -11,7 +11,7 @@
                </ul>
             </div>
          </div>
-      </section><br><br>
+      </section>
 
       <!--Fitur Top Event-->
       <section class="photo-gallery-section">
@@ -226,7 +226,7 @@
                                  ?>
 
                            </div>
-                           <h4 style="color: white;"> <a href="<?php echo site_url('event_click/'.$topevent['id_coming']); ?>" style="color: white;"> <?php echo $topevent['nama_coming']; ?> </a> </h4>
+                           <h4 style="font-size: medium; color: white;"><strong> <a href="<?php echo site_url('event_click/'.$topevent['id_coming']); ?>" style="color: white;"> <?php echo $topevent['nama_coming']; ?> </a></strong> </h4>
                            <div class="row">
                               <div class="col-md-12">
                                  <div class="col-md-2"></div>
@@ -261,7 +261,7 @@
                            <h2 class="main-heading"><strong>New Event</strong></h2>
                            <span class="heading-ping"></span>
                            <span class="heading-read-more">
-                              <a href="<?php echo site_url('FrontControl_Event'); ?>" class="btn btn-black">See all</a>
+                              <a href="<?php echo site_url('event_page'); ?>" class="btn btn-black">See all</a>
                            </span>
                         </div>
                      </div>
