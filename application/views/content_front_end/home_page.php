@@ -77,7 +77,7 @@
                               <?php }
                                     elseif ($topevent['tipe_event'] == "Conference")
                                     { ?>
-                                       <a class="btn btn-dark-blue btn-xs" href="javascript:void(0)" onclick="byLabel('tipe_event','Conference')">
+                                       <a class="btn btn-blue btn-xs" href="javascript:void(0)" onclick="byLabel('tipe_event','Class')">
                                           <div>
                                              # <?php echo $topevent['tipe_event'] ?>
                                           </div>
@@ -298,7 +298,7 @@
 										  <?php }
 												elseif ($newevent['tipe_event'] == "Conference")
 												{ ?>
-												   <a class="btn btn-dark-blue btn-xs" href="javascript:void(0)" onclick="byLabel('tipe_event','Conference')">
+												   <a class="btn btn-blue btn-xs" href="javascript:void(0)" onclick="byLabel('tipe_event','Conference')">
 													  <div>
 														 # <?php echo $newevent['tipe_event'] ?>
 													  </div>
