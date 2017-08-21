@@ -14,7 +14,7 @@ class FrontControl_ContactUs extends CI_Controller {
 
    }
 
-   public function index()
+   public function contact_us()
    {
       $data['active']=5;
 

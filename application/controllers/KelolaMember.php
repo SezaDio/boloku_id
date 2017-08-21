@@ -954,8 +954,10 @@ class KelolaMember extends CI_Controller {
 		list($width83, $height83) = getimagesize($imgThumb83);
 		$myThumbCrop =  imagecreatetruecolor(800, 550);
 		$myThumbCrop83 =  imagecreatetruecolor(83,83);
-		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
-		imagecopyresampled($myThumbCrop83,$myThumb83,0,0,0,0 ,$width83,$height83,$width83,$height83);
+		$x = ($width-800)/2;
+		$x83 = ($width83-83)/2;
+		imagecopyresampled($myThumbCrop,$myThumb,0,0,$x,0 ,$width,$height,$width,$height);
+		imagecopyresampled($myThumbCrop83,$myThumb83,0,0,$x83,0 ,$width83,$height83,$width83,$height83);
 		
 		if(preg_match("/.png/i", "$name")){
 		imagesavealpha($myThumbCrop, true);

@@ -14,7 +14,7 @@ class FrontControl_Faq extends CI_Controller {
 
    }
 
-   public function index()
+   public function faq()
    {
       $this->load->model('faq_models/FaqModels');
       $data['listFaq'] = $this->FaqModels->get_data_faq();

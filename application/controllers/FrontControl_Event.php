@@ -14,7 +14,7 @@ class FrontControl_Event extends CI_Controller {
 
    }
 
-   public function index()
+   public function event_page()
    {
    	  $this->load->helper('url');
 	  $this->load->library('pagination');
@@ -24,10 +24,10 @@ class FrontControl_Event extends CI_Controller {
 
 	  //Paginasi halaman event page
 	  	$jumlah_data = $this->HomeModels->jumlah_data_new_event();
-		$config['base_url'] = site_url('FrontControl_Event/index/');
+		$config['base_url'] = site_url('event_page/');
 		$config['total_rows'] = $jumlah_data;
 		$config['per_page'] = 5;
-		$config['uri_segment'] = 3;
+		$config['uri_segment'] = 2;
 		$choice = $config['total_rows'] / $config['per_page'];
 		$config['num_links'] = floor($choice);
 
@@ -52,7 +52,7 @@ class FrontControl_Event extends CI_Controller {
 		$config['num_tag_close'] = '</li>';
 
 		$this->pagination->initialize($config);
-		$data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+		$data['page'] = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
 
 		//panggil model get daftar new event data		
 		$data['listEvent'] = $this->HomeModels->get_event($config['per_page'], $data['page']);

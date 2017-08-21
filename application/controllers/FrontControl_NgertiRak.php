@@ -14,7 +14,7 @@ class FrontControl_NgertiRak extends CI_Controller {
 
    }
 
-   public function index()
+   public function ngertirak()
    {
       $this->load->helper('url');
       $this->load->library('pagination');
@@ -25,10 +25,10 @@ class FrontControl_NgertiRak extends CI_Controller {
 
       //Paginasi halaman event page
       $jumlah_data = $this->WowModels->jumlah_data_ngerti_rak();
-      $config['base_url'] = site_url('FrontControl_NgertiRak/index/');
+      $config['base_url'] = site_url('ngertirak/');
       $config['total_rows'] = $jumlah_data;
       $config['per_page'] = 9;
-      $config['uri_segment'] = 3;
+      $config['uri_segment'] = 2;
       $choice = $config['total_rows'] / $config['per_page'];
       $config['num_links'] = floor($choice);
 
@@ -53,7 +53,7 @@ class FrontControl_NgertiRak extends CI_Controller {
       $config['num_tag_close'] = '</li>';
 
       $this->pagination->initialize($config);
-      $data['page'] = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+      $data['page'] = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
 
       //panggil model get daftar new event data    
       $data['listNgertiRak'] = $this->WowModels->get_ngerti_rak($config['per_page'], $data['page']);

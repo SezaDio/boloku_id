@@ -110,7 +110,7 @@
 							
 	                        <?php foreach($listEvent as $event){ ?>
 	                           <div class="grid-1" style="background-color: white; border-top:solid 1px #f44a56;">
-	                           	 <a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>">
+	                           	 <a href="<?php echo base_url('event_click/'.$event['id_coming']); ?>">
 	                              <ul>
 	                              	<div class="col-md-12" style="padding: 10px;">
 		                                 <li class="col-md-4 col-sm-3 col-xs-12 nopadding">
@@ -132,7 +132,7 @@
 		                                    <div class="desc post-content">
 		                                    	<div style="padding-top: 3px;">
 			                                       	
-			                                       	<a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>"><h3><strong><?php echo $event['nama_coming'];?></strong></h3></a>
+			                                       	<a href="<?php echo base_url('event_click/'.$event['id_coming']); ?>"><h3><strong><?php echo $event['nama_coming'];?></strong></h3></a>
 			                                       	
 			                                       <ul class="post-tools">
 			                                          <li>by <a href=""><strong> <?php echo $event['posted_by'];?></strong> </a></li>
@@ -149,7 +149,7 @@
 															echo $isi;
 														?>
 														. . . 
-			                                       		<a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>" class="readmore"><strong>Read More</strong></a> 
+			                                       		<a href="<?php echo base_url('event_click/'.$event['id_coming']); ?>" class="readmore"><strong>Read More</strong></a> 
 			                                       	</p>
 			                                    </div>
 			                                   <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
@@ -253,7 +253,7 @@
 			  var getUrl = window.location;
 			  var baseUrl = getUrl .protocol + "//"+ getUrl.host;
 			  divkategori += '<div class="grid-1" style="border-top:solid 1px #f44a56; background-color: white;">';
-	            divkategori += '<a href="'+baseUrl+'/FrontControl_Event/event_click/'+id_event+'">'
+	            divkategori += '<a href="'+baseUrl+'/event_click/'+id_event+'">'
 	                divkategori += '<ul>';
 	                    divkategori += '<div class="col-md-12" style="padding: 10px;">';
 		                    divkategori += '<li class="col-md-4 col-sm-3 col-xs-12 nopadding">';
@@ -265,12 +265,12 @@
 	                        divkategori += '</div>';
 		                    divkategori += '<li class="col-md-8 col-sm-9 col-xs-12">';
 								divkategori += '<div class="desc post-content">';
-									divkategori += '<h5><a href="'+baseUrl+'/FrontControl_Event/event_click/'+id_event+'">'+nama_event+'</a></h5>';
+									divkategori += '<h5><a href="'+baseUrl+'/event_click/'+id_event+'">'+nama_event+'</a></h5>';
 		                            divkategori += '<ul class="post-tools">';
 									    divkategori += '<li>by <a href=""><strong> '+posted_by+'</strong> </a></li>';
 		                                divkategori += '<li>'+tanggal_posting+'</li>';
 		                            divkategori += '</ul>';
-		                            divkategori += '<p>'+deskripsi_event+'<a href="'+baseUrl+'/FrontControl_Event/event_click/'+id_event+'" class="readmore"><strong>Read More</strong></a> </p>';
+		                            divkategori += '<p>'+deskripsi_event+'<a href="'+baseUrl+'/event_click/'+id_event+'" class="readmore"><strong>Read More</strong></a> </p>';
 			                        divkategori += '<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>';
 			                        divkategori += '<a style="margin-top: -25px;" href="javascript:void(0)" class=" btn btn-green btn-small" onclick="byLabel('+label_jenis+','+value_jenis+')"><i class="ti-money"></i>'+jenis+'</a>';
 			                        divkategori += '<a style="margin-top: -25px;" href="javascript:void(0)" class=" btn btn-dark-red" onclick="byLabel('+label_kategori+','+value_kategori+')">'+kategori_event+'</a>';
@@ -347,7 +347,7 @@
 			  var baseUrl = getUrl .protocol + "//"+ getUrl.host;
 			  
 			  divkategori += '<div class="grid-1" style="border-top:solid 1px #f44a56; background-color: white;">';
-	            divkategori += '<a href="'+baseUrl+'/FrontControl_Event/event_click/'+id_event+'">'
+	            divkategori += '<a href="'+baseUrl+'/event_click/'+id_event+'">'
 	                divkategori += '<ul>';
 	                    divkategori += '<div class="col-md-12" style="padding: 10px;">';
 		                    divkategori += '<li class="col-md-4 col-sm-3 col-xs-12 nopadding">';
@@ -359,12 +359,12 @@
 	                        divkategori += '</div>';
 		                    divkategori += '<li class="col-md-8 col-sm-9 col-xs-12">';
 								divkategori += '<div class="desc post-content">';
-									divkategori += '<h5><a href="'+baseUrl+'/FrontControl_Event/event_click/'+id_event+'">'+nama_event+'</a></h5>';
+									divkategori += '<h5><a href="'+baseUrl+'/event_click/'+id_event+'">'+nama_event+'</a></h5>';
 		                            divkategori += '<ul class="post-tools">';
 									    divkategori += '<li>by <a href=""><strong> '+posted_by+'</strong> </a></li>';
 		                                divkategori += '<li>'+tanggal_posting+'</li>';
 		                            divkategori += '</ul>';
-		                            divkategori += '<p>'+deskripsi_event+'<a href="'+baseUrl+'/FrontControl_Event/event_click/'+id_event+'" class="readmore"><strong>Read More</strong></a> </p>';
+		                            divkategori += '<p>'+deskripsi_event+'<a href="'+baseUrl+'/event_click/'+id_event+'" class="readmore"><strong>Read More</strong></a> </p>';
 			                        divkategori += '<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>';
 			                        divkategori += '<a style="margin-top: -25px;" href="javascript:void(0)" class=" btn btn-green btn-small" onclick="byLabel('+label_jenis+','+value_jenis+')"><i class="ti-money"></i>'+jenis+'</a>';
 			                        divkategori += '<a style="margin-top: -25px;" href="javascript:void(0)" class=" btn btn-dark-red" onclick="byLabel('+label_kategori+','+value_kategori+')">'+kategori_event+'</a>';

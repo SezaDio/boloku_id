@@ -114,8 +114,8 @@
                         <ul class="tabs-posts">
 						              <?php $this->load->model('home_models/HomeModels'); foreach($listArtikel as $artikel){ ?>
                            <li>
-                              <div class="pic"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
-                              <div class="caption"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><?php echo $artikel['judul_artikel'];?></a> </div>
+                              <div class="pic"> <a href="<?php echo site_url('halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
+                              <div class="caption"> <a href="<?php echo site_url('halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><?php echo $artikel['judul_artikel'];?></a> </div>
                               <ul class="post-tools">
                                  <li title="Like"><i class="glyphicon glyphicon-eye-open"></i><?php echo $artikel['hits'];?> </li>
                                  <li title="Comments"> <i class="ti-thought"></i> <?php echo $data['jumlahKomentar'] = $this->HomeModels->jumlah_komentar($artikel['id_artikel']);?></li>

@@ -169,7 +169,7 @@
                      <li <?php if($active==2){
                            echo "class='active'";
                         } ?>>
-                        <a href="<?php echo base_url('FrontControl_Event'); ?>">
+                        <a href="<?php echo base_url('event_page'); ?>">
                            <span class="text">  Event </span> 
                         </a>
                      </li>
@@ -178,7 +178,7 @@
                      <li <?php if($active==3){
                            echo "class='active'";
                         } ?>>
-                        <a href="<?php echo base_url('FrontControl_NgertiRak'); ?>">
+                        <a href="<?php echo base_url('ngertirak'); ?>">
                            <span class="text"> Ngerti Rak ? </span>
                         </a>
                      </li>
@@ -187,7 +187,7 @@
                      <li <?php if($active==4){
                            echo "class='active'";
                         } ?>>
-                        <a href="<?php echo base_url('FrontControl_Faq'); ?>">
+                        <a href="<?php echo base_url('faq'); ?>">
                            <span class="text"> FAQ </span>
                         </a>
                      </li>
@@ -196,7 +196,7 @@
                      <li <?php if($active==5){
                            echo "class='active'";
                         } ?>>
-                        <a href="<?php echo base_url('FrontControl_ContactUs'); ?>">
+                        <a href="<?php echo base_url('contact_us'); ?>">
                            <span class="text"> Contact Us </span>
                         </a>
                      </li>

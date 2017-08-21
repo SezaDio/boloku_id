@@ -36,11 +36,11 @@
             <div class="row">
                <div class="col-md-12 col-xs-12 col-sm-12" style="padding-bottom: 20px;">
 				  <?php foreach($listTopEvent as $topevent){ ?>
-                  <a href="<?php echo site_url('FrontControl_Event/event_click/'.$topevent['id_coming']); ?>">
+                  <a href="<?php echo site_url('event_click/'.$topevent['id_coming']); ?>">
                      <div class="item col-md-4" style="padding-bottom: 10px; text-align: center;">
                         <div class="picture">
                            <div class="category-image">
-                              <a href="<?php echo site_url('FrontControl_Event/event_click/'.$topevent['id_coming']); ?>"> 
+                              <a href="<?php echo site_url('event_click/'.$topevent['id_coming']); ?>"> 
                                  <img style="border: solid 3px #444;" class="img-responsive" alt="" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$topevent['path_gambar']); ?>"> 
                               </a>
                            </div>
@@ -226,7 +226,7 @@
                                  ?>
 
                            </div>
-                           <h4 style="color: white;"> <a href="<?php echo site_url('FrontControl_Event/event_click/'.$topevent['id_coming']); ?>" style="color: white;"> <?php echo $topevent['nama_coming']; ?> </a> </h4>
+                           <h4 style="color: white;"> <a href="<?php echo site_url('event_click/'.$topevent['id_coming']); ?>" style="color: white;"> <?php echo $topevent['nama_coming']; ?> </a> </h4>
                            <div class="row">
                               <div class="col-md-12">
                                  <div class="col-md-2"></div>
@@ -269,12 +269,12 @@
                      <!---Main content New Event ditampilkan 8 buah-->
                      <div class="row">
 						   <?php foreach($listNewEvent as $newevent){ ?>
-                        <a href="<?php echo site_url('FrontControl_Event/event_click/'.$newevent['id_coming']); ?>">
+                        <a href="<?php echo site_url('event_click/'.$newevent['id_coming']); ?>">
                            <article class="col-md-6 col-sm-6 col-xs-12">
                               <div class="grid-1" style="box-shadow: 0 1px 1px grey; background-color: white;">
                                  <div class="picture">
                                     <div class="category-image">
-                                       <a href="<?php echo base_url('FrontControl_Event/event_click/'.$newevent['id_coming']); ?>">
+                                       <a href="<?php echo base_url('event_click/'.$newevent['id_coming']); ?>">
                                           <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$newevent['path_gambar']); ?>">
                                        </a>
                                        <div class="catname">
@@ -460,7 +460,7 @@
                                  <div class="detail" style="padding-left: 20px;">
                                     <div class="caption">
                                        <h5>
-                                          <a href="<?php echo base_url('FrontControl_Event/event_click/'.$newevent['id_coming']); ?>"><?php echo $newevent['nama_coming'];?></a>
+                                          <a href="<?php echo base_url('event_click/'.$newevent['id_coming']); ?>"><?php echo $newevent['nama_coming'];?></a>
                                        </h5>
                                     </div>
                                     
@@ -520,7 +520,7 @@
                                        <?php echo $ngertirak['deskripsi'];?>
                                     </p><br>
                                     <div class="col-md-12" style="text-align: center;">
-                                       <a href="<?php echo site_url('FrontControl_NgertiRak'); ?>" class="btn btn-colored-blog"> See More</a>
+                                       <a href="<?php echo site_url('ngertirak'); ?>" class="btn btn-colored-blog"> See More</a>
                                     </div>
                                  </div>
                               </div>
@@ -569,8 +569,8 @@
                         <ul class="tabs-posts">
 						<?php  $this->load->model('home_models/HomeModels'); foreach($listArtikel as $artikel){ ?>
                            <li>
-                              <div class="pic"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
-                              <div class="caption"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><?php echo $artikel['judul_artikel']; ?></a> </div>
+                              <div class="pic"> <a href="<?php echo site_url('halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
+                              <div class="caption"> <a href="<?php echo site_url('halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><?php echo $artikel['judul_artikel']; ?></a> </div>
                               <ul class="post-tools">
                                  <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $artikel['hits'];?></a></li>
                                  <li title="Comments"> <i class="ti-thought"></i> <?php echo $data['jumlahKomentar'] = $this->HomeModels->jumlah_komentar($artikel['id_artikel']); ?></li>
