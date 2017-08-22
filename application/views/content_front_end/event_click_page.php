@@ -48,6 +48,7 @@
 								                    <a title="google +" href="https://plus.google.com/share?url=<?php echo current_url(); ?>" target="_blank"><button style="color:white;" class="btn btn-danger" type="submit"><i class="fa fa-google"></i></button></a>
 
 								                    <a title="twitter" href="http://twitter.com/share?url=<?php echo current_url(); ?>" target="_blank"><button style="color:white;" class="btn btn-info" type="submit"><i class="fa fa-twitter"></i></button></a>
+													 <a title="whatsapp" href="https://api.whatsapp.com/send?text=<?php echo $nama_event."%20||%20".current_url(); ?>" target="_blank"><button style="color:white;" class="btn btn-info" type="submit"><i class="fa fa-whatsapp"></i></button></a>
 				                                </div>
 				                            </div>
 				                        </div>
