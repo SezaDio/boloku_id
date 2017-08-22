@@ -17,12 +17,12 @@ class KelolaNews extends CI_Controller {
 	public function index()
 	{
 		//$this->load->model('news_models/NewsModels');
-		$this->load->model('coming_models/ComingModels');
-		$data['listComing'] = $this->ComingModels->get_data_coming();
+		$this->load->model('news_models/newsModels');
+		$data['listnews'] = $this->newsModels->get_data_news();
 			
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
-		$this->load->view('content_admin/kelola_coming', $data);
+		$this->load->view('content_admin/kelola_news', $data);
 		$this->load->view('skin/admin/footer_admin');
 	}
 
@@ -263,7 +263,7 @@ class KelolaNews extends CI_Controller {
 		$this->load->model('news_models/NewsModels');
 		$data['listNewsYouthers'] = $this->NewsModels->get_data_pendnews_youthers();
 		$data['listNewsKomunitas'] = $this->NewsModels->get_data_pendnews_komunitas();
-		$data['listNewsComming'] = $this->NewsModels->get_data_pendnews_coming();
+		$data['listNewsComming'] = $this->NewsModels->get_data_pendnews_news();
 			
 		$this->load->view('skin/admin/header_admin');
 		$this->load->view('skin/admin/nav_kiri');
@@ -271,7 +271,7 @@ class KelolaNews extends CI_Controller {
 		$this->load->view('skin/admin/footer_admin');
 	}
 	
-	//Setujui coming
+	//Setujui news
 	public function setuju_news()
 	{
 		$this->load->model('news_models/NewsModels');
@@ -284,7 +284,7 @@ class KelolaNews extends CI_Controller {
 		$this->validasi_news();
 	}
 	
-	//Setujui coming
+	//Setujui news
 	public function setuju_detail_news($id_news)
 	{
 		$this->load->model('news_models/NewsModels');
@@ -347,46 +347,135 @@ class KelolaNews extends CI_Controller {
 	function crop($img,$filename){
 		
 		$name = $img;
+		if(preg_match("/.jpg/i", "$name")){
 		$myImage = imagecreatefromjpeg($name);
+		$myImage85 = imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		$myImage = imagecreatefromjpeg($name);
+		$myImage85 = imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		$myImage = Imagecreatefromjpeg($name);
+		$myImage85 = Imagecreatefromjpeg($name);
+		}
+		if(preg_match("/.png/i", "$name")){
+		$myImage = imagecreatefrompng($name);
+		$myImage85 = imagecreatefrompng($name);
+		
+		}
+		if(preg_match("/.gif/i", "$name")){
+		$myImage = imagecreatefromgif($name);
+		$myImage85 = imagecreatefromgif($name);
+		}
 		list($width, $height) = getimagesize($name);
 		//get percent to resize to 900x550
 		if($width<=$height){
-			$percent = 900/$width;
+			$percent = 800/$width;
 			$newwidth = $width * $percent;
 			$newheight = $height * $percent;
 			if($newheight<550){
-				$percent2 = 550/$newwidth;
+				$percent2 = 550/$newheight;
 				$newwidth = $newwidth * $percent2;
 				$newheight = $newheight * $percent2;
+			}
+			
+			$percent85 = 85/$width;
+			$newwidth85 = $width * $percent85;
+			$newheight85 = $height * $percent85;
+			if($newheight85<85){
+				$percent85b = 85/$newheight85;
+				$newwidth85 = $newwidth85 * $percent85b;
+				$newheight85 = $newheight85 * $percent85b;
 			}
 		} else {
 			$percent = 550/$height;
 			$newwidth = $width * $percent;
 			$newheight = $height * $percent;
-			if($newwidth<900){
-				$percent2 = 550/$newwidth;
+			if($newwidth<800){
+				$percent2 = 800/$newwidth;
 				$newwidth = $newwidth * $percent2;
 				$newheight = $newheight * $percent2;
+			}
+			
+			$percent85 = 85/$height;
+			$newwidth85 = $width * $percent85;
+			$newheight85 = $height * $percent85;
+			if($newwidth85<85){
+				$percent85b = 85/$newwidth85;
+				$newwidth85 = $newwidth85 * $percent85b;
+				$newheight85 = $newheight85 * $percent85b;
 			}
 		}
 		
 		
 		// resize image
 		$thumb = imagecreatetruecolor($newwidth, $newheight);
+		$thumb85 = imagecreatetruecolor($newwidth85, $newheight85);
 		imagecopyresized($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		imagecopyresized($thumb85, $myImage85, 0, 0, 0, 0, $newwidth85, $newheight85, $width, $height);
+		if(preg_match("/.jpg/i", "$name")){
 		imagejpeg($thumb,"./asset/upload_img_news/resize_".$filename);
+		imagejpeg($thumb85,"./asset/upload_img_news/resize83_".$filename);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		imagejpeg($thumb,"./asset/upload_img_news/resize_".$filename);
+		imagejpeg($thumb85,"./asset/upload_img_news/resize83_".$filename);
+		}
+		if(preg_match("/.png/i", "$name")){
+		imagepng($thumb,"./asset/upload_img_news/resize_".$filename);
+		imagepng($thumb85,"./asset/upload_img_news/resize83_".$filename);
+		}
 		
 		// crop thumb
 		$imgThumb = './asset/upload_img_news/resize_'.$filename;
+		$imgThumb85 = './asset/upload_img_news/resize85_'.$filename;
+		if(preg_match("/.jpg/i", "$name")){
 		$myThumb = imagecreatefromjpeg($imgThumb);
+		$myThumb85 = imagecreatefromjpeg($imgThumb85);
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		$myThumb = imagecreatefromjpeg($imgThumb);
+		$myThumb85 = imagecreatefromjpeg($imgThumb85);
+		}
+		if(preg_match("/.png/i", "$name")){
+		$myThumb = imagecreatefrompng($imgThumb);
+		$myThumb85 = imagecreatefrompng($imgThumb85);
+		}
 		list($width, $height) = getimagesize($imgThumb);
-		$myThumbCrop =  imagecreatetruecolor(900, 550);
-		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
+		list($width85, $height85) = getimagesize($imgThumb85);
+		$myThumbCrop =  imagecreatetruecolor(800,550);
+		$myThumbCrop85 =  imagecreatetruecolor(85, 85);
+		$x = ($width-800)/2;
+		$x85 = ($width85-85)/2;
+		imagecopyresampled($myThumbCrop,$myThumb,0,0,$x,0 ,$width,$height,$width,$height);
+		imagecopyresampled($myThumbCrop85,$myThumb85,0,0,$x85,0 ,$width85,$height85,$width85,$height85);
+		if(preg_match("/.png/i", "$name")){
+		imagesavealpha($myThumbCrop, true);
+		imagesavealpha($myThumbCrop85, true);
+		$color = imagecolorallocatealpha($myThumbCrop, 0, 0, 0, 127);
+		$color85 = imagecolorallocatealpha($myThumbCrop85, 0, 0, 0, 127);
+		imagefill($myThumbCrop, 0, 0, $color);
+		imagefill($myThumbCrop85, 0, 0, $color85);
+		}
 		unlink('./asset/upload_img_news/resize_'.$filename);
+		unlink('./asset/upload_img_news/resize85_'.$filename);
 		 
 		// Save the two images created
 		$fileName="thumb_".$filename;
+		$fileName85="thumb85_".$filename;
+		if(preg_match("/.jpg/i", "$name")){
 		imagejpeg( $myThumbCrop,"./asset/upload_img_news/".$fileName );
+		imagejpeg( $myThumbCrop85,"./asset/upload_img_news/".$fileName85 );
+		}
+		if(preg_match("/.jpeg/i", "$name")){
+		imagejpeg( $myThumbCrop,"./asset/upload_img_news/".$fileName );
+		imagejpeg( $myThumbCrop85,"./asset/upload_img_news/".$fileName85 );
+		}
+		if(preg_match("/.png/i", "$name")){
+		imagepng( $myThumbCrop,"./asset/upload_img_news/".$fileName );
+		imagepng( $myThumbCrop85,"./asset/upload_img_news/".$fileName85 );
+		}
 		
 	}
 }

@@ -114,8 +114,8 @@
                         <ul class="tabs-posts">
                           <?php foreach($listArtikel as $news){ ?>
                            <li>
-                              <div class="pic"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel/'.$news['id_news']); ?>"><img style="width: 100px;" alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_news/thumb_'.$news['gambar_news']); ?>"></a> </div>
-                              <div class="caption"> <a href="<?php echo site_url('KelolaArtikel/halaman_baca_artikel/'.$news['id_news']); ?>"><?php echo $news['judul_news'];?></a> </div>
+                              <div class="pic"> <a href="<?php echo site_url('halaman_baca_artikel_pra_event/'.$news['id_news']); ?>"><img style="width: 100px;" alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_news/thumb_'.$news['gambar_news']); ?>"></a> </div>
+                              <div class="caption"> <a href="<?php echo site_url('halaman_baca_artikel_pra_event/'.$news['id_news']); ?>"><?php echo $news['judul_news'];?></a> </div>
                               <ul class="post-tools">
                                  <li title="Like"><i class="glyphicon glyphicon-eye-open"></i><?php echo $news['hits'];?> </li>
                                  <li title="Comments"> <i class="ti-thought"></i> <?php echo $data['jumlahKomentar'] = $this->HomeModels->jumlah_komentar($news['id_news']);?></li>

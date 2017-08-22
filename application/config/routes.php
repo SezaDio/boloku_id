@@ -63,5 +63,6 @@ $route['registrasi_member_baru'] = 'KelolaMember/registrasi_member_baru';
 $route['reset_password_member'] = 'KelolaMember/reset_password_member';
 $route['home'] = 'FrontControl_Home/home';
 $route['home/(:num)'] = 'FrontControl_Home/home/$1';
+$route['halaman_baca_artikel_pra_event/(:num)'] = 'KelolaNews/halaman_baca_artikel_pra_event/$1';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
