@@ -68,7 +68,7 @@
                         <?php } ?>
 
                        <!--Form comentar baru-->
-                       <div style="margin-top: -10px; background-color: white; padding-top: 10px;" class="col-md-12 comment-info">
+                       <div style="margin-top: -10px; background-color: white; padding-top: 10px;" class="comment-info">
                           <?php if(isset($this->session->userdata['is_logged_in']))
                           {?>     
                             <div class="col-md-2">

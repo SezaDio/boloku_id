@@ -74,8 +74,9 @@ class FrontControl_Event extends CI_Controller {
 	  
 	  $event = $this->HomeModels->get_event_byid($id_event);
 	  
+	  $tanggal_posting = $event['tanggal_posting'];
 	  $hits = $event['hits'] + 1;
-	  $data_hits = array('hits' => $hits);
+	  $data_hits = array('hits' => $hits, 'tanggal_posting' => $tanggal_posting);
 	  $where = array('id_coming' => $id_event);
 	  $this->HomeModels->update_hits($where, $data_hits, 'coming');
 
