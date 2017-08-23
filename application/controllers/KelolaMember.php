@@ -414,7 +414,7 @@ class KelolaMember extends CI_Controller {
 				if($this->db->insert('member', $data_member))
 				{
 					$this->session->set_flashdata('msg_berhasil', 'Data member berhasil ditambahkan');
-					redirect('FrontControl_Home');
+					redirect('home');
 				}
 				else
 				{
