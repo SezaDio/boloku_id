@@ -451,13 +451,15 @@ class KelolaMember extends CI_Controller {
 						'jawaban_rahasia'=>$this->input->post('jawaban'),
 						'date_join'=>date("Y-m-d h:i:sa"),
 						'path_foto'=>0,
-						'status'=>2
+						'status'=>1
 					);
 					$data['dataMember'] = $data_member;
 				if($this->db->insert('member', $data_member))
 				{
-					$this->session->set_flashdata('msg_berhasil', 'Data member berhasil ditambahkan');
-					redirect('home');
+					$this->session->set_flashdata('msg_berhasil', 'Selamat, kowe wis dadi boloku saiki');
+					$this->load->view('skin/front_end/header_front_end');
+					$this->load->view('content_front_end/register_member_page');
+					$this->load->view('skin/front_end/footer_front_end');
 				}
 				else
 				{
