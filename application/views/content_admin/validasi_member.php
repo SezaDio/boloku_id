@@ -65,6 +65,44 @@
                     </div>   <!-- /.row -->
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
-
+            <script>
+            function setuju_member_ajax(id_member)
+        	{
+        		if (confirm("Anda yakin ingin menyetujui data member ini ?"))
+        		{
+        			$.ajax({
+        				url: 'setuju_member',
+        				type: 'POST',
+        				data: {id_member:id_member},
+        				success: function(){
+        							alert('Data member berhasil disetujui');
+        							location.reload();
+        						},
+        				error: function(){
+        							alert('Data member gagal disetujui');
+        						}
+        			});
+        		}
+        	}
+        	
+        	function tolak_member_ajax(id_member)
+        	{
+        		if (confirm("Anda yakin ingin menolak data member ini ?"))
+        		{
+        			$.ajax({
+        				url: 'tolak_member',
+        				type: 'POST',
+        				data: {id_member:id_member},
+        				success: function(){
+        							alert('Data member berhasil ditolak');
+        							location.reload();
+        						},
+        				error: function(){
+        							alert('Data member gagal ditolak');
+        						}
+        			});
+        		}
+        	}
+            </script>
 
             

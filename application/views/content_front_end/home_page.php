@@ -704,7 +704,7 @@
 				type: 'POST',
 				data: {label:label,value:value},
 				success: function(){
-					window.location.href = "/FrontControl_Event";
+					window.location.href = ""+baseUrl+"/event_page";
 				}
 		});
 	}

@@ -97,9 +97,21 @@ class KelolaMember extends CI_Controller {
 		$id_member = $_POST['id_member'];
 		$this->load->model('member_models/MemberModels');
 		$this->MemberModels->setuju_member($id_member);
-		$sub_setuju = "Youth member";
-		$msg_setuju = "Posting yang anda masukan di Youth member telah disetujui";
-		$this->kirim_email($sub_setuju,$msg_setuju);
+		$member = $this->MemberModels->select_by_id($id_member)->row();
+		$nama_member = $member->nama_member;
+		$username = $member->username;
+		$email  = $member->email;
+		$telepon = $member->telepon;
+		
+		$sub_setuju = 'Pendaftaran Member Boloku.id';
+		$msg_setuju = 'Selamat sekarang Anda sudah menjadi boloku.<br/><br/>';
+		$msg_setuju .= 'Berikut data diri Anda,<br/> ';
+		$msg_setuju .= 'Nama :'.$nama_member.'<br/>';
+		$msg_setuju .= 'Username :'.$username.'<br/>';
+		$msg_setuju .= 'Email :'.$email.'<br/>';
+		$msg_setuju .= 'Telepon :'.$telepon.'<br/><br/>';
+	
+		$this->kirim_email($sub_setuju,$msg_setuju,$email); 
 		$this->validasi_member();
 	}
 	
@@ -108,9 +120,21 @@ class KelolaMember extends CI_Controller {
 	{
 		$this->load->model('member_models/MemberModels');
 		$this->MemberModels->setuju_member($id_member);
-		$sub_setuju = "Youth member";
-		$msg_setuju = "Posting yang anda masukan di Youth member Soon telah disetujui";
-		$this->kirim_email($sub_setuju,$msg_setuju);
+		$member = $this->MemberModels->select_by_id($id_member)->row();
+		$nama_member = $member->nama_member;
+		$username = $member->username;
+		$email  = $member->email;
+		$telepon = $member->telepon;
+		
+		$sub_setuju = 'Pendaftaran Member Boloku.id';
+		$msg_setuju = 'Selamat sekarang Anda sudah menjadi boloku.<br/><br/>';
+		$msg_setuju .= 'Berikut data diri Anda,<br/> ';
+		$msg_setuju .= 'Nama :'.$nama_member.'<br/>';
+		$msg_setuju .= 'Username :'.$username.'<br/>';
+		$msg_setuju .= 'Email :'.$email.'<br/>';
+		$msg_setuju .= 'Telepon :'.$telepon.'<br/><br/>';
+	
+		$this->kirim_email($sub_setuju,$msg_setuju,$email); 
 		$this->validasi_member();
 	}
 	
@@ -119,10 +143,18 @@ class KelolaMember extends CI_Controller {
 	{
 		$id_member = $_POST['id_member'];
 		$this->load->model('member_models/MemberModels');
+		
+		$member = $this->MemberModels->select_by_id($id_member)->row();
+		$nama_member = $member->nama_member;
+		$username = $member->username;
+		$email  = $member->email;
+		$telepon = $member->telepon;
+		
+		$sub_tolak = 'Pendaftaran Member Boloku.id';
+		$msg_tolak = 'Mohon maaf Anda belum bisa menjadi Boloku.<br/><br/>';
+	
+		$this->kirim_email($sub_tolak,$msg_tolak,$email); 
 		$this->MemberModels->delete_member($id_member);
-		$sub_tolak = "Youth member";
-		$msg_tolak = "Posting yang anda masukan di Youth member Soon telah ditolak";
-		$this->kirim_email($sub_tolak,$msg_tolak);
 		$this->validasi_member();
 	}
 	
@@ -130,34 +162,45 @@ class KelolaMember extends CI_Controller {
 	public function tolak_detail_member($id_member)
 	{
 		$this->load->model('member_models/MemberModels');
+		
+		$member = $this->MemberModels->select_by_id($id_member)->row();
+		$nama_member = $member->nama_member;
+		$username = $member->username;
+		$email  = $member->email;
+		$telepon = $member->telepon;
+		
+		$sub_tolak = 'Pendaftaran Member Boloku.id';
+		$msg_tolak = 'Mohon maaf Anda belum bisa menjadi Boloku.<br/><br/>';
+	
+		$this->kirim_email($sub_tolak,$msg_tolak,$email); 
 		$this->MemberModels->delete_member($id_member);
-		$sub_tolak = "Youth member";
-		$msg_tolak = "Posting yang anda masukan di Youth member Soon telah ditolak";
-		$this->kirim_email($sub_tolak,$msg_tolak);
 		$this->validasi_member();
 	}
 	
 	//kirim email
-	function kirim_email($sub,$msg) {
-		$config['protocol'] = 'smtp';
-		$config['smtp_host'] = 'ssl://smtp.gmail.com'; //change this
-		$config['smtp_port'] = '465';
-		$config['smtp_user'] = 'youthsuaramerdeka@gmail.com'; //change this
-		$config['smtp_pass'] = 'suaramerdeka'; //change this
-		$config['mailtype'] = 'html';
-		$config['charset'] = 'iso-8859-1';
-		$config['wordwrap'] = TRUE;
-		$config['newline'] = "\r\n"; //use double quotes to comply with RFC 822 standard
-		$this->load->library('email'); // load email library
-		$this->email->initialize($config);
-		$this->email->from('youthsuaramerdeka@gmail.com', 'admin');
-		$this->email->to('abdulazies.k@gmail.com');
-		$this->email->subject($sub);
-		$this->email->message($msg);
-		if ($this->email->send())
-			echo "Mail Sent!";
-		else
-			show_error($this->email->print_debugger());
+    function kirim_email($sub, $msg, $email) {
+      $config['protocol'] = 'smtp';
+      $config['smtp_host'] = 'mail.boloku.id'; //change this
+      $config['smtp_port'] = '465';
+      $config['smtp_user'] = 'info@boloku.id'; //change this
+      $config['smtp_pass'] = 'cz431081994'; //change this
+      $config['mailtype'] = 'html';
+      $config['charset'] = 'iso-8859-1';
+      $config['smtp_crypto'] = 'ssl';
+      $config['wordwrap'] = TRUE;
+      $config['newline'] = "\r\n"; //use double quotes to comply with RFC 822 standard
+      $this->load->library('email'); // load email library
+      $this->email->initialize($config);
+      $this->email->from('info@boloku.id', 'boloku.id');
+      $this->email->to($email);
+      $this->email->subject($sub);
+      $this->email->message($msg);
+      if ($this->email->send()){
+         $this->session->set_flashdata('msg_berhasil', 'Pesan balasan telah terkirim.');
+         //redirect('FrontControl_ContactUs/kelola_message');
+         }
+      else{
+         show_error($this->email->print_debugger());}
     }
 	
 	//tambah member soon

@@ -48,6 +48,7 @@
 								                    <a title="google +" href="https://plus.google.com/share?url=<?php echo current_url(); ?>" target="_blank"><button style="color:white;" class="btn btn-danger" type="submit"><i class="fa fa-google"></i></button></a>
 
 								                    <a title="twitter" href="http://twitter.com/share?url=<?php echo current_url(); ?>" target="_blank"><button style="color:white;" class="btn btn-info" type="submit"><i class="fa fa-twitter"></i></button></a>
+													 <a title="whatsapp" href="https://api.whatsapp.com/send?text=<?php echo $nama_event."%20||%20".current_url(); ?>" target="_blank"><button style="color:white;" class="btn btn-info" type="submit"><i class="fa fa-whatsapp"></i></button></a>
 				                                </div>
 				                            </div>
 				                        </div>
@@ -457,7 +458,7 @@
 														<?php foreach($listPressRelease as $pressrelease){?>
 					                                       <li>
 					                                          <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_news/thumb_'.$pressrelease['gambar_news']); ?>"></a> </div>
-					                                          <div class="caption"> <a href="<?php echo base_url('KelolaNews/halaman_baca_artikel_pra_event/'.$pressrelease['id_news']); ?>"><?php echo $pressrelease['judul_news']; ?> </a> </div>
+					                                          <div class="caption"> <a href="<?php echo base_url('halaman_baca_artikel_pra_event/'.$pressrelease['id_news']); ?>"><?php echo $pressrelease['judul_news']; ?> </a> </div>
 					                                          <ul class="post-tools">
 					                                             <li title="Comments"> <i class="ti-thought"></i> 105 </li>
 					                                          </ul>
