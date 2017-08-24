@@ -86,6 +86,7 @@
 		                                                    }
 		                                            ?>">
 					                           </div>
+											   <b><div class="form-group" id="validate_email"></div></b>
 					                        </div>
 					                        <div class="col-md-6 col-sm-6 col-xs-12">
 					                           <div class="form-group">
@@ -116,13 +117,19 @@
 
 					                <div class="row">
 					                	<div class="col-md-12">
-					                        <div class="col-md-3"></div>
-					                        <div class="col-md-6 col-sm-12 col-xs-12">
+					                        
+					                        <div class="col-md-6 col-sm-6 col-xs-12">
 					                           <div class="form-group">
-					                              <input type="password" cols="12" rows="1" placeholder="Password" id="message" name="password" class="form-control" required >
+					                              <input type="password" cols="12" rows="1" placeholder="Password" id="pass" name="password" class="form-control" required >
 					                           </div>
 					                        </div>
-					                        <div class="col-md-3"></div>
+											<div class="col-md-6 col-sm-6 col-xs-12">
+					                           <div class="form-group">
+					                              <input type="password" cols="12" rows="1" placeholder="Password" id="ulangi_pass" name="password2" class="form-control" required >
+					                           </div>
+											   <b><div class="form-group" id="validate_pass"></div></b>
+					                        </div>
+					                        
 					                    </div>
 					                </div>
 
@@ -160,6 +167,15 @@
 		  $("#username").keyup(validateUsername);
 	  });
 	  
+	  $(document).ready(function() {
+		  $("#email").keyup(validateEmail);
+	  });
+	  
+	  
+	  $(document).ready(function() {
+		  $("#ulangi_pass").keyup(validatePass);
+	  });
+	  
 	  function validateUsername() {
 		
 		  var username = $("#username").val();
@@ -184,6 +200,50 @@
 					}
 					
 			});
+		
+		}
+		
+		function validateEmail() {
+		
+		  var email = $("#email").val();
+		  $.ajax({
+			url: 'validate_email',	
+			type: 'POST',
+			data: {email:email},
+			success: function(dataEmail){
+						if(dataEmail!=0) {
+						   document.getElementById("validate_email").style.color = "red";
+						   $("#validate_email").text("* Email sudah terdaftar"); 
+						   document.getElementById("submit_daftar").disabled = true;
+						}
+						else {
+							document.getElementById("validate_email").style.color = "green";
+							$("#validate_email").text("* Email belum terdaftar");  
+							document.getElementById("submit_daftar").disabled = false;
+						}
+					},
+			error: function(){
+						alert('GAGAL');
+					}
+					
+			});
+		
+		}
+		
+		function validatePass() {
+		
+		  var pass1 = $("#pass").val();
+		  var pass2 = $("#ulangi_pass").val();
+		  if(pass1!=pass2){
+			document.getElementById("validate_pass").style.color = "red";
+			$("#validate_pass").text("* Password tidak sama"); 
+			document.getElementById("submit_daftar").disabled = true;
+		  } else {
+			document.getElementById("validate_pass").style.color = "green";
+			$("#validate_pass").text("* Password sama");  
+			document.getElementById("submit_daftar").disabled = false;
+		  }
+		  
 		
 		}
 	  </script>

@@ -50,10 +50,11 @@
                            $tanggal = date("j", $tanggal_mulai);
                            $bulan = date("M", $tanggal_mulai);
                         ?>
-                        <div class="hover-show-div" style="margin-right: 12px; margin-top: -12px; border: solid 1px black;">
-                           <div style="text-align: center; width: 60px; padding: 5px; background-color: #f44a56; color: white; font-size: 1.5em;"><?php echo $bulan; ?></div>
-                           <div style="font-size: 2em; text-align: center; padding: 5px; background-color: white;"><strong><?php echo $tanggal; ?></strong></div>
-                        </div>
+                        <div class="hover-show-div" style="margin-right: 12px; margin-top: -12px;  border: 2px solid #FAFAFA; border-radius:5px;  opacity: 0.8;">
+                          <div style="text-align: center; width: 60px; padding: 5px; background-color: #FAFAFA; font-size: 1.5em; opacity: 1"><strong><?php echo $bulan; ?></strong></div>
+                          <div style="font-size: 2em; text-align: center; padding: 5px; background-color: #FAFAFA; border-top:1px solid #E6E6E6 ;opacity: 1"><strong><?php echo $tanggal; ?></strong></div>
+                       </div>
+                       
                         <div class="post-content" style="background-color: #444;">
                            <div class="catname">
                               <?php if($topevent['jenis_event']==0){?><a href="javascript:void(0)" class=" btn btn-green btn-xs" onclick="byLabel('jenis_event','0')"><i class="ti-money" ></i>Berbayar<?php } else{ ?> <a href="javascript:void(0)" class=" btn btn-green btn-xs" onclick="byLabel('jenis_event','1')"><i class="ti-money" ></i>Gratis<?php } ?></a>
@@ -271,7 +272,7 @@
 						   <?php foreach($listNewEvent as $newevent){ ?>
                         <a href="<?php echo site_url('event_click/'.$newevent['id_coming']); ?>">
                            <article class="col-md-6 col-sm-6 col-xs-12">
-                              <div class="grid-1" style="box-shadow: 0 1px 1px grey; background-color: white;">
+                              <div class="grid-1" style="height: 377px; box-shadow: 0 1px 10px grey; background-color: white;">
                                  <div class="picture">
                                     <div class="category-image">
                                        <a href="<?php echo base_url('event_click/'.$newevent['id_coming']); ?>">
@@ -451,24 +452,44 @@
                                           $tanggal = date("j", $tanggal_mulai);
                                           $bulan = date("M", $tanggal_mulai);
                                        ?>
-                                       <div class="hover-show-div" style="border: solid 1px black;">
-                                          <div style="text-align: center; width: 60px; padding: 5px; background-color: #f44a56; color: white; font-size: 1.5em;"><?php echo $bulan; ?></div>
-                                          <div style="font-size: 2em; text-align: center; padding: 5px; background-color: white;"><strong><?php echo $tanggal; ?></strong></div>
+                                        <div class="hover-show-div" style="border: 2px solid #FAFAFA; border-radius:5px;  opacity: 0.8;">
+                                          <div style="text-align: center; width: 60px; padding: 5px; background-color: #FAFAFA; font-size: 1.5em; opacity: 1"><strong><?php echo $bulan; ?></strong></div>
+                                          <div style="font-size: 2em; text-align: center; padding: 5px; background-color: #FAFAFA; border-top:1px solid #E6E6E6 ;opacity: 1"><strong><?php echo $tanggal; ?></strong></div>
                                        </div>
+                                       
                                     </div>
                                  </div>
                                  <div class="detail" style="padding-left: 20px;">
-                                    <div class="caption">
+                                    <div class="caption" style="height: 60px;">
                                        <h5>
-                                          <a href="<?php echo base_url('event_click/'.$newevent['id_coming']); ?>"><?php echo $newevent['nama_coming'];?></a>
+                                          <a href="<?php echo base_url('event_click/'.$newevent['id_coming']); ?>">
+                                             <?php
+                                                $panjang = strlen($newevent['nama_coming']);
+                                                if ($panjang >= 70)
+                                                {
+                                                   $isi=strip_tags($newevent['nama_coming']);
+                                                   $isi=substr($isi,0,70);
+                                                   echo $isi." ...";
+                                                }
+                                                else
+                                                {
+                                                   echo $newevent['nama_coming'];
+                                                }
+                                                
+                                             ?>
+                                          </a>
                                        </h5>
                                     </div>
                                     
-                                    <ul class="post-tools">
-                                       <li> by <a href="#"> <strong> <?php echo $newevent['posted_by'];?></strong> </a></li>
-                                       <li><i class="glyphicon glyphicon-thumbs-up"></i> <?php echo $newevent['like'];?></a></li>
-                                       <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $newevent['hits'];?></a></li>
-                                    </ul>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <ul class="post-tools">
+                                               <li> by <a href="#"> <strong> <?php echo $newevent['posted_by'];?></strong> </a></li>
+                                               <li><i class="glyphicon glyphicon-thumbs-up"></i> <?php echo $newevent['like'];?></a></li>
+                                               <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $newevent['hits'];?></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                        
                                  </div>
                               </div>
@@ -489,7 +510,7 @@
                <!--Fitur Ngerti Rak ?-->
                <div class="col-md-4 col-sm-12 col-xs-12" id="sidebar">
                   <aside>
-                     <div class="widget widget-bg ">
+                     <div class="widget widget-bg" style="box-shadow: 0 1px 7px grey;">
                         <div class="heading">
                            <h2 class="main-heading"><strong>Ngerti Rak ?</strong></h2>
                            <span class="heading-ping"></span>
@@ -504,9 +525,15 @@
                                           <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_wow/thumb_'.$ngertirak['path_gambar']); ?>">
                                        </a>
                                        <div class="catname">
-                                          <a class="btn btn-maroon" href="#">
-                                             <div><?php echo $ngertirak['kategori_wow'];?></div>
-                                          </a>
+                                          <?php if($ngertirak['kategori_wow']=='Seni'){?><a href="javascript:void(0)" class=" btn btn-green" onclick="byKategori('Seni')"><div>Seni</div></a><?php } ?>
+                                          <?php if($ngertirak['kategori_wow']=='Hobi'){?><a href="javascript:void(0)" class="btn btn-purple" onclick="byKategori('Hobi')"><div>Hobi</div></a><?php } ?>
+                                          <?php if($ngertirak['kategori_wow']=='Musik'){?><a href="javascript:void(0)" class=" btn btn-dark-red" onclick="byKategori('Musik')"><div>Musik</div></a><?php } ?>
+                                          <?php if($ngertirak['kategori_wow']=='Bisnis'){?><a href="javascript:void(0)" class=" btn btn-red" onclick="byKategori('Bisnis')"><div>Bisnis</div></a><?php } ?>
+                                          <?php if($ngertirak['kategori_wow']=='Spirituality'){?><a href="javascript:void(0)" class=" btn btn-orange" onclick="byKategori('Spirituality')"><div>Spirituality</div></a><?php } ?>
+                                          <?php if($ngertirak['kategori_wow']=='Science dan Teknologi'){?><a href="javascript:void(0)" class="btn btn-gray" onclick="byKategori('Science dan Teknologi')"><div>Science & Tech</div></a><?php } ?>
+                                          <?php if($ngertirak['kategori_wow']=='Travel dan Outdoor'){?><a href="javascript:void(0)" class="btn btn-blue" onclick="byKategori('Travel dan Outdoor')"><div>Travel & Outdoor</div></a><?php } ?>
+                                          <?php if($ngertirak['kategori_wow']=='Keluarga dan Pendidikan'){?><a href="javascript:void(0)" class=" btn btn-yellow" onclick="byKategori('Keluarga dan Pendidikan')"><div>Keluarga & Pendidikan</div></a><?php } ?>
+                                          <?php if($ngertirak['kategori_wow']=='Lain-Lain'){?><a href="javascript:void(0)" class="btn btn-red" onclick="byKategori('Lain-Lain')"><div>Lain-lain</div></a><?php } ?>
                                        </div>
                                     </div>
                                  </div>
@@ -530,7 +557,7 @@
                      </div>
 
                      <!--Fitur Search Pepak-->
-                     <div class="widget widget-bg">
+                     <div class="widget widget-bg" style="box-shadow: 0 1px 7px grey;">
                         <div class="heading">
                            <h2 class="main-heading"><Strong>Pepak Semarangan</Strong></h2>
                            <span class="heading-ping"></span> 
@@ -560,7 +587,7 @@
                      </div>
 
                      <!--Fitur Artikel-->
-                     <div class="widget widget-bg">
+                     <div class="widget widget-bg" style="box-shadow: 0 1px 7px grey;">
                         <div class="heading">
                            <h2 class="main-heading"><strong>Artikel</strong></h2>
                            <span class="heading-ping"></span>
@@ -581,7 +608,7 @@
                      </div>
 
                      <!--Fitur Update challenge Instagram-->
-                     <div class="widget widget-bg ">
+                     <div class="widget widget-bg " style="box-shadow: 0 1px 7px grey;">
                         <div class="heading">
                            <h2 class="main-heading"><strong><?php foreach($namaChallenge->result() as $namachallenge){ echo $namachallenge->nama_challenge; }?></strong></h2>
                            <span class="heading-ping"></span>

@@ -818,6 +818,16 @@ class KelolaMember extends CI_Controller {
 		
 	}
 	
+	function validate_email(){
+		if(isset($_POST['email'])){
+		$email = $_POST['email'];
+		$query = $this->db->where('email',$email)->get('member');
+		$check = sizeof($query->row_array());
+		echo $check;
+		}
+		
+	}
+	
 	function get_pertanyaan(){
 		if(isset($_POST['username'])){
 		$username = $_POST['username'];
