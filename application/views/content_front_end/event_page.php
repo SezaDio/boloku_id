@@ -158,7 +158,7 @@
 			                                       			else
 			                                       			{
 																echo $event['deskripsi_coming'];
-			                                       			}?> 
+			                                       			}?>
 			                                       	</p>
 			                                    </div>
 			                                   <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
@@ -280,7 +280,6 @@
 											divkategori += '<h3 style="font-size: 1.4em;"><a href="'+baseUrl+'/event_click/'+id_event+'"><strong>'+nama_event+'</strong></a></h3>';
 										divkategori += '</div>';
 									divkategori += '</div>';
-									
 		                            divkategori += '<ul class="post-tools">';
 									    divkategori += '<li>by <a href=""><strong> '+posted_by+'</strong> </a></li>';
 		                                divkategori += '<li>'+tanggal_posting+'</li>';
@@ -296,6 +295,7 @@
 					                        divkategori += '<a style="margin-bottom: 5px;" href="javascript:void(0)" class=" btn btn-green btn-small" onclick="byLabel('+label_jenis+','+value_jenis+')"><i class="ti-money"></i>'+jenis+'</a>&nbsp';
 					                        divkategori += '<a style="margin-bottom: 5px;" href="javascript:void(0)" class=" btn btn-dark-red" onclick="byLabel('+label_kategori+','+value_kategori+')">'+kategori_event+'</a>&nbsp';
 					                        divkategori += '<a style="margin-bottom: 5px;" href="javascript:void(0)" class=" btn btn-orange" onclick="byLabel('+label_tipe+','+value_tipe+')">'+tipe_event+'</a>';
+
 					                	divkategori += '</div>';
 									divkategori += '</div>';
 		                        divkategori += '</div>';
@@ -388,7 +388,6 @@
 											divkategori += '<h3 style="font-size: 1.4em;"><a href="'+baseUrl+'/event_click/'+id_event+'"><strong>'+nama_event+'</strong></a></h3>';
 										divkategori += '</div>';
 									divkategori += '</div>';
-									
 		                            divkategori += '<ul class="post-tools">';
 									    divkategori += '<li>by <a href=""><strong> '+posted_by+'</strong> </a></li>';
 		                                divkategori += '<li>'+tanggal_posting+'</li>';

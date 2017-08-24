@@ -558,7 +558,6 @@
 
                      <!--Fitur Search Pepak-->
                      <div class="widget widget-bg" style="box-shadow: 0 1px 7px grey;">
-                        <div class="heading">
                            <h2 class="main-heading"><Strong>Pepak Semarangan</Strong></h2>
                            <span class="heading-ping"></span> 
                         </div>

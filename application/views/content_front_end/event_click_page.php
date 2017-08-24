@@ -299,7 +299,25 @@
 	                                	<tr>
 	                                		<td>Jumlah Seat</td>
 	                                		<td>:</td>
-	                                		<td><?php if($seat==1){ echo $jumlah_seat;} else { echo "Open Seat";}?></td>
+	                                		<td>
+	                                			<?php 
+	                                				if($seat==1)
+	                                				{ 
+	                                					if($jumlah_seat >= 1)
+	                                					{
+	                                						echo $jumlah_seat;
+	                                					}
+	                                					else
+	                                					{
+	                                						echo "Full";
+	                                					}
+	                                				} 
+	                                				else 
+	                                				{ 
+	                                					echo "Open Seat";
+	                                				}
+	                                			?>
+	                                		</td>
 	                                	</tr>
 	                                	<tr>
 	                                		<td>Contact Person</td>
@@ -312,12 +330,16 @@
 	                                
 	                                <div class="col-md-12" style="text-align: center;">
 	                                	<?php
-	                                		if($pendaftaran == 1)
+	                                		if($seat == 1 AND $jumlah_seat < 1)
 	                                		{ ?>
-                                       			<a style="height: 53px; font-size: 1.7em; width: 100%;" href="<?php echo base_url('mendaftar_event/'.$id_event); ?>" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
+                                       			<a disabled='disabled' style="height: 53px; font-size: 1.7em; width: 100%;" href="javascript:void(0)" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
 	                                  <?php }
+	                                  		else
+	                                  		{ ?>
+	                                  			<a style="height: 53px; font-size: 1.7em; width: 100%;" href="<?php echo base_url('mendaftar_event/'.$id_event); ?>" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
+	                                  			
+	                                  <?php	} ?>
 
-	                                	?>
                                     </div>
 	                             </div>
 	                          </div>
@@ -457,7 +479,7 @@
 		                                    			<ul class="tabs-posts">
 														<?php foreach($listPressRelease as $pressrelease){?>
 					                                       <li>
-					                                          <div class="pic"> <a href="standard-post.html"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_news/thumb_'.$pressrelease['gambar_news']); ?>"></a> </div>
+					                                          <div class="pic"> <a href="<?php echo base_url('halaman_baca_artikel_pra_event/'.$pressrelease['id_news']); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_news/thumb_'.$pressrelease['gambar_news']); ?>"></a> </div>
 					                                          <div class="caption"> <a href="<?php echo base_url('halaman_baca_artikel_pra_event/'.$pressrelease['id_news']); ?>"><?php echo $pressrelease['judul_news']; ?> </a> </div>
 					                                          <ul class="post-tools">
 					                                             <li title="Comments"> <i class="ti-thought"></i> 105 </li>
