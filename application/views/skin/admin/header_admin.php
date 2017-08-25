@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Boloku | Dashboard</title>
+        <title>boloku.id | Dashboard</title>
         
         <!-- load bootsrap -->
         <link href="<?php echo base_url('asset/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet" type="text/css" />
@@ -59,7 +59,7 @@
     <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <header style="position: fixed;" class="header">
-            <a href="<?php echo base_url()?>" class="logo">
+            <a href="<?php echo site_url('AdminDashboard/index');?>" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 Administrator
             </a>

@@ -611,7 +611,7 @@ class KelolaMember extends CI_Controller {
                               'Travel dan Outdoor'=>'Travel dan Outdoor',
                               'Bisnis'=>'Bisnis',
                               'Science dan Teknologi'=>'Science dan Teknologi',
-                              'Sprirituality'=>'Sprirituality',
+                              'Spirituality'=>'Spirituality',
                               'Musik'=>'Musik',
                               'Keluarga dan Pendidikan'=>'Keluarga dan Pendidikan',
                               'Hobi'=>'Hobi',
