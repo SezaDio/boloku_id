@@ -301,7 +301,7 @@
 	                                					$nama_tiket[] = $harga_tiket['nama_tiket'];
 	                                					$harga[] = $harga_tiket['harga'];
 	                                					$seat = $harga_tiket['seat'];
-	                                					$id_event = $harga_tiket['id_event'];
+	                                					$id_coming = $harga_tiket['id_event'];
 	                                					$status[] = $harga_tiket['status'];
 	                                				}
 
@@ -350,15 +350,16 @@
 	                                
 	                                <div class="col-md-12" style="text-align: center;">
 	                                	<?php
+	                                	if($pendaftaran==1){
 	                                		if($seat == 1 AND $jumlah_seat < 1)
 	                                		{ ?>
                                        			<a disabled='disabled' style="height: 53px; font-size: 1.7em; width: 100%;" href="javascript:void(0)" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
 	                                  <?php }
 	                                  		else
 	                                  		{ ?>
-	                                  			<a style="height: 53px; font-size: 1.7em; width: 100%;" href="<?php echo base_url('KelolaPendaftar/mendaftar_event/'.$id_event); ?>" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
+	                                  			<a style="height: 53px; font-size: 1.7em; width: 100%;" href="<?php echo base_url('mendaftar_event/'.$id_event); ?>" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
 	                                  			
-	                                  <?php	} ?>
+	                                  <?php	}} ?>
 
                                     </div>
 	                             </div>

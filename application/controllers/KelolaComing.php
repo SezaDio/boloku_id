@@ -583,6 +583,7 @@ class KelolaComing extends CI_Controller {
 		else
 		{
 			$data['coming'] = $this->ComingModels->select_by_id_coming($id_coming)->row();
+			$data['tiket'] = $this->ComingModels->select_tiket_by_id_coming($id_coming)->result_array();
 
 			$data_coming=array(
 							'nama_coming'=>$data['coming']->nama_coming,

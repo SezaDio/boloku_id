@@ -65,14 +65,88 @@
                                             </div>
                                         </div>
 										
-										<div class="form-group" id="jenis_event" <?php if($dataComing['jenis_event']==0){?>style="display:display"<?php } ?>>
-                                            <label for="exampleInputEmail1">Harga Tiket Masuk  :</label>
-                                            <input type="text" 	name="harga" class="form-control" id="exampleInputEmail1" value="<?php 
-                                                if (isset($dataComing['harga']))
-                                                {
-                                                    echo htmlspecialchars($dataComing['harga']);
-                                                }
-                                            ?>"> 
+										<div class="form-group" id="jenis_event" style="display:none">
+                                            
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">Nama Tiket :</label>
+
+                                                    <?php
+                                                        foreach ($tiket as $harga_tiket) 
+                                                        {
+                                                            $id_tiket[] = $harga_tiket['id_jenis_tiket'];
+                                                            $nama_tiket[] = $harga_tiket['nama_tiket'];
+                                                            $harga_tiket_event[] = $harga_tiket['harga'];
+                                                            $seat[] = $harga_tiket['seat'];
+                                                            $id_coming = $harga_tiket['id_event'];
+                                                            $status[] = $harga_tiket['status'];
+                                                        }
+
+                                                        foreach ($nama_tiket as $nama) 
+                                                        { ?>
+                                                            <input type="text" name="nama_tiket[]" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                                if (isset($nama_tiket))
+                                                                {
+                                                                    echo htmlspecialchars($nama);
+                                                                }
+                                                            ?>"><br>
+                                                <?php   }
+
+                                                    ?>
+
+
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">Quantity :</label>
+                                                    <?php foreach ($seat as $jumlah_seat) 
+                                                        { ?>
+                                                            <input type="text" name="qty[]" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                                if (isset($jumlah_seat))
+                                                                {
+                                                                    echo htmlspecialchars($jumlah_seat);
+                                                                }
+                                                            ?>"><br>
+                                                <?php   }
+
+                                                    ?>
+                                                    
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">Harga :</label>
+                                                    <?php foreach ($harga_tiket_event as $harganya) 
+                                                        { ?>
+                                                            <input type="text" name="harga[]" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                                if (isset($harganya))
+                                                                {
+                                                                    echo $harganya;
+                                                                }
+                                                            ?>"><br>
+                                                <?php   }
+
+                                                    ?>
+                                                    
+                                                </div>
+                                                <div class="col-md-3" style="text-align: center;">
+                                                    <label for="exampleInputEmail1">&nbsp;</label>
+                                                    <a id="add_field" href="javascript:void(0)">
+                                                        <button type="button" class="btn btn-primary">
+                                                            <i class="glyphicon glyphicon-plus"></i>
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div id="container" class="col-md-3">
+                                                    
+                                                </div>
+                                                <div id="container2" class="col-md-3">
+                                                    
+                                                </div>
+                                                <div id="container3" class="col-md-3">
+                                                    
+                                                </div>
+                                            </div> 
                                         </div>
 										
                                         <div class="form-group">
@@ -362,6 +436,30 @@
 				function gratis(){
 					document.getElementById("jenis_event").style.display = "none";
 				}
+
+                var counter = 0;
+                $('a#add_field').click(function(){
+                    counter += 1;
+                    $('#container').append(
+                        '<input class="form-control" id="field_' + counter + '" name="nama_tiket[]' + '" type="text" /><br />'
+                    );
+                });
+
+                var counter2 = 0;
+                $('a#add_field').click(function(){
+                    counter += 1;
+                    $('#container2').append(
+                        '<input type="number" class="form-control" id="field_' + counter2 + '" name="qty[]' + '" type="text" /><br />'
+                    );
+                });
+
+                var counter3 = 0;
+                $('a#add_field').click(function(){
+                    counter += 1;
+                    $('#container3').append(
+                        '<input class="form-control" id="field_' + counter3 + '" name="harga[]' + '" type="text" /><br />'
+                    );
+                });
             </script>
 
             

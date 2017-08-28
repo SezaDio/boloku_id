@@ -65,6 +65,16 @@
 
 			return $this->db->get();
 		}
+
+		//Select tiket by id coming
+		function select_tiket_by_id_coming($id_coming)
+		{
+			$this->db->select('*');
+			$this->db->from('tiket');
+			$this->db->where('id_event',$id_coming);
+
+			return $this->db->get();
+		}
 		
 		//Menambah data youth coming
 		function add_data_coming($data_coming)
