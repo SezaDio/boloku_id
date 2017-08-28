@@ -1002,10 +1002,16 @@ class KelolaComing extends CI_Controller {
 	}
 	
 	function tambah_testimoni($id_member){
+		$deskripsi = htmlspecialchars($this->input->post('isi_testimoni'));
+		preg_match_all('~:(.*?):~', $deskripsi, $deskripsi2);
+		$jml = count($deskripsi2[0]);
+		for($i=0;$i<$jml;$i++){
+			$deskripsi = str_replace($deskripsi2[0][$i],htmlspecialchars('<span class="stiker" kode="'.$deskripsi2[1][$i].'"></span>'),$deskripsi);
+		}
 		$data_testimoni=array(
 			'id_member'=>$id_member,
 			'id_event'=>$this->input->post('id_event'),
-			'isi_testimoni'=>$this->input->post('isi_testimoni'),
+			'isi_testimoni'=>$deskripsi,
 			
 		);
 		if($this->db->insert('testimoni', $data_testimoni)){

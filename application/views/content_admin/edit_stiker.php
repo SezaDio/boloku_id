@@ -40,11 +40,16 @@
                                         </div>
 										
 										<div class="form-group">
+                                            <label for="exampleInputEmail1">Kode Stiker :</label>
+                                            <input type="text" required name="kode_stiker" class="form-control" id="exampleInputEmail1" value="<?php echo htmlspecialchars($dataStiker['kode_stiker']); ?>">
+                                        </div>
+										
+										<div class="form-group">
 											<div class='box-header'>
 												 <label>Deskripsi Stiker :</label>
 											</div>
 											<textarea required id="editor_wow" name="deskripsi" rows="10" cols="80">
-											    <?php echo htmlspecialchars($dataStiker['deskripsi']); ?>
+											    <?php echo html_entity_decode($dataStiker['deskripsi']); ?>
 											</textarea>                                    
                                         </div>
 

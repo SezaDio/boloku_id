@@ -414,7 +414,7 @@
 								                                    </div>
 								                                </div>
 							                                    <div class="col-md-10">
-							                                    	<p><?php echo $testimoni['isi_testimoni']; ?></p>
+							                                    	<p><?php echo html_entity_decode($testimoni['isi_testimoni']); ?></p>
 							                                    </div>
 							                                 </div>
 							                                 
@@ -439,7 +439,7 @@
 							                                    </div>
 							                                    <form class="col-md-10" role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaComing/tambah_testimoni/'.$this->session->userdata('id_member'));?>" method="POST">
 							                                    	
-																	<textarea style="width: 100%" required name="isi_testimoni" rows="3"></textarea>
+																	<textarea style="width: 100%" required name="isi_testimoni" rows="3" id="isi_testimoni"></textarea>
 																		
 																	<br>
 																	<input type="hidden" name="id_event" value="<?php echo $id_event?>">	
@@ -450,11 +450,9 @@
 																    	Stiker <span class="caret"></span>
 																  	</button><br>
 																  	<ul style="float: right;" class="dropdown-menu">
-																	    <li><a href="#">Action</a></li>
-																	    <li><a href="#">Another action</a></li>
-																	    <li><a href="#">Something else here</a></li>
-																	    <li role="separator" class="divider"></li>
-																	    <li><a href="#">Separated link</a></li>
+																		<?php foreach($listStiker as $stiker){ ?>
+																	    <li><a onclick="stiker('<?php echo $stiker['kode_stiker']?>')" href="javascript:void(0)"><img src="<?php echo base_url('asset/upload_img_stiker/'.$stiker['path_gambar']);?>"></a></li>
+																		<?php } ?>
 																  	</ul>
 							                                    </form>
 							                                </div>
@@ -500,3 +498,24 @@
             </div>
         </div>
     </section>
+	<script>
+	$(function(){
+		var getUrl = window.location;
+		var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+		var i=0;
+		$(".stiker").each(function(){
+			var kode = $(this).attr('kode');
+			var stiker = '<img  srcset="'+baseUrl+'/asset/upload_img_stiker/kecil_'+kode+'.png 540w, '+baseUrl+'/asset/upload_img_stiker/'+kode+'.png 1500w">';
+			i++;
+			$(this).attr('id',"stk"+i);
+			$("#stk"+i+"").html(stiker);
+		})
+		
+	});
+	
+	function stiker(kode){
+		var isi_testimoni = document.getElementById('isi_testimoni').value;
+		isi_testimoni += ':'+kode+':'
+		document.getElementById('isi_testimoni').value = isi_testimoni;
+	}
+	</script>

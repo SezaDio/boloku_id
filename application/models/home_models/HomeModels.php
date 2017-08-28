@@ -140,7 +140,23 @@
 				
 			return $query->row_array();
 		}
-
+		
+		function get_data_stiker()
+		{
+			$query = $this->db->query("SELECT * FROM `stiker` WHERE status='1'");
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$indeks++] = $row;
+			}
+		
+			return $result;
+		}
+		
+		
 		function jumlah_testimoni($id_coming)
 		{
 			$query = $this->db->where('id_event',$id_coming)->get('testimoni');
