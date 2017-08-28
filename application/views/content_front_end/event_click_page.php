@@ -307,7 +307,7 @@
 
 	                                				if($jenis_event==0)
 	                                				{ 
-	                                					if (count($harga) > 1) 
+	                                					if (count($harga) > 1)
 													  	{
 													  		echo "Rp ".min($harga)." - Rp ".max($harga);
 													  	}
