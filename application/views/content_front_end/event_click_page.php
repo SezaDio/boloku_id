@@ -330,7 +330,7 @@
 	                                		<td>
 	                                			<?php 
 													if($seat==0){
-														echo "Open Seat"
+														echo "Open Seat";
 													} elseif($seat==1){
 														echo "Full";
 													} else{
