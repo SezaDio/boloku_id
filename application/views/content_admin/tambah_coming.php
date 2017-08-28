@@ -69,14 +69,21 @@
                                                         }
                                                     ?>">
                                                 </div>
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
+													
                                                     <label for="exampleInputEmail1">Quantity :</label>
-                                                    <input type="number" name="qty[]" class="form-control" id="exampleInputEmail1" value="<?php 
-                                                        if (isset($dataComing['harga']))
-                                                        {
-                                                            echo htmlspecialchars($dataComing['harga']);
-                                                        }
-                                                    ?>">
+													<div class="row">
+														<div class="col-md-12" id="divqty1">
+															<select name="jenisqty[]" required class="form-control" onchange="changeQty()" id="quantity">  
+																<option value="">-Qty-</option>
+																<option value="open">Open</option>
+																<option value="limit">Limit</option>
+															</select>
+														</div>
+														<div class="col-md-6" id="divqty2" style="display:none" >
+															<input class="form-control" name="qty[]" id="qty">
+														</div>
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-3">
                                                     <label for="exampleInputEmail1">Harga :</label>
@@ -87,7 +94,7 @@
                                                         }
                                                     ?>">
                                                 </div>
-                                                <div class="col-md-3" style="text-align: center;">
+                                                <div class="col-md-2" style="text-align: center;">
                                                     <label for="exampleInputEmail1">&nbsp;</label>
                                                     <a id="add_field" href="javascript:void(0)">
                                                         <button type="button" class="btn btn-primary">
@@ -101,8 +108,8 @@
                                                 <div id="container" class="col-md-3">
                                                     
                                                 </div>
-                                                <div id="container2" class="col-md-3">
-                                                    
+                                                <div id="container2" class="col-md-4">
+													
                                                 </div>
                                                 <div id="container3" class="col-md-3">
                                                     
@@ -354,15 +361,15 @@
 
                 var counter2 = 0;
                 $('a#add_field').click(function(){
-                    counter += 1;
+                    counter2 += 1;
                     $('#container2').append(
-                        '<input type="number" class="form-control" id="field_' + counter2 + '" name="qty[]' + '" type="text" /><br />'
+						'<div class="row"><div class="col-md-12" id="divqty1'+counter2+'"><select name="jenisqty[]" required class="form-control" onchange="changeQty2('+counter2+')" id="quantity'+counter2+'"><option value="">-Qty-</option><option value="open">Open</option><option value="limit">Limit</option></select></div><div class="col-md-6" id="divqty2'+counter2+'" style="display:none" ><input class="form-control" name="qty[]" id="qty"></div></div><br />'
                     );
                 });
 
                 var counter3 = 0;
                 $('a#add_field').click(function(){
-                    counter += 1;
+                    counter3 += 1;
                     $('#container3').append(
                         '<input class="form-control" id="field_' + counter3 + '" name="harga[]' + '" type="text" /><br />'
                     );
@@ -384,5 +391,27 @@
 				function gratis(){
 					document.getElementById("jenis_event").style.display = "none";
                     document.getElementById("add_field").style.display = "none";
+				}
+				
+				function changeQty(){
+					var x = document.getElementById("quantity").value;
+					if(x=="limit"){
+						document.getElementById("divqty1").className = "col-md-6";
+						document.getElementById("divqty2").style.display = "block";
+					} else {
+						document.getElementById("divqty1").className = "col-md-12";
+						document.getElementById("divqty2").style.display = "none";
+					}
+				}
+				
+				function changeQty2(y){
+					var x = document.getElementById("quantity"+y+"").value;
+					if(x=="limit"){
+						document.getElementById("divqty1"+y+"").className = "col-md-6";
+						document.getElementById("divqty2"+y+"").style.display = "block";
+					} else {
+						document.getElementById("divqty1"+y+"").className = "col-md-12";
+						document.getElementById("divqty2"+y+"").style.display = "none";
+					}
 				}
             </script>

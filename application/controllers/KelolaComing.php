@@ -360,10 +360,16 @@ class KelolaComing extends CI_Controller {
 					$data_coming['path_gambar'] = $gbr['file_name'];
 
 					$this->db->insert('coming', $data_coming);
-
+					
 					$nama_tiket = $this->input->post('nama_tiket');
 					$harga = $this->input->post('harga');
-					$qty = $this->input->post('qty');
+					
+					if($this->input->post('jenisqty')=='open'){
+						$qty = 0;
+					} else {
+						$qty = $this->input->post('qty')+1;
+					}
+					
 					$id_event = $this->db->insert_id();
 					$status = 1;
 					$data_tiket = array();

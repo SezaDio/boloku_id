@@ -329,21 +329,13 @@
 	                                		<td>:</td>
 	                                		<td>
 	                                			<?php 
-	                                				if($seat==1)
-	                                				{ 
-	                                					if($jumlah_seat >= 1)
-	                                					{
-	                                						echo $jumlah_seat;
-	                                					}
-	                                					else
-	                                					{
-	                                						echo "Full";
-	                                					}
-	                                				} 
-	                                				else 
-	                                				{ 
-	                                					echo "Open Seat";
-	                                				}
+													if($seat==0){
+														echo "Open Seat"
+													} elseif($seat==1){
+														echo "Full";
+													} else{
+														echo $seat-1;
+													}
 	                                			?>
 	                                		</td>
 	                                	</tr>
