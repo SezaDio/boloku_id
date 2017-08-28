@@ -73,6 +73,7 @@ class FrontControl_Event extends CI_Controller {
 	  $this->load->model('home_models/HomeModels');
 	  
 	  $event = $this->HomeModels->get_event_byid($id_event);
+	  $data['tiket'] = $this->HomeModels->get_tiket_byid($id_event);
 	  
 	  $tanggal_posting = $event['tanggal_posting'];
 	  $hits = $event['hits'] + 1;
@@ -98,14 +99,12 @@ class FrontControl_Event extends CI_Controller {
 	  $data['pendaftaran'] = $event['pendaftaran'];
 	  $data['jenis_event'] = $event['jenis_event'];
 	  $data['seat'] = $event['seat'];
-
 	  $data['hits'] = $hits;
 	  $data['like'] = $event['like'];
 	  $data['jumlah_seat'] = $event['jumlah_seat'];
-	  $data['harga'] = $event['harga'];
 	  $data['kota_lokasi'] = $event['id_lokasi'];
 	  $data['alamat'] = $event['alamat'];
-	  
+	 
 	  $data['jumlahTestimoni'] = $this->HomeModels->jumlah_testimoni($id_event);
 	  $data['listPressRelease'] = $this->HomeModels->get_press_release($id_event);
 	  $data['listTestimoni'] = $this->HomeModels->get_testimoni($id_event);

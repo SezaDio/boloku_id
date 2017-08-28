@@ -58,13 +58,56 @@
                                         </div>
 										
 										<div class="form-group" id="jenis_event" style="display:none">
-                                            <label for="exampleInputEmail1">Harga Tiket Masuk  :</label>
-                                            <input type="text" 	name="harga" class="form-control" id="exampleInputEmail1" value="<?php 
-                                                if (isset($dataComing['harga']))
-                                                {
-                                                    echo htmlspecialchars($dataComing['harga']);
-                                                }
-                                            ?>"> 
+                                            
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">Nama Tiket :</label>
+                                                    <input type="text" name="nama_tiket[]" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                        if (isset($dataComing['harga']))
+                                                        {
+                                                            echo htmlspecialchars($dataComing['harga']);
+                                                        }
+                                                    ?>">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">Quantity :</label>
+                                                    <input type="number" name="qty[]" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                        if (isset($dataComing['harga']))
+                                                        {
+                                                            echo htmlspecialchars($dataComing['harga']);
+                                                        }
+                                                    ?>">
+                                                </div>
+                                                <div class="col-md-3">
+                                                    <label for="exampleInputEmail1">Harga :</label>
+                                                    <input type="text" name="harga[]" class="form-control" id="exampleInputEmail1" value="<?php 
+                                                        if (isset($dataComing['harga']))
+                                                        {
+                                                            echo htmlspecialchars($dataComing['harga']);
+                                                        }
+                                                    ?>">
+                                                </div>
+                                                <div class="col-md-3" style="text-align: center;">
+                                                    <label for="exampleInputEmail1">&nbsp;</label>
+                                                    <a id="add_field" href="javascript:void(0)">
+                                                        <button type="button" class="btn btn-primary">
+                                                            <i class="glyphicon glyphicon-plus"></i>
+                                                        </button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <div class="row">
+                                                <div id="container" class="col-md-3">
+                                                    
+                                                </div>
+                                                <div id="container2" class="col-md-3">
+                                                    
+                                                </div>
+                                                <div id="container3" class="col-md-3">
+                                                    
+                                                </div>
+                                            </div> 
                                         </div>
 
                                         <div class="form-group">
@@ -300,6 +343,30 @@
                         $('#tgl_selesai').val(end.format('YYYY-MM-DD'));
                     });
                 });
+
+                var counter = 0;
+                $('a#add_field').click(function(){
+                    counter += 1;
+                    $('#container').append(
+                        '<input class="form-control" id="field_' + counter + '" name="nama_tiket[]' + '" type="text" /><br />'
+                    );
+                });
+
+                var counter2 = 0;
+                $('a#add_field').click(function(){
+                    counter += 1;
+                    $('#container2').append(
+                        '<input type="number" class="form-control" id="field_' + counter2 + '" name="qty[]' + '" type="text" /><br />'
+                    );
+                });
+
+                var counter3 = 0;
+                $('a#add_field').click(function(){
+                    counter += 1;
+                    $('#container3').append(
+                        '<input class="form-control" id="field_' + counter3 + '" name="harga[]' + '" type="text" /><br />'
+                    );
+                });
 				
 				function limitedSeat(){
 					document.getElementById("limitedseat").style.display = "block";
@@ -311,9 +378,11 @@
 				
 				function bayar(){
 					document.getElementById("jenis_event").style.display = "block";
+                    document.getElementById("add_field").style.display = "block";
 				}
 				
 				function gratis(){
 					document.getElementById("jenis_event").style.display = "none";
+                    document.getElementById("add_field").style.display = "none";
 				}
             </script>

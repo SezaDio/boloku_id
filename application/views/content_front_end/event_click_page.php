@@ -202,7 +202,7 @@
 			                              <?php }
 			                                    elseif ($kategori_event == "Science dan Teknologi")
 			                                    { ?>
-			                                       <a style="margin-top: -15px;" class="btn btn-dark-green" href="">
+			                                       <a style="margin-top: -15px;" class="btn btn-green" href="">
 			                                          <div>
 			                                             # <?php echo $kategori_event; ?>
 			                                          </div>
@@ -294,7 +294,35 @@
 	                                	<tr>
 	                                		<td>Harga Tiket</td>
 	                                		<td>:</td>
-	                                		<td><?php if($jenis_event==0){ echo "Rp ".$harga;} else { echo "Free";}?></td>
+	                                		<td><?php
+	                                				foreach ($tiket as $harga_tiket) 
+	                                				{
+	                                					$id_tiket[] = $harga_tiket['id_jenis_tiket'];
+	                                					$nama_tiket[] = $harga_tiket['nama_tiket'];
+	                                					$harga[] = $harga_tiket['harga'];
+	                                					$seat = $harga_tiket['seat'];
+	                                					$id_event = $harga_tiket['id_event'];
+	                                					$status[] = $harga_tiket['status'];
+	                                				}
+
+	                                				if($jenis_event==0)
+	                                				{ 
+	                                					if (count($harga) > 1) 
+													  	{
+													  		echo "Rp ".min($harga)." - Rp ".max($harga);
+													  	}
+													  	else
+													  	{
+													  		echo "Rp ".$harga;
+													  	}
+	                                					
+	                                				} 
+	                                				else 
+	                                				{ 
+	                                					echo "Free";
+	                                				}
+	                                			?>          				
+	                                		</td>
 	                                	</tr>
 	                                	<tr>
 	                                		<td>Jumlah Seat</td>
@@ -336,7 +364,7 @@
 	                                  <?php }
 	                                  		else
 	                                  		{ ?>
-	                                  			<a style="height: 53px; font-size: 1.7em; width: 100%;" href="<?php echo base_url('mendaftar_event/'.$id_event); ?>" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
+	                                  			<a style="height: 53px; font-size: 1.7em; width: 100%;" href="<?php echo base_url('KelolaPendaftar/mendaftar_event/'.$id_event); ?>" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
 	                                  			
 	                                  <?php	} ?>
 
