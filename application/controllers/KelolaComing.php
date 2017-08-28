@@ -278,11 +278,13 @@ class KelolaComing extends CI_Controller {
 		
 		$seat=$this->input->post('seat');
 		if($seat==1){
-			$jumlah_seat=$this->input->post('jumlah_seat');
+			$jumlah_seat=0;//$this->input->post('jumlah_seat');
 		} else{
 			$jumlah_seat=0;
 		}
 		
+		$jenis_event=$this->input->post('jenis_event');
+	
 		$jenis_event=$this->input->post('jenis_event');
 		if($jenis_event==0){
 			$harga=$this->input->post('harga');
@@ -324,7 +326,7 @@ class KelolaComing extends CI_Controller {
 					$data_coming=array(
 						'nama_coming'=>$this->input->post('judul_coming'),
 						'jenis_event'=>$this->input->post('jenis_event'),
-						'harga'=>$harga,
+						'harga'=>0,//$harga,
 						'pendaftaran'=>$this->input->post('pendaftaran'),
 						'kategori_coming'=>$this->input->post('kategori'),
 						'tipe_event'=>$this->input->post('tipe'),
@@ -346,6 +348,7 @@ class KelolaComing extends CI_Controller {
 						'alamat'=>$this->input->post('alamat'),
 						'status'=>1
 					);
+
 					$data['dataComing'] = $data_coming;
 				$this->load->library('upload', $config);
 				if($this->upload->do_upload('filefoto'))
@@ -357,6 +360,26 @@ class KelolaComing extends CI_Controller {
 					$data_coming['path_gambar'] = $gbr['file_name'];
 
 					$this->db->insert('coming', $data_coming);
+
+					$nama_tiket = $this->input->post('nama_tiket');
+					$harga = $this->input->post('harga');
+					$qty = $this->input->post('qty');
+					$id_event = $this->db->insert_id();
+					$status = 1;
+					$data_tiket = array();
+
+					foreach ($nama_tiket as $key => $value) 
+					{
+						$data_tiket[] = array(
+						'nama_tiket' => $value,
+						'harga' => $harga[$key],
+						'seat' => $qty[$key],
+						'id_event' => $id_event,
+						'status' => 1
+						);
+					}
+
+					$this->db->insert_batch('tiket', $data_tiket);
 					$this->session->set_flashdata('msg_berhasil', 'Data Event baru berhasil ditambahkan');
 					redirect('KelolaComing');
 				}

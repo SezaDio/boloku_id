@@ -156,7 +156,12 @@
 			return $result;
 		}
 		
-		
+		function get_tiket_byid($id_coming)
+		{
+			$query = $this->db->where('id_event',$id_coming)->get('tiket');
+				
+			return $query->result_array();
+		}
 		function jumlah_testimoni($id_coming)
 		{
 			$query = $this->db->where('id_event',$id_coming)->get('testimoni');
