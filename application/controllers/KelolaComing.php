@@ -1009,10 +1009,16 @@ class KelolaComing extends CI_Controller {
 	}
 	
 	function get_data_event(){
+		$this->load->model('coming_models/ComingModels');
+		
 		if(isset($_POST['id_event'])){
 		$id_event = $_POST['id_event'];
+		$tiket = $this->ComingModels->select_tiket_by_id_coming($id_event)->result_array();
 		$query = $this->db->select('*')->where('id_coming',$id_event)->get('coming');
-		echo json_encode($query->row_array());
+		$data = array('data_event' => $query->row_array());
+		$data += array('tiket' => $tiket);
+		
+		echo json_encode($data);
 		}
 		
 	}
