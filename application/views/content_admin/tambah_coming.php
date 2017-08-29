@@ -81,7 +81,7 @@
 															</select>
 														</div>
 														<div class="col-md-6" id="divqty2" style="display:none" >
-															<input class="form-control" name="qty[]" id="qty">
+															<input type="number" class="form-control" name="qty[]" id="qty">
 														</div>
                                                     </div>
                                                 </div>
@@ -363,7 +363,7 @@
                 $('a#add_field').click(function(){
                     counter2 += 1;
                     $('#container2').append(
-						'<div class="row"><div class="col-md-12" id="divqty1'+counter2+'"><select name="jenisqty[]" required class="form-control" onchange="changeQty2('+counter2+')" id="quantity'+counter2+'"><option value="">-Qty-</option><option value="open">Open</option><option value="limit">Limit</option></select></div><div class="col-md-6" id="divqty2'+counter2+'" style="display:none" ><input class="form-control" name="qty[]" id="qty"></div></div><br />'
+						'<div class="row"><div class="col-md-12" id="divqty1'+counter2+'"><select name="jenisqty[]" required class="form-control" onchange="changeQty2('+counter2+')" id="quantity'+counter2+'"><option value="">-Qty-</option><option value="open">Open</option><option value="limit">Limit</option></select></div><div class="col-md-6" id="divqty2'+counter2+'" style="display:none" ><input type="number" class="form-control" name="qty[]" id="qty"></div></div><br />'
                     );
                 });
 

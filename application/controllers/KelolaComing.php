@@ -367,7 +367,7 @@ class KelolaComing extends CI_Controller {
 					if($this->input->post('jenisqty')=='open'){
 						$qty = 0;
 					} else {
-						$qty = $this->input->post('qty')+1;
+						$qty = intval($this->input->post('qty')) +1;
 					}
 					
 					$id_event = $this->db->insert_id();
