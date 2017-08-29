@@ -220,7 +220,7 @@
 						                            <div class="col-md-2">
 			                                            <label for="exampleInputEmail1">Jenis Event   :</label>
 			                                        </div>
-			                                        <div class="col-md-4">
+			                                        <div class="col-md-10">
 		                                                <label>
 		                                                    <input style="opacity: 1;" type="radio" name="jenis_event" value=1 required onclick="gratis()">
 		                                                     Gratis
@@ -229,40 +229,42 @@
 		                                                    <input style="opacity: 1;" type="radio" name="jenis_event" value=0 required onclick="bayar()">
 		                                                     Berbayar
 		                                                </label><br>
-		                                                <div class="form-group" id="jenis_event" style="display:none">
-				                                            <input type="number" placeholder="Harga Tiket Masuk"	name="harga" class="form-control" value="<?php 
-				                                                /*if (isset($dataComing['harga']))
-				                                                {
-				                                                    echo htmlspecialchars($dataComing['harga']);
-				                                                }*/
-				                                            ?>"> 
-				                                        </div>
+														<div class="row" id="jenis_event"  style="display:none">
+															<div class="form-group col-md-3" >
+																<input type="text" placeholder="Nama Tiket"	name="nama_tiket[]" class="form-control" required> 
+															</div>
+															<div class="form-group col-md-4" >
+																<div class="row">
+																	<div class="col-md-12" id="divqty1">
+																		<select class="form-control" name="jenisqty[]" id="quantity" onchange="changeQty()" required>
+																			<option value="">-Qty-</option>
+																			<option value="open">Open</option>
+																			<option value="limit">Limit</option>
+																		</select>
+																	</div>
+																	<div class="col-md-6" id="divqty2" style="display:none">
+																		<input type="number" class="form-control" name="qty[]" id="qty" placeholder="Qty Seat">
+																	</div>
+																</div>
+															</div>
+															<div class="form-group col-md-3" >
+																<input type="number" placeholder="Harga Tiket"	name="harga[]" class="form-control" required> 
+															</div>
+															<div class="col-md-2" style="text-align: center;">
+																<label for="exampleInputEmail1">&nbsp;</label>
+																<a id="add_field" href="javascript:void(0)">
+																	<button type="button" class="btn btn-primary">
+																		<i class="glyphicon glyphicon-plus"></i>
+																	</button>
+																</a>
+															</div>
+														</div>
+														<br>
+														<div  id="tambah_field">
+														</div>
+														
 			                                        </div>
 			                                       
-			                                        <div class="col-md-2" style="width: 70px;">
-			                                        	<label for="exampleInputEmail1">Seat   :</label>
-			                                        </div>
-			                                        <div class="col-md-4">
-		                                                <label>
-		                                                    <input style="opacity: 1;" type="radio" name="seat" value=1 required onclick="limitedSeat()">
-		                                                     Limited Seat
-		                                                </label>
-		                                                <label>
-		                                                    <input style="opacity: 1;" type="radio" name="seat" value=0 required onclick="openSeat()">
-		                                                     Open Seat
-		                                                </label>
-		                                                <div class="form-group" id="limitedseat" style="display:none">
-				                                            <input placeholder="Jumlah Seat" type="number" 	name="jumlah_seat" class="form-control" id="exampleInputEmail1" value="<?php 
-				                                                /*if (isset($dataComing['seat']))
-				                                                {
-				                                                    echo htmlspecialchars($dataComing['seat']);
-				                                                }*/
-				                                            ?>"> 
-				                                        </div>
-			                                        </div>
-				                                    
-			                                    </div>
-			                                    
 			                                    <br>
 
 		                                        <div class="row">
@@ -536,8 +538,9 @@
 	                          </div>
 	                       </div>
 	                    </div>
+	                    </div>
 						
-						<div class="col-md-9 col-sm-4 col-xs-12" id="kolom2" style="display:none"> 
+						<div class="col-md-9 col-sm-4 col-xs-12" id="kolom2"> 
 	                       <div class="item" style="background-color: white; border-top:solid 1px #f44a56; box-shadow: 0 1px 6px #f44a56;">
 	                          <div class="latest-news-grid grid-1">
 								<!--Content menu buat event baru-->
@@ -580,7 +583,7 @@
 			                                            <label for="exampleInputEmail1">Jenis Event   :</label>
 			                                        </div>
 													
-			                                        <div class="col-md-4">
+			                                        <div class="col-md-10">
 		                                                <label>
 		                                                    <input style="opacity: 1;" type="radio" name="edit_jenis_event" value=1 required onclick="gratis2()" id="edit_jenis_gratis">
 		                                                     Gratis
@@ -589,27 +592,16 @@
 		                                                    <input style="opacity: 1;" type="radio" name="edit_jenis_event" value=0 required onclick="bayar2()" id="edit_jenis_berbayar">
 		                                                     Berbayar
 		                                                </label><br>
-		                                                <div class="form-group" id="edit_jenis_event" style="display:none">
-				                                            <input type="number" placeholder="Harga Tiket Masuk"	name="edit_harga" class="form-control" id="edit_harga"> 
-				                                        </div>
-			                                        </div>
-			                                       
-			                                        <div class="col-md-2" style="width: 70px;">
-			                                        	<label for="exampleInputEmail1">Seat   :</label>
-			                                        </div>
-			                                        <div class="col-md-4">
-		                                                <label>
-		                                                    <input style="opacity: 1;" type="radio" name="edit_seat" value=1 required onclick="limitedSeat2()" id="edit_seat_limit">
-		                                                     Limited Seat
-		                                                </label>
-		                                                <label>
-		                                                    <input style="opacity: 1;" type="radio" name="edit_seat" value=0 required onclick="openSeat2()" id="edit_seat_open">
-		                                                     Open Seat
-		                                                </label>
-		                                                <div class="form-group" id="edit_seat" style="display:none">
-				                                            <input placeholder="Jumlah Seat" type="number" 	name="edit_jumlah_seat" class="form-control" id="edit_jumlah_seat"> 
-				                                        </div>
-			                                        </div>
+		                                                
+														<div class="row" id="edit_jenis_event"  style="display:block">
+															
+														</div>
+														<br>
+														<div  id="edit_tambah_field">
+														</div>
+														
+													</div>	
+			                                        
 				                                    
 			                                    </div>
 			                                    
@@ -931,8 +923,8 @@
 		
 		
 		function editEvent(id_event){
-			document.getElementById("kolom1").style.display = "none";
-			document.getElementById("kolom2").style.display = "block";
+			//document.getElementById("kolom1").style.display = "none";
+			//document.getElementById("kolom2").style.display = "block";
 			var getUrl = window.location;
 			var baseUrl = getUrl .protocol + "//"+ getUrl.pathname.split('/')[1];
 			$.ajax({
@@ -942,28 +934,67 @@
 			dataType: "json",
 			success: function(dataEvent){
 						var dataEvent = JSON.parse(JSON.stringify(dataEvent));
-						var id_event = dataEvent.id_coming;
-						var nama_event = dataEvent.nama_coming;
-						var kategori_event = dataEvent.kategori_coming;
-						var tipe_event = dataEvent.tipe_event;
-						var harga = dataEvent.harga;
-						var jenis_event =dataEvent.jenis_event;
-						var institusi =	dataEvent.institusi;
-						var telepon	= dataEvent.telepon;
-						var email =	dataEvent.email;
-						var tgl_mulai = dataEvent.tgl_mulai;
-						var tgl_selesai	= dataEvent.tgl_selesai;
-						var jam_mulai = dataEvent.jam_mulai;
-						var	jam_selesai = dataEvent.jam_selesai;
-						var deskripsi_event	= dataEvent.deskripsi_coming;
-						var posted_by = dataEvent.posted_by;
-						var seat = dataEvent.seat;
-						var jumlah_seat	= dataEvent.jumlah_seat;
-						var kota_lokasi	= dataEvent.id_lokasi;
-						var top_event = dataEvent.top_event;
-						var pendaftaran = dataEvent.pendaftaran;
-						var alamat = dataEvent.alamat;
-						var path_gambar = dataEvent.path_gambar;
+						var event = dataEvent["data_event"];
+						var tiket = dataEvent["tiket"];
+						var id_event = event.id_coming;
+						var nama_event = event.nama_coming;
+						var kategori_event = event.kategori_coming;
+						var tipe_event = event.tipe_event;
+						var harga = event.harga;
+						var jenis_event =event.jenis_event;
+						var institusi =	event.institusi;
+						var telepon	= event.telepon;
+						var email =	event.email;
+						var tgl_mulai = event.tgl_mulai;
+						var tgl_selesai	= event.tgl_selesai;
+						var jam_mulai = event.jam_mulai;
+						var	jam_selesai = event.jam_selesai;
+						var deskripsi_event	= event.deskripsi_coming;
+						var posted_by = event.posted_by;
+						var seat = event.seat;
+						var jumlah_seat	= event.jumlah_seat;
+						var kota_lokasi	= event.id_lokasi;
+						var top_event = event.top_event;
+						var pendaftaran = event.pendaftaran;
+						var alamat = event.alamat;
+						var path_gambar = event.path_gambar;
+						
+						for (var i = 0; i < tiket.length; i++) {
+							var divtiket='';	
+							divtiket += '<div class="form-group col-md-3" >';
+								divtiket += '<input type="text" placeholder="Nama Tiket"	name="edit_nama_tiket[]" class="form-control" required value="'+tiket[i].nama_tiket+'">';
+							divtiket += '</div>';
+							divtiket += '<div class="form-group col-md-4" >';
+								divtiket += '<div class="row">';
+									divtiket += '<div class="col-md-12" id="edit_divqty1'+i+'">';
+										divtiket += '<select class="form-control" name="edit_jenisqty[]" id="edit_quantity'+i+'" onchange="editchangeQty('+i+')" required>';
+											divtiket += '<option value="">-Qty-</option>';
+											divtiket += '<option value="open">Open</option>';
+											divtiket += '<option value="limit">Limit</option>';
+										divtiket += '</select>';
+									divtiket += '</div>';
+									divtiket += '<div class="col-md-6" id="edit_divqty2'+i+'" style="display:none">';
+										divtiket += '<input type="number" class="form-control" name="edit_qty[]" id="edit_qty" placeholder="Qty Seat" value="'+tiket[i].seat+'">';
+									divtiket += '</div>';
+								divtiket += '</div>';
+							divtiket += '</div>';
+							divtiket += '<div class="form-group col-md-3" >';
+								divtiket += '<input type="number" placeholder="Harga Tiket"	name="edit_harga[]" class="form-control" required value="'+tiket[i].harga+'">';
+							divtiket += '</div>';
+							if(i==0){
+							divtiket += '<div class="col-md-2" style="text-align: center;">';
+								divtiket += '<label for="exampleInputEmail1">&nbsp;</label>';
+								divtiket += '<a id="add_field" href="javascript:void(0)">';
+									divtiket += '<button type="button" class="btn btn-primary">';
+										divtiket += '<i class="glyphicon glyphicon-plus"></i>';
+									divtiket += '</button>';
+								divtiket += '</a>';
+							divtiket += '</div>';
+							}
+							$('#edit_jenis_event').append(divtiket);
+						}
+						
+						
 						$("#nama_event").text(nama_event);
 						$("#edit_id_event").val(id_event);
 						$("#edit_nama").val(nama_event);
@@ -1140,6 +1171,66 @@
 				alert(id_coming + "Gagal dihapus");
 			}
 		}
+		
+				function changeQty(){
+					var x = document.getElementById("quantity").value;
+					if(x=="limit"){
+						document.getElementById("divqty1").className = "col-md-6";
+						document.getElementById("divqty2").style.display = "block";
+					} else {
+						document.getElementById("divqty1").className = "col-md-12";
+						document.getElementById("divqty2").style.display = "none";
+					}
+				}
+				
+				function changeQty2(y){
+					var x = document.getElementById("quantity"+y+"").value;
+					if(x=="limit"){
+						document.getElementById("divqty1"+y+"").className = "col-md-6";
+						document.getElementById("divqty2"+y+"").style.display = "block";
+					} else {
+						document.getElementById("divqty1"+y+"").className = "col-md-12";
+						document.getElementById("divqty2"+y+"").style.display = "none";
+					}
+				}
+				
+				var counter = 0;
+				
+                $('a#add_field').click(function(){
+                    counter += 1;
+					var tambah_field = '';
+					tambah_field += '<div class="row" id="field_'+counter+'">';
+					tambah_field += '<hr style="border: solid 1px grey; margin-top: auto; opacity: 0.4;"></hr>';
+					tambah_field += '<div class="col-md-3"><input class="form-control" id="field_' + counter + '" name="nama_tiket[]' + '" type="text" placeholder="Nama Tiket" /><br /></div>';
+                    tambah_field += '<div class="col-md-4"><div class="row"><div class="col-md-12" id="divqty1'+counter+'"><select name="jenisqty[]" required class="form-control" onchange="changeQty2('+counter+')" id="quantity'+counter+'"><option value="">-Qty-</option><option value="open">Open</option><option value="limit">Limit</option></select></div><div class="col-md-6" id="divqty2'+counter+'" style="display:none" ><input class="form-control" name="qty[]" id="qty" placeholder="Qty Seat"></div></div><br /></div>';
+					tambah_field += '<div class="col-md-3"><input class="form-control" id="field_' + counter + '" name="harga[]' + '" type="text" placeholder="Harga Tiket" /><br /></div>'
+					tambah_field += '<div class="col-md-2" style="text-align: center;">';
+						tambah_field += '<label for="exampleInputEmail1">&nbsp;</label>';
+						tambah_field += '<a onclick="delete_field('+counter+')" href="javascript:void(0)">';
+						tambah_field += '<button type="button" class="btn btn-danger">';
+							tambah_field += '<i class="glyphicon glyphicon-minus"></i>';
+						tambah_field += '</button>';
+						tambah_field += '</a>';
+					tambah_field += '</div>';
+					tambah_field += '</div><br/>';
+					$('#tambah_field').append(tambah_field);
+					
+                });
+				
+				function delete_field(z){
+					document.getElementById('field_'+z+'').remove();
+				}
+				
+				function editchangeQty(y){
+					var x = document.getElementById("edit_quantity"+y+"").value;
+					if(x=="limit"){
+						document.getElementById("edit_divqty1"+y+"").className = "col-md-6";
+						document.getElementById("edit_divqty2"+y+"").style.display = "block";
+					} else {
+						document.getElementById("edit_divqty1"+y+"").className = "col-md-12";
+						document.getElementById("edit_divqty2"+y+"").style.display = "none";
+					}
+				}
 	  </script>
 
 

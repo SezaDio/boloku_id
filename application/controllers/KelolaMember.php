@@ -686,26 +686,26 @@ class KelolaMember extends CI_Controller {
 		$data['jam_event']= $jam_event;
 		$data['dataComing'] = $data_coming_tambah;
 		
-		$seat=$this->input->post('seat');
+		/*$seat=$this->input->post('seat');
 		if($seat==1){
 			$jumlah_seat=$this->input->post('jumlah_seat');
 		} else{
 			$jumlah_seat=0;
-		}
+		}*/
 		
-		$jenis_event=$this->input->post('jenis_event');
+		/*$jenis_event=$this->input->post('jenis_event');
 		if($jenis_event==0){
 			$harga=$this->input->post('harga');
 		} else{
 			$harga=0;
-		}
+		}*/
 
 			$this->form_validation->set_rules('judul_coming', 'Judul', 'required');
 			$this->form_validation->set_rules('institusi', 'Institusi', 'required');
 			$this->form_validation->set_rules('email', 'Email', 'required');
 			$this->form_validation->set_rules('telepon', 'Telepon', 'required');
 			$this->form_validation->set_rules('jenis_event', 'Jenis', 'required');
-			$this->form_validation->set_rules('seat', 'Seat', 'required');
+			//$this->form_validation->set_rules('seat', 'Seat', 'required');
 			$this->form_validation->set_rules('tipe', 'Tipe', 'required');
 			$this->form_validation->set_rules('kategori', 'Kategori', 'required');
 			$this->form_validation->set_rules('tgl_event', 'Tanggal', 'required');
@@ -732,7 +732,7 @@ class KelolaMember extends CI_Controller {
 						'id_member'=>$this->input->post('id_member'),
 						'nama_coming'=>$this->input->post('judul_coming'),
 						'jenis_event'=>$this->input->post('jenis_event'),
-						'harga'=>$harga,
+						'harga'=>0,
 						'pendaftaran'=>$this->input->post('pendaftaran'),
 						'kategori_coming'=>$this->input->post('kategori'),
 						'tipe_event'=>$this->input->post('tipe'),
@@ -749,8 +749,8 @@ class KelolaMember extends CI_Controller {
 						'id_lokasi'=>$this->input->post('kota'),
 						'alamat'=>$this->input->post('alamat'),
 						'path_gambar'=> NULL,
-						'seat'=> $seat,
-						'jumlah_seat'=> $jumlah_seat,
+						'seat'=> 0,
+						'jumlah_seat'=> 0,
 						'top_event'=> 2,
 						'status'=>2
 					);
@@ -765,6 +765,31 @@ class KelolaMember extends CI_Controller {
 					$data_coming['path_gambar'] = $gbr['file_name'];
 
 					$this->db->insert('coming', $data_coming);
+					$nama_tiket = $this->input->post('nama_tiket');
+					$harga = $this->input->post('harga');
+					$jenisqty = $this->input->post('jenisqty');
+					$qty = $this->input->post('qty');
+					$id_event = $this->db->insert_id();
+					$status = 1;
+					$data_tiket = array();
+
+					foreach ($nama_tiket as $key => $value) 
+					{
+						if($jenisqty[$key]=='open'){
+							$jumlah = 0;
+						} else {
+							$jumlah = ((int)$qty[$key])+1;
+						}
+						$data_tiket[] = array(
+						'nama_tiket' => $value,
+						'harga' => $harga[$key],
+						'seat' => $jumlah,
+						'id_event' => $id_event,
+						'status' => 1
+						);
+					}
+
+					$this->db->insert_batch('tiket', $data_tiket);
 					$this->session->set_flashdata('msg_berhasil', 'Data Event kamu berhasil disimpan, Admin kami akan melakukan verifikasi terhadap data event mu dalam kurun waktu 1 x 24 jam.');
 					redirect('KelolaMember/dashboard_member');
 				}
