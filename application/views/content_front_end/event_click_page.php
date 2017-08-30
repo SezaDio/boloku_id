@@ -420,7 +420,7 @@
 													<div class="row">
 							                            <div style="padding-bottom: 20px; padding-top: 10px;" class="col-md-12">
 							                                 <div class="col-md-2">
-							                                 	<img style="width: 100%;" class="pull-left" src="<?php echo base_url('asset/upload_img_member/thumb85_'.$testimoni['path_foto']); ?>" alt="author">
+							                                 	<img style="width: 100%;" class="pull-left hidden-xs" src="<?php echo base_url('asset/upload_img_member/thumb85_'.$testimoni['path_foto']); ?>" alt="author">
 							                                 </div>
 							                                 
 							                                 <div class="col-md-10">

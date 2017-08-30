@@ -141,7 +141,7 @@
 		 
 			  divkategori += '<div class="col-md-4 col-sm-4 col-xs-12">';
 	            divkategori += '<div class="item" style="box-shadow: 0 1px 10px #f44a56; background-color: white;">';
-	                divkategori += '<div class="latest-news-grid grid-1">';
+	                divkategori += '<div class="latest-news-grid grid-1" style="height: 486px;">';
 	                    divkategori += '<div class="picture">';
 	                        divkategori += '<div class="category-image">';
 	                            divkategori += '<img alt="" class="img-responsive" src="'+baseUrl+'/asset/upload_img_wow/thumb_'+path_gambar+'">';

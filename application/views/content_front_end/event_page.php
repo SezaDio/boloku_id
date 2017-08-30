@@ -165,13 +165,124 @@
 
 			                                   	<div class="row">
 			                                   		<div class="col-md-12">
-					                                   	<a  style="margin-bottom:5px" href="javascript:void(0)" class=" btn btn-green btn-small" onclick="byLabel('jenis_event','<?php echo $event['jenis_event']?>')"><i class="ti-money"></i> <?php if($event['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?></a>
+					                                   	<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-green" onclick="byLabel('jenis_event','<?php echo $event['jenis_event']?>')">
+					                                   		<i class="ti-money"></i> <?php if($event['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?>
+					                                   	</a>
 
-					                                   	<a  style="margin-bottom:5px" href="javascript:void(0)" class=" btn btn-dark-red" onclick="byLabel('kategori_coming','<?php echo $event['kategori_coming']?>')"><?php echo $event['kategori_coming']; ?></a>
+					                                   	<?php
+						                                    if ($event['tipe_event'] == "Attraction")
+						                                    { ?>
+						                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-yellow" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"># <?php echo $event['tipe_event']; ?>
+					                                   			</a>
+						                              <?php }
+						                                    elseif ($event['tipe_event'] == "Class")
+						                                    { ?>
+						                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-grey" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"># <?php echo $event['tipe_event']; ?>
+					                                   			</a>
+						                              <?php }
+						                                    elseif ($event['tipe_event'] == "Conference")
+						                                    { ?>
+						                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-blue" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"># <?php echo $event['tipe_event']; ?>
+					                                   			</a>
+						                              <?php }
+						                                    elseif ($event['tipe_event'] == "Expo")
+						                                    { ?>
+						                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-dark-red" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"># <?php echo $event['tipe_event']; ?>
+					                                   			</a>
+						                              <?php }
+						                                    elseif ($event['tipe_event'] == "Festival")
+						                                    { ?>
+						                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-orange" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"># <?php echo $event['tipe_event']; ?>
+					                                   			</a>
+						                              <?php }
+						                                    elseif ($event['tipe_event'] == "Game")
+						                                    { ?>
+						                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-green" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"># <?php echo $event['tipe_event']; ?>
+					                                   			</a>
+						                              <?php }
+						                                    elseif ($event['tipe_event'] == "Party")
+						                                    { ?>
+						                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-red" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"># <?php echo $event['tipe_event']; ?>
+					                                   			</a>
+						                              <?php }
+						                                    elseif ($event['tipe_event'] == "Performance")
+						                                    { ?>
+						                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-purple" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"># <?php echo $event['tipe_event']; ?>
+					                                   			</a>
+						                              <?php }
+						                                    elseif ($event['tipe_event'] == "Seminar")
+						                                    { ?>
+						                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-blue" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"># <?php echo $event['tipe_event']; ?>
+					                                   			</a>
+						                              <?php }
+						                                    elseif ($event['tipe_event'] == "Tour")
+						                                    { ?>
+						                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-success" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"># <?php echo $event['tipe_event']; ?>
+					                                   			</a>
+						                              <?php }
+						                                    elseif ($event['tipe_event'] == "Lain-Lain")
+						                                    { ?>
+						                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-gray" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"># <?php echo $event['tipe_event']; ?>
+					                                   			</a>
+						                              <?php } 
+						                                 ?>
+
+						                                <!--Label Kategori event-->
+					                              <?php
+					                                    if ($event['kategori_coming'] == "Seni")
+					                                    { ?>
+					                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-purple" onclick="byLabel('kategori_coming','<?php echo $event['kategori_coming']?>')"># <?php echo $event['kategori_coming']; ?>
+					                                   		</a>
+					                              <?php }
+					                                    elseif ($event['kategori_coming'] == "Hobi")
+					                                    { ?>
+					                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-orange" onclick="byLabel('kategori_coming','<?php echo $event['kategori_coming']?>')"># <?php echo $event['kategori_coming']; ?>
+					                                   		</a>
+					                              <?php }
+					                                    elseif ($event['kategori_coming'] == "Bisnis")
+					                                    { ?>
+					                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-primary" onclick="byLabel('kategori_coming','<?php echo $event['kategori_coming']?>')"># <?php echo $event['kategori_coming']; ?>
+					                                   		</a>
+					                              <?php }
+					                                    elseif ($event['kategori_coming'] == "Musik")
+					                                    { ?>
+					                                       <a class="btn btn-dark-red" href="javascript:void(0)" onclick="byLabel('kategori_coming','Musik')">
+					                                          <div>
+					                                             # <?php echo $topevent['kategori_coming'] ?>
+					                                          </div>
+					                                       </a>
+					                              <?php }
+					                                    elseif ($event['kategori_coming'] == "Spirituality")
+					                                    { ?>
+					                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-yellow" onclick="byLabel('kategori_coming','<?php echo $event['kategori_coming']?>')"># <?php echo $event['kategori_coming']; ?>
+					                                   		</a>
+					                              <?php }
+					                                    elseif ($event['kategori_coming'] == "Travel dan Outdoor")
+					                                    { ?>
+					                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-success" onclick="byLabel('kategori_coming','<?php echo $event['kategori_coming']?>')"># <?php echo $event['kategori_coming']; ?>
+					                                   		</a>
+					                              <?php }
+					                                    elseif ($event['kategori_coming'] == "Science dan Teknologi")
+					                                    { ?>
+					                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-green" onclick="byLabel('kategori_coming','<?php echo $event['kategori_coming']?>')"># <?php echo $event['kategori_coming']; ?>
+					                                   		</a>
+					                              <?php }
+					                                    elseif ($event['kategori_coming'] == "Keluarga dan Pendidikan")
+					                                    { ?>
+					                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-blue" onclick="byLabel('kategori_coming','<?php echo $event['kategori_coming']?>')"># <?php echo $event['kategori_coming']; ?>
+					                                   		</a>
+					                              <?php }
+					                                    elseif ($event['kategori_coming'] == "Lain-Lain")
+					                                    { ?>
+					                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-gray" onclick="byLabel('kategori_coming','<?php echo $event['kategori_coming']?>')"># <?php echo $event['kategori_coming']; ?>
+					                                   		</a>
+					                              <?php } 
+					                                 ?>
 					                                   	
-					                                   	<a  style="margin-bottom:5px" href="javascript:void(0)" class=" btn btn-orange" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"><?php echo $event['tipe_event']; ?></a>
+					                                   	
 					                                </div>
 				                                </div>
+
 		                                    </div>
 		                                 </li>
 		                            </div>
@@ -292,7 +403,7 @@
 			                        divkategori += '<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>';
 			                        divkategori += '<div class="row">';
 										divkategori += '<div class="col-md-12">';
-					                        divkategori += '<a style="margin-bottom: 5px;" href="javascript:void(0)" class=" btn btn-green btn-small" onclick="byLabel('+label_jenis+','+value_jenis+')"><i class="ti-money"></i>'+jenis+'</a>&nbsp';
+					                        divkategori += '<a style="margin-bottom: 5px;" href="javascript:void(0)" class=" btn btn-green" onclick="byLabel('+label_jenis+','+value_jenis+')"><i class="ti-money"></i>'+jenis+'</a>&nbsp';
 					                        divkategori += '<a style="margin-bottom: 5px;" href="javascript:void(0)" class=" btn btn-dark-red" onclick="byLabel('+label_kategori+','+value_kategori+')">'+kategori_event+'</a>&nbsp';
 					                        divkategori += '<a style="margin-bottom: 5px;" href="javascript:void(0)" class=" btn btn-orange" onclick="byLabel('+label_tipe+','+value_tipe+')">'+tipe_event+'</a>';
 

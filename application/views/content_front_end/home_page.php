@@ -200,9 +200,9 @@
                                           </div>
                                        </a>
                               <?php }
-                                    elseif ($topevent['kategori_coming'] == "Science dan Technology")
+                                    elseif ($topevent['kategori_coming'] == "Science dan Teknologi")
                                     { ?>
-                                       <a class="btn btn-dark-green btn-xs" href="javascript:void(0)" onclick="byLabel('kategori_coming','Science dana Technology')">
+                                       <a class="btn btn-green btn-xs" href="javascript:void(0)" onclick="byLabel('kategori_coming','Science dana Technology')">
                                           <div>
                                              # <?php echo $topevent['kategori_coming'] ?>
                                           </div>
