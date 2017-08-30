@@ -68,7 +68,7 @@
 										<div class="form-group" id="jenis_event" style="display:none">
                                             
                                             <div class="row">
-                                                <div class="col-md-3">
+                                                <div class="col-md-4">
                                                     <label for="exampleInputEmail1">Nama Tiket :</label>
 
                                                     <?php
@@ -93,24 +93,59 @@
                                                 <?php   }
 
                                                     ?>
-
-
                                                 </div>
-                                                <div class="col-md-3">
+
+                                                <?php
+                                                    foreach ($id_tiket as $tiket) 
+                                                    { ?>
+                                                        <input type="hidden" name="id_jenis_tiket[]" value="<?php echo $tiket; ?>">
+                                              <?php }
+                                                ?>
+
+                                                <div class="col-md-4">
                                                     <label for="exampleInputEmail1">Quantity :</label>
-                                                    <?php foreach ($seat as $jumlah_seat) 
+                                                    <?php
+                                                        $counter = 0;
+                                                        foreach ($seat as $jumlah_seat) 
                                                         { ?>
-                                                            <input type="text" name="qty[]" class="form-control" id="exampleInputEmail1" value="<?php 
-                                                                if (isset($jumlah_seat))
-                                                                {
-                                                                    echo htmlspecialchars($jumlah_seat);
-                                                                }
-                                                            ?>"><br>
-                                                <?php   }
+                                                            <div class="row">
+                                                                <div class="col-md-6" id="divqty_<?php echo $counter; ?>">
+                                                                    <select name="jenisqty[]" required class="form-control" onchange="changeQty(<?php echo $counter; ?>)" id="quantity_<?php echo $counter; ?>">  
+                                                                        <option value="">--Qty--</option>
+                                                                  <?php if ($jumlah_seat == NULL)
+                                                                        {
+                                                                            echo '<option value="open" selected>Open</option>';
+                                                                            echo '<option value="limit">Limit</option>';
+                                                                        }
+                                                                        elseif ($jumlah_seat != NULL)
+                                                                        {
+                                                                            echo '<option value="open">Open</option>';
+                                                                            echo '<option value="limit" selected>Limit</option>';
+                                                                        }
+                                                                    ?>
+                                                                    </select>
+                                                                    <br>
+                                                                </div>
 
-                                                    ?>
-                                                    
+                                                                <?php 
+                                                                    if ($jumlah_seat == NULL)
+                                                                    { ?>
+                                                                        <div class="col-md-6" id="divqty2_<?php echo $counter; ?>" style="display:none" >
+                                                                            <input type="number" class="form-control" name="qty[]" id="qty">
+                                                                        </div>
+                                                            <?php   }
+                                                                    else
+                                                                    { ?>
+                                                                        <div class="col-md-6" id="divqty2_<?php echo $counter; ?>" style="display:block" >
+                                                                            <input type="number" class="form-control" name="qty[]" id="qty" value="<?php echo $jumlah_seat; ?>">
+                                                                        </div>
+                                                            <?php   }?>
+                                                                
+                                                            </div>
+                                                        <?php $counter = $counter + 1;
+                                                        } ?>
                                                 </div>
+
                                                 <div class="col-md-3">
                                                     <label for="exampleInputEmail1">Harga :</label>
                                                     <?php foreach ($harga_tiket_event as $harganya) 
@@ -126,7 +161,7 @@
                                                     ?>
                                                     
                                                 </div>
-                                                <div class="col-md-3" style="text-align: center;">
+                                                <div class="col-md-1" style="text-align: center;">
                                                     <label for="exampleInputEmail1">&nbsp;</label>
                                                     <a id="add_field" href="javascript:void(0)">
                                                         <button type="button" class="btn btn-primary">
@@ -137,10 +172,10 @@
                                             </div>
                                             <br>
                                             <div class="row">
-                                                <div id="container" class="col-md-3">
+                                                <div id="container" class="col-md-4">
                                                     
                                                 </div>
-                                                <div id="container2" class="col-md-3">
+                                                <div id="container2" class="col-md-4">
                                                     
                                                 </div>
                                                 <div id="container3" class="col-md-3">
@@ -283,8 +318,13 @@
 											<div class='box-header'>
 												 <label>Deskripsi Event :</label>
 											</div>
-											<textarea required id="editor_wow" name="deskripsi_coming" rows="10" cols="80">
-											    <?php echo htmlspecialchars($dataComing['deskripsi_coming']); ?>
+											<textarea required name="deskripsi_coming" rows="10" cols="80">
+                                                <?php 
+                                                    if (isset($dataComing['deskripsi']))
+                                                    {
+                                                        echo htmlspecialchars($dataComing['deskripsi']);
+                                                    }
+                                                ?>
 											</textarea>                                    
                                         </div>
 
@@ -312,30 +352,7 @@
                                         </div>
                                         <br>
 										
-										<div class="form-group">
-                                            <label for="exampleInputEmail1">Seat   :</label>
-                                            <div class="radio">
-                                                <label>
-                                                    <input style="opacity: 1;" type="radio" name="seat" value=1 required onclick="limitedSeat()" <?php if($dataComing['seat']==1){?> checked="checked" <?php } ?>>
-                                                     Limited Seat
-                                                </label>
-                                                &nbsp &nbsp <label>
-                                                    <input style="opacity: 1;" type="radio" name="seat" value=0 required onclick="openSeat()" <?php if($dataComing['seat']==0){?> checked="checked" <?php } ?>>
-                                                     Open Seat
-                                                </label>
-                                            </div>
-                                        </div>
 										
-										
-										<div class="form-group" id="limitedseat" <?php if($dataComing['seat']==0){ ?> style="display:none" <?php } ?>>
-                                            <label for="exampleInputEmail1">Jumlah Seat  :</label>
-                                            <input type="text" required name="jumlah_seat" class="form-control" id="exampleInputEmail1" value="<?php 
-                                                if (isset($dataComing['jumlah_seat']))
-                                                {
-                                                    echo htmlspecialchars($dataComing['jumlah_seat']);
-                                                }
-                                            ?>"> 
-                                        </div>
 										<div class="form-group">
 											<label>Kota Lokasi :</label>
 											<select name="kota" required class="form-control" id="kota" >
@@ -447,9 +464,9 @@
 
                 var counter2 = 0;
                 $('a#add_field').click(function(){
-                    counter += 1;
+                    counter2 += 1;
                     $('#container2').append(
-                        '<input type="number" class="form-control" id="field_' + counter2 + '" name="qty[]' + '" type="text" /><br />'
+                        '<div class="row"><div class="col-md-12" id="divqty1'+counter2+'"><select name="jenisqty[]" required class="form-control" onchange="changeQty2('+counter2+')" id="quantity'+counter2+'"><option value="">--Qty--</option><option value="open">Open</option><option value="limit">Limit</option></select></div><div class="col-md-6" id="divqty2'+counter2+'" style="display:none" ><input type="number" class="form-control" name="qty[]" id="qty"></div></div><br />'
                     );
                 });
 
@@ -460,6 +477,28 @@
                         '<input class="form-control" id="field_' + counter3 + '" name="harga[]' + '" type="text" /><br />'
                     );
                 });
+
+                function changeQty(counter4){
+                    var x = document.getElementById("quantity_"+ counter4).value;
+                    if(x=="limit"){
+                        document.getElementById("divqty_"+ counter4).className = "col-md-6";
+                        document.getElementById("divqty2_"+ counter4).style.display = "block";
+                    } else {
+                        document.getElementById("divqty_"+ counter4).className = "col-md-12";
+                        document.getElementById("divqty2_"+ counter4).style.display = "none";
+                    }
+                }
+                
+                function changeQty2(y){
+                    var x = document.getElementById("quantity"+y+"").value;
+                    if(x=="limit"){
+                        document.getElementById("divqty1"+y+"").className = "col-md-6";
+                        document.getElementById("divqty2"+y+"").style.display = "block";
+                    } else {
+                        document.getElementById("divqty1"+y+"").className = "col-md-12";
+                        document.getElementById("divqty2"+y+"").style.display = "none";
+                    }
+                }
             </script>
 
             

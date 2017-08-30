@@ -75,6 +75,22 @@
 
 			return $this->db->get();
 		}
+
+		//Select id tiket
+		function select_id_jenis_tiket()
+		{
+			$query = $this->db->query("SELECT id_jenis_tiket FROM `tiket`");
+		
+			$indeks = 0;
+			$result = array();
+			
+			foreach ($query->result_array() as $row)
+			{
+				$result[$row['id_jenis_tiket']] = $row;
+			}
+		
+			return $result;
+		}
 		
 		//Menambah data youth coming
 		function add_data_coming($data_coming)

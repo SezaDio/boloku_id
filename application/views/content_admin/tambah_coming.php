@@ -244,7 +244,7 @@
 												 <label>Deskripsi Event :</label>
 											</div>
 											
-											<textarea required id="editor_wow" name="deskripsi_coming" rows="10" cols="80">
+											<textarea required name="deskripsi_coming" rows="10" cols="80">
 												<?php 
                                                     if (isset($dataComing['deskripsi']))
                                                     {
@@ -255,6 +255,7 @@
 											
                                         </div>
 										
+                                        <!--
 										<div class="form-group">
                                             <label for="exampleInputEmail1">Seat   :</label>
                                             <div class="radio">
@@ -267,7 +268,7 @@
                                                      Open Seat
                                                 </label>
                                             </div>
-                                        </div>
+                                        </div> -->
 										
 										<div class="form-group" id="limitedseat" style="display:none">
                                             <label for="exampleInputEmail1">Jumlah Seat  :</label>

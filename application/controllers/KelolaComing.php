@@ -307,7 +307,7 @@ class KelolaComing extends CI_Controller {
 			$this->form_validation->set_rules('jam_mulai', 'Jam', 'required');
 			$this->form_validation->set_rules('jam_selesai', 'Jam', 'required');
 			$this->form_validation->set_rules('deskripsi_coming', 'Deskripsi', 'required');
-			$this->form_validation->set_rules('seat', 'Seat', 'required');
+			//$this->form_validation->set_rules('seat', 'Seat', 'required');
 			$this->form_validation->set_rules('kota', 'Lokasi Kota', 'required');
 			$this->form_validation->set_rules('alamat', 'Alamat', 'required');
 
@@ -341,7 +341,7 @@ class KelolaComing extends CI_Controller {
 						'jam_mulai'=>$this->input->post('jam_mulai'),
 						'jam_selesai'=>$this->input->post('jam_selesai'),
 						'path_gambar'=> NULL,
-						'seat'=> $seat,
+						'seat'=> $jumlah_seat,
 						'jumlah_seat'=> $jumlah_seat,
 						'top_event'=> 2,
 						'id_lokasi'=>$this->input->post('kota'),
@@ -364,22 +364,28 @@ class KelolaComing extends CI_Controller {
 					$nama_tiket = $this->input->post('nama_tiket');
 					$harga = $this->input->post('harga');
 					
-					if($this->input->post('jenisqty')=='open'){
-						$qty = 0;
-					} else {
-						$qty = intval($this->input->post('qty')) +1;
-					}
 					
+					$jenisqty = $this->input->post('jenisqty');
+					$qty = $this->input->post('qty');
 					$id_event = $this->db->insert_id();
 					$status = 1;
 					$data_tiket = array();
 
 					foreach ($nama_tiket as $key => $value) 
 					{
+						if($jenisqty[$key]=='open')
+						{
+							$jumlah_qty = NULL;
+						} 
+						else
+						{
+							$jumlah_qty = intval($qty[$key]);
+						}
+
 						$data_tiket[] = array(
 						'nama_tiket' => $value,
 						'harga' => $harga[$key],
-						'seat' => $qty[$key],
+						'seat' => $jumlah_qty,
 						'id_event' => $id_event,
 						'status' => 1
 						);
@@ -508,12 +514,12 @@ class KelolaComing extends CI_Controller {
 			$config['max_size'] = '4000'; //kb
 			$config['file_name'] = $nmfile;
 			
-			$seat=$this->input->post('seat');
+			/*$seat=$this->input->post('seat');
 			if($seat==1){
-				$jumlah_seat=$this->input->post('jumlah_seat');
+				$jumlah_seat=0;//$this->input->post('jumlah_seat');
 			} else{
 				$jumlah_seat=0;
-			}
+			}*/
 			
 			$jenis_event=$this->input->post('jenis_event');
 			if($jenis_event==0){
@@ -525,7 +531,7 @@ class KelolaComing extends CI_Controller {
 			$data_coming=array(
 							'nama_coming'=>$this->input->post('nama_coming'),
 							'jenis_event'=>$this->input->post('jenis_event'),
-							'harga'=>$harga,
+							'harga'=>0,//$harga,
 							'kategori_coming'=>$this->input->post('kategori'),
 							'tipe_event'=>$this->input->post('tipe'),
 							'institusi'=>$this->input->post('institusi'),
@@ -537,8 +543,8 @@ class KelolaComing extends CI_Controller {
 							'jam_selesai'=>$this->input->post('jam_selesai'),
 							'deskripsi_coming'=>$this->input->post('deskripsi_coming'),
 							'pendaftaran'=>$this->input->post('pendaftaran'),
-							'seat'=>$seat,
-							'jumlah_seat'=>$jumlah_seat,
+							'seat'=>0,//$jumlah_seat,
+							'jumlah_seat'=>0,//$jumlah_seat,
 							'id_lokasi'=>$this->input->post('kota'),
 							'alamat'=>$this->input->post('alamat'),							
 							//'path_gambar'=>NULL,
@@ -568,8 +574,53 @@ class KelolaComing extends CI_Controller {
 					}
 
 				}
-				if (!$iserror) {
+				if (!$iserror) 
+				{
 					$this->db->update('coming', $data_coming, array('id_coming'=>$id_coming));
+
+					$nama_tiket = $this->input->post('nama_tiket');
+					$harga = $this->input->post('harga');
+					$jenisqty = $this->input->post('jenisqty');
+					$qty = $this->input->post('qty');
+					$id_jenis_tiket = $this->input->post('id_jenis_tiket');
+					$id_event = $id_coming;
+					$status = 1;
+
+					$data_tiket = array();
+
+					foreach ($nama_tiket as $key => $value) 
+					{
+						if($jenisqty[$key]=='open')
+						{
+							$jumlah_qty = NULL;
+						} 
+						else
+						{
+							$jumlah_qty = intval($qty[$key]);
+						}
+
+						$data_tiket = array(
+							'nama_tiket' => $value,
+							'harga' => $harga[$key],
+							'seat' => $jumlah_qty,
+							'id_event' => $id_event,
+							'status' => 1
+						);
+						
+						$data_id_tiket = $this->ComingModels->select_id_jenis_tiket();
+
+						if (array_key_exists($id_jenis_tiket[$key], $data_id_tiket))
+                        {
+                            $this->db->update('tiket', $data_tiket, array('id_jenis_tiket'=>$id_jenis_tiket[$key]));
+                        }
+                        else
+                        {
+                        	$this->db->insert('tiket', $data_tiket);
+                        }
+						
+					}
+
+
 					$this->session->set_flashdata('msg_berhasil', 'Data Event berhasil diperbaharui');
 					redirect('KelolaComing');
 				}
@@ -628,102 +679,102 @@ class KelolaComing extends CI_Controller {
 		$this->load->library('form_validation');
 
 		
-			$id_coming = $this->input->post('edit_id_event');
+		$id_coming = $this->input->post('edit_id_event');
 
-			$this->form_validation->set_rules('edit_nama_event', 'Judul', 'required');
-			$this->form_validation->set_rules('edit_kategori', 'Kategori', 'required');
-			$this->form_validation->set_rules('edit_tipe', 'Tipe', 'required');
-			$this->form_validation->set_rules('edit_tgl_mulai', 'Tanggal Mulai', 'required');
-			$this->form_validation->set_rules('edit_tgl_selesai', 'Tanggal Selesai', 'required');
-			$this->form_validation->set_rules('edit_jam_mulai', 'Jam', 'required');
-			$this->form_validation->set_rules('edit_jam_selesai', 'Jam', 'required');
-			$this->form_validation->set_rules('edit_deskripsi_coming', 'Deskripsi', 'required');
-			$this->form_validation->set_rules('nama_member', 'Posted', 'required');
-			$this->form_validation->set_rules('edit_institusi', 'Institusi', 'required');
-			//$this->form_validation->set_rules('edit_kota', 'Kota Lokasi', 'required');
-			//$this->form_validation->set_rules('edit_telepon', 'Telepon', 'required');
-			//$this->form_validation->set_rules('edit_email', 'Email', 'required');
-			$this->form_validation->set_rules('edit_alamat', 'Alamat', 'required');
+		$this->form_validation->set_rules('edit_nama_event', 'Judul', 'required');
+		$this->form_validation->set_rules('edit_kategori', 'Kategori', 'required');
+		$this->form_validation->set_rules('edit_tipe', 'Tipe', 'required');
+		$this->form_validation->set_rules('edit_tgl_mulai', 'Tanggal Mulai', 'required');
+		$this->form_validation->set_rules('edit_tgl_selesai', 'Tanggal Selesai', 'required');
+		$this->form_validation->set_rules('edit_jam_mulai', 'Jam', 'required');
+		$this->form_validation->set_rules('edit_jam_selesai', 'Jam', 'required');
+		$this->form_validation->set_rules('edit_deskripsi_coming', 'Deskripsi', 'required');
+		$this->form_validation->set_rules('nama_member', 'Posted', 'required');
+		$this->form_validation->set_rules('edit_institusi', 'Institusi', 'required');
+		//$this->form_validation->set_rules('edit_kota', 'Kota Lokasi', 'required');
+		//$this->form_validation->set_rules('edit_telepon', 'Telepon', 'required');
+		//$this->form_validation->set_rules('edit_email', 'Email', 'required');
+		$this->form_validation->set_rules('edit_alamat', 'Alamat', 'required');
 
-			//Mengambil filename gambar untuk disimpan
-			$nmfile = "file_".time();
-			$config['upload_path'] = './asset/upload_img_coming/';
-			$config['allowed_types'] = 'jpg|png|jpeg';
-			$config['max_size'] = '4000'; //kb
-			$config['file_name'] = $nmfile;
-			
-			$seat=$this->input->post('edit_seat');
-			if($seat==1){
-				$jumlah_seat=$this->input->post('edit_jumlah_seat');
-			} else{
-				$jumlah_seat=0;
-			}
-			
-			$jenis_event=$this->input->post('edit_jenis_event');
-			if($jenis_event==0){
-				$harga=$this->input->post('edit_harga');
-			} else{
-				$harga=0;
-			}
-			
-			$data_coming=array(
-							'nama_coming'=>$this->input->post('edit_nama_event'),
-							'jenis_event'=>$this->input->post('edit_jenis_event'),
-							'harga'=>$harga,
-							'kategori_coming'=>$this->input->post('edit_kategori'),
-							'tipe_event'=>$this->input->post('edit_tipe'),
-							'institusi'=>$this->input->post('edit_institusi'),
-							'telepon'=>$this->input->post('edit_telepon'),
-							'email'=>$this->input->post('edit_email'),
-							'tgl_mulai'=>$this->input->post('edit_tgl_mulai'),
-							'tgl_selesai'=>$this->input->post('edit_tgl_selesai'),
-							'jam_mulai'=>$this->input->post('edit_jam_mulai'),
-							'jam_selesai'=>$this->input->post('edit_jam_selesai'),
-							'deskripsi_coming'=>$this->input->post('edit_deskripsi_coming'),
-							'pendaftaran'=>$this->input->post('edit_pendaftaran'),
-							'id_lokasi'=>$this->input->post('edit_kota'),
-							'alamat'=>$this->input->post('edit_alamat'),
-							'seat'=>$seat,
-							'jumlah_seat'=>$jumlah_seat,
-							//'path_gambar'=>NULL,
-							'posted_by'=>$this->input->post('posted_by')
-							);
-			$data['dataComing'] = $data_coming;
+		//Mengambil filename gambar untuk disimpan
+		$nmfile = "file_".time();
+		$config['upload_path'] = './asset/upload_img_coming/';
+		$config['allowed_types'] = 'jpg|png|jpeg';
+		$config['max_size'] = '4000'; //kb
+		$config['file_name'] = $nmfile;
+		
+		$seat=$this->input->post('edit_seat');
+		if($seat==1){
+			$jumlah_seat=$this->input->post('edit_jumlah_seat');
+		} else{
+			$jumlah_seat=0;
+		}
+		
+		$jenis_event=$this->input->post('edit_jenis_event');
+		if($jenis_event==0){
+			$harga=$this->input->post('edit_harga');
+		} else{
+			$harga=0;
+		}
+		
+		$data_coming=array(
+						'nama_coming'=>$this->input->post('edit_nama_event'),
+						'jenis_event'=>$this->input->post('edit_jenis_event'),
+						'harga'=>$harga,
+						'kategori_coming'=>$this->input->post('edit_kategori'),
+						'tipe_event'=>$this->input->post('edit_tipe'),
+						'institusi'=>$this->input->post('edit_institusi'),
+						'telepon'=>$this->input->post('edit_telepon'),
+						'email'=>$this->input->post('edit_email'),
+						'tgl_mulai'=>$this->input->post('edit_tgl_mulai'),
+						'tgl_selesai'=>$this->input->post('edit_tgl_selesai'),
+						'jam_mulai'=>$this->input->post('edit_jam_mulai'),
+						'jam_selesai'=>$this->input->post('edit_jam_selesai'),
+						'deskripsi_coming'=>$this->input->post('edit_deskripsi_coming'),
+						'pendaftaran'=>$this->input->post('edit_pendaftaran'),
+						'id_lokasi'=>$this->input->post('edit_kota'),
+						'alamat'=>$this->input->post('edit_alamat'),
+						'seat'=>$seat,
+						'jumlah_seat'=>$jumlah_seat,
+						//'path_gambar'=>NULL,
+						'posted_by'=>$this->input->post('posted_by')
+						);
+		$data['dataComing'] = $data_coming;
 
-			//value id_koridor berisi beberapa data, sehingga dilakukan split dengan explode
-			if (($this->form_validation->run() == TRUE))
-			{
-				$gbr = NULL;
-				$iserror = false;
-				if ((!empty($_FILES['filefoto']['name']))) {
-					
-					$this->load->library('upload', $config);
-					if($this->upload->do_upload('filefoto'))
-					{
-						//echo "Masuk";
-						$gbr = $this->upload->data();
-						$this->crop($gbr['full_path'],$gbr['file_name']);
-						$data_coming['path_gambar'] = $gbr['file_name'];
-					}
-					else
-					{
-						$this->session->set_flashdata('msg_gagal', 'Data Event gagal diperbaharui');
-						$iserror = true;
-					}
-
+		//value id_koridor berisi beberapa data, sehingga dilakukan split dengan explode
+		if (($this->form_validation->run() == TRUE))
+		{
+			$gbr = NULL;
+			$iserror = false;
+			if ((!empty($_FILES['filefoto']['name']))) {
+				
+				$this->load->library('upload', $config);
+				if($this->upload->do_upload('filefoto'))
+				{
+					//echo "Masuk";
+					$gbr = $this->upload->data();
+					$this->crop($gbr['full_path'],$gbr['file_name']);
+					$data_coming['path_gambar'] = $gbr['file_name'];
 				}
-				if (!$iserror) {
-					$this->db->update('coming', $data_coming, array('id_coming'=>$id_coming));
-					$this->session->set_flashdata('msg_berhasil', 'Data Event berhasil diperbaharui');
-					redirect(site_url('KelolaMember/dashboard_member'));
+				else
+				{
+					$this->session->set_flashdata('msg_gagal', 'Data Event gagal diperbaharui');
+					$iserror = true;
 				}
+
 			}
-			else
-			{
-				echo validation_errors();
-				$this->session->set_flashdata('msg_gagal', 'Data Event gagal diperbaharui');
-				//redirect(site_url('KelolaMember/dashboard_member'));
+			if (!$iserror) {
+				$this->db->update('coming', $data_coming, array('id_coming'=>$id_coming));
+				$this->session->set_flashdata('msg_berhasil', 'Data Event berhasil diperbaharui');
+				redirect(site_url('KelolaMember/dashboard_member'));
 			}
+		}
+		else
+		{
+			echo validation_errors();
+			$this->session->set_flashdata('msg_gagal', 'Data Event gagal diperbaharui');
+			//redirect(site_url('KelolaMember/dashboard_member'));
+		}
 		
 	}
 	
