@@ -540,7 +540,7 @@
 	                    </div>
 	                    </div>
 						
-						<div class="col-md-9 col-sm-4 col-xs-12" id="kolom2"> 
+						<div class="col-md-9 col-sm-4 col-xs-12" id="kolom2" style="display:none"> 
 	                       <div class="item" style="background-color: white; border-top:solid 1px #f44a56; box-shadow: 0 1px 6px #f44a56;">
 	                          <div class="latest-news-grid grid-1">
 								<!--Content menu buat event baru-->
@@ -921,10 +921,10 @@
 			document.getElementById("kolom2").style.display = "none";
 		}
 		
-		
+		var counter2 = 0;
 		function editEvent(id_event){
-			//document.getElementById("kolom1").style.display = "none";
-			//document.getElementById("kolom2").style.display = "block";
+			document.getElementById("kolom1").style.display = "none";
+			document.getElementById("kolom2").style.display = "block";
 			var getUrl = window.location;
 			var baseUrl = getUrl .protocol + "//"+ getUrl.pathname.split('/')[1];
 			$.ajax({
@@ -960,38 +960,57 @@
 						var path_gambar = event.path_gambar;
 						
 						for (var i = 0; i < tiket.length; i++) {
-							var divtiket='';	
+							var divtiket='';
+							if(tiket[i].seat==0){
+								var open = 'selected="selected"';
+							} else {
+								var limit = 'selected="selected"';
+							}
+							divtiket += '<div id="tiket_'+i+'">';
 							divtiket += '<div class="form-group col-md-3" >';
-								divtiket += '<input type="text" placeholder="Nama Tiket"	name="edit_nama_tiket[]" class="form-control" required value="'+tiket[i].nama_tiket+'">';
+								divtiket += '<input type="text" placeholder="Nama Tiket"	name="edit_nama_tiket[]" id="edit_nama_tiket'+i+'" class="form-control" required value="'+tiket[i].nama_tiket+'">';
+								divtiket += '<input type="hidden" name="edit_id_jenis_tiket[]" id="edit_id_jenis_tiket'+i+'" class="form-control" required value="'+tiket[i].id_jenis_tiket+'">';
 							divtiket += '</div>';
 							divtiket += '<div class="form-group col-md-4" >';
 								divtiket += '<div class="row">';
 									divtiket += '<div class="col-md-12" id="edit_divqty1'+i+'">';
 										divtiket += '<select class="form-control" name="edit_jenisqty[]" id="edit_quantity'+i+'" onchange="editchangeQty('+i+')" required>';
-											divtiket += '<option value="">-Qty-</option>';
-											divtiket += '<option value="open">Open</option>';
-											divtiket += '<option value="limit">Limit</option>';
+											divtiket += '<option value="0">-Qty-</option>';
+											divtiket += '<option value="open" '+open+'>Open</option>';
+											divtiket += '<option value="limit" '+limit+'>Limit</option>';
 										divtiket += '</select>';
 									divtiket += '</div>';
 									divtiket += '<div class="col-md-6" id="edit_divqty2'+i+'" style="display:none">';
-										divtiket += '<input type="number" class="form-control" name="edit_qty[]" id="edit_qty" placeholder="Qty Seat" value="'+tiket[i].seat+'">';
+										divtiket += '<input type="number" class="form-control" name="edit_qty[]" id="edit_qty'+i+'" placeholder="Qty Seat" value="'+tiket[i].seat+'">';
 									divtiket += '</div>';
 								divtiket += '</div>';
 							divtiket += '</div>';
 							divtiket += '<div class="form-group col-md-3" >';
-								divtiket += '<input type="number" placeholder="Harga Tiket"	name="edit_harga[]" class="form-control" required value="'+tiket[i].harga+'">';
+								divtiket += '<input type="number" placeholder="Harga Tiket"	name="edit_harga[]" id="edit_harga'+i+'" class="form-control" required value="'+tiket[i].harga+'">';
 							divtiket += '</div>';
 							if(i==0){
 							divtiket += '<div class="col-md-2" style="text-align: center;">';
 								divtiket += '<label for="exampleInputEmail1">&nbsp;</label>';
-								divtiket += '<a id="add_field" href="javascript:void(0)">';
+								divtiket += '<a onclick="add_field2()" href="javascript:void(0)">';
 									divtiket += '<button type="button" class="btn btn-primary">';
 										divtiket += '<i class="glyphicon glyphicon-plus"></i>';
 									divtiket += '</button>';
 								divtiket += '</a>';
 							divtiket += '</div>';
+							} else {
+							divtiket += '<div class="col-md-2" style="text-align: center;">';
+								divtiket += '<label for="exampleInputEmail1">&nbsp;</label>';
+								divtiket += '<a onclick="delete_field2('+i+')" href="javascript:void(0)">';
+								divtiket += '<button type="button" class="btn btn-danger">';
+									divtiket += '<i class="glyphicon glyphicon-minus"></i>';
+								divtiket += '</button>';
+								divtiket += '</a>';
+							divtiket += '</div>';
+							divtiket += '</div>';	
+							divtiket += '</div>';	
 							}
 							$('#edit_jenis_event').append(divtiket);
+							counter2 = i;
 						}
 						
 						
@@ -1217,8 +1236,61 @@
 					
                 });
 				
+				function add_field2(){
+                    counter2 += 1;
+					var divtiket='';
+						divtiket += '<div id="tiket_'+counter2+'">';
+						divtiket += '<div class="form-group col-md-3" >';
+							divtiket += '<input type="text" placeholder="Nama Tiket"	name="edit_nama_tiket[]" id="edit_nama_tiket'+counter2+'" class="form-control" required ">';
+							divtiket += '<input type="hidden" name="edit_id_jenis_tiket[]" id="edit_id_jenis_tiket'+counter2+'" class="form-control" required">';
+						divtiket += '</div>';
+						divtiket += '<div class="form-group col-md-4" >';
+							divtiket += '<div class="row">';
+								divtiket += '<div class="col-md-12" id="edit_divqty1'+counter2+'">';
+									divtiket += '<select class="form-control" name="edit_jenisqty[]" id="edit_quantity'+counter2+'" onchange="editchangeQty('+counter2+')" required>';
+										divtiket += '<option value="">-Qty-</option>';
+										divtiket += '<option value="open">Open</option>';
+										divtiket += '<option value="limit">Limit</option>';
+									divtiket += '</select>';
+								divtiket += '</div>';
+								divtiket += '<div class="col-md-6" id="edit_divqty2'+counter2+'" style="display:none">';
+									divtiket += '<input type="number" class="form-control" name="edit_qty[]" id="edit_qty'+counter2+'" placeholder="Qty Seat"">';
+								divtiket += '</div>';
+							divtiket += '</div>';
+						divtiket += '</div>';
+						divtiket += '<div class="form-group col-md-3" >';
+							divtiket += '<input type="number" placeholder="Harga Tiket"	name="edit_harga[]" id="edit_harga'+counter2+'" class="form-control" required ">';
+						divtiket += '</div>';
+						divtiket += '<div class="col-md-2" style="text-align: center;">';
+							divtiket += '<label for="exampleInputEmail1">&nbsp;</label>';
+							divtiket += '<a onclick="delete_field2('+counter2+')" href="javascript:void(0)">';
+							divtiket += '<button type="button" class="btn btn-danger">';
+								divtiket += '<i class="glyphicon glyphicon-minus"></i>';
+							divtiket += '</button>';
+							divtiket += '</a>';
+						divtiket += '</div>';
+						divtiket += '</div>';	
+						divtiket += '</div>';	
+						$('#edit_jenis_event').append(divtiket);
+					
+                }
+				
 				function delete_field(z){
 					document.getElementById('field_'+z+'').remove();
+				}
+				
+				function delete_field2(z){
+					alert(document.getElementById('edit_nama_tiket'+z+'').value);
+					document.getElementById('edit_nama_tiket'+z+'').value = "DELETE";
+					alert(document.getElementById('edit_nama_tiket'+z+'').value);
+					document.getElementById('edit_quantity'+z+'').value = "open";
+					alert(document.getElementById('edit_nama_tiket'+z+'').value);
+					document.getElementById('edit_qty'+z+'').value = 0;
+					alert(document.getElementById('edit_nama_tiket'+z+'').value);
+					document.getElementById('edit_harga'+z+'').value = 0;
+					alert("berhasil");
+					
+					document.getElementById('tiket_'+z+'').style.display = "none";
 				}
 				
 				function editchangeQty(y){
