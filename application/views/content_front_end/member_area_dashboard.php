@@ -21,7 +21,7 @@
 	                             <div class="detail">
 	                                <div class="col-md-12">
 			                             <div class="picture">
-			                             	<div style="margin-bottom: 15px;" class="ad-div style-box">
+			                             	<div style="margin-bottom: 15px;">
 			                             		<?php
                                                 if (empty($path_foto))
                                                 {
