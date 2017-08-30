@@ -320,9 +320,9 @@
 											</div>
 											<textarea required name="deskripsi_coming" rows="10" cols="80">
                                                 <?php 
-                                                    if (isset($dataComing['deskripsi']))
+                                                    if (isset($dataComing['deskripsi_coming']))
                                                     {
-                                                        echo htmlspecialchars($dataComing['deskripsi']);
+                                                        echo htmlspecialchars($dataComing['deskripsi_coming']);
                                                     }
                                                 ?>
 											</textarea>                                    

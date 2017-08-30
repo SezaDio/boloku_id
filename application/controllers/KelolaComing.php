@@ -680,7 +680,6 @@ class KelolaComing extends CI_Controller {
 
 		
 		$id_coming = $this->input->post('edit_id_event');
-
 		$this->form_validation->set_rules('edit_nama_event', 'Judul', 'required');
 		$this->form_validation->set_rules('edit_kategori', 'Kategori', 'required');
 		$this->form_validation->set_rules('edit_tipe', 'Tipe', 'required');
@@ -703,24 +702,11 @@ class KelolaComing extends CI_Controller {
 		$config['max_size'] = '4000'; //kb
 		$config['file_name'] = $nmfile;
 		
-		$seat=$this->input->post('edit_seat');
-		if($seat==1){
-			$jumlah_seat=$this->input->post('edit_jumlah_seat');
-		} else{
-			$jumlah_seat=0;
-		}
-		
-		$jenis_event=$this->input->post('edit_jenis_event');
-		if($jenis_event==0){
-			$harga=$this->input->post('edit_harga');
-		} else{
-			$harga=0;
-		}
 		
 		$data_coming=array(
 						'nama_coming'=>$this->input->post('edit_nama_event'),
 						'jenis_event'=>$this->input->post('edit_jenis_event'),
-						'harga'=>$harga,
+						'harga'=>0,
 						'kategori_coming'=>$this->input->post('edit_kategori'),
 						'tipe_event'=>$this->input->post('edit_tipe'),
 						'institusi'=>$this->input->post('edit_institusi'),
@@ -734,8 +720,8 @@ class KelolaComing extends CI_Controller {
 						'pendaftaran'=>$this->input->post('edit_pendaftaran'),
 						'id_lokasi'=>$this->input->post('edit_kota'),
 						'alamat'=>$this->input->post('edit_alamat'),
-						'seat'=>$seat,
-						'jumlah_seat'=>$jumlah_seat,
+						'seat'=>0,
+						'jumlah_seat'=>0,
 						//'path_gambar'=>NULL,
 						'posted_by'=>$this->input->post('posted_by')
 						);
@@ -746,7 +732,8 @@ class KelolaComing extends CI_Controller {
 		{
 			$gbr = NULL;
 			$iserror = false;
-			if ((!empty($_FILES['filefoto']['name']))) {
+			if ((!empty($_FILES['filefoto']['name']))) 
+			{
 				
 				$this->load->library('upload', $config);
 				if($this->upload->do_upload('filefoto'))
@@ -760,6 +747,45 @@ class KelolaComing extends CI_Controller {
 				{
 					$this->session->set_flashdata('msg_gagal', 'Data Event gagal diperbaharui');
 					$iserror = true;
+				}
+				if (!$iserror) {
+					$this->db->update('coming', $data_coming, array('id_coming'=>$id_coming));
+					
+					$id_jenis_tiket = $this->input->post('edit_id_jenis_tiket');
+					$nama_tiket = $this->input->post('edit_nama_tiket');
+					$harga = $this->input->post('edit_harga');
+					$jenisqty = $this->input->post('edit_jenisqty');
+					$qty = $this->input->post('edit_qty');
+					$id_event = $id_coming;
+					$status = 1;
+					foreach ($nama_tiket as $key => $value) 
+					{
+						if($value=="DELETE"){
+							$this->db->where('id_jenis_tiket',$id_jenis_tiket[$key]);
+							$this->db->delete('tiket');
+						} else {
+							if($jenisqty[$key]=='open'){
+								$jumlah = 0;
+							} else {
+								$jumlah = ((int)$qty[$key])+1;
+							}
+						
+							$data_tiket = array(
+							'nama_tiket' => $value,
+							'harga' => $harga[$key],
+							'seat' => $jumlah,
+							'id_event' => $id_coming,
+							'status' => 1
+							);
+							if($id_jenis_tiket[$key]!=''){
+								$this->db->update('tiket', $data_tiket, array('id_jenis_tiket'=>$id_jenis_tiket[$key]));
+							} else {
+								$this->db->insert('tiket', $data_tiket);
+							}
+						}
+					}
+					$this->session->set_flashdata('msg_berhasil', 'Data Event berhasil diperbaharui');
+					redirect(site_url('KelolaMember/dashboard_member'));
 				}
 
 			}
@@ -918,12 +944,7 @@ class KelolaComing extends CI_Controller {
 		imagepng( $myThumbCrop,"./asset/upload_img_coming/".$fileName );
 		imagepng( $myThumbCrop83,"./asset/upload_img_coming/".$fileName83 );
 		}
-		
-		
 	}
-	
-	
-	
 	
 	//Publish
 	public function top_event()
