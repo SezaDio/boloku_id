@@ -202,9 +202,8 @@
 		//Mengambil data news
 		function get_data_news()
 		{
-			
-			$query = $this->db->query("SELECT * FROM `news`");
-		
+			$query = $this->db->limit(5)->order_by('waktu_posting','DESC')->select('*')->get('news');
+
 			$indeks = 0;
 			$result = array();
 			

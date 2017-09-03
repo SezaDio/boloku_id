@@ -19,6 +19,7 @@ class FrontControl_Home extends CI_Controller {
 		$this->load->helper('url');
 		$this->load->library('pagination');
 		$this->load->model('home_models/HomeModels');
+		$this->load->model('news_models/NewsModels');
 
 		$jumlah_data = $this->HomeModels->jumlah_data_new_event();
 		$config['base_url'] = site_url('home/');
@@ -67,6 +68,7 @@ class FrontControl_Home extends CI_Controller {
 		$data['namaChallenge'] = $this->HomeModels->get_nama_challenge();
 		$data['listChallenge'] = $this->HomeModels->get_challenge();
 		$data['listArtikel'] = $this->HomeModels->get_artikel();
+		$data['listLiputan'] = $this->NewsModels->get_data_news();
 		$this->load->view('skin/front_end/welcome', $data);
 		
 	}

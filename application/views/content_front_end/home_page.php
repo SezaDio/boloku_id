@@ -588,22 +588,65 @@
                      <!--Fitur Artikel-->
                      <div class="widget widget-bg" style="box-shadow: 0 1px 7px grey;">
                         <div class="heading">
-                           <h2 class="main-heading"><strong>Artikel</strong></h2>
+                           <h2 class="main-heading"><strong>Artikel & Liputan</strong></h2>
                            <span class="heading-ping"></span>
-                           
                         </div>
-                        <ul class="tabs-posts">
-						<?php  $this->load->model('home_models/HomeModels'); foreach($listArtikel as $artikel){ ?>
-                           <li>
-                              <div class="pic"> <a href="<?php echo site_url('halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
-                              <div class="caption"> <a href="<?php echo site_url('halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><?php echo $artikel['judul_artikel']; ?></a> </div>
-                              <ul class="post-tools">
-                                 <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $artikel['hits'];?></a></li>
-                                 <li title="Comments"> <i class="ti-thought"></i> <?php echo $data['jumlahKomentar'] = $this->HomeModels->jumlah_komentar($artikel['id_artikel']); ?></li>
+
+                        <div class="tabs">
+                           <div role="tabpanel">
+                              <!-- Nav tabs -->
+                              <ul class="nav nav-tabs nav-justified" role="tablist">
+                                 <li class="active" role="presentation"> 
+                                    <a aria-controls="popular" aria-expanded="true" data-toggle="tab"
+                                    href="#popular" role="tab">Artikel</a> 
+                                 </li>
+                                 <li class="" role="presentation"> 
+                                    <a aria-controls="liputan" aria-expanded="false"
+                                    data-toggle="tab" href="#liputan" role=
+                                    "tab">Liputan</a> 
+                                 </li>
                               </ul>
-                           </li>
-						<?php } ?>
-                        </ul>
+
+                              <div class="tab-content">
+                                 <!--Tab Deskripsi Event-->
+                                 <div style="background-color: white; padding: 10px;" class="tab-pane active" id="popular" role="tabpanel">
+                                    <ul class="tabs-posts">
+                                       <?php  $this->load->model('home_models/HomeModels'); foreach($listArtikel as $artikel){ ?>
+                                       <li>
+                                          <div class="pic"> <a href="<?php echo site_url('halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
+                                          <div class="caption"> <a href="<?php echo site_url('halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><?php echo $artikel['judul_artikel']; ?></a> </div>
+                                          <ul class="post-tools">
+                                             <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $artikel['hits'];?></a></li>
+                                             <li title="Comments"> <i class="ti-thought"></i> <?php echo $data['jumlahKomentar'] = $this->HomeModels->jumlah_komentar($artikel['id_artikel']); ?></li>
+                                          </ul>
+                                       </li>
+                                       <?php } ?>
+                                    </ul>
+                                 </div>
+
+                                 <!--Tab Liputan-->
+                                 <div style="background-color: white; padding: 10px;" class="tab-pane" id="liputan" role="tabpanel">
+                                    <ul class="tabs-posts">
+                                       <?php foreach($listLiputan as $liputan){ ?>
+                                       <li>
+                                          <div class="pic"> 
+                                             <a href="<?php echo site_url('halaman_baca_artikel_pra_event/'.$liputan['id_news']); ?>"><img style="width: 100px;" alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb_'.$liputan['gambar_news']); ?>"></a> 
+                                          </div>
+                                          <div class="caption"> <a href="<?php echo site_url('halaman_baca_artikel_pra_event/'.$liputan['id_news']); ?>"><?php echo $liputan['judul_news']; ?></a> </div>
+                                          <ul class="post-tools">
+                                             <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $liputan['hits'];?></a></li>
+                                             <li title="Comments"> <i class="ti-thought"></i> <?php echo $data['jumlahKomentar'] = $this->HomeModels->jumlah_komentar($liputan['id_news']); ?></li>
+                                          </ul>
+                                       </li>
+                                       <?php } ?>
+                                    </ul>
+                                 </div>
+
+                              </div>
+
+                           </div>
+                        </div>
+
                      </div>
 
                      <!--Fitur Update challenge Instagram-->
