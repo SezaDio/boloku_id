@@ -47,13 +47,38 @@
                         </div>
                         <?php
                            $tanggal_mulai = strtotime($topevent['tgl_mulai']);
+                           $tanggal_selesai = strtotime($topevent['tgl_selesai']);
                            $tanggal = date("j", $tanggal_mulai);
                            $bulan = date("M", $tanggal_mulai);
                         ?>
+
+                        <?php 
+                           if ($tanggal_selesai < date("y-m-d")) 
+                           { ?>
+                              <div class="hover-show-div" style="float: left; margin-top: -12px;  border: 2px solid #FAFAFA; border-radius:5px;  opacity: 0.8;">
+                                 <div style="font-size: 2em; text-align: center; padding: 5px; background-color: #FAFAFA; border-top:1px solid #E6E6E6 ;opacity: 1">
+                                    <strong>Closed</strong>
+                                 </div>
+                              </div>
+                   <?php   } ?>
+                        
                         <div class="hover-show-div" style="margin-right: 12px; margin-top: -12px;  border: 2px solid #FAFAFA; border-radius:5px;  opacity: 0.8;">
-                          <div style="text-align: center; width: 60px; padding: 5px; background-color: #FAFAFA; font-size: 1.5em; opacity: 1"><strong><?php echo $bulan; ?></strong></div>
-                          <div style="font-size: 2em; text-align: center; padding: 5px; background-color: #FAFAFA; border-top:1px solid #E6E6E6 ;opacity: 1"><strong><?php echo $tanggal; ?></strong></div>
-                       </div>
+                           <div style="text-align: center; width: 60px; padding: 5px; background-color: #FAFAFA; font-size: 1.5em; opacity: 1">
+                              <strong><?php echo $bulan; ?></strong>
+                           </div>
+                           <div style="font-size: 2em; text-align: center; padding: 5px; background-color: #FAFAFA; border-top:1px solid #E6E6E6 ;opacity: 1">
+                              <strong><?php echo $tanggal; ?></strong>
+                           </div>
+                        </div>
+
+                        <div class="hover-show-div" style="margin-right: 12px; margin-top: -12px;  border: 2px solid #FAFAFA; border-radius:5px;  opacity: 0.8;">
+                           <div style="text-align: center; width: 60px; padding: 5px; background-color: #FAFAFA; font-size: 1.5em; opacity: 1">
+                              <strong><?php echo $bulan; ?></strong>
+                           </div>
+                           <div style="font-size: 2em; text-align: center; padding: 5px; background-color: #FAFAFA; border-top:1px solid #E6E6E6 ;opacity: 1">
+                              <strong><?php echo $tanggal; ?></strong>
+                           </div>
+                        </div>
                        
                         <div class="post-content" style="background-color: #444;">
                            <div class="catname">
