@@ -78,9 +78,9 @@
 	            		</div>
 
 	            		<!--Content kolom kanan Riwayat Event, edit profile, edit event, dan post event baru-->
-	            		<div class="col-md-9 col-sm-4 col-xs-12" id="kolom1">
-	                       <div class="item" style="background-color: white; border-top:solid 1px #f44a56; box-shadow: 0 1px 6px #f44a56;">
-	                          <div class="latest-news-grid grid-1">
+	            	<div class="col-md-9 col-sm-4 col-xs-12" id="kolom1">
+	                    <div class="item" style="background-color: white; border-top:solid 1px #f44a56; box-shadow: 0 1px 6px #f44a56;">
+	                        <div class="latest-news-grid grid-1">
 
 	                          	<!--Content menu riwayat event member-->
 	                            <div id="dashboard-content" class="detail">
@@ -417,125 +417,121 @@
 	                             </div>
 
 	                             <!--Content menu edit profil member-->
-	                             <div style="background-color: white; display: none;" id="edit-profil-content" class="detail">
+	                            <div style="background-color: white; display: none;" id="edit-profil-content" class="detail">
 	                             	<div class="col-md-12">
 	                             		<h4><strong>Edit Profil</strong></h4>
 	                             		<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
 	                             	</div>
 	                             	<div class="col-md-12 col-sm-8 col-xs-12 nopadding" style="padding:10px;"">
-					                  <div class="contact-form">
-					                      <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaMember/edit_member_area/'.$id_member);?>" method="POST">
-					                     	<div class="row">
-						                        <div style="text-align: center;" class="col-md-4 col-sm-6 col-xs-12">
-						                        	<div class='box-header'>
-						                        		
-			                                            <?php
-			                                                if (empty($path_foto))
-			                                                {
-			                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/img/author3.jpg').'"/>';
-			                                                }
-			                                                else
-			                                                {
-			                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/upload_img_member/'.$path_foto).'"/>';
-			                                                }
-			                                            ?>   
-			                                        </div>
-			                                       
-			                                        <a class="caption" href="javascript:void(0)" class='box-header' style="font-size: 1.0em; color: blue;" id="ganti">
-			                                        	<button type="button" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-pencil"></i> Ganti Gambar ?</button>
-			                                        </a><br><br>
-			                                        <div class="ganti_gambar">
-			                                            <input style="margin-left: 17px;" class="form" type="file" name="filefoto" >
-														<p style="font-size: 1.0em; color:red;">*Tipe file diizinkan: jpg, jpeg, dan png (Max 2Mb)</p>
-			                                        </div>
-			                                        <br>
-						                        </div>
-					                     		<div class="col-md-8 col-sm-6 col-xs-12">
-					                     			<div class="row">
-								                        <div class="col-md-6 col-sm-6 col-xs-12">
-								                        	<div class="form-group">
-								                        	  <label>Nama Lengkap :</label>
-								                              <input required id="nama_lengkap" name="edit_nama_member" class="form-control" required type="text" value="<?php echo $nama_member?>">
-								                           </div>
-								                        </div>
-								                        <div class="col-md-6 col-sm-6 col-xs-12">
-								                        	<div class="form-group">
-								                        	  <label>Username :</label>
-								                              <input required id="username" name="edit_username" class="form-control" required type="text" value="<?php echo $username?>">
-								                           </div>
-								                        </div>
-								                    </div>
-								                    <div class="row">
-								                        <div class="col-md-6 col-sm-6 col-xs-12">
-								                        	<div class="form-group">
-								                        	  <label>E-Mail :</label>
-								                              <input required id="name" name="edit_email" class="form-control" required type="text" value="<?php echo $email?>">
-								                           </div>
-								                        </div>
-								                        <div class="col-md-6 col-sm-6 col-xs-12">
-								                        	<div class="form-group">
-								                        	  <label>Telepon :</label>
-								                              <input required id="name" name="edit_telepon" class="form-control" required type="text" value="<?php echo $telepon?>">
-								                           </div>
-								                        </div>
-								                    </div>
-													
-													<div class="row" id="editPassword">
-														<div class="col-md-4 col-sm-4 col-xs-12">
-															<div class="form-group">
-																<a href="javascript:void(0)" onclick="editPassword()"><label>Ubah Password ?</label></a>
+					                  	<div class="contact-form">
+					                      	<form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaMember/edit_member_area/'.$id_member);?>" method="POST">
+					                     		<div class="row">
+							                        <div style="text-align: center;" class="col-md-4 col-sm-6 col-xs-12">
+							                        	<div class='box-header'>
+							                        		
+				                                            <?php
+				                                                if (empty($path_foto))
+				                                                {
+				                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/img/author3.jpg').'"/>';
+				                                                }
+				                                                else
+				                                                {
+				                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/upload_img_member/'.$path_foto).'"/>';
+				                                                }
+				                                            ?>   
+				                                        </div>
+				                                       
+				                                        <a class="caption" href="javascript:void(0)" class='box-header' style="font-size: 1.0em; color: blue;" id="ganti">
+				                                        	<button type="button" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-pencil"></i> Ganti Gambar ?</button>
+				                                        </a><br><br>
+				                                        <div class="ganti_gambar">
+				                                            <input style="margin-left: 17px;" class="form" type="file" name="filefoto" >
+															<p style="font-size: 1.0em; color:red;">*Tipe file diizinkan: jpg, jpeg, dan png (Max 2Mb)</p>
+				                                        </div>
+				                                        <br>
+							                        </div>
+						                     		<div class="col-md-8 col-sm-6 col-xs-12">
+						                     			<div class="row">
+									                        <div class="col-md-6 col-sm-6 col-xs-12">
+									                        	<div class="form-group">
+									                        	  <label>Nama Lengkap :</label>
+									                              <input required id="nama_lengkap" name="edit_nama_member" class="form-control" required type="text" value="<?php echo $nama_member?>">
+									                           </div>
+									                        </div>
+									                        <div class="col-md-6 col-sm-6 col-xs-12">
+									                        	<div class="form-group">
+									                        	  <label>Username :</label>
+									                              <input required id="username" name="edit_username" class="form-control" required type="text" value="<?php echo $username?>">
+									                           </div>
+									                        </div>
+									                    </div>
+									                    <div class="row">
+									                        <div class="col-md-6 col-sm-6 col-xs-12">
+									                        	<div class="form-group">
+									                        	  <label>E-Mail :</label>
+									                              <input required id="name" name="edit_email" class="form-control" required type="text" value="<?php echo $email?>">
+									                           </div>
+									                        </div>
+									                        <div class="col-md-6 col-sm-6 col-xs-12">
+									                        	<div class="form-group">
+									                        	  <label>Telepon :</label>
+									                              <input required id="name" name="edit_telepon" class="form-control" required type="text" value="<?php echo $telepon?>">
+									                           </div>
+									                        </div>
+									                    </div>
+														
+														<div class="row" id="editPassword">
+															<div class="col-md-4 col-sm-4 col-xs-12">
+																<div class="form-group">
+																	<a href="javascript:void(0)" onclick="editPassword()"><label>Ubah Password ?</label></a>
+																</div>
 															</div>
+														
 														</div>
-													
-													</div>
-													
-													<div class="row" id="editPassword2" style="display:none">
-														<div class="col-md-4 col-sm-4 col-xs-12">
-								                        	<div class="form-group">
-								                        	  <label>Password Lama :</label>
-								                              <input id="password_lama" name="password_lama" class="form-control" type="text" >
-								                           </div>
-								                        </div>
-								                        <div class="col-md-4 col-sm-4 col-xs-12">
-								                        	<div class="form-group">
-								                        	  <label>Password Baru :</label>
-								                              <input id="edit_password" name="edit_password" class="form-control" type="text" >
-								                           </div>
-								                        </div>
-								                        <div class="col-md-4 col-sm-4 col-xs-12">
-								                        	<div class="form-group">
-								                        	  <label>Ulangi Password :</label>
-								                              <input id="ulangi_password" name="ulangi_password" class="form-control" type="text" >
-								                           </div>
-								                        </div>
-								                    </div>
-													<label for="exampleInputEmail1" id="validate_username" style="font-size:20px"></label>
-													<br/>
-													<label for="exampleInputEmail1" id="validate-passlama" style="font-size:20px"></label>
-													<br/>
-													<label for="exampleInputEmail1" id="validate-passsama" style="font-size:20px"></label>
-								                    <div class="row">
-								                        <div class="col-md-6 col-sm-6 col-xs-12">
-								                        	<input type="hidden" name="passwordlama" value="<?php echo $password; ?>" id="passwordlama">
-								                        </div>
-								                        <div class="col-md-6 col-sm-6 col-xs-12">
-								                        	<br>
-								                        	<div class="form-group">
-								                              <button class="btn btn-colored-blog pull-right" type="submit" value="1" class="btn btn-primary" id="submitSave"><i class="glyphicon glyphicon-floppy-disk"></i> Simpan</button>
-								                           </div>
-								                        </div>
-								                    </div>
-					                     		</div>
-						                        
-						                    </div>
-					                     	
-						                    
-					                     </form>
-					                  </div>
+														
+														<div class="row" id="editPassword2" style="display:none">
+															<div class="col-md-4 col-sm-4 col-xs-12">
+									                        	<div class="form-group">
+									                        	  <label>Password Lama :</label>
+									                              <input id="password_lama" name="password_lama" class="form-control" type="text" >
+									                           </div>
+									                        </div>
+									                        <div class="col-md-4 col-sm-4 col-xs-12">
+									                        	<div class="form-group">
+									                        	  <label>Password Baru :</label>
+									                              <input id="edit_password" name="edit_password" class="form-control" type="text" >
+									                           </div>
+									                        </div>
+									                        <div class="col-md-4 col-sm-4 col-xs-12">
+									                        	<div class="form-group">
+									                        	  <label>Ulangi Password :</label>
+									                              <input id="ulangi_password" name="ulangi_password" class="form-control" type="text" >
+									                           </div>
+									                        </div>
+									                    </div>
+														<label for="exampleInputEmail1" id="validate_username" style="font-size:20px"></label>
+														<br/>
+														<label for="exampleInputEmail1" id="validate-passlama" style="font-size:20px"></label>
+														<br/>
+														<label for="exampleInputEmail1" id="validate-passsama" style="font-size:20px"></label>
+									                    <div class="row">
+									                        <div class="col-md-6 col-sm-6 col-xs-12">
+									                        	<input type="hidden" name="passwordlama" value="<?php echo $password; ?>" id="passwordlama">
+									                        </div>
+									                        <div class="col-md-6 col-sm-6 col-xs-12">
+									                        	<br>
+									                        	<div class="form-group">
+									                              <button class="btn btn-colored-blog pull-right" type="submit" value="1" class="btn btn-primary" id="submitSave"><i class="glyphicon glyphicon-floppy-disk"></i> Simpan</button>
+									                           </div>
+									                        </div>
+									                    </div>
+						                     		</div>
+						                    	</div>
+					                     	</form>
+					                  	</div>
 					                </div>
-	                             </div>
-
-	                          </div>
+	                            </div>
+	                        </div>
 	                       </div>
 	                    </div>
 	                    </div>
