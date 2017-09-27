@@ -1,6 +1,6 @@
 <?php
 
-	class userModel extends CI_Model
+	class UserModel extends CI_Model
 	{
 		function construct()
 		{
@@ -29,11 +29,11 @@
 		}
 		
 		// Cek keberadaan user di sistem
-		function check_member_account($username, $password)
+		function check_member_account($email, $password)
 		{
 			$this->db->select('*');
 			$this->db->from('member');
-			$this->db->where('username', $username);
+			$this->db->where('email', $email);
 			$this->db->where('password', md5($password));
 
 			return $this->db->get();

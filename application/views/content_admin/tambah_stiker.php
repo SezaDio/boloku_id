@@ -44,17 +44,6 @@
                                         </div>
 										
 										<div class="form-group">
-                                            <label for="exampleInputEmail1">Kode Stiker  :</label>
-                                            <input type="text" required name="kode_stiker" class="form-control" id="exampleInputEmail1" value="<?php 
-                                                    if (isset($dataStiker['kode_stiker']))
-                                                    {
-                                                        echo htmlspecialchars($dataStiker['kode_stiker']);
-                                                    }
-                                            ?>">
-                                            
-                                        </div>
-										
-										<div class="form-group">
 											<div class='box-header'>
 												 <label>Deskripsi Stiker :</label>
 											</div>

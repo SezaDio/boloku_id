@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Kelolaheader extends CI_Controller {
+class KelolaHeader extends CI_Controller {
 
 	public function _construct()
 	{
@@ -342,7 +342,7 @@ class Kelolaheader extends CI_Controller {
 				if (!$iserror) {
 					$this->db->update('header', $data_header, array('id_header'=>$id_header));
 					$this->session->set_flashdata('msg_berhasil', 'Data konten header berhasil diperbaharui');
-					redirect('Kelolaheader');
+					redirect('KelolaHeader');
 				}
 			}
 			else

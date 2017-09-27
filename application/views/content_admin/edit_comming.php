@@ -110,7 +110,7 @@
                                                         { ?>
                                                             <div class="row">
                                                                 <div class="col-md-6" id="divqty_<?php echo $counter; ?>">
-                                                                    <select name="jenisqty[]" required class="form-control" onchange="changeQty(<?php echo $counter; ?>)" id="quantity_<?php echo $counter; ?>">  
+                                                                    <select name="jenisqty[]" class="form-control" onchange="changeQty(<?php echo $counter; ?>)" id="quantity_<?php echo $counter; ?>">  
                                                                         <option value="">--Qty--</option>
                                                                   <?php if ($jumlah_seat == NULL)
                                                                         {
@@ -250,7 +250,7 @@
 
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">E-mail   :</label>
-                                            <input type="email" required name="email" class="form-control" id="exampleInputEmail1" value="<?php 
+                                            <input type="text" required name="email" class="form-control" id="exampleInputEmail1" value="<?php 
                                                 if (isset($dataComing['posted_by']))
                                                 {
                                                     echo htmlspecialchars($dataComing['email']);
@@ -318,14 +318,12 @@
 											<div class='box-header'>
 												 <label>Deskripsi Event :</label>
 											</div>
-											<textarea required name="deskripsi_coming" rows="10" cols="80">
-                                                <?php 
+											<textarea required name="deskripsi_coming" rows="10" cols="80"><?php 
                                                     if (isset($dataComing['deskripsi_coming']))
                                                     {
                                                         echo htmlspecialchars($dataComing['deskripsi_coming']);
                                                     }
-                                                ?>
-											</textarea>                                    
+                                                ?></textarea>                                    
                                         </div>
 
                                         <div class='box-header'>
@@ -466,7 +464,7 @@
                 $('a#add_field').click(function(){
                     counter2 += 1;
                     $('#container2').append(
-                        '<div class="row"><div class="col-md-12" id="divqty1'+counter2+'"><select name="jenisqty[]" required class="form-control" onchange="changeQty2('+counter2+')" id="quantity'+counter2+'"><option value="">--Qty--</option><option value="open">Open</option><option value="limit">Limit</option></select></div><div class="col-md-6" id="divqty2'+counter2+'" style="display:none" ><input type="number" class="form-control" name="qty[]" id="qty"></div></div><br />'
+                        '<div class="row"><div class="col-md-12" id="divqty1'+counter2+'"><select name="jenisqty[]" class="form-control" onchange="changeQty2('+counter2+')" id="quantity'+counter2+'"><option value="">--Qty--</option><option value="open">Open</option><option value="limit">Limit</option></select></div><div class="col-md-6" id="divqty2'+counter2+'" style="display:none" ><input type="number" class="form-control" name="qty[]" id="qty"></div></div><br />'
                     );
                 });
 

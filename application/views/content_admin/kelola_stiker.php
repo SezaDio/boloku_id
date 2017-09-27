@@ -98,7 +98,7 @@
 					var check = document.getElementById("stiker"+idStiker).checked;
 						if(check){
 							$.ajax({
-							url: 'KelolaStiker/publish_stiker',
+							url: 'publish_stiker',
 							type: 'POST',
 							data: {idStiker:idStiker},
 							success: function(){
@@ -111,7 +111,7 @@
 							});
 						} else{
 							$.ajax({
-							url: 'KelolaStiker/unpublish_stiker',
+							url: 'unpublish_stiker',
 							type: 'POST',
 							data: {idStiker:idStiker},
 							success: function(){
@@ -130,7 +130,7 @@
 					var check = document.getElementById("stiker"+idStiker).checked;
 						if(check){
 							$.ajax({
-							url: 'KelolaStiker/unpublish_stiker',
+							url: 'unpublish_stiker',
 							type: 'POST',
 							data: {idStiker:idStiker},
 							success: function(){
@@ -143,7 +143,7 @@
 							});
 						} else{
 							$.ajax({
-							url: 'KelolaStiker/publish_stiker',
+							url: 'publish_stiker',
 							type: 'POST',
 							data: {idStiker:idStiker},
 							success: function(){
@@ -199,7 +199,7 @@
 								ischeck += 'checked="checked"';
 							  }
 							  var getUrl = window.location;
-							  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+							  var baseUrl = getUrl .protocol + "//" + getUrl.host ;
 							  
 							  
 							  divhasil += '<div class="col-md-4" style="text-align: center">';

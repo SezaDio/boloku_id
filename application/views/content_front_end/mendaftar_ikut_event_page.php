@@ -1,4 +1,4 @@
-     <section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/eventregistration.jpg') ; ?>);">
+     <section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/register_event.png') ; ?>);">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
@@ -15,27 +15,37 @@
                <div class="col-md-12 col-sm-12 col-xs-12">
                      <div class="section listing">
                          <div class="col-md-1"></div>
-
+                        <form onsubmit="return validasi_captcha();" role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaPendaftar/tambah_pendaftar_check_front/'.$id_event);?>" method="POST">
                        <div class="col-md-10 col-sm-8 col-xs-12 nopadding" style="background-color: white; border-bottom: 1px solid #f44a56; border-top: 1px solid #f44a56; box-shadow: 0 1px 10px #f44a56;">
                           <div class="row">
                             <div class="col-md-12">
-                                <div class="col-md-2">
+                                <div class="col-md-3">
                                     <?php 
                                         if($jenis_event==0)
                                         { 
-                                          echo "<h3 style='padding-top: 10px; text-align: center; color: green;'><strong>Rp ".$harga."</strong></h3>";
-                                        } 
+										  ?><div  style="padding-top: 10px">
+										  <h5 style="text-align: center; color: green;">Pilih Tiket</h5>
+										  <select name="tipe_tiket" required class="form-control" onchange="harga_tiket">
+												<option value="">-Pilih Tiket-</option>
+												<?php for($i=0;$i<count($tiket);$i++){?>
+												<option value="<?php echo $tiket[$i]['nama_tiket']; ?>:<?php echo $tiket[$i]['harga']; ?>:<?php echo $tiket[$i]['id_jenis_tiket']; ?>"><strong><b><?php echo $tiket[$i]['nama_tiket'];?> - Rp. <?php echo $tiket[$i]['harga'];?></b></option>
+										  <?php } ?>
+                                          </select>
+										  <h5 style="text-align: center; color: green;"><span id="harga_tiket"></span></h5>
+										  </div>
+                                        <?php } 
                                         else 
                                         { 
-                                          echo "<h3 style='padding-top: 10px; text-align: center; color: green;'><strong>Free</strong></h3>";
+											
+                                          echo "<input name='tipe_tiket' value='0' type='hidden'><h3 style='padding-top: 10px; text-align: center; color: green;'><strong>Free</strong></h3>";
                                         }
                                     ?>
                                 </div>
-                                <div class="col-md-8" style="border-right: solid 1px #f44a56; border-left: solid 1px #f44a56; text-align: center;">
+                                <div class="col-md-6" style="border-right: solid 1px #f44a56; border-left: solid 1px #f44a56; text-align: center;">
                                    <h3><strong><?php echo $nama_event; ?></strong></h3>
                                    <h5><?php echo $alamat.", ".$namaKota; ?></h5>
                                 </div>
-                                <div class="col-md-2" style="padding-top: 14px; text-align: center;">
+                                <div class="col-md-3" style="padding-top: 14px; text-align: center;">
                                      <?php
                                         $tgl_mulai=date('d-F-Y', strtotime($tgl_mulai));
                                         $tgl_selesai=date('d-F-Y', strtotime($tgl_selesai));
@@ -83,7 +93,7 @@
                                   }
                               </script>
 
-                              <form onsubmit="return validasi_captcha();" role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaPendaftar/tambah_pendaftar_check_front/'.$id_event);?>" method="POST">
+                              
                                 <div class="row">
                                   <div class="col-md-12">
                                      <div class="col-md-6 col-sm-6 col-xs-12">

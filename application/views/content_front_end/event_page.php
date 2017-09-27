@@ -7,7 +7,7 @@
 	</script>
 	<input type="hidden" id="label" value="<?php if($this->session->userdata('label')!=null){ echo $this->session->userdata('label');}?>">
 	<input type="hidden" id="value" value="<?php if($this->session->userdata('value')!=null){ echo $this->session->userdata('value');}?>">
-	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/bannerevent.jpg') ; ?>); !important ;">
+	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/Event.png') ; ?>); !important ;">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
@@ -110,7 +110,7 @@
 							
 	                        <?php foreach($listEvent as $event){ ?>
 	                           <div class="grid-1" style="background-color: white; border-top:solid 2px #f44a56;">
-	                           	 <a href="<?php echo base_url('event_click/'.$event['id_coming']); ?>">
+	                           	 <a href="<?php echo base_url('/'.$event['id_coming'].'?ev='.strtolower(str_replace(" ","-",$event['nama_coming']))); ?>">
 	                              <ul>
 	                              	<div class="col-md-12" style="padding: 10px;">
 		                                 <li class="col-md-4 col-sm-3 col-xs-12 nopadding">
@@ -133,13 +133,23 @@
 		                                    	<div style="padding-top: 3px;">
 			                                       	<div class="row">
 			                                       		<div class="col-md-10">
-			                                       	        <a href="<?php echo base_url('event_click/'.$event['id_coming']); ?>"><h3 style="font-size: 1.4em;"><strong><?php echo $event['nama_coming'];?></strong></h3></a>
+			                                       	        <a href="<?php $url = strtolower(str_replace(" ","-",$event['nama_coming'])); echo base_url('/'.$event['id_coming'].'?ev='.$url); ?>">
+			                                       	            <h3 style="font-size: 1.4em;">
+			                                       	                <strong><?php echo $event['nama_coming'];?></strong>
+			                                       	            </h3>
+			                                       	        </a>
 			                                       	    </div>
 			                                       	</div>
 			                                       <ul class="post-tools">
 			                                          <li>by <a href=""><strong> <?php echo $event['posted_by'];?></strong> </a></li>
 			                                          <li><i class="glyphicon glyphicon-thumbs-up"></i> <?php echo $event['like'];?></a></li>
 	                                       			  <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $event['hits'];?></a></li>
+		                                       	      <?php 
+                                                           if ($event['tgl_selesai'] < date("Y-m-d")) 
+                                                           { ?>
+                                                              <li><label style="margin-bottom:5px" class="btn btn-red btn-xs"><strong style="color: white;">Closed</strong>
+				                                   			  </label></li>
+                                                      <?php } ?>
 			                                       </ul>
 			                                    </div>
 		                                       <br>
@@ -153,18 +163,18 @@
 																$isi=substr($isi,0,250);
 																echo $isi." ..."; ?>
 
-			                                       				<a href="<?php echo base_url('event_click/'.$event['id_coming']); ?>" class="readmore"><strong>Read More</strong></a>
+			                                       				<a href="<?php $url = strtolower(str_replace(" ","-",$event['nama_coming'])); echo base_url('/'.$event['id_coming'].'?ev='.$url); ?>" class="readmore"><strong>Read More</strong></a>
 			                                       	<?php	} 
 			                                       			else
 			                                       			{
 																echo $event['deskripsi_coming'];
-			                                       			}?>
+			                                       			}?> 
 			                                       	</p>
 			                                    </div>
 			                                   <hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
 
 			                                   	<div class="row">
-			                                   		<div class="col-md-12">
+			                                   		<div class="col-md-12" style="margin-top: -10px;">
 					                                   	<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-green" onclick="byLabel('jenis_event','<?php echo $event['jenis_event']?>')">
 					                                   		<i class="ti-money"></i> <?php if($event['jenis_event']==0){?>Berbayar<?php } else{ ?>Gratis<?php } ?>
 					                                   	</a>
@@ -177,7 +187,7 @@
 						                              <?php }
 						                                    elseif ($event['tipe_event'] == "Class")
 						                                    { ?>
-						                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-grey" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"># <?php echo $event['tipe_event']; ?>
+						                                		<a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-gray" onclick="byLabel('tipe_event','<?php echo $event['tipe_event']?>')"># <?php echo $event['tipe_event']; ?>
 					                                   			</a>
 						                              <?php }
 						                                    elseif ($event['tipe_event'] == "Conference")
@@ -278,6 +288,8 @@
 					                                   		</a>
 					                              <?php } 
 					                                 ?>
+					                                   	
+					                                   	
 					                                </div>
 				                                </div>
 		                                    </div>
@@ -370,7 +382,9 @@
 			  var getUrl = window.location;
 			  var baseUrl = getUrl .protocol + "//"+ getUrl.host;
 			  divkategori += '<div class="grid-1" style="border-top:solid 2px #f44a56; background-color: white;">';
-	            divkategori += '<a href="'+baseUrl+'/event_click/'+id_event+'">'
+			  var low = nama_event.toLowerCase();
+			  var rep = low.replace(" ", "-");
+	            divkategori += '<a href="'+baseUrl+'/'+id_event+'?ev='+rep+'">'
 	                divkategori += '<ul>';
 	                    divkategori += '<div class="col-md-12" style="padding: 10px;">';
 		                    divkategori += '<li class="col-md-4 col-sm-3 col-xs-12 nopadding">';
@@ -385,9 +399,10 @@
 								divkategori += '<div style="padding-top: 3px;">';
 									divkategori += '<div class="row">';
 										divkategori += '<div class="col-md-10">';
-											divkategori += '<h3 style="font-size: 1.4em;"><a href="'+baseUrl+'/event_click/'+id_event+'"><strong>'+nama_event+'</strong></a></h3>';
+											divkategori += '<h3 style="font-size: 1.4em;"><a href="'+baseUrl+'/'+id_event+'?ev='+rep+'"><strong>'+nama_event+'</strong></a></h3>';
 										divkategori += '</div>';
 									divkategori += '</div>';
+									
 		                            divkategori += '<ul class="post-tools">';
 									    divkategori += '<li>by <a href=""><strong> '+posted_by+'</strong> </a></li>';
 		                                divkategori += '<li>'+tanggal_posting+'</li>';
@@ -395,15 +410,14 @@
 		                            divkategori += '</div>';
 		                            divkategori += '<br/>';
 		                            divkategori += '<div class="col-md-12" style="padding-left: unset;">';
-		                            divkategori += '<p>'+deskripsi_event+'<a href="'+baseUrl+'/event_click/'+id_event+'" class="readmore"><strong>Read More</strong></a> </p>';
+		                            divkategori += '<p>'+deskripsi_event+'<a href="'+baseUrl+'/'+id_event+'?ev='+rep+'" class="readmore"><strong>Read More</strong></a> </p>';
 		                            divkategori += '</div>';
 			                        divkategori += '<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>';
 			                        divkategori += '<div class="row">';
-										divkategori += '<div class="col-md-12">';
-					                        divkategori += '<a style="margin-bottom: 5px;" href="javascript:void(0)" class=" btn btn-green" onclick="byLabel('+label_jenis+','+value_jenis+')"><i class="ti-money"></i>'+jenis+'</a>&nbsp';
+										divkategori += '<div class="col-md-12" style="margin-top: -10px;">';
+					                        divkategori += '<a style="margin-bottom: 5px;" href="javascript:void(0)" class=" btn btn-green btn-small" onclick="byLabel('+label_jenis+','+value_jenis+')"><i class="ti-money"></i>'+jenis+'</a>&nbsp';
 					                        divkategori += '<a style="margin-bottom: 5px;" href="javascript:void(0)" class=" btn btn-dark-red" onclick="byLabel('+label_kategori+','+value_kategori+')">'+kategori_event+'</a>&nbsp';
 					                        divkategori += '<a style="margin-bottom: 5px;" href="javascript:void(0)" class=" btn btn-orange" onclick="byLabel('+label_tipe+','+value_tipe+')">'+tipe_event+'</a>';
-
 					                	divkategori += '</div>';
 									divkategori += '</div>';
 		                        divkategori += '</div>';
@@ -478,7 +492,9 @@
 			  var baseUrl = getUrl .protocol + "//"+ getUrl.host;
 			  
 			  divkategori += '<div class="grid-1" style="border-top:solid 2px #f44a56; background-color: white;">';
-	            divkategori += '<a href="'+baseUrl+'/event_click/'+id_event+'">'
+			  var low = nama_event.toLowerCase();
+			  var rep = low.replace(" ", "-");
+	            divkategori += '<a href="'+baseUrl+'/'+id_event+'?ev='+rep+'">'
 	                divkategori += '<ul>';
 	                    divkategori += '<div class="col-md-12" style="padding: 10px;">';
 		                    divkategori += '<li class="col-md-4 col-sm-3 col-xs-12 nopadding">';
@@ -493,9 +509,10 @@
 								divkategori += '<div style="padding-top: 3px;">';
 									divkategori += '<div class="row">';
 										divkategori += '<div class="col-md-10">';
-											divkategori += '<h3 style="font-size: 1.4em;"><a href="'+baseUrl+'/event_click/'+id_event+'"><strong>'+nama_event+'</strong></a></h3>';
+											divkategori += '<h3 style="font-size: 1.4em;"><a href="'+baseUrl+'/'+id_event+'?ev='+rep+'"><strong>'+nama_event+'</strong></a></h3>';
 										divkategori += '</div>';
 									divkategori += '</div>';
+									
 		                            divkategori += '<ul class="post-tools">';
 									    divkategori += '<li>by <a href=""><strong> '+posted_by+'</strong> </a></li>';
 		                                divkategori += '<li>'+tanggal_posting+'</li>';
@@ -503,11 +520,11 @@
 		                            divkategori += '</div>';
 		                            divkategori += '<br/>';
 		                            divkategori += '<div class="col-md-12" style="padding-left: unset;">';
-		                            divkategori += '<p>'+deskripsi_event+'<a href="'+baseUrl+'/event_click/'+id_event+'" class="readmore"><strong>Read More</strong></a> </p>';
+		                            divkategori += '<p>'+deskripsi_event+'<a href="'+baseUrl+'/'+id_event+'?ev='+rep+'" class="readmore"><strong>Read More</strong></a> </p>';
 		                            divkategori += '</div>';
 			                        divkategori += '<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>';
 			                        divkategori += '<div class="row">';
-										divkategori += '<div class="col-md-12">';
+										divkategori += '<div class="col-md-12" style="margin-top: -10px;">';
 					                        divkategori += '<a style="margin-bottom: 5px;" href="javascript:void(0)" class=" btn btn-green btn-small" onclick="byLabel('+label_jenis+','+value_jenis+')"><i class="ti-money"></i>'+jenis+'</a>&nbsp';
 					                        divkategori += '<a style="margin-bottom: 5px;" href="javascript:void(0)" class=" btn btn-dark-red" onclick="byLabel('+label_kategori+','+value_kategori+')">'+kategori_event+'</a>&nbsp';
 					                        divkategori += '<a style="margin-bottom: 5px;" href="javascript:void(0)" class=" btn btn-orange" onclick="byLabel('+label_tipe+','+value_tipe+')">'+tipe_event+'</a>';

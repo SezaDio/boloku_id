@@ -17,7 +17,7 @@
 	                          		<div class="col-md-12">
 			                            <div class="col-md-6">
 				                             <div class="picture">
-				                             	<div style="padding-top: 15px; margin-bottom: 15px;" class="ad-div style-box">
+				                             	<div style="padding-top: 15px; margin-bottom: 15px;">
 						                           <a href="<?php echo base_url('asset/upload_img_coming/'.$path_gambar); ?>" class="tt-lightbox">
 						                              <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$path_gambar); ?>">
 						                           </a>
@@ -48,7 +48,7 @@
 								                    <a title="google +" href="https://plus.google.com/share?url=<?php echo current_url(); ?>" target="_blank"><button style="color:white;" class="btn btn-danger" type="submit"><i class="fa fa-google"></i></button></a>
 
 								                    <a title="twitter" href="http://twitter.com/share?url=<?php echo current_url(); ?>" target="_blank"><button style="color:white;" class="btn btn-info" type="submit"><i class="fa fa-twitter"></i></button></a>
-													 <a title="whatsapp" href="https://api.whatsapp.com/send?text=<?php echo $nama_event."%20||%20".current_url(); ?>" target="_blank"><button style="color:white;" class="btn btn-info" type="submit"><i class="fa fa-whatsapp"></i></button></a>
+													 <a title="whatsapp" href="https://api.whatsapp.com/send?text=<?php echo $nama_event."%20||%20".current_url()."?ev=".strtolower(str_replace(' ','-',$nama_event)); ?>" target="_blank"><button style="color:white;" class="btn btn-success" type="submit"><i class="fa fa-whatsapp"></i></button></a>
 				                                </div>
 				                            </div>
 				                        </div>
@@ -70,7 +70,7 @@
 		                              <?php }
 		                                    elseif ($tipe_event == "Class")
 		                                    { ?>
-		                                       <a style="margin-top: -15px;" class="btn btn-grey" href="">
+		                                       <a style="margin-top: -15px;" class="btn btn-gray" href="">
 		                                          <div>
 		                                             # <?php echo $tipe_event; ?>
 		                                          </div>
@@ -212,7 +212,7 @@
 			                                    { ?>
 			                                       <a style="margin-top: -15px;" class="btn btn-blue" href="">
 			                                          <div>
-			                                             # <?php echo $$kategori_event; ?>
+			                                             # <?php echo $kategori_event; ?>
 			                                          </div>
 			                                       </a>
 			                              <?php }
@@ -301,7 +301,7 @@
 	                                					$nama_tiket[] = $harga_tiket['nama_tiket'];
 	                                					$harga[] = $harga_tiket['harga'];
 	                                					$seat = $harga_tiket['seat'];
-	                                					$id_coming = $harga_tiket['id_event'];
+	                                					$id_event = $harga_tiket['id_event'];
 	                                					$status[] = $harga_tiket['status'];
 	                                				}
 
@@ -313,7 +313,7 @@
 													  	}
 													  	else
 													  	{
-													  		echo "Rp ".$harga;
+													  		echo "Rp ".$harga[0];
 													  	}
 	                                					
 	                                				} 
@@ -328,14 +328,21 @@
 	                                		<td>Jumlah Seat</td>
 	                                		<td>:</td>
 	                                		<td>
-	                                			<?php 
-													if($seat==0){
-														echo "Open Seat";
-													} elseif($seat==1){
-														echo "Full";
-													} else{
-														echo $seat-1;
-													}
+	                                			<?php
+	                                			    $jumlah_tiket = count($tiket);
+	                                			    $total_seat = 0;
+	                                			    for ($i=0; $i<$jumlah_tiket; $i++)
+	                                			    {
+	                                			        $total_seat = $total_seat + (int)$tiket[$i]['seat'];
+	                                			    }
+	                                			    if ($total_seat == NULL)
+	                                			    {
+	                                			        echo "Open Seat";
+	                                			    }
+	                                			    else
+	                                			    {
+	                                			        echo $total_seat;
+	                                			    }
 	                                			?>
 	                                		</td>
 	                                	</tr>
@@ -406,7 +413,7 @@
 			                                    		}
 			                                    		else
 			                                    		{ ?>
-			                                    			<p><?php echo $deskripsi_event; ?></p>
+			                                    			<p><?php echo nl2br(htmlspecialchars($deskripsi_event)); ?></p>
 			                                      <?php } ?>
 			                                    	
 			                                    </div>
@@ -435,7 +442,7 @@
 								                                    </div>
 								                                </div>
 							                                    <div class="col-md-10">
-							                                    	<p><?php echo html_entity_decode($testimoni['isi_testimoni']); ?></p>
+							                                    	<p><?php echo nl2br($testimoni['isi_testimoni']); ?></p>
 							                                    </div>
 							                                 </div>
 							                                 
@@ -460,7 +467,7 @@
 							                                    </div>
 							                                    <form class="col-md-10" role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaComing/tambah_testimoni/'.$this->session->userdata('id_member'));?>" method="POST">
 							                                    	
-																	<textarea style="width: 100%" required name="isi_testimoni" rows="3" id="isi_testimoni"></textarea>
+																	<textarea style="width: 100%" required name="isi_testimoni" rows="3"></textarea>
 																		
 																	<br>
 																	<input type="hidden" name="id_event" value="<?php echo $id_event?>">	
@@ -471,9 +478,11 @@
 																    	Stiker <span class="caret"></span>
 																  	</button><br>
 																  	<ul style="float: right;" class="dropdown-menu">
-																		<?php foreach($listStiker as $stiker){ ?>
-																	    <li><a onclick="stiker('<?php echo $stiker['kode_stiker']?>')" href="javascript:void(0)"><img src="<?php echo base_url('asset/upload_img_stiker/'.$stiker['path_gambar']);?>"></a></li>
-																		<?php } ?>
+																	    <li><a href="#">Action</a></li>
+																	    <li><a href="#">Another action</a></li>
+																	    <li><a href="#">Something else here</a></li>
+																	    <li role="separator" class="divider"></li>
+																	    <li><a href="#">Separated link</a></li>
 																  	</ul>
 							                                    </form>
 							                                </div>
@@ -498,10 +507,10 @@
 		                                    			<ul class="tabs-posts">
 														<?php foreach($listPressRelease as $pressrelease){?>
 					                                       <li>
-					                                          <div class="pic"> <a href="<?php echo base_url('halaman_baca_artikel_pra_event/'.$pressrelease['id_news']); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_news/thumb_'.$pressrelease['gambar_news']); ?>"></a> </div>
-					                                          <div class="caption"> <a href="<?php echo base_url('halaman_baca_artikel_pra_event/'.$pressrelease['id_news']); ?>"><?php echo $pressrelease['judul_news']; ?> </a> </div>
+					                                          <div class="pic"> <a href="<?php echo base_url('liputan/'.$pressrelease['id_news'].'?ev='.strtolower(str_replace(" ","-",$pressrelease['judul_news']))); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_news/thumb85_'.$pressrelease['gambar_news']); ?>"></a> </div>
+					                                          <div class="caption"> <a href="<?php echo base_url('liputan/'.$pressrelease['id_news'].'?ev='.strtolower(str_replace(" ","-",$pressrelease['judul_news']))); ?>"><?php echo $pressrelease['judul_news']; ?> </a> </div>
 					                                          <ul class="post-tools">
-					                                             <li title="Comments"> <i class="ti-thought"></i> 105 </li>
+					                                             <li title="Comments"> <i class="ti-thought"></i> </li>
 					                                          </ul>
 					                                    <?php } ?>   
 					                                    </ul>
@@ -519,24 +528,3 @@
             </div>
         </div>
     </section>
-	<script>
-	$(function(){
-		var getUrl = window.location;
-		var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
-		var i=0;
-		$(".stiker").each(function(){
-			var kode = $(this).attr('kode');
-			var stiker = '<img  srcset="'+baseUrl+'/asset/upload_img_stiker/kecil_'+kode+'.png 540w, '+baseUrl+'/asset/upload_img_stiker/'+kode+'.png 1500w">';
-			i++;
-			$(this).attr('id',"stk"+i);
-			$("#stk"+i+"").html(stiker);
-		})
-		
-	});
-	
-	function stiker(kode){
-		var isi_testimoni = document.getElementById('isi_testimoni').value;
-		isi_testimoni += ':'+kode+':'
-		document.getElementById('isi_testimoni').value = isi_testimoni;
-	}
-	</script>

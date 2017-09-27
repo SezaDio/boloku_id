@@ -209,7 +209,7 @@ class KelolaStiker extends CI_Controller {
 			$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
 
 			//Mengambil filename gambar untuk disimpan
-			$nmfile = $this->input->post('nama_stiker');
+			$nmfile = "file_".time();
 			$config['upload_path'] = './asset/upload_img_stiker/';
 			$config['allowed_types'] = 'jpg|png|jpeg';
 			$config['max_size'] = '4000'; //kb
@@ -222,7 +222,6 @@ class KelolaStiker extends CI_Controller {
 
 					$data_stiker=array(
 						'nama_stiker'=>$this->input->post('nama_stiker'),
-						'kode_stiker'=>$this->input->post('kode_stiker'),
 						'deskripsi'=>$this->input->post('deskripsi'),
 						'tanggal_posting'=>date("Y-m-d h:i:sa"),
 						'path_gambar'=> NULL,
@@ -234,11 +233,11 @@ class KelolaStiker extends CI_Controller {
 				{
 					//echo "Masuk";
 					$gbr = $this->upload->data();
-					$this->resize($gbr['full_path'],$gbr['file_name']);
+					//$this->crop($gbr['full_path'],$gbr['file_name']);
 					$data_stiker['path_gambar'] = $gbr['file_name'];
 					$this->db->insert('stiker', $data_stiker);
 					$this->session->set_flashdata('msg_berhasil', $data_stiker['path_gambar']);
-					redirect('Kelolastiker');
+					redirect('KelolaStiker');
 				}
 				else
 				{
@@ -285,7 +284,7 @@ class KelolaStiker extends CI_Controller {
 			$this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required');
 
 			//Mengambil filename gambar untuk disimpan
-			$nmfile = $this->input->post('nama_stiker');
+			$nmfile = "file_".time();
 			$config['upload_path'] = './asset/upload_img_stiker/';
 			$config['allowed_types'] = 'jpg|png|jpeg';
 			$config['max_size'] = '4000'; //kb
@@ -293,7 +292,6 @@ class KelolaStiker extends CI_Controller {
 
 			$data_stiker=array(
 							'nama_stiker'=>$this->input->post('nama_stiker'),
-							'kode_stiker'=>$this->input->post('kode_stiker'),
 							'deskripsi'=>$this->input->post('deskripsi'),
 							'path_gambar'=>NULL
 							);
@@ -311,7 +309,7 @@ class KelolaStiker extends CI_Controller {
 					{
 						//echo "Masuk";
 						$gbr = $this->upload->data();
-						$this->resize($gbr['full_path'],$gbr['file_name']);
+						$this->crop($gbr['full_path'],$gbr['file_name']);
 						$data_stiker['path_gambar'] = $gbr['file_name'];
 
 					}
@@ -325,7 +323,7 @@ class KelolaStiker extends CI_Controller {
 				if (!$iserror) {
 					$this->db->update('stiker', $data_stiker, array('id_stiker'=>$id_stiker));
 					$this->session->set_flashdata('msg_berhasil', 'Data konten stiker berhasil diperbaharui');
-					redirect('Kelolastiker');
+					redirect('KelolaStiker');
 				}
 			}
 			else
@@ -340,7 +338,6 @@ class KelolaStiker extends CI_Controller {
 
 			$data_stiker=array(
 							'nama_stiker'=>$data['stiker']->nama_stiker,
-							'kode_stiker'=>$data['stiker']->kode_stiker,
 							'deskripsi'=>$data['stiker']->deskripsi,
 							'path_gambar'=> $data['stiker']->path_gambar
 							);
@@ -358,99 +355,49 @@ class KelolaStiker extends CI_Controller {
 		}
 	}
 	
-	function resize($img,$filename){
+	function crop($img,$filename){
 		
 		$name = $img;
-		if(preg_match("/.jpg/i", "$name")){
 		$myImage = imagecreatefromjpeg($name);
-		$myImage40 = imagecreatefromjpeg($name);
-		}
-		if(preg_match("/.jpeg/i", "$name")){
-		$myImage = imagecreatefromjpeg($name);
-		$myImage40 = imagecreatefromjpeg($name);
-		}
-		if(preg_match("/.jpeg/i", "$name")){
-		$myImage = Imagecreatefromjpeg($name);
-		$myImage40 = Imagecreatefromjpeg($name);
-		}
-		if(preg_match("/.png/i", "$name")){
-		$myImage = imagecreatefrompng($name);
-		$myImage40 = imagecreatefrompng($name);
-		
-		}
-		if(preg_match("/.gif/i", "$name")){
-		$myImage = imagecreatefromgif($name);
-		$myImage40 = imagecreatefromgif($name);
-		}
-		
 		list($width, $height) = getimagesize($name);
-		//get percent to resize to 900x100
+		//get percent to resize to 900x550
 		if($width<=$height){
-			$percent = 100/$width;
+			$percent = 800/$width;
 			$newwidth = $width * $percent;
 			$newheight = $height * $percent;
-			if($newheight<100){
-				$percent2 = 100/$newheight;
+			if($newheight<550){
+				$percent2 = 550/$newheight;
 				$newwidth = $newwidth * $percent2;
 				$newheight = $newheight * $percent2;
 			}
-			
-			$percent40 = 40/$width;
-			$newwidth40 = $width * $percent40;
-			$newheight40 = $height * $percent40;
-			if($newheight40<40){
-				$percent40b = 40/$newheight40;
-				$newwidth40 = $newwidth40 * $percent40b;
-				$newheight40 = $newheight40 * $percent40b;
-			}
-			
 		} else {
-			$percent = 100/$height;
+			$percent = 550/$height;
 			$newwidth = $width * $percent;
 			$newheight = $height * $percent;
-			if($newwidth<100){
-				$percent2 = 100/$newwidth;
+			if($newwidth<800){
+				$percent2 = 800/$newwidth;
 				$newwidth = $newwidth * $percent2;
 				$newheight = $newheight * $percent2;
-			}
-			
-			$percent40 = 40/$height;
-			$newwidth40 = $width * $percent40;
-			$newheight40 = $height * $percent40;
-			if($newwidth40<40){
-				$percent40b = 40/$newwidth40;
-				$newwidth40 = $newwidth40 * $percent40b;
-				$newheight40 = $newheight40 * $percent40b;
 			}
 		}
 		
 		
 		// resize image
 		$thumb = imagecreatetruecolor($newwidth, $newheight);
-		$thumb40 = imagecreatetruecolor($newwidth40, $newheight40);
-		imagecopyresampled($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
-		imagecopyresampled($thumb40, $myImage40, 0, 0, 0, 0, $newwidth40, $newheight40, $width, $height);
+		imagecopyresized($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
+		imagejpeg($thumb,"./asset/upload_img_stiker/resize_".$filename);
 		
-		if(preg_match("/.jpg/i", "$name")){
-		imagejpeg($thumb,"./asset/upload_img_stiker/".$filename);
-		imagejpeg($thumb40,"./asset/upload_img_stiker/kecil_".$filename);
-		}
-		if(preg_match("/.jpeg/i", "$name")){
-		imagejpeg($thumb,"./asset/upload_img_stiker/".$filename);
-		imagejpeg($thumb40,"./asset/upload_img_stiker/kecil_".$filename);
-		}
-		if(preg_match("/.png/i", "$name")){
-		imagesavealpha($thumb, true);
-		imagesavealpha($thumb40, true);
-		$color = imagecolorallocatealpha($thumb, 0, 0, 0, 127);
-		$color40 = imagecolorallocatealpha($thumb40, 0, 0, 0, 127);
-		imagefill($thumb, 0, 0, $color);
-		imagefill($thumb40, 0, 0, $color40);
-		imagepng($thumb,"./asset/upload_img_stiker/".$filename,0);
-		imagepng($thumb40,"./asset/upload_img_stiker/kecil_".$filename,0);
-		}
-		
-		
+		// crop thumb
+		$imgThumb = './asset/upload_img_stiker/resize_'.$filename;
+		$myThumb = imagecreatefromjpeg($imgThumb);
+		list($width, $height) = getimagesize($imgThumb);
+		$myThumbCrop =  imagecreatetruecolor(800, 550);
+		imagecopyresampled($myThumbCrop,$myThumb,0,0,0,0 ,$width,$height,$width,$height);
+		unlink('./asset/upload_img_stiker/resize_'.$filename);
+		 
+		// Save the two images created
+		$fileName="thumb_".$filename;
+		imagejpeg( $myThumbCrop,"./asset/upload_img_stiker/".$fileName );
 		
 	}
 	
@@ -472,7 +419,6 @@ class KelolaStiker extends CI_Controller {
                 $xml_out .= '<stiker ';
                 $xml_out .= 'id_stiker="' . xml_convert($row_stiker->id_stiker) . '" ';
                 $xml_out .= 'nama_stiker="' . xml_convert($row_stiker->nama_stiker) . '" ';
-                $xml_out .= 'kode_stiker="' . xml_convert($row_stiker->kode_stiker) . '" ';
                 $xml_out .= 'deskripsi="' . xml_convert(($row_stiker->deskripsi)) . '" ';
                 $xml_out .= 'status="' . xml_convert(($row_stiker->status)) . '" ';
                 $xml_out .= 'path_gambar="' . xml_convert(($row_stiker->path_gambar)) . '" ';

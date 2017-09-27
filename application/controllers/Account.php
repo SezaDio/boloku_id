@@ -93,45 +93,56 @@ class Account extends CI_Controller
 	{
 		$this->load->library('form_validation');
 		$this->load->model('account/userModel');
-
+        $login = $this->input->post('submit');
 		//Baca inputan username dan password
-		$username = $this->input->post('username', 'true');
+		$email = $this->input->post('email', 'true');
 		$password = $this->input->post('password','true');
 
-		$temp_account = $this->userModel->check_member_account($username, $password)->row();
+		$temp_account = $this->userModel->check_member_account($email, $password)->row();
 		
 		//Cek account
 		$num_account = count($temp_account);
 
-		$this->form_validation->set_rules('username','Username','required');
+		$this->form_validation->set_rules('email','Email','required');
 		$this->form_validation->set_rules('password','Password','required');
-		if($this->form_validation->run() == FALSE)
+		if($login==1)
 		{
-			
-			redirect(site_url());
-		}
-		else
-		{
-			if($num_account > 0)
-			{
-				//Jika akun ditemukan, set session
-				$array_items = array(
-									'id_member' => $temp_account->id_member,
-									'username' => $temp_account->username,
-									'nama_member' => $temp_account->nama_member,
-									'path_foto' => $temp_account->path_foto,
-									'is_logged_in' => true
-								);
-				$this->session->set_userdata($array_items);
-				redirect(site_url());
-			}
-			else
-			{
-				//Jika akun tidak dittemukan, kembali ke halaman login
-				$this->session->set_flashdata('notification','Username dan Password tidak ditemukan');
-
-				redirect(site_url());
-			}
+    		if($this->form_validation->run() == FALSE)
+    		{
+    			
+    			redirect(site_url());
+    		}
+    		else
+    		{
+    			if($num_account > 0)
+    			{
+    				//Jika akun ditemukan, set session
+    				$array_items = array(
+    									'id_member' => $temp_account->id_member,
+    									'username' => $temp_account->username,
+    									'nama_member' => $temp_account->nama_member,
+    									'path_foto' => $temp_account->path_foto,
+    									'is_logged_in' => true
+    								);
+    				$this->session->set_userdata($array_items);
+    				redirect(site_url());
+    			}
+    			else
+    			{
+    				//Jika akun tidak dittemukan, kembali ke halaman login
+    				$this->session->set_flashdata('notification','Email dan Password tidak ditemukan');
+        		    $this->load->view('skin/front_end/header_front_end');
+        		    $this->load->view('content_front_end/login_member');
+                    $this->load->view('skin/front_end/footer_front_end');
+    			}
+    		}
+    	} 
+    	else 
+    	{   
+		    $this->load->view('skin/front_end/header_front_end');
+		    $this->load->view('content_front_end/login_member');
+            $this->load->view('skin/front_end/footer_front_end');
+		    
 		}
 
 	}

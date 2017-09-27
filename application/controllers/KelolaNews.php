@@ -220,6 +220,8 @@ class KelolaNews extends CI_Controller {
 	{
 	  $this->load->model('news_models/NewsModels');
 	  $this->load->model('home_models/HomeModels');
+	  $this->load->model('artikel_models/ArtikelModels');
+      
 	  $news = $this->NewsModels->select_by_id_news($id_news)->row_array();
 	  
 	  $hits = $news['hits'] + 1;
@@ -237,7 +239,8 @@ class KelolaNews extends CI_Controller {
 
 	  $id_artikel = $id_news;
 
-	  $data['listArtikel'] = $this->NewsModels->get_data_news();
+	  $data['listNews'] = $this->NewsModels->get_data_news();
+	  $data['listArtikel'] = $this->ArtikelModels->get_data_artikel();
 	  $data['jumlahKomentar'] = $this->HomeModels->jumlah_Komentar($id_artikel);
 	  $data['listKomentar'] = $this->HomeModels->get_komentar($id_artikel);
 	  
@@ -368,6 +371,7 @@ class KelolaNews extends CI_Controller {
 		$myImage = imagecreatefromgif($name);
 		$myImage85 = imagecreatefromgif($name);
 		}
+		
 		list($width, $height) = getimagesize($name);
 		//get percent to resize to 900x550
 		if($width<=$height){
@@ -388,6 +392,7 @@ class KelolaNews extends CI_Controller {
 				$newwidth85 = $newwidth85 * $percent85b;
 				$newheight85 = $newheight85 * $percent85b;
 			}
+			
 		} else {
 			$percent = 550/$height;
 			$newwidth = $width * $percent;
@@ -414,22 +419,26 @@ class KelolaNews extends CI_Controller {
 		$thumb85 = imagecreatetruecolor($newwidth85, $newheight85);
 		imagecopyresized($thumb, $myImage, 0, 0, 0, 0, $newwidth, $newheight, $width, $height);
 		imagecopyresized($thumb85, $myImage85, 0, 0, 0, 0, $newwidth85, $newheight85, $width, $height);
+		
 		if(preg_match("/.jpg/i", "$name")){
 		imagejpeg($thumb,"./asset/upload_img_news/resize_".$filename);
-		imagejpeg($thumb85,"./asset/upload_img_news/resize83_".$filename);
+		imagejpeg($thumb85,"./asset/upload_img_news/resize85_".$filename);
 		}
 		if(preg_match("/.jpeg/i", "$name")){
 		imagejpeg($thumb,"./asset/upload_img_news/resize_".$filename);
-		imagejpeg($thumb85,"./asset/upload_img_news/resize83_".$filename);
+		imagejpeg($thumb85,"./asset/upload_img_news/resize85_".$filename);
 		}
 		if(preg_match("/.png/i", "$name")){
 		imagepng($thumb,"./asset/upload_img_news/resize_".$filename);
-		imagepng($thumb85,"./asset/upload_img_news/resize83_".$filename);
+		imagepng($thumb85,"./asset/upload_img_news/resize85_".$filename);
 		}
+		
+		
 		
 		// crop thumb
 		$imgThumb = './asset/upload_img_news/resize_'.$filename;
 		$imgThumb85 = './asset/upload_img_news/resize85_'.$filename;
+		
 		if(preg_match("/.jpg/i", "$name")){
 		$myThumb = imagecreatefromjpeg($imgThumb);
 		$myThumb85 = imagecreatefromjpeg($imgThumb85);
@@ -442,14 +451,17 @@ class KelolaNews extends CI_Controller {
 		$myThumb = imagecreatefrompng($imgThumb);
 		$myThumb85 = imagecreatefrompng($imgThumb85);
 		}
+		
+		
 		list($width, $height) = getimagesize($imgThumb);
 		list($width85, $height85) = getimagesize($imgThumb85);
-		$myThumbCrop =  imagecreatetruecolor(800,550);
-		$myThumbCrop85 =  imagecreatetruecolor(85, 85);
+		$myThumbCrop =  imagecreatetruecolor(800, 550);
+		$myThumbCrop85 =  imagecreatetruecolor(85,85);
 		$x = ($width-800)/2;
 		$x85 = ($width85-85)/2;
 		imagecopyresampled($myThumbCrop,$myThumb,0,0,$x,0 ,$width,$height,$width,$height);
 		imagecopyresampled($myThumbCrop85,$myThumb85,0,0,$x85,0 ,$width85,$height85,$width85,$height85);
+		
 		if(preg_match("/.png/i", "$name")){
 		imagesavealpha($myThumbCrop, true);
 		imagesavealpha($myThumbCrop85, true);
@@ -464,6 +476,7 @@ class KelolaNews extends CI_Controller {
 		// Save the two images created
 		$fileName="thumb_".$filename;
 		$fileName85="thumb85_".$filename;
+		
 		if(preg_match("/.jpg/i", "$name")){
 		imagejpeg( $myThumbCrop,"./asset/upload_img_news/".$fileName );
 		imagejpeg( $myThumbCrop85,"./asset/upload_img_news/".$fileName85 );
@@ -476,6 +489,5 @@ class KelolaNews extends CI_Controller {
 		imagepng( $myThumbCrop,"./asset/upload_img_news/".$fileName );
 		imagepng( $myThumbCrop85,"./asset/upload_img_news/".$fileName85 );
 		}
-		
 	}
 }

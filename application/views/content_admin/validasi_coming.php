@@ -2,11 +2,11 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header" style="margin-top: 45px;">
                     <h1>
-                       Validasi Comming Soon
+                       Validasi Event
                     </h1>
                     <ol class="breadcrumb">
-                        <li><i class="fa fa-dashboard"></i>Youth Comming Soon</li>
-                        <li class="active">Validasi Comming Soon</li>
+                        <li><i class="fa fa-dashboard"></i>Kelola Event & News</li>
+                        <li class="active">Validasi Event</li>
                     </ol>
                 </section>
 

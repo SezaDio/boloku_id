@@ -1,4 +1,4 @@
-      <section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/bannerngertirak.jpg') ; ?>);">
+      <section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/ngerti_rak.png') ; ?>);">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">

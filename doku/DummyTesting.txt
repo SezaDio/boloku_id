@@ -1,0 +1,21 @@
+===========
+Credit Card
+===========
+5426400030108754﻿ / 4111111111111111
+exp date : April 2020
+CVV : 869
+4512490020005811 = 05
+
+===========
+Doku Wallet 
+===========
+doku id     :  1257471111
+password    :  dokutes123
+PIN : 1122
+
+=============
+ATM Simulator
+=============
+
+https://staging.doku.com/VASimulator/PermataAction_show.doku
+

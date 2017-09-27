@@ -24,11 +24,11 @@
                      <div class="footer-footer-area">
                         <div class="copyright"><span>&copy; <?php echo date('Y'); ?> All rights reserved.  Designed By IT Team<a href="">boloku.id</a></span></div>
                         <ul>
-                           <li><a href="#">Home </a></li>
-                           <li><a href="#">Event</a></li>
-                           <li><a href="#">Ngerti Rak ?</a></li>
-                           <li><a href="#">FAQ</a></li>
-                           <li><a href="#">Contact Us</a></li>
+                           <li><a href="<?php echo base_url(''); ?>">Home </a></li>
+                           <li><a href="<?php echo base_url('event_page'); ?>">Event</a></li>
+                           <li><a href="<?php echo base_url('ngertirak'); ?>">Ngerti Rak ?</a></li>
+                           <li><a href="<?php echo base_url('faq'); ?>">FAQ</a></li>
+                           <li><a href="<?php echo base_url('contact_us'); ?>">Contact Us</a></li>
                         </ul>
                      </div>
                   </div>
@@ -167,6 +167,17 @@
       <script src="<?php echo base_url('asset/js/custom.js'); ?>" type="text/javascript"></script> 
 
       <!-- Ajax -->
-      <script src="<?php echo base_url('asset/js/ajax.js'); ?>" type="text/javascript"></script>
+      <script src="<?php echo base_url('asset/js/ajax.js?v=3'); ?>" type="text/javascript"></script>
+      
+      <!--Google Analytics-->
+      <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+        
+          ga('create', 'UA-105226877-1', 'auto');
+          ga('send', 'pageview');
+      </script>
    </body>
 </html>

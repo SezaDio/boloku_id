@@ -19,7 +19,7 @@
       <link rel="stylesheet" type="text/css" href="<?php echo base_url('asset/css/megaMenu.css'); ?>">
 
       <!-- Template Core Css -->
-      <link href="<?php echo base_url('asset/css/style_front_end.css?v=3'); ?>" rel="stylesheet" type="text/css">
+      <link href="<?php echo base_url('asset/css/style_front_end.css?v=4'); ?>" rel="stylesheet" type="text/css">
       <link href="<?php echo base_url('asset/css/breakingNews.css'); ?>" rel="stylesheet" type="text/css">
       <link href="<?php echo base_url('asset/css/magnific-popup.css'); ?>" rel="stylesheet" type="text/css">
 
@@ -90,7 +90,7 @@
                                        
                                        <div class="input-group">
                                              <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                             <input type="text" class="form-control" name="username" id="username_login" placeholder="username" required value="<?php //echo set_value('username'); ?>">
+                                             <input type="email" class="form-control" name="email" id="email_login" placeholder="Email" required value="<?php //echo set_value('username'); ?>">
                                        </div>
                                        <span class="help-block"></span>
                                                                      
@@ -98,7 +98,8 @@
                                              <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                              <input  type="password" class="form-control" name="password" id="password_login" placeholder="Password" required value="<?php //echo set_value('password'); ?>">
                                        </div><br>
-                                       <button class="btn btn-colored-blog pull-right" type="submit" name="login"><span class="glyphicon glyphicon-log-in"></span> Sign In</button>
+                                       <input type="hidden" name="submit" value="1">
+                                       <button value"1" class="btn btn-colored-blog pull-right" type="submit"><span class="glyphicon glyphicon-log-in"></span> Sign In</button>
                                        <p class="omb_forgotPwd" style="color:blue; font-size:small; padding:6px;"><a href="<?php echo site_url('KelolaMember/reset_password_member');?>" style="color:blue;" >Forgot password?</a></p>
                                        
                                        <!--
@@ -142,7 +143,7 @@
                   <ul class="menu-logo hidden-md">
                      <li>
                         <a href="<?php echo base_url(''); ?>">
-                           <img style="padding: 5px;" src="<?php echo base_url('asset/img/logo_boloku.png'); ?>" class="img-responsive" alt="logo">
+                           <img style="padding: 5px;" src="<?php echo base_url('asset/img/Logo_Boloku_new3.png'); ?>" class="img-responsive" alt="logo">
                         </a>
                      </li>
                   </ul>
@@ -198,6 +199,14 @@
                         } ?>>
                         <a href="<?php echo base_url('contact_us'); ?>">
                            <span class="text"> Contact Us </span>
+                        </a>
+                     </li>
+                     
+                     <li <?php if($active==6){
+                           echo "class='active'";
+                        } ?>>
+                        <a href="<?php echo base_url('upload_bukti_bayar'); ?>">
+                           <span class="text"> Konfirmasi Pembayaran </span>
                         </a>
                      </li>
                   </ul>

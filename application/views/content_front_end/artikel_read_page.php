@@ -1,4 +1,4 @@
-	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/Article.jpg') ; ?>);">
+	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/article_and_report.png') ; ?>);">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
@@ -46,35 +46,35 @@
                   </div>
                      <!--Kotak Komentar-->                     
                      <div class="reviews" style="background-color: white;">
-                        <h3>Total Coments (<?php echo $jumlahKomentar; ?>)</h3>
-            						<?php foreach($listKomentar as $komentar){?>
-            							<div style="padding-top: 10px;" class="col-md-12 comment-info">
-            								 <div class="col-md-2">
-            									<img style="width: 100%;" class="pull-left" src="<?php echo base_url('asset/upload_img_member/thumb85_'.$komentar['path_foto']); ?>" alt="author">
-            								 </div>
-								 
-								            <div class="author-desc">
-            									<div class="author-title">
-            									   <strong><a href=""><?php echo htmlspecialchars($komentar['nama_member']);?></a></strong>
-            									   <ul class="list-inline pull-right">
-            										  <li style="color: black;"><label><?php echo $komentar['tgl_posting']; ?></label></li>
-            									   </ul>
-            									</div>
-            									<div class="col-md-10">
-            										<p><?php echo htmlspecialchars($komentar['isi_komentar']); ?></p>
-            									</div>
-									            <br><br><br>
-                            </div>
-								             <hr style="border: solid 1px #f44a56; opacity: 0.4;">
-							            </div>
-						            <?php } ?>
+                        <h3 style="padding: 20px;">Total Coments (<?php echo $jumlahKomentar; ?>)</h3>
+						<?php foreach($listKomentar as $komentar){?>
+							<div style="padding: 10px;" class="comment-info">
+								 <div class="col-md-2">
+									<img style="width: 100%;" class="pull-left hidden-xs" src="<?php echo base_url('asset/upload_img_member/thumb85_'.$komentar['path_foto']); ?>" alt="author">
+								 </div>
+					 
+					            <div class="author-desc">
+									<div class="author-title">
+									   <strong><a href=""><?php echo htmlspecialchars($komentar['nama_member']);?></a></strong>
+									   <ul class="list-inline pull-right">
+										  <li style="color: black;"><label><?php echo $komentar['tgl_posting']; ?></label></li>
+									   </ul>
+									</div>
+									<div class="col-md-10">
+										<p><?php echo htmlspecialchars($komentar['isi_komentar']); ?></p>
+									</div>
+						            <br><br><br>
+                                </div>
+					            <hr style="border: solid 1px #f44a56; opacity: 0.4;">
+				            </div>
+			            <?php } ?>
 
                        <!--Form comentar baru-->
 	                     <div style="margin-top: -10px; background-color: white; padding-top: 10px;" class="col-md-12 comment-info">
                           <?php if(isset($this->session->userdata['is_logged_in']))
                           {?>     
   							            <div class="col-md-2">
-                              <img style="width: 100%;" class="pull-left" src="<?php echo base_url('asset/upload_img_member/thumb85_'.$this->session->userdata('path_foto')); ?>" alt="author">
+                              <img style="width: 100%;" class="pull-left hidden-xs" src="<?php echo base_url('asset/upload_img_member/thumb85_'.$this->session->userdata('path_foto')); ?>" alt="author">
                             </div>
                             <div class="author-desc">
                               <div class="author-title">
@@ -87,7 +87,7 @@
               									<input type="hidden" name="jml_komentar" value="<?php echo $jumlahKomentar; ?>">	
   									            <button class="btn btn-colored-blog" type="submit" value="1" name="submit"><i class="glyphicon glyphicon-send"></i> Kirim </a></button>
 
-  								  	          <button style="float: right;" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  								  	          <button disabled style="float: right;" type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
   								    	           Stiker <span class="caret"></span>
   								  	          </button><br>
             								  	<ul style="position: inherit; float: right;" class="dropdown-menu">
@@ -104,28 +104,49 @@
                      </div>
                </div>
                <div class="col-md-4 col-sm-2 col-xs-12">
-                  <div class="ad-placement">
-                     <!--Fitur Artikel-->
-                     <div class="widget widget-bg" style="background-color: white;">
-                        <div class="heading">
-                           <h2 class="main-heading"><strong>Artikel Lainnya</strong></h2>
-                           <span class="heading-ping"></span>
-                        </div>
-                        <ul class="tabs-posts">
-						              <?php $this->load->model('home_models/HomeModels'); foreach($listArtikel as $artikel){ ?>
-                           <li>
-                              <div class="pic"> <a href="<?php echo site_url('halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
-                              <div class="caption"> <a href="<?php echo site_url('halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><?php echo $artikel['judul_artikel'];?></a> </div>
-                              <ul class="post-tools">
-                                 <li title="Like"><i class="glyphicon glyphicon-eye-open"></i><?php echo $artikel['hits'];?> </li>
-                                 <li title="Comments"> <i class="ti-thought"></i> <?php echo $data['jumlahKomentar'] = $this->HomeModels->jumlah_komentar($artikel['id_artikel']);?></li>
-                              </ul>
-                           </li>
-                         <?php } ?>
-                        </ul>
-                     </div>
-                  </div>
+                 <!--Fitur Artikel-->
+                 <div class="widget widget-bg" style="background-color: white;">
+                    <div class="heading">
+                       <h2 class="main-heading"><strong>Artikel Lainnya</strong></h2>
+                       <span class="heading-ping"></span>
+                    </div>
+                    <ul class="tabs-posts">
+					   <?php $this->load->model('home_models/HomeModels'); foreach($listArtikel as $artikel){ ?>
+                       <li>
+                          <div class="pic"> <a href="<?php echo site_url('artikel/'.$artikel['id_artikel'].'?ev='.strtolower(str_replace(" ","-",$artikel['judul_artikel']))); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
+                          <div class="caption"> <a href="<?php echo site_url('artikel/'.$artikel['id_artikel'].'?ev='.strtolower(str_replace(" ","-",$artikel['judul_artikel']))); ?>"><?php echo $artikel['judul_artikel'];?></a> </div>
+                          <ul class="post-tools">
+                             <li title="Like"><i class="glyphicon glyphicon-eye-open"></i><?php echo $artikel['hits'];?> </li>
+                             <li title="Comments"> <i class="ti-thought"></i> <?php echo $data['jumlahKomentar'] = $this->HomeModels->jumlah_komentar($artikel['id_artikel']);?></li>
+                          </ul>
+                       </li>
+                     <?php } ?>
+                    </ul>
+                 </div>
                </div>
+               
+               <div class="col-md-4 col-sm-2 col-xs-12">
+                 <!--Fitur Liputan-->
+                 <div class="widget widget-bg" style="background-color: white;">
+                    <div class="heading">
+                       <h2 class="main-heading"><strong>Liputan Lainnya</strong></h2>
+                       <span class="heading-ping"></span>
+                    </div>
+                    <ul class="tabs-posts">
+                      <?php foreach($listnews as $news){ ?>
+                       <li>
+                          <div class="pic"> <a href="<?php echo site_url('liputan/'.$news['id_news'].'?ev='.strtolower(str_replace(" ","-",$news['judul_news']))); ?>"><img style="width: 100px;" alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_news/thumb_'.$news['gambar_news']); ?>"></a> </div>
+                          <div class="caption"> <a href="<?php echo site_url('liputan/'.$news['id_news'].'?ev='.strtolower(str_replace(" ","-",$news['judul_news']))); ?>"><?php echo $news['judul_news'];?></a> </div>
+                          <ul class="post-tools">
+                             <li title="Like"><i class="glyphicon glyphicon-eye-open"></i><?php echo $news['hits'];?> </li>
+                             <li title="Comments"> <i class="ti-thought"></i> <?php echo $data['jumlahKomentar'] = $this->HomeModels->jumlah_komentar($news['id_news']);?></li>
+                          </ul>
+                       </li>
+                     <?php } ?>
+                    </ul>
+                 </div>
+               </div>
+               
             </div>
          </div>
       </section>

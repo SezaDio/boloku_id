@@ -143,7 +143,7 @@
 					var check = document.getElementById("challenge"+idChallenge).checked;
 						if(check){
 							$.ajax({
-							url: 'KelolaChallange/unpublish_challenge',
+							url: 'unpublish_challenge',
 							type: 'POST',
 							data: {idChallenge:idChallenge},
 							success: function(){
@@ -156,7 +156,7 @@
 							});
 						} else{
 							$.ajax({
-							url: 'KelolaChallange/publish_challenge',
+							url: 'publish_challenge',
 							type: 'POST',
 							data: {idChallenge:idChallenge},
 							success: function(){
@@ -212,7 +212,7 @@
 								ischeck += 'checked="checked"';
 							  }
 							  var getUrl = window.location;
-							  var baseUrl = getUrl .protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+							  var baseUrl = getUrl .protocol + "//" + getUrl.host;
 							  
 							  
 							  divhasil += '<div class="col-md-4" style="text-align: center">';

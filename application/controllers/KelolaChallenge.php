@@ -292,8 +292,7 @@ class KelolaChallenge extends CI_Controller {
 
 			$data_challenge=array(
 							'judul_challenge'=>$this->input->post('judul_challenge'),
-							'deskripsi'=>$this->input->post('deskripsi'),
-							'path_gambar'=>NULL
+							'deskripsi'=>$this->input->post('deskripsi')
 							);
 			$data['dataChallenge'] = $data_challenge;
 

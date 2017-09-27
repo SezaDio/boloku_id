@@ -767,7 +767,7 @@ class KelolaComing extends CI_Controller {
 							if($jenisqty[$key]=='open'){
 								$jumlah = 0;
 							} else {
-								$jumlah = ((int)$qty[$key])+1;
+								$jumlah = ((int)$qty[$key]);
 							}
 						
 							$data_tiket = array(
@@ -790,6 +790,39 @@ class KelolaComing extends CI_Controller {
 
 			}
 			if (!$iserror) {
+			    $id_jenis_tiket = $this->input->post('edit_id_jenis_tiket');
+				$nama_tiket = $this->input->post('edit_nama_tiket');
+				$harga = $this->input->post('edit_harga');
+				$jenisqty = $this->input->post('edit_jenisqty');
+				$qty = $this->input->post('edit_qty');
+				$id_event = $id_coming;
+				$status = 1;
+				foreach ($nama_tiket as $key => $value) 
+				{
+					if($value=="DELETE"){
+						$this->db->where('id_jenis_tiket',$id_jenis_tiket[$key]);
+						$this->db->delete('tiket');
+					} else {
+						if($jenisqty[$key]=='open'){
+							$jumlah = 0;
+						} else {
+							$jumlah = ((int)$qty[$key])+1;
+						}
+					
+						$data_tiket = array(
+						'nama_tiket' => $value,
+						'harga' => $harga[$key],
+						'seat' => $jumlah,
+						'id_event' => $id_coming,
+						'status' => 1
+						);
+						if($id_jenis_tiket[$key]!=''){
+							$this->db->update('tiket', $data_tiket, array('id_jenis_tiket'=>$id_jenis_tiket[$key]));
+						} else {
+							$this->db->insert('tiket', $data_tiket);
+						}
+					}
+				}
 				$this->db->update('coming', $data_coming, array('id_coming'=>$id_coming));
 				$this->session->set_flashdata('msg_berhasil', 'Data Event berhasil diperbaharui');
 				redirect(site_url('KelolaMember/dashboard_member'));

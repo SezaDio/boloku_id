@@ -66,7 +66,7 @@
 
 		function get_event($number, $offset)
 		{
-			$query = $this->db->order_by('tgl_mulai','DESC')->select('*')->where('status',1)->get('coming', $number, $offset);
+			$query = $this->db->order_by('tgl_mulai','ASC')->select('*')->where('status',1)->get('coming', $number, $offset);
 		
 			$indeks = 0;
 			$result = array();
@@ -140,28 +140,14 @@
 				
 			return $query->row_array();
 		}
-		
-		function get_data_stiker()
-		{
-			$query = $this->db->query("SELECT * FROM `stiker` WHERE status='1'");
-		
-			$indeks = 0;
-			$result = array();
-			
-			foreach ($query->result_array() as $row)
-			{
-				$result[$indeks++] = $row;
-			}
-		
-			return $result;
-		}
-		
+
 		function get_tiket_byid($id_coming)
 		{
 			$query = $this->db->where('id_event',$id_coming)->get('tiket');
 				
 			return $query->result_array();
 		}
+
 		function jumlah_testimoni($id_coming)
 		{
 			$query = $this->db->where('id_event',$id_coming)->get('testimoni');

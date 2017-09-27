@@ -104,7 +104,7 @@ class KelolaMember extends CI_Controller {
 		$telepon = $member->telepon;
 		
 		$sub_setuju = 'Pendaftaran Member Boloku.id';
-		$msg_setuju = 'Selamat sekarang Anda sudah menjadi boloku.<br/><br/>';
+		$msg_setuju = 'Selamat sekarang Kamu sudah menjadi boloku.<br/><br/>';
 		$msg_setuju .= 'Berikut data diri Anda,<br/> ';
 		$msg_setuju .= 'Nama :'.$nama_member.'<br/>';
 		$msg_setuju .= 'Username :'.$username.'<br/>';
@@ -442,24 +442,35 @@ class KelolaMember extends CI_Controller {
 
 			/*if ($this->form_validation->run() == TRUE)
 			{*/		$data_member=array(
-						'username'=>$this->input->post('username'),
-						'nama_member'=>$this->input->post('nama_member'),
+						'username'=>trim($this->input->post('username')),
+						'nama_member'=>trim($this->input->post('nama_member')),
 						'password'=>md5($this->input->post('password')),
-						'email'=>$this->input->post('email'),
+						'email'=>trim($this->input->post('email')),
 						'telepon'=>$this->input->post('telepon'),
 						'pertanyaan_rahasia'=>$this->input->post('pertanyaan'),
-						'jawaban_rahasia'=>$this->input->post('jawaban'),
+						'jawaban_rahasia'=>trim($this->input->post('jawaban')),
 						'date_join'=>date("Y-m-d h:i:sa"),
 						'path_foto'=>0,
 						'status'=>1
 					);
 					$data['dataMember'] = $data_member;
 				if($this->db->insert('member', $data_member))
-				{
+				{   
+				    
+				    $sub = 'Pendaftaran Member Boloku.id';
+            		$msg = 'Selamat sekarang Kamu sudah menjadi boloku.<br/><br/>';
+            		$msg .= 'Berikut data diri Anda,<br/> ';
+            		$msg .= 'Nama :'.trim($this->input->post('nama_member')).'<br/>';
+            		$msg .= 'Username :'.trim($this->input->post('username')).'<br/>';
+            		$msg .= 'Email :'.trim($this->input->post('email')).'<br/>';
+            		$msg .= 'Telepon :'.trim($this->input->post('telepon')).'<br/><br/>';
+            	
+            		$this->kirim_email($sub,$msg,trim($this->input->post('email'))); 
 					$this->session->set_flashdata('msg_berhasil', 'Selamat, kowe wis dadi boloku saiki');
 					$this->load->view('skin/front_end/header_front_end');
 					$this->load->view('content_front_end/register_member_page');
 					$this->load->view('skin/front_end/footer_front_end');
+					
 				}
 				else
 				{
@@ -516,7 +527,7 @@ class KelolaMember extends CI_Controller {
                               'Travel dan Outdoor'=>'Travel dan Outdoor',
                               'Bisnis'=>'Bisnis',
                               'Science dan Teknologi'=>'Science dan Teknologi',
-                              'Sprirituality'=>'Sprirituality',
+                              'Spirituality'=>'Spirituality',
                               'Musik'=>'Musik',
                               'Keluarga dan Pendidikan'=>'Keluarga dan Pendidikan',
                               'Hobi'=>'Hobi',
@@ -691,9 +702,9 @@ class KelolaMember extends CI_Controller {
 			$jumlah_seat=$this->input->post('jumlah_seat');
 		} else{
 			$jumlah_seat=0;
-		}*/
+		}
 		
-		/*$jenis_event=$this->input->post('jenis_event');
+		$jenis_event=$this->input->post('jenis_event');
 		if($jenis_event==0){
 			$harga=$this->input->post('harga');
 		} else{
@@ -776,9 +787,9 @@ class KelolaMember extends CI_Controller {
 					foreach ($nama_tiket as $key => $value) 
 					{
 						if($jenisqty[$key]=='open'){
-							$jumlah = 0;
+							$jumlah = NULL;
 						} else {
-							$jumlah = ((int)$qty[$key])+1;
+							$jumlah = ((int)$qty[$key]);
 						}
 						$data_tiket[] = array(
 						'nama_tiket' => $value,

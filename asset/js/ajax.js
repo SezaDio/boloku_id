@@ -1,7 +1,7 @@
 function delete_produk_ajax(id_produk)
 {
 	if (confirm("Anda yakin ingin menghapus produk ini ?"))
-	{;
+	{
 		$.ajax({
 			url: 'delete_produk',
 			type: 'POST',
@@ -69,10 +69,10 @@ function setuju_produk_ajax(id_produk)
 
 function delete_wow_ajax(id_wow)
 {
-	if (confirm("Anda yakin ingin menghapus posting Wow ini ?"))
+	if (confirm("Anda yakin ingin menghapus posting ngerti rak ini ?"))
 	{
 		$.ajax({
-			url: 'delete_wow',
+			url: 'KelolaWow/delete_wow',
 			type: 'POST',
 			data: {id_wow:id_wow},
 			success: function(){
@@ -86,16 +86,16 @@ function delete_wow_ajax(id_wow)
 	}
 	else
 	{
-		alert(id_produk + "Gagal dihapus");
+		alert(id_wow + "Gagal dihapus");
 	}
 }
 
 function delete_coming_ajax(id_coming)
 {
 	if (confirm("Anda yakin ingin menghapus Event ini beserta data didalamnya ?"))
-	{;
+	{
 		$.ajax({
-			url: 'delete_coming',
+			url: 'KelolaComing/delete_coming',
 			type: 'POST',
 			data: {id_coming:id_coming},
 			success: function(){
@@ -274,7 +274,7 @@ function delete_pepak_ajax(id_pepak)
 	if (confirm("Anda yakin ingin menghapus kosakata ini ?"))
 	{
 		$.ajax({
-			url: 'delete_pepak',
+			url: 'KelolaPepak/delete_pepak',
 			type: 'POST',
 			data: {id_pepak:id_pepak},
 			success: function(){
@@ -297,7 +297,7 @@ function tolak_pepak_ajax(id_pepak)
 	if (confirm("Anda yakin ingin menolak kosakata ini ?"))
 	{
 		$.ajax({
-			url: 'tolak_pepak',
+			url: 'KelolaPepak/tolak_pepak',
 			type: 'POST',
 			data: {id_pepak:id_pepak},
 			success: function(){
@@ -321,7 +321,7 @@ function setuju_pepak_ajax(id_pepak)
 	{
 	
 		$.ajax({
-			url: 'setuju_pepak',
+			url: 'KelolaPepak/setuju_pepak',
 			type: 'POST',
 			data: {id_pepak:id_pepak},
 			success: function(){
@@ -342,7 +342,7 @@ function setuju_pepak_ajax(id_pepak)
 function update_like_ajax(id_event)
 {
 	$.ajax({
-			url: '../update_like/'+id_event,
+			url: '../FrontControl_Event/update_like/'+id_event,
 			type: 'POST',
 			data: {id_event:id_event},
 			success: function(){
@@ -358,7 +358,7 @@ function delete_artikel_ajax(id_artikel)
 	if (confirm("Anda yakin ingin menghapus Artikel ini ?"))
 	{
 		$.ajax({
-			url: 'delete_artikel',
+			url: 'KelolaArtikel/delete_artikel',
 			type: 'POST',
 			data: {id_artikel:id_artikel},
 			success: function(){
@@ -415,7 +415,7 @@ function delete_faq_ajax(id_faq)
 		if (confirm("Anda yakin ingin menghapus data member ini ?"))
 		{
 			$.ajax({
-				url: '../delete_member',
+				url: 'KelolaMember/delete_member',
 				type: 'POST',
 				data: {id_member:id_member},
 				success: function(){
@@ -424,6 +424,25 @@ function delete_faq_ajax(id_faq)
 						},
 				error: function(){
 							alert('Delete data member gagal');
+						}
+			});
+		}
+	}
+	
+	function setuju_member_ajax(id_member)
+	{
+		if (confirm("Anda yakin ingin menyetujui data member ini ?"))
+		{
+			$.ajax({
+				url: 'KelolaMember/setuju_member',
+				type: 'POST',
+				data: {id_member:id_member},
+				success: function(){
+							alert('Data member berhasil disetujui');
+							location.reload();
+						},
+				error: function(){
+							alert('Data member gagal disetujui');
 						}
 			});
 		}

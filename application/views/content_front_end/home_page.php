@@ -36,50 +36,43 @@
             <div class="row">
                <div class="col-md-12 col-xs-12 col-sm-12" style="padding-bottom: 20px;">
 				  <?php foreach($listTopEvent as $topevent){ ?>
-                  <a href="<?php echo site_url('event_click/'.$topevent['id_coming']); ?>">
+                  <a href="<?php echo site_url('/'.$topevent['id_coming'].'?ev='.strtolower(str_replace(" ","-",$topevent['nama_coming']))); ?>">
                      <div class="item col-md-4" style="padding-bottom: 10px; text-align: center;">
                         <div class="picture">
                            <div class="category-image">
-                              <a href="<?php echo site_url('event_click/'.$topevent['id_coming']); ?>"> 
+                              <a href="<?php echo site_url('/'.$topevent['id_coming'].'?ev='.strtolower(str_replace(" ","-",$topevent['nama_coming']))); ?>"> 
                                  <img style="border: solid 3px #444;" class="img-responsive" alt="" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$topevent['path_gambar']); ?>"> 
                               </a>
                            </div>
                         </div>
                         <?php
                            $tanggal_mulai = strtotime($topevent['tgl_mulai']);
-                           $tanggal_selesai = strtotime($topevent['tgl_selesai']);
                            $tanggal = date("j", $tanggal_mulai);
                            $bulan = date("M", $tanggal_mulai);
                         ?>
-
+                        
                         <?php 
-                           if ($tanggal_selesai < date("y-m-d")) 
+                           if ($topevent['tgl_selesai'] < date("Y-m-d")) 
                            { ?>
-                              <div class="hover-show-div" style="float: left; margin-top: -12px;  border: 2px solid #FAFAFA; border-radius:5px;  opacity: 0.8;">
-                                 <div style="font-size: 2em; text-align: center; padding: 5px; background-color: #FAFAFA; border-top:1px solid #E6E6E6 ;opacity: 1">
+                              <div class="hover-show-div" style="margin-right: 20px; margin-top: -12px;  border: 2px solid #f44a56; border-radius:5px;">
+                                 <div style="color: white; font-size: 1.5em; text-align: center; padding: 5px; background-color: #f44a56;">
                                     <strong>Closed</strong>
                                  </div>
                               </div>
-                   <?php   } ?>
+                              
+                              <div class="hover-show-div" style="margin-right: 30px; margin-top: 30px;  border: 2px solid #FAFAFA; border-radius:5px;  opacity: 0.8;">
+                                  <div style="text-align: center; width: 60px; padding: 5px; background-color: #FAFAFA; font-size: 1.5em; opacity: 1"><strong><?php echo $bulan; ?></strong></div>
+                                  <div style="font-size: 2em; text-align: center; padding: 5px; background-color: #FAFAFA; border-top:1px solid #E6E6E6 ;opacity: 1"><strong><?php echo $tanggal; ?></strong></div>
+                              </div>
+                     <?php } 
+                           else
+                           { ?>
+                                <div class="hover-show-div" style="margin-right: 12px; margin-top: -12px;  border: 2px solid #FAFAFA; border-radius:5px;  opacity: 0.8;">
+                                  <div style="text-align: center; width: 60px; padding: 5px; background-color: #FAFAFA; font-size: 1.5em; opacity: 1"><strong><?php echo $bulan; ?></strong></div>
+                                  <div style="font-size: 2em; text-align: center; padding: 5px; background-color: #FAFAFA; border-top:1px solid #E6E6E6 ;opacity: 1"><strong><?php echo $tanggal; ?></strong></div>
+                                </div>
+                     <?php }?>
                         
-                        <div class="hover-show-div" style="margin-right: 12px; margin-top: -12px;  border: 2px solid #FAFAFA; border-radius:5px;  opacity: 0.8;">
-                           <div style="text-align: center; width: 60px; padding: 5px; background-color: #FAFAFA; font-size: 1.5em; opacity: 1">
-                              <strong><?php echo $bulan; ?></strong>
-                           </div>
-                           <div style="font-size: 2em; text-align: center; padding: 5px; background-color: #FAFAFA; border-top:1px solid #E6E6E6 ;opacity: 1">
-                              <strong><?php echo $tanggal; ?></strong>
-                           </div>
-                        </div>
-
-                        <div class="hover-show-div" style="margin-right: 12px; margin-top: -12px;  border: 2px solid #FAFAFA; border-radius:5px;  opacity: 0.8;">
-                           <div style="text-align: center; width: 60px; padding: 5px; background-color: #FAFAFA; font-size: 1.5em; opacity: 1">
-                              <strong><?php echo $bulan; ?></strong>
-                           </div>
-                           <div style="font-size: 2em; text-align: center; padding: 5px; background-color: #FAFAFA; border-top:1px solid #E6E6E6 ;opacity: 1">
-                              <strong><?php echo $tanggal; ?></strong>
-                           </div>
-                        </div>
-                       
                         <div class="post-content" style="background-color: #444;">
                            <div class="catname">
                               <?php if($topevent['jenis_event']==0){?><a href="javascript:void(0)" class=" btn btn-green btn-xs" onclick="byLabel('jenis_event','0')"><i class="ti-money" ></i>Berbayar<?php } else{ ?> <a href="javascript:void(0)" class=" btn btn-green btn-xs" onclick="byLabel('jenis_event','1')"><i class="ti-money" ></i>Gratis<?php } ?></a>
@@ -252,18 +245,18 @@
                                  ?>
 
                            </div>
-                           <h4 style="font-size: medium; color: white;"><strong> <a href="<?php echo site_url('event_click/'.$topevent['id_coming']); ?>" style="color: white;"> <?php echo $topevent['nama_coming']; ?> </a></strong> </h4>
+                           <h4 style="font-size: medium; color: white;"><strong> <a href="<?php echo site_url('/'.$topevent['id_coming'].'?ev='.strtolower(str_replace(" ","-",$topevent['nama_coming']))); ?>" style="color: white;"> <?php echo $topevent['nama_coming']; ?> </a></strong> </h4>
                            <div class="row">
                               <div class="col-md-12">
                                  <div class="col-md-2"></div>
-                                    <div class="col-md-8" style="margin-left: 30px;">
+                                    <div class="col-md-9">
                                        <ul class="post-tools">
                                           <li style="color: white;"> By <a href=""><strong style="color: white;"> <?php echo $topevent['posted_by']; ?></strong></a> </li>
                                           <li> <a style="color: white;" href=""><i class="glyphicon glyphicon-thumbs-up"></i> <?php echo $topevent['like']; ?></a> </li>
                                           <li style="color: white;"><i class="glyphicon glyphicon-eye-open"></i> <?php echo $topevent['hits']; ?></li>
                                        </ul>
                                     </div>
-                                 <div class="col-md-2"></div>
+                                 <div class="col-md-1"></div>
                               </div>
                            </div>
                         </div>
@@ -295,12 +288,12 @@
                      <!---Main content New Event ditampilkan 8 buah-->
                      <div class="row">
 						   <?php foreach($listNewEvent as $newevent){ ?>
-                        <a href="<?php echo site_url('event_click/'.$newevent['id_coming']); ?>">
+                        <a href="<?php echo site_url('/'.$newevent['id_coming'].'?ev='.strtolower(str_replace(" ","-",$newevent['nama_coming']))); ?>">
                            <article class="col-md-6 col-sm-6 col-xs-12">
                               <div class="grid-1" style="height: 377px; box-shadow: 0 1px 10px grey; background-color: white;">
                                  <div class="picture">
                                     <div class="category-image">
-                                       <a href="<?php echo base_url('event_click/'.$newevent['id_coming']); ?>">
+                                       <a href="<?php echo base_url('/'.$newevent['id_coming'].'?ev='.strtolower(str_replace(" ","-",$newevent['nama_coming']))); ?>">
                                           <img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_coming/thumb_'.$newevent['path_gambar']); ?>">
                                        </a>
                                        <div class="catname">
@@ -477,23 +470,41 @@
                                           $tanggal = date("j", $tanggal_mulai);
                                           $bulan = date("M", $tanggal_mulai);
                                        ?>
-                                        <div class="hover-show-div" style="border: 2px solid #FAFAFA; border-radius:5px;  opacity: 0.8;">
-                                          <div style="text-align: center; width: 60px; padding: 5px; background-color: #FAFAFA; font-size: 1.5em; opacity: 1"><strong><?php echo $bulan; ?></strong></div>
-                                          <div style="font-size: 2em; text-align: center; padding: 5px; background-color: #FAFAFA; border-top:1px solid #E6E6E6 ;opacity: 1"><strong><?php echo $tanggal; ?></strong></div>
-                                       </div>
+                                       
+                                       <?php 
+                                           if ($newevent['tgl_selesai'] < date("Y-m-d")) 
+                                           { ?>
+                                              <div class="hover-show-div" style="margin-right: 10px; margin-top: -12px;  border: 2px solid #f44a56; border-radius:5px;">
+                                                 <div style="color: white; font-size: 1.5em; text-align: center; padding: 5px; background-color: #f44a56;">
+                                                    <strong>Closed</strong>
+                                                 </div>
+                                              </div>
+                                              
+                                              <div class="hover-show-div" style="margin-right: 20px; margin-top: 30px;  border: 2px solid #FAFAFA; border-radius:5px;  opacity: 0.8;">
+                                                  <div style="text-align: center; width: 60px; padding: 5px; background-color: #FAFAFA; font-size: 1.5em; opacity: 1"><strong><?php echo $bulan; ?></strong></div>
+                                                  <div style="font-size: 2em; text-align: center; padding: 5px; background-color: #FAFAFA; border-top:1px solid #E6E6E6 ;opacity: 1"><strong><?php echo $tanggal; ?></strong></div>
+                                              </div>
+                                     <?php } 
+                                           else
+                                           { ?>
+                                                <div class="hover-show-div" style="margin-right: 12px; margin-top: -12px;  border: 2px solid #FAFAFA; border-radius:5px;  opacity: 0.8;">
+                                                  <div style="text-align: center; width: 60px; padding: 5px; background-color: #FAFAFA; font-size: 1.5em; opacity: 1"><strong><?php echo $bulan; ?></strong></div>
+                                                  <div style="font-size: 2em; text-align: center; padding: 5px; background-color: #FAFAFA; border-top:1px solid #E6E6E6 ;opacity: 1"><strong><?php echo $tanggal; ?></strong></div>
+                                                </div>
+                                     <?php }?>
                                        
                                     </div>
                                  </div>
                                  <div class="detail" style="padding-left: 20px;">
                                     <div class="caption" style="height: 60px;">
                                        <h5>
-                                          <a href="<?php echo base_url('event_click/'.$newevent['id_coming']); ?>">
+                                          <a href="<?php echo base_url('/'.$newevent['id_coming'].'?ev='.strtolower(str_replace(" ","-",$newevent['nama_coming']))); ?>">
                                              <?php
                                                 $panjang = strlen($newevent['nama_coming']);
-                                                if ($panjang >= 70)
+                                                if ($panjang > 50)
                                                 {
                                                    $isi=strip_tags($newevent['nama_coming']);
-                                                   $isi=substr($isi,0,70);
+                                                   $isi=substr($isi,0,53);
                                                    echo $isi." ...";
                                                 }
                                                 else
@@ -583,6 +594,7 @@
 
                      <!--Fitur Search Pepak-->
                      <div class="widget widget-bg" style="box-shadow: 0 1px 7px grey;">
+                        <div class="heading">
                            <h2 class="main-heading"><Strong>Pepak Semarangan</Strong></h2>
                            <span class="heading-ping"></span> 
                         </div>
@@ -616,7 +628,7 @@
                            <h2 class="main-heading"><strong>Artikel & Liputan</strong></h2>
                            <span class="heading-ping"></span>
                         </div>
-
+                        
                         <div class="tabs">
                            <div role="tabpanel">
                               <!-- Nav tabs -->
@@ -638,8 +650,8 @@
                                     <ul class="tabs-posts">
                                        <?php  $this->load->model('home_models/HomeModels'); foreach($listArtikel as $artikel){ ?>
                                        <li>
-                                          <div class="pic"> <a href="<?php echo site_url('halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
-                                          <div class="caption"> <a href="<?php echo site_url('halaman_baca_artikel/'.$artikel['id_artikel']); ?>"><?php echo $artikel['judul_artikel']; ?></a> </div>
+                                          <div class="pic"> <a href="<?php echo site_url('artikel/'.$artikel['id_artikel'].'?ev='.strtolower(str_replace(" ","-",$artikel['judul_artikel']))); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
+                                          <div class="caption"> <a href="<?php echo site_url('artikel/'.$artikel['id_artikel'].'?ev='.strtolower(str_replace(" ","-",$artikel['judul_artikel']))); ?>"><?php echo $artikel['judul_artikel']; ?></a> </div>
                                           <ul class="post-tools">
                                              <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $artikel['hits'];?></a></li>
                                              <li title="Comments"> <i class="ti-thought"></i> <?php echo $data['jumlahKomentar'] = $this->HomeModels->jumlah_komentar($artikel['id_artikel']); ?></li>
@@ -655,9 +667,9 @@
                                        <?php foreach($listLiputan as $liputan){ ?>
                                        <li>
                                           <div class="pic"> 
-                                             <a href="<?php echo site_url('halaman_baca_artikel_pra_event/'.$liputan['id_news']); ?>"><img style="width: 100px;" alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb_'.$liputan['gambar_news']); ?>"></a> 
+                                             <a href="<?php echo site_url('liputan/'.$liputan['id_news'].'?ev='.strtolower(str_replace(" ","-",$liputan['judul_news']))); ?>"><img style="width: 100px;" alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_news/thumb_'.$liputan['gambar_news']); ?>"></a> 
                                           </div>
-                                          <div class="caption"> <a href="<?php echo site_url('halaman_baca_artikel_pra_event/'.$liputan['id_news']); ?>"><?php echo $liputan['judul_news']; ?></a> </div>
+                                          <div class="caption"> <a href="<?php echo site_url('liputan/'.$liputan['id_news'].'?ev='.strtolower(str_replace(" ","-",$liputan['judul_news']))); ?>"><?php echo $liputan['judul_news']; ?></a> </div>
                                           <ul class="post-tools">
                                              <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $liputan['hits'];?></a></li>
                                              <li title="Comments"> <i class="ti-thought"></i> <?php echo $data['jumlahKomentar'] = $this->HomeModels->jumlah_komentar($liputan['id_news']); ?></li>
@@ -671,7 +683,7 @@
 
                            </div>
                         </div>
-
+                        
                      </div>
 
                      <!--Fitur Update challenge Instagram-->

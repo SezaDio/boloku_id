@@ -1,8 +1,8 @@
-	  <section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/registrasi.jpg') ; ?>);">
+	  <section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/register.png') ; ?>);">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
-                  <h1>Ayooo Dadi Boloku</h1>
+                  <h1>&nbsp;</h1>
                </div>
             </div>
          </div>
@@ -50,13 +50,14 @@
 			                     		<div class="col-md-12">
 					                        <div class="col-md-6 col-sm-6 col-xs-12">
 					                           <div class="form-group">
-					                              <input placeholder="Nama Lengkap" id="name" name="nama_member" class="form-control" required="" type="text" value="<?php 
+					                              <input placeholder="Nama Lengkap" id="nama_member" name="nama_member" class="form-control" required="" type="text" value="<?php 
 		                                                    if (isset($dataMember['nama_member']))
 		                                                    {
 		                                                        echo htmlspecialchars($dataMember['nama_member']);
 		                                                    }
 		                                            ?>">
 					                           </div>
+					                          <b> <div class="form-group" id="validate_nama"></div></b>
 					                        </div>
 					                        <div class="col-md-6 col-sm-6 col-xs-12">
 					                           <div class="form-group">
@@ -86,11 +87,11 @@
 		                                                    }
 		                                            ?>">
 					                           </div>
-											   <b><div class="form-group" id="validate_email"></div></b>
+					                           <b><div class="form-group" id="validate_email"></div></b>
 					                        </div>
 					                        <div class="col-md-6 col-sm-6 col-xs-12">
 					                           <div class="form-group">
-					                              <input placeholder="Nomor Telepon" id="telepon" name="telepon" class="form-control" required type="text">
+					                              <input placeholder="Nomor Telepon" id="telepon" name="telepon" class="form-control" required="" type="number">
 					                           </div>
 					                        </div>
 					                    </div>
@@ -117,18 +118,19 @@
 
 					                <div class="row">
 					                	<div class="col-md-12">
-					                        
-					                        <div class="col-md-6 col-sm-6 col-xs-12">
+					                       
+					                        <div class="col-md-6 col-sm-12 col-xs-12">
 					                           <div class="form-group">
 					                              <input type="password" cols="12" rows="1" placeholder="Password" id="pass" name="password" class="form-control" required >
 					                           </div>
 					                        </div>
-											<div class="col-md-6 col-sm-6 col-xs-12">
+					                        <div class="col-md-6 col-sm-12 col-xs-12">
 					                           <div class="form-group">
-					                              <input type="password" cols="12" rows="1" placeholder="Password" id="ulangi_pass" name="password2" class="form-control" required >
+					                              <input type="password" cols="12" rows="1" placeholder="Ulangi Password" id="ulangi_pass" name="password2" class="form-control" required >
 					                           </div>
-											   <b><div class="form-group" id="validate_pass"></div></b>
+					                           <b><div class="form-group" id="validate_pass"></div></b>
 					                        </div>
+					                        
 					                        
 					                    </div>
 					                </div>
@@ -146,8 +148,8 @@
 			                        <div class="row">
 			                        	<div class="col-md-12">
 					                        <div class="col-md-3"></div>
-					                        <div style="text-align: center; padding-top: 25px;" class="col-md-6 col-sm-12 col-xs-12">
-					                            <button class="btn btn-colored-blog" type="submit" value="1" name="submit" id="submit_daftar"><i class="glyphicon glyphicon-registration-mark"></i> Dadi Bolomu</button>
+					                        <div style="text-align: center; padding: 25px;" class="col-md-6 col-sm-12 col-xs-12">
+					                            <button class="btn btn-colored-blog" type="submit" value="1" name="submit" id="submit_daftar">Dadi Bolomu</button>
 					                        </div>
 				                           	<div class="col-md-3"></div>
 				                        </div>
@@ -164,6 +166,10 @@
       </section>
 	  <script>
 	  $(document).ready(function() {
+		  $("#nama_member").keyup(validateNama);
+	  });
+	  
+	  $(document).ready(function() {
 		  $("#username").keyup(validateUsername);
 	  });
 	  
@@ -172,13 +178,33 @@
 	  });
 	  
 	  
+	  
+	  
 	  $(document).ready(function() {
 		  $("#ulangi_pass").keyup(validatePass);
 	  });
 	  
+	  function validateNama() {
+		
+		  var nama_member = $("#nama_member").val();
+		  if(nama_member.replace(/\s+/g, '').length == 0){
+		      document.getElementById("validate_nama").style.color = "red";
+			  $("#validate_nama").text("* Nama member tidak boleh kosong"); 
+			  document.getElementById("submit_daftar").disabled = true;
+		  } else {
+		      $("#validate_nama").text(""); 
+			  document.getElementById("submit_daftar").disabled = false;
+		  }
+	  }
+	  
 	  function validateUsername() {
 		
 		  var username = $("#username").val();
+		  if(username.replace(/\s+/g, '').length == 0){
+		      document.getElementById("validate_username").style.color = "red";
+			  $("#validate_username").text("* Username tidak boleh kosong"); 
+			  document.getElementById("submit_daftar").disabled = true;
+		  } else {
 		  $.ajax({
 			url: 'validate_username',	
 			type: 'POST',
@@ -200,12 +226,17 @@
 					}
 					
 			});
-		
+		  }
 		}
 		
 		function validateEmail() {
 		
 		  var email = $("#email").val();
+		  if(email.replace(/\s+/g, '').length == 0){
+		      document.getElementById("validate_email").style.color = "red";
+			  $("#validate_email").text("* Email tidak boleh kosong"); 
+			  document.getElementById("submit_daftar").disabled = true;
+		  } else{
 		  $.ajax({
 			url: 'validate_email',	
 			type: 'POST',
@@ -226,7 +257,7 @@
 						alert('GAGAL');
 					}
 					
-			});
+			});}
 		
 		}
 		

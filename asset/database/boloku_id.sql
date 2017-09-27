@@ -1,23 +1,25 @@
 -- phpMyAdmin SQL Dump
--- version 4.2.11
--- http://www.phpmyadmin.net
+-- version 4.7.3
+-- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Aug 20, 2017 at 11:17 AM
--- Server version: 5.6.21
--- PHP Version: 5.6.3
+-- Host: localhost:3306
+-- Generation Time: Sep 27, 2017 at 01:48 PM
+-- Server version: 10.1.26-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `boloku_id`
+-- Database: `bolz6124_app`
 --
 
 -- --------------------------------------------------------
@@ -26,8 +28,8 @@ SET time_zone = "+00:00";
 -- Table structure for table `admin`
 --
 
-CREATE TABLE IF NOT EXISTS `admin` (
-`id_admin` int(2) NOT NULL,
+CREATE TABLE `admin` (
+  `id_admin` int(2) NOT NULL,
   `username` varchar(20) NOT NULL,
   `nama_admin` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -35,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
   `status_admin` varchar(100) NOT NULL,
   `path_foto` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admin`
@@ -43,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 
 INSERT INTO `admin` (`id_admin`, `username`, `nama_admin`, `email`, `telfon`, `status_admin`, `path_foto`, `password`) VALUES
 (2, 'adminNews', 'Admin Update yang sering banget Update', 'adminupdate@gmail.com', '08237421', 'Admin News', 'file_1497151219.jpg', '0b6ba87d169e7d34dd229f9d9b4462db'),
-(3, 'admin', 'Seza Dio Firmansyah', 'sefirman12@gmail.com', '085640357417', '', '', '21232f297a57a5a743894a0e4a801fc3');
+(3, 'admin', 'Seza Dio Firmansyah', 'sefirman12@gmail.com', '085640357417', '', '', 'bb279b53a3e7a5c3e476ee1e8e32f481');
 
 -- --------------------------------------------------------
 
@@ -51,26 +53,24 @@ INSERT INTO `admin` (`id_admin`, `username`, `nama_admin`, `email`, `telfon`, `s
 -- Table structure for table `artikel`
 --
 
-CREATE TABLE IF NOT EXISTS `artikel` (
-`id_artikel` int(11) NOT NULL,
+CREATE TABLE `artikel` (
+  `id_artikel` int(11) NOT NULL,
   `judul_artikel` varchar(200) NOT NULL,
   `penulis_artikel` varchar(100) NOT NULL,
   `isi_artikel` text NOT NULL,
   `path_gambar` varchar(100) NOT NULL,
   `tanggal_posting` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `hits` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `artikel`
 --
 
 INSERT INTO `artikel` (`id_artikel`, `judul_artikel`, `penulis_artikel`, `isi_artikel`, `path_gambar`, `tanggal_posting`, `hits`) VALUES
-(4, 'Farewall Integer Berlangsung Meriah', 'azies', '<p>Farewell Integer</p>\r\n', 'file_1502958296.jpg', '2017-08-20 08:50:33', 17),
-(5, 'Kemacetan terjadi di gerbang tol tembalang', 'azies', '<p>kemacetan</p>\r\n', 'file_1500556942.jpg', '2017-07-19 20:22:22', 0),
-(6, 'Pantai weleri ramai dikunjungi wisatawan dosmetik', 'azies', '<p>pantai weleri</p>\r\n', 'file_1500556998.jpg', '2017-08-08 07:31:29', 3),
-(7, 'Lawang sewu jadi ikon Kota Semarang', 'azies', '<p>Lawang sewu</p>\r\n', 'file_1500557027.jpg', '2017-08-10 15:54:59', 11),
-(8, 'Wahana flying fox di hutan Pinus', 'azies', '<p>flying fox</p>\r\n', 'file_1500557078.JPG', '2017-08-20 08:38:00', 39);
+(1, 'SOFT LAUNCHING BOLOKU.ID', 'Anissa M', '<p>Kamis, 24 Agustus 2017</p>\r\n\r\n<p>BOLOKU.ID mengadakan Soft Launching yang berlokasi di di Hall Gedung C, Fakultas Ekonomika dan Bisnis Undip bersamaan dengan CAREER GATHERING oleh Undip Career Center yang bekerjasama dengan Penta People. Soft Launching ini dihadiri oleh seluruh delegasi dari Organisasi Mahasiswa Undip dan juga Calon Peserta Magang (Program Winner) UCC Batch 4 dengan presentasi oleh Noventia Karina.</p>\r\n\r\n<p>BOLOKU.ID merupakan portal publikasi, pendaftaran, dan pembayaran event pertama di Jawa Tengah. Portal ini merupakan kerjasama antara UCC dengan Suara Merdeka. BOLOKU.ID memudahkan Organisasi Mahasiswa dan pihak-pihak lainnya yang ingin mendapatkan publikasi event gratis dan berkesempatan untuk dicetak di Koran Suara Merdeka.</p>\r\n\r\n<p>Untuk bergabung bersama BOLOKU.ID sangat mudah, hanya dengan membuat akun, sign in, dan membuat eventmu sendiri kemudian eventmu akan muncul di website kami. Bagaimana caranya agar eventmu dapat dicetak di Koran Suara Merdeka? Caranya juga cukup mudah, cukup share eventmu ke semua akun sosial mediamu (Facebook, Twitter, dan Instagram) lalu ajak kawan-kawanmu untuk like eventmu di website kami. Semakin banyak like dan share, semakin besar kesempatan eventmu untuk dicetak di Koran Suara Merdeka.</p>\r\n\r\n<p>Salah satu Calon Peserta Magang (Program Winner), Nila Tunjungsari, mengatakan bahwa BOLOKU.ID telah menjawab keresahan para Ormawa dan para anak muda untuk masalah publikasi event di tengah maraknya portal publikasi berbayar.&nbsp;Mau publish event? Di BOLOKU.ID aja. Jangan lupa follow instagram kami di @boloku_id.</p>\r\n\r\n<p>BOLOKU.ID Regist-Publish-Laris</p>\r\n\r\n<p>Foto : BOLOKU.ID</p>\r\n', 'file_1503848140.jpg', '2017-09-27 02:15:59', 90),
+(2, 'Regist, Publish, dan Lariskan Eventmu dengan Boloku.id', 'Khasanah ', '<p>Kamis (7/9) bertempat di gedung ICT Undip lantai 5 boloku.id baru saja mengadakan&nbsp;<em>softlaunching</em> website boloku.id . Acara yang diadakan&nbsp;bersamaan dengan Career Preparation tersebut menghadirkan Noventia Karina sebagai pembicara boloku.id. <em>Softlaunching</em> boloku.id dan Career Preparation dihadiri oleh mahasiswa Undip dan perwakilan dari Lembaga Pers Mahasiswa di Undip. <em>Softlaunching</em> boloku.id dilakukan untuk mengenalkan website boloku.id kepada khayalak. <em>Softlaunching</em> diawali dengan sebuah video singkat tentang boloku.id dan dilanjut dengan presentasi oleh Noventia Karina.</p>\r\n\r\n<p>Boloku.id merupakan jembatan bagi individu ataupun organisasi mahasiswa untuk mempublikasikan eventnya secara cuma-cuma. Tidak hanya publikasi, boloku.id juga menyediakan fasilitas pendaftaran dan pembayaran tiket event yang dipublikasi. Untuk dapat mempublikasi event, seseorang harus menjadi anggota boloku.id terlebih dahulu. Caranya sangat mudah cukup registrasi di laman boloku.id. Setelah menjadi anggota boloku.id publikasi event akan sangat mudah dan praktis.</p>\r\n\r\n<p>Ada hal yang menarik dari website boloku.id yakni mengenai sistem top eventnya. Setiap event yang bisa menanjak menjadi top event akan berpeluang dimuat di Koran Suara Merdeka. Hal tersebut tentu saja sangat menggoda mengingat Sura Merdeka merupakan media terdepan di Jawa Tengah. Untuk menjadi top event, suatu event harus mendapatkan <em>like </em>dan <em>share </em>terbanyak. Semakin banyak jumlah <em>like </em>dan <em>share</em> maka semakin besar peluang untuk menjadi top event dan dimuat di Suara Merdeka. Tunggu apalagi segera buat akun, sign in, lalu upload&nbsp;eventmu di Boloku.id. Jangan lupa untuk follow instagram kami di @Boloku_id</p>\r\n\r\n<p>Boloku.id Regist, Publish, Laris!</p>\r\n', 'file_1505153224.jpg', '2017-09-26 02:23:58', 23),
+(4, 'Festival Kuliner Lezatnesia 2017, Nostalgia Melalui Kuliner', 'Anissa M', '<p>Komunitas Kuliner Semarang (10/9) kembali menggelar festival kuliner bernama Festival Lezatnesia 2017 yang berlokasi di Sri Ratu Pemuda pada tanggal 5-10 September 2017. Festival ini bertepatan dengan Ulang Tahun Kuliner Semarang yang ke-3. Di tahun ini Kuliner Semarang mengusung tema kuliner tradisional khususnya kuliner khas Semarang dengan memperkenalkan makanan tradisional yang hampir punah khususnya makanan Semarang ke khalayak ramai khususnya anak muda.</p>\r\n\r\n<p>Ada berbagai macam stand kuliner tradisional khas Semarang disana seperti, kue lumpur, mie Belitung, nasi pindang kebo, dll. Bahkan yang unik dari festival ini selalu ada stand kuliner baru di setiap eventnya dan di setiap harinya Kuliner Semarang membagikan kue ganjel rel dan jamu djun secara gratis kepada pengunjung. Tidak hanya stand kuliner saja,&nbsp;stand yang menjual penunjang penampilan turut mengisi festival ini seperti stand&nbsp;jilbab, tas, batik, dll.</p>\r\n\r\n<p>Firdaus Adinegoro, selaku salah satu panitia Lezatnesia 2017 mengatakan, respon pengunjung sangat baik pada festival Lezatnesia tahun ini tidak hanya dari orang tua, namun banyak anak muda yang datang dan penasaran dengan festival kuliner ini. Bahkan semua kursi tidak pernah sepi saat festival kuliner ini berlangsung.</p>\r\n\r\n<p>Semoga semakin banyak festival kuliner yang memperkenalkan kuliner tradisional khusus Semarang selain sebagai sarana edukasi bagi para anak muda, para pedagang pun terbantu, dan sebagai ajang nostalgia bagi para orangtua bahkan kakek dan nenek kita.&nbsp;</p>\r\n\r\n<p>Foto : Facebook Kuliner Semarang</p>\r\n', 'file_1505155197.jpg', '2017-09-25 23:39:41', 45);
 
 -- --------------------------------------------------------
 
@@ -78,26 +78,14 @@ INSERT INTO `artikel` (`id_artikel`, `judul_artikel`, `penulis_artikel`, `isi_ar
 -- Table structure for table `challenge`
 --
 
-CREATE TABLE IF NOT EXISTS `challenge` (
-`id_challenge` int(3) NOT NULL,
+CREATE TABLE `challenge` (
+  `id_challenge` int(3) NOT NULL,
   `judul_challenge` varchar(50) NOT NULL,
   `deskripsi` text NOT NULL,
   `tanggal_posting` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `path_gambar` varchar(50) NOT NULL,
   `status` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
-
---
--- Dumping data for table `challenge`
---
-
-INSERT INTO `challenge` (`id_challenge`, `judul_challenge`, `deskripsi`, `tanggal_posting`, `path_gambar`, `status`) VALUES
-(22, 'Setetes darah berarti untuk sesama', '<p>Donor darah #tunjukkanaksimu!</p>\r\n', '2017-07-31 04:49:36', 'file_1500558736.jpg', 1),
-(23, 'Takjil gratis untuk sesama', '<p>takjil gratis #tunjukkanaksimu!</p>\r\n', '2017-07-19 20:53:01', 'file_1500558781.jpg', 1),
-(24, 'Para relawan', '<p>para relawan #tunjukkanaksimu!</p>\r\n', '2017-07-19 20:53:45', 'file_1500558825.jpg', 1),
-(25, 'Lomba Makan Kerupuk', '<p>makan</p>\r\n', '2017-08-10 23:25:15', 'file_1502468714.jpg', 1),
-(26, 'Lomba Makan Kerupuk', '<p>Makan lagi</p>\r\n', '2017-08-10 23:26:30', 'file_1502468790.jpg', 1),
-(27, 'Lomba Makan Kerupuk', '<p>Makan lagi 2</p>\r\n', '2017-08-10 23:27:24', 'file_1502468844.jpg', 1);
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 -- --------------------------------------------------------
 
@@ -105,8 +93,8 @@ INSERT INTO `challenge` (`id_challenge`, `judul_challenge`, `deskripsi`, `tangga
 -- Table structure for table `coming`
 --
 
-CREATE TABLE IF NOT EXISTS `coming` (
-`id_coming` int(4) NOT NULL,
+CREATE TABLE `coming` (
+  `id_coming` int(4) NOT NULL,
   `id_member` int(5) NOT NULL,
   `nama_coming` varchar(100) NOT NULL,
   `deskripsi_coming` text NOT NULL,
@@ -133,29 +121,44 @@ CREATE TABLE IF NOT EXISTS `coming` (
   `alamat` varchar(100) NOT NULL,
   `hits` int(11) NOT NULL,
   `like` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=43 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `coming`
 --
 
 INSERT INTO `coming` (`id_coming`, `id_member`, `nama_coming`, `deskripsi_coming`, `posted_by`, `institusi`, `telepon`, `email`, `tanggal_posting`, `status`, `path_gambar`, `kategori_coming`, `tipe_event`, `tgl_mulai`, `jam_mulai`, `tgl_selesai`, `jam_selesai`, `jenis_event`, `pendaftaran`, `seat`, `jumlah_seat`, `top_event`, `harga`, `id_lokasi`, `alamat`, `hits`, `like`) VALUES
-(22, 7, 'Lomba Menggambar', '<p>Lomba Menggambar</p>\r\n', 'azies', 'Undip', '213123', 'undip@gmail.com', '2017-08-13 15:42:36', 1, 'file_1500510724.jpg', 'Seni', 'Attraction', '2017-07-20', '11:15', '2017-07-20', '13:15', 1, 1, 1, 200, 1, '0', 'Semarang', 'Jalan Kumudasmoro Dalam No. 11', 110, 34),
-(23, 7, 'Seminar Nasional', '<p>seminar</p>\r\n', 'azies', 'Undip', '089665890200', 'budimansisca@gmail.com', '2017-08-10 09:09:27', 1, 'file_1500512319.JPG', 'Bisnis', 'Seminar', '2017-07-20', '03:30', '2017-07-20', '04:30', 0, 1, 1, 100, 1, '50000', 'Semarang', 'Jalan Kumudasmoro Dalam No. 11', 30, 2),
-(24, 0, 'Farewell', '<p>farewell</p>\r\n', 'Azies', 'Universitas Diponegoro', '0890665890200', 'adminwow@gmail.com', '2017-08-13 15:42:55', 1, 'file_1500512551.JPG', 'Musik', 'Party', '2017-07-20', '19:45', '2017-07-20', '20:45', 0, 0, 0, 0, 2, '40000', 'Semarang', 'Jalan Kumudasmoro Dalam No. 11', 8, 0),
-(25, 0, 'Color Run with Pak Ganjar', '<p>Color run</p>\r\n', 'azies', 'Pemkot', '123421512', 'pemkot@gmail.com', '2017-08-09 05:01:42', 1, 'file_1500559031.jpg', 'Hobi', 'Game', '2017-07-20', '06:00', '2017-07-20', '10:00', 0, 1, 0, 0, 2, '50000', 'Semarang', 'Jalan Kumudasmoro Dalam No. 11', 3, 0),
-(27, 7, 'Try Out SBMPTN', '<p>tryout&nbsp;</p>\r\n', 'azies', 'Azies Corporation', '42989428', 'aziesandro@gmail.com', '2017-08-07 06:10:44', 1, 'file_1500559346.jpg', 'Keluarga dan Pendidikan', 'Class', '2017-07-22', '08:00', '2017-07-23', '11:00', 0, 1, 0, 0, 2, '30000', 'Semarang', 'Jalan Kumudasmoro Dalam No. 11', 0, 0),
-(29, 0, 'Dug Deran', '<p>dug deran</p>\r\n', 'azies', 'Pemkot', '34324325', 'pemkot@gmail.com', '2017-08-06 07:56:17', 1, 'file_1500559771.jpg', 'Lain-Lain', 'Lain-Lain', '2017-07-31', '18:00', '2017-08-12', '23:45', 1, 0, 0, 0, 2, '0', 'Semarang', 'Jalan Kumudasmoro Dalam No. 11', 2, 0),
-(30, 0, 'Dug Deran', '<p>dug deran</p>\r\n', 'azies', 'Pemkot', '34324325', 'pemkot@gmail.com', '2017-08-08 07:23:29', 1, 'file_1500559771.jpg', 'Lain-Lain', 'Lain-Lain', '2017-07-31', '18:00', '2017-08-12', '23:45', 1, 0, 0, 0, 2, '0', 'Semarang', 'Jalan Kumudasmoro Dalam No. 11', 2, 0),
-(31, 0, 'Dug Deran', '<p>dug deran</p>\r\n', 'azies', 'Pemkot', '34324325', 'pemkot@gmail.com', '2017-08-06 07:05:50', 1, 'file_1500559771.jpg', 'Lain-Lain', 'Lain-Lain', '2017-07-31', '18:00', '2017-08-12', '23:45', 1, 0, 0, 0, 2, '0', 'Semarang', 'Jalan Kumudasmoro Dalam No. 11', 2, 1),
-(32, 0, 'Dug Deran', '<p>dug deran</p>\r\n', 'azies', 'Pemkot', '34324325', 'pemkot@gmail.com', '2017-08-09 04:36:58', 1, 'file_1500559771.jpg', 'Lain-Lain', 'Lain-Lain', '2017-07-31', '18:00', '2017-08-12', '23:45', 1, 0, 0, 0, 2, '0', 'Semarang', 'Jalan Kumudasmoro Dalam No. 11', 6, 8),
-(33, 0, 'Lomba ANFORCOM', '<p>asfghk;</p>\r\n', 'Seza Dio Firmansyah', 'HMIF', '085640357417', 'sezadio@ymail.com', '2017-08-06 07:56:12', 1, 'file_1501834970.png', 'Science dan Teknologi', 'Game', '2017-08-04', '01:15', '2017-08-04', '02:45', 1, 0, 0, 0, 2, '0', 'Semarang', 'Jalan Kumudasmoro Dalam No. 11', 5, 0),
-(34, 10, 'Lomba ANFORCOM 2019', 'mangkat', 'Seza Dio Firmansyah', 'HMIF', '0', 'sefirman12@gmail.com', '2017-08-09 08:29:24', 1, 'file_1502261571.jpg', 'Science dan Teknologi', 'Expo', '2017-08-11', '03:30', '2017-08-12', '00:00', 1, 0, 0, 0, 2, '0', 'Semarang', 'Prof. Soedarto', 3, 0),
-(36, 9, 'Lomba ANFORCOM 2017 3', 'Lomba pemrograman tingkat Mahasiswa Nasional ', '', 'HMIF', '0', 'sefirman12@gmail.com', '2017-08-20 09:05:03', 1, 'file_1502549246.jpg', 'Science dan Teknologi', 'Expo', '2017-08-16', '01:00', '2017-08-19', '23:00', 1, 1, 0, 0, 2, '0', '', 'Jalan Gondang Timur', 11, 0),
-(38, 9, 'Jateng Fair 2017', 'Kembali digelar Jateng Fair 2017 di PRPP Jateng Area Marina Semarang. Dengan tema The Paradise of Karimunjawa event ini digelar mulai 11 Agustus hingga 10 September 2017.\r\n\r\nHarga Tiket Masuk HTM Jateng Fair 2017 sebesar Rp 15 ribu untuk hari Senin – Jumat dari pukul 16.00 – 22.00 WIB dan Rp 20 ribu untuk hari Sabtu – Minggu Jam 11.00-23.30 WIB.\r\n\r\nAtraksi menarik yang akan digelar sepanjang 31 hari itu seperti Dancing Fountain, Thematic lantern, The Green Bunny Park, 3D trick art Spectamata, Science centre, Pameran Craftman, Stand Kuliner, Panggung Utama artis nasional, Pameran 35 Kabupaten/Kota di Jawa Tengah, Pameran BUMD, Panggung Budaya dan juga Bianglala.\r\n\r\nBanyak artis akan meramaikan gelaran Jateng Fair kali ini, Fariz Rm, OM Sera feat Via Valen, Tony Q Rastafara, Nella Kharisma, Tipe-X, Souljah, Last Child, Payung Teduh, Shaggy Dog, Uut Selly dan masih banyak lagi.', 'Seza Dio', 'PRPP', '0', 'sefirman12@gmail.com', '2017-08-12 15:18:31', 1, 'file_1502550764.jpg', 'Lain-Lain', 'Festival', '2017-08-11', '11:00', '2017-09-10', '23:30', 0, 0, 0, 0, 2, '20000', 'Semarang', 'Jalan Puri Anjasmoro', 0, 0),
-(40, 9, 'Lomba Panjat Pinang', 'Panjat pinang dilakukan berkelompok dengan satu kelompok berjumlah minimal 5 orang dan maksimal 10 orang.', 'Seza Dio Firmansyah', 'UNDIP', '085640357417', 'sefirman12@gmail.com', '2017-08-18 01:26:02', 1, 'file_1502638685.jpg', 'Lain-Lain', 'Festival', '2017-08-26', '07:00', '2017-08-27', '12:00', 1, 1, 0, 0, 2, '0', 'Semarang', 'Jln Kumudasmoro dalam 11 ', 35, 0),
-(41, 9, 'Lomba Panjat Pinang Episode 2', 'asdfg,.', 'Seza Dio Firmansyah', 'HMIF', '085640357417', 'sezadio@ymail.com', '2017-08-14 09:24:30', 1, 'file_1502699106.jpg', 'Musik', 'Conference', '2017-08-19', '01:00', '2017-08-20', '03:45', 1, 1, 0, 0, 2, '0', '407', 'Jln Kumudasmoro dalam 11 ', 1, 0),
-(42, 9, 'Lomba Panjat Pinang Episode 3', 'gjghjgjhgkhgjhgjgj', 'Seza Dio Firmansyah', 'HMIF', '085640357417', 'sefirman12@gmail.com', '2017-08-20 09:05:55', 1, 'file_1502702779.jpg', 'Sprirituality', 'Class', '2017-08-19', '03:00', '2017-08-20', '04:30', 1, 1, 0, 0, 2, '0', '33.74.00.0000', 'Jln Kumudasmoro dalam 11 ', 4, 0);
+(44, 0, 'Festival Kuliner Lezatnesia 2017', 'Festival ini buka dari jam 10.00-21.00 WIB. Jika anda ingin mengunjungi festival ini, datanglah pada jam 14.00-16.00, dimana jam makan siang sudah lewat dan biasanya pengunjung tidak terlalu ramai.\r\n\r\nUntuk masuk ke festival ini tidak dipungut biaya, hanya membayar parkir motor sekitar Rp. 2000 dan parkir mobil Rp. 4000 saja.\r\n																						', 'Anissa M.', 'Komunitas Kuliner Semarang', '0817242376', '-', '2017-09-11 05:08:45', 1, 'file_1503324855.jpg', 'Bisnis', 'Festival', '2017-09-05', '10:00', '2017-09-10', '21:00', 1, 0, 0, 0, 2, '0', '33.74.00.0000', 'Sri Ratu, Jalan Pemuda', 181, 30),
+(45, 0, 'Sayembara Citizen Journalism', 'Sayembara Citizen Journalism :</p>\r\nSyarat :\r\n1. Peserta merupakan pelajar/mahasiswa beranggotakan 2 sampai 5 orang dan berasal dari universitas instansi yang sama,\r\n2. Jenis video yang dilombakan adalah berita feature dengan tema budaya, travel, kesehatan, kuliner, olahraga dan humanism,\r\n3. Durasi video 1.30 s/d 3.00 menit</li>\r\n4. Video diupload ke akun Youtube peserta dengan kualitas minimal HD\r\n											', 'Khasanah', 'LPM Publica Health', '085811565895', 'publicahealth@gmail.com', '2017-09-22 13:17:49', 1, 'file_1503377684.jpg', 'Lain-Lain', 'Lain-Lain', '2017-08-03', '00:00', '2017-10-03', '23:45', 0, 0, 0, 0, 2, '50.000', '33.74.00.0000', 'Jalan Prof H. Soedarto, S.H Tembalang', 117, 20),
+(46, 0, 'JOB FAIR AKBAR \"Pesta Rakyat Jawa Tengah 2017\"', 'Job Fair ini buka pada pukul 08.00-15.00 WIB. Job Fair ini bersifat Gratis dan formulir tanda masuk dapat diambil di Dinas Perindustrian Koperasi & UKM Tenaga Kerja dan Transmigrasi Kab. Jepara.\r\n											', 'Anissa M', 'Dinas Tenaga Kerja dan Transmigrasi Provinsi Jawa Tengah', '-', 'disnakertrans@jatengprov.go.id', '2017-08-30 04:16:02', 1, 'file_1503387277.jpeg', 'Lain-Lain', 'Expo', '2017-08-25', '08:00', '2017-08-26', '15:00', 1, 0, 0, 0, 2, '0', '33 20.00.0000', 'Jl. Kartini no.1, Jepara Jawa Tengah', 102, 66),
+(47, 0, 'Talkshow dan Seminar International Voluntary Service', 'HTM Mahasiswa FIB Undip : 35K\r\n\r\nHTM Umum : 40K\r\n																						', 'Hendrike P', 'BEM FIB UNDIP', '085799100283', '-', '2017-09-11 05:09:02', 1, 'file_1503388723.jpg', 'Travel dan Outdoor', 'Seminar', '2017-09-10', '10:00', '2017-09-10', '16:00', 0, 1, 0, 0, 2, '40K', '33.74.00.0000', 'Jalan Prof H. Soedarto, S.H Tembalang', 188, 20),
+(48, 0, 'The Paradise of Karimunjawa Pesona Indonesia ', 'Harga Tiket Masuk HTM Jateng Fair 2017 sebesar Rp 15.000,- untuk hari Senin - Jumat dari pukul 16.00 - 22.00 WIB. Dan Rp 20.000,- untuk hari Sabtu & Minggu Jam 11.00-23.30 WIB.\r\n											', 'Anissa M', 'Pemerintah Kota Semarang', '-', '-', '2017-08-30 04:18:12', 1, 'file_1503389905.jpg', 'Lain-Lain', 'Festival', '2017-08-11', '16:00', '2017-09-10', '22:00', 0, 0, 0, 0, 2, '15.000-20.', '33.74.00.0000', 'PRPP SEMARANG Jl. Anjasmoro – Tawang Sari', 79, 55),
+(51, 40, 'WORKSHOP ENTREPRENEURSHIP \"CREATE YOUR TEAMWORK TO BE YOUTHPRENEUR\"', 'Himpunan Mahasiswa Sastra Jepang Universitas Diponegoro mempersembahkan WORKSHOP ENTREPRENEURSHIP & CREATE YOUR TEAMWORK TO BE YOUTHPRENEUR. Untuk kalian yang tertarik dengan bisnis, harus banget ikutan karena disini kita akan mendapatkan ilmu bagaimana memulai bisnis dan membangun teamwork yang bagus dengan partner bisnis kita! Disini juga akan ada praktek melukis di totebag loh! Yang hasilnya bisa kalian bawa pulang. \r\nPembicara: 1. Adnan Arsani Hirmawan - (Owner Satenan) \r\n2. Dina Farrasanti - (Owner sibenangjahit) \r\nWorkshop akan dilaksanakan pada:\r\nHari/tanggal: Sabtu, 26 Agustus 2017 \r\nTempat: Ruang A.3.9, Gedung A, Fakultas Ilmu Budaya, Universitas Diponegoro \r\nWaktu: pukul 08.00 - selesai \r\nHTM: 25.000 Fasilitas: 1. Ilmu 2. Snack 3. Doorprize 4. DIY (Do It Yourself) totebag 5. Sertifikat Tunggu apalagi? ayo daftarkan diri mu segera karena kuota terbatas. Cukup dengan mengirim pesan dengan format pendaftaran: Nama Lengkap_Univ_Fakultas_Jurusan/Umum Kirim ke: Reni Id line: _reni_ / 085244016958 Pembayaran bisa melalui transfer ke no rek. 359301026227539 (BRI) a.n Indah Sely atau bisa langsung ke Sekretariat HIMAWARI (lantai 3 gedung A FIB) pada jam kuliah. Info lebih lanjut bisa hubungi: Blair (id line: 29ist / 081213243986)</p>\r\n											', 'Alifia Nur Halizah', 'HMJ S1 SASTRA JEPANG UNDIP', '082210714006', 'konnichiwavi@gmail.com', '2017-09-08 04:45:19', 1, 'file_1503577115.jpg', 'Bisnis', 'Seminar', '2017-08-26', '08:00', '2017-08-26', '16:00', 0, 0, 0, 0, 2, '0', '33.74.00.0000', 'Ruang A.3.9, Gedung A, FIB Undip Tembalang', 164, 89),
+(52, 41, 'SEMINAR NASIONAL', 'COMING SOON THIS OCTOBER PROGRESS 2017 proudly present SEMINAR NASIONAL & Media Sosial Politik Seminar and Talkshow with the famous social media political influencer. Prepare yourself to be the part of this event! Proudly presenting to you our speakers: TSAMARA AMANY Known as Co-Founder Perempuan Politik.\r\n\r\n-More Information- \r\nLINE : HMJ Ilmu Pemerintahan (@bjq1363g) \r\nInstagram : @progress_ip17 PROGRESS 2017 HMJIP FISIP UNDIP \r\n#PemerintahanBerkarakter #Progress2017 #UnityInDiversity\r\n				', 'HMJIP FISIP UNDIP', 'Himpunan Mahasiswa Ilmu Pemerintahan Universitas Diponegoro', '085735381582', 'hmjipundiponegoro@gmail.com', '2017-09-24 09:06:52', 1, 'file_1503582038.jpg', 'Science dan Teknologi', 'Seminar', '2017-10-18', '07:30', '2017-10-18', '15:30', 0, 0, 1, 500, 2, '35000', '33.74.00.0000', 'Sekretariat HMJIP Gedung D lt.1 FISIP UNDIP', 89, 7),
+(56, 0, 'SamFest 1.0', 'Festival ini dibuka dari jam 08.00-21.00 WIB. Untuk tiket masuk sebesar Rp.15.000,- untuk hari pertama dan kedua, dan Rp. 25.000,- untuk hari ketiga. Untuk tiket terusan selama 3 hari seharga Rp. 55.000,- (Bonus Voucher Belanja sebesar Rp. 5.000,-) bisa Pre Order dengan menghubungi contact person Samfest. Tiket Samfest sudah termasuk tiket masuk ke Sampookong.\r\n																						', 'Anissa M', 'SAL9 PRODUCTION', 'Id Line : @ADP7867s', 'sefirman12@gmail.com', '2017-09-07 05:44:56', 1, 'file_1503852228.jpg', 'Lain-Lain', 'Festival', '2017-09-01', '08:00', '2017-09-03', '21:00', 0, 0, 0, 0, 2, '0', '33.74.00.0000', 'Sampookong, Jalan Simongan No.129, Bongsari, Semarang Barat, Bongsari, Semarang Bar., Kota Semarang,', 214, 105),
+(57, 34, 'Kicau Burung (Diponegoro Cup)', '[DIPONEGORO CUP]\r\n\r\nBadan Eksekutif Mahasiswa Fakultas Peternakan dan Pertanian Universitas Diponegoro Semarang mempersembahkan \"DIPONEGORO CUP\" yang merupakan serangkaian agenda Festifal of Agriculture 2017. \r\n\r\nEvent ini mengundang seluruh kicau mania di area Jawa Tengah dan sekitarnya untuk berpartisipasi, penilaian dalam event akan dilakukan oleh Juri Independent yang berasal dari juri lintas organizer. DIPONEGORO CUP akan dilaksanakan pada :\r\n\r\nHari, tanggal : Minggu, 17 September 2017\r\nTempat : Halaman depan Laboratorium Terpadu Universitas Diponegoro Semarang (Kampus Tembalang)\r\nWaktu : 10.00 WIB - selesai\r\n\r\nTerdapat 5 kelas untuk setiap kalangan kicau mania dengan fasilitas 72 gantangan disetiap sesinya.\r\n1. Diploma : Ciblek, Kolibri Raja, Lovebird Balibu, Pleci, Anis Kembang, Murai Borneo dan Trucuk\r\n2. Sarjana : Lovebird A, Lovebird Balibu, Kenari Kalitan, Kacer dan Cendet\r\n3. Magister : Lovebird A, Lovebird B, Kenari standard bebas, Murai Borneo, Kacer dan Cendet\r\n4. Doktor : Lovebird A, Lovebird B, Murai Batu dan Cucak ijo\r\n5. Diponegoro : Murai Batu, Lovebird dan Cucak ijo\r\n\r\nJadi tunggu apalagi, segera persiapkan jagoan anda dan segera daftarkan melalui :\r\nImam JK (085100155021)\r\n\r\ninformasi :\r\nArga (081527819661)\r\nRafi (085747978074)\r\nLambang BnR (081805839006)\r\n\r\nSALAM KICAU MANIA !\r\n\r\nMore info:\r\nIG: @festivalagriculture\r\nLine: @ics7699z\r\n\r\nAksi Penuh Makna dari BEM FPP Undip untuk FPP Undip yang Lebih Asik											', 'Ghazi Agam', 'Fakultas Peternakan dan Pertanian', '081527819661', 'bemfpp@gmail.com', '2017-09-18 05:26:52', 1, 'file_1503905680.jpg', 'Hobi', 'Game', '2017-09-17', '07:00', '2017-09-17', '17:00', 0, 0, 1, 0, 2, '', '33.74.00.0000', 'Fakultas Peternakan dan Pertanian, Universitas Diponegoro, Tembalang', 143, 30),
+(58, 34, 'Food Bazaar Festival of Agriculture', 'Festival Of Agriculture membuka kesempatan kepada kalian untuk membuka stand dalam acara ini. Daftarkan segera dan pastikan stand kamu ikut dalam acara ini! untuk info lebih lanjut hubungi Contact Person,\r\n\r\nYola: 082370849709/id Line: yolandaelfiraa\r\n\r\nTika: 082134371627/id Line: Kartikay_\r\n\r\nMore info: IG: @festivalagriculture\r\n\r\n<p>Line: @ics7699z&nbsp;</p>\r\n											', 'Ghazi Agam', 'Fakultas Peternakan dan Pertanian, Undip', '082134371627', 'bemfpp@gmail.com', '2017-09-08 04:45:35', 1, 'file_1503907418.jpg', 'Bisnis', 'Festival', '2017-09-30', '07:00', '2017-09-30', '17:00', 0, 0, 1, 0, 1, '', '33.74.00.0000', 'Fakultas Peternakan dan Pertanian, Universitas Diponegoro, Tembalang', 241, 107),
+(59, 44, 'CERCo 2017 : POSTER COMPETITION', '(CERCo) 2017 is a poster competition in CERCo 2017. This poster competition is for active undergraduate or diploma students in general, and senior high school students (or equal) in Indonesia.\r\n\r\nWe invite you to join this great event. So what are you waiting for? Prepare and register your best masterpiece soon! Don\'t miss this good opportunity and grab the prizes!\r\n											', 'Creation', 'HMTK UNDIP', '085727535762', 'creationundip@che.undip.ac.id', '2017-09-13 05:18:04', 1, 'file_1503910156.png', 'Science dan Teknologi', 'Lain-Lain', '2017-08-15', '00:00', '2017-09-20', '00:00', 0, 1, 0, 0, 2, '50.000', '33.22.00.0000', 'Himpunan Mahasiswa Teknik Kimia (HMTK) Fakultas Teknik, Universitas Diponegoro Jalan Prof. H. Soedar', 53, 5),
+(60, 0, 'Batik in Campus', 'Acara Batik in Campus merupakan serangkaian acara :\n\n8-17 September : Pelatihan Batik\n\n9 September : Beauty Class\n\n23 September : Seminar Batik dan Pemilihan Putri Batik\n\nTempat Seminar : Balaikota Semarang\n\nHTM : Rp. 0 tetapi peserta seminar membeli souvernir seharga 25 ribu.\n																						', 'Khasanah', 'Himpunan Mahasiswa Teknik Industri', '087700688044', 'batikincampus2016@gmail.com', '2017-09-02 12:46:48', 1, 'file_1503917656.jpg', 'Seni', 'Seminar', '2017-09-23', '08:00', '2017-09-23', '18:00', 1, 0, 0, 0, 2, '0', '33.74.00.0000', 'Jalan Prof H. Soedarto, S.H Tembalang', 63, 14),
+(62, 43, ' 2 (by admin, gk usah diacc, jgn dihpus)', 'coba																	', '', 'undip', '085290147300', 'undip@gmail.com', '2017-09-06 13:03:12', 2, 'file_1504073087.png', 'Science dan Teknologi', 'Seminar', '2017-08-30', '01:15', '2017-08-31', '18:15', 0, 1, 0, 0, 2, '0', '15.05.00.0000', 'jambi', 40, 0),
+(63, 49, 'SEMINAR NASIONAL ENFUTION', 'CP:\r\nline dajrinatiaa/wikkanindya', 'Dalilatiyani Ajrinatia', 'MSA FEB UNDIP', '085647539254', 'msafebundip@gmail.com', '2017-09-07 02:38:22', 1, 'file_1504255556.jpg', 'Bisnis', 'Seminar', '2017-09-10', '08:00', '2017-09-10', '15:30', 0, 0, 0, 0, 2, '0', '33.74.00.0000', 'Jl. Prof. Soedarto, S.H.', 53, 4),
+(64, 43, 'coba lagi, jgn dihpus', 'coba', 'Abdul Azies Kurniawan', 'coba', '085290147300', 'coba@gmail.com', '2017-09-04 03:14:35', 2, 'file_1504494875.jpg', 'Bisnis', 'Attraction', '2017-01-15', '00:15', '2017-01-18', '00:15', 0, 0, 0, 0, 2, '0', '71.01.00.0000', 'coba', 0, 0),
+(66, 9, 'Lomba ANFORCOM 2017 (Jangan dihapus, ini buat dicoba)', 'yooooh', 'Seza Dio', 'UNDIP', '085640357417', 'sefirman12@gmail.com', '2017-09-04 03:27:30', 2, 'file_1504495650.jpg', 'Science dan Teknologi', 'Festival', '0000-00-00', '00:45', '0000-00-00', '22:15', 1, 0, 0, 0, 2, '0', '91.18.00.0000', 'Jln Kumudasmoro dalam 11 ', 0, 0),
+(68, 18, 'Career Preparation: Career Success in Digital Era', 'Career Preparation: Career Success in Digital Era dengan pembicara bapak Joko Raharjo (EVP Telkom Regional IV Jateng DIY), beserta acara launching mobile Application Undip Career Center!\r\n\r\n', 'Khaerul Anam', 'Undip Career Center', '085710048624', 'khaerulanam21@gmail.com', '2017-09-08 04:42:46', 1, 'file_1504583422.jpg', 'Science dan Teknologi', 'Seminar', '2017-09-07', '07:30', '2017-09-07', '13:00', 1, 0, 0, 0, 2, '0', '33.74.00.0000', 'Hall ICT Centre Lantai 5, Universitas Diponegoro', 30, 5),
+(69, 0, 'DEFOS', 'DEFOS (Keep Shining With Local Brand)\r\n\r\nPembicara :\r\nGazan Azka (Owner Zanana Chips)\r\nTempat Seminar : Auditorium FPIK Undip\r\nHarga tiket : Rp. 50.000/2 orang\r\n			 Rp. 45.000/3 orang\r\n\r\nFasilitas : Seminar Kit, Snack, Networking, Sertifikat																			', 'Khasanah', 'R&B', '087798864941', 'xx@xx.com', '2017-09-22 07:33:12', 1, 'file_1504594480.jpg', 'Bisnis', 'Seminar', '2017-10-28', '08:00', '2017-10-28', '12:00', 0, 0, 0, 0, 2, '0', '33.74.00.0000', 'Jalan Prof H. Soedarto, S.H Tembalang', 95, 5),
+(72, 52, 'TRAINING SOFTWARE STATISTIK', 'Statistics Center (SC) UNDIP Proudly Present\r\n         TRAINING SOFTWARE STATISTIKA\r\n\r\nWaktu : SABTU, 23 September 2017\r\nTempat : Laboratorium Statistika Gedung F Lantai 3 FSM UNDIP\r\n\r\nPILIHAN KELAS :\r\n• KELAS REGRESI DATA PANEL dengan EVIEWS\r\n08.00 - 12.00 WIB\r\n• KELAS STRUCTURAL EQUATION MODELING (SEM) dengan AMOS\r\n13.00 - 16.00 WIB\r\n\r\nFASILITAS:\r\n• Modul Materi\r\n• Sertifikat\r\n• Seminar Kit\r\n• Souvenir\r\n• Snack\r\n\r\nHTM : 40K per Kelas\r\nSpecial Price 70K untuk 2 kelas\r\n---------------------------------------------------------------------------------\r\nFORMAT PENDAFTARAN:\r\nNama_Instansi/Univ_No.HP_Pilihan Kelas \r\nkirim ke 0813-9179-3412\r\nContoh : Tsania Fauziah_UNDIP_085741816542_REGRESI\r\n\r\nSISTEM PEMBAYARAN:\r\n1. online : Transfer ke rek.BRI (0325-01-0595-09502) a.n Silvia Nur Rinjani\r\n2. offline : Langsung ke sekretariat HIMASTA Gedung F Lantai 3 FSM UNDIP.\r\n\r\nInformasi lebih lanjut:\r\n082321377279 (Rinjani)\r\n081391793412 (Alika)\r\n\r\nCLOSE REGISTRATION : 6.PM (RABU, 20 SEPTEMBER 2017', 'Devi Purnamasari', 'STATISTICS CENTER HIMASTA UNDIP', '081391793412', 'cs@scundip.org', '2017-09-11 05:10:05', 1, 'file_1504796601.jpg', 'Science dan Teknologi', 'Class', '2017-09-23', '08:00', '2017-09-23', '16:00', 0, 1, 0, 0, 2, '0', '33.74.00.0000', 'Laboratorium Statistika Gedung F Lantai 3 FSM UNDIP', 66, 23),
+(73, 46, 'Book Insight #1', 'Hai sahabat literasi! \r\nSebagai mahasiswa, udah tau belum seberapa jauh peran dan potensimu? Mau jadi mahasiswa yang aktif dan berprestasi? Ikut banyak organisasi tapi bisa tetap jaga IPK? \r\nSemua bisa dicapai, dengan strategi yang tepat dan belajar pada ahlinya. Kuy, belajar bareng!\r\n\r\nKini #BukuTuntas hadir dengan event yang seru loh\r\n\r\nBOOK INSIGHT #1 bersama M. Nur Sholeh, S.T, M.T (Penulis buku \"Pena Cendekia\", \"Majelis Cinta\", Dosen Sekolah Vokasi Undip)\r\nOn:\r\n????Jumat, 15 September 2017\r\n????Gedung E FKM Undip\r\n????15.30 - selesai\r\n\r\nApa aja sih yang bakal  didapetin?\r\n- E-certificate\r\n- Ilmu bermanfaat\r\n- Belajar dari ahlinya\r\n- Teman dan sahabat baru\r\ndan masih banyak lagi!\r\n\r\nKuy burusan daftar! Karena kuota terbatas. Free HTM bagi 20 pendaftar pertama! *syarat dan ketentuan berlaku \r\nMore Info \r\nInstagram: @bukutuntas_\r\nOfficial Line Account : @xyj9128i\r\n\r\n#BukuTuntas\r\nRead A Book, Invest The Future!', 'Wildan B.', 'Buku Tunas x BEM FKM Undip', '085691759273', 'bukutuntas1@gmail.com', '2017-09-18 05:27:42', 1, 'file_1505098957.jpg', 'Keluarga dan Pendidikan', 'Seminar', '2017-09-15', '16:00', '2017-09-15', '18:00', 0, 0, 0, 0, 2, '0', '33.74.00.0000', 'Gedung E FKM Undip; Jl. Prof. Soedarto, SH. Undip, Tembalang, Semarang 50275', 230, 85),
+(74, 0, 'ACCENT (Acoustic and Traditional Dance Competition)', 'Persyaratan :\r\n1. Peserta adalah pelajar, mahasiswa dan umum berumur 15-24 tahun\r\n2. Membayar HTM melalui rekening mandiri 9000035827063 a.n Jesica dan \r\n     menyerahkan bukti transfer		\r\n3. Ketentuan dan formulir pendaftaran bisa didownload di bit.ly/FPaccent2017\r\n\r\nTimeline :\r\nPendaftaran dibuka mulai 1 Agustus 2017 sampai dengan 24 September 2017\r\nTechnical Meeting pada 4 Oktober 2017\r\nKompetisis pada tanggal 4-5 November 2017								\r\n											', 'Khasanah', 'Himasta', '081225755264', 'accentundip@gmail.com', '2017-09-11 15:25:24', 1, 'file_1505114117.jpg', 'Seni', 'Lain-Lain', '2017-08-01', '07:00', '2017-11-05', '19:00', 0, 0, 0, 0, 2, '0', '33.74.00.0000', 'Jalan Prof H. Soedarto, S.H Tembalang', 39, 2),
+(75, 54, 'Toefl Test and Training', 'Pendaftaran mulai tanggal 8 -16 september 2017\r\nUntuk pemdaftaran bisa dengan mengisi bit.ly/ToeflEclair\r\n\r\nMore info\r\nFika 087764612119\r\nAna 082161201907', 'HM Sipil', 'Himpunan Mahasiswa Sipil ', '087764612119', 'rifqaaulia1999@gmail.com', '2017-09-26 04:54:31', 1, 'file_1505232250.jpg', 'Lain-Lain', 'Class', '2017-10-02', '08:00', '2017-10-02', '13:00', 0, 0, 0, 0, 1, '0', '33.74.00.0000', 'Aula departemen s1 teknik sipil universitas diponegoro', 146, 41),
+(76, 0, 'Art Sciencetival', 'Tempat : Halaman Depan Dekanat FSM UNDIP\r\nAcara :\r\n- Dance, \r\n- Voice of Sciences Choir		\r\n- FSM Got Talent\r\n- Rebana \r\n- Doodle Art\r\n- Vektorina Semarang\r\n- Semarang Coret																					', 'Khasanah', 'FSM', '081901431540', 'cccc@vvv.com', '2017-09-17 14:36:36', 1, 'file_1505648016.jpg', 'Seni', 'Festival', '2017-09-30', '16:00', '2017-09-30', '19:00', 0, 0, 0, 0, 2, '0', '33.74.00.0000', 'Jalan Prof H. Soedarto, S.H Tembalang', 15, 1),
+(77, 0, 'USM FIESTA 2017', 'Menghadirkan bintang tamy NOAH																							', 'Khasanah', 'USM', '085712005310', 'xxx@xx.com', '2017-09-17 14:47:42', 1, 'file_1505653147.jpg', 'Seni', 'Performance', '2017-11-11', '16:00', '2017-11-11', '21:00', 0, 0, 0, 0, 2, '0', '33.74.00.0000', 'Jalan Soekarno-Hatta Tlogosari Kulon', 24, 1),
+(79, 0, 'Festival Kota Lama Semarang 2017', 'Festival Kota Lama Semarang 2017, gratis! more info silahkan hubungi Contact Person', 'Anissa M', 'Oen Semarang Foundation', ' 0811-271-124', '-', '2017-09-18 06:54:28', 1, 'file_1505712077.jpg', 'Seni', 'Festival', '2017-09-23', '00:00', '2017-09-24', '00:00', 1, 0, 0, 0, 2, '0', '33.74.00.0000', 'Jl. Tawang, Tj. Mas, Semarang Utara, Kota Semarang, Jawa Tengah 50174', 37, 9),
+(80, 55, 'GROVE \"Gerakan Tanam Mangrove\"', 'Divisi Lingkungan Alam UKM Peduli Sosial proudly present:\r\n\r\n\" GROVE : Gerakan Tanam Mangrove 2000 Bibit \"\r\n\r\nHai guys!\r\nBalik lagi nih sama LA SQUAD\r\nKali ini kami bakal ngadain acara tanam mangrove yang pastinya bakal seru banget loh! Yuk ikutan\r\n\r\nGROVE 2017 akan diselenggarakan pada:\r\n Sabtu, 30 September 2017\r\n Pukul 06.00 a.m. di GSG UNDIP\r\nMangkang, Mangunharjo, Semarang - Jawa Tengah\r\n Htm Rp. 35.000,-  atau \r\nBisa transfer ke No. Rekening  BRI 5950-01-024505-53-5 (a/n Hanny mentari putri) \r\nPembayaran paling lambat Selasa, 26 September 2017\r\n\r\n\r\nYuk daftar!\r\nFormat Pendaftaran: Nama_Asal_No. HP\r\nFasilitas yang didapat:\r\n- Makan\r\n- Transportasi PP\r\n- Sertifikat\r\n- Bibit\r\n- Pengalaman dan Ilmu\r\n- Marchandise yang menarik\r\n\r\n#GROVE2017\r\n#FromUsToNature\r\n#UKMPeduliSosialUNDIP\r\n\r\nFor more information:\r\n(line) : yusufsubiakto10\r\n(line) : ilhamrama_\r\n(telpon): 082136694274 (yusuf)\r\n(telpon): 089636114849 (ilham)\r\n\r\nUKM Peduli Sosial Universitas Diponegoro.\r\nSemangat Berbagi, Hadirkan kontribusi, Salam sosial!\r\n\r\nOfficial LINE : @vpi3889n\r\nOfficial Web : http://pesosundip.wix.com/pesos\r\nTwitter : @PESOS_UNDIP\r\nFB : Peduli Sosial UNDIP\r\nIG : pedulisosialundip\r\nYoutube Channel : Peduli Sosial TV\r\nEmail : undippedulisosial@gmail.com', 'Yulli Diah', 'UKM Peduli Sosial Universitas Diponegoro', '082136694274', 'lingkunganalampesosundip@yahoo.com', '2017-09-25 04:49:36', 1, 'file_1505724447.jpg', 'Travel dan Outdoor', 'Lain-Lain', '2017-09-30', '06:00', '2017-09-30', '13:00', 0, 1, 0, 0, 1, '0', '33.74.00.0000', 'Mangunharjo, mangkang', 228, 206),
+(81, 0, 'Economic Voice', 'Mini konser bertajuk \"Negeri Dongeng\" dimana Economic Voice akan menyanyikan lagu-lagu populer dari soundtrack film ternama ditambah unsur-unsur drama musical.\r\n\r\nDitambah lagi akan ada FREE SNACK untuk 20 penonton bertiket yang datang pertama.', 'Khasanah', 'Economic Voice', '089532035741', '-', '2017-09-22 07:15:54', 1, 'file_1506056063.jpg', 'Seni', 'Performance', '2017-09-28', '14:30', '2017-09-29', '19:00', 0, 0, 0, 0, 2, '0', '33.22.00.0000', 'Jalan Prof H. Soedarto, S.H Tembalang', 22, 1),
+(83, 0, 'SMART RUN DIES NATALIS UNDIP 60th', 'Presale Hanya untuk 1000 pendaftar pertama !!! Yuk segera daftarkan diri kamu di link berikut ini www.undiprun.com dan jadi bagian sejarah dari Marathon pertama yang diadakan oleh UNDIP !! Total hadiah 60 juta dan masih banyak hadiah lain yang menantimu!\r\n\r\nFor more information :\r\nLine : beelara / 081287675900\r\nLine : yusrilachda / 081319232814\r\n\r\n#diesnatundip\r\n#undiprun\r\n#smartrun\r\n#runforhealth\r\n#kmaundip\r\n\r\nSalam sukses karir!', 'Anissa M', 'Universitas Diponegoro', '081287675900/081319232814', '-', '2017-09-24 18:40:43', 1, 'file_1506321643.png', 'Lain-Lain', 'Lain-Lain', '2017-11-12', '05:30', '2017-11-12', '13:00', 0, 0, 0, 0, 2, '0', '33.74.00.0000', 'Widya Puraya Rektorat Undip, Tembalang, Semarang', 26, 0),
+(84, 0, 'STERIL 2017', 'Himpunan Mahasiswa Sipil Universitas Diponegoro proudly presents\r\n\r\nSTERIL 2017: \"Luxury of Java\"\r\n\r\nMeet our Guest Stars:\r\n1. Sheila On 7\r\n2. Danilla\r\n3. Figura Renata\r\n\r\nAnd our MC:\r\nObin Robin & Cino Fajrin\r\n\r\nAnd special performances by:\r\nRoro Jonggrang Musical | SPL 48 | Modern Dance | Civil Engineering Choir | Percussion | Chemetrad | Purple Night | Civillian17 | Civilmob | Conversuction | Aristocrate | The Bruders | Beauty and the beats \r\nSeptember 30th, 2017 at Stadion Diponegoro\r\n\r\nPresale 1: SOLD OUT\r\nPresale 2: SOLD OUT \r\nPresale 3: SOLD OUT\r\nOn The Spot: 45k\r\n\r\nContact person:\r\nSola (082210204262)\r\nAqib (082243343707)\r\n\r\nDon\'t forget to follow our social media:\r\nOfficial Line: line://ti/p/@huq2025s\r\nTwitter: @steril2017\r\nInstagram: @steril2017\r\nYoutube: STERIL MEDIA\r\nSteril Market: line://ti/p/@hno2521e', 'Anissa M', 'Teknik Sipil UNDIP', '082243343707/082210204262', '-', '2017-09-26 04:55:07', 1, 'file_1506325053.png', 'Musik', 'Performance', '2017-09-30', '15:30', '2017-09-30', '23:45', 0, 0, 0, 0, 2, '0', '33.74.00.0000', 'Stadion Diponegoro', 11, 2),
+(85, 0, 'UNS Solo Job Fair XVI', '*Perusahaan peserta:\r\n\r\nPT. Adhi Karya (Persero), Tbk\r\nPT. Hutama Karya (Persero)\r\nPT. Jaya Konstruksi MP, Tbk\r\nPT. Bangun Indopralon Sukses\r\nPT Bank CIMB Niaga Tbk\r\nPT. Paragon Technology and Innovation\r\nPT. Kalbe Farma, Tbk\r\nPT. Mitra Pelajar Indonesia\r\nPT. Privatku Globalindo\r\nPT. IFARS Pharmaeutical\r\nPT. BFI Finance Indonesia Tbk\r\nPT. BTPN Syariah\r\nPT. Bank Bukopin, Tbk\r\nPT. Bank Danamon Indonesia,Tbk,\r\nPT. Hardo Soloplast\r\nPT. Finansia Multi Finance (Kredit Plus)\r\nPT Wahana Ottomitra Multiartha Tbk\r\nPT. PAN Brothers TBK & Group\r\nPT. Sinotif Indonesia\r\nPT. First State Solo\r\nILUFA Distribusindo\r\nKSPPS BMT Tumang\r\nKSPPS BMT Atunnisa\r\n\r\nKetentuan Pengunjung :\r\n1. Peserta terbuka untuk UMUM ( UNS maupun dari Luar UNS).\r\n2. Jenjang Pendidikan Minimal Diploma\r\n3. Berpakaian rapi dan sopan, tidak diperkenankan memakai sendal dan Kaos.\r\n4. Tertib dan teratur.\r\n\r\nAlur Masuk :\r\n1. Peserta mendaftar onlie di website cdc.uns.ac.id\r\n2. Mencetak tiket yang sudah di kirim ke email\r\n3. Datang dengan membawa tiket\r\n4. Melamar perusahaan/ikut presentasi perusahaan\r\n5. Silahkan menunjukan salinan tiket anda apabila ingin masuk kembali\r\n\r\nInfo dan kontak :\r\nWebsite: cdc.uns.ac.id', 'Anissa M', 'Universitas Sebelas Maret', '-', '-', '2017-09-25 07:32:04', 1, 'file_1506324153.jpg', 'Lain-Lain', 'Expo', '2017-10-11', '08:00', '2017-10-12', '16:00', 1, 0, 0, 0, 2, '0', '33.72.00.0000', 'Auditorium UNS', 8, 1),
+(86, 60, 'BROADUCATION 3.0', 'Talkshow mengenai Broadcasting dengan tema \"How to be broadcaster have a character\". Dresscode peserta talkshow adalah \"Color Pop\". Di dalam acara tersebut terdapat Lomba siaran. Mekanisme pendaftaran, isi google form di https:/goo.gl/forms/iXsT4iOal054Mbte2 lalu kirim rekaman dan script ke alamat email sbsfmfppundip@gmail.com. Selanjutnya akan diseleksi oleh tim secara online dan akan dipilih 4 finalis yang akan di finalkan pada acara talkshow, tanggal 30 September 2017 di Gedung RSG Lantai 2 FPP UNDIP.  Penutupan pendaftaran dan pengiriman berkas paling lambat pada tanggal 28 September 2017 dan finalis akan diumumkan pada tanggal 29 September 2017.  Pembicara sekaligus jurinya adalah Mochamad Reza, S.Si dari pro 2 RRI Semarang. ', 'SBS FPP UNDIP', 'SBS RADIO Fakultas Peternakan dan Pertanian UNDIP', '085786227414', 'sbsfmfppundip@gmail.com', '2017-09-24 22:09:27', 2, 'file_1506334167.jpg', 'Lain-Lain', 'Seminar', '2017-09-30', '13:00', '2017-09-30', '16:00', 0, 1, 0, 0, 2, '0', '33.74.00.0000', 'Gedung RSG Lantai 2 Fakultas Peternakan dan Pertanian UNDIP', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -163,18 +166,20 @@ INSERT INTO `coming` (`id_coming`, `id_member`, `nama_coming`, `deskripsi_coming
 -- Table structure for table `faq`
 --
 
-CREATE TABLE IF NOT EXISTS `faq` (
-`id_faq` int(10) NOT NULL,
+CREATE TABLE `faq` (
+  `id_faq` int(10) NOT NULL,
   `pertanyaan` varchar(500) NOT NULL,
   `jawaban` varchar(500) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `faq`
 --
 
 INSERT INTO `faq` (`id_faq`, `pertanyaan`, `jawaban`) VALUES
-(1, 'Bagaimana cara menjadi member boloku.id ?', '<p>Gampang banget caranya lho gitu . . .</p>\r\n');
+(1, 'Bagaimana cara menjadi member boloku.id ?', '<p>caranya gampang klik sign in lalu klik bagian &quot;kamu bukan boloku?&quot; dan isi formulir pendaftaran secara lengkap lalu klik &quot;dadi bolomu&quot; otomatis&nbsp;kalian telah menjadi dari boloku.id</p>\r\n'),
+(2, 'Bagaimana cara mempublish event kita sendiri?', '<p>Sign in akun kalian lalu klik &quot;lihat profilmu&quot; dan klik lagi &quot;buat event baru&quot; setelahnya isi data event kalian selengkap mungkin dan yang terakhir klik &quot;submit event&quot;.</p>\r\n'),
+(3, 'Kenapa Event yang dibuat tidak langsung terpublish?', '<p>Setelah event dibuat oleh member, event tidak akan langsung terpublish secara otomatis, melainkan akan divalidasi terlebih dahulu. Validasi dilakukan untuk memastikan bahwa event yang di posting merupakan event yang jelas dan terpecaya.&nbsp;</p>\r\n');
 
 -- --------------------------------------------------------
 
@@ -182,25 +187,26 @@ INSERT INTO `faq` (`id_faq`, `pertanyaan`, `jawaban`) VALUES
 -- Table structure for table `header`
 --
 
-CREATE TABLE IF NOT EXISTS `header` (
-`id_header` int(4) NOT NULL,
+CREATE TABLE `header` (
+  `id_header` int(4) NOT NULL,
   `nama_header` varchar(50) NOT NULL,
   `jenis_header` int(1) NOT NULL,
   `id_event` int(4) NOT NULL,
   `path_gambar` varchar(50) NOT NULL,
   `status` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `header`
 --
 
 INSERT INTO `header` (`id_header`, `nama_header`, `jenis_header`, `id_event`, `path_gambar`, `status`) VALUES
-(1, 'Coba Header 5', 1, 17, 'file_1500454012.jpg', 1),
-(2, 'apa ya', 1, 24, 'file_1501476457.jpg', 1),
-(3, '1', 0, 0, 'file_1503219485.png', 1),
-(4, '2', 0, 0, 'file_1503219497.png', 1),
-(5, '3', 0, 0, 'file_1503219505.png', 1);
+(3, '1', 0, 0, 'file_1503219485.png', 2),
+(4, '2', 0, 0, 'file_1503219497.png', 2),
+(5, '3', 0, 0, 'file_1503219505.png', 2),
+(6, '4', 0, 0, 'file_1504066351.png', 1),
+(7, '5', 0, 0, 'file_1504066368.png', 1),
+(8, '6', 0, 0, 'file_1504066378.png', 1);
 
 -- --------------------------------------------------------
 
@@ -208,24 +214,23 @@ INSERT INTO `header` (`id_header`, `nama_header`, `jenis_header`, `id_event`, `p
 -- Table structure for table `hubungi_kami`
 --
 
-CREATE TABLE IF NOT EXISTS `hubungi_kami` (
-`id_pesan` int(11) NOT NULL,
+CREATE TABLE `hubungi_kami` (
+  `id_pesan` int(11) NOT NULL,
   `nama_lengkap` varchar(1000) NOT NULL,
   `email` varchar(30) NOT NULL,
   `subject` varchar(100) NOT NULL,
   `telepon` varchar(15) NOT NULL,
   `pesan` text NOT NULL,
   `tgl_pesan` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `hubungi_kami`
 --
 
 INSERT INTO `hubungi_kami` (`id_pesan`, `nama_lengkap`, `email`, `subject`, `telepon`, `pesan`, `tgl_pesan`) VALUES
-(3, 'Muhammad Nur H.', 'sefirman12@gmail.com', 'perkiraan anggaran', '089900778123', 'woiiiiii', '2017-08-18 07:15:27'),
-(4, 'Muhammad Nur H.', 'nurhardyanto@if.undip.ac.id', 'Mana Event nya . . .', '089900778123', 'Woi admin kampret, mana nih event nya. kok website nya kosongan begini sih . . .', '2017-08-18 07:15:27'),
-(5, 'Muhammad Nur H.', 'sezadio@ymail.com', 'cover modul pelatdas 2014', '089900778123', 'yoooh', '2017-08-18 07:15:27');
+(1, 'Devi', 'deviprnmsr@gmail.com', 'Training software Statistik', '087774404039', 'Selamat pagi ka saya Devi dari Statistics Center HIMASTA Universitas Diponegoro mau tanya ka, kalau mau share pamflet tentang pelatihan software bsa ka? procedurenya gmna ya ka? Makasih ka ', '2017-09-07 02:48:53'),
+(2, 'anonymouse', 'klonenganlagidanlagi@gmail.com', 'Redaksi deskripsi', '000000000', 'Min tolong redaksi di bagian deskripsi event diperhatikan, redaksinya kurang rapi. Semisal di event steril masih banyak karakter \"?\" (tanda tanya). Makasi min, semoga BOLOKU.ID MAKIS SUKSESSS !!!!', '2017-09-25 07:08:05');
 
 -- --------------------------------------------------------
 
@@ -233,15 +238,15 @@ INSERT INTO `hubungi_kami` (`id_pesan`, `nama_lengkap`, `email`, `subject`, `tel
 -- Table structure for table `inf_lokasi`
 --
 
-CREATE TABLE IF NOT EXISTS `inf_lokasi` (
-`lokasi_ID` int(11) NOT NULL,
+CREATE TABLE `inf_lokasi` (
+  `lokasi_ID` int(11) NOT NULL,
   `lokasi_kode` varchar(50) NOT NULL DEFAULT '',
   `lokasi_nama` varchar(100) NOT NULL DEFAULT '',
   `lokasi_propinsi` int(2) NOT NULL,
-  `lokasi_kabupatenkota` int(2) unsigned zerofill DEFAULT NULL,
-  `lokasi_kecamatan` int(2) unsigned zerofill NOT NULL,
-  `lokasi_kelurahan` int(4) unsigned zerofill NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=68427 DEFAULT CHARSET=utf8;
+  `lokasi_kabupatenkota` int(2) UNSIGNED ZEROFILL DEFAULT NULL,
+  `lokasi_kecamatan` int(2) UNSIGNED ZEROFILL NOT NULL,
+  `lokasi_kelurahan` int(4) UNSIGNED ZEROFILL NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `inf_lokasi`
@@ -2575,7 +2580,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (2323, '52.04.13.0000', 'LABANGKA', 52, 04, 13, 0000),
 (2324, '52.04.14.0000', 'ALAS BARAT', 52, 04, 14, 0000),
 (2325, '52.04.15.0000', 'LABUHAN BADAS', 52, 04, 15, 0000),
-(2326, '52.05.01.0000', 'HU'' U', 52, 05, 01, 0000),
+(2326, '52.05.01.0000', 'HU\' U', 52, 05, 01, 0000),
 (2327, '52.05.02.0000', 'DOMPU', 52, 05, 02, 0000),
 (2328, '52.05.03.0000', 'KEMPO', 52, 05, 03, 0000),
 (2329, '52.05.04.0000', 'KILO', 52, 05, 04, 0000),
@@ -2635,7 +2640,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (2383, '53.02.07.0000', 'AMANUBAN BARAT', 53, 02, 07, 0000),
 (2384, '53.02.08.0000', 'AMANATUN SELATAN', 53, 02, 08, 0000),
 (2385, '53.02.09.0000', 'AMANATUN UTARA', 53, 02, 09, 0000),
-(2386, '53.02.10.0000', 'K   I  ''E', 53, 02, 10, 0000),
+(2386, '53.02.10.0000', 'K   I  \'E', 53, 02, 10, 0000),
 (2387, '53.02.11.0000', 'KUANFATU', 53, 02, 11, 0000),
 (2388, '53.02.12.0000', 'FATUMNASI', 53, 02, 12, 0000),
 (2389, '53.02.13.0000', 'P O L L E N', 53, 02, 13, 0000),
@@ -3741,7 +3746,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (3488, '73.02.08.0000', 'KINDANG', 73, 02, 08, 0000),
 (3489, '73.02.09.0000', 'UJUNGLOE', 73, 02, 09, 0000),
 (3490, '73.02.10.0000', 'RILAUALE', 73, 02, 10, 0000),
-(3491, '73.03,05.0000', 'PA''JUKUKANG', 73, 03, 05, 0000),
+(3491, '73.03,05.0000', 'PA\'JUKUKANG', 73, 03, 05, 0000),
 (3492, '73.03.01.0000', 'BISSAPPU', 73, 03, 01, 0000),
 (3493, '73.03.02.0000', 'BANTAENG', 73, 03, 02, 0000),
 (3494, '73.03.03.0000', 'EREMERASA', 73, 03, 03, 0000),
@@ -3832,7 +3837,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (3579, '73.10.07.0000', 'LABAKKANG', 73, 10, 07, 0000),
 (3580, '73.10.08.0000', 'MARANG', 73, 10, 08, 0000),
 (3581, '73.10.09.0000', 'SEGERI ', 73, 10, 09, 0000),
-(3582, '73.10.10.0000', 'MINASA TE''NE', 73, 10, 10, 0000),
+(3582, '73.10.10.0000', 'MINASA TE\'NE', 73, 10, 10, 0000),
 (3583, '73.10.11.0000', 'MANDALLE', 73, 10, 11, 0000),
 (3584, '73.10.12.0000', 'TONDONG TALLASA', 73, 10, 12, 0000),
 (3585, '73.11.01.0000', 'TANETE RIAJA', 73, 11, 01, 0000),
@@ -3914,13 +3919,13 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (3660, '73.18.05.0000', 'MAKALE', 73, 18, 05, 0000),
 (3661, '73.18.06.0000', 'SESEAN', 73, 18, 06, 0000),
 (3662, '73.18.07.0000', 'TONDON NANGGALA', 73, 18, 07, 0000),
-(3663, '73.18.08.0000', 'BUNTAO''RANTEBUA', 73, 18, 08, 0000),
+(3663, '73.18.08.0000', 'BUNTAO\'RANTEBUA', 73, 18, 08, 0000),
 (3664, '73.18.09.0000', 'SIMBUANG', 73, 18, 09, 0000),
 (3665, '73.18.10.0000', 'RINDINGALLO', 73, 18, 10, 0000),
 (3666, '73.18.11.0000', 'RANTETAYO', 73, 18, 11, 0000),
 (3667, '73.18.12.0000', 'MENGKENDEK', 73, 18, 12, 0000),
 (3668, '73.18.13.0000', 'SANGGALLA', 73, 18, 13, 0000),
-(3669, '73.18.14.0000', 'SA''DAN BALUSU', 73, 18, 14, 0000),
+(3669, '73.18.14.0000', 'SA\'DAN BALUSU', 73, 18, 14, 0000),
 (3670, '73.18.15.0000', 'RANTEPAO', 73, 18, 15, 0000),
 (3671, '73.19.01.0000', 'TINAMBUNG', 73, 19, 01, 0000),
 (3672, '73.19.02.0000', 'CAMPALAGIAN', 73, 19, 02, 0000),
@@ -4563,7 +4568,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (4309, '12.14.05.0000', 'PULAU-PULAU BATU', 12, 14, 05, 0000),
 (4310, '12.14.06.0000', 'TELUK DALAM', 12, 14, 06, 0000),
 (4311, '12.14.07.0000', 'AMANDRAYA', 12, 14, 07, 0000),
-(4312, '12.14.08.0000', 'LALOWA''U', 12, 14, 08, 0000),
+(4312, '12.14.08.0000', 'LALOWA\'U', 12, 14, 08, 0000),
 (4313, '12.15.01.0000', 'SITELLU TALI URANG JEHE', 12, 15, 01, 0000),
 (4314, '12.15.02.0000', 'KERAJAAN', 12, 15, 02, 0000),
 (4315, '12.16.01.0000', 'PARLILITAN', 12, 16, 01, 0000),
@@ -6714,7 +6719,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (6457, '75.01.05.2009', 'LOBUTO', 75, 01, 05, 2009),
 (6458, '75.01.05.2010', 'BILUHU BARAT', 75, 01, 05, 2010),
 (6459, '75.01.05.2011', 'HUWONGO', 75, 01, 05, 2011),
-(6460, '75.01.05.2012', 'OLIMOO''O', 75, 01, 05, 2012),
+(6460, '75.01.05.2012', 'OLIMOO\'O', 75, 01, 05, 2012),
 (6461, '75.01.05.2013', 'LABUTO TIMUR', 75, 01, 05, 2013),
 (6462, '75.01.06.2001', 'MOLUO', 75, 01, 06, 2001),
 (6463, '75.01.06.2002', 'DAMBALO', 75, 01, 06, 2002),
@@ -8136,7 +8141,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (7878, '53.01.12.2002', 'OELBANU', 53, 01, 12, 2002),
 (7879, '53.01.12.1003', 'LELOGAMA', 53, 01, 12, 1003),
 (7880, '53.01.12.2004', 'FATUMETAN', 53, 01, 12, 2004),
-(7881, '53.01.12.2005', 'OH'' AEM', 53, 01, 12, 2005),
+(7881, '53.01.12.2005', 'OH\' AEM', 53, 01, 12, 2005),
 (7882, '53.01.12.2006', 'BINAFUN', 53, 01, 12, 2006),
 (7883, '53.01.12.2007', 'FATUMONAS', 53, 01, 12, 2007),
 (7884, '53.01.12.2008', 'LELOBOKO', 53, 01, 12, 2008),
@@ -8239,7 +8244,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (7981, '53.02.02.2014', 'SALBAIT', 53, 02, 02, 2014),
 (7982, '53.02.02.2015', 'OE UBAN', 53, 02, 02, 2015),
 (7983, '53.02.02.2016', 'NEKE MUNI FETO', 53, 02, 02, 2016),
-(7984, '53.02.03.2001', 'O''BESI', 53, 02, 03, 2001),
+(7984, '53.02.03.2001', 'O\'BESI', 53, 02, 03, 2001),
 (7985, '53.02.03.2002', 'EONBESI', 53, 02, 03, 2002),
 (7986, '53.02.03.2003', 'BOSEN', 53, 02, 03, 2003),
 (7987, '53.02.03.2004', 'SEBOT', 53, 02, 03, 2004),
@@ -8269,7 +8274,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (8011, '53.02.04.2015', 'NUNUKHNITI', 53, 02, 04, 2015),
 (8012, '53.02.05.2001', 'NOESIU', 53, 02, 05, 2001),
 (8013, '53.02.05.2002', 'PENE SELATAN', 53, 02, 05, 2002),
-(8014, '53.02.05.2003', 'SE''l', 53, 02, 05, 2003),
+(8014, '53.02.05.2003', 'SE\'l', 53, 02, 05, 2003),
 (8015, '53.02.05.2004', 'KOLBANO', 53, 02, 05, 2004),
 (8016, '53.02.05.2005', 'NUNUNAMAT', 53, 02, 05, 2005),
 (8017, '53.02.05.2006', 'OETUKE', 53, 02, 05, 2006),
@@ -8280,7 +8285,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (8022, '53.02.05.2011', 'PANA', 53, 02, 05, 2011),
 (8023, '53.02.05.2012', 'TAEBESA', 53, 02, 05, 2012),
 (8024, '53.02.05.2013', 'NAKFUNU', 53, 02, 05, 2013),
-(8025, '53.02.05.2014', 'OE''EKAM', 53, 02, 05, 2014),
+(8025, '53.02.05.2014', 'OE\'EKAM', 53, 02, 05, 2014),
 (8026, '53.02.05.2015', 'BAKl', 53, 02, 05, 2015),
 (8027, '53.02.05.2016', 'TUMU', 53, 02, 05, 2016),
 (8028, '53.02.05.2017', 'NOEBESA', 53, 02, 05, 2017),
@@ -8315,7 +8320,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (8057, '53.02.07.2002', 'TETAF', 53, 02, 07, 2002),
 (8058, '53.02.07.2003', 'NAUKAE', 53, 02, 07, 2003),
 (8059, '53.02.07.2004', 'LAKAT', 53, 02, 07, 2004),
-(8060, '53.02.07.2005', 'O''OF', 53, 02, 07, 2005),
+(8060, '53.02.07.2005', 'O\'OF', 53, 02, 07, 2005),
 (8061, '53.02.07.2006', 'ENO NEONTES', 53, 02, 07, 2006),
 (8062, '53.02.07.2007', 'TUBLOPO', 53, 02, 07, 2007),
 (8063, '53.02.07.2008', 'NULE', 53, 02, 07, 2008),
@@ -8326,10 +8331,10 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (8068, '53.02.07.2013', 'HAUMENI BAKI', 53, 02, 07, 2013),
 (8069, '53.02.07.2014', 'TUBMONAS', 53, 02, 07, 2014),
 (8070, '53.02.08.2001', 'OINIJASI', 53, 02, 08, 2001),
-(8071, '53.02.08.2002', 'NUNLE''U', 53, 02, 08, 2002),
+(8071, '53.02.08.2002', 'NUNLE\'U', 53, 02, 08, 2002),
 (8072, '53.02.08.2003', 'KOKOI', 53, 02, 08, 2003),
 (8073, '53.02.08.2004', 'FENUN', 53, 02, 08, 2004),
-(8074, '53.02.08.2005', 'KUALE''U', 53, 02, 08, 2005),
+(8074, '53.02.08.2005', 'KUALE\'U', 53, 02, 08, 2005),
 (8075, '53.02.08.2006', 'PUTUN', 53, 02, 08, 2006),
 (8076, '53.02.08.2007', 'HAUMENI', 53, 02, 08, 2007),
 (8077, '53.02.08.2008', 'OP', 53, 02, 08, 2008),
@@ -8339,7 +8344,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (8081, '53.02.08.2012', 'LANU', 53, 02, 08, 2012),
 (8082, '53.02.08.2013', 'SUNU', 53, 02, 08, 2013),
 (8083, '53.02.08.2014', 'ANIN', 53, 02, 08, 2014),
-(8084, '53.02.08.2015', 'TO''I', 53, 02, 08, 2015),
+(8084, '53.02.08.2015', 'TO\'I', 53, 02, 08, 2015),
 (8085, '53.02.08.2016', 'NIFULEO', 53, 02, 08, 2016),
 (8086, '53.02.08.2017', 'FATULUNU', 53, 02, 08, 2017),
 (8087, '53.02.08.2018', 'NUNKOLO', 53, 02, 08, 2018),
@@ -8368,7 +8373,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (8110, '53.02.10.2004', 'BELE', 53, 02, 10, 2004),
 (8111, '53.02.10.2005', 'NUNBENA', 53, 02, 10, 2005),
 (8112, '53.02.10.2006', 'B O T I', 53, 02, 10, 2006),
-(8113, '53.02.10.2007', 'KOT''OLIN', 53, 02, 10, 2007),
+(8113, '53.02.10.2007', 'KOT\'OLIN', 53, 02, 10, 2007),
 (8114, '53.02.10.2008', 'FATUAT', 53, 02, 10, 2008),
 (8115, '53.02.10.2009', 'TESIAYOFANU', 53, 02, 10, 2009),
 (8116, '53.02.10.2010', 'FATUULAN', 53, 02, 10, 2010),
@@ -8394,7 +8399,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (8136, '53.02.12.2003', 'FATUMNASI', 53, 02, 12, 2003),
 (8137, '53.02.12.2004', 'NENAS', 53, 02, 12, 2004),
 (8138, '53.02.12.2005', 'NUAPIN', 53, 02, 12, 2005),
-(8139, '53.02.12.2006', 'LIL''ANA', 53, 02, 12, 2006),
+(8139, '53.02.12.2006', 'LIL\'ANA', 53, 02, 12, 2006),
 (8140, '53.02.12.2007', 'NUNBENA', 53, 02, 12, 2007),
 (8141, '53.02.12.2008', 'NOEBESI', 53, 02, 12, 2008),
 (8142, '53.02.13.2001', 'KONBAKI', 53, 02, 13, 2001),
@@ -10466,7 +10471,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (10205, '82.01.04.2001', 'SUSUPU', 82, 01, 04, 2001),
 (10206, '82.01.04.2002', 'LAKO AKELAMO', 82, 01, 04, 2002),
 (10207, '82.01.04.2003', 'TARUBA', 82, 01, 04, 2003),
-(10208, '17.03.01.2004', 'KA''ANA', 17, 03, 01, 2004),
+(10208, '17.03.01.2004', 'KA\'ANA', 17, 03, 01, 2004),
 (10209, '17.03.01.2005', 'KAHY AP U', 17, 03, 01, 2005),
 (10210, '17.03.01.2006', 'APOHO', 17, 03, 01, 2006),
 (10211, '17.03.02.2001', 'AIR SEBAKUL', 17, 03, 02, 2001),
@@ -15446,7 +15451,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (15180, '34.03.05.2001', 'SODO', 34, 03, 05, 2001),
 (15181, '34.03.05.2002', 'PAMPANG', 34, 03, 05, 2002),
 (15182, '34.03.05.2003', 'GROGOL', 34, 03, 05, 2003),
-(15183, '34.03.05.2004', 'KARANG DUW''ET', 34, 03, 05, 2004),
+(15183, '34.03.05.2004', 'KARANG DUW\'ET', 34, 03, 05, 2004),
 (15184, '34.03.05.2005', 'KARANG ASEM', 34, 03, 05, 2005),
 (15185, '34.03.05.2006', 'MULUSAN', 34, 03, 05, 2006),
 (15186, '34.03.05.2007', 'GIRING', 34, 03, 05, 2007),
@@ -16335,7 +16340,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (16068, '52.04.15.2005', 'BUGIS MEDANG', 52, 04, 15, 2005),
 (16069, '52.04.15.2006', 'LABUHAN AJI', 52, 04, 15, 2006),
 (16070, '52.04.15.2007', 'SEBOTOK', 52, 04, 15, 2007),
-(16071, '52.05.01.2001', 'HU''U', 52, 05, 01, 2001),
+(16071, '52.05.01.2001', 'HU\'U', 52, 05, 01, 2001),
 (16072, '52.05.01.2002', 'DAHA', 52, 05, 01, 2002),
 (16073, '52.05.01.2003', 'RASABOU', 52, 05, 01, 2003),
 (16074, '52.05.01.2004', 'CEMPIJAYA', 52, 05, 01, 2004),
@@ -16347,13 +16352,13 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (16080, '52.05.02.1005', 'KANDAI  ', 52, 05, 02, 1005),
 (16081, '52.05.02.1006', 'DOROTANGGA', 52, 05, 02, 1006),
 (16082, '52.05.02.2007', 'KATUA', 52, 05, 02, 2007),
-(16083, '52.05.02.2008', 'O''O', 52, 05, 02, 2008),
+(16083, '52.05.02.2008', 'O\'O', 52, 05, 02, 2008),
 (16084, '52.05.02.2009', 'MBAWAI', 52, 05, 02, 2009),
 (16085, '52.05.02.2010', 'KARAMABURA', 52, 05, 02, 2010),
 (16086, '52.05.02.2011', 'DOREBARA', 52, 05, 02, 2011),
 (16087, '52.05.02.2012', 'KANDAI  ', 52, 05, 02, 2012),
 (16088, '52.05.03.2001', 'SONGGAJAH', 52, 05, 03, 2001),
-(16089, '52.05.03.2002', 'TA''A', 52, 05, 03, 2002),
+(16089, '52.05.03.2002', 'TA\'A', 52, 05, 03, 2002),
 (16090, '52.05.03.2003', 'KONTE', 52, 05, 03, 2003),
 (16091, '52.05.03.2004', 'SORO', 52, 05, 03, 2004),
 (16092, '52.05.03.2005', 'KEMPO', 52, 05, 03, 2005),
@@ -16811,7 +16816,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (16543, '52.06.08.2002', 'PALANJA', 52, 06, 08, 2002),
 (16544, '52.06.08.2003', 'PLINIR', 52, 06, 08, 2003),
 (16545, '52.06.08.2004', 'BAJO', 52, 06, 08, 2004),
-(16546, '52.06.08.2005', 'O''O', 52, 06, 08, 2005),
+(16546, '52.06.08.2005', 'O\'O', 52, 06, 08, 2005),
 (16547, '52.06.08.2006', 'RORA', 52, 06, 08, 2006),
 (16548, '52.06.08.2007', 'MBAWA', 52, 06, 08, 2007),
 (16549, '52.06.08.2008', 'DORODUNGGA', 52, 06, 08, 2008),
@@ -17022,7 +17027,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (16754, '52.06.13.2004', 'WOWARADA', 52, 06, 13, 2004),
 (16755, '52.06.13.2005', 'RUPE', 52, 06, 13, 2005),
 (16756, '52.06.13.2006', 'LAJU', 52, 06, 13, 2006),
-(16757, '52.06.13.2007', 'DOROO''O', 52, 06, 13, 2007),
+(16757, '52.06.13.2007', 'DOROO\'O', 52, 06, 13, 2007),
 (16758, '52.06.14.2001', 'LABUHAN KENANGA', 52, 06, 14, 2001),
 (16759, '52.06.14.2002', 'KAWINDATOI', 52, 06, 14, 2002),
 (16760, '52.06.14.2003', 'KAWINDANAE', 52, 06, 14, 2003),
@@ -17972,7 +17977,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (17703, '53.04.01.2004', 'DUARATO', 53, 04, 01, 2004),
 (17704, '53.04.01.2005', 'MAKIR', 53, 04, 01, 2005),
 (17705, '53.04.01.2006', 'LAMAKSENULU', 53, 04, 01, 2006),
-(17706, '53.04.01.2007', 'LO''ONUNA', 53, 04, 01, 2007),
+(17706, '53.04.01.2007', 'LO\'ONUNA', 53, 04, 01, 2007),
 (17707, '53.04.01.2008', 'DIRUN', 53, 04, 01, 2008),
 (17708, '53.04.01.2009', 'LEOWATU', 53, 04, 01, 2009),
 (17709, '53.04.01.2010', 'NUALAIN', 53, 04, 01, 2010),
@@ -18429,7 +18434,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (18159, '53.04.10.2010', 'S I K U N', 53, 04, 10, 2010),
 (18160, '53.04.10.2011', 'FAFOE', 53, 04, 10, 2011),
 (18161, '53.04.10.2012', 'LASAEN', 53, 04, 10, 2012),
-(18162, '53.04.10.2013', 'UMATO''OS', 53, 04, 10, 2013),
+(18162, '53.04.10.2013', 'UMATO\'OS', 53, 04, 10, 2013),
 (18163, '53.04.10.2014', 'RABASAHAIN', 53, 04, 10, 2014),
 (18164, '53.04.10.2015', 'UMALOR', 53, 04, 10, 2015),
 (18165, '53.04.10.2016', 'BESIKAMA', 53, 04, 10, 2016),
@@ -18798,8 +18803,8 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (18528, '53.05.02.2019', 'PULAU  BUAYA', 53, 05, 02, 2019),
 (18529, '53.05.02.2020', 'HULNANI', 53, 05, 02, 2020),
 (18530, '53.05.02.2021', 'ALILA  TIMUR', 53, 05, 02, 2021),
-(18531, '53.05.02.2022', 'O''A MATE', 53, 05, 02, 2022),
-(18532, '53.05.02.2023', 'ALA''ANG', 53, 05, 02, 2023),
+(18531, '53.05.02.2022', 'O\'A MATE', 53, 05, 02, 2022),
+(18532, '53.05.02.2023', 'ALA\'ANG', 53, 05, 02, 2023),
 (18533, '53.05.02.2024', 'LEFOKISU', 53, 05, 02, 2024),
 (18534, '53.05.02.2025', 'BAMPALOLA', 53, 05, 02, 2025),
 (18535, '53.05.02.2026', 'LEWALU', 53, 05, 02, 2026),
@@ -23857,7 +23862,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (23581, '61.07.01.2011', 'PULAU LEMUKUTAN', 61, 07, 01, 2011),
 (23582, '61.07.01.2012', 'CAPKALA', 61, 07, 01, 2012),
 (23583, '61.07.02.2001', 'SAMALANTAN', 61, 07, 02, 2001),
-(23584, '61.07.02.2002', 'SABA''U', 61, 07, 02, 2002),
+(23584, '61.07.02.2002', 'SABA\'U', 61, 07, 02, 2002),
 (23585, '61.07.02.2003', 'TUMIANG', 61, 07, 02, 2003),
 (23586, '61.07.02.2004', 'BABANE', 61, 07, 02, 2004),
 (23587, '61.07.02.2005', 'PASTI JAYA', 61, 07, 02, 2005),
@@ -24016,7 +24021,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (23740, '61.08.01.2028', 'TEMAHAR', 61, 08, 01, 2028),
 (23741, '61.08.01.2029', 'SEKAIS', 61, 08, 01, 2029),
 (23742, '61.08.01.2030', 'KERSIK BELANTIAN', 61, 08, 01, 2030),
-(23743, '61.08.01.2031', 'NYI''IN', 61, 08, 01, 2031),
+(23743, '61.08.01.2031', 'NYI\'IN', 61, 08, 01, 2031),
 (23744, '61.08.01.2032', 'PAPUNG', 61, 08, 01, 2032),
 (23745, '61.08.02.2001', 'KARANGAN', 61, 08, 02, 2001),
 (23746, '61.08.02.2002', 'SAILO', 61, 08, 02, 2002),
@@ -24104,7 +24109,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (23828, '61.08.03.2002', 'LAMOANAK', 61, 08, 03, 2002),
 (23829, '61.08.03.2003', 'BENGKAWE', 61, 08, 03, 2003),
 (23830, '61.08.03.2004', 'TEMPOAK', 61, 08, 03, 2004),
-(23831, '61.08.03.2005', 'RE''ES', 61, 08, 03, 2005),
+(23831, '61.08.03.2005', 'RE\'ES', 61, 08, 03, 2005),
 (23832, '61.08.03.2006', 'RABA', 61, 08, 03, 2006),
 (23833, '61.08.03.2007', 'NANGKA', 61, 08, 03, 2007),
 (23834, '61.08.03.2008', 'MENJALIN', 61, 08, 03, 2008),
@@ -24215,7 +24220,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (23939, '61.08.06.2015', 'BAGAK', 61, 08, 06, 2015),
 (23940, '61.08.06.2016', 'T O L O  K', 61, 08, 06, 2016),
 (23941, '61.08.06.2017', 'SUNGAI LUBANG', 61, 08, 06, 2017),
-(23942, '61.08.06.2018', 'TA''AS', 61, 08, 06, 2018),
+(23942, '61.08.06.2018', 'TA\'AS', 61, 08, 06, 2018),
 (23943, '61.08.06.2019', 'ONGKOL PADANG', 61, 08, 06, 2019),
 (23944, '61.08.06.2020', 'KAMPET', 61, 08, 06, 2020),
 (23945, '61.08.06.2021', 'PADANG TIO', 61, 08, 06, 2021),
@@ -24486,7 +24491,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (24210, '53.14.01.2001', 'SEDEOEN', 53, 14, 01, 2001),
 (24211, '53.14.01.2002', 'NEMBERALA', 53, 14, 01, 2002),
 (24212, '53.14.01.2003', 'OENGGAUT', 53, 14, 01, 2003),
-(24213, '53.14.01.2004', 'BO''A', 53, 14, 01, 2004),
+(24213, '53.14.01.2004', 'BO\'A', 53, 14, 01, 2004),
 (24214, '53.14.01.2005', 'OESELI', 53, 14, 01, 2005),
 (24215, '53.14.01.2006', 'OEBOU', 53, 14, 01, 2006),
 (24216, '53.14.01.2007', 'LALUKOEN', 53, 14, 01, 2007),
@@ -24674,7 +24679,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (24398, '61.72.05.1003', 'SIJANGKUNG', 61, 72, 05, 1003),
 (24399, '61.72.05.1004', 'PANGMILANG', 61, 72, 05, 1004),
 (24400, '53.15.02.2025', 'PONG NARANG', 53, 15, 02, 2025),
-(24401, '53.15.02.1026', 'GOLO RU''U', 53, 15, 02, 1026),
+(24401, '53.15.02.1026', 'GOLO RU\'U', 53, 15, 02, 1026),
 (24402, '53.15.02.1027', 'NANTAL', 53, 15, 02, 1027),
 (24403, '53.15.03.2001', 'NANGA LILI', 53, 15, 03, 2001),
 (24404, '53.15.03.2002', 'NANGA BERE', 53, 15, 03, 2002),
@@ -26281,7 +26286,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (26003, '74.03.24.2004', 'B  E  A', 74, 03, 24, 2004),
 (26004, '74.03.24.2005', 'LAHORIO', 74, 03, 24, 2005),
 (26005, '74.03.24.2006', 'RANGKA', 74, 03, 24, 2006),
-(26006, '74.03.24.2007', 'KAFOFO''O', 74, 03, 24, 2007),
+(26006, '74.03.24.2007', 'KAFOFO\'O', 74, 03, 24, 2007),
 (26007, '74.03.24.2008', 'LEMBO', 74, 03, 24, 2008),
 (26008, '74.03.24.1009', 'LAIMPI', 74, 03, 24, 1009),
 (26009, '74.03.24.2010', 'KAMBAWUNA', 74, 03, 24, 2010),
@@ -27814,7 +27819,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (27534, '74.07.01.1003', 'WANCI', 74, 07, 01, 1003),
 (27535, '74.07.01.1004', 'WANDOKA', 74, 07, 01, 1004),
 (27536, '74.07.01.2005', 'SOMBU', 74, 07, 01, 2005),
-(27537, '74.07.01.2006', '''WAHA', 74, 07, 01, 2006),
+(27537, '74.07.01.2006', '\'WAHA', 74, 07, 01, 2006),
 (27538, '74.07.01.1007', 'WAETUNO', 74, 07, 01, 1007),
 (27539, '74.07.01.2008', 'TINDOI', 74, 07, 01, 2008),
 (27540, '74.07.01.2009', 'MALEKO', 74, 07, 01, 2009),
@@ -28508,7 +28513,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (28227, '91.12.10.1001', 'TEMBAGAPURA', 91, 12, 10, 1001),
 (28228, '91.12.10.2002', 'W  A   A', 91, 12, 10, 2002),
 (28229, '91.12.10.2003', 'ARWANDOP', 91, 12, 10, 2003),
-(28230, '91.12.10.2004', 'T''SINGA', 91, 12, 10, 2004),
+(28230, '91.12.10.2004', 'T\'SINGA', 91, 12, 10, 2004),
 (28231, '91.12.10.2005', 'S I N G A', 91, 12, 10, 2005),
 (28232, '91.12.10.2006', 'JAGAMIN', 91, 12, 10, 2006),
 (28233, '91.12.10.2007', 'BANIGOGOM', 91, 12, 10, 2007),
@@ -30197,7 +30202,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (29915, '14.02.01.2015', 'TAMBAK', 14, 02, 01, 2015),
 (29916, '14.02.01.2016', 'KUALA CINAKU', 14, 02, 01, 2016),
 (29917, '14.02.01.2017', 'TANAH DATAR', 14, 02, 01, 2017),
-(29918, '14.02.01.2019', 'PULAU JUM''AT', 14, 02, 01, 2019),
+(29918, '14.02.01.2019', 'PULAU JUM\'AT', 14, 02, 01, 2019),
 (29919, '14.02.01.2020', 'KUALA MULIA', 14, 02, 01, 2020),
 (29920, '14.02.01.2021', 'TANJUNGSARI', 14, 02, 01, 2021),
 (29921, '14.02.01.2022', 'RAWA SEKIP', 14, 02, 01, 2022),
@@ -31826,7 +31831,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (31542, '63.03.06.2006', 'MALI-MALI', 63, 03, 06, 2006),
 (31543, '63.03.06.2007', 'LOKTANGGA', 63, 03, 06, 2007),
 (31544, '63.03.06.2008', 'LIHUNG', 63, 03, 06, 2008),
-(31545, '63.03.06.2009', 'BI''IH', 63, 03, 06, 2009),
+(31545, '63.03.06.2009', 'BI\'IH', 63, 03, 06, 2009),
 (31546, '63.03.06.2010', 'PENYAMBARAN', 63, 03, 06, 2010),
 (31547, '63.03.06.2011', 'SUNGAI ALANG', 63, 03, 06, 2011),
 (31548, '63.03.06.2012', 'SUNGAI ASAM', 63, 03, 06, 2012),
@@ -32470,14 +32475,14 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (32185, '63.07.03.2005', 'TABUDARAT  HULI', 63, 07, 03, 2005),
 (32186, '63.07.03.2006', 'PANTAI HAMBAWANG TIMUR', 63, 07, 03, 2006),
 (32187, '63.07.03.2007', 'BANUA KEPAYANG', 63, 07, 03, 2007),
-(32188, '63.07.03.2008', 'TA''AL', 63, 07, 03, 2008),
+(32188, '63.07.03.2008', 'TA\'AL', 63, 07, 03, 2008),
 (32189, '63.07.03.2009', 'DURIAN GANTANG', 63, 07, 03, 2009),
 (32190, '63.07.03.2010', 'GUHA', 63, 07, 03, 2010),
 (32191, '63.07.03.2011', 'BANGKAL', 63, 07, 03, 2011),
 (32192, '63.07.03.2012', '.PANGGANG MARAK', 63, 07, 03, 2012),
 (32193, '63.07.03.2013', 'JAMIL', 63, 07, 03, 2013),
 (32194, '63.07.03.2014', 'TARAS PADANG', 63, 07, 03, 2014),
-(32195, '63.07.03.2015', 'MURUNG TA''AL', 63, 07, 03, 2015),
+(32195, '63.07.03.2015', 'MURUNG TA\'AL', 63, 07, 03, 2015),
 (32196, '63.07.03.2016', 'SUNGAI RANGAS', 63, 07, 03, 2016),
 (32197, '63.07.03.2017', 'BATANG BAHALANG', 63, 07, 03, 2017),
 (32198, '63.07.03.2018', 'SUNGAI JARANIH', 63, 07, 03, 2018),
@@ -32490,7 +32495,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (32205, '63.07.04.2007', 'BINJAI PAMANGKIH', 63, 07, 04, 2007),
 (32206, '63.07.04.2008', 'KUPANG SAMHURANG ', 63, 07, 04, 2008),
 (32207, '63.07.04.2009', 'PAHALATAN', 63, 07, 04, 2009),
-(32208, '63.07.04.2010', 'MANTA''AS', 63, 07, 04, 2010),
+(32208, '63.07.04.2010', 'MANTA\'AS', 63, 07, 04, 2010),
 (32209, '63.07.04.2011', 'SUNGAI BULUH', 63, 07, 04, 2011),
 (32210, '63.07.04.2012', 'KADUNDUNG', 63, 07, 04, 2012),
 (32211, '63.07.04.2013', 'TUNGKUP', 63, 07, 04, 2013),
@@ -32850,7 +32855,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (32565, '63.09.03.2005', 'BARIMBUN', 63, 09, 03, 2005),
 (32566, '63.09.03.2006', 'MANGKUSIP ', 63, 09, 03, 2006),
 (32567, '63.09.03.2007', 'PAMARANGAN KANAN', 63, 09, 03, 2007),
-(32568, '63.09.03.2008', 'PULAU KU''U', 63, 09, 03, 2008),
+(32568, '63.09.03.2008', 'PULAU KU\'U', 63, 09, 03, 2008),
 (32569, '63.09.03.2009', 'TANTA', 63, 09, 03, 2009),
 (32570, '63.09.03.2010', 'PADANG PANJANG', 63, 09, 03, 2010),
 (32571, '63.09.03.2011', 'PUAIN KANAN', 63, 09, 03, 2011),
@@ -32900,7 +32905,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (32614, '63.09.06.2003', 'SULINGAN', 63, 09, 06, 2003),
 (32615, '63.09.06.2004', 'MABURAI', 63, 09, 06, 2004),
 (32616, '63.09.06.2005', 'KASIAU', 63, 09, 06, 2005),
-(32617, '63.09.06.2006', 'MABU''UN', 63, 09, 06, 2006),
+(32617, '63.09.06.2006', 'MABU\'UN', 63, 09, 06, 2006),
 (32618, '63.09.06.2007', 'KAPAR ', 63, 09, 06, 2007),
 (32619, '63.09.06.2008', 'MASUKAU', 63, 09, 06, 2008),
 (32620, '63.09.06.2009', 'PEMBATAAN', 63, 09, 06, 2009),
@@ -32911,7 +32916,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (32625, '63.09.07.2004', 'UWIE', 63, 09, 07, 2004),
 (32626, '63.09.07.2005', 'MUARA UYA', 63, 09, 07, 2005),
 (32627, '63.09.07.2006', 'LUMBANG', 63, 09, 07, 2006),
-(32628, '63.09.07.2007', 'SANTU''UN', 63, 09, 07, 2007),
+(32628, '63.09.07.2007', 'SANTU\'UN', 63, 09, 07, 2007),
 (32629, '63.09.07.2008', 'SIMPUNG LAYUNG', 63, 09, 07, 2008),
 (32630, '63.09.07.2009', 'BINJAI', 63, 09, 07, 2009),
 (32631, '63.09.07.2010', 'PALAPI', 63, 09, 07, 2010),
@@ -33051,7 +33056,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (32765, '63.10.05.2007', 'TELUK KEPAYANG', 63, 10, 05, 2007),
 (32766, '63.10.05.2008', 'TAPUS', 63, 10, 05, 2008),
 (32767, '63.10.05.2009', 'MANGKALAPI', 63, 10, 05, 2009),
-(32768, '63.10.05.2010', 'HATI''IF', 63, 10, 05, 2010),
+(32768, '63.10.05.2010', 'HATI\'IF', 63, 10, 05, 2010),
 (32769, '63.10.05.2011', 'TIBARAU PANJANG', 63, 10, 05, 2011),
 (32770, '63.10.05.2012', 'SUNGAI RUKAM', 63, 10, 05, 2012),
 (32771, '63.10.05.2013', 'DARASAN BINJAI', 63, 10, 05, 2013),
@@ -33120,7 +33125,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (32834, '63.11.03.2012', 'PULANTAN', 63, 11, 03, 2012),
 (32835, '63.11.03.2013', 'TUNDI', 63, 11, 03, 2013),
 (32836, '63.11.03.2014', 'MUARA JAYA', 63, 11, 03, 2014),
-(32837, '63.11.03.2015', 'JU''UH', 63, 11, 03, 2015),
+(32837, '63.11.03.2015', 'JU\'UH', 63, 11, 03, 2015),
 (32838, '63.11.03.2016', 'BIHARA HlLIR', 63, 11, 03, 2016),
 (32839, '63.11.03.2017', 'MAYANAU', 63, 11, 03, 2017),
 (32840, '63.11.03.2018', 'BARUI', 63, 11, 03, 2018),
@@ -33676,7 +33681,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (33390, '62.03.12.2008', 'TANGIRANG', 62, 03, 12, 2008),
 (33391, '62.03.12.2009', 'SEI PINANG', 62, 03, 12, 2009),
 (33392, '62.03.12.2010', 'LAWANG TAMANG', 62, 03, 12, 2010),
-(33393, '62.03.12.2011', 'KARETAU MANIA''A', 62, 03, 12, 2011),
+(33393, '62.03.12.2011', 'KARETAU MANIA\'A', 62, 03, 12, 2011),
 (33394, '62.03.12.2012', 'TUMBANG BOMOI', 62, 03, 12, 2012),
 (33395, '62.03.12.2013', 'BARONANG II', 62, 03, 12, 2013),
 (33396, '62.03.12.2014', 'HURUNG TAMPANG', 62, 03, 12, 2014),
@@ -34580,7 +34585,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (34293, '62.13.06.2003', 'KUPANG BERSIH', 62, 13, 06, 2003),
 (34294, '62.13.06.2004', 'T U Y A U', 62, 13, 06, 2004),
 (34295, '62.13.06.2005', 'PINANG TUNGGAL', 62, 13, 06, 2005),
-(34296, '62.13.06.2006', 'NAGA LE''AH', 62, 13, 06, 2006),
+(34296, '62.13.06.2006', 'NAGA LE\'AH', 62, 13, 06, 2006),
 (34297, '62.13.06.2007', 'LAMPEONG', 62, 13, 06, 2007),
 (34298, '62.13.06.2008', 'BARARAWA', 62, 13, 06, 2008),
 (34299, '62.13.06.2009', 'BAMBULUNG', 62, 13, 06, 2009),
@@ -35582,7 +35587,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (35293, '18.04.12.2003', 'WAY SINDI', 18, 04, 12, 2003),
 (35294, '18.04.12.2004', 'PENENGAHAN', 18, 04, 12, 2004),
 (35295, '18.04.12.2005', 'MENYANCANG', 18, 04, 12, 2005),
-(35296, '18.04.12.2006', 'L  A '' A  Y', 18, 04, 12, 2006),
+(35296, '18.04.12.2006', 'L  A \' A  Y', 18, 04, 12, 2006),
 (35297, '18.04.12.2007', 'PENGGAWA LIMA ULU', 18, 04, 12, 2007),
 (35298, '18.04.12.2008', 'PENGGAWA LIMA TENGAH', 18, 04, 12, 2008),
 (35299, '18.04.13.2001', 'TANJUNG JATI', 18, 04, 13, 2001),
@@ -36911,7 +36916,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (36621, '73.03.03.2004', 'KAMPALA', 73, 03, 03, 2004),
 (36622, '73.03.03.2005', 'PABENTENGAN', 73, 03, 03, 2005),
 (36623, '73.03.03.2006', 'MAPPILAWING', 73, 03, 03, 2006),
-(36624, '73.03.03.2007', 'PA''BUMBUNGANG', 73, 03, 03, 2007),
+(36624, '73.03.03.2007', 'PA\'BUMBUNGANG', 73, 03, 03, 2007),
 (36625, '73.03.03.2008', 'MAMAMPANG', 73, 03, 03, 2008),
 (36626, '73.03.03.2009', 'PARANGLOE', 73, 03, 03, 2009),
 (36627, '73.03.04.1001', 'LEMBANG GANTARANG KEKE', 73, 03, 04, 1001),
@@ -36927,7 +36932,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (36637, '73.03.04.2011', 'BALUMBUNG', 73, 03, 04, 2011),
 (36638, '73.03.05.1001', 'GANTARANG KEKE', 73, 03, 05, 1001),
 (36639, '73.03.05.2002', 'BIANG KEKE', 73, 03, 05, 2002),
-(36640, '73.03.05.2003', 'PA''JUKUKANG', 73, 03, 05, 2003),
+(36640, '73.03.05.2003', 'PA\'JUKUKANG', 73, 03, 05, 2003),
 (36641, '73.03.05.2004', 'BIANG LOE', 73, 03, 05, 2004),
 (36642, '73.03.05.2005', 'BORONG LOE', 73, 03, 05, 2005),
 (36643, '73.03.05.2006', 'BARUGA', 73, 03, 05, 2006),
@@ -37097,7 +37102,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (36807, '73.05.04.1006', 'PARANGLUARA', 73, 05, 04, 1006),
 (36808, '73.05.04.2007', 'LASSANG', 73, 05, 04, 2007),
 (36809, '73.05.04.2008', 'KAMPUNGBERU', 73, 05, 04, 2008),
-(36810, '73.05.04.2009', 'PA''RAPUNGANTA', 73, 05, 04, 2009),
+(36810, '73.05.04.2009', 'PA\'RAPUNGANTA', 73, 05, 04, 2009),
 (36811, '73.05.04.2010', 'TOWATA', 73, 05, 04, 2010),
 (36812, '73.05.04.2011', 'BARUGAYA', 73, 05, 04, 2011),
 (36813, '73.05.04.2012', 'KOMARA', 73, 05, 04, 2012),
@@ -37125,7 +37130,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (36835, '73.05.06.2006', 'TAMA SAJU', 73, 05, 06, 2006),
 (36836, '73.05.06.2007', 'BONTO SUNGGU', 73, 05, 06, 2007),
 (36837, '73.05.06.2008', 'PARASANGANG  BERU', 73, 05, 06, 2008),
-(36838, '73.05.06.2009', 'PA''LAKLAKKANG', 73, 05, 06, 2009),
+(36838, '73.05.06.2009', 'PA\'LAKLAKKANG', 73, 05, 06, 2009),
 (36839, '73.05.07.1001', 'PATTALASSANG', 73, 05, 07, 1001),
 (36840, '73.05.07.1002', 'PALLANTIKANG', 73, 05, 07, 1002),
 (36841, '73.05.07.1003', 'SOMBALABELLA', 73, 05, 07, 1003),
@@ -37136,14 +37141,14 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (36846, '73.05.07.1008', 'SABINTANG', 73, 05, 07, 1008),
 (36847, '73.06.01.1001', 'BONTONOMPO', 73, 06, 01, 1001),
 (36848, '73.06.01.1002', 'TAMALLAYANG', 73, 06, 01, 1002),
-(36849, '73.06.01.1003', 'KALA SE''RENA', 73, 06, 01, 1003),
+(36849, '73.06.01.1003', 'KALA SE\'RENA', 73, 06, 01, 1003),
 (36850, '73.06.01.2004', 'BONTO LANGKASA UTARA', 73, 06, 01, 2004),
 (36851, '73.06.01.2005', 'BONTO LANGKASA  SELATAN', 73, 06, 01, 2005),
 (36852, '73.06.01.2006', 'BAREMBENG', 73, 06, 01, 2006),
 (36853, '73.06.01.2007', 'SENGKA', 73, 06, 01, 2007),
 (36854, '73.06.01.2008', 'TANRARA', 73, 06, 01, 2008),
 (36855, '73.06.01.2009', 'TINDANG', 73, 06, 01, 2009),
-(36856, '73.06.01.2010', 'PA''BUNDUKANG', 73, 06, 01, 2010),
+(36856, '73.06.01.2010', 'PA\'BUNDUKANG', 73, 06, 01, 2010),
 (36857, '73.06.01.2011', 'BONTO SUNGGU', 73, 06, 01, 2011),
 (36858, '73.06.01.2012', 'SALA JENGKI', 73, 06, 01, 2012),
 (36859, '73.06.01.2013', 'SALAJO', 73, 06, 01, 2013),
@@ -37157,7 +37162,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (36867, '73.06.02.2004', 'BORIMATANGKASA', 73, 06, 02, 2004),
 (36868, '73.06.02.2005', 'MANDALLE', 73, 06, 02, 2005),
 (36869, '73.06.02.2006', 'MACCINI BAJI', 73, 06, 02, 2006),
-(36870, '73.06.02.2007', 'PA'' BENTENGANG', 73, 06, 02, 2007),
+(36870, '73.06.02.2007', 'PA\' BENTENGANG', 73, 06, 02, 2007),
 (36871, '73.06.02.2008', 'MANJALLING', 73, 06, 02, 2008),
 (36872, '73.06.02.2009', 'TANGKE BAJING', 73, 06, 02, 2009),
 (36873, '73.06.02.2010', 'MARDEKAYA', 73, 06, 02, 2010),
@@ -37215,7 +37220,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (36925, '73.06.07.2009', 'BONTORAMBA', 73, 06, 07, 2009),
 (36926, '73.06.07.2010', 'JENE TALLASA', 73, 06, 07, 2010),
 (36927, '73.06.07.2011', 'JULU KANAYA', 73, 06, 07, 2011),
-(36928, '73.06.07.2012', 'JULU PA''MAI', 73, 06, 07, 2012),
+(36928, '73.06.07.2012', 'JULU PA\'MAI', 73, 06, 07, 2012),
 (36929, '73.06.07.2013', 'BUNGAEJAYA', 73, 06, 07, 2013),
 (36930, '73.06.07.2014', 'TODDO TOA', 73, 06, 07, 2014),
 (36931, '73.06.08.1001', 'SUNGGU MINASA', 73, 06, 08, 1001),
@@ -37236,11 +37241,11 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (36946, '73.06.09.2002', 'BONTO MANAI', 73, 06, 09, 2002),
 (36947, '73.06.09.2003', 'BUAKKANG', 73, 06, 09, 2003),
 (36948, '73.06.09.2004', 'BISSOLORO', 73, 06, 09, 2004),
-(36949, '73.06.09.2005', 'JULUMATE''NE', 73, 06, 09, 2005),
+(36949, '73.06.09.2005', 'JULUMATE\'NE', 73, 06, 09, 2005),
 (36950, '73.06.09.2006', 'BONTOLEMPANGANG', 73, 06, 09, 2006),
 (36951, '73.06.09.2007', 'LASSA LASSA', 73, 06, 09, 2007),
 (36952, '73.06.09.2008', 'BONTOLOE', 73, 06, 09, 2008),
-(36953, '73.06.09.2009', 'PA''LADINGANG', 73, 06, 09, 2009),
+(36953, '73.06.09.2009', 'PA\'LADINGANG', 73, 06, 09, 2009),
 (36954, '73.06.10.2001', 'TAMAONA', 73, 06, 10, 2001),
 (36955, '73.06.10.2002', 'TABINJAI', 73, 06, 10, 2002),
 (36956, '73.06.10.2003', 'ERELEMBANG', 73, 06, 10, 2003),
@@ -37522,7 +37527,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (37231, '73.08.14.2006', 'JOMPIE', 73, 08, 14, 2006),
 (37232, '73.08.14.2007', 'SAPPEWALlE', 73, 08, 14, 2007),
 (37233, '73.08.14.2008', 'LAMAKKARASENG', 73, 08, 14, 2008),
-(37234, '73.08.14.2009', 'MULA MENRE''E', 73, 08, 14, 2009),
+(37234, '73.08.14.2009', 'MULA MENRE\'E', 73, 08, 14, 2009),
 (37235, '73.08.14.2010', 'TEA MUSU', 73, 08, 14, 2010),
 (37236, '73.08.14.2011', 'TEA MALALA', 73, 08, 14, 2011),
 (37237, '73.08.14.2012', 'GALUNG', 73, 08, 14, 2012),
@@ -37555,7 +37560,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (37264, '73.08.16.2009', 'MALLARI', 73, 08, 16, 2009),
 (37265, '73.08.16.2010', 'KAJUARA', 73, 08, 16, 2010),
 (37266, '73.08.16.2011', 'JALING', 73, 08, 16, 2011),
-(37267, '73.08.16.2012', 'BULUMPARE''E', 73, 08, 16, 2012),
+(37267, '73.08.16.2012', 'BULUMPARE\'E', 73, 08, 16, 2012),
 (37268, '73.08.16.2013', 'ABBANUANG', 73, 08, 16, 2013),
 (37269, '73.08.16.2014', 'LAPPO ASE', 73, 08, 16, 2014),
 (37270, '73.08.16.2015', 'AWOLAGADING', 73, 08, 16, 2015),
@@ -37644,7 +37649,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (37353, '73.08.22.1003', 'MACANANG', 73, 08, 22, 1003),
 (37354, '73.08.22.1004', 'MAJANG', 73, 08, 22, 1004),
 (37355, '73.08.22.1005', 'BULU TEMPE', 73, 08, 22, 1005),
-(37356, '73.08.22.1006', 'JEPPE''E', 73, 08, 22, 1006),
+(37356, '73.08.22.1006', 'JEPPE\'E', 73, 08, 22, 1006),
 (37357, '73.08.22.1007', 'POLEWALI', 73, 08, 22, 1007),
 (37358, '73.08.22.1008', 'WATANG PALAKKA', 73, 08, 22, 1008),
 (37359, '73.08.23.1001', 'BAJOE', 73, 08, 23, 1001),
@@ -37834,7 +37839,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (37543, '73.10.03.2014', 'MATTIRO LABANGENG', 73, 10, 03, 2014),
 (37544, '73.10.04.1001', 'JAGONG', 73, 10, 04, 1001),
 (37545, '73.10.04.1002', 'MAPPA SAILE', 73, 10, 04, 1002),
-(37546, '73.10.04.1003', 'PA''BUNDUKANG', 73, 10, 04, 1003),
+(37546, '73.10.04.1003', 'PA\'BUNDUKANG', 73, 10, 04, 1003),
 (37547, '73.10.04.1004', 'ANRONGAPPAKA', 73, 10, 04, 1004),
 (37548, '73.10.04.1005', 'SIBATUA', 73, 10, 04, 1005),
 (37549, '73.10.04.1006', 'PADOANG-DOANGAN', 73, 10, 04, 1006),
@@ -37869,7 +37874,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (37578, '73.10.07.2013', 'BARA BATU', 73, 10, 07, 2013),
 (37579, '73.10.08.1001', 'BONTO BONTO', 73, 10, 08, 1001),
 (37580, '73.10.08.1002', 'TALAKA', 73, 10, 08, 1002),
-(37581, '73.10.08.1003', 'MA''RANG', 73, 10, 08, 1003),
+(37581, '73.10.08.1003', 'MA\'RANG', 73, 10, 08, 1003),
 (37582, '73.10.08.1004', 'ATTANG SALO', 73, 10, 08, 1004),
 (37583, '73.10.08.2005', 'PADANG LAMPE', 73, 10, 08, 2005),
 (37584, '73.10.08.2006', 'TAMANGAPA', 73, 10, 08, 2006),
@@ -37877,13 +37882,13 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (37586, '73.10.08.2008', 'PITUE', 73, 10, 08, 2008),
 (37587, '73.10.08.2009', 'PUNRANGA', 73, 10, 08, 2009),
 (37588, '73.10.08.2010', 'ALESIPITTO', 73, 10, 08, 2010),
-(37589, '73.10.09.1001', 'BONTO MATE''NE', 73, 10, 09, 1001),
+(37589, '73.10.09.1001', 'BONTO MATE\'NE', 73, 10, 09, 1001),
 (37590, '73.10.09.1002', 'SEGERI', 73, 10, 09, 1002),
 (37591, '73.10.09.1003', 'BONE', 73, 10, 09, 1003),
 (37592, '73.10.09.1004', 'BAWA SALO', 73, 10, 09, 1004),
 (37593, '73.10.09.2005', 'BARING', 73, 10, 09, 2005),
 (37594, '73.10.09.2006', 'PARENRENG', 73, 10, 09, 2006),
-(37595, '73.10.10.1001', 'MINASA TE''NE', 73, 10, 10, 1001),
+(37595, '73.10.10.1001', 'MINASA TE\'NE', 73, 10, 10, 1001),
 (37596, '73.10.10.1002', 'KALABBIRANG', 73, 10, 10, 1002),
 (37597, '73.10.10.1003', 'BIRAENG', 73, 10, 10, 1003),
 (37598, '73.10.10.1004', 'BONTO KIO', 73, 10, 10, 1004),
@@ -38537,7 +38542,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (38245, '73.17.03.2002', 'MURANTE', 73, 17, 03, 2002),
 (38246, '73.17.03.2003', 'SULI', 73, 17, 03, 2003),
 (38247, '73.17.03.2004', 'MALELA', 73, 17, 03, 2004),
-(38248, '73.17.03.2005', 'BO''TTA', 73, 17, 03, 2005),
+(38248, '73.17.03.2005', 'BO\'TTA', 73, 17, 03, 2005),
 (38249, '73.17.03.2006', 'CIMPU', 73, 17, 03, 2006),
 (38250, '73.17.03.2007', 'LINDAJANG', 73, 17, 03, 2007),
 (38251, '73.17.03.2008', 'BUNTU KUNYI', 73, 17, 03, 2008),
@@ -38570,7 +38575,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (38278, '73.17.05.2006', 'PADANG KAMBURI', 73, 17, 05, 2006),
 (38279, '73.17.05.2007', 'MALENGGANG', 73, 17, 05, 2007),
 (38280, '73.17.05.2008', 'BALUTAN', 73, 17, 05, 2008),
-(38281, '73.17.05.2009', 'PADANG MA''BUD', 73, 17, 05, 2009),
+(38281, '73.17.05.2009', 'PADANG MA\'BUD', 73, 17, 05, 2009),
 (38282, '73.17.06.2001', 'TOMBANG', 73, 17, 06, 2001),
 (38283, '73.17.06.2002', 'LAMASI PANTAI', 73, 17, 06, 2002),
 (38284, '73.17.06.2003', 'TANETE', 73, 17, 06, 2003),
@@ -38633,13 +38638,13 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (38341, '73.17.09.2013', 'PONGKO', 73, 17, 09, 2013),
 (38342, '73.17.09.2014', 'PADANG KALUA', 73, 17, 09, 2014),
 (38343, '73.17.09.2015', 'BUNTU  AWO', 73, 17, 09, 2015),
-(38344, '73.17.09.2016', 'TO''LEMO', 73, 17, 09, 2016),
+(38344, '73.17.09.2016', 'TO\'LEMO', 73, 17, 09, 2016),
 (38345, '73.17.09.2017', 'LAMASI HULU', 73, 17, 09, 2017),
 (38346, '73.17.09.2018', 'MARAMBUANA', 73, 17, 09, 2018),
 (38347, '73.17.09.2019', 'PELALAN', 73, 17, 09, 2019),
-(38348, '73.17.09.2020', 'TO''PONGO', 73, 17, 09, 2020),
+(38348, '73.17.09.2020', 'TO\'PONGO', 73, 17, 09, 2020),
 (38349, '73.17.09.2021', 'SANGTANDUNG ', 73, 17, 09, 2021),
-(38350, '73.17.09.2022', 'SE''PONG', 73, 17, 09, 2022),
+(38350, '73.17.09.2022', 'SE\'PONG', 73, 17, 09, 2022),
 (38351, '73.17.09.2023', 'LEMPE', 73, 17, 09, 2023),
 (38352, '73.17.09.2024', 'AWO GADING', 73, 17, 09, 2024),
 (38353, '73.17.09.2025', 'SALU LINO', 73, 17, 09, 2025),
@@ -38647,7 +38652,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (38355, '73.17.10.2002', 'TEMBOE', 73, 17, 10, 2002),
 (38356, '73.17.10.2003', 'SAMPANO', 73, 17, 10, 2003),
 (38357, '73.17.10.2004', 'BABANG', 73, 17, 10, 2004),
-(38358, '73.17.10.2005', 'LA''LOA', 73, 17, 10, 2005),
+(38358, '73.17.10.2005', 'LA\'LOA', 73, 17, 10, 2005),
 (38359, '73.17.10.2006', 'BATU LAPPA', 73, 17, 10, 2006),
 (38360, '73.17.10.2007', 'MALEWONG', 73, 17, 10, 2007),
 (38361, '73.17.10.2008', 'SALUSANA', 73, 17, 10, 2008),
@@ -38684,7 +38689,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (38392, '73.17.13.2005', 'W A R A ', 73, 17, 13, 2005),
 (38393, '73.17.13.2006', 'SALU PAREMANG', 73, 17, 13, 2006),
 (38394, '73.18.01.2001', 'TALION', 73, 18, 01, 2001),
-(38395, '73.18.01.2002', 'TALION BATU SUR''A', 73, 18, 01, 2002),
+(38395, '73.18.01.2002', 'TALION BATU SUR\'A', 73, 18, 01, 2002),
 (38396, '73.18.01.2003', 'PALESAN', 73, 18, 01, 2003),
 (38397, '73.18.01.2004', 'BANGA', 73, 18, 01, 2004),
 (38398, '73.18.01.2005', 'ULLIN', 73, 18, 01, 2005),
@@ -38694,7 +38699,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (38402, '73.18.01.2009', 'ULUSALU', 73, 18, 01, 2009),
 (38403, '73.18.01.2010', 'SALUTANDUNG', 73, 18, 01, 2010),
 (38404, '73.18.02.2001', 'BALLA TIROAN', 73, 18, 02, 2001),
-(38405, '73.18.02.2002', 'SE''SENG', 73, 18, 02, 2002),
+(38405, '73.18.02.2002', 'SE\'SENG', 73, 18, 02, 2002),
 (38406, '73.18.02.2003', 'BELAU', 73, 18, 02, 2003),
 (38407, '73.18.02.2004', 'P A L I', 73, 18, 02, 2004),
 (38408, '73.18.02.2005', 'RATTE PONDINGAO', 73, 18, 02, 2005),
@@ -38740,14 +38745,14 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (38448, '73.18.07.2003', 'TONDON', 73, 18, 07, 2003),
 (38449, '73.18.07.2004', 'TONDONSIBATA', 73, 18, 07, 2004),
 (38450, '73.18.07.2005', 'TANDUNGNANGGALA', 73, 18, 07, 2005),
-(38451, '73.18.07.2006', 'LILI''KIRA''', 73, 18, 07, 2006),
+(38451, '73.18.07.2006', 'LILI\'KIRA\'', 73, 18, 07, 2006),
 (38452, '73.18.07.2007', 'TONDONMATALLO', 73, 18, 07, 2007),
 (38453, '73.18.07.2008', 'PITUNGPENANIAN', 73, 18, 07, 2008),
 (38454, '73.18.07.2009', 'NANGGALA SANGPIAK SALU', 73, 18, 07, 2009),
 (38455, '73.18.07.2010', 'KARRE LIMBONG', 73, 18, 07, 2010),
 (38456, '73.18.08.2001', 'RANTEBUA', 73, 18, 08, 2001),
 (38457, '73.18.08.2002', 'BOKIN', 73, 18, 08, 2002),
-(38458, '73.18.08.2003', 'BUNTAO''PATANG PENANIAN', 73, 18, 08, 2003),
+(38458, '73.18.08.2003', 'BUNTAO\'PATANG PENANIAN', 73, 18, 08, 2003),
 (38459, '73.18.08.2004', 'BUNTAO MISABABANA', 73, 18, 08, 2004),
 (38460, '73.18.09.2001', 'TANETE', 73, 18, 09, 2001),
 (38461, '73.18.09.2002', 'DEWATA', 73, 18, 09, 2002),
@@ -38801,13 +38806,13 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (38509, '73.18.13.2004', 'SALU', 73, 18, 13, 2004),
 (38510, '73.18.13.2005', 'KAERO', 73, 18, 13, 2005),
 (38511, '73.18.13.2006', 'RINDING DAUN INDUK', 73, 18, 13, 2006),
-(38512, '73.18.14.2001', 'SA''DAN ULUSALU', 73, 18, 14, 2001),
-(38513, '73.18.14.2002', 'SA''DAN MALIMBONG', 73, 18, 14, 2002),
-(38514, '73.18.14.2003', 'SA''DAN BALLO PASANGE', 73, 18, 14, 2003),
-(38515, '73.18.14.2004', 'SA''DAN MATALLO', 73, 18, 14, 2004),
+(38512, '73.18.14.2001', 'SA\'DAN ULUSALU', 73, 18, 14, 2001),
+(38513, '73.18.14.2002', 'SA\'DAN MALIMBONG', 73, 18, 14, 2002),
+(38514, '73.18.14.2003', 'SA\'DAN BALLO PASANGE', 73, 18, 14, 2003),
+(38515, '73.18.14.2004', 'SA\'DAN MATALLO', 73, 18, 14, 2004),
 (38516, '73.18.14.2005', 'PALANGI', 73, 18, 14, 2005),
 (38517, '73.18.14.2006', 'BALUSU TAGARI', 73, 18, 14, 2006),
-(38518, '73.18.14.2007', 'BALUSU AO''GADING', 73, 18, 14, 2007),
+(38518, '73.18.14.2007', 'BALUSU AO\'GADING', 73, 18, 14, 2007),
 (38519, '73.18.15.1001', 'TALLUNGLIPU MATALLO', 73, 18, 15, 1001),
 (38520, '73.18.15.1002', 'LAANG TANDUK', 73, 18, 15, 1002),
 (38521, '73.18.15.1003', 'TALLUNG LIPU', 73, 18, 15, 1003),
@@ -38994,7 +38999,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (38702, '73.21.02.2005', 'LEBANI', 73, 21, 02, 2005),
 (38703, '73.21.02.2006', 'TAKANDEANG', 73, 21, 02, 2006),
 (38704, '73.21.02.2007', 'LABUANG RANO', 73, 21, 02, 2007),
-(38705, '73.21.02.2008', 'PASA''BU', 73, 21, 02, 2008),
+(38705, '73.21.02.2008', 'PASA\'BU', 73, 21, 02, 2008),
 (38706, '73.21.02.2009', 'BELA', 73, 21, 02, 2009),
 (38707, '73.21.02.2010', 'TAAN', 73, 21, 02, 2010),
 (38708, '73.21.03.1001', 'SINYONYOI', 73, 21, 03, 1001),
@@ -39429,7 +39434,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (39136, '73.71.02.1004', 'MAMAJANG DALAM', 73, 71, 02, 1004),
 (39137, '73.71.02.1005', 'MARICAYA SELATAN', 73, 71, 02, 1005),
 (39138, '73.71.02.1006', 'BONTO LEBANG', 73, 71, 02, 1006),
-(39139, '73.71.02.1007', 'PA''BATANG', 73, 71, 02, 1007),
+(39139, '73.71.02.1007', 'PA\'BATANG', 73, 71, 02, 1007),
 (39140, '73.71.02.1008', 'BONTO BlRAENG', 73, 71, 02, 1008),
 (39141, '73.71.02.1009', 'LABUANG BAJI', 73, 71, 02, 1009),
 (39142, '73.71.02.1010', 'MANDALA', 73, 71, 02, 1010),
@@ -39525,7 +39530,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (39232, '73.71.10.1005', 'BONGAYA', 73, 71, 10, 1005),
 (39233, '73.71.10.1006', 'BALANGBARU ', 73, 71, 10, 1006),
 (39234, '73.71.10.1007', 'MANNURUKI', 73, 71, 10, 1007),
-(39235, '73.71.10.1008', 'PA''BAENG BAENG', 73, 71, 10, 1008),
+(39235, '73.71.10.1008', 'PA\'BAENG BAENG', 73, 71, 10, 1008),
 (39236, '73.71.10.1009', 'PARANGTAMBUNG', 73, 71, 10, 1009),
 (39237, '73.71.10.1010', 'TANJUNG MERDEKA', 73, 71, 10, 1010),
 (39238, '73.71.11.1001', 'PACCERAKKANG', 73, 71, 11, 1001),
@@ -43369,7 +43374,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (43072, '16.08.10.2015', 'KARSA JAYA', 16, 08, 10, 2015),
 (43073, '16.08.10.2016', 'SUKA NEGARA', 16, 08, 10, 2016),
 (43074, '16.09.01.1018', 'PASAR MUARA DUA', 16, 09, 01, 1018),
-(43075, '16.09.01.2001', 'PARE''AN ', 16, 09, 01, 2001),
+(43075, '16.09.01.2001', 'PARE\'AN ', 16, 09, 01, 2001),
 (43076, '16.09.01.2002', 'GEDUNG LEPIHAN', 16, 09, 01, 2002),
 (43077, '16.09.01.2003', 'GUNUNG TIGA', 16, 09, 01, 2003),
 (43078, '16.09.01.2004', 'SUKA BANJAR', 16, 09, 01, 2004),
@@ -44334,16 +44339,16 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (44036, '72.02.06.2021', 'BANGUN JAYA', 72, 02, 06, 2021),
 (44037, '72.02.07.2001', 'DODOLO', 72, 02, 07, 2001),
 (44038, '72.02.07.2002', 'TALABOSA', 72, 02, 07, 2002),
-(44039, '72.02.07.2003', 'BETU''E', 72, 02, 07, 2003),
+(44039, '72.02.07.2003', 'BETU\'E', 72, 02, 07, 2003),
 (44040, '72.02.07.2004', 'WATUTAU', 72, 02, 07, 2004),
 (44041, '72.02.07.2005', 'WANGA', 72, 02, 07, 2005),
-(44042, '72.02.07.2006', 'KADUWA''A', 72, 02, 07, 2006),
+(44042, '72.02.07.2006', 'KADUWA\'A', 72, 02, 07, 2006),
 (44043, '72.02.07.2007', 'WATUMAETA', 72, 02, 07, 2007),
 (44044, '72.02.07.2008', 'SEDOA', 72, 02, 07, 2008),
 (44045, '72.02.07.2009', 'ALITUPU', 72, 02, 07, 2009),
 (44046, '72.02.07.2010', 'WINOW ANGA', 72, 02, 07, 2010),
 (44047, '72.02.07.2011', 'HAHOLO', 72, 02, 07, 2011),
-(44048, '72.02.07.2012', 'TAMADU''E', 72, 02, 07, 2012),
+(44048, '72.02.07.2012', 'TAMADU\'E', 72, 02, 07, 2012),
 (44049, '72.02.07.2013', 'SILIWANGA', 72, 02, 07, 2013),
 (44050, '72.02.07.2014', 'WUASA', 72, 02, 07, 2014),
 (44051, '72.02.08.2001', 'HANGGIRA', 72, 02, 08, 2001),
@@ -44388,7 +44393,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (44090, '72.03.01.2018', 'LAWUA', 72, 03, 01, 2018),
 (44091, '72.03.01.2019', 'WATUKILO ', 72, 03, 01, 2019),
 (44092, '72.03.01.2020', 'SALUTQME', 72, 03, 01, 2020),
-(44093, '72.03.01.2021', 'O '' O', 72, 03, 01, 2021),
+(44093, '72.03.01.2021', 'O \' O', 72, 03, 01, 2021),
 (44094, '72.03.01.2022', 'PILI/MAKUJAWA ', 72, 03, 01, 2022),
 (44095, '72.03.01.2023', 'PUROO', 72, 03, 01, 2023),
 (44096, '72.03.01.2024', 'LANGKO', 72, 03, 01, 2024),
@@ -46981,19 +46986,19 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (46680, '12.04.01.2003', 'FATODANO', 12, 04, 01, 2003),
 (46681, '12.04.01.2004', 'FAHANDRONA', 12, 04, 01, 2004),
 (46682, '12.04.01.2005', 'SIFAOROASI ULUHOU', 12, 04, 01, 2005),
-(46683, '12.04.01.2006', 'TETEGEONA''AI', 12, 04, 01, 2006),
+(46683, '12.04.01.2006', 'TETEGEONA\'AI', 12, 04, 01, 2006),
 (46684, '12.04.01.2007', 'LAOWO HILIMBARUZO', 12, 04, 01, 2007),
 (46685, '12.04.01.2008', 'HILILAWAE', 12, 04, 01, 2008),
 (46686, '12.04.01.2009', 'TUHEWAEBU', 12, 04, 01, 2009),
 (46687, '12.04.01.2010', 'ONODALINGA', 12, 04, 01, 2010),
 (46688, '12.04.01.2011', 'HOLI', 12, 04, 01, 2011),
 (46689, '12.04.01.2012', 'SISOBAHILI  ULU GAWO', 12, 04, 01, 2012),
-(46690, '12.04.01.2013', 'SIFARO''ASI ULU GAWO', 12, 04, 01, 2013),
+(46690, '12.04.01.2013', 'SIFARO\'ASI ULU GAWO', 12, 04, 01, 2013),
 (46691, '12.04.01.2014', 'SISOBAHILI IRAONO HURA', 12, 04, 01, 2014),
 (46692, '12.04.01.2015', 'HILIMOASIO', 12, 04, 01, 2015),
 (46693, '12.04.01.2016', 'OLADANO', 12, 04, 01, 2016),
 (46694, '12.04.01.2017', 'AHEDANO', 12, 04, 01, 2017),
-(46695, '12.04.01.2018', 'HILINA''A TAFUO', 12, 04, 01, 2018),
+(46695, '12.04.01.2018', 'HILINA\'A TAFUO', 12, 04, 01, 2018),
 (46696, '12.04.01.2019', 'HILIONOZEGA', 12, 04, 01, 2019),
 (46697, '12.04.01.2020', 'MONDRALI', 12, 04, 01, 2020),
 (46698, '12.04.01.2021', 'ORAHILI', 12, 04, 01, 2021),
@@ -47002,10 +47007,10 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (46701, '12.04.01.2024', 'TAGAULE', 12, 04, 01, 2024),
 (46702, '12.04.01.2025', 'BOTOHAENGA', 12, 04, 01, 2025),
 (46703, '12.04.01.2026', 'AWONILAUSO', 12, 04, 01, 2026),
-(46704, '12.04.01.2027', 'BOBOZIOLI LOLOANA''A', 12, 04, 01, 2027),
+(46704, '12.04.01.2027', 'BOBOZIOLI LOLOANA\'A', 12, 04, 01, 2027),
 (46705, '12.04.01.2028', 'TETEHOSI', 12, 04, 01, 2028),
 (46706, '12.04.01.2029', 'SAIWAHILI HILlADULO', 12, 04, 01, 2029),
-(46707, '12.04.01.2030', 'MALIWA''A', 12, 04, 01, 2030),
+(46707, '12.04.01.2030', 'MALIWA\'A', 12, 04, 01, 2030),
 (46708, '12.04.01.2031', 'BIOUTI', 12, 04, 01, 2031),
 (46709, '12.04.01.2032', 'BOZIHONA', 12, 04, 01, 2032),
 (46710, '12.04.01.2033', 'SIOFA BANUA', 12, 04, 01, 2033),
@@ -47028,7 +47033,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (46727, '12.04.02.2008', 'HANOFA', 12, 04, 02, 2008),
 (46728, '12.04.02.2009', 'LAHAWA', 12, 04, 02, 2009),
 (46729, '12.04.02.2010', 'HINAKO', 12, 04, 02, 2010),
-(46730, '12.04.02.2011', 'SINENE''ETO', 12, 04, 02, 2011),
+(46730, '12.04.02.2011', 'SINENE\'ETO', 12, 04, 02, 2011),
 (46731, '12.04.02.2012', 'BALOWONDRATE', 12, 04, 02, 2012),
 (46732, '12.04.02.2013', 'HILIMBERUA', 12, 04, 02, 2013),
 (46733, '12.04.02.2014', 'LAHUSA', 12, 04, 02, 2014),
@@ -47044,7 +47049,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (46743, '12.04.02.2024', 'FADORO', 12, 04, 02, 2024),
 (46744, '12.04.02.2025', 'TUGALAGA WU', 12, 04, 02, 2025),
 (46745, '12.04.02.2026', 'SIROMBU', 12, 04, 02, 2026),
-(46746, '12.04.02.2027', 'TOGI''DEU', 12, 04, 02, 2027),
+(46746, '12.04.02.2027', 'TOGI\'DEU', 12, 04, 02, 2027),
 (46747, '12.04.02.2028', 'TUGALA', 12, 04, 02, 2028),
 (46748, '12.04.02.2029', 'ORAHILI', 12, 04, 02, 2029),
 (46749, '12.04.02.2030', 'GUNUNG CAHAYA', 12, 04, 02, 2030),
@@ -47053,16 +47058,16 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (46752, '12.04.02.2033', 'ONOLIMBU', 12, 04, 02, 2033),
 (46753, '12.04.02.2034', 'HALIADULO', 12, 04, 02, 2034),
 (46754, '12.04.02.2035', 'SISOBAMBOWO', 12, 04, 02, 2035),
-(46755, '12.04.02.2036', 'LOLOWA ''U', 12, 04, 02, 2036),
+(46755, '12.04.02.2036', 'LOLOWA \'U', 12, 04, 02, 2036),
 (46756, '12.04.03.2001', 'ONOLIMBURAYA', 12, 04, 03, 2001),
 (46757, '12.04.03.2002', 'ONONAMOLO III', 12, 04, 03, 2002),
 (46758, '12.04.03.2003', 'SISOBAOHO', 12, 04, 03, 2003),
 (46759, '12.04.03.2004', 'IRAONOGEBA', 12, 04, 03, 2004),
 (46760, '12.04.03.2005', 'LOLOHIA', 12, 04, 03, 2005),
-(46761, '12.04.03.2006', 'SIMAE'' ASI', 12, 04, 03, 2006),
+(46761, '12.04.03.2006', 'SIMAE\' ASI', 12, 04, 03, 2006),
 (46762, '12.04.03.2007', 'BUKIT TINGGI', 12, 04, 03, 2007),
 (46763, '12.04.03.2008', 'LAWELU', 12, 04, 03, 2008),
-(46764, '12.04.03.2009', 'SALO''O', 12, 04, 03, 2009),
+(46764, '12.04.03.2009', 'SALO\'O', 12, 04, 03, 2009),
 (46765, '12.04.03.2010', 'HILISANGAWOLO', 12, 04, 03, 2010),
 (46766, '12.04.03.2011', 'HILIBADALU', 12, 04, 03, 2011),
 (46767, '12.04.03.2012', 'LOLOGOLU', 12, 04, 03, 2012),
@@ -47071,8 +47076,8 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (46770, '12.04.03.2015', 'TUHEMBERUA', 12, 04, 03, 2015),
 (46771, '12.04.03.2016', 'LOLOZIRUGI', 12, 04, 03, 2016),
 (46772, '12.04.03.2017', 'LAKHENE', 12, 04, 03, 2017),
-(46773, '12.04.03.2018', 'HILIIWALO''O I', 12, 04, 03, 2018),
-(46774, '12.04.03.2019', 'SIANA''A', 12, 04, 03, 2019),
+(46773, '12.04.03.2018', 'HILIIWALO\'O I', 12, 04, 03, 2018),
+(46774, '12.04.03.2019', 'SIANA\'A', 12, 04, 03, 2019),
 (46775, '12.04.03.2020', 'FADORO', 12, 04, 03, 2020),
 (46776, '12.04.03.2021', 'IRAONOGAMBO', 12, 04, 03, 2021),
 (46777, '12.04.03.2022', 'TUHOOWO', 12, 04, 03, 2022),
@@ -47098,7 +47103,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (46796, '12.04.03.2041', 'HAYO', 12, 04, 03, 2041),
 (46797, '12.04.03.2042', 'HILIMA YO', 12, 04, 03, 2042),
 (46798, '12.04.03.2043', 'ZUZUNDRAO', 12, 04, 03, 2043),
-(46799, '12.04.03.2044', 'HILIWALO''O II', 12, 04, 03, 2044),
+(46799, '12.04.03.2044', 'HILIWALO\'O II', 12, 04, 03, 2044),
 (46800, '12.04.03.2045', 'GUNUNG BARU', 12, 04, 03, 2045),
 (46801, '12.04.03.2046', 'HILISOROMI', 12, 04, 03, 2046),
 (46802, '12.04.03.2047', 'SIDUA HILI', 12, 04, 03, 2047),
@@ -47107,7 +47112,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (46805, '12.04.03.2050', 'LASARA BAHILI', 12, 04, 03, 2050),
 (46806, '12.04.03.2051', 'HILI WAELE', 12, 04, 03, 2051),
 (46807, '12.04.03.2052', 'SITOLU EWALI', 12, 04, 03, 2052),
-(46808, '12.04.03.2053', 'SIHARE''O', 12, 04, 03, 2053),
+(46808, '12.04.03.2053', 'SIHARE\'O', 12, 04, 03, 2053),
 (46809, '12.04.03.2054', 'HAREFA', 12, 04, 03, 2054),
 (46810, '12.04.03.2055', 'LOLOMBOLI', 12, 04, 03, 2055),
 (46811, '12.04.03.2056', 'ONONAMOLO  I', 12, 04, 03, 2056),
@@ -47136,12 +47141,12 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (46834, '12.04.04.2017', 'SOMI', 12, 04, 04, 2017),
 (46835, '12.04.04.2018', 'SIRETE', 12, 04, 04, 2018),
 (46836, '12.04.04.2019', 'HELIWETOGIDO', 12, 04, 04, 2019),
-(46837, '12.04.04.2020', 'LOLOANA'' A GIDO', 12, 04, 04, 2020),
+(46837, '12.04.04.2020', 'LOLOANA\' A GIDO', 12, 04, 04, 2020),
 (46838, '12.04.04.2021', 'HILIMBANA', 12, 04, 04, 2021),
 (46839, '12.04.04.2022', 'SISOBAHILI', 12, 04, 04, 2022),
 (46840, '12.04.04.2023', 'LAHEMO', 12, 04, 04, 2023),
 (46841, '12.04.04.2024', 'LADEA', 12, 04, 04, 2024),
-(46842, '12.04.04.2025', 'LOLOANA '' A IDANOI', 12, 04, 04, 2025),
+(46842, '12.04.04.2025', 'LOLOANA \' A IDANOI', 12, 04, 04, 2025),
 (46843, '12.04.04.2026', 'HILIWETO IDANOI', 12, 04, 04, 2026),
 (46844, '12.04.04.2027', 'UMBU', 12, 04, 04, 2027),
 (46845, '12.04.04.2028', 'SAEWE', 12, 04, 04, 2028),
@@ -47153,7 +47158,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (46851, '12.04.04.2034', 'TETEHOSI I', 12, 04, 04, 2034),
 (46852, '12.04.04.2035', 'TETEHOSI II', 12, 04, 04, 2035),
 (46853, '12.04.04.2036', 'SIWALUBANUA I', 12, 04, 04, 2036),
-(46854, '12.04.04.2037', 'AWA''AI', 12, 04, 04, 2037),
+(46854, '12.04.04.2037', 'AWA\'AI', 12, 04, 04, 2037),
 (46855, '12.04.04.2038', 'LEWUOGURU IDANOI', 12, 04, 04, 2038),
 (46856, '12.04.04.2039', 'FADORO', 12, 04, 04, 2039),
 (46857, '12.04.04.2040', 'HILIHAMBAW A', 12, 04, 04, 2040),
@@ -47239,7 +47244,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (46937, '12.04.06.2034', 'LOLONOYO TUHEMBERUA', 12, 04, 06, 2034),
 (46938, '12.04.06.2035', 'SIMANDRAOLO', 12, 04, 06, 2035),
 (46939, '12.04.06.2036', 'LOLOWONU NIKOOTANO', 12, 04, 06, 2036),
-(46940, '12.04.06.2037', 'HILINA''A', 12, 04, 06, 2037),
+(46940, '12.04.06.2037', 'HILINA\'A', 12, 04, 06, 2037),
 (46941, '12.04.06.2038', 'BOYO', 12, 04, 06, 2038),
 (46942, '12.04.06.2040', 'ONOZITOLI  SIFAOROASI', 12, 04, 06, 2040),
 (46943, '12.04.06.2042', 'IRAONOGEBA', 12, 04, 06, 2042),
@@ -47252,7 +47257,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (46950, '12.04.06.2049', 'SIFALAETE ULU', 12, 04, 06, 2049),
 (46951, '12.04.06.2050', 'SAEWE', 12, 04, 06, 2050),
 (46952, '12.04.06.2051', 'OMBOLATA ULU', 12, 04, 06, 2051),
-(46953, '12.04.06.2052', 'MO''AWO', 12, 04, 06, 2052),
+(46953, '12.04.06.2052', 'MO\'AWO', 12, 04, 06, 2052),
 (46954, '12.04.06.2053', 'HILIHAO', 12, 04, 06, 2053),
 (46955, '12.04.06.2054', 'SISARAHILI GAMO', 12, 04, 06, 2054),
 (46956, '12.04.06.2055', 'BAWODESOLO', 12, 04, 06, 2055),
@@ -47279,11 +47284,11 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (46977, '12.04.07.2016', 'BALOHILI BOTOMUZOI', 12, 04, 07, 2016),
 (46978, '12.04.07.2017', 'HILIMBOWO BOTOMUZOI', 12, 04, 07, 2017),
 (46979, '12.04.07.2018', 'FILOLO BOTOMUZOI', 12, 04, 07, 2018),
-(46980, '12.04.07.2019', 'LOLOANA''A', 12, 04, 07, 2019),
-(46981, '12.04.07.2020', 'MAZINGO TANOSE''O', 12, 04, 07, 2020),
+(46980, '12.04.07.2019', 'LOLOANA\'A', 12, 04, 07, 2019),
+(46981, '12.04.07.2020', 'MAZINGO TANOSE\'O', 12, 04, 07, 2020),
 (46982, '12.04.07.2021', 'DIMA', 12, 04, 07, 2021),
 (46983, '12.04.07.2022', 'SINARIKHI', 12, 04, 07, 2022),
-(46984, '12.04.07.2023', 'OMBOLATA SALO''O', 12, 04, 07, 2023),
+(46984, '12.04.07.2023', 'OMBOLATA SALO\'O', 12, 04, 07, 2023),
 (46985, '12.04.07.2024', 'SISOBALAURU', 12, 04, 07, 2024),
 (46986, '12.04.07.2025', 'TUHEGAFOA II', 12, 04, 07, 2025),
 (46987, '12.04.07.2026', 'ONONAMOLO I BOTOMUZOI', 12, 04, 07, 2026),
@@ -47297,14 +47302,14 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (46995, '12.04.07.2034', 'ORAHILI TANOSEO', 12, 04, 07, 2034),
 (46996, '12.04.07.2035', 'TARAKHAINI', 12, 04, 07, 2035),
 (46997, '12.04.07.2036', 'IRANO LASE', 12, 04, 07, 2036),
-(46998, '12.04.07.2037', 'NAZALOU ALO''OA', 12, 04, 07, 2037),
+(46998, '12.04.07.2037', 'NAZALOU ALO\'OA', 12, 04, 07, 2037),
 (46999, '12.04.07.2038', 'NIKOOTANO DAO', 12, 04, 07, 2038),
 (47000, '12.04.07.2039', 'FADORO HILIMBOWO', 12, 04, 07, 2039),
 (47001, '12.04.08.2001', 'BITAYA', 12, 04, 08, 2001),
 (47002, '12.04.08.2002', 'HUMENE SIHENE.ASI', 12, 04, 08, 2002),
 (47003, '12.04.08.2003', 'FABALIWA OYO', 12, 04, 08, 2003),
-(47004, '12.04.08.2004', 'BOTONA''AI', 12, 04, 08, 2004),
-(47005, '12.04.08.2005', 'TE''OLO', 12, 04, 08, 2005),
+(47004, '12.04.08.2004', 'BOTONA\'AI', 12, 04, 08, 2004),
+(47005, '12.04.08.2005', 'TE\'OLO', 12, 04, 08, 2005),
 (47006, '12.04.08.2006', 'SIWAWO', 12, 04, 08, 2006),
 (47007, '12.04.08.2007', 'GUNUNG TUA', 12, 04, 08, 2007),
 (47008, '12.04.08.2008', 'LAHEMBOHO', 12, 04, 08, 2008),
@@ -47317,16 +47322,16 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (47015, '12.04.08.2015', 'FULOLO', 12, 04, 08, 2015),
 (47016, '12.04.08.2016', 'HILIGAWONI', 12, 04, 08, 2016),
 (47017, '12.04.08.2017', 'ONONAMOLO TUMULA', 12, 04, 08, 2017),
-(47018, '12.04.08.2018', 'FAEKHUNA''A', 12, 04, 08, 2018),
-(47019, '12.04.08.2019', 'SIFAORO''ASI', 12, 04, 08, 2019),
+(47018, '12.04.08.2018', 'FAEKHUNA\'A', 12, 04, 08, 2018),
+(47019, '12.04.08.2019', 'SIFAORO\'ASI', 12, 04, 08, 2019),
 (47020, '12.04.08.2020', 'BANUA SIBOHOU  I', 12, 04, 08, 2020),
 (47021, '12.04.08.2021', 'OMBOLATA', 12, 04, 08, 2021),
 (47022, '12.04.08.2022', 'BANUA SOBOHOU   II', 12, 04, 08, 2022),
 (47023, '12.04.08.2023', 'DAHANA ALASA', 12, 04, 08, 2023),
 (47024, '12.04.08.2024', 'ONONAMOLO ALASA', 12, 04, 08, 2024),
 (47025, '12.04.08.2025', 'MAZINGO', 12, 04, 08, 2025),
-(47026, '12.04.08.2026', 'HILIANA''A', 12, 04, 08, 2026),
-(47027, '12.04.08.2027', 'LOLOANA''A', 12, 04, 08, 2027),
+(47026, '12.04.08.2026', 'HILIANA\'A', 12, 04, 08, 2026),
+(47027, '12.04.08.2027', 'LOLOANA\'A', 12, 04, 08, 2027),
 (47028, '12.04.08.2028', 'HILIMBOWO KARE', 12, 04, 08, 2028),
 (47029, '12.04.08.2029', 'LAEHUWA', 12, 04, 08, 2029),
 (47030, '12.04.08.2030', 'HILIBANUA', 12, 04, 08, 2030),
@@ -47346,10 +47351,10 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (47044, '12.04.09.2003', 'LAOWOWAGA', 12, 04, 09, 2003),
 (47045, '12.04.09.2004', 'LUKHU LASE', 12, 04, 09, 2004),
 (47046, '12.04.09.2005', 'TETEHOSI SOROWI', 12, 04, 09, 2005),
-(47047, '12.04.09.2006', 'SIFAORO''ASI', 12, 04, 09, 2006),
+(47047, '12.04.09.2006', 'SIFAORO\'ASI', 12, 04, 09, 2006),
 (47048, '12.04.09.2007', 'HILIZUKHU', 12, 04, 09, 2007),
 (47049, '12.04.09.2008', 'ONOZALUKHU', 12, 04, 09, 2008),
-(47050, '12.04.09.2009', 'HILINA'' A', 12, 04, 09, 2009),
+(47050, '12.04.09.2009', 'HILINA\' A', 12, 04, 09, 2009),
 (47051, '12.04.09.2010', 'HILIGODU HOY A', 12, 04, 09, 2010),
 (47052, '12.04.09.2011', 'SITOLUBANUA', 12, 04, 09, 2011),
 (47053, '12.04.09.2012', 'HILI HATI', 12, 04, 09, 2012),
@@ -47361,7 +47366,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (47059, '12.04.09.2019', 'AFIA', 12, 04, 09, 2019),
 (47060, '12.04.09.2020', 'MOAWO', 12, 04, 09, 2020),
 (47061, '12.04.09.2021', 'LASARA', 12, 04, 09, 2021),
-(47062, '12.04.09.2022', 'SIHENE''ASI', 12, 04, 09, 2022),
+(47062, '12.04.09.2022', 'SIHENE\'ASI', 12, 04, 09, 2022),
 (47063, '12.04.09.2023', 'FADORO HILIIMBOWO', 12, 04, 09, 2023),
 (47064, '12.04.09.2024', 'FADORO HILIHAMBAWA', 12, 04, 09, 2024),
 (47065, '12.04.09.2025', 'TUGALA LAURU', 12, 04, 09, 2025),
@@ -47379,7 +47384,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (47077, '12.04.10.2003', 'BANUA SIBOHOU', 12, 04, 10, 2003),
 (47078, '12.04.10.2004', 'NAZALOU', 12, 04, 10, 2004),
 (47079, '12.04.10.2005', 'LASARA SOWU', 12, 04, 10, 2005),
-(47080, '12.04.10.2006', 'LOLOANA'' A', 12, 04, 10, 2006),
+(47080, '12.04.10.2006', 'LOLOANA\' A', 12, 04, 10, 2006),
 (47081, '12.04.10.2007', 'GAWU-GAWU BAUSO', 12, 04, 10, 2007),
 (47082, '12.04.10.2008', 'AFIA', 12, 04, 10, 2008),
 (47083, '12.04.10.2009', 'TETOHOSI AFIA', 12, 04, 10, 2009),
@@ -47390,10 +47395,10 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (47088, '12.04.10.2014', 'HILISALOO', 12, 04, 10, 2014),
 (47089, '12.04.10.2015', 'SIOFA BANUA', 12, 04, 10, 2015),
 (47090, '12.04.10.2016', 'LAAYA', 12, 04, 10, 2016),
-(47091, '12.04.10.2017', 'ALO''OA', 12, 04, 10, 2017),
+(47091, '12.04.10.2017', 'ALO\'OA', 12, 04, 10, 2017),
 (47092, '12.04.10.2018', 'LADARA', 12, 04, 10, 2018),
 (47093, '12.04.10.2019', 'BANUA GEA', 12, 04, 10, 2019),
-(47094, '12.04.10.2020', 'FULOLO SALO''O', 12, 04, 10, 2020),
+(47094, '12.04.10.2020', 'FULOLO SALO\'O', 12, 04, 10, 2020),
 (47095, '12.04.10.2021', 'OMOLATA SAWO', 12, 04, 10, 2021),
 (47096, '12.04.10.2022', 'SANAWUYU', 12, 04, 10, 2022),
 (47097, '12.04.10.2023', 'SILIMA BANUA', 12, 04, 10, 2023),
@@ -47415,7 +47420,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (47113, '12.04.10.2039', 'LAWIRA II', 12, 04, 10, 2039),
 (47114, '12.04.10.2040', 'LAWIRA I', 12, 04, 10, 2040),
 (47115, '12.04.10.2041', 'HILIGODU', 12, 04, 10, 2041),
-(47116, '12.04.10.2042', 'LOMBUZA''UA', 12, 04, 10, 2042),
+(47116, '12.04.10.2042', 'LOMBUZA\'UA', 12, 04, 10, 2042),
 (47117, '12.04.10.2043', 'DAHADANO', 12, 04, 10, 2043),
 (47118, '12.04.10.2044', 'LOLOMBOLI', 12, 04, 10, 2044),
 (47119, '12.04.10.2045', 'LOLOFAOSO', 12, 04, 10, 2045),
@@ -47470,7 +47475,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (47168, '12.04.14.2006', 'SISOBAHILI', 12, 04, 14, 2006),
 (47169, '12.04.14.2007', 'LAURU LAHEWA', 12, 04, 14, 2007),
 (47170, '12.04.14.2008', 'SIFAOROASI', 12, 04, 14, 2008),
-(47171, '12.04.14.2009', 'FAEKHUNA''A', 12, 04, 14, 2009),
+(47171, '12.04.14.2009', 'FAEKHUNA\'A', 12, 04, 14, 2009),
 (47172, '12.05.01.2001', 'PEKAN BAHOROK', 12, 05, 01, 2001),
 (47173, '12.05.01.2002', 'LAU DAMAK', 12, 05, 01, 2002),
 (47174, '12.05.01.2003', 'TIMBANG LAWANG', 12, 05, 01, 2003),
@@ -48807,7 +48812,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (48504, '12.09.14.2009', 'PADANG MAHONDANG', 12, 09, 14, 2009),
 (48505, '12.09.14.2010', 'OFA PADANG MAHONDANG', 12, 09, 14, 2010),
 (48506, '12.09.14.2011', 'BARU', 12, 09, 14, 2011),
-(48507, '12.09.15.2001', 'AEK BANBAN''', 12, 09, 15, 2001),
+(48507, '12.09.15.2001', 'AEK BANBAN\'', 12, 09, 15, 2001),
 (48508, '12.09.15.2002', 'AEK SONGSONGAN', 12, 09, 15, 2002),
 (48509, '12.09.15.2003', 'BANDAR PULAU PEKAN', 12, 09, 15, 2003),
 (48510, '12.09.15.2004', 'BATU ANAM', 12, 09, 15, 2004),
@@ -49756,7 +49761,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (49451, '12.13.17.2011', 'TAGILANG JULU', 12, 13, 17, 2011),
 (49452, '12.14.01.2001', 'SAMBULU', 12, 14, 01, 2001),
 (49453, '12.14.01.2002', 'HILIWAEBU', 12, 14, 01, 2002),
-(49454, '12.14.01.2003', 'LOLONA'' A', 12, 14, 01, 2003),
+(49454, '12.14.01.2003', 'LOLONA\' A', 12, 14, 01, 2003),
 (49455, '12.14.01.2004', 'AMOROSA', 12, 14, 01, 2004),
 (49456, '12.14.01.2005', 'ORAHILI ULUNOYO', 12, 14, 01, 2005),
 (49457, '12.14.01.2006', 'MARAO', 12, 14, 01, 2006),
@@ -49769,7 +49774,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (49464, '12.14.01.2013', 'SISARAHILI HURUNA', 12, 14, 01, 2013),
 (49465, '12.14.01.2014', 'SIFALAGO', 12, 14, 01, 2014),
 (49466, '12.14.01.2015', 'TUNDRUMBAHO', 12, 14, 01, 2015),
-(49467, '12.14.01.2016', 'SIFAORO''ASI', 12, 14, 01, 2016),
+(49467, '12.14.01.2016', 'SIFAORO\'ASI', 12, 14, 01, 2016),
 (49468, '12.14.01.2017', 'LALIMANAWA', 12, 14, 01, 2017),
 (49469, '12.14.01.2018', 'TESIKHORI', 12, 14, 01, 2018),
 (49470, '12.14.02.2001', 'HILIMBOE', 12, 14, 02, 2001),
@@ -49778,8 +49783,8 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (49473, '12.14.02.2004', 'HILIMBOHO', 12, 14, 02, 2004),
 (49474, '12.14.02.2005', 'ORAHILISUSUA', 12, 14, 02, 2005),
 (49475, '12.14.02.2006', 'LUAHANDROITA', 12, 14, 02, 2006),
-(49476, '12.14.02.2007', 'TETEGAWA'' AI', 12, 14, 02, 2007),
-(49477, '12.14.02.2008', 'HILIANA''A SUSUA', 12, 14, 02, 2008),
+(49476, '12.14.02.2007', 'TETEGAWA\' AI', 12, 14, 02, 2007),
+(49477, '12.14.02.2008', 'HILIANA\'A SUSUA', 12, 14, 02, 2008),
 (49478, '12.14.02.2009', 'HILIMBARUZO', 12, 14, 02, 2009),
 (49479, '12.14.02.2010', 'AMANDRAYA', 12, 14, 02, 2010),
 (49480, '12.14.02.2011', 'BALOHILI GOMO', 12, 14, 02, 2011),
@@ -49790,7 +49795,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (49485, '12.14.02.2016', 'LAHUSA', 12, 14, 02, 2016),
 (49486, '12.14.02.2017', 'HILIMBOWO', 12, 14, 02, 2017),
 (49487, '12.14.02.2018', 'LOLOSONI .', 12, 14, 02, 2018),
-(49488, '12.14.02.2019', 'HILIANA''A GOMO', 12, 14, 02, 2019),
+(49488, '12.14.02.2019', 'HILIANA\'A GOMO', 12, 14, 02, 2019),
 (49489, '12.14.02.2020', 'LAWA-LAWA LUOIDANO TAE', 12, 14, 02, 2020),
 (49490, '12.14.02.2021', 'DOLI -DOLI', 12, 14, 02, 2021),
 (49491, '12.14.02.2022', 'SIRAHIA', 12, 14, 02, 2022),
@@ -49814,7 +49819,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (49509, '12.14.03.2009', 'LAHUSA', 12, 14, 03, 2009),
 (49510, '12.14.03.2010', 'HILIDOHONA', 12, 14, 03, 2010),
 (49511, '12.14.03.2011', 'HOYA', 12, 14, 03, 2011),
-(49512, '12.14.03.2012', 'HILISAO''OTO', 12, 14, 03, 2012),
+(49512, '12.14.03.2012', 'HILISAO\'OTO', 12, 14, 03, 2012),
 (49513, '12.14.03.2013', 'HULU IDANODUO', 12, 14, 03, 2013),
 (49514, '12.14.03.2014', 'SIHAREO', 12, 14, 03, 2014),
 (49515, '12.14.03.2015', 'GOLAMBANUA II', 12, 14, 03, 2015),
@@ -49912,7 +49917,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (49607, '12.14.06.2016', 'HILIALAWA', 12, 14, 06, 2016),
 (49608, '12.14.06.2017', 'HILINDRASONIHA', 12, 14, 06, 2017),
 (49609, '12.14.06.2018', 'LAWINDRA', 12, 14, 06, 2018),
-(49610, '12.14.06.2019', 'HILIZALO''OTANO', 12, 14, 06, 2019),
+(49610, '12.14.06.2019', 'HILIZALO\'OTANO', 12, 14, 06, 2019),
 (49611, '12.14.06.2020', 'BAWOLAHUSA', 12, 14, 06, 2020),
 (49612, '12.14.06.2021', 'HILIFALAGO', 12, 14, 06, 2021),
 (49613, '12.14.06.2022', 'HILIFARONO', 12, 14, 06, 2022),
@@ -49922,13 +49927,13 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (49617, '12.14.06.2026', 'HILISONDREKHA', 12, 14, 06, 2026),
 (49618, '12.14.06.2027', 'HILIMONDREGERAYA', 12, 14, 06, 2027),
 (49619, '12.14.06.2028', 'HILINAMOZAUA', 12, 14, 06, 2028),
-(49620, '12.14.06.2029', 'HINAWALOFA''U ', 12, 14, 06, 2029),
+(49620, '12.14.06.2029', 'HINAWALOFA\'U ', 12, 14, 06, 2029),
 (49621, '12.14.06.2030', 'HILINAWALO MAZINGO', 12, 14, 06, 2030),
 (49622, '12.14.06.2031', 'HILIZOROI LAWA ', 12, 14, 06, 2031),
 (49623, '12.14.06.2032', 'ONOHONDRO', 12, 14, 06, 2032),
 (49624, '12.14.06.2033', 'SIWALAWA', 12, 14, 06, 2033),
 (49625, '12.14.06.2034', 'BAWOMATALUO ', 12, 14, 06, 2034),
-(49626, '12.14.06.2035', 'ORAHILIFA''U', 12, 14, 06, 2035),
+(49626, '12.14.06.2035', 'ORAHILIFA\'U', 12, 14, 06, 2035),
 (49627, '12.14.06.2036', 'HILIMAENAMOLO', 12, 14, 06, 2036),
 (49628, '12.14.06.2037', 'HILISIMAETANO', 12, 14, 06, 2037),
 (49629, '12.14.06.2038', 'LAHUSA', 12, 14, 06, 2038),
@@ -49940,7 +49945,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (49635, '12.14.07.2005', 'HILl HORU', 12, 14, 07, 2005),
 (49636, '12.14.07.2006', 'HILIMBULAWA', 12, 14, 07, 2006),
 (49637, '12.14.07.2007', 'SISOBAMBOWO', 12, 14, 07, 2007),
-(49638, '12.14.07.2008', 'TU''INDRAO', 12, 14, 07, 2008),
+(49638, '12.14.07.2008', 'TU\'INDRAO', 12, 14, 07, 2008),
 (49639, '12.14.07.2009', 'HILIMBOWO', 12, 14, 07, 2009),
 (49640, '12.14.07.2010', 'HILIAMAUZULA', 12, 14, 07, 2010),
 (49641, '12.14.07.2011', 'SISARAHILI', 12, 14, 07, 2011),
@@ -49959,9 +49964,9 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (49654, '12.14.08.2006', 'HILINAMOZIHONO', 12, 14, 08, 2006),
 (49655, '12.14.08.2007', 'BAWOSALOO DAO-DAO', 12, 14, 08, 2007),
 (49656, '12.14.08.2008', 'TOGIZITA', 12, 14, 08, 2008),
-(49657, '12.14.08.2009', 'TUHO''OWO', 12, 14, 08, 2009),
+(49657, '12.14.08.2009', 'TUHO\'OWO', 12, 14, 08, 2009),
 (49658, '12.14.08.2010', 'LOLOHOWA', 12, 14, 08, 2010),
-(49659, '12.14.08.2011', 'LOLOWA''U', 12, 14, 08, 2011),
+(49659, '12.14.08.2011', 'LOLOWA\'U', 12, 14, 08, 2011),
 (49660, '12.14.08.2012', 'HILIFADOLO', 12, 14, 08, 2012),
 (49661, '12.14.08.2013', 'SOLEDUA', 12, 14, 08, 2013),
 (49662, '12.14.08.2014', 'SISARAHILI OYO', 12, 14, 08, 2014),
@@ -49971,11 +49976,11 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (49666, '12.14.08.2018', 'MANAWADANO', 12, 14, 08, 2018),
 (49667, '12.14.08.2019', 'SISOBAHILI SIWALAWA', 12, 14, 08, 2019),
 (49668, '12.14.08.2020', 'TALIO', 12, 14, 08, 2020),
-(49669, '12.14.08.2021', 'LA''USO', 12, 14, 08, 2021),
+(49669, '12.14.08.2021', 'LA\'USO', 12, 14, 08, 2021),
 (49670, '12.14.08.2022', 'SISOBAHILI HURUNA', 12, 14, 08, 2022),
 (49671, '12.14.08.2023', 'BAWAHOSI', 12, 14, 08, 2023),
 (49672, '12.14.08.2024', 'OLAYAMA', 12, 14, 08, 2024),
-(49673, '12.14.08.2025', 'SOROMA''ASI', 12, 14, 08, 2025),
+(49673, '12.14.08.2025', 'SOROMA\'ASI', 12, 14, 08, 2025),
 (49674, '12.14.08.2026', 'HILIADULO', 12, 14, 08, 2026),
 (49675, '12.14.08.2027', 'MALUO', 12, 14, 08, 2027),
 (49676, '12.14.08.2028', 'UMBUSI', 12, 14, 08, 2028),
@@ -51098,7 +51103,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (50792, '11.03.03.2006', 'KUTA BLANG', 11, 03, 03, 2006),
 (50793, '11.03.03.2007', 'GAMPONG TANJONG', 11, 03, 03, 2007),
 (50794, '11.03.03.2008', 'BLANG GEULUMPANG', 11, 03, 03, 2008),
-(50795, '11.03.03.2009', 'MEUNASAH PU''UK', 11, 03, 03, 2009),
+(50795, '11.03.03.2009', 'MEUNASAH PU\'UK', 11, 03, 03, 2009),
 (50796, '11.03.03.2010', 'BANTAYAN TIMU', 11, 03, 03, 2010),
 (50797, '11.03.03.2011', 'KETAPANG MAMEH', 11, 03, 03, 2011),
 (50798, '11.03.03.2012', 'SEUNEUBOK RAMBONG', 11, 03, 03, 2012),
@@ -51403,7 +51408,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (51097, '11.03.14.2010', 'PAYA GABOH', 11, 03, 14, 2010),
 (51098, '11.03.14.2011', 'PADANG KASAH', 11, 03, 14, 2011),
 (51099, '11.03.14.2012', 'BUKET TEUKUH', 11, 03, 14, 2012),
-(51100, '11.03.14.2013', 'BUKET PU''UK', 11, 03, 14, 2013),
+(51100, '11.03.14.2013', 'BUKET PU\'UK', 11, 03, 14, 2013),
 (51101, '11.03.14.2014', 'BLANG MINJEI', 11, 03, 14, 2014),
 (51102, '11.03.14.2015', 'ALUE KUMBANG A', 11, 03, 14, 2015),
 (51103, '11.03.14.2016', 'ALUE KUMBANG M', 11, 03, 14, 2016),
@@ -52409,7 +52414,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (52101, '11.06.11.2031', 'LAM ROH', 11, 06, 11, 2031),
 (52102, '11.06.11.2032', 'LAM BUNOT TANOH', 11, 06, 11, 2032),
 (52103, '11.06.11.2033', 'TUMPOK LAMPOH', 11, 06, 11, 2033),
-(52104, '11.06.11.2034', 'PU''UK', 11, 06, 11, 2034),
+(52104, '11.06.11.2034', 'PU\'UK', 11, 06, 11, 2034),
 (52105, '11.06.11.2035', 'LAM BUNOT PAYA', 11, 06, 11, 2035),
 (52106, '11.06.11.2036', 'LAM POK KEUDEE', 11, 06, 11, 2036),
 (52107, '11.06.11.2037', 'LAM ASAN', 11, 06, 11, 2037),
@@ -52959,7 +52964,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (52651, '11.07.08.2029', 'BENTAYAN ', 11, 07, 08, 2029),
 (52652, '11.07.08.2030', 'KANDANG', 11, 07, 08, 2030),
 (52653, '11.07.08.2031', 'LAMKAWE', 11, 07, 08, 2031),
-(52654, '11.07.08.2032', 'PU''UK', 11, 07, 08, 2032),
+(52654, '11.07.08.2032', 'PU\'UK', 11, 07, 08, 2032),
 (52655, '11.07.08.2033', 'TANJONG ', 11, 07, 08, 2033),
 (52656, '11.07.08.2034', 'DEAH BLANG', 11, 07, 08, 2034),
 (52657, '11.07.08.2035', 'DEA MON ARA', 11, 07, 08, 2035),
@@ -53149,7 +53154,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (52841, '11.07.15.2029', 'ME TANOH', 11, 07, 15, 2029),
 (52842, '11.07.15.2030', 'SIALET-ALET', 11, 07, 15, 2030),
 (52843, '11.07.15.2031', 'BLUK ARAB', 11, 07, 15, 2031),
-(52844, '11.07.15.2032', 'PU''UK', 11, 07, 15, 2032),
+(52844, '11.07.15.2032', 'PU\'UK', 11, 07, 15, 2032),
 (52845, '11.07.15.2033', 'DAYAH MUARA', 11, 07, 15, 2033),
 (52846, '11.07.15.2034', 'SAWIET', 11, 07, 15, 2034),
 (52847, '11.07.15.2035', 'ULEE TUTUE', 11, 07, 15, 2035),
@@ -53168,7 +53173,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (52860, '11.07.15.2048', 'GAMPONG', 11, 07, 15, 2048),
 (52861, '11.07.16.2001', 'TIJUE', 11, 07, 16, 2001),
 (52862, '11.07.16.2002', 'LAMPEUDUE TUNONG', 11, 07, 16, 2002),
-(52863, '11.07.16.2003', 'PU''UK', 11, 07, 16, 2003),
+(52863, '11.07.16.2003', 'PU\'UK', 11, 07, 16, 2003),
 (52864, '11.07.16.2004', 'LAMPEUDUE BAROH', 11, 07, 16, 2004),
 (52865, '11.07.16.2005', 'PAYA', 11, 07, 16, 2005),
 (52866, '11.07.16.2006', 'MESJID REUNTOH', 11, 07, 16, 2006),
@@ -53533,7 +53538,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (53224, '11.07.26.2002', 'TU PANTE RAJA', 11, 07, 26, 2002),
 (53225, '11.07.26.2003', 'HAGU', 11, 07, 26, 2003),
 (53226, '11.07.26.2004', 'MUKA BLANG', 11, 07, 26, 2004),
-(53227, '11.07.26.2005', 'LHOK PU''UK', 11, 07, 26, 2005),
+(53227, '11.07.26.2005', 'LHOK PU\'UK', 11, 07, 26, 2005),
 (53228, '11.07.26.2006', 'MESJID P RAJA TIMUR', 11, 07, 26, 2006),
 (53229, '11.07.26.2007', 'TEUNGOH', 11, 07, 26, 2007),
 (53230, '11.07.26.2008', 'TUNONG', 11, 07, 26, 2008),
@@ -67776,7 +67781,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (67451, '64.03.02.2007', 'BIATAN BAPINANG', 64, 03, 02, 2007),
 (67452, '64.03.02.2008', 'BIATAN LEMPAKE', 64, 03, 02, 2008),
 (67453, '64.03.02.2009', 'TABALAR MUARA', 64, 03, 02, 2009),
-(67454, '64.03.02.2010', 'TUBA''AN', 64, 03, 02, 2010),
+(67454, '64.03.02.2010', 'TUBA\'AN', 64, 03, 02, 2010),
 (67455, '64.03.02.2011', 'TABALAR ULU', 64, 03, 02, 2011),
 (67456, '64.03.02.2012', 'SEMURUT', 64, 03, 02, 2012),
 (67457, '64.03.02.2013', 'RADAK BUYUNG BUYUNG', 64, 03, 02, 2013),
@@ -67801,7 +67806,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (67476, '64.03.03.2011', 'GURIMBANG', 64, 03, 03, 2011),
 (67477, '64.03.03.2012', 'SUKA TENGAH', 64, 03, 03, 2012),
 (67478, '64.03.03.2014', 'TANJUNG PERANGAT', 64, 03, 03, 2014),
-(67479, '64.03.04.2001', 'LAONG LA''AI', 64, 03, 04, 2001),
+(67479, '64.03.04.2001', 'LAONG LA\'AI', 64, 03, 04, 2001),
 (67480, '64.03.04.2002', 'PUNAN SEGAH', 64, 03, 04, 2002),
 (67481, '64.03.04.2003', 'LONG AYAP', 64, 03, 04, 2003),
 (67482, '64.03.04.2004', 'LONG AYAN', 64, 03, 04, 2004),
@@ -68036,7 +68041,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (67711, '64.05.04.2062', 'TAULUMBIS', 64, 05, 04, 2062),
 (67712, '64.05.04.2063', 'TANJUNG ULU', 64, 05, 04, 2063),
 (67713, '64.05.04.2064', 'PATAL II', 64, 05, 04, 2064),
-(67714, '64.05.04.2065', 'PA''LOO', 64, 05, 04, 2065),
+(67714, '64.05.04.2065', 'PA\'LOO', 64, 05, 04, 2065),
 (67715, '64.05.04.2066', 'SANGKUP', 64, 05, 04, 2066),
 (67716, '64.05.04.2067', 'TUKULEN', 64, 05, 04, 2067),
 (67717, '64.05.04.2068', 'SUNGOI', 64, 05, 04, 2068),
@@ -68044,92 +68049,92 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (67719, '64.05.04.2070', 'LIKOS', 64, 05, 04, 2070),
 (67720, '64.05.04.2071', 'BULAN-BULAN', 64, 05, 04, 2071),
 (67721, '64.05.04.2072', 'KALAMPISING', 64, 05, 04, 2072),
-(67722, '64.05.04.2073', 'PA''LEMUMUT', 64, 05, 04, 2073),
+(67722, '64.05.04.2073', 'PA\'LEMUMUT', 64, 05, 04, 2073),
 (67723, '64.05.04.2074', 'BOKOK', 64, 05, 04, 2074),
 (67724, '64.05.04.2075', 'PAYANG', 64, 05, 04, 2075),
 (67725, '64.05.04.2076', 'MENSALONG', 64, 05, 04, 2076),
 (67726, '64.05.04.2077', 'BULU LUAN HULU', 64, 05, 04, 2077),
-(67727, '64.05.05.2001', 'PA''UPAN', 64, 05, 05, 2001),
-(67728, '64.05.05.2002', 'PA''AMAI', 64, 05, 05, 2002),
-(67729, '64.05.05.2003', 'PA''KABER', 64, 05, 05, 2003),
+(67727, '64.05.05.2001', 'PA\'UPAN', 64, 05, 05, 2001),
+(67728, '64.05.05.2002', 'PA\'AMAI', 64, 05, 05, 2002),
+(67729, '64.05.05.2003', 'PA\'KABER', 64, 05, 05, 2003),
 (67730, '64.05.05.2004', 'LONG BIRAR', 64, 05, 05, 2004),
-(67731, '64.05.05.2005', 'PA''IBANG', 64, 05, 05, 2005),
+(67731, '64.05.05.2005', 'PA\'IBANG', 64, 05, 05, 2005),
 (67732, '64.05.05.2006', 'PASING', 64, 05, 05, 2006),
 (67733, '64.05.05.2007', 'LIANG LUNUK', 64, 05, 05, 2007),
 (67734, '64.05.05.2008', 'LONG PASSIA', 64, 05, 05, 2008),
 (67735, '64.05.05.2009', 'LONG PUPUNG', 64, 05, 05, 2009),
 (67736, '64.05.05.2010', 'LONG BUDUNG', 64, 05, 05, 2010),
-(67737, '64.05.05.2011', 'PA''TERA', 64, 05, 05, 2011),
-(67738, '64.05.05.2012', 'PA''URANG', 64, 05, 05, 2012),
-(67739, '64.05.05.2013', 'PA''DALAN', 64, 05, 05, 2013),
-(67740, '64.05.05.2014', 'PA''MULAK', 64, 05, 05, 2014),
-(67741, '64.05.05.2015', 'PA''PADI', 64, 05, 05, 2015),
+(67737, '64.05.05.2011', 'PA\'TERA', 64, 05, 05, 2011),
+(67738, '64.05.05.2012', 'PA\'URANG', 64, 05, 05, 2012),
+(67739, '64.05.05.2013', 'PA\'DALAN', 64, 05, 05, 2013),
+(67740, '64.05.05.2014', 'PA\'MULAK', 64, 05, 05, 2014),
+(67741, '64.05.05.2015', 'PA\'PADI', 64, 05, 05, 2015),
 (67742, '64.05.05.2016', 'CINGLAT', 64, 05, 05, 2016),
 (67743, '64.05.05.2017', 'LONG PUAK', 64, 05, 05, 2017),
 (67744, '64.05.05.2018', 'LONG MANGAN', 64, 05, 05, 2018),
 (67745, '64.05.05.2019', 'BUDUK KUDUL', 64, 05, 05, 2019),
 (67746, '64.05.05.2020', 'LONG KABID', 64, 05, 05, 2020),
-(67747, '64.05.05.2021', 'PA''INAN', 64, 05, 05, 2021),
+(67747, '64.05.05.2021', 'PA\'INAN', 64, 05, 05, 2021),
 (67748, '64.05.05.2022', 'LEMBUDUD', 64, 05, 05, 2022),
 (67749, '64.05.05.2023', 'LONG TUGUL', 64, 05, 05, 2023),
-(67750, '64.05.05.2024', 'PA''BUTAL', 64, 05, 05, 2024),
-(67751, '64.05.05.2025', 'PA''DELUNG', 64, 05, 05, 2025),
-(67752, '64.05.05.2026', 'PA''URUD', 64, 05, 05, 2026),
-(67753, '64.05.05.2027', 'PA''KEMUD', 64, 05, 05, 2027),
-(67754, '64.05.05.2028', 'PA''KIDANG', 64, 05, 05, 2028),
+(67750, '64.05.05.2024', 'PA\'BUTAL', 64, 05, 05, 2024),
+(67751, '64.05.05.2025', 'PA\'DELUNG', 64, 05, 05, 2025),
+(67752, '64.05.05.2026', 'PA\'URUD', 64, 05, 05, 2026),
+(67753, '64.05.05.2027', 'PA\'KEMUD', 64, 05, 05, 2027),
+(67754, '64.05.05.2028', 'PA\'KIDANG', 64, 05, 05, 2028),
 (67755, '64.05.05.2029', 'LEMBADA', 64, 05, 05, 2029),
 (67756, '64.05.05.2030', 'PAK PAYAK', 64, 05, 05, 2030),
-(67757, '64.05.05.2031', 'PA''PIRIT', 64, 05, 05, 2031),
+(67757, '64.05.05.2031', 'PA\'PIRIT', 64, 05, 05, 2031),
 (67758, '64.05.05.2032', 'LIANG ALIQ', 64, 05, 05, 2032),
 (67759, '64.05.05.2033', 'LIANG TURAN', 64, 05, 05, 2033),
 (67760, '64.05.05.2034', 'LIANG BUTAN', 64, 05, 05, 2034),
 (67761, '64.05.05.2035', 'LIANG BUA', 64, 05, 05, 2035),
 (67762, '64.05.05.2036', 'LEPATAR', 64, 05, 05, 2036),
-(67763, '64.05.05.2037', 'PA''MERING', 64, 05, 05, 2037),
-(67764, '64.05.05.2038', 'PA''TANI', 64, 05, 05, 2038),
-(67765, '64.05.05.2039', 'PA''LUTUT', 64, 05, 05, 2039),
-(67766, '64.05.05.2040', 'MA''LIBU', 64, 05, 05, 2040),
-(67767, '64.05.05.2041', 'PA''RUPAI', 64, 05, 05, 2041),
+(67763, '64.05.05.2037', 'PA\'MERING', 64, 05, 05, 2037),
+(67764, '64.05.05.2038', 'PA\'TANI', 64, 05, 05, 2038),
+(67765, '64.05.05.2039', 'PA\'LUTUT', 64, 05, 05, 2039),
+(67766, '64.05.05.2040', 'MA\'LIBU', 64, 05, 05, 2040),
+(67767, '64.05.05.2041', 'PA\'RUPAI', 64, 05, 05, 2041),
 (67768, '64.05.05.2042', 'BA SIKOR', 64, 05, 05, 2042),
-(67769, '64.05.05.2043', 'PA''NADO', 64, 05, 05, 2043),
+(67769, '64.05.05.2043', 'PA\'NADO', 64, 05, 05, 2043),
 (67770, '64.05.05.2044', 'BUDUK KINANGAN', 64, 05, 05, 2044),
 (67771, '64.05.05.2045', 'LIANG TUER', 64, 05, 05, 2045),
 (67772, '64.05.05.2046', 'BUDUK TUMU', 64, 05, 05, 2046),
 (67773, '64.05.05.2047', 'LONG BERAYANG', 64, 05, 05, 2047),
-(67774, '64.05.05.2048', 'PA''API', 64, 05, 05, 2048),
+(67774, '64.05.05.2048', 'PA\'API', 64, 05, 05, 2048),
 (67775, '64.05.05.2049', 'PA SIRE', 64, 05, 05, 2049),
-(67776, '64.05.05.2050', 'WA''YANUD', 64, 05, 05, 2050),
+(67776, '64.05.05.2050', 'WA\'YANUD', 64, 05, 05, 2050),
 (67777, '64.05.05.2051', 'LONGNAWANG', 64, 05, 05, 2051),
 (67778, '64.05.05.2052', 'LONG KATUNG', 64, 05, 05, 2052),
 (67779, '64.05.05.2053', 'LONG BAWAN', 64, 05, 05, 2053),
 (67780, '64.05.05.2054', 'KAMPUNG BARU', 64, 05, 05, 2054),
-(67781, '64.05.05.2055', 'PA''BETUNG', 64, 05, 05, 2055),
+(67781, '64.05.05.2055', 'PA\'BETUNG', 64, 05, 05, 2055),
 (67782, '64.05.05.2056', 'LONG MATUNG', 64, 05, 05, 2056),
 (67783, '64.05.05.2057', 'LONG RUPAN', 64, 05, 05, 2057),
 (67784, '64.05.05.2058', 'LIANG BIADUNG', 64, 05, 05, 2058),
-(67785, '64.05.05.2059', 'WA''LAYA', 64, 05, 05, 2059),
-(67786, '64.05.05.2060', 'PA''MATUNG', 64, 05, 05, 2060),
-(67787, '64.05.05.2061', 'PA''TERUTUN', 64, 05, 05, 2061),
-(67788, '64.05.05.2062', 'PA''RANGEB', 64, 05, 05, 2062),
-(67789, '64.05.05.2063', 'PA''KEBUAN', 64, 05, 05, 2063),
-(67790, '64.05.05.2064', 'PA''PAWAN', 64, 05, 05, 2064),
+(67785, '64.05.05.2059', 'WA\'LAYA', 64, 05, 05, 2059),
+(67786, '64.05.05.2060', 'PA\'MATUNG', 64, 05, 05, 2060),
+(67787, '64.05.05.2061', 'PA\'TERUTUN', 64, 05, 05, 2061),
+(67788, '64.05.05.2062', 'PA\'RANGEB', 64, 05, 05, 2062),
+(67789, '64.05.05.2063', 'PA\'KEBUAN', 64, 05, 05, 2063),
+(67790, '64.05.05.2064', 'PA\'PAWAN', 64, 05, 05, 2064),
 (67791, '64.05.05.2065', 'LONG UMUNG', 64, 05, 05, 2065),
 (67792, '64.05.05.2066', 'LONG TENEM', 64, 05, 05, 2066),
-(67793, '64.05.05.2067', 'PA''UMUNG', 64, 05, 05, 2067),
-(67794, '64.05.05.2068', 'PA''RAYE', 64, 05, 05, 2068),
-(67795, '64.05.05.2069', 'PA''MELADE', 64, 05, 05, 2069),
+(67793, '64.05.05.2067', 'PA\'UMUNG', 64, 05, 05, 2067),
+(67794, '64.05.05.2068', 'PA\'RAYE', 64, 05, 05, 2068),
+(67795, '64.05.05.2069', 'PA\'MELADE', 64, 05, 05, 2069),
 (67796, '64.05.05.2070', 'BUNGAYAN', 64, 05, 05, 2070),
-(67797, '64.05.05.2071', 'PA''LIDUNG', 64, 05, 05, 2071),
+(67797, '64.05.05.2071', 'PA\'LIDUNG', 64, 05, 05, 2071),
 (67798, '64.05.05.2072', 'WA YAGUNG', 64, 05, 05, 2072),
-(67799, '64.05.05.2073', 'PA''PALA', 64, 05, 05, 2073),
+(67799, '64.05.05.2073', 'PA\'PALA', 64, 05, 05, 2073),
 (67800, '64.05.05.2074', 'SINAR BARU', 64, 05, 05, 2074),
 (67801, '64.05.05.2075', 'LONG NUAT', 64, 05, 05, 2075),
 (67802, '64.05.05.2076', 'LONG SEPAYANG', 64, 05, 05, 2076),
-(67803, '64.05.05.2077', 'PA''PETUT', 64, 05, 05, 2077),
+(67803, '64.05.05.2077', 'PA\'PETUT', 64, 05, 05, 2077),
 (67804, '64.05.05.2078', 'LONG RIAN', 64, 05, 05, 2078),
-(67805, '64.05.05.2079', 'PA''YALAU', 64, 05, 05, 2079),
-(67806, '64.05.05.2080', 'BA''LIKU', 64, 05, 05, 2080),
-(67807, '64.05.05.2081', 'BA''BINUANG', 64, 05, 05, 2081),
+(67805, '64.05.05.2079', 'PA\'YALAU', 64, 05, 05, 2079),
+(67806, '64.05.05.2080', 'BA\'LIKU', 64, 05, 05, 2080),
+(67807, '64.05.05.2081', 'BA\'BINUANG', 64, 05, 05, 2081),
 (67808, '64.05.05.2082', 'PAK MALINAU', 64, 05, 05, 2082),
 (67809, '64.05.05.2083', 'LONG MUTAN', 64, 05, 05, 2083),
 (67810, '64.05.05.2084', 'LONG PADI', 64, 05, 05, 2084),
@@ -68281,7 +68286,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (67956, '64.07.01.2003', 'LONGPENANEH II', 64, 07, 01, 2003),
 (67957, '64.07.01.2004', 'TIONG OHANG', 64, 07, 01, 2004),
 (67958, '64.07.01.2005', 'LONG PENANEH III', 64, 07, 01, 2005),
-(67959, '64.07.01.2006', 'TIONG BU''U', 64, 07, 01, 2006),
+(67959, '64.07.01.2006', 'TIONG BU\'U', 64, 07, 01, 2006),
 (67960, '64.07.01.2007', 'NAHA BUAN', 64, 07, 01, 2007),
 (67961, '64.07.01.2008', 'NAHA TIFAB', 64, 07, 01, 2008),
 (67962, '64.07.01.2009', 'NAHA SILAT', 64, 07, 01, 2009),
@@ -68371,7 +68376,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (68046, '64.07.07.2002', 'MENCIMAI', 64, 07, 07, 2002),
 (68047, '64.07.07.2003', 'ENGKUNI PASEK', 64, 07, 07, 2003),
 (68048, '64.07.07.2004', 'PEPAS EHENG', 64, 07, 07, 2004),
-(68049, '64.07.07.2005', 'MU''UT', 64, 07, 07, 2005),
+(68049, '64.07.07.2005', 'MU\'UT', 64, 07, 07, 2005),
 (68050, '64.07.07.2006', 'LINGGANG MELAPEH', 64, 07, 07, 2006),
 (68051, '64.07.07.2007', 'JUHAN ASA', 64, 07, 07, 2007),
 (68052, '64.07.07.2008', 'A S A', 64, 07, 07, 2008),
@@ -68521,7 +68526,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (68196, '64.08.02.2002', 'NEHES LIAH BING', 64, 08, 02, 2002),
 (68197, '64.08.02.2003', 'MUARA WAHAU', 64, 08, 02, 2003),
 (68198, '64.08.02.2004', 'DABEQ', 64, 08, 02, 2004),
-(68199, '64.08.02.2005', 'DIA''LAY', 64, 08, 02, 2005),
+(68199, '64.08.02.2005', 'DIA\'LAY', 64, 08, 02, 2005),
 (68200, '64.08.02.2006', 'BENHES', 64, 08, 02, 2006),
 (68201, '64.08.02.2007', 'WANASARI', 64, 08, 02, 2007),
 (68202, '64.08.02.2008', 'WAHAU BARU', 64, 08, 02, 2008),
@@ -68553,7 +68558,7 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 (68228, '64.08.05.2004', 'SAQA', 64, 08, 05, 2004),
 (68229, '64.08.05.2005', 'MANDU DALAM', 64, 08, 05, 2005),
 (68230, '64.08.05.2006', 'BANUA BARU', 64, 08, 05, 2006),
-(68231, '64.08.05.2007', 'BATU BA''AY', 64, 08, 05, 2007),
+(68231, '64.08.05.2007', 'BATU BA\'AY', 64, 08, 05, 2007),
 (68232, '64.08.05.2008', 'KARANGAN DALAM', 64, 08, 05, 2008),
 (68233, '64.08.05.2009', 'PENGADAN', 64, 08, 05, 2009),
 (68234, '64.08.05.2010', 'BATU  LEPOQ', 64, 08, 05, 2010),
@@ -68757,13 +68762,13 @@ INSERT INTO `inf_lokasi` (`lokasi_ID`, `lokasi_kode`, `lokasi_nama`, `lokasi_pro
 -- Table structure for table `komentar`
 --
 
-CREATE TABLE IF NOT EXISTS `komentar` (
-`id_komentar` int(11) NOT NULL,
+CREATE TABLE `komentar` (
+  `id_komentar` int(11) NOT NULL,
   `id_artikel` int(11) NOT NULL,
   `id_member` int(11) NOT NULL,
   `isi_komentar` varchar(200) NOT NULL,
   `tgl_posting` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `komentar`
@@ -68779,7 +68784,10 @@ INSERT INTO `komentar` (`id_komentar`, `id_artikel`, `id_member`, `isi_komentar`
 (8, 8, 10, 'heh', '2017-08-18 07:02:07'),
 (9, 8, 10, 'heh', '2017-08-18 07:02:10'),
 (10, 8, 10, 'yoooh', '2017-08-18 07:02:12'),
-(11, 7, 9, 'Wah ini nih yang hot . . .', '2017-08-10 15:42:49');
+(11, 7, 9, 'Wah ini nih yang hot . . .', '2017-08-10 15:42:49'),
+(12, 4, 9, 'Mantep tenan iki . . .', '2017-09-13 07:08:53'),
+(13, 21, 9, 'Sip lah . .. ', '2017-09-13 07:13:10'),
+(14, 1, 9, 'wiiih, memudahkan banget ini . . .', '2017-09-16 13:28:03');
 
 -- --------------------------------------------------------
 
@@ -68787,34 +68795,60 @@ INSERT INTO `komentar` (`id_komentar`, `id_artikel`, `id_member`, `isi_komentar`
 -- Table structure for table `member`
 --
 
-CREATE TABLE IF NOT EXISTS `member` (
-`id_member` int(5) NOT NULL,
-  `username` varchar(10) NOT NULL,
+CREATE TABLE `member` (
+  `id_member` int(5) NOT NULL,
+  `username` varchar(20) NOT NULL,
   `nama_member` varchar(100) NOT NULL,
   `email` varchar(50) NOT NULL,
   `password` varchar(100) NOT NULL,
   `date_join` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `telepon` int(5) NOT NULL,
+  `telepon` varchar(13) NOT NULL,
   `path_foto` varchar(100) NOT NULL,
   `status` int(1) NOT NULL,
   `pertanyaan_rahasia` varchar(1) NOT NULL,
   `jawaban_rahasia` varchar(30) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `member`
 --
 
 INSERT INTO `member` (`id_member`, `username`, `nama_member`, `email`, `password`, `date_join`, `telepon`, `path_foto`, `status`, `pertanyaan_rahasia`, `jawaban_rahasia`) VALUES
-(1, 'azies', 'abdul azies kurniawan', 'aziesandro@ymail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2017-05-17 03:22:52', 0, 'file_1497147134.jpg', 1, '', ''),
-(3, 'member3', 'member yang suka menulis', 'member3@gmail.com', '6f74c9c1948291274346a3278d4d8104', '2017-05-16 02:17:20', 0, '0', 1, '', ''),
-(4, 'member3', 'member yang suka menulis', 'member3@gmail.com', '6f74c9c1948291274346a3278d4d8104', '2017-05-12 02:17:20', 0, '0', 1, '', ''),
-(5, 'member3', 'member yang suka menulis', 'member3@gmail.com', '6f74c9c1948291274346a3278d4d8104', '2017-06-17 02:17:20', 0, '0', 1, '', ''),
-(6, 'azies', 'abdul azies kurniawan', 'aziesandro@ymail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2017-06-17 03:22:52', 0, 'file_1497147134.jpg', 1, '', ''),
-(7, 'azies', 'abdul azies kurniawan', 'aziesandro@ymail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2017-06-17 03:22:52', 0, 'file_1497147134.jpg', 1, '', ''),
-(8, 'member3', 'member yang suka menulis', 'member3@gmail.com', '6f74c9c1948291274346a3278d4d8104', '2017-06-17 02:17:20', 0, '0', 1, '', ''),
-(9, 'admin', 'Seza Dio Firmansyah', 'sefirman12@gmail.com', '26cac717deaa5188a5dc13c472741c5b', '2017-08-13 07:47:56', 2147483647, 'file_1502354771.jpg', 1, '1', 'Naruto'),
-(10, 'seza', 'Seza Dio Firmansyah', 'sefirman12@gmail.com', '26cac717deaa5188a5dc13c472741c5b', '2017-08-09 06:38:18', 2147483647, 'file_1502260697.jpg', 1, '1', 'Naruto');
+(9, 'admin', 'Seza Dio', 'sefirman12@gmail.com', '26cac717deaa5188a5dc13c472741c5b', '2017-08-25 02:15:23', '085640357417', 'file_1502354771.jpg', 1, '1', 'Naruto'),
+(13, 'nur', 'Muhammad Nur H.', 'nurhardyanto@if.undip.ac.id', '827ccb0eea8a706c4c34a16891f84e7b', '2017-08-23 02:42:17', '2147483647', 'file_1503390632.jpg', 1, '2', 'vb.net'),
+(18, 'khaerulanam', 'Khaerul Anam', 'khaerulanam21@gmail.com', '03d7d232872c97e254e4900b9a405e28', '2017-09-04 02:37:38', '085710048624', 'file_1504492200.jpg', 1, '1', 'Muhlisoh'),
+(20, 'HMJIP FISIP UNDIP', 'HIMPUNAN MAHASISWA JURUSAN ILMU PEMERINTAHAN', 'hmjipundiponeponegoro@gmail.com', '25d55ad283aa400af464c76d713c07ad', '2017-08-24 13:33:34', '085735381582', '0', 1, '2', 'Dasar-Dasar Ilmu Politik'),
+(22, 'Noventiakp', 'Noventia Karina Putri', 'noventiakarina@gmail.com', '1125b108661290d3c4b586b2c0e81156', '2017-08-23 13:31:40', '085640016755', 'file_1503495100.jpg', 1, '2', 'laskar pelangi'),
+(27, 'mochamadramlinh', 'Mochamad Ramli Nur Hasan', 'mochamadramlinurhasan@gmail.com', '58473332f4f59078119f238832d06af7', '2017-08-24 03:00:39', '085726367200', '0', 1, '2', '3600 Detik'),
+(28, 'wiwi rahayu', 'wiwi rahayu', 'rahayuwiwi8@gmail.com', 'fbe3aed9509ea4b990e0e65f5aae036d', '2017-08-24 04:53:23', '089671424320', '0', 1, '1', 'eni'),
+(29, 'R.ayu', 'Khasanah Budi Rahayu', 'khasanah.brahayu@gmail.com', 'd741fe4cc00af0d47d65a527e2d07d5d', '2017-08-24 04:55:17', '085747891762', '0', 1, '2', 'Detective Conan'),
+(30, 'putricahyanti', 'Putri Cahyanti', 'putricahyanti15@gmail.com', 'f18031e7b2ee0fc71462674f381530a2', '2017-09-19 05:53:53', '085747848296', 'file_1505800433.JPG', 1, '2', 'The Alchemist'),
+(32, 'putricahyanti', 'Putri Cahyanti', 'putricahyanti15@gmail.com', 'f18031e7b2ee0fc71462674f381530a2', '2017-08-24 05:30:17', '085747848296', '0', 1, '2', 'The Alchemist'),
+(33, 'denikak_a', 'Deni Kurniawan Ariyanto', 'denipelem24@gmail.com', '2cd1be1475c3742277d4b5be0ca6ac8c', '2017-08-24 05:30:56', '085727991338', '0', 1, '1', 'admin'),
+(34, 'Agamsas', 'Ghazi Agam', 'agamghazi@gmail.com', '1476465472386799a42053481e6b58a3', '2017-08-28 08:06:34', '085879050483', 'file_1503907593.jpg', 1, '1', 'Ati Nurhayati'),
+(35, 'Anissamedyana', 'Anissa Mediana Putri Santosa', 'medyanaputrianissa@gmail.com', 'e2ce98798761ba6433fd2d8407ebb0d8', '2017-08-27 15:50:54', '081914642115', 'file_1503849052.jpg', 1, '1', 'Anissa'),
+(36, 'hendrapratomo', 'Hendra Pratomo', 'hendrapratommo@gmail.com', 'da6015b6a57742b00fd9d7056e2d50cc', '2017-08-24 07:49:56', '08996635519', 'file_1503560996.JPG', 1, '1', 'Mutini'),
+(37, 'bemfppundip', 'BEM FPP Undip', 'bemfpp@gmail.com', 'db5784c59ba129708df0aa5d3a18934c', '2017-08-23 21:25:05', '081283011123', '0', 1, '2', 'bemfppundip'),
+(38, 'rijalbagas', 'Rijal Azis Bagaskara', 'rijalbagaskara21@gmail.com', 'b1182de159a09a56a767b295e65c7b38', '2017-08-23 22:00:00', '089634588806', '0', 1, '2', 'UUD 1945'),
+(39, 'tourguidesmg', 'Tour Guide Semarang', 'tourguidesmg@gmail.com', '7fcd58e2792ecd583f019278baa66627', '2017-08-23 23:16:45', '085290147300', '0', 1, '1', 'siti trikoyati'),
+(40, 'alvnrz', 'Alifia Nur Halizah', 'nurhalizah.alifia@gmail.com', '72a1561a6b6511fdc27c88af29d5c79f', '2017-08-24 00:02:38', '082210714006', '0', 1, '1', 'Tuti'),
+(43, 'azieskurniawan', 'Abdul Azies Kurniawan', 'aziesandro@gmail.com', '827ccb0eea8a706c4c34a16891f84e7b', '2017-08-30 03:33:41', '085290147300', '0', 1, '1', 'siti trikoyati'),
+(44, 'Undip', 'Creation', 'creationundip@che.undip.ac.id', '4ac6ed87e8c34dfb5b4c1b505763399f', '2017-08-27 20:40:29', '085727535762', '0', 1, '2', 'teknik kimia'),
+(46, 'wildan.bachtiar', 'Wildan Bachtiar', 'webe3103@gmail.com', '0f4ed00ed9318d5b52a42167b75cb2e7', '2017-08-30 09:39:08', '89660304008', 'file_1504085948.jpg', 1, '2', 'Iqra\''),
+(47, 'Dimasabrar', 'Dimas Abrar Utomo Aryoseno', 'abrararyoseno@gmail.com', '4ca30eb3a235397568d856a8a7c7b054', '2017-08-31 01:41:26', '081229721503', '0', 1, '2', 'Ensiklopedia Ular'),
+(48, 'Odjie', 'Takhrodjie', 'odjiemeteor@gmail.com', '50e8fd4004546b4e1854201cca393734', '2017-09-01 04:46:06', '082265888168', '0', 1, '1', 'Nawiroh'),
+(49, 'ajreeen', 'Dalilatiyani Ajrinatia', 'dajrinatia@gmail.com', '15605667a574e4e5363e0bc0c6856ebc', '2017-08-31 20:40:36', '085647539254', '0', 1, '1', 'tiah'),
+(50, 'shellafr', 'Shella Faiz R', 'shellafaizr@gmail.com', 'fa8adac3edda94c3c6a3caa5287788c1', '2017-09-07 02:28:11', '0895377703898', '0', 1, '1', 'Kusniati'),
+(51, 'rifqiido', 'Rifqi Ramadhani Muhammad', 'rifqiido@yahoo.com', '0f72201797eff7519bf93f8f9ff8ca2c', '2017-09-07 02:34:52', '085742868457', '0', 1, '2', 'doa sehari hari'),
+(52, 'Devi', 'Devi Purnamasari', 'Deviprnmsr@gmail.com', 'c60c1a0d1cbc92eb786e50a726257db9', '2017-09-07 02:42:36', '087774404039', '0', 1, '1', 'Emi'),
+(53, 'alika', 'Alika', 'alikawazowski@gmail.com', '4cecaff2b30bbe75ce7322109164cfb5', '2017-09-08 04:57:52', '081391793412', '0', 1, '1', 'ika'),
+(54, 'Rifqa Aulia', 'Rifqa Aulia', 'rifqaaulia1999@gmail.com', 'd0e9985f2171c454f1a65479653c1692', '2017-09-12 03:31:01', '087764612119', '0', 1, '1', 'Muafah'),
+(55, 'Yulli', 'Yulli Diah', 'yullidiahdwilestari@gmail.com', '69332f6a8c272100654c09b1b365acd9', '2017-09-17 20:35:27', '085880507999', '0', 1, '1', 'Sumiati'),
+(56, 'RataBee', 'Ratih Apriliana', 'aratih75@gmail.com', '25f9e794323b453885f5181f1b624d0b', '2017-09-19 05:23:03', '08997861750', '0', 1, '2', 'Diary of  A Wimpy Kid'),
+(57, 'usamon_911', 'Hendrike Priventa', 'hpriventa@gmail.com', '7aee2450c890e054c91acb930a06e9dd', '2017-09-19 05:41:12', '083845817288', 'file_1505799672.jpg', 1, '2', 'minho'),
+(58, 'ahmad soleh', 'solikhin', 'Solihina174@gmail.com', '5822369f8f2be6ef08e73de6167851f4', '2017-09-21 03:21:08', '081229155749', '0', 1, '1', 'ritna hidayah'),
+(59, 'khusnulu', 'Khusnul Umi Fatimah', 'khusnulumifatimahipa6@gmail.com', '8ef9998d6bcce9b7a0e4731137c3c146', '2017-09-24 18:05:56', '085728023626', '0', 1, '2', 'laskar pelangi'),
+(60, 'SBS FPP UNDIP', 'SBS FPP UNDIP', 'sbsfmfppundip@gmail.com', 'bf2a47ed7a841f90585892f4b95f9c97', '2017-09-25 10:10:33', '085740332456', 'file_1506334233.png', 1, '1', 'rere');
 
 -- --------------------------------------------------------
 
@@ -68822,10 +68856,10 @@ INSERT INTO `member` (`id_member`, `username`, `nama_member`, `email`, `password
 -- Table structure for table `nama_challenge`
 --
 
-CREATE TABLE IF NOT EXISTS `nama_challenge` (
-`id_nama_challenge` int(3) NOT NULL,
+CREATE TABLE `nama_challenge` (
+  `id_nama_challenge` int(3) NOT NULL,
   `nama_challenge` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `nama_challenge`
@@ -68840,7 +68874,14 @@ INSERT INTO `nama_challenge` (`id_nama_challenge`, `nama_challenge`) VALUES
 (6, 'Boloku.ID'),
 (7, 'boloku.id'),
 (8, 'boloku.id'),
-(9, '17 an mu');
+(9, '17 an mu'),
+(10, 'cantiknya'),
+(11, '17 AN !'),
+(12, '17 AN '),
+(13, 'Challenge'),
+(14, 'Challenge'),
+(15, 'Takoyaki 48'),
+(16, 'Challenge');
 
 -- --------------------------------------------------------
 
@@ -68848,8 +68889,8 @@ INSERT INTO `nama_challenge` (`id_nama_challenge`, `nama_challenge`) VALUES
 -- Table structure for table `news`
 --
 
-CREATE TABLE IF NOT EXISTS `news` (
-`id_news` int(10) NOT NULL,
+CREATE TABLE `news` (
+  `id_news` int(10) NOT NULL,
   `waktu_posting` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `judul_news` varchar(100) NOT NULL,
   `posted_by` varchar(50) NOT NULL,
@@ -68858,15 +68899,22 @@ CREATE TABLE IF NOT EXISTS `news` (
   `status` int(1) NOT NULL,
   `id_event` int(100) NOT NULL,
   `hits` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `news`
 --
 
 INSERT INTO `news` (`id_news`, `waktu_posting`, `judul_news`, `posted_by`, `isi_news`, `gambar_news`, `status`, `id_event`, `hits`) VALUES
-(19, '2017-07-11 05:56:22', 'Press Release Lomba Anforcom 212', 'Seza Dio Firmansyah', '<p>asdfghjk</p>\r\n', 'file_1499528407.jpg', 1, 16, 0),
-(20, '2017-07-11 05:57:39', 'Press Release Lomba Anforcom 333', 'Seza Dio Firmansyah', '<p>asdfghjk</p>\r\n', 'file_1499752658.jpg', 1, 16, 0);
+(21, '2017-09-21 08:43:44', 'Festival Kuliner Lezatnesia 2017, Nostalgia Melalui Kuliner', 'Anissa Mediana', '<p>Komunitas Kuliner Semarang kembali menggelar festival kuliner bernama Festival Lezatnesia 2017 yang berlokasi di Sri Ratu Pemuda pada tanggal 5-10 September 2017. Festival ini bertepatan dengan Ulang Tahun Kuliner Semarang yang ke-3.</p>\r\n\r\n<p>Ada berbagai macam stand kuliner tradisional khas Semarang disana seperti, kue lumpur, mie Belitung, nasi pindang kebo, dll. Bahkan yang unik dari festival ini akan ada stand kuliner baru di setiap eventnya. Selain, stand kuliner ada pula stand yang menjual jilbab, tas, batik, dll.</p>\r\n\r\n<p>Festival ini buka dari jam 10.00-21.00 WIB. Jika anda ingin mengunjungi festival ini, datanglah pada jam 14.00-16.00, dimana jam makan siang sudah lewat dan biasanya pengunjung tidak terlalu ramai jika lebih dari jam tersebut bersiaplah untuk berebut meja dan kursi.</p>\r\n\r\n<p>Humas Kuliner Semarang, Ariyanto mengatakan respon pengunjung sangat baik dari tahun ke tahun dan terus meningkat, dari pengalaman festival sebelumnya ada sekitar 5000 pengunjung setiap harinya.</p>\r\n\r\n<p>Untuk masuk ke festival ini tidak dipungut biaya, hanya membayar parkir motor sekitar Rp.2000,- dan parkir mobil Rp.4000,- saja. Bagaimana, sudah bersiap berburu kuliner Semarang? Pastikan bawa dompet beserta isinya ya.</p>\r\n\r\n<p>Sumber : Boloku.id</p>\r\n\r\n<p>Foto : dotsemarang.blogspot.co.id</p>\r\n', 'file_1504078155.jpg', 1, 44, 44),
+(27, '2017-09-26 20:57:21', 'Bangkitkan Semangat Jurnalis dengan Sayembara Citizen Journalism', 'Khasanah B.R', '<p>Sayembara Citizen Journalism merupakan serangkaian acara Journalist Day Out (JDO) yang diselenggarakan oleh Lembaga Pers Mahasiswa (LPM) Publica Health FKM UNDIP. Sayembara Citizen Journalism sendiri adalah lomba membuat video berita <em>feature</em> dengan tema beragam. Peserta dari sayembara ini meliputi pelajar dan mahasiswa. Sayembara Citizen Journalism dibuka dari tanggal 3 Agustus 2017 sampai 3 Oktober 2017. Dalam rentang waktu tersebut peserta dapat mendaftarkan diri dan mengirimkan link video yang telah dibuat. Puncak acara dari rangkaian acara JDO sekaligus pengumuman pemenang akan dilaksanakan pada tanggal 7 Oktober 2017.</p>\r\n\r\n<p>Tujuan dari sayembara citizen journalism ini yakni untuk menarik minat masyarakat terutama mahasiswa dalam bidang jurnalistik. Selain itu <em>output</em> dari lomba ini diharapkan terjadi peningkatan perhatian terhadap lingkungan sekita. Yang tidak kalah penting yaitu meningkatkan kapasitas dalam membuat video citizen journalism. Seperti yang telah diketahui bahwa beberapa tahun belakangan ini masyarakat mulai banyak memberitakan kejadian di sekitarnya menggunakan video. Hal tersebut terlihat dari semakin menjamurnya <em>vloger</em> yang mengunggah <em>vlog</em>nya. Selain itu beberapa televisi nasional juga mulai menggandeng masyarakat untuk berpartisipasi dalam penyampaian berita.</p>\r\n\r\n<p>Santi Wulandari selaku panitia lomba menuturkan alasan dipilihnya lomba video jurnalis &ldquo;Pertama memang video gitu lagi <em>booming</em> banget. Karena lomba artikel udah terlalu <em>mainstream</em>, kita mencoba hal baru yang masih jarang biar menarik minat&rdquo;</p>\r\n\r\n<p><em>Nah,</em> tunggu apa lagi segera <em>upload</em> video citizen journalism mu!</p>\r\n', 'file_1504078273.jpg', 1, 45, 24),
+(28, '2017-09-25 20:26:54', 'Menikmati lautan dalam balutan kelap-kerlip lampion', 'Anissa M', '<p>&nbsp;</p>\r\n\r\n<p>Jawa Tengah kembali menggelar acara Jateng Fair 2017 di PRPP Jateng Area Marina Semarang, dengan tema The Paradise of Karimunjawa. Event ini digelar mulai tanggal 11 Agustus hingga 10 September 2017.</p>\r\n\r\n<p>Sejumlah acara dan atraksi menarik akan dihadirkan pada Jateng Fair 2017 kali ini seperti Dancing Fountain, Thematic Lantern, The Green Bunny Park, 3D Trick Art Spectamata, Science Centre, Pameran Craftman, Stand Kuliner, Panggung Utama artis nasional, Pameran 35 Kabupaten/Kota di Jawa Tengah, Pameran BUMD, Panggung Budaya dan juga Bianglala. Selain itu, banyak artis yang akan meramaikan, mulai dari Fariz Rm, OM Sera feat Via Vallen, Tony Q Rastafara, Nella Kharisma, Tipe-X, Souljah, Last Child, Payung Teduh, Shaggy Dog, Uut Selly dan masih banyak lagi.</p>\r\n\r\n<p>Hari Senin &ndash; Jum&rsquo;at = Rp. 15.000, buka setiap jam 16.00-22.30 WIB</p>\r\n\r\n<p>Hari Sabtu - Minggu &nbsp;= Rp. 20.000, buka setiap jam 11.00-23.30 WIB&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>\r\n\r\n<p>Sumber dan Foto: Seputarsemarang.com&nbsp;&nbsp;</p>\r\n', 'file_1503390255.jpg', 1, 48, 7),
+(29, '2017-09-25 06:41:04', 'Berbagi dan Berkarya untuk Umat Dunia', 'Hendrike Priventa', '<p>Berkeliling dunia tidak sekedar untuk melepas penat dari kesibukan. Mengetahui informasi mengenai suatu negara atau daerah yang baru akan membentuk wawasan baru tentang kehidupan. Hal baru yang mungkin dapat dicoba adalah berkeliling dunia sambil mengabdi kepada masyarakat. Membayangkan bertemu dengan masyarakat baru, bertutur dengan bahasa baru serta bersentuhan dengan budaya baru akan menciptakan pengalaman yang luar biasa. Masih ragu untuk berpatisipasi? Berbagai hal tentang hal-hal tersebut akan dibahas tuntas.</p>\r\n\r\n<p>BEM Fakultas Ilmu Budaya Universitas Diponegoro mengadakan sebuah acara yang berkaitan dengan pengabdian masyarakat untuk umat dunia yaitu <em>International Voluntary Service Seminar and Talkshow</em>. Acara ini bertujuan untuk memotivasi masyarakat agar mau bergerak serta ikut serta dalam kegiatan dunia. Selain itu, <em>International Voluntary Service</em> atau yang dikenal dengan singkatan IVS mempunyai tujuan untuk menyebarkan perdamaian serta membentuk agen perubahan dalam individu maupun masyarakat. Acara ini akan menjawab keresahan pemuda pemudi Indonesia seperti ketakutan akan biaya yang banyak untuk menjadi volunteer di luar negeri.</p>\r\n\r\n<p>Acara bertaraf internasional ini bekerjasama dengan World Youth Exchange, Erasmus +, dan Great Indonesia. Pembicara dalam acara ini merupakan aktivis sosial IVS yang berasal dari Italia. Acara tidak hanya dihadiri oleh pembicara kelas dunia namun juga turut berpartisipasi para volunteer yang berasal dari negara Kamboja dan Malaysia. Bentuk kerjasama ini turut menampilkan persembahan dari Kesenian Gambang Semarang dan Roetasi Fakultas Ilmu Budaya. Nah, kapan lagi dapat mengikuti acara berkelas dunia dengan cara yang mudah. Ayo siapkan diri kalian!</p>\r\n', 'file_1503632831.jpg', 1, 47, 52),
+(31, '2017-09-24 08:35:00', 'Sampookong Festival 1.0, Tidak Hanya Sekedar Food Festival', 'Anissa M', '<p>SAL9 PRODUCTION akan mengadakan food festival dengan lebih dari 50 menu makanan dalam negeri dan luar negeri yang bernama SamFest 1.0 yang berlokasi di Sampookong, Semarang. Festival ini tidak hanya sekedar food festival saja, namun ada beberapa distro serta&nbsp;rangkaian acara di dalamnya seperti pada hari pertama akan ada Japan Festival, Community Gathering, Costreet Competition, Band Performance dari Seymour band &amp;&nbsp;LUNA Gravity, serta&nbsp;Dance Performance dari Dansuko E, Kyouki Hikari, ZIA, JStrom, iMO Potatoes, Finding Nemo, Blackpaper Crusader. Lalu untuk hari kedua ada lomba mewarnai untuk anak-anak 1-3 SD dan 4-6 SD dan Rap Competition. Yang terakhir pada hari ketiga akan ada sejumlah penampilan&nbsp;Indie Band, Stand Award, dan Guest Star Good Morning Everyone band.</p>\r\n\r\n<p>Panitia SamFest, Adit mengatakan acara ini dibuat supaya masyarakat Semarang dapat menikmati festival kuliner sembari mempromosikan&nbsp;salah satu icon tempat&nbsp;wisata di Semarang yaitu Sampookong. Rangkaian acara dibuat sedemikian rupa agar semua kalangan dan umur dapat datang ke festival ini.</p>\r\n\r\n<p>Untuk kalian para anak muda jangan khawatir banyak penawaran menarik pada festival ini, jika kalian membeli tiket terusan untuk tiga hari berturut-turut maka akan mendapat voucher belanja sebesar Rp.5.000,- untuk belanja di dalam festival, dan dapat berfoto ria di photobooth yang telah disediakan,&nbsp;serta adanya free wifi gratis dari pihak sponsor. Jadi tunggu apalagi, masih mau berdiam diri dirumah?</p>\r\n', 'file_1503852265.jpg', 1, 56, 1049),
+(32, '2017-09-21 08:44:20', 'Food Bazaar Festival of Agriculture', 'Ghazi Agam', '<p>[CALLING ALL TENANTS!!] [FESTIVAL OF AGRICULTURE 2017]</p>\r\n\r\n<p>Halo foodiest! Ingin usahamu terkenal dan bingung cari wadah untuk membuka stand dengan harga terjangkau? Festival Of Agriculture hadir dengan mengusung acara festival terbesar dari fakultas Peternakan dan Pertanian. Tentu saja bakal membuka kesempatan kepada kalian untuk membuka stand dalam acara ini. Yuk daftarkan segera dan pastikan stand kamu ikut dalam acara bergengsi ini! Catat tanggal dan waktunya pada tanggal 30 September 2017 bertempat di Fakultas Peternakan dan Pertanian pukul&nbsp;09.00 WIB.</p>\r\n\r\n<p>Dengan fasilitas untuk stand: - meja (1 buah)&nbsp;</p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;- kursi (2 buah)</p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;- listrik</p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;- trashbag (1 buah)&nbsp;</p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;- ID card</p>\r\n\r\n<p>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;- Free promote di Instagram</p>\r\n\r\n<p>Untuk Live music Pendaftaran: 21 Agustus - 20 September 2017</p>\r\n\r\n<p>Format pendaftaran: NamaPendaftar_NamaStand_JenisProduk_NoHP Kirim ke Contact Person: Yola: 082370849709/Id&nbsp;Line: yolandaelfiraa dan Tika: 082134371627/id Line: Kartikay_</p>\r\n\r\n<p>STAND TERBATAS! #FoodBazaarSemarang #BeDifferentBeAgriculture #YukKeFA #FestivalOfAgriculture #FA2017</p>\r\n\r\n<p>More info: IG: @festivalagriculture</p>\r\n\r\n<p>Line: @ics7699z</p>\r\n\r\n<p>Kolaborasi Asik Bidang Harmonisasi Kampus dan Bidang Ekonomi dan Bisnis</p>\r\n\r\n<p>Aksi Penuh Makna dari BEM FPP Undip untuk FPP Undip yang Lebih Asik</p>\r\n', 'file_1503910286.jpg', 1, 58, 17),
+(33, '2017-09-24 17:55:58', 'CERCo 2017 : POSTER COMPETITION', 'HMTK Undip', '<p>Hi engineers! Finally, Chemical Engineering Research Competition (CERCo) 2017 is opened! There is a poster competition in CERCo 2017. This poster competition is for active undergraduate or diploma students in general, and senior high school students (or equal) in Indonesia. With the main theme Research and Technology for Sustainable Development Goals, and the subthemes: 1. Renewable Energy Source, 2. Sustainable Waste Treatment, 3. Membrane Technology Innovation, 4. Innovative Material Synthesis, and 5. Food Resource Sustainability</p>\r\n\r\n<p>We invite you to join this great event. So what are you waiting for?? Prepare and register your best masterpiece soon! Don&#39;t miss this good opportunity and grab the prizes!</p>\r\n\r\n<p>Download the form at http://bit.ly/POSTERCOMPETITIONFORM and send your form to creationundip@che.undip.ac.id Download the Guidelines at http://bit.ly/GuidelinesCERCo2017-Indonesian- for further information about this poster competition.</p>\r\n\r\n<p>Contact Person : Zidan (087880638035/line: abdillah_zidan) Siti (085649763969/line: shajar404)</p>\r\n\r\n<p>Follow us for more information : Line: @qlk5756o</p>\r\n\r\n<p>Facebook: Creation Undip</p>\r\n\r\n<p>Instagram: creationundip</p>\r\n\r\n<p>Twitter: @CreationUNDIP</p>\r\n\r\n<p>Youtube: CREATION UNDIP</p>\r\n\r\n<p>Email: <a href=\"mailto:creationundip@che.undip.ac.id\">creationundip@che.undip.ac.id</a></p>\r\n\r\n<p>Website : creation.undip.ac.id</p>\r\n\r\n<p>Teknik Kimia! Jaya! #HMTK2017 #ASIKBerkarya</p>\r\n\r\n<p>Merangkai Cita, Wujudkan Aksi Penuh Karya</p>\r\n', 'file_1503911933.png', 1, 59, 14),
+(34, '2017-09-21 08:44:35', 'Batik in Campus, Ajang Pelestarian Batik', 'Khasanah', '<p>Batik in Campus merupakan serangkaian acara yang diselenggarakan oleh Himpunan Mahasiswa Teknik Industri. Acara yang dimulai dari tanggal 8 September hingga tanggal dengan puncak acara pada 23 September ini menyajikan berbagai <em>event</em> menarik seputar batik dari mulai <em>beauty class</em> sampai pemilihan putri batik. Selain pemilihan putri batik untuk memilih duta batik kampus, diadakan pula lomba mendesain batik yang diharapkan dapat menginspirasi. Sebelum acara puncak dilaksanakan akan diadakan pelatihan batik mulai tanggal 8 September sampai 17 September. Sedangkan puncak acara akan digelar pada 23 September di Balaikota dan terdiri dari Seminar batik yang diadakan pada pagi hari. Sedangkan pemilihan putri batik akan diadakan pada sore hari di hari yang sama. Untuk desain batik sendiri akan dipilih 10 desain terbaik yang selanjutnya akan divoting pada acara tersebut. Yang menarik dari seminar batik ini adalah peserta dapat mengikuti seminar tanpa harus membayar htm alias <em>free.</em> Sebagai gantinya peserta bisa membeli souvenir BIC seharga 25 ribu.</p>\r\n\r\n<p>Salah satu panitia menuturkan tujuan diselenggarakan Batik in Campus adalah agar mahasiswa dapat melestarikan batik yang merupakan warisan berbudaya. Batik dipilih sebagai tema karena batik merupakan warisan bangsa dari zaman dahulu. Selain itu supaya masyarakat khususnya mahasiwa bisa lebih mencintai batik dan menghapus anggapan bahwa batik adalah suatu hal yang kuno.</p>\r\n\r\n<p>Segera daftarkan dirimu dan bantu melestarikan budaya bangsa.</p>\r\n', 'file_1503917825.jpg', 1, 60, 20),
+(36, '2017-09-25 22:50:35', 'SEMNAS 2017, COMING SOON WITH MORE SPEAKERS', 'HMIP Undip', '<p>COMING SOON, THIS OCTOBER PROGRESS 2017 proudly present SEMINAR NASIONAL &amp; Media Sosial Politik Seminar and Talkshow with the famous social media political influencer. Prepare yourself to be the part of this event! Proudly presenting to you our speakers: TSAMARA AMANY Known as Co-Founder Perempuan Politik. One of the most social media political influencer through her Twitter Account (@TsamaraDKI). A lot of her writings becomes viral. POLITICAL JOKES Who doesnt know Poljokes The famous Political Account on LINE. We all must adore his way to serve political issues, so youth-friendly. Don&rsquo;t you curious about meeting Political Jokes in person? Two speakers aren&rsquo;t enough, right? Don&rsquo;t you worry, WE WILL COMING BACK WITH MORE SPEAKERS TO REVEAL. PREPARE YOURSELF AND STAY TUNE.</p>\r\n\r\n<p>-More Information-</p>\r\n\r\n<p>LINE : HMJ Ilmu Pemerintahan (@bjq1363g)</p>\r\n\r\n<p>Instagram : @progress_ip17 PROGRESS 2017 HMJIP FISIP UNDIP</p>\r\n\r\n<p>#PemerintahanBerkarakter #Progress2017 #UnityInDiversity</p>\r\n', 'file_1504070499.jpg', 1, 52, 24);
 
 -- --------------------------------------------------------
 
@@ -68874,7 +68922,7 @@ INSERT INTO `news` (`id_news`, `waktu_posting`, `judul_news`, `posted_by`, `isi_
 -- Table structure for table `pembayaran`
 --
 
-CREATE TABLE IF NOT EXISTS `pembayaran` (
+CREATE TABLE `pembayaran` (
   `id_pembayaran` int(10) NOT NULL,
   `no_peserta` varchar(30) NOT NULL,
   `path_gambar` varchar(50) NOT NULL,
@@ -68886,7 +68934,10 @@ CREATE TABLE IF NOT EXISTS `pembayaran` (
 --
 
 INSERT INTO `pembayaran` (`id_pembayaran`, `no_peserta`, `path_gambar`, `tanggal_upload`) VALUES
-(1, '3u2u9', 'anforcom.jpg', '0000-00-00');
+(1, '62-000002-9F69', 'file_1504702828.jpg', '2017-09-06'),
+(2, '62-000003-E625', 'file_1504702901.jpg', '2017-09-06'),
+(3, '47-000009-612A', 'file_1505714176.jpg', '2017-09-18'),
+(4, '47-000006-612A', 'file_1505799425.jpg', '2017-09-19');
 
 -- --------------------------------------------------------
 
@@ -68894,43 +68945,63 @@ INSERT INTO `pembayaran` (`id_pembayaran`, `no_peserta`, `path_gambar`, `tanggal
 -- Table structure for table `pendaftar`
 --
 
-CREATE TABLE IF NOT EXISTS `pendaftar` (
-`id_pendaftar` int(5) NOT NULL,
+CREATE TABLE `pendaftar` (
+  `id_pendaftar` int(5) NOT NULL,
   `id_event` int(4) NOT NULL,
   `nama_pendaftar` varchar(30) NOT NULL,
   `email` varchar(30) NOT NULL,
   `telepon` varchar(13) NOT NULL,
   `alamat` varchar(100) NOT NULL,
   `no_pendaftar` varchar(30) NOT NULL,
-  `status_bayar` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+  `status_bayar` int(1) NOT NULL,
+  `nama_tiket` varchar(50) NOT NULL,
+  `harga` int(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pendaftar`
 --
 
-INSERT INTO `pendaftar` (`id_pendaftar`, `id_event`, `nama_pendaftar`, `email`, `telepon`, `alamat`, `no_pendaftar`, `status_bayar`) VALUES
-(2, 26, 'Sisca Agustin Diani Budiman', 'budimansisca@gmail.com', '089665890200', 'Gemah Jaya Barat 3 No.6', '12312', 2),
-(3, 20, 'Abdul Azies Kurniawan', 'azies@gmail.com', '09230921', 'Gemah Jaya barat', '2121', 0),
-(4, 16, 'Seza Dio', 'seza@gmail.co', '3213132', 'Pamularsih', '3u2u9', 2),
-(5, 23, 'Seza Dio Firmansyah', 'sefirman12@gmail.com', '085640357417', 'Jln Kumudasmoro dalam 11 ', '12312', 2),
-(8, 22, 'edesad', 'sdassd@tg', 'dasdasdsad', 'dadasdasdasd', '12312', 0),
-(9, 22, 'edesad', 'sdassd@tg', 'dasdasdsad', 'dadasdasdasd', '12312', 0),
-(10, 22, 'fdsfdsf', 'dsadafs@fg', 'fdsfsdf', 'fdfdsfdsf', '12312', 0),
-(11, 22, 'Seza Dio Firmansyah', 'sezadio@ymail.com', '085640357417', 'Jln Kumudasmoro dalam 11 ', '12312', 0),
-(12, 22, 'Seza Dio Firmansyah', 'sezadio@ymail.com', '085640357417', 'Jln Kumudasmoro dalam 11 ', '12312', 0),
-(13, 22, 'dasdas', 'sefirman12@gmail.com', '089900778123', 'BAKALAN 09/02 KALINYAMTAN', '12312', 0),
-(14, 22, 'edesad', 'sefirman12@gmail.com', 'dasdasdsad', 'Jl Mawar III', '12312', 0),
-(15, 26, 'Seza Dio Firmansyah', 'sita.indrayani@yahoo.com', '089900778123', 'Jl Mawar III', '12312', 0),
-(16, 26, 'Seza Dio Firmansyah', 'sezadio@ymail.com', '085640357417', 'Jln Kumudasmoro dalam 11 ', '12312', 0),
-(17, 26, 'Seza Dio Firmansyah', 'sezadio@ymail.com', '085640357417', 'Jl Mawar III', '12312', 0),
-(18, 26, 'Seza Dio Firmansyah', 'sefirman12@gmail.com', '089900778123', 'Jln Kumudasmoro dalam 11 ', '12312', 0),
-(19, 26, 'Nur', 'fitri15997dewi@yahoo.com', 'dasdasdsad', 'BAKALAN 09/02 KALINYAMTAN', '12312', 0),
-(20, 25, 'HMIF', 'sita.indrayani@yahoo.com', 'dasdasdsad', 'Jl Mawar III', '12312', 0),
-(21, 23, 'Seza Dio Firmansyah', 'sezadio@ymail.com', '085640357417', 'Jln Kumudasmoro dalam 11 ', '12312', 2),
-(22, 23, 'Hendra', 'sita.indrayani@yahoo.com', '089900778123', 'BAKALAN 09/02 KALINYAMTAN', '12312', 0),
-(23, 23, 'HMIF', 'sefirman12@gmail.com', '089900778123', 'Jl Mawar III', '12312', 2),
-(24, 36, 'Seza Dio Firmansyah', 'sefirman12@gmail.com', '089900778123', 'Jln Kumudasmoro dalam 11 ', '12312', 0);
+INSERT INTO `pendaftar` (`id_pendaftar`, `id_event`, `nama_pendaftar`, `email`, `telepon`, `alamat`, `no_pendaftar`, `status_bayar`, `nama_tiket`, `harga`) VALUES
+(2, 26, 'Sisca Agustin Diani Budiman', 'budimansisca@gmail.com', '089665890200', 'Gemah Jaya Barat 3 No.6', '12312', 2, '', 0),
+(3, 20, 'Abdul Azies Kurniawan', 'azies@gmail.com', '09230921', 'Gemah Jaya barat', '2121', 0, '', 0),
+(4, 16, 'Seza Dio', 'seza@gmail.co', '3213132', 'Pamularsih', '3u2u9', 2, '', 0),
+(5, 23, 'Seza Dio Firmansyah', 'sefirman12@gmail.com', '085640357417', 'Jln Kumudasmoro dalam 11 ', '12312', 2, '', 0),
+(8, 22, 'edesad', 'sdassd@tg', 'dasdasdsad', 'dadasdasdasd', '12312', 0, '', 0),
+(9, 22, 'edesad', 'sdassd@tg', 'dasdasdsad', 'dadasdasdasd', '12312', 0, '', 0),
+(10, 22, 'fdsfdsf', 'dsadafs@fg', 'fdsfsdf', 'fdfdsfdsf', '12312', 0, '', 0),
+(11, 22, 'Seza Dio Firmansyah', 'sezadio@ymail.com', '085640357417', 'Jln Kumudasmoro dalam 11 ', '12312', 0, '', 0),
+(12, 22, 'Seza Dio Firmansyah', 'sezadio@ymail.com', '085640357417', 'Jln Kumudasmoro dalam 11 ', '12312', 0, '', 0),
+(13, 22, 'dasdas', 'sefirman12@gmail.com', '089900778123', 'BAKALAN 09/02 KALINYAMTAN', '12312', 0, '', 0),
+(14, 22, 'edesad', 'sefirman12@gmail.com', 'dasdasdsad', 'Jl Mawar III', '12312', 0, '', 0),
+(15, 26, 'Seza Dio Firmansyah', 'sita.indrayani@yahoo.com', '089900778123', 'Jl Mawar III', '12312', 0, '', 0),
+(16, 26, 'Seza Dio Firmansyah', 'sezadio@ymail.com', '085640357417', 'Jln Kumudasmoro dalam 11 ', '12312', 0, '', 0),
+(17, 26, 'Seza Dio Firmansyah', 'sezadio@ymail.com', '085640357417', 'Jl Mawar III', '12312', 0, '', 0),
+(18, 26, 'Seza Dio Firmansyah', 'sefirman12@gmail.com', '089900778123', 'Jln Kumudasmoro dalam 11 ', '12312', 0, '', 0),
+(19, 26, 'Nur', 'fitri15997dewi@yahoo.com', 'dasdasdsad', 'BAKALAN 09/02 KALINYAMTAN', '12312', 0, '', 0),
+(20, 25, 'HMIF', 'sita.indrayani@yahoo.com', 'dasdasdsad', 'Jl Mawar III', '12312', 0, '', 0),
+(21, 23, 'Seza Dio Firmansyah', 'sezadio@ymail.com', '085640357417', 'Jln Kumudasmoro dalam 11 ', '12312', 2, '', 0),
+(22, 23, 'Hendra', 'sita.indrayani@yahoo.com', '089900778123', 'BAKALAN 09/02 KALINYAMTAN', '12312', 0, '', 0),
+(23, 23, 'HMIF', 'sefirman12@gmail.com', '089900778123', 'Jl Mawar III', '12312', 2, '', 0),
+(24, 36, 'Seza Dio Firmansyah', 'sefirman12@gmail.com', '089900778123', 'Jln Kumudasmoro dalam 11 ', '12312', 0, '', 0),
+(25, 22, 'Seza Dio Firmansyah', 'sefirman12@gmail.com', '085640357417', 'Jalan Kumudasmoro Dalam No. 11, Semarang', '22-000008-0FE1', 0, '', 0),
+(26, 47, 'Abdul Azies Kurniawan', 'aziesandro@gmail.com', '085290147300', 'Gemah jaya Barat 3', '47-000001-D171', 2, '', 0),
+(43, 47, 'Nur Fikri Ramadhani ', 'nframadhani33@gmail.com', '083838918788', 'Sumurboto 1 No 25 Banyumanik ', '47-000002-68DB', 0, '', 0),
+(44, 47, 'Seza Dio', 'aziesandro@gmail.com', '085290147300', 'Gemah jaya barat 3', '47-000003-FAB2', 0, '', 0),
+(46, 62, 'Abdul Azies Kurniawan', 'aziesandro@gmail.com', '085290147300', 'Gemah Jaya Barat III No.7', '62-000001-D171', 0, 'VIP', 100000),
+(47, 47, 'Putri Cahyanti', 'putricahyanti15@gmail.com', '085747848296', 'Tembalang', '47-000004-CA9C', 0, 'Umum', 40000),
+(49, 62, 'azies', 'aziesandro@gmail.com', '085290147300', 'Gemah jaya barat 3', '62-000002-9F69', 1, 'VIP', 100000),
+(50, 47, 'Sunnas Ginanjar', 'sunnas.ginanjar@gmail.com', '085640357417', 'Tembalang', '47-000005-612A', 0, 'Umum', 40000),
+(51, 47, 'Sunnas Ginanjar', 'sunnas.ginanjar@gmail.com', '085640357417', 'Jalan Gondang Timur', '47-000006-612A', 2, 'Umum', 40000),
+(52, 47, 'Sunnas Ginanjar', 'sunnas.ginanjar@gmail.com', '085640357417', 'Jalan Gondang Timur', '47-000007-612A', 0, 'Umum', 40000),
+(53, 47, 'Sunnas Ginanjar', 'sunnas.ginanjar@gmail.com', '085640357417', 'Jalan Gondang Timur', '47-000008-612A', 0, 'Umum', 40000),
+(54, 47, 'Sunnas Ginanjar', 'sunnas.ginanjar@gmail.com', '085640357417', 'Jalan Gondang Timur', '47-000009-612A', 2, 'Umum', 40000),
+(55, 47, 'Sunnas Ginanjar', 'sunnas.ginanjar@gmail.com', '085640357417', 'Jalan Gondang Timur', '47-000010-612A', 0, 'Umum', 40000),
+(56, 47, 'Sunnas Ginanjar', 'sunnas.ginanjar@gmail.com', '085640357417', 'Jalan Gondang Timur', '47-000011-612A', 0, 'Mahasiswa FIB UNDIP', 35000),
+(57, 62, 'aab', 'aziesandro@gmail.com', '3432432', 'Gemah Jaya Barat 3 no.6', '62-000003-E625', 1, 'Reguler', 40000),
+(58, 80, 'Muhammad Khaerul Anam', 'khaerulanam21@gmail.com', '085710048624', 'Bekasi', '80-000001-09CC', 0, '', 35000),
+(59, 80, 'Alfin', 'alfin.arifah@gmail.com', '085713269124', 'Blora', '80-000002-AF69', 0, '', 35000),
+(60, 80, 'sss', 'saririana60@yahoo.com', '0899999', 'semarang', '80-000003-9F6E', 0, '', 35000);
 
 -- --------------------------------------------------------
 
@@ -68938,24 +69009,42 @@ INSERT INTO `pendaftar` (`id_pendaftar`, `id_event`, `nama_pendaftar`, `email`, 
 -- Table structure for table `pepak`
 --
 
-CREATE TABLE IF NOT EXISTS `pepak` (
-`id_pepak` int(4) NOT NULL,
+CREATE TABLE `pepak` (
+  `id_pepak` int(4) NOT NULL,
   `jawa` varchar(20) NOT NULL,
   `indonesia` varchar(20) NOT NULL,
   `deskripsi_jawa` text NOT NULL,
   `status` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pepak`
 --
 
 INSERT INTO `pepak` (`id_pepak`, `jawa`, `indonesia`, `deskripsi_jawa`, `status`) VALUES
-(1, 'Tindak', 'Pergi', 'dads', 1),
-(3, 'Mangan', 'Makan', '<p>Mangan dalam bahasa Indonesia adalah Makan, kata mangan biasa digunakan dalam percakapan antara personal yang berusia. Misal antar teman</p>\r\n', 1),
 (4, 'Karepmu', 'Terserah', '<p>Karepmu, biasa digunakan untuk mengatakan sesuatu pendapat yang memilki arti terserah atau sesuka anada saja</p>\r\n', 1),
 (5, 'Gondes', 'Gondrong Ndeso', 'Kata - kata untuk makian', 1),
-(6, 'Turu', 'Tidur', 'Kata Turu memiliki arti tidur,\n\nYaitu sebauh kegiatan yang mengistirahatkan seluruh anggota tubuh', 1);
+(6, 'Turu', 'Tidur', 'Kata Turu memiliki arti tidur,\n\nYaitu sebauh kegiatan yang mengistirahatkan seluruh anggota tubuh', 1),
+(7, 'Ora', 'Tidak', 'Kata \"ora\" digunakan untuk menolak', 1),
+(9, 'Kowe', 'Kamu', 'Kowe adalah penyebutan untuk kamu. Kata ini biasanya digunakan dalam percakapan antar teman. Tidak diperkenankan digunakan ketika berbicara dengan orang yang lebih tua.', 1),
+(11, 'Ndesit', 'Bergaya seperti oran', '<p>Ungkapan halus dari kata ndesoUngkapan halus dari kata ndeso</p>\r\n', 1),
+(12, 'Ngeleh', 'Lapar', '<p>Kata ngeleh sering disebutkan oleh masyarakat Semarang dan sekitar seperti Demak dan Kendal</p>\r\n', 1),
+(13, 'Tek\'ke', 'Otaknya', '<p>Ungkapan untuk suatu yang tidak masuk akal</p>\r\n', 1),
+(15, 'Dahar', 'Makan', '<p>Dahar adalah makan dalam bahasa jawa krama</p>\r\n', 1),
+(16, 'Wedus', 'Kambing', 'Hewan berkaki empat', 1),
+(17, 'Thukul', 'Tumbuh', '<p>Thukul bahasa jawa dari Tumbuh, contoh witku thukul, pohonku tumbuh</p>\r\n', 1),
+(18, 'Turah', 'ada lebihnya, bersis', '<p>Diturahi, ada diberi sisa</p>\r\n\r\n<p>Turahan, Kelebihan; sisa</p>\r\n', 1),
+(19, 'ublek', 'aduk', '<p>Ngublek, mengaduk</p>\r\n', 1),
+(20, 'udreg', 'pertengkaran', '<p>udreg-udregan, bertengkar; cekcok</p>\r\n', 1),
+(21, 'Sepuh', 'Tua', '<p>Sepuh yang berarti tua, contoh mbahku uwis sepuh; mbahku sudah tua</p>\r\n', 1),
+(22, 'uget-uget', 'cacing kecil, atau j', '', 1),
+(23, 'udan', 'hujan', '<p>Udan, jatuhnya air dari langit</p>\r\n\r\n<p>Diudani, dikirim hujan</p>\r\n\r\n<p>Diudan-udanake, dihujan-hujankan</p>\r\n\r\n<p>Kodanan, kehujanan</p>\r\n\r\n<p>Udan-udan, berhujan-hujan; mandi hujan</p>\r\n', 1),
+(24, 'udud', 'rokok', '<p>ngudud, merokok; senang merokok</p>\r\n', 1),
+(25, 'tulung', 'tolong', '<p>ditulungi, diberi pertolongan</p>\r\n\r\n<p>nulung, membantu; memberi pertolongan</p>\r\n\r\n<p>pitulungan, bantuan; pertolongan</p>\r\n\r\n<p>tetulung, memberi pertolongan</p>\r\n', 1),
+(26, 'tuladha', 'mencontoh', '', 1),
+(27, 'Tombok', 'Uang penambah ketika', '<p>Ditomboki, diberi tambahan uang</p>\r\n\r\n<p>Ditombokake, ditukarkan dengan memberi uang tambahan</p>\r\n', 1),
+(28, 'Tindak', 'Pergi', '', 1),
+(29, 'Mangan', 'Makan', '<p>Mangan dalam bahasa Indonesia adalah makan, kata &quot;mangan&quot; biasa digunakan dalam percakapan antara orang yang berusia sama.&nbsp;Contohnya percakapan&nbsp;antar teman</p>\r\n', 1);
 
 -- --------------------------------------------------------
 
@@ -68963,14 +69052,14 @@ INSERT INTO `pepak` (`id_pepak`, `jawa`, `indonesia`, `deskripsi_jawa`, `status`
 -- Table structure for table `slider`
 --
 
-CREATE TABLE IF NOT EXISTS `slider` (
-`id_slider` int(3) NOT NULL,
+CREATE TABLE `slider` (
+  `id_slider` int(3) NOT NULL,
   `judul_slider` varchar(50) NOT NULL,
   `deskripsi` text NOT NULL,
   `tanggal_posting` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `path_gambar` varchar(50) NOT NULL,
   `status` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `slider`
@@ -68988,22 +69077,21 @@ INSERT INTO `slider` (`id_slider`, `judul_slider`, `deskripsi`, `tanggal_posting
 -- Table structure for table `stiker`
 --
 
-CREATE TABLE IF NOT EXISTS `stiker` (
-`id_stiker` int(5) NOT NULL,
+CREATE TABLE `stiker` (
+  `id_stiker` int(5) NOT NULL,
   `nama_stiker` varchar(50) NOT NULL,
   `deskripsi` text NOT NULL,
   `tanggal_posting` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `path_gambar` varchar(50) NOT NULL,
   `status` int(1) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=COMPACT;
 
 --
 -- Dumping data for table `stiker`
 --
 
 INSERT INTO `stiker` (`id_stiker`, `nama_stiker`, `deskripsi`, `tanggal_posting`, `path_gambar`, `status`) VALUES
-(2, 'coba stiker', '<p>coba stiker</p>\r\n', '2017-08-19 12:42:02', 'file_1503146120.png', 2),
-(3, 'macan', '<p>stiker macan</p>\r\n', '2017-08-18 19:43:37', 'file_1503146617.png', 1);
+(3, 'stiker lampu', '<p>stiker macan</p>\r\n', '2017-08-22 08:01:58', 'file_1503388918.png', 1);
 
 -- --------------------------------------------------------
 
@@ -69011,13 +69099,13 @@ INSERT INTO `stiker` (`id_stiker`, `nama_stiker`, `deskripsi`, `tanggal_posting`
 -- Table structure for table `testimoni`
 --
 
-CREATE TABLE IF NOT EXISTS `testimoni` (
-`id_testimoni` int(100) NOT NULL,
+CREATE TABLE `testimoni` (
+  `id_testimoni` int(100) NOT NULL,
   `id_member` int(11) NOT NULL,
   `isi_testimoni` text NOT NULL,
   `tgl_posting` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `id_event` int(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `testimoni`
@@ -69031,7 +69119,103 @@ INSERT INTO `testimoni` (`id_testimoni`, `id_member`, `isi_testimoni`, `tgl_post
 (9, 9, 'iuuuuuh', '2017-08-09 07:27:30', 26),
 (10, 9, 'mangkat', '2017-08-09 07:29:25', 26),
 (11, 9, 'Ayoooh ikutan . . .', '2017-08-13 15:46:43', 40),
-(12, 9, 'Seru banget lho', '2017-08-13 16:11:14', 40);
+(12, 9, 'Seru banget lho', '2017-08-13 16:11:14', 40),
+(13, 11, 'woooow seru bgtt', '2017-08-20 10:32:25', 41),
+(14, 9, 'yoooh', '2017-08-22 07:22:42', 45),
+(15, 9, 'IIIh boleh nih ikut . . .', '2017-08-22 08:11:51', 45),
+(16, 13, 'Line 1\r\nLine 2\r\nLine 3', '2017-08-22 10:07:22', 45),
+(17, 9, 'Wiih, mantep nih . . . bisa wisata kuliner . . .', '2017-08-23 16:54:39', 44),
+(18, 9, 'yuuuk ikutan . . .', '2017-08-30 06:48:14', 47),
+(19, 9, 'ayook ikutan', '2017-08-30 07:54:36', 52),
+(20, 43, 'waaah pas pada libur, bisa mitap sama temen di sini nih ????????', '2017-08-30 15:35:27', 44),
+(21, 30, 'acaranya lumayan, cuma kehalang hujan aja. From scale 1-10 i give 8', '2017-09-26 04:57:13', 55);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tiket`
+--
+
+CREATE TABLE `tiket` (
+  `id_jenis_tiket` int(11) NOT NULL,
+  `nama_tiket` varchar(50) NOT NULL,
+  `harga` int(10) NOT NULL,
+  `seat` int(10) DEFAULT NULL,
+  `id_event` int(11) NOT NULL,
+  `status` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tiket`
+--
+
+INSERT INTO `tiket` (`id_jenis_tiket`, `nama_tiket`, `harga`, `seat`, `id_event`, `status`) VALUES
+(1, 'Reguler', 20000, 0, 0, 1),
+(2, 'VIP', 100000, 0, 0, 1),
+(3, 'Platinum', 500000, 0, 0, 1),
+(4, 'VIP', 500000, 0, 0, 1),
+(5, 'VIP 2', 60000, 0, 0, 1),
+(6, 'Platinum', 30000, 0, 0, 1),
+(7, 'VIP', 500000, 0, 0, 1),
+(8, 'VIP 2', 30000, 0, 0, 1),
+(9, 'VIP', 500000, 0, 0, 1),
+(10, 'VIP 2', 30000, 0, 0, 1),
+(11, 'VIP', 30000, 50, 0, 1),
+(12, 'VIP 2', 60000, 50, 0, 1),
+(13, 'VIP', 30000, 50, 57, 1),
+(14, 'VIP 2', 60000, 50, 57, 1),
+(15, 'Mahasiswa FIB UNDIP', 35000, 99998, 47, 1),
+(16, 'Umum', 40000, 99998, 47, 1),
+(17, '', 0, 0, 60, 1),
+(18, 'VIP', 200000, 104, 61, 1),
+(20, 'Reguler 1', 150000, 0, 61, 1),
+(21, 'VIP', 100000, 104, 62, 1),
+(24, 'Reguler', 40000, 200, 62, 1),
+(25, 'Hari Pertama & Kedua', 15000, NULL, 56, 1),
+(26, 'Kari Ketiga', 25000, NULL, 56, 1),
+(27, 'Tiket 3 hari', 55000, NULL, 56, 1),
+(28, 'HTM', 25000, 5, 51, 1),
+(29, 'HTM', 25000, 15, 51, 1),
+(30, 'HTM', 25000, 20, 51, 1),
+(31, 'SILVER', 70000, 0, 63, 1),
+(32, 'GOLD', 105000, 0, 63, 1),
+(33, 'PLATINUM', 140000, 0, 63, 1),
+(34, 'vip', 100000, 100, 64, 1),
+(35, '', 0, 0, 65, 1),
+(36, '', 0, 0, 66, 1),
+(37, '', 0, 0, 67, 1),
+(38, '', 0, 0, 68, 1),
+(39, '', 60000, NULL, 69, 1),
+(40, '', 0, 0, 70, 1),
+(41, '', 0, 0, 71, 1),
+(42, 'Regresi Data Panel ', 400000, 30, 72, 1),
+(43, 'SEM AMOS', 700000, 30, 72, 1),
+(44, '', 10000, NULL, 73, 1),
+(45, 'Tari', 150000, NULL, 74, 1),
+(46, 'Akustik', 100000, NULL, 74, 1),
+(47, 'Toefl Test and Training', 95000, 0, 75, 1),
+(48, 'Pre Sale', 20000, NULL, 76, 1),
+(49, 'OTS', 25000, NULL, 76, 1),
+(50, 'PreSale I', 40000, NULL, 77, 1),
+(51, 'PreSale II', 45000, NULL, 77, 1),
+(52, 'PreSale III', 50000, NULL, 77, 1),
+(53, 'OTS', 60000, NULL, 77, 1),
+(54, '', 0, 0, 78, 1),
+(55, '', 0, 0, 79, 1),
+(56, '', 35000, NULL, 80, 1),
+(57, 'Umum', 20000, NULL, 81, 1),
+(58, 'Mahasiswa', 15000, NULL, 81, 1),
+(59, 'Presale', 35000, NULL, 55, 1),
+(60, 'OTS', 40000, NULL, 55, 1),
+(61, 'Presale Pelajar ', 25000, NULL, 82, 1),
+(62, 'Presale Umum ', 100000, NULL, 82, 1),
+(63, '', 0, 0, 82, 1),
+(64, '', 0, 0, 82, 1),
+(65, 'Presale Pelajar ', 25000, NULL, 83, 1),
+(66, 'Presale Umum', 100000, NULL, 83, 1),
+(67, 'On the Spot', 45000, NULL, 84, 1),
+(68, '', 0, 0, 85, 1),
+(69, 'OTS', 10000, NULL, 86, 1);
 
 -- --------------------------------------------------------
 
@@ -69039,11 +69223,11 @@ INSERT INTO `testimoni` (`id_testimoni`, `id_member`, `isi_testimoni`, `tgl_post
 -- Table structure for table `user`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
-`id_user` int(11) NOT NULL,
+CREATE TABLE `user` (
+  `id_user` int(11) NOT NULL,
   `username` varchar(200) NOT NULL,
   `password` varchar(200) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
@@ -69058,31 +69242,39 @@ INSERT INTO `user` (`id_user`, `username`, `password`) VALUES
 -- Table structure for table `wow`
 --
 
-CREATE TABLE IF NOT EXISTS `wow` (
-`id_wow` int(4) NOT NULL,
+CREATE TABLE `wow` (
+  `id_wow` int(4) NOT NULL,
   `judul_wow` varchar(50) NOT NULL,
   `deskripsi` text NOT NULL,
   `tanggal_posting` date NOT NULL,
   `kategori_wow` varchar(100) NOT NULL,
   `path_gambar` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `wow`
 --
 
 INSERT INTO `wow` (`id_wow`, `judul_wow`, `deskripsi`, `tanggal_posting`, `kategori_wow`, `path_gambar`) VALUES
-(1, 'Lumpia Kuliner Khas Semarang', '<p>PT Jamu Jago merupakan perusahaan jamu atau obat tradisional pertama di Indonesia yang dikelola secara profesional, berdiri sejak tahun 1918 dan terus bertahan hingga sekarang.&nbsp;</p>\r\n', '2017-08-01', 'Lain-Lain', 'file_1500557976.jpg'),
-(2, 'Semarang Kaline Banjir', '<p>PT Jamu Jago merupakan perusahaan jamu atau obat tradisional pertama di Indonesia yang dikelola secara profesional, berdiri sejak tahun 1918 dan terus bertahan hingga sekarang.&nbsp;</p>\r\n', '2017-08-01', 'Lain-Lain', 'file_1500558061.jpg'),
-(3, 'PT. Jamu Jago Semarang', '<p>&nbsp;PT Jamu Jago merupakan perusahaan jamu atau obat tradisional pertama di Indonesia yang dikelola secara profesional, berdiri sejak tahun 1918 dan terus bertahan hingga sekarang.&nbsp;</p>\r\n', '2017-07-20', 'Science dan Teknologi', 'file_1500558170.jpg'),
-(4, 'PT. Jamu Jago Semarang', '<p>&nbsp;PT Jamu Jago merupakan perusahaan jamu atau obat tradisional pertama di Indonesia yang dikelola secara profesional, berdiri sejak tahun 1918 dan terus bertahan hingga sekarang.&nbsp;</p>\r\n', '2017-07-20', 'Science dan Teknologi', 'file_1500558170.jpg'),
-(5, 'Semarang Kaline Banjir', '<p>PT Jamu Jago merupakan perusahaan jamu atau obat tradisional pertama di Indonesia yang dikelola secara profesional, berdiri sejak tahun 1918 dan terus bertahan hingga sekarang.&nbsp;</p>\r\n', '2017-08-01', 'Lain-Lain', 'file_1500558061.jpg'),
-(6, 'PT. Jamu Jago Semarang', '<p>&nbsp;PT Jamu Jago merupakan perusahaan jamu atau obat tradisional pertama di Indonesia yang dikelola secara profesional, berdiri sejak tahun 1918 dan terus bertahan hingga sekarang.&nbsp;</p>\r\n', '2017-07-20', 'Science dan Teknologi', 'file_1500558170.jpg'),
-(7, 'Lumpia Kuliner Khas Semarang', '<p>PT Jamu Jago merupakan perusahaan jamu atau obat tradisional pertama di Indonesia yang dikelola secara profesional, berdiri sejak tahun 1918 dan terus bertahan hingga sekarang.&nbsp;</p>\r\n', '2017-08-01', 'Lain-Lain', 'file_1500557976.jpg'),
-(8, 'Semarang Kaline Banjir', '<p>PT Jamu Jago merupakan perusahaan jamu atau obat tradisional pertama di Indonesia yang dikelola secara profesional, berdiri sejak tahun 1918 dan terus bertahan hingga sekarang.&nbsp;</p>\r\n', '2017-08-01', 'Lain-Lain', 'file_1500558061.jpg'),
-(9, 'Lumpia Kuliner Khas Semarang', '<p>PT Jamu Jago merupakan perusahaan jamu atau obat tradisional pertama di Indonesia yang dikelola secara profesional, berdiri sejak tahun 1918 dan terus bertahan hingga sekarang.&nbsp;</p>\r\n', '2017-08-01', 'Lain-Lain', 'file_1500557976.jpg'),
-(10, 'Semarang Kaline Banjir', '<p>PT Jamu Jago merupakan perusahaan jamu atau obat tradisional pertama di Indonesia yang dikelola secara profesional, berdiri sejak tahun 1918 dan terus bertahan hingga sekarang.&nbsp;</p>\r\n', '2017-08-01', 'Lain-Lain', 'file_1500558061.jpg'),
-(11, 'Lumpia Kuliner Khas Semarang', '<p>PT Jamu Jago merupakan perusahaan jamu atau obat tradisional pertama di Indonesia yang dikelola secara profesional, berdiri sejak tahun 1918 dan terus bertahan hingga sekarang.&nbsp;</p>\r\n', '2017-08-01', 'Lain-Lain', 'file_1500557976.jpg');
+(12, 'Festival Gerewol, Ajang Mencuri Istri', '<p>Sebuah festival unik terdapat pada suku Wodaabe, Nigeria. Dimana para lelaki berdandan dan menari untuk mengesankan para wanita milik lelaki lain dan mencurinya.</p>\r\n', '2017-08-22', 'Lain-Lain', 'file_1503377185.jpeg'),
+(13, 'Ada Kuburan di Langit', 'Di Tibet, Orang yang telah meninggal jasadnya akan ditumbuk hingga jadi serpihan dan selanjutnya akan dibawa ke tempat burung pemakan bangkai berada. \r\n\r\n', '2017-08-22', 'Spirituality', 'file_1503377464.jpeg'),
+(14, 'Mau Menikah, Dilarang Buang Air Kecil Selama 3 Har', '<p>Ada sebuah tradisi unik dari Suku Tidung Kalimantan. Pasangan yang akan melakukan pernikahan dilarang buang air kecil selama tiga hari. Wah gimana tuh ya?</p>\r\n', '2017-09-22', 'Seni', 'file_1503377510.jpeg'),
+(15, 'Tradisi Menginjak Tamu Undangan Pernikahan', 'Ada yang unik dari pesta pernikahan di Kepulauan Marquesas, Tahiti. Tamu undangan yang biasanya diistimewakan justru tengkurap berjejer dan diinjak oleh mempelai. ', '2017-08-22', 'Seni', 'file_1503377665.jpeg'),
+(16, 'Tapa Bisu Mubeng Beteng', 'Tahukah anda, setiap tanggal satu suro para abdi dalem keraton dan warga Yogyakarta berjalan kaki melakukan kirab mengitari benteng tanpa berbicara alias bisu.', '2017-08-22', 'Lain-Lain', 'file_1503377776.jpg'),
+(17, 'Kacamata Hitam Penari Sintren', 'Unik, penari Sintren memakai kacamata hitam sebagai penutup mata karena selama menari, Sintren selalu memejamkan mata akibat kerasukan “trance”, juga sebagai ciri khas kesenian sintren.', '2017-08-22', 'Seni', 'file_1503377950.jpg'),
+(18, 'Bleketepe Simbol Pernikahan Jawa', 'Tahukah anda, Bleketepe yang dipasang di tarub dan mengelilingi area memiliki arti ajakan orang tua & calon pengantin kepada semua orang yang terlibat di dalam upacara hajatan untuk berproses bersama.', '2017-08-22', 'Seni', 'file_1503378160.jpg'),
+(19, 'Tomatina', 'Unik, di Spanyol terdapat Festival Tomatina yaitu tradisi melempar tomat dan beberapa orang bertelanjang dada bahkan mengenakan kacamata renang untung menghindari mata perih akibat terkena sari tomat.', '2017-08-22', 'Travel dan Outdoor', 'file_1503378212.jpeg'),
+(20, 'Tradisi Tarik Kepala Angsa', '<p>Day of the Geese adalah tradisi di Spanyol dengan melumuri seekor angsa dengan minyak, digantung di atas air, dan para pemuda akan melompat dari perahu dan menarik kepala angsa hingga putus.</p>\r\n', '2017-08-22', 'Seni', 'file_1503385539.jpg'),
+(22, 'Tikus Bagai Keluarga di India', 'Bikin geleng kepala, di India terdapat sebuah kuil Tikus bernama Kuil Karni Mata. Disana terdapat 20.000 tikus yang hidup, diberi makan, bahkan berlalu-lalang di dalam kuil. ', '2017-08-22', 'Spirituality', 'file_1503379292.jpeg'),
+(23, 'Ritual Brutal Membunuh Hewan', 'Di Nepal terdapat Festival Pemujaan Dewi Gadhimai yang melibatkan persembahan hewan berupa kambing, ayam, merpati, dll. Para pemuja percaya pengorbanan hewan ini akan mendatangkan keberuntungan.', '2017-08-22', 'Spirituality', 'file_1503379647.jpg'),
+(24, 'Festival Khusus Kera', 'Unik, di Thailand terdapat festival unik dimana kera-kera merupakan satu-satunya pihak yang berhak menyantap hidangan yang disediakan.  Warga meyakini kera membawa keberuntungan bagi mereka.', '2017-08-22', 'Travel dan Outdoor', 'file_1503379927.jpg'),
+(25, 'Bugil, Tidak Sebenarnya Bugil', 'Hadaka Matsuri atau biasa disebut Naked Festival. Meski dijuluki sebagai Festival Telanjang, mereka yang ikut meramaikan festival ini tidak benar-benar datang dalam keadaan bugil.', '2017-08-22', 'Seni', 'file_1503385939.jpg'),
+(26, 'Lempar Hasil Panen sebagai Tanda Syukur', 'La Raima adalah festival yang menandakan berakhirnya masa panen anggur pada akhir musim panas. Sekitar 90 ton anggur setiap tahunnya menjadi ucapan syukur atas hasil panen yang melimpah.', '2017-08-22', 'Seni', 'file_1503386283.jpg'),
+(27, 'Ada Manusia Macan di Jalanan India', 'Harimau menjadi salah satu ikon hewan yang dipercaya sebagai dewa oleh masyarakat India. Festival Pulikali berarti bermain dan menari bersama manusia harimau di jalanan. ', '2017-08-22', 'Seni', 'file_1503386451.jpg'),
+(29, 'Siapa Takut Berdansa sampai Larut Malam?', 'Mardi Gras di New Orleans merupakan satu-satunya festival di dunia yang selama seharian penuh orang-orang akan berpesta dan berdansa tanpa henti. Festival ini identik dengan konten dewasa dan panas. ', '2017-08-22', 'Seni', 'file_1503389980.jpg'),
+(30, 'Festival Lempar Keju, Inggris', 'Siapa yang dapat menangkap keju dengan berat empat kilogram maka ia memenangkan kompetisi. Karena kemiringan bukit, kecepatan keju dapat mencapai 113 kilometer per jam. Tak sedikit korban yang cidera.', '2017-08-28', 'Lain-Lain', 'file_1503908372.jpeg'),
+(31, 'Festival Melompati Bayi, Spanyol', 'Warga menempatkan beberapa bayi di tengah jalan. Kemudian, bayi-bayi itu akan dilompati oleh seorang pria dewasa.', '2017-08-28', 'Lain-Lain', 'file_1503909175.jpg'),
+(32, 'Peti Mati Fantasi', 'Di Thesi, Ghana. Warga Ghana mengubur jenazah menggunakan peti mati yang berbentuk sesuai dengan profesi selama ia hidup.', '2017-09-22', 'Lain-Lain', 'file_1506056524.jpg');
 
 --
 -- Indexes for dumped tables
@@ -69092,121 +69284,133 @@ INSERT INTO `wow` (`id_wow`, `judul_wow`, `deskripsi`, `tanggal_posting`, `kateg
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
- ADD PRIMARY KEY (`id_admin`);
+  ADD PRIMARY KEY (`id_admin`);
 
 --
 -- Indexes for table `artikel`
 --
 ALTER TABLE `artikel`
- ADD PRIMARY KEY (`id_artikel`);
+  ADD PRIMARY KEY (`id_artikel`);
 
 --
 -- Indexes for table `challenge`
 --
 ALTER TABLE `challenge`
- ADD PRIMARY KEY (`id_challenge`);
+  ADD PRIMARY KEY (`id_challenge`);
 
 --
 -- Indexes for table `coming`
 --
 ALTER TABLE `coming`
- ADD PRIMARY KEY (`id_coming`);
+  ADD PRIMARY KEY (`id_coming`);
 
 --
 -- Indexes for table `faq`
 --
 ALTER TABLE `faq`
- ADD PRIMARY KEY (`id_faq`);
+  ADD PRIMARY KEY (`id_faq`);
 
 --
 -- Indexes for table `header`
 --
 ALTER TABLE `header`
- ADD PRIMARY KEY (`id_header`);
+  ADD PRIMARY KEY (`id_header`);
 
 --
 -- Indexes for table `hubungi_kami`
 --
 ALTER TABLE `hubungi_kami`
- ADD PRIMARY KEY (`id_pesan`);
+  ADD PRIMARY KEY (`id_pesan`);
 
 --
 -- Indexes for table `inf_lokasi`
 --
 ALTER TABLE `inf_lokasi`
- ADD PRIMARY KEY (`lokasi_ID`), ADD KEY `lokasi_kode` (`lokasi_kode`), ADD KEY `lokasi_propinsi` (`lokasi_propinsi`), ADD KEY `lokasi_kabupatenkota` (`lokasi_kabupatenkota`), ADD KEY `lokasi_kecamatan` (`lokasi_kecamatan`), ADD KEY `lokasi_kelurahan` (`lokasi_kelurahan`);
+  ADD PRIMARY KEY (`lokasi_ID`),
+  ADD KEY `lokasi_kode` (`lokasi_kode`),
+  ADD KEY `lokasi_propinsi` (`lokasi_propinsi`),
+  ADD KEY `lokasi_kabupatenkota` (`lokasi_kabupatenkota`),
+  ADD KEY `lokasi_kecamatan` (`lokasi_kecamatan`),
+  ADD KEY `lokasi_kelurahan` (`lokasi_kelurahan`);
 
 --
 -- Indexes for table `komentar`
 --
 ALTER TABLE `komentar`
- ADD PRIMARY KEY (`id_komentar`);
+  ADD PRIMARY KEY (`id_komentar`);
 
 --
 -- Indexes for table `member`
 --
 ALTER TABLE `member`
- ADD PRIMARY KEY (`id_member`);
+  ADD PRIMARY KEY (`id_member`);
 
 --
 -- Indexes for table `nama_challenge`
 --
 ALTER TABLE `nama_challenge`
- ADD PRIMARY KEY (`id_nama_challenge`);
+  ADD PRIMARY KEY (`id_nama_challenge`);
 
 --
 -- Indexes for table `news`
 --
 ALTER TABLE `news`
- ADD PRIMARY KEY (`id_news`);
+  ADD PRIMARY KEY (`id_news`);
 
 --
 -- Indexes for table `pembayaran`
 --
 ALTER TABLE `pembayaran`
- ADD PRIMARY KEY (`id_pembayaran`);
+  ADD PRIMARY KEY (`id_pembayaran`);
 
 --
 -- Indexes for table `pendaftar`
 --
 ALTER TABLE `pendaftar`
- ADD PRIMARY KEY (`id_pendaftar`), ADD KEY `fk_event_pendaftar` (`id_event`);
+  ADD PRIMARY KEY (`id_pendaftar`),
+  ADD KEY `fk_event_pendaftar` (`id_event`);
 
 --
 -- Indexes for table `pepak`
 --
 ALTER TABLE `pepak`
- ADD PRIMARY KEY (`id_pepak`);
+  ADD PRIMARY KEY (`id_pepak`);
 
 --
 -- Indexes for table `slider`
 --
 ALTER TABLE `slider`
- ADD PRIMARY KEY (`id_slider`);
+  ADD PRIMARY KEY (`id_slider`);
 
 --
 -- Indexes for table `stiker`
 --
 ALTER TABLE `stiker`
- ADD PRIMARY KEY (`id_stiker`);
+  ADD PRIMARY KEY (`id_stiker`);
 
 --
 -- Indexes for table `testimoni`
 --
 ALTER TABLE `testimoni`
- ADD PRIMARY KEY (`id_testimoni`);
+  ADD PRIMARY KEY (`id_testimoni`);
+
+--
+-- Indexes for table `tiket`
+--
+ALTER TABLE `tiket`
+  ADD PRIMARY KEY (`id_jenis_tiket`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
- ADD PRIMARY KEY (`id_user`);
+  ADD PRIMARY KEY (`id_user`);
 
 --
 -- Indexes for table `wow`
 --
 ALTER TABLE `wow`
- ADD PRIMARY KEY (`id_wow`);
+  ADD PRIMARY KEY (`id_wow`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -69216,97 +69420,108 @@ ALTER TABLE `wow`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-MODIFY `id_admin` int(2) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_admin` int(2) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `artikel`
 --
 ALTER TABLE `artikel`
-MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id_artikel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `challenge`
 --
 ALTER TABLE `challenge`
-MODIFY `id_challenge` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=28;
+  MODIFY `id_challenge` int(3) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `coming`
 --
 ALTER TABLE `coming`
-MODIFY `id_coming` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=43;
+  MODIFY `id_coming` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
 --
 -- AUTO_INCREMENT for table `faq`
 --
 ALTER TABLE `faq`
-MODIFY `id_faq` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_faq` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `header`
 --
 ALTER TABLE `header`
-MODIFY `id_header` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_header` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `hubungi_kami`
 --
 ALTER TABLE `hubungi_kami`
-MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `inf_lokasi`
 --
 ALTER TABLE `inf_lokasi`
-MODIFY `lokasi_ID` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=68427;
+  MODIFY `lokasi_ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68427;
 --
 -- AUTO_INCREMENT for table `komentar`
 --
 ALTER TABLE `komentar`
-MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT for table `member`
 --
 ALTER TABLE `member`
-MODIFY `id_member` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
+  MODIFY `id_member` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT for table `nama_challenge`
 --
 ALTER TABLE `nama_challenge`
-MODIFY `id_nama_challenge` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
+  MODIFY `id_nama_challenge` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
-MODIFY `id_news` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+  MODIFY `id_news` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+--
+-- AUTO_INCREMENT for table `pembayaran`
+--
+ALTER TABLE `pembayaran`
+  MODIFY `id_pembayaran` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `pendaftar`
 --
 ALTER TABLE `pendaftar`
-MODIFY `id_pendaftar` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+  MODIFY `id_pendaftar` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=61;
 --
 -- AUTO_INCREMENT for table `pepak`
 --
 ALTER TABLE `pepak`
-MODIFY `id_pepak` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id_pepak` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `slider`
 --
 ALTER TABLE `slider`
-MODIFY `id_slider` int(3) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+  MODIFY `id_slider` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `stiker`
 --
 ALTER TABLE `stiker`
-MODIFY `id_stiker` int(5) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id_stiker` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `testimoni`
 --
 ALTER TABLE `testimoni`
-MODIFY `id_testimoni` int(100) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
+  MODIFY `id_testimoni` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+--
+-- AUTO_INCREMENT for table `tiket`
+--
+ALTER TABLE `tiket`
+  MODIFY `id_jenis_tiket` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `wow`
 --
 ALTER TABLE `wow`
-MODIFY `id_wow` int(4) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+  MODIFY `id_wow` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

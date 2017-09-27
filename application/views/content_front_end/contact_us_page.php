@@ -1,4 +1,4 @@
-	<section class="my-breadcrumb" style="background-image: url(asset/img/contact_us.jpg);">
+	<section class="my-breadcrumb" style="background-image: url(asset/img/contact_us.png);">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
@@ -101,7 +101,7 @@
                                     <div class="col-md-10">
    					                     <div class="content-area">
    					                        <h4>Email</h4>
-   					                        <p>bolokuid@gmail.com</p>
+   					                        <p>info@boloku.id</p>
    					                     </div>
                                     </div>
                                  </div>

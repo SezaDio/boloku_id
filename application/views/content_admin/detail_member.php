@@ -106,7 +106,7 @@
                                     <!-- Tombol Setuju -->
                                     <a href="<?php echo site_url('KelolaMember/setuju_detail_member/'.$id_member);?>"><button id="success-button-member" type="submit" class="btn btn-success btn-sm"><i class="glyphicon glyphicon-ok" ></i> Setuju</button></a>
                                     <!-- Tombol Hapus -->
-                                    <a href="<?php echo site_url('KelolaComing/tolak_detail_member/'.$id_member);?>"><button  id="delete-button-member" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove" ></i> Tolak</button>
+                                    <a href="<?php echo site_url('KelolaMember/tolak_detail_member/'.$id_member);?>"><button  id="delete-button-member" type="submit" class="btn btn-danger btn-sm"><i class="glyphicon glyphicon-remove" ></i> Tolak</button>
                             </div>
                                 <?php }?>
                             

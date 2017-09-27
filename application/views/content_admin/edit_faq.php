@@ -21,7 +21,7 @@
                                 
                                 <!-- form start -->
 								
-                                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaFAQ/edit_faq/'.$idFaq);?>" method="POST">
+                                <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaFaq/edit_faq/'.$idFaq);?>" method="POST">
                                     <div class="box-body">
                                         <div style="margin-top:10px; margin-bottom:30px">
                                             <?php if($this->session->flashdata('msg_gagal')!=''){?>

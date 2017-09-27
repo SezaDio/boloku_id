@@ -300,10 +300,20 @@ class Kelolapendaftar extends CI_Controller {
 			$this->form_validation->set_rules('email', 'Email', 'required');
 			$this->form_validation->set_rules('telepon', 'Telepon', 'required');
 			$this->form_validation->set_rules('alamat', 'Alamat', 'required');
+			$this->form_validation->set_rules('tipe_tiket', 'Tipe Tiket', 'required');
 
 			//value id_koridor berisi beberapa data, sehingga dilakukan split dengan explode
 			if (($this->form_validation->run() == TRUE))
-			{
+			{   
+			    if($this->input->post('tipe_tiket')=="0"){
+					$nama_tiket = "Gratis";
+					$harga = 0;
+				} else {
+					$tipe_tiket = explode(":",$this->input->post('tipe_tiket'));
+					$nama_tiket = $tipe_tiket[0];
+					$harga = $tipe_tiket[1];
+					$id_jenis_tiket = $tipe_tiket[2];
+				}
 				$seat=$this->input->post('seat');
 				$no_pendaftar = $this->PendaftarModels->get_jumlah_pendaftar($id_event) + 1;
 				if($no_pendaftar<10){
@@ -325,6 +335,8 @@ class Kelolapendaftar extends CI_Controller {
 					'email'=>$this->input->post('email'),
 					'telepon'=>$this->input->post('telepon'),
 					'alamat'=>$this->input->post('alamat'),
+					'nama_tiket'=>$nama_tiket,
+					'harga'=>$harga,
 					'status_bayar'=>0,
 					'no_pendaftar'=>$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode)
 				);
@@ -332,7 +344,7 @@ class Kelolapendaftar extends CI_Controller {
 				
 				$this->db->insert('pendaftar', $data_pendaftar);
 
-				if ($seat != 0)
+				if ($tipe_tiket == 0)
 				{
 					$seat = $seat-1;
 					$this->db->update('coming', array('jumlah_seat'=>$seat), array('id_coming'=>$id_event));
@@ -346,15 +358,38 @@ class Kelolapendaftar extends CI_Controller {
 				}
 				else
 				{
-				    $sub = 'Pendaftaran Peserta '.$nama_event;
-					$msg = 'Terimakasih telah melalukan pendaftaran pada event <b>'.$nama_event.'</b><br/><br/>';
-					$msg .= 'Nama : '.$nama_pendaftar.'<br/>';
-					$msg .= 'Nomor peserta : '.$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode); 
-					$msg .= '<br/><br/>Harap simpan dengan baik nomor peserta anda.';
-					$email = $this->input->post('email');
-					$this->kirim_email($sub,$msg,$email);
-					$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
-					redirect('FrontControl_Event/event_click/'.$id_event);
+				    $tiket = $this->ComingModels->select_tiket_by_id_tiket($id_jenis_tiket)->row();
+				    $seat = $tiket->seat;
+				    if ($seat == NULL)
+				    {
+				        $sub = 'Pendaftaran Peserta '.$nama_event;
+    					$msg = 'Terimakasih telah melalukan pendaftaran pada event '.$nama_event;
+    					$msg .= '<br/> Nomor peserta Anda adalah '.$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode).'.'; 
+    					$msg .= '<br/> Jenis Tiket : '.$nama_tiket.'';
+    					$msg .= '<br/> Harga Tiket : '.$harga.'';
+    					$msg .= '<br/> Harap simpan dengan baik data pendaftaran Kamu';
+    					$email = $this->input->post('email');
+    					$this->kirim_email($sub,$msg,$email);
+    					$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
+    					redirect('FrontControl_Event/event_click/'.$id_event);
+				    }
+				    else
+				    {
+				        $seat = $seat-1;
+					    $this->db->update('tiket', array('seat'=>$seat), array('id_jenis_tiket'=>$id_jenis_tiket));
+				        
+				        $sub = 'Pendaftaran Peserta '.$nama_event;
+    					$msg = 'Terimakasih telah melalukan pendaftaran pada event '.$nama_event;
+    					$msg .= '<br/> Nomor peserta Anda adalah '.$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode).'.'; 
+    					$msg .= '<br/> Jenis Tiket : '.$nama_tiket.'';
+    					$msg .= '<br/> Harga Tiket : '.$harga.'';
+    					$msg .= '<br/> Harap simpan dengan baik data pendaftaran Kamu';
+    					$email = $this->input->post('email');
+    					$this->kirim_email($sub,$msg,$email);
+    					$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
+    					redirect('FrontControl_Event/event_click/'.$id_event);
+				    }
+				    
 				}
 			}
 			else
@@ -527,15 +562,19 @@ class Kelolapendaftar extends CI_Controller {
 		$data['jumlah_seat'] = $ikutEvent['jumlah_seat'];
 
 		$data['namaKota'] = $this->ComingModels->select_by_id_kota($data['kota_lokasi']);
-
+        $data['tiket'] = $this->HomeModels->get_tiket_byid($id_event);
 		$this->load->view('skin/front_end/header_front_end', $data);
       	$this->load->view('content_front_end/mendaftar_ikut_event_page', $data);
       	$this->load->view('skin/front_end/footer_front_end');
 	}
 	
-	function upload_bukti_bayar(){
+	function upload_bukti_bayar()
+	{
+	    $data['active']=6;
+	    
 		$this->load->model('pendaftar_models/PendaftarModels');
-		$this->load->view('skin/front_end/header_front_end');
+		
+		$this->load->view('skin/front_end/header_front_end', $data);
       	$this->load->view('content_front_end/upload_bukti_bayar');
       	$this->load->view('skin/front_end/footer_front_end');
 	}
@@ -550,6 +589,8 @@ class Kelolapendaftar extends CI_Controller {
 							'nama_pendaftar' => $row->nama_pendaftar,
 							'email' => $row->email,
 							'telepon' => $row->telepon,
+							'nama_tiket' => $row->nama_tiket,
+							'harga' => $row->harga,
 							'alamat' => $row->alamat
 			);
 		}

@@ -52,7 +52,7 @@ class FrontControl_ContactUs extends CI_Controller {
             $this->db->insert('hubungi_kami', $data_pesan);
 
             $this->session->set_flashdata('msg_berhasil', 'Pesan telah terkirim, mohon tunggu balasan dari kami melalui email anda.');
-            redirect('FrontControl_ContactUs');
+            redirect(site_url('contact_us'));
          }
          else
          {
@@ -117,10 +117,10 @@ class FrontControl_ContactUs extends CI_Controller {
    //kirim email
    function kirim_email($sub, $msg, $email) {
       $config['protocol'] = 'smtp';
-      $config['smtp_host'] = 'smtp.googlemail.com'; //change this
+      $config['smtp_host'] = 'mail.boloku.id'; //change this
       $config['smtp_port'] = '465';
-      $config['smtp_user'] = 'bolokuid@gmail.com'; //change this
-      $config['smtp_pass'] = 'masbondan'; //change this
+      $config['smtp_user'] = 'info@boloku.id'; //change this
+      $config['smtp_pass'] = 'cz431081994'; //change this
       $config['mailtype'] = 'html';
       $config['charset'] = 'iso-8859-1';
       $config['smtp_crypto'] = 'ssl';
@@ -128,7 +128,7 @@ class FrontControl_ContactUs extends CI_Controller {
       $config['newline'] = "\r\n"; //use double quotes to comply with RFC 822 standard
       $this->load->library('email'); // load email library
       $this->email->initialize($config);
-      $this->email->from('bolokuid@gmail.com', 'boloku.id');
+      $this->email->from('info@boloku.id', 'boloku.id');
       $this->email->to($email);
       $this->email->subject($sub);
       $this->email->message($msg);

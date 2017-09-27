@@ -72,10 +72,8 @@ class FrontControl_Event extends CI_Controller {
    	  $data['active']=2;
 	  $this->load->model('home_models/HomeModels');
 	  
-	  $data['listStiker'] = $this->HomeModels->get_data_stiker();
 	  $event = $this->HomeModels->get_event_byid($id_event);
 	  $data['tiket'] = $this->HomeModels->get_tiket_byid($id_event);
-	  
 	  
 	  $tanggal_posting = $event['tanggal_posting'];
 	  $hits = $event['hits'] + 1;

@@ -75,6 +75,16 @@
 
 			return $this->db->get();
 		}
+		
+		//Select tiket by id coming
+		function select_tiket_by_id_tiket($id_jenis_tiket)
+		{
+			$this->db->select('*');
+			$this->db->from('tiket');
+			$this->db->where('id_jenis_tiket',$id_jenis_tiket);
+
+			return $this->db->get();
+		}
 
 		//Select id tiket
 		function select_id_jenis_tiket()

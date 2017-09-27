@@ -1,4 +1,4 @@
-	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/memberarea.jpg') ; ?>);">
+	<section class="my-breadcrumb" style="background-image: url(<?php echo base_url('asset/img/memberarea.png') ; ?>);">
          <div class="container page-banner">
             <div class="row">
                <div class="col-sm-12 col-md-12 col-xs-12">
@@ -78,9 +78,9 @@
 	            		</div>
 
 	            		<!--Content kolom kanan Riwayat Event, edit profile, edit event, dan post event baru-->
-	            	<div class="col-md-9 col-sm-4 col-xs-12" id="kolom1">
-	                    <div class="item" style="background-color: white; border-top:solid 1px #f44a56; box-shadow: 0 1px 6px #f44a56;">
-	                        <div class="latest-news-grid grid-1">
+	            		<div class="col-md-9 col-sm-4 col-xs-12" id="kolom1">
+	                       <div class="item" style="background-color: white; border-top:solid 1px #f44a56; box-shadow: 0 1px 6px #f44a56;">
+	                          <div class="latest-news-grid grid-1">
 
 	                          	<!--Content menu riwayat event member-->
 	                            <div id="dashboard-content" class="detail">
@@ -103,12 +103,12 @@
 								                </div>
 						            	<?php } ?>
 	                             		<h4><strong>My Published Event</strong></h4>
-	                             		<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
+	                             		<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"/>
 	                             	</div>
 									<?php
 										if (empty($listEvent)) 
 										{
-											echo "<h5 style='text-align: center;'>Belum ada event yang pernah kamu publish . . .</h5s>";
+											echo "<h5 style='text-align: center;'>Belum ada event yang pernah kamu publish . . .</h5>";
 										}
 										else
 										{
@@ -120,7 +120,7 @@
 					                             			<img alt="" src="<?php echo base_url('asset/upload_img_coming/thumb83_'.$event['path_gambar']); ?>">
 					                             		</div>
 					                                    <div style="padding-left: 10px;" class="caption">
-					                                    	<a href="<?php echo base_url('FrontControl_Event/event_click/'.$event['id_coming']); ?>"><label><?php echo $event['nama_coming'];?></label></a><span><?php 
+					                                    	<a href="<?php if($event['status']!=2){echo base_url('FrontControl_Event/event_click/'.$event['id_coming'].'?ev='.strtolower(str_replace(" ","-",$event['nama_coming'])));} ?>"><label><?php echo $event['nama_coming'];?></label></a><span><?php 
 															if($event['status']==2)
 															{?>
 																
@@ -231,12 +231,12 @@
 		                                                </label><br>
 														<div class="row" id="jenis_event"  style="display:none">
 															<div class="form-group col-md-3" >
-																<input type="text" placeholder="Nama Tiket"	name="nama_tiket[]" class="form-control" required> 
+																<input type="text" placeholder="Nama Tiket"	name="nama_tiket[]" class="form-control"> 
 															</div>
 															<div class="form-group col-md-4" >
 																<div class="row">
 																	<div class="col-md-12" id="divqty1">
-																		<select class="form-control" name="jenisqty[]" id="quantity" onchange="changeQty()" required>
+																		<select class="form-control" name="jenisqty[]" id="quantity" onchange="changeQty()">
 																			<option value="">-Qty-</option>
 																			<option value="open">Open</option>
 																			<option value="limit">Limit</option>
@@ -248,7 +248,7 @@
 																</div>
 															</div>
 															<div class="form-group col-md-3" >
-																<input type="number" placeholder="Harga Tiket"	name="harga[]" class="form-control" required> 
+																<input type="number" placeholder="Harga Tiket"	name="harga[]" class="form-control"> 
 															</div>
 															<div class="col-md-2" style="text-align: center;">
 																<label for="exampleInputEmail1">&nbsp;</label>
@@ -404,7 +404,7 @@
 					                        
 					                        <div class="col-md-12 col-sm-12 col-xs-12">
 					                           <div class="form-group">
-					                           	  <label for="exampleInputFile">Keterangan Tambahan Event :</label>
+					                           	  <label for="exampleInputFile">Deskripsi Event :</label>
 					                              <textarea cols="12" rows="5" id="message" name="deskripsi_coming" class="form-control" required></textarea>
 					                           </div>
 					                           <div class="form-group">
@@ -415,123 +415,128 @@
 					                  </div>
 					               </div>
 	                             </div>
+	                             </div>
 
 	                             <!--Content menu edit profil member-->
-	                            <div style="background-color: white; display: none;" id="edit-profil-content" class="detail">
+	                             <div style="background-color: white; display: none;" id="edit-profil-content" class="detail">
 	                             	<div class="col-md-12">
 	                             		<h4><strong>Edit Profil</strong></h4>
 	                             		<hr style="border: solid 1px #f44a56; margin-top: auto; opacity: 0.4;"></hr>
 	                             	</div>
 	                             	<div class="col-md-12 col-sm-8 col-xs-12 nopadding" style="padding:10px;"">
-					                  	<div class="contact-form">
-					                      	<form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaMember/edit_member_area/'.$id_member);?>" method="POST">
-					                     		<div class="row">
-							                        <div style="text-align: center;" class="col-md-4 col-sm-6 col-xs-12">
-							                        	<div class='box-header'>
-							                        		
-				                                            <?php
-				                                                if (empty($path_foto))
-				                                                {
-				                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/img/author3.jpg').'"/>';
-				                                                }
-				                                                else
-				                                                {
-				                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/upload_img_member/'.$path_foto).'"/>';
-				                                                }
-				                                            ?>   
-				                                        </div>
-				                                       
-				                                        <a class="caption" href="javascript:void(0)" class='box-header' style="font-size: 1.0em; color: blue;" id="ganti">
-				                                        	<button type="button" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-pencil"></i> Ganti Gambar ?</button>
-				                                        </a><br><br>
-				                                        <div class="ganti_gambar">
-				                                            <input style="margin-left: 17px;" class="form" type="file" name="filefoto" >
-															<p style="font-size: 1.0em; color:red;">*Tipe file diizinkan: jpg, jpeg, dan png (Max 2Mb)</p>
-				                                        </div>
-				                                        <br>
-							                        </div>
-						                     		<div class="col-md-8 col-sm-6 col-xs-12">
-						                     			<div class="row">
-									                        <div class="col-md-6 col-sm-6 col-xs-12">
-									                        	<div class="form-group">
-									                        	  <label>Nama Lengkap :</label>
-									                              <input required id="nama_lengkap" name="edit_nama_member" class="form-control" required type="text" value="<?php echo $nama_member?>">
-									                           </div>
-									                        </div>
-									                        <div class="col-md-6 col-sm-6 col-xs-12">
-									                        	<div class="form-group">
-									                        	  <label>Username :</label>
-									                              <input required id="username" name="edit_username" class="form-control" required type="text" value="<?php echo $username?>">
-									                           </div>
-									                        </div>
-									                    </div>
-									                    <div class="row">
-									                        <div class="col-md-6 col-sm-6 col-xs-12">
-									                        	<div class="form-group">
-									                        	  <label>E-Mail :</label>
-									                              <input required id="name" name="edit_email" class="form-control" required type="text" value="<?php echo $email?>">
-									                           </div>
-									                        </div>
-									                        <div class="col-md-6 col-sm-6 col-xs-12">
-									                        	<div class="form-group">
-									                        	  <label>Telepon :</label>
-									                              <input required id="name" name="edit_telepon" class="form-control" required type="text" value="<?php echo $telepon?>">
-									                           </div>
-									                        </div>
-									                    </div>
-														
-														<div class="row" id="editPassword">
-															<div class="col-md-4 col-sm-4 col-xs-12">
-																<div class="form-group">
-																	<a href="javascript:void(0)" onclick="editPassword()"><label>Ubah Password ?</label></a>
-																</div>
+					                  <div class="contact-form">
+					                      <form role="form" enctype="multipart/form-data" action="<?php echo site_url('KelolaMember/edit_member_area/'.$id_member);?>" method="POST">
+					                     	<div class="row">
+						                        <div style="text-align: center;" class="col-md-4 col-sm-6 col-xs-12">
+						                        	<div class='box-header'>
+						                        		
+			                                            <?php
+			                                                if (empty($path_foto))
+			                                                {
+			                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/img/author3.jpg').'"/>';
+			                                                }
+			                                                else
+			                                                {
+			                                                    echo '<img style="height: 250px; padding: 4px; max-width:250px; border: solid 1px black" src="'.base_url('asset/upload_img_member/'.$path_foto).'"/>';
+			                                                }
+			                                            ?>   
+			                                        </div>
+			                                       
+			                                        <a class="caption" href="javascript:void(0)" class='box-header' style="font-size: 1.0em; color: blue;" id="ganti">
+			                                        	<button type="button" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-pencil"></i> Ganti Gambar ?</button>
+			                                        </a><br><br>
+			                                        <div class="ganti_gambar">
+			                                            <input style="margin-left: 17px;" class="form" type="file" name="filefoto" >
+														<p style="font-size: 1.0em; color:red;">*Tipe file diizinkan: jpg, jpeg, dan png (Max 2Mb)</p>
+			                                        </div>
+			                                        <br>
+						                        </div>
+					                     		<div class="col-md-8 col-sm-6 col-xs-12">
+					                     			<div class="row">
+								                        <div class="col-md-6 col-sm-6 col-xs-12">
+								                        	<div class="form-group">
+								                        	  <label>Nama Lengkap :</label>
+								                              <input required id="nama_lengkap" name="edit_nama_member" class="form-control" required type="text" value="<?php echo $nama_member?>">
+								                           </div>
+								                        </div>
+								                        <div class="col-md-6 col-sm-6 col-xs-12">
+								                        	<div class="form-group">
+								                        	  <label>Username :</label>
+								                              <input required id="username" name="edit_username" class="form-control" required type="text" value="<?php echo $username?>">
+								                           </div>
+								                        </div>
+								                    </div>
+								                    <div class="row">
+								                        <div class="col-md-6 col-sm-6 col-xs-12">
+								                        	<div class="form-group">
+								                        	  <label>E-Mail :</label>
+								                              <input required id="name" name="edit_email" class="form-control" required type="email" value="<?php echo $email?>">
+								                           </div>
+								                        </div>
+								                        <div class="col-md-6 col-sm-6 col-xs-12">
+								                        	<div class="form-group">
+								                        	  <label>Telepon :</label>
+								                              <input required id="name" name="edit_telepon" class="form-control" required type="text" value="<?php echo $telepon?>">
+								                           </div>
+								                        </div>
+								                    </div>
+													
+													<div class="row" id="editPassword">
+														<div class="col-md-4 col-sm-4 col-xs-12">
+															<div class="form-group">
+																<a href="javascript:void(0)" onclick="editPassword()"><label>Ubah Password ?</label></a>
 															</div>
-														
 														</div>
-														
-														<div class="row" id="editPassword2" style="display:none">
-															<div class="col-md-4 col-sm-4 col-xs-12">
-									                        	<div class="form-group">
-									                        	  <label>Password Lama :</label>
-									                              <input id="password_lama" name="password_lama" class="form-control" type="text" >
-									                           </div>
-									                        </div>
-									                        <div class="col-md-4 col-sm-4 col-xs-12">
-									                        	<div class="form-group">
-									                        	  <label>Password Baru :</label>
-									                              <input id="edit_password" name="edit_password" class="form-control" type="text" >
-									                           </div>
-									                        </div>
-									                        <div class="col-md-4 col-sm-4 col-xs-12">
-									                        	<div class="form-group">
-									                        	  <label>Ulangi Password :</label>
-									                              <input id="ulangi_password" name="ulangi_password" class="form-control" type="text" >
-									                           </div>
-									                        </div>
-									                    </div>
-														<label for="exampleInputEmail1" id="validate_username" style="font-size:20px"></label>
-														<br/>
-														<label for="exampleInputEmail1" id="validate-passlama" style="font-size:20px"></label>
-														<br/>
-														<label for="exampleInputEmail1" id="validate-passsama" style="font-size:20px"></label>
-									                    <div class="row">
-									                        <div class="col-md-6 col-sm-6 col-xs-12">
-									                        	<input type="hidden" name="passwordlama" value="<?php echo $password; ?>" id="passwordlama">
-									                        </div>
-									                        <div class="col-md-6 col-sm-6 col-xs-12">
-									                        	<br>
-									                        	<div class="form-group">
-									                              <button class="btn btn-colored-blog pull-right" type="submit" value="1" class="btn btn-primary" id="submitSave"><i class="glyphicon glyphicon-floppy-disk"></i> Simpan</button>
-									                           </div>
-									                        </div>
-									                    </div>
-						                     		</div>
-						                    	</div>
-					                     	</form>
-					                  	</div>
+													
+													</div>
+													
+													<div class="row" id="editPassword2" style="display:none">
+														<div class="col-md-4 col-sm-4 col-xs-12">
+								                        	<div class="form-group">
+								                        	  <label>Password Lama :</label>
+								                              <input id="password_lama" name="password_lama" class="form-control" type="text" >
+								                           </div>
+								                        </div>
+								                        <div class="col-md-4 col-sm-4 col-xs-12">
+								                        	<div class="form-group">
+								                        	  <label>Password Baru :</label>
+								                              <input id="edit_password" name="edit_password" class="form-control" type="text" >
+								                           </div>
+								                        </div>
+								                        <div class="col-md-4 col-sm-4 col-xs-12">
+								                        	<div class="form-group">
+								                        	  <label>Ulangi Password :</label>
+								                              <input id="ulangi_password" name="ulangi_password" class="form-control" type="text" >
+								                           </div>
+								                        </div>
+								                    </div>
+													<label for="exampleInputEmail1" id="validate_username" style="font-size:20px"></label>
+													<br/>
+													<label for="exampleInputEmail1" id="validate-passlama" style="font-size:20px"></label>
+													<br/>
+													<label for="exampleInputEmail1" id="validate-passsama" style="font-size:20px"></label>
+								                    <div class="row">
+								                        <div class="col-md-6 col-sm-6 col-xs-12">
+								                        	<input type="hidden" name="passwordlama" value="<?php echo $password; ?>" id="passwordlama">
+								                        </div>
+								                        <div class="col-md-6 col-sm-6 col-xs-12">
+								                        	<br>
+								                        	<div class="form-group">
+								                              <button class="btn btn-colored-blog pull-right" type="submit" value="1" class="btn btn-primary" id="submitSave"><i class="glyphicon glyphicon-floppy-disk"></i> Simpan</button>
+								                           </div>
+								                        </div>
+								                    </div>
+					                     		</div>
+						                        
+						                    </div>
+					                     	
+						                    
+					                     </form>
+					                  </div>
 					                </div>
-	                            </div>
-	                        </div>
+	                             </div>
+
+	                          </div>
 	                       </div>
 	                    </div>
 	                    </div>
@@ -922,7 +927,7 @@
 			document.getElementById("kolom1").style.display = "none";
 			document.getElementById("kolom2").style.display = "block";
 			var getUrl = window.location;
-			var baseUrl = getUrl .protocol + "//"+ getUrl.pathname.split('/')[1];
+			var baseUrl = getUrl .protocol + "//"+ getUrl.host;
 			$.ajax({
 			url: '../KelolaComing/get_data_event',	
 			type: 'POST',
@@ -954,13 +959,15 @@
 						var pendaftaran = event.pendaftaran;
 						var alamat = event.alamat;
 						var path_gambar = event.path_gambar;
-						
+						var limit = '';
+						var open = '';
 						for (var i = 0; i < tiket.length; i++) {
 							var divtiket='';
-							if(tiket[i].seat==0){
-								var open = 'selected="selected"';
+							if(tiket[i].seat != 0){
+								limit = 'selected="selected"';
+								
 							} else {
-								var limit = 'selected="selected"';
+								open = 'selected="selected"';
 							}
 							divtiket += '<div id="tiket_'+i+'">';
 							divtiket += '<div class="form-group col-md-3" >';
@@ -974,6 +981,8 @@
 											divtiket += '<option value="0">-Qty-</option>';
 											divtiket += '<option value="open" '+open+'>Open</option>';
 											divtiket += '<option value="limit" '+limit+'>Limit</option>';
+											open = ' ';
+							                limit = ' ';
 										divtiket += '</select>';
 									divtiket += '</div>';
 									divtiket += '<div class="col-md-6" id="edit_divqty2'+i+'" style="display:none">';
@@ -1019,7 +1028,6 @@
 						document.getElementById("jam_mulai_"+jam_mulai+"").selected = true;
 						document.getElementById("jam_selesai_"+jam_selesai+"").selected = true;
 						document.getElementById("kota"+kota_lokasi+"").selected = true;
-						
 						$("#edit_kota").val(kota_lokasi);
 						$("#edit_tgl_mulai").val(tgl_mulai);
 						$("#edit_tgl_selesai").val(tgl_selesai);
@@ -1029,24 +1037,25 @@
 						$("#edit_email").val(email);
 						$("#edit_telepon").val(telepon);
 						$("#gambar_event").attr("src",""+baseUrl+"/asset/upload_img_coming/thumb83_"+path_gambar+"");
+						/*edit pendaftaran*/
+						if (pendaftaran==1){ document.getElementById("edit_pendaftaran_ya").checked = true;} 
+						else {document.getElementById("edit_pendaftaran_tidak").checked = true;}
 						
-						/*edit jenis event*/
+						/*/*edit jenis event*/
 						if (jenis_event==0){document.getElementById("edit_jenis_berbayar").checked = true; document.getElementById("edit_jenis_event").style.display = "block";} 
 						else {document.getElementById("edit_jenis_gratis").checked = true;}
 						
 						/*edit harga*/
-						$("#edit_harga").val(harga);
+						//$("#edit_harga").val(harga);
 						
 						/*edit jenis event*/
-						if (seat==0){document.getElementById("edit_seat_open").checked = true;} 
-						else {document.getElementById("edit_seat_limit").checked = true; document.getElementById("edit_seat").style.display = "block";}
+						//if (seat==0){document.getElementById("edit_seat_open").checked = true;} 
+						//else {document.getElementById("edit_seat_limit").checked = true; document.getElementById("edit_seat").style.display = "block";}
 						
-						/*edit pendaftaran*/
-						if (pendaftaran==1){document.getElementById("edit_pendaftaran_ya").checked = true;} 
-						else {document.getElementById("edit_pendaftaran_tidak").checked = true;}
+						
 						
 						/*edit seat*/
-						$("#edit_jumlah_seat").val(jumlah_seat);
+						//$("#edit_jumlah_seat").val(jumlah_seat);*/
 						
 						$(document).ready( function () {
 
@@ -1187,118 +1196,113 @@
 			}
 		}
 		
-				function changeQty(){
-					var x = document.getElementById("quantity").value;
-					if(x=="limit"){
-						document.getElementById("divqty1").className = "col-md-6";
-						document.getElementById("divqty2").style.display = "block";
-					} else {
-						document.getElementById("divqty1").className = "col-md-12";
-						document.getElementById("divqty2").style.display = "none";
-					}
-				}
-				
-				function changeQty2(y){
-					var x = document.getElementById("quantity"+y+"").value;
-					if(x=="limit"){
-						document.getElementById("divqty1"+y+"").className = "col-md-6";
-						document.getElementById("divqty2"+y+"").style.display = "block";
-					} else {
-						document.getElementById("divqty1"+y+"").className = "col-md-12";
-						document.getElementById("divqty2"+y+"").style.display = "none";
-					}
-				}
-				
-				var counter = 0;
-				
-                $('a#add_field').click(function(){
-                    counter += 1;
-					var tambah_field = '';
-					tambah_field += '<div class="row" id="field_'+counter+'">';
-					tambah_field += '<hr style="border: solid 1px grey; margin-top: auto; opacity: 0.4;"></hr>';
-					tambah_field += '<div class="col-md-3"><input class="form-control" id="field_' + counter + '" name="nama_tiket[]' + '" type="text" placeholder="Nama Tiket" /><br /></div>';
-                    tambah_field += '<div class="col-md-4"><div class="row"><div class="col-md-12" id="divqty1'+counter+'"><select name="jenisqty[]" required class="form-control" onchange="changeQty2('+counter+')" id="quantity'+counter+'"><option value="">-Qty-</option><option value="open">Open</option><option value="limit">Limit</option></select></div><div class="col-md-6" id="divqty2'+counter+'" style="display:none" ><input class="form-control" name="qty[]" id="qty" placeholder="Qty Seat"></div></div><br /></div>';
-					tambah_field += '<div class="col-md-3"><input class="form-control" id="field_' + counter + '" name="harga[]' + '" type="text" placeholder="Harga Tiket" /><br /></div>'
-					tambah_field += '<div class="col-md-2" style="text-align: center;">';
-						tambah_field += '<label for="exampleInputEmail1">&nbsp;</label>';
-						tambah_field += '<a onclick="delete_field('+counter+')" href="javascript:void(0)">';
-						tambah_field += '<button type="button" class="btn btn-danger">';
-							tambah_field += '<i class="glyphicon glyphicon-minus"></i>';
-						tambah_field += '</button>';
-						tambah_field += '</a>';
-					tambah_field += '</div>';
-					tambah_field += '</div><br/>';
-					$('#tambah_field').append(tambah_field);
-					
-                });
-				
-				function add_field2(){
-                    counter2 += 1;
-					var divtiket='';
-						divtiket += '<div id="tiket_'+counter2+'">';
-						divtiket += '<div class="form-group col-md-3" >';
-							divtiket += '<input type="text" placeholder="Nama Tiket"	name="edit_nama_tiket[]" id="edit_nama_tiket'+counter2+'" class="form-control" required ">';
-							divtiket += '<input type="hidden" name="edit_id_jenis_tiket[]" id="edit_id_jenis_tiket'+counter2+'" class="form-control" required">';
+		function changeQty(){
+			var x = document.getElementById("quantity").value;
+			if(x=="limit"){
+				document.getElementById("divqty1").className = "col-md-6";
+				document.getElementById("divqty2").style.display = "block";
+			} else {
+				document.getElementById("divqty1").className = "col-md-12";
+				document.getElementById("divqty2").style.display = "none";
+			}
+		}
+		
+		function changeQty2(y){
+			var x = document.getElementById("quantity"+y+"").value;
+			if(x=="limit"){
+				document.getElementById("divqty1"+y+"").className = "col-md-6";
+				document.getElementById("divqty2"+y+"").style.display = "block";
+			} else {
+				document.getElementById("divqty1"+y+"").className = "col-md-12";
+				document.getElementById("divqty2"+y+"").style.display = "none";
+			}
+		}
+		
+		var counter = 0;
+		
+        $('a#add_field').click(function(){
+            counter += 1;
+			var tambah_field = '';
+			tambah_field += '<div class="row" id="field_'+counter+'">';
+			tambah_field += '<hr style="border: solid 1px grey; margin-top: auto; opacity: 0.4;"></hr>';
+			tambah_field += '<div class="col-md-3"><input class="form-control" id="field_' + counter + '" name="nama_tiket[]' + '" type="text" placeholder="Nama Tiket" /><br /></div>';
+            tambah_field += '<div class="col-md-4"><div class="row"><div class="col-md-12" id="divqty1'+counter+'"><select name="jenisqty[]" required class="form-control" onchange="changeQty2('+counter+')" id="quantity'+counter+'"><option value="">-Qty-</option><option value="open">Open</option><option value="limit">Limit</option></select></div><div class="col-md-6" id="divqty2'+counter+'" style="display:none" ><input class="form-control" name="qty[]" id="qty" placeholder="Qty Seat"></div></div><br /></div>';
+			tambah_field += '<div class="col-md-3"><input class="form-control" id="field_' + counter + '" name="harga[]' + '" type="text" placeholder="Harga Tiket" /><br /></div>'
+			tambah_field += '<div class="col-md-2" style="text-align: center;">';
+				tambah_field += '<label for="exampleInputEmail1">&nbsp;</label>';
+				tambah_field += '<a onclick="delete_field('+counter+')" href="javascript:void(0)">';
+				tambah_field += '<button type="button" class="btn btn-danger">';
+					tambah_field += '<i class="glyphicon glyphicon-minus"></i>';
+				tambah_field += '</button>';
+				tambah_field += '</a>';
+			tambah_field += '</div>';
+			tambah_field += '</div><br/>';
+			$('#tambah_field').append(tambah_field);
+			
+        });
+		
+		function add_field2(){
+            counter2 += 1;
+			var divtiket='';
+				divtiket += '<div id="tiket_'+counter2+'">';
+				divtiket += '<div class="form-group col-md-3" >';
+					divtiket += '<input type="text" placeholder="Nama Tiket"	name="edit_nama_tiket[]" id="edit_nama_tiket'+counter2+'" class="form-control" required ">';
+					divtiket += '<input type="hidden" name="edit_id_jenis_tiket[]" id="edit_id_jenis_tiket'+counter2+'" class="form-control" required">';
+				divtiket += '</div>';
+				divtiket += '<div class="form-group col-md-4" >';
+					divtiket += '<div class="row">';
+						divtiket += '<div class="col-md-12" id="edit_divqty1'+counter2+'">';
+							divtiket += '<select class="form-control" name="edit_jenisqty[]" id="edit_quantity'+counter2+'" onchange="editchangeQty('+counter2+')" required>';
+								divtiket += '<option value="">-Qty-</option>';
+								divtiket += '<option value="open">Open</option>';
+								divtiket += '<option value="limit">Limit</option>';
+							divtiket += '</select>';
 						divtiket += '</div>';
-						divtiket += '<div class="form-group col-md-4" >';
-							divtiket += '<div class="row">';
-								divtiket += '<div class="col-md-12" id="edit_divqty1'+counter2+'">';
-									divtiket += '<select class="form-control" name="edit_jenisqty[]" id="edit_quantity'+counter2+'" onchange="editchangeQty('+counter2+')" required>';
-										divtiket += '<option value="">-Qty-</option>';
-										divtiket += '<option value="open">Open</option>';
-										divtiket += '<option value="limit">Limit</option>';
-									divtiket += '</select>';
-								divtiket += '</div>';
-								divtiket += '<div class="col-md-6" id="edit_divqty2'+counter2+'" style="display:none">';
-									divtiket += '<input type="number" class="form-control" name="edit_qty[]" id="edit_qty'+counter2+'" placeholder="Qty Seat"">';
-								divtiket += '</div>';
-							divtiket += '</div>';
+						divtiket += '<div class="col-md-6" id="edit_divqty2'+counter2+'" style="display:none">';
+							divtiket += '<input type="number" class="form-control" name="edit_qty[]" id="edit_qty'+counter2+'" placeholder="Qty Seat"">';
 						divtiket += '</div>';
-						divtiket += '<div class="form-group col-md-3" >';
-							divtiket += '<input type="number" placeholder="Harga Tiket"	name="edit_harga[]" id="edit_harga'+counter2+'" class="form-control" required ">';
-						divtiket += '</div>';
-						divtiket += '<div class="col-md-2" style="text-align: center;">';
-							divtiket += '<label for="exampleInputEmail1">&nbsp;</label>';
-							divtiket += '<a onclick="delete_field2('+counter2+')" href="javascript:void(0)">';
-							divtiket += '<button type="button" class="btn btn-danger">';
-								divtiket += '<i class="glyphicon glyphicon-minus"></i>';
-							divtiket += '</button>';
-							divtiket += '</a>';
-						divtiket += '</div>';
-						divtiket += '</div>';	
-						divtiket += '</div>';	
-						$('#edit_jenis_event').append(divtiket);
-					
-                }
-				
-				function delete_field(z){
-					document.getElementById('field_'+z+'').remove();
-				}
-				
-				function delete_field2(z){
-					alert(document.getElementById('edit_nama_tiket'+z+'').value);
-					document.getElementById('edit_nama_tiket'+z+'').value = "DELETE";
-					alert(document.getElementById('edit_nama_tiket'+z+'').value);
-					document.getElementById('edit_quantity'+z+'').value = "open";
-					alert(document.getElementById('edit_nama_tiket'+z+'').value);
-					document.getElementById('edit_qty'+z+'').value = 0;
-					alert(document.getElementById('edit_nama_tiket'+z+'').value);
-					document.getElementById('edit_harga'+z+'').value = 0;
-					alert("berhasil");
-					
-					document.getElementById('tiket_'+z+'').style.display = "none";
-				}
-				
-				function editchangeQty(y){
-					var x = document.getElementById("edit_quantity"+y+"").value;
-					if(x=="limit"){
-						document.getElementById("edit_divqty1"+y+"").className = "col-md-6";
-						document.getElementById("edit_divqty2"+y+"").style.display = "block";
-					} else {
-						document.getElementById("edit_divqty1"+y+"").className = "col-md-12";
-						document.getElementById("edit_divqty2"+y+"").style.display = "none";
-					}
-				}
+					divtiket += '</div>';
+				divtiket += '</div>';
+				divtiket += '<div class="form-group col-md-3" >';
+					divtiket += '<input type="number" placeholder="Harga Tiket"	name="edit_harga[]" id="edit_harga'+counter2+'" class="form-control" required ">';
+				divtiket += '</div>';
+				divtiket += '<div class="col-md-2" style="text-align: center;">';
+					divtiket += '<label for="exampleInputEmail1">&nbsp;</label>';
+					divtiket += '<a onclick="delete_field2('+counter2+')" href="javascript:void(0)">';
+					divtiket += '<button type="button" class="btn btn-danger">';
+						divtiket += '<i class="glyphicon glyphicon-minus"></i>';
+					divtiket += '</button>';
+					divtiket += '</a>';
+				divtiket += '</div>';
+				divtiket += '</div>';	
+				divtiket += '</div>';	
+				$('#edit_jenis_event').append(divtiket);
+			
+        }
+		
+		function delete_field(z){
+			document.getElementById('field_'+z+'').remove();
+		}
+		
+		function delete_field2(z){
+			document.getElementById('edit_nama_tiket'+z+'').value = "DELETE";
+			document.getElementById('edit_quantity'+z+'').value = "open";
+			document.getElementById('edit_qty'+z+'').value = 0;
+			document.getElementById('edit_harga'+z+'').value = 0;
+			
+			document.getElementById('tiket_'+z+'').style.display = "none";
+		}
+		
+		function editchangeQty(y){
+			var x = document.getElementById("edit_quantity"+y+"").value;
+			if(x=="limit"){
+				document.getElementById("edit_divqty1"+y+"").className = "col-md-6";
+				document.getElementById("edit_divqty2"+y+"").style.display = "block";
+			} else {
+				document.getElementById("edit_divqty1"+y+"").className = "col-md-12";
+				document.getElementById("edit_divqty2"+y+"").style.display = "none";
+			}
+		}
 	  </script>
 
 

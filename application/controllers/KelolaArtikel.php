@@ -215,8 +215,11 @@ class KelolaArtikel extends CI_Controller {
 	//Fungsi Baca artikel di halaman front end
 	public function halaman_baca_artikel($id_artikel)
 	{
+	  $this->load->model('news_models/newsModels');
 	  $this->load->model('artikel_models/ArtikelModels');
 	  $this->load->model('home_models/HomeModels');
+	  
+	  $data['listnews'] = $this->newsModels->get_data_news();
 	  $artikel = $this->ArtikelModels->select_by_id_artikel($id_artikel)->row_array();
 	  
 	  $hits = $artikel['hits'] + 1;
@@ -235,6 +238,7 @@ class KelolaArtikel extends CI_Controller {
 	  $data['listArtikel'] = $this->ArtikelModels->get_data_artikel();
 	  $data['jumlahKomentar'] = $this->HomeModels->jumlah_Komentar($id_artikel);
 	  $data['listKomentar'] = $this->HomeModels->get_komentar($id_artikel);
+	  $data['listnews'] = $this->newsModels->get_data_news();
 	  
       $this->load->view('skin/front_end/header_front_end');
       $this->load->view('content_front_end/artikel_read_page',$data);
@@ -327,6 +331,18 @@ class KelolaArtikel extends CI_Controller {
 		$this->db->insert('komentar', $data_komentar);
 		$this->session->set_flashdata('msg_berhasil', 'Komentar baru berhasil ditambahkan');
 		redirect('KelolaArtikel/halaman_baca_artikel/'.$this->input->post('id_artikel'));	
+	}
+	
+	function tambah_komentar_liputan($id_member){
+		$data_komentar=array(
+			'id_member'=>$id_member,
+			'id_artikel'=>$this->input->post('id_news'),
+			'isi_komentar'=>$this->input->post('isi_komentar'),
+			
+		);
+		$this->db->insert('komentar', $data_komentar);
+		$this->session->set_flashdata('msg_berhasil', 'Komentar baru berhasil ditambahkan');
+		redirect('KelolaNews/halaman_baca_artikel_pra_event/'.$this->input->post('id_news'));	
 	}
 
 	function kelola_komentar($id_artikel)
