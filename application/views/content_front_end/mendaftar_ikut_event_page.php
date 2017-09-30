@@ -26,7 +26,7 @@
 										  ?><div  style="padding-top: 10px">
 										  <h5 style="text-align: center; color: green;">Pilih Tiket</h5>
 										  <select name="tipe_tiket" required class="form-control" onchange="harga_tiket">
-												<option value="">-Pilih Tiket-</option>
+												<option value="">--Pilih Tiket--</option>
 												<?php for($i=0;$i<count($tiket);$i++){?>
 												<option value="<?php echo $tiket[$i]['nama_tiket']; ?>:<?php echo $tiket[$i]['harga']; ?>:<?php echo $tiket[$i]['id_jenis_tiket']; ?>"><strong><b><?php echo $tiket[$i]['nama_tiket'];?> - Rp. <?php echo $tiket[$i]['harga'];?></b></option>
 										  <?php } ?>

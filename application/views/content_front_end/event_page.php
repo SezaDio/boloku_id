@@ -256,11 +256,8 @@
 					                              <?php }
 					                                    elseif ($event['kategori_coming'] == "Musik")
 					                                    { ?>
-					                                       <a class="btn btn-dark-red" href="javascript:void(0)" onclick="byLabel('kategori_coming','Musik')">
-					                                          <div>
-					                                             # <?php echo $topevent['kategori_coming'] ?>
-					                                          </div>
-					                                       </a>
+					                                       <a  style="margin-bottom:5px" href="javascript:void(0)" class="btn btn-dark-red" onclick="byLabel('kategori_coming','<?php echo $event['kategori_coming']?>')"># <?php echo $event['kategori_coming']; ?>
+					                                   		</a>
 					                              <?php }
 					                                    elseif ($event['kategori_coming'] == "Spirituality")
 					                                    { ?>

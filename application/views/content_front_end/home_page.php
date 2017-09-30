@@ -88,7 +88,7 @@
                               <?php }
                                     elseif ($topevent['tipe_event'] == "Class")
                                     { ?>
-                                       <a class="btn btn-grey btn-xs" href="javascript:void(0)" onclick="byLabel('tipe_event','Class')">
+                                       <a class="btn btn-gray btn-xs" href="javascript:void(0)" onclick="byLabel('tipe_event','Class')">
                                           <div>
                                              # <?php echo $topevent['tipe_event'] ?>
                                           </div>
