@@ -24,8 +24,8 @@
                                         if($jenis_event==0)
                                         { 
 										  ?><div  style="padding-top: 10px">
-										  <h5 style="text-align: center; color: green;"><i class="fa fa-ticket"></i> <strong>Pilih Tiket</strong></h5>
-                      <select name="tipe_tiket" required class="form-control" onchange="harga_tiket">
+										  <h5 style="text-align: center; color: green;">Pilih Tiket</h5>
+										  <select name="tipe_tiket" required class="form-control" onchange="harga_tiket">
 												<option value="">--Pilih Tiket--</option>
 												<?php for($i=0;$i<count($tiket);$i++){?>
 												<option value="<?php echo $tiket[$i]['nama_tiket']; ?>:<?php echo $tiket[$i]['harga']; ?>:<?php echo $tiket[$i]['id_jenis_tiket']; ?>"><strong><b><?php echo $tiket[$i]['nama_tiket'];?> - Rp. <?php echo $tiket[$i]['harga'];?></b></option>
@@ -138,72 +138,6 @@
                                   </div>
                                 </div>
 
-                                <!--Pilihan jenis metode pembayaran-->
-                                <div class="row" style=" display: <?php if ($jenis_event == 1)
-                                                  {
-                                                    echo "none";
-                                                  }
-                                                  else
-                                                  {
-                                                    echo "block";
-                                                  }
-                                                  ?>">
-                                    <div class="col-md-12">
-                                      <div class="col-md-3"></div>
-                                      <div class="col-md-6">
-                                        <div class="row">
-                                          <div class="col-md-12" style="text-align: center;">
-                                              <label>Metode Pembayaran :</label>
-                                          </div>
-                                        </div>
-                                        <div class="row">
-                                          <div class="col-md-12" style="text-align: center;">
-                                            <div class="radio">
-                                                <label style="padding-right: 15px;">
-                                                    <input onclick="transfer()" style="opacity: 1;" type="radio" name="metode_pembayaran" value=1 <?php if ($jenis_event == 0)
-                                                      {
-                                                        echo "required";
-                                                      }
-                                                      ?>>
-                                                     Transfer via ATM
-                                                </label>
-                                                <label>
-                                                    <input onclick="e_payment()" style="opacity: 1;" type="radio" name="metode_pembayaran" value=0 <?php if ($jenis_event == 0)
-                                                      {
-                                                        echo "required";
-                                                      }
-                                                      ?>>
-                                                     E-Payment
-                                                </label>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                      <div class="col-md-3"></div>
-                                    </div>
-                                </div>
-
-                                <!--Field keterangan metode pembayaran-->
-                                <div class="row" style="display: none;" id="keterangan_metode1">
-                                  <div class="col-md-12">
-                                    <div class="col-md-3"></div>
-                                    <div class="col-md-6" style="background-color: ghostwhite; border: 1px solid #f44a56;">
-                                      <p>Pembayaran ini dilakukan dengan cara melakukan transfer melalui ATM atau Bank terdekat. Setelah itu peserta diwajibkan melakukan upload bukti transfer pembayaran.</p>
-                                    </div>
-                                    <div class="col-md-3"></div>
-                                  </div>
-                                </div>
-                                <div class="row" style="display: none;" id="keterangan_metode2">
-                                  <div class="col-md-12">
-                                    <div class="col-md-3"></div>
-                                    <div class="col-md-6" style="background-color: ghostwhite; border: 1px solid #f44a56;">
-                                      <p>Pembayaran ini dilakukan secara online melalui situs resmi yang sudah menjalin kerjasama dengan boloku.id.</p>
-                                    </div>
-                                    <div class="col-md-3"></div>
-                                  </div>
-                                </div>
-
-                                <!--Field Captcha-->
                                  <div class="row">
                                     <div class="col-md-12">
                                       <div class="col-md-4"></div>
@@ -246,18 +180,4 @@
             </div>
         </div>
       </section>
-
-      <script type="text/javascript">
-        // Fungsi untuk disable display keterangan metode pembayaran
-        function transfer()
-        {
-          document.getElementById("keterangan_metode1").style.display = "block";
-          document.getElementById("keterangan_metode2").style.display = "none";
-        }
-        function e_payment()
-        {
-          document.getElementById("keterangan_metode1").style.display = "none";
-          document.getElementById("keterangan_metode2").style.display = "block";
-        }
-      </script>
 

@@ -329,7 +329,6 @@ class Kelolapendaftar extends CI_Controller {
 				}
 				$kode = substr(md5($this->input->post('nama_pendaftar')), 0, 4);
 				$nama_pendaftar = $this->input->post('nama_pendaftar');
-				$metode_pembayaran = $this->input->post('metode_pembayaran');
 				$data_pendaftar=array(
 					'id_event'=>$id_event,
 					'nama_pendaftar'=>$this->input->post('nama_pendaftar'),
@@ -339,7 +338,6 @@ class Kelolapendaftar extends CI_Controller {
 					'nama_tiket'=>$nama_tiket,
 					'harga'=>$harga,
 					'status_bayar'=>0,
-					'metode_pembayaran'=>$metode_pembayaran,
 					'no_pendaftar'=>$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode)
 				);
 				$data['dataPendaftar'] = $data_pendaftar;
@@ -354,7 +352,7 @@ class Kelolapendaftar extends CI_Controller {
 					$msg = 'Terimakasih telah melalukan pendaftaran pada event '.$nama_event;
 					$msg .= '<br/> Nomor peserta Anda adalah '.$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode).'. Harap simpan dengan baik nomor peserta Anda'; 
 					$email = $this->input->post('email');
-					//$this->kirim_email($sub,$msg,$email);
+					$this->kirim_email($sub,$msg,$email);
 					$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
 					redirect('FrontControl_Event/event_click/'.$id_event);
 				}
@@ -371,7 +369,7 @@ class Kelolapendaftar extends CI_Controller {
     					$msg .= '<br/> Harga Tiket : '.$harga.'';
     					$msg .= '<br/> Harap simpan dengan baik data pendaftaran Kamu';
     					$email = $this->input->post('email');
-    					//$this->kirim_email($sub,$msg,$email);
+    					$this->kirim_email($sub,$msg,$email);
     					$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
     					redirect('FrontControl_Event/event_click/'.$id_event);
 				    }
@@ -387,7 +385,7 @@ class Kelolapendaftar extends CI_Controller {
     					$msg .= '<br/> Harga Tiket : '.$harga.'';
     					$msg .= '<br/> Harap simpan dengan baik data pendaftaran Kamu';
     					$email = $this->input->post('email');
-    					//$this->kirim_email($sub,$msg,$email);
+    					$this->kirim_email($sub,$msg,$email);
     					$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
     					redirect('FrontControl_Event/event_click/'.$id_event);
 				    }
