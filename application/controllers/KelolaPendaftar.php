@@ -294,7 +294,7 @@ class Kelolapendaftar extends CI_Controller {
 		$event = $this->ComingModels->select_by_id_coming($id_event)->row();
 		$nama_event=$event->nama_coming;
 		
-		if ($tambah == 1) 
+		if ($tambah == 1)
 		{
 			$this->form_validation->set_rules('nama_pendaftar', 'Nama', 'required');
 			$this->form_validation->set_rules('email', 'Email', 'required');
@@ -342,56 +342,88 @@ class Kelolapendaftar extends CI_Controller {
 					'metode_pembayaran'=>$metode_pembayaran,
 					'no_pendaftar'=>$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode)
 				);
-				$data['dataPendaftar'] = $data_pendaftar;
-				
-				$this->db->insert('pendaftar', $data_pendaftar);
 
-				if ($tipe_tiket == 0)
+				if ($metode_pembayaran == 1) 
 				{
-					$seat = $seat-1;
-					$this->db->update('coming', array('jumlah_seat'=>$seat), array('id_coming'=>$id_event));
-					$sub = 'Pendaftaran Peserta '.$nama_event;
-					$msg = 'Terimakasih telah melalukan pendaftaran pada event '.$nama_event;
-					$msg .= '<br/> Nomor peserta Anda adalah '.$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode).'. Harap simpan dengan baik nomor peserta Anda'; 
-					$email = $this->input->post('email');
-					//$this->kirim_email($sub,$msg,$email);
-					$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
-					redirect('FrontControl_Event/event_click/'.$id_event);
+					$data['dataPendaftar'] = $data_pendaftar;
+				
+					$this->db->insert('pendaftar', $data_pendaftar);
+
+					if ($tipe_tiket == 0)
+					{
+						$seat = $seat-1;
+						$this->db->update('coming', array('jumlah_seat'=>$seat), array('id_coming'=>$id_event));
+						$sub = 'Pendaftaran Peserta '.$nama_event;
+						$msg = 'Terimakasih telah melalukan pendaftaran pada event '.$nama_event;
+						$msg .= '<br/> Nomor peserta Anda adalah '.$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode).'. Harap simpan dengan baik nomor peserta Anda'; 
+						$email = $this->input->post('email');
+						//$this->kirim_email($sub,$msg,$email);
+						$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
+						redirect('FrontControl_Event/event_click/'.$id_event);
+					}
+					else
+					{
+					    $tiket = $this->ComingModels->select_tiket_by_id_tiket($id_jenis_tiket)->row();
+					    $seat = $tiket->seat;
+					    if ($seat == NULL)
+					    {
+					        $sub = 'Pendaftaran Peserta '.$nama_event;
+	    					$msg = 'Terimakasih telah melalukan pendaftaran pada event '.$nama_event;
+	    					$msg .= '<br/> Nomor peserta Anda adalah '.$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode).'.'; 
+	    					$msg .= '<br/> Jenis Tiket : '.$nama_tiket.'';
+	    					$msg .= '<br/> Harga Tiket : '.$harga.'';
+	    					$msg .= '<br/> Harap simpan dengan baik data pendaftaran Kamu';
+	    					$email = $this->input->post('email');
+	    					//$this->kirim_email($sub,$msg,$email);
+	    					$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
+	    					redirect('FrontControl_Event/event_click/'.$id_event);
+					    }
+					    else
+					    {
+					        $seat = $seat-1;
+						    $this->db->update('tiket', array('seat'=>$seat), array('id_jenis_tiket'=>$id_jenis_tiket));
+					        
+					        $sub = 'Pendaftaran Peserta '.$nama_event;
+	    					$msg = 'Terimakasih telah melalukan pendaftaran pada event '.$nama_event;
+	    					$msg .= '<br/> Nomor peserta Anda adalah '.$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode).'.'; 
+	    					$msg .= '<br/> Jenis Tiket : '.$nama_tiket.'';
+	    					$msg .= '<br/> Harga Tiket : '.$harga.'';
+	    					$msg .= '<br/> Harap simpan dengan baik data pendaftaran Kamu';
+	    					$email = $this->input->post('email');
+	    					//$this->kirim_email($sub,$msg,$email);
+	    					$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
+	    					redirect('FrontControl_Event/event_click/'.$id_event);
+					    }
+					    
+					}
 				}
 				else
 				{
-				    $tiket = $this->ComingModels->select_tiket_by_id_tiket($id_jenis_tiket)->row();
-				    $seat = $tiket->seat;
-				    if ($seat == NULL)
-				    {
-				        $sub = 'Pendaftaran Peserta '.$nama_event;
-    					$msg = 'Terimakasih telah melalukan pendaftaran pada event '.$nama_event;
-    					$msg .= '<br/> Nomor peserta Anda adalah '.$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode).'.'; 
-    					$msg .= '<br/> Jenis Tiket : '.$nama_tiket.'';
-    					$msg .= '<br/> Harga Tiket : '.$harga.'';
-    					$msg .= '<br/> Harap simpan dengan baik data pendaftaran Kamu';
-    					$email = $this->input->post('email');
-    					//$this->kirim_email($sub,$msg,$email);
-    					$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
-    					redirect('FrontControl_Event/event_click/'.$id_event);
-				    }
-				    else
-				    {
-				        $seat = $seat-1;
-					    $this->db->update('tiket', array('seat'=>$seat), array('id_jenis_tiket'=>$id_jenis_tiket));
-				        
-				        $sub = 'Pendaftaran Peserta '.$nama_event;
-    					$msg = 'Terimakasih telah melalukan pendaftaran pada event '.$nama_event;
-    					$msg .= '<br/> Nomor peserta Anda adalah '.$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode).'.'; 
-    					$msg .= '<br/> Jenis Tiket : '.$nama_tiket.'';
-    					$msg .= '<br/> Harga Tiket : '.$harga.'';
-    					$msg .= '<br/> Harap simpan dengan baik data pendaftaran Kamu';
-    					$email = $this->input->post('email');
-    					//$this->kirim_email($sub,$msg,$email);
-    					$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
-    					redirect('FrontControl_Event/event_click/'.$id_event);
-				    }
-				    
+					//data POST ke DOKU
+					$total_harga = $harga*1;
+					$no_pendaftaran = $id_event.'-'.$no_pendaftar.'-'.strtoupper($kode);
+					$date_sekarang = date('d-M-Y'); 
+					$data_payment_doku = array(
+										 'mallid'=>5040,
+										 'chainmerchant'=>'NA',
+										 'amount'=>$harga.'.00',
+										 'purchase_amount'=>$total_harga.'.00',
+										 'transidmerchant'=>$id_event.''.$no_pendaftar.''.strtoupper($kode),
+										 'words'=>$total_harga.'5040WoL1yQ3At72k'.$no_pendaftaran,
+										 'requestdatetime'=>$date_sekarang,
+										 'currency'=>360,
+										 'purchase_currency'=>360,
+										 'session_id'=>0,
+										 'name'=>$nama_pendaftar,
+										 'email'=>$this->input->post('email'),
+										 'basket'=>'Tiket "'.$nama_event.'",'.$harga.'.00,1,'.$total_harga.'.00'
+										 );
+					$data['data_payment_doku'] = $data_payment_doku;
+
+					//Proses data_payment_doku ke halaman waiting_page_doku
+					$this->load->view('skin/front_end/header_menu_front_end');
+					$this->load->view('content_front_end/waiting_page_doku', $data);
+					$this->load->view('skin/front_end/footer_menu_front_end');
 				}
 			}
 			else

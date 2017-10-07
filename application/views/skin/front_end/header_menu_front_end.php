@@ -4,9 +4,9 @@
       <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <meta name="description" content="">
-      <meta name="author" content="Wong Kongkow">
+      <meta name="author" content="boloku.id">
 
-      <title> Wong Kongkow </title>
+      <title> boloku.id | Doku waiting page </title>
 
       <link rel="shortcut icon" href="<?php echo base_url('asset/img/favicon.ico'); ?>" type="image/x-icon">
       <link rel="icon" href="<?php echo base_url('asset/img/favicon.ico'); ?>" type="image/x-icon">
@@ -49,7 +49,7 @@
 
    <body>
       <!--Top Bar-->
-      <section class="topbar" style="display: block;">
+      <section class="topbar" style="display: none;">
          <div class="container">
             <div class="row">
                <div class="col-md-12 col-sm-12 col-xs-12 nopadding">
@@ -110,7 +110,7 @@
       </section>
 
       <!--Navigation Bar-->
-      <section class="menu-container-section">
+      <section style="display: none;" class="menu-container-section">
          <nav id="menu-3" class="megaMenu">
             <div class="nav-container">
                <div class="sticky-container">
