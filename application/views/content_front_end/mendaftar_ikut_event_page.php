@@ -109,10 +109,10 @@
                                      <div class="col-md-6 col-sm-6 col-xs-12">
                                         <div class="form-group">
                                            <input placeholder="Email" id="email" name="email" class="form-control" required="" type="email" value="<?php 
-                                                        if (isset($dataMember['email']))
-                                                        {
-                                                            echo htmlspecialchars($dataMember['email']);
-                                                        }
+                                                    if (isset($dataMember['email']))
+                                                    {
+                                                        echo htmlspecialchars($dataMember['email']);
+                                                    }
                                                 ?>">
                                         </div>
                                      </div>
@@ -137,71 +137,19 @@
                                      </div>
                                   </div>
                                 </div>
-
-                                <!--Pilihan jenis metode pembayaran-->
-                                <div class="row" style=" display: <?php if ($jenis_event == 1)
-                                                  {
-                                                    echo "none";
-                                                  }
-                                                  else
-                                                  {
-                                                    echo "block";
-                                                  }
-                                                  ?>">
-                                    <div class="col-md-12">
-                                      <div class="col-md-3"></div>
-                                      <div class="col-md-6">
-                                        <div class="row">
-                                          <div class="col-md-12" style="text-align: center;">
-                                              <label>Metode Pembayaran :</label>
-                                          </div>
-                                        </div>
-                                        <div class="row">
-                                          <div class="col-md-12" style="text-align: center;">
-                                            <div class="radio">
-                                                <label style="padding-right: 15px;">
-                                                    <input onclick="transfer()" style="opacity: 1;" type="radio" name="metode_pembayaran" value=1 <?php if ($jenis_event == 0)
-                                                      {
-                                                        echo "required";
-                                                      }
-                                                      ?>>
-                                                     Transfer via ATM
-                                                </label>
-                                                <label>
-                                                    <input onclick="e_payment()" style="opacity: 1;" type="radio" name="metode_pembayaran" value=0 <?php if ($jenis_event == 0)
-                                                      {
-                                                        echo "required";
-                                                      }
-                                                      ?>>
-                                                     E-Payment
-                                                </label>
-                                            </div>
-                                          </div>
-                                        </div>
+                                <div class="row">
+                                  <div style="text-align: center;" class="col-md-12">
+                                    <div class="col-md-5"></div>
+                                    <div class="col-md-2">
+                                      <div class="form-group">
+                                        <input placeholder="Jumlah Tiket " id="telepon" name="jml_tiket" class="form-control" required type="number">
                                       </div>
-                                      <div class="col-md-3"></div>
                                     </div>
-                                </div>
-
-                                <!--Field keterangan metode pembayaran-->
-                                <div class="row" style="display: none;" id="keterangan_metode1">
-                                  <div class="col-md-12">
-                                    <div class="col-md-3"></div>
-                                    <div class="col-md-6" style="background-color: ghostwhite; border: 1px solid #f44a56;">
-                                      <p>Pembayaran ini dilakukan dengan cara melakukan transfer melalui ATM atau Bank terdekat. Setelah itu peserta diwajibkan melakukan upload bukti transfer pembayaran.</p>
-                                    </div>
-                                    <div class="col-md-3"></div>
+                                    <div class="col-md-5"></div>
                                   </div>
                                 </div>
-                                <div class="row" style="display: none;" id="keterangan_metode2">
-                                  <div class="col-md-12">
-                                    <div class="col-md-3"></div>
-                                    <div class="col-md-6" style="background-color: ghostwhite; border: 1px solid #f44a56;">
-                                      <p>Pembayaran ini dilakukan secara online melalui situs resmi yang sudah menjalin kerjasama dengan boloku.id.</p>
-                                    </div>
-                                    <div class="col-md-3"></div>
-                                  </div>
-                                </div>
+                                <input type="hidden" name="metode_pembayaran" value=0>    
+                            </div>
 
                                 <!--Field Captcha-->
                                  <div class="row">
@@ -247,17 +195,4 @@
         </div>
       </section>
 
-      <script type="text/javascript">
-        // Fungsi untuk disable display keterangan metode pembayaran
-        function transfer()
-        {
-          document.getElementById("keterangan_metode1").style.display = "block";
-          document.getElementById("keterangan_metode2").style.display = "none";
-        }
-        function e_payment()
-        {
-          document.getElementById("keterangan_metode1").style.display = "none";
-          document.getElementById("keterangan_metode2").style.display = "block";
-        }
-      </script>
 

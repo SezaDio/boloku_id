@@ -45,9 +45,49 @@
 
       <!-- For Style Switcher -->
       <link rel="stylesheet" id="theme-color" type="text/css" href="#" />
+
+      <script language="JavaScript" type="text/javascript" src="https://staging.doku.com/dateformat.js"></script>
+      <script language="JavaScript" type="text/javascript" src="https://staging.doku.com/sha-1.js"></script>
+
+      <script type="text/javascript">
+         function getRequestDateTime() {
+           var now = new Date();
+           document.MerchatPaymentPage.REQUESTDATETIME.value = dateFormat(now, "yyyymmddHHMMss");  
+         }
+
+         function selesai()
+         {
+           document.MerchatPaymentPage.submit();
+           clearTimeout(timeID);
+         }
+
+         function timer() 
+         {
+           timeID=setTimeout("selesai()",3000);
+         }
+
+         function randomString(STRlen) {
+            var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXTZabcdefghiklmnopqrstuvwxyz";
+            var string_length = STRlen;
+            var randomstring = '';
+            for (var i=0; i<string_length; i++) {
+               var rnum = Math.floor(Math.random() * chars.length);
+               randomstring += chars.substring(rnum,rnum+1);
+            }
+
+            return randomstring;
+
+         }
+
+         function genSessionID() 
+         {  
+            document.MerchatPaymentPage.SESSIONID.value = randomString(20);
+         }
+        
+      </script>
    </head>
 
-   <body>
+   <body onload="timer()">
       <!--Top Bar-->
       <section class="topbar" style="display: none;">
          <div class="container">
@@ -67,7 +107,7 @@
                                     <form style="padding:10px;" class="omb_loginForm" id="form-login" action="<?php //echo site_url('Account/login'); ?>" autocomplete="on" method="POST">
                                        <?php 
                                              //$this->load->library('form_validation');
-                                             //echo validation_errors(); 
+                                             //echo validation_errors();
                                        ?>
 
                                        <p style="color:red; font-family: Comic Sans Ms;"><?php //echo $this->session->flashdata('notification'); ?></p>

@@ -48,6 +48,26 @@
 		
 			return $result;
 		}
+
+		//Get data pendaftar untuk invoice dari tabel pendaftar
+		function get_data_invoice($transid)
+		{
+			$this->db->select('*');
+			$this->db->from('pendaftar');
+			$this->db->where('no_pendaftar',$transid);
+
+			return $this->db->get();
+		}
+
+		//Get data pendaftar untuk invoice dari tabel doku
+		function get_data_invoice_doku($transid)
+		{
+			$this->db->select('*');
+			$this->db->from('doku');
+			$this->db->where('transidmerchant',$transid);
+
+			return $this->db->get();
+		}
 		
 		function get_jumlah_pendaftar($id_event)
 		{

@@ -195,12 +195,12 @@ class Kelolapendaftar extends CI_Controller {
 	}
 	
 	//kirim email
-   function kirim_email($sub, $msg, $email) {
+   	function kirim_email($sub, $msg, $email) {
       $config['protocol'] = 'smtp';
       $config['smtp_host'] = 'mail.boloku.id'; //change this
       $config['smtp_port'] = '465';
       $config['smtp_user'] = 'info@boloku.id'; //change this
-      $config['smtp_pass'] = 'cz431081994'; //change this
+      $config['smtp_pass'] = 'iFiW_o-*xe-q'; //change this
       $config['mailtype'] = 'html';
       $config['charset'] = 'iso-8859-1';
       $config['smtp_crypto'] = 'ssl';
@@ -329,6 +329,7 @@ class Kelolapendaftar extends CI_Controller {
 				}
 				$kode = substr(md5($this->input->post('nama_pendaftar')), 0, 4);
 				$nama_pendaftar = $this->input->post('nama_pendaftar');
+				$jml_tiket = $this->input->post('jml_tiket');
 				$metode_pembayaran = $this->input->post('metode_pembayaran');
 				$data_pendaftar=array(
 					'id_event'=>$id_event,
@@ -339,7 +340,7 @@ class Kelolapendaftar extends CI_Controller {
 					'nama_tiket'=>$nama_tiket,
 					'harga'=>$harga,
 					'status_bayar'=>0,
-					'metode_pembayaran'=>$metode_pembayaran,
+					'jml_tiket'=>$jml_tiket,
 					'no_pendaftar'=>$id_event.'-'.$no_pendaftar.'-'.strtoupper($kode)
 				);
 
@@ -400,25 +401,63 @@ class Kelolapendaftar extends CI_Controller {
 				else
 				{
 					//data POST ke DOKU
-					$total_harga = $harga*1;
-					$no_pendaftaran = $id_event.'-'.$no_pendaftar.'-'.strtoupper($kode);
-					$date_sekarang = date('d-M-Y'); 
+					$kode2 = substr(md5($this->input->post('nama_pendaftar')), 0, 4);
+					$total_harga = $harga*$jml_tiket;
+					$random_int = mt_rand(1, 999999);
+					$no_pendaftaran = $id_event.'-'.$random_int.'-'.strtoupper($kode2);
+					$date_sekarang = date('d-M-Y');
+					$words = $total_harga.'.005040WoL1yQ3At72k'.$no_pendaftaran;
+					$words_fix = sha1($words);
+					$nama_event_clean = preg_replace('/[^A-Za-z0-9-\s]/', '', $nama_event); // Removes special chars
 					$data_payment_doku = array(
 										 'mallid'=>5040,
 										 'chainmerchant'=>'NA',
-										 'amount'=>$harga.'.00',
+										 'amount'=>$total_harga.'.00',
 										 'purchase_amount'=>$total_harga.'.00',
-										 'transidmerchant'=>$id_event.''.$no_pendaftar.''.strtoupper($kode),
-										 'words'=>$total_harga.'5040WoL1yQ3At72k'.$no_pendaftaran,
+										 'transidmerchant'=>$id_event.'-'.$random_int.'-'.strtoupper($kode2),
+										 'words'=>$words_fix,
 										 'requestdatetime'=>$date_sekarang,
 										 'currency'=>360,
 										 'purchase_currency'=>360,
-										 'session_id'=>0,
 										 'name'=>$nama_pendaftar,
 										 'email'=>$this->input->post('email'),
-										 'basket'=>'Tiket "'.$nama_event.'",'.$harga.'.00,1,'.$total_harga.'.00'
+										 'basket'=>'Tiket '.$nama_event_clean.','.$harga.'.00,'.$jml_tiket.','.$total_harga.'.00'
 										 );
 					$data['data_payment_doku'] = $data_payment_doku;
+
+					$data_insert_temp_doku = array(
+											 'transidmerchant'=>$id_event.'-'.$random_int.'-'.strtoupper($kode2),
+											 'totalamount'=>$total_harga.'.00',
+											 'words'=>$words_fix,
+											 'statustype'=>"P",
+											 'response_code'=>NULL, //default failed
+											 'approvalcode'=>"0",
+											 'trxstatus'=>"0",
+											 'payment_channel'=>0,
+											 'paymentcode'=>0,
+											 'approvalcode'=>"0",
+											 'session_id'=>"0",
+											 'bank_issuer'=>"0",
+											 'creditcard'=>"0",
+											 'verifyid'=>"0",
+											 'verifyscore'=>0,
+											 'verifystatus'=>"0"
+											 );
+					$data_pendaftar_new = array(
+										'id_event'=>$id_event,
+										'nama_pendaftar'=>$this->input->post('nama_pendaftar'),
+										'email'=>$this->input->post('email'),
+										'telepon'=>$this->input->post('telepon'),
+										'alamat'=>$this->input->post('alamat'),
+										'nama_tiket'=>$nama_tiket,
+										'harga'=>$harga,
+										'status_bayar'=>0,
+										'jml_tiket'=>$jml_tiket,
+										'no_pendaftar'=>$id_event.'-'.$random_int.'-'.strtoupper($kode2),
+										'basket'=>'Tiket '.$nama_event_clean.','.$harga.'.00,'.$jml_tiket.','.$total_harga.'.00'
+									);
+					$this->db->insert('doku', $data_insert_temp_doku);
+					$this->db->insert('pendaftar', $data_pendaftar_new);
 
 					//Proses data_payment_doku ke halaman waiting_page_doku
 					$this->load->view('skin/front_end/header_menu_front_end');
