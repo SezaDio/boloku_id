@@ -325,6 +325,11 @@
 	                                		</td>
 	                                	</tr>
 	                                	<tr>
+	                                		<td>Contact Person</td>
+	                                		<td>:</td>
+	                                		<td><?php echo $telepon;?></td>
+	                                	</tr>
+	                                	<tr>
 	                                		<td>Jumlah Seat</td>
 	                                		<td>:</td>
 	                                		<td>
@@ -338,37 +343,77 @@
 	                                			    if ($total_seat == NULL)
 	                                			    {
 	                                			        echo "Open Seat";
+	                                			        $statusSeat = 1;
 	                                			    }
 	                                			    else
-	                                			    {
-	                                			        echo $total_seat;
-	                                			    }
-	                                			?>
+	                                			    { ?>
+	                                			        <?php echo $total_seat." Seat"; ?> | 
+	                                			        <a href="javascript:void()" data-trigger="focus" data-placement="left" data-toggle="popover" title="Tiket Tersedia" 
+	                                			        data-content="<?php 
+	                                			                            echo "<table class='table'>";
+	                                			                            for ($i=0; $i<$jumlah_tiket; $i++) 
+	                                			                            {
+	                                			                                $hargaSetiapTiket = $tiket[$i]['harga'];
+	                                			                                $seatSetiapTiket = $tiket[$i]['seat'];
+	                                			                                $namaSeat = $tiket[$i]['nama_tiket'];
+	                                			                                echo "<tr>";
+	                                			                                    echo "<td>";
+	                                			                                        echo "<strong>".$namaSeat."</strong>";
+	                                			                                        echo "<br>";
+	                                			                                        echo "<small style='font-size: smaller;'>Rp ".$hargaSetiapTiket."</small>";
+	                                			                                    echo "</td>";
+	                                			                                    echo "<td>";
+	                                			                                        if ($seatSetiapTiket == NULL)
+	                                			                                        {
+	                                			                                            echo "Open Seat";
+	                                			                                        }
+	                                			                                        else
+	                                			                                        {
+	                                			                                            echo $seatSetiapTiket." Seat";
+	                                			                                        }
+	                                			                                    echo "</td>";
+	                                			                                echo "</tr>";
+	                                			                                
+	                                			                                if ($seatSetiapTiket > 0)
+	                                			                                {
+	                                			                                	$statusSeat = 1;
+	                                			                                }
+	                                			                                elseif ($seatSetiapTiket == NULL)
+	                                			                                {
+	                                			                                	$statusSeat = 1;
+	                                			                                }
+	                                			                                
+	                                			                            } 
+	                                			                            echo "</table>";?>
+	                                			                    ">
+	                                			             <i class="fa fa-info-circle"></i> Lihat
+	                                			        </a>
+	                                		  <?php } ?>
 	                                		</td>
-	                                	</tr>
-	                                	<tr>
-	                                		<td>Contact Person</td>
-	                                		<td>:</td>
-	                                		<td><?php echo $telepon;?></td>
 	                                	</tr>
 	                                	
 	                                </table>
 	                                <hr style="border: solid 1px #f44a56; opacity: 0.4;">
-	                                
+
 	                                <div class="col-md-12" style="text-align: center;">
 	                                	<?php
-	                                	if($pendaftaran==1){
-	                                		if($seat == 1 AND $jumlah_seat < 1)
+	                                	if($pendaftaran==1)
+	                                	{
+	                                		if (date('d-F-Y') > $tgl_selesai)
 	                                		{ ?>
-                                       			<a disabled='disabled' style="height: 53px; font-size: 1.7em; width: 100%;" href="javascript:void(0)" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
-	                                  <?php }
-	                                  		else
-	                                  		{ ?>
-	                                  			<a style="height: 53px; font-size: 1.7em; width: 100%;" href="<?php echo base_url('mendaftar_event/'.$id_event); ?>" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
-	                                  			
-	                                  <?php	}} ?>
-
+	                                			<a disabled='disabled' style="height: 53px; font-size: 1.7em; width: 100%;" href="javascript:void(0)" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
+	                                	<?php	} 
+	                                		elseif ($statusSeat == 1)
+	                                		{ ?>
+	                                			<a style="height: 53px; font-size: 1.7em; width: 100%;" href="<?php echo base_url('mendaftar_event/'.$id_event); ?>" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
+	                                	<?php	}
+	                                		elseif ($statusSeat == 0)
+	                                		{ ?>
+	                                			<a disabled='disabled' style="height: 53px; font-size: 1.7em; width: 100%;" href="javascript:void(0)" class="btn btn-colored-blog"><i class="glyphicon glyphicon-pencil"></i> Daftar </a>
+	                                  <?php } ?>
+	                              <?php } ?>
                                     </div>
+	                                
 	                             </div>
 	                          </div>
 	                       </div>
@@ -528,3 +573,11 @@
             </div>
         </div>
     </section>
+
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="popover"]').popover({
+                html: true
+            });   
+        });
+    </script>

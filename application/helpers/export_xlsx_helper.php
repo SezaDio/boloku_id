@@ -21,7 +21,8 @@ function do_export_xlsx($listPendaftar, $nama_event, $jenis_event/*, $simpulan, 
 			25,	// [F] Kolom Email
 			25, // [G] Kolom Telepon
 			70,	// [H] Kolom Alamat
-			18,	// [I] Kolom Status Bayar
+			25, // [J] Kolom Harga Total
+			18	// [I] Kolom Status Bayar
 	);
 	$styleHeader = array(
 			'alignment' => array(
@@ -142,12 +143,17 @@ function do_export_xlsx($listPendaftar, $nama_event, $jenis_event/*, $simpulan, 
 		$worksheetReport->mergeCellsByColumnAndRow(
 				IDX_COL_HOME+6, $rowBaseTable+1,
 				IDX_COL_HOME+6, $rowBaseTable+2)
-				->setCellValueByColumnAndRow(IDX_COL_HOME+6,$rowBaseTable+1,'Status Bayar');		
+				->setCellValueByColumnAndRow(IDX_COL_HOME+6,$rowBaseTable+1,'Total Harga');
+
+		$worksheetReport->mergeCellsByColumnAndRow(
+				IDX_COL_HOME+7, $rowBaseTable+1,
+				IDX_COL_HOME+7, $rowBaseTable+2)
+				->setCellValueByColumnAndRow(IDX_COL_HOME+7,$rowBaseTable+1,'Status Bayar');				
 		
 		// Set border header
 		$worksheetReport->getStyleByColumnAndRow(
 				IDX_COL_HOME,$rowBaseTable+1,
-				IDX_COL_HOME+TABLE_COLS-13,$rowBaseTable+2)
+				IDX_COL_HOME+TABLE_COLS-12,$rowBaseTable+2)
 				->applyFromArray($styleHeader)
 				->applyFromArray($styleBorderAll)
 				->applyFromArray($styleGrayBg);
@@ -155,6 +161,7 @@ function do_export_xlsx($listPendaftar, $nama_event, $jenis_event/*, $simpulan, 
 		// Isi body tabel
 		$counterItem	= 0;
 		$currentRow		= $rowBaseTable + 3;
+
 		foreach ($listPendaftar as $itemResult) {
 			$counterItem++;
 			$worksheetReport->setCellValueByColumnAndRow(
@@ -169,28 +176,58 @@ function do_export_xlsx($listPendaftar, $nama_event, $jenis_event/*, $simpulan, 
 					IDX_COL_HOME+4, $currentRow, $itemResult['telepon']);
 			$worksheetReport->setCellValueByColumnAndRow(
 					IDX_COL_HOME+5, $currentRow, $itemResult['alamat']);
+
+			$basket = $itemResult['basket'];
+		    $data_basket = explode(",", $basket);
+		    $item = $data_basket[0];
+		    $harga_satuan = $data_basket[1];
+		    $jumlah = $data_basket[2];
+		    $total_harga = $data_basket[3];
+			$worksheetReport->setCellValueByColumnAndRow(
+					IDX_COL_HOME+6, $currentRow, $total_harga);
 			
 			if ($jenis_event == 1)
 			{
 				$worksheetReport->setCellValueByColumnAndRow(
-					IDX_COL_HOME+6, $currentRow, 'FREE');
+					IDX_COL_HOME+7, $currentRow, 'FREE');
 			}
 			else
 			{
-				if ($itemResult['status_bayar'] == 2)
+				if ($itemResult['status_bayar'] == "1")
 				{
+					$FontColor = new PHPExcel_Style_Color();
 					$worksheetReport->setCellValueByColumnAndRow(
-					IDX_COL_HOME+6, $currentRow, 'Sudah Bayar');
+					IDX_COL_HOME+7, $currentRow, 'Sudah Bayar');
+
+					$worksheetReport->getStyleByColumnAndRow(
+						IDX_COL_HOME+7, $currentRow)->getFont()->getColor()->setArgb($FontColor::COLOR_GREEN);
+				}
+				elseif ($itemResult['status_bayar'] == "0")
+				{
+					$FontColor = new PHPExcel_Style_Color();
+					$worksheetReport->setCellValueByColumnAndRow(
+					IDX_COL_HOME+7, $currentRow, 'Belum Bayar');
+					
+					$worksheetReport->getStyleByColumnAndRow(
+						IDX_COL_HOME+7, $currentRow)->getFont()->getColor()->setArgb($FontColor::COLOR_BLACK);
+				}
+				elseif ($itemResult['status_bayar'] == "5511")
+				{
+					$FontColor = new PHPExcel_Style_Color();
+					$worksheetReport->setCellValueByColumnAndRow(
+					IDX_COL_HOME+7, $currentRow, 'Menunggu Pembayaran');
+					
+					$worksheetReport->getStyleByColumnAndRow(
+						IDX_COL_HOME+7, $currentRow)->getFont()->getColor()->setArgb($FontColor::COLOR_GRAY);
 				}
 				else
 				{
 					$FontColor = new PHPExcel_Style_Color();
 					$worksheetReport->setCellValueByColumnAndRow(
-					IDX_COL_HOME+6, $currentRow, 'Belum Bayar');
+					IDX_COL_HOME+7, $currentRow, 'Cancel');
 					
 					$worksheetReport->getStyleByColumnAndRow(
-						IDX_COL_HOME+6, $currentRow)->getFont()->getColor()->setArgb($FontColor::COLOR_RED);
-					
+						IDX_COL_HOME+7, $currentRow)->getFont()->getColor()->setArgb($FontColor::COLOR_RED);
 				}
 				
 			}
@@ -203,7 +240,7 @@ function do_export_xlsx($listPendaftar, $nama_event, $jenis_event/*, $simpulan, 
 		
 		$worksheetReport->getStyleByColumnAndRow(
 				IDX_COL_HOME,$currentRow,
-				IDX_COL_HOME+TABLE_COLS-13,$currentRow)
+				IDX_COL_HOME+TABLE_COLS-12,$currentRow)
 				->applyFromArray($styleHeader)
 				->applyFromArray($styleBorderAll)
 				->applyFromArray($styleGrayBg);
@@ -364,7 +401,7 @@ function do_export_xlsx($listPendaftar, $nama_event, $jenis_event/*, $simpulan, 
 		// Set border untuk seluruh cell
 		$worksheetReport->getStyleByColumnAndRow(
 				IDX_COL_HOME,$rowBaseTable+1,
-				IDX_COL_HOME+TABLE_COLS-13,$currentRow-1)
+				IDX_COL_HOME+TABLE_COLS-12,$currentRow-1)
 				->applyFromArray($styleBorderAll);
 		
 		header('Content-Type: application/vnd.ms-excel'); //mime type

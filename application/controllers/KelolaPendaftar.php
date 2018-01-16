@@ -117,6 +117,13 @@ class Kelolapendaftar extends CI_Controller {
 		$this->load->model('pendaftar_models/PendaftarModels');
 		$this->PendaftarModels->verifikasi_bayar_check($id_pendaftar);
 	}
+
+	//Fungsi ajax untuk mengubah status bayar di tabel pendaftar jika di cancel
+	function cancel_pendaftar($id_pendaftar){
+		$id_pendaftar = $_POST['id_pendaftar'];
+		$this->load->model('pendaftar_models/PendaftarModels');
+		$this->PendaftarModels->cancel_check($id_pendaftar);
+	}
 	
 	//Lihat detail produk
 	public function lihat_detail_pendaftar($id_pendaftar)
@@ -293,6 +300,7 @@ class Kelolapendaftar extends CI_Controller {
 		$seat = $this->input->post('seat');
 		$event = $this->ComingModels->select_by_id_coming($id_event)->row();
 		$nama_event=$event->nama_coming;
+		$jenis_event = $event->jenis_event;
 		
 		if ($tambah == 1)
 		{
@@ -400,17 +408,18 @@ class Kelolapendaftar extends CI_Controller {
 				}
 				else
 				{
-					//data POST ke DOKU
+					$tiket = $this->ComingModels->select_tiket_by_id_tiket($id_jenis_tiket)->row();
+					$jumlah_seat_tersedia = $tiket->seat;
 					$kode2 = substr(md5($this->input->post('nama_pendaftar')), 0, 4);
 					$total_harga = $harga*$jml_tiket;
 					$random_int = mt_rand(1, 999999);
 					$no_pendaftaran = $id_event.'-'.$random_int.'-'.strtoupper($kode2);
 					$date_sekarang = date('d-M-Y');
-					$words = $total_harga.'.005040WoL1yQ3At72k'.$no_pendaftaran;
+					$words = $total_harga.'.002972WoL1yQ3At72k'.$no_pendaftaran;
 					$words_fix = sha1($words);
 					$nama_event_clean = preg_replace('/[^A-Za-z0-9-\s]/', '', $nama_event); // Removes special chars
 					$data_payment_doku = array(
-										 'mallid'=>5040,
+										 'mallid'=>2972,
 										 'chainmerchant'=>'NA',
 										 'amount'=>$total_harga.'.00',
 										 'purchase_amount'=>$total_harga.'.00',
@@ -456,13 +465,100 @@ class Kelolapendaftar extends CI_Controller {
 										'no_pendaftar'=>$id_event.'-'.$random_int.'-'.strtoupper($kode2),
 										'basket'=>'Tiket '.$nama_event_clean.','.$harga.'.00,'.$jml_tiket.','.$total_harga.'.00'
 									);
-					$this->db->insert('doku', $data_insert_temp_doku);
-					$this->db->insert('pendaftar', $data_pendaftar_new);
+					$data['data_pendaftar_gratis'] = $data_pendaftar_new;
+					
+					if ($jenis_event == 1) // jika jenis tiket nya tiket gratis
+					{
+						if ($jumlah_seat_tersedia == NULL) // Jika jumlah seat tersedia di database == null 
+						{
+							//insert data pendaftar langsung ke tabel pendaftar jika event nya gratis
+							$this->db->insert('pendaftar', $data_pendaftar_new);
 
-					//Proses data_payment_doku ke halaman waiting_page_doku
-					$this->load->view('skin/front_end/header_menu_front_end');
-					$this->load->view('content_front_end/waiting_page_doku', $data);
-					$this->load->view('skin/front_end/footer_menu_front_end');
+							//Kirim email notifikasi jika sudah daftar event beserta rincian biayanya (Belum bayar)
+							$data['subject'] = 'Pendaftaran Peserta '.$nama_event;
+							$isi = $this->load->view('skin/email/content_event_gratis_email', $data, true);
+							$data['content'] = $isi;
+							$msg = $this->load->view('skin/email/template_email', $data, true);
+							$email = $this->input->post('email');
+			    			$this->kirim_email($data['subject'], $msg, $email);
+
+			    			//redirect kembali ke halaman event
+			    			$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
+							redirect('FrontControl_Event/event_click/'.$id_event);
+						}
+						else //jika jumlah seat tersedia di tabel tiket bukan NULL
+						{
+							// kurangi jumlah seat tersedia sesuai dengan jumlah seat yang dibeli
+							$jumlah_seat_tersedia = $jumlah_seat_tersedia - $jml_tiket;
+
+							//update tabel tiket untuk mengurangi jumlah seat
+							$this->db->update('tiket', array('seat'=>$jumlah_seat_tersedia), array('id_jenis_tiket'=>$id_jenis_tiket));
+
+							//insert data pendaftar langsung ke tabel pendaftar jika event nya gratis
+							$this->db->insert('pendaftar', $data_pendaftar_new);
+
+							//Kirim email notifikasi jika sudah daftar event beserta rincian biayanya (Belum bayar)
+							$data['subject'] = 'Pendaftaran Peserta '.$nama_event;
+							$isi = $this->load->view('skin/email/content_event_gratis_email', $data, true);
+							$data['content'] = $isi;
+							$msg = $this->load->view('skin/email/template_email', $data, true);
+							$email = $this->input->post('email');
+			    			$this->kirim_email($data['subject'], $msg, $email);
+
+			    			//redirect kembali ke halaman event
+			    			$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
+							redirect('FrontControl_Event/event_click/'.$id_event);
+						}
+					}
+					else // jika tipe tiketnya berbayar
+					{
+						if ($jumlah_seat_tersedia == NULL) //Jika jumlah seat tersedia di database == null 
+						{
+							//data POST ke DOKU jika event nya berbayar
+							$this->db->insert('doku', $data_insert_temp_doku);
+							$this->db->insert('pendaftar', $data_pendaftar_new);
+
+							//Kirim email notifikasi jika sudah daftar event beserta rincian biayanya (Belum bayar)
+							$data['subject'] = 'Pendaftaran Peserta '.$nama_event;
+							$isi = $this->load->view('skin/email/content_email', $data, true);
+							$data['content'] = $isi;
+							$msg = $this->load->view('skin/email/template_email', $data, true);
+							$email = $this->input->post('email');
+			    			$this->kirim_email($data['subject'], $msg, $email);
+
+							//Proses data_payment_doku ke halaman waiting_page_doku
+							$this->load->view('skin/front_end/header_menu_front_end');
+							$this->load->view('content_front_end/waiting_page_doku', $data);
+							$this->load->view('skin/front_end/footer_menu_front_end');
+						}
+						else //jika jumlah seat di tabel tiket bukan NULL
+						{
+							// kurangi jumlah seat tersedia sesuai dengan jumlah seat yang dibeli
+							$jumlah_seat_tersedia = $jumlah_seat_tersedia - $jml_tiket;
+
+							//update tabel tiket untuk mengurangi jumlah seat
+							$this->db->update('tiket', array('seat'=>$jumlah_seat_tersedia), array('id_jenis_tiket'=>$id_jenis_tiket));
+							echo $seat;
+							exit();
+
+							//data POST ke DOKU jika event nya berbayar
+							$this->db->insert('doku', $data_insert_temp_doku);
+							$this->db->insert('pendaftar', $data_pendaftar_new);
+
+							//Kirim email notifikasi jika sudah daftar event beserta rincian biayanya (Belum bayar)
+							$data['subject'] = 'Pendaftaran Peserta '.$nama_event;
+							$isi = $this->load->view('skin/email/content_email', $data, true);
+							$data['content'] = $isi;
+							$msg = $this->load->view('skin/email/template_email', $data, true);
+							$email = $this->input->post('email');
+			    			$this->kirim_email($data['subject'], $msg, $email);
+
+							//Proses data_payment_doku ke halaman waiting_page_doku
+							$this->load->view('skin/front_end/header_menu_front_end');
+							$this->load->view('content_front_end/waiting_page_doku', $data);
+							$this->load->view('skin/front_end/footer_menu_front_end');
+						}
+					}
 				}
 			}
 			else

@@ -22,18 +22,32 @@
                                 <div class="col-md-3">
                                     <?php 
                                         if($jenis_event==0)
-                                        { 
-										  ?><div  style="padding-top: 10px">
-										  <h5 style="text-align: center; color: green;"><i class="fa fa-ticket"></i> <strong> Pilih Tiket</strong></h5>
-										  <select name="tipe_tiket" required class="form-control" onchange="harga_tiket">
-												<option value="">--Pilih Tiket--</option>
-												<?php for($i=0;$i<count($tiket);$i++){?>
-												<option value="<?php echo $tiket[$i]['nama_tiket']; ?>:<?php echo $tiket[$i]['harga']; ?>:<?php echo $tiket[$i]['id_jenis_tiket']; ?>"><strong><b><?php echo $tiket[$i]['nama_tiket'];?> - Rp. <?php echo $tiket[$i]['harga'];?></b></option>
-										  <?php } ?>
-                                          </select>
-										  <h5 style="text-align: center; color: green;"><span id="harga_tiket"></span></h5>
-										  </div>
-                                        <?php } 
+                                        { ?>
+                    										  <div  style="padding-top: 10px">
+                      										    <h5 style="text-align: center; color: green;"><i class="fa fa-ticket"></i> <strong> Pilih Tiket</strong></h5>
+                      										    <select name="tipe_tiket" required class="form-control" onchange="harga_tiket">
+                      												    <option value="">--Pilih Tiket--</option>
+                    												      <?php 
+                                                      for ($i=0; $i<count($tiket); $i++)
+                                                      { ?>
+                    												            <option value="<?php echo $tiket[$i]['nama_tiket']; ?>:<?php echo $tiket[$i]['harga']; ?>:<?php echo $tiket[$i]['id_jenis_tiket']; ?>">
+                                                          <strong>
+                                                            <b><?php echo $tiket[$i]['nama_tiket'];?> - Rp. <?php echo $tiket[$i]['harga'];?> (<?php if ($tiket[$i]['seat'] == NULL)
+                                                              {
+                                                                echo "Open";
+                                                              } 
+                                                              else
+                                                              {
+                                                                echo $tiket[$i]['seat'];
+                                                              } ?> Seat)
+                                                            </b>
+                                                          </strong>
+                                                        </option>
+            										                <?php } ?>
+                                              </select>
+            										              <h5 style="text-align: center; color: green;"><span id="harga_tiket"></span></h5>
+            										          </div>
+                                  <?php } 
                                         else 
                                         { 
 											
@@ -142,13 +156,13 @@
                                     <div class="col-md-5"></div>
                                     <div class="col-md-2">
                                       <div class="form-group">
-                                        <input placeholder="Jumlah Tiket " id="telepon" name="jml_tiket" class="form-control" required type="number">
+                                        <input <?php if($jenis_event == 1){echo "disabled";} ?> style="display: <?php if($jenis_event == 1){echo "none;";} ?>;" placeholder="Jumlah Tiket " id="telepon" name="jml_tiket" class="form-control" required type="number" min="1">
                                       </div>
                                     </div>
                                     <div class="col-md-5"></div>
                                   </div>
                                 </div>
-                                <input type="hidden" name="metode_pembayaran" value=0>    
+                                <input type="hidden" name="metode_pembayaran" value=0>
                             </div>
 
                                 <!--Field Captcha-->

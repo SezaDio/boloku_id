@@ -42,12 +42,22 @@
 			{
 				$this->db->update('pendaftar', $update_status_pendaftar, array('no_pendaftar'=>$transidmerchant));
 
-				$sub = 'Pendaftaran Peserta '.$nama_event;
-				$msg = 'Terimakasih telah melakukan pendaftaran';
-				$msg .= '<br/> Silahkan cetak atau simpan bukti pembelian kamu melalui link <a href="boloku.id/payment/invoice/"'.$transidmerchant.'></a>';
-				$msg .= '<br/> Harap simpan dengan baik bukti pendaftaran Kamu';
-				$email = $this->input->post('email');
-				$this->kirim_email($sub,$msg,$email);
+				//Ambil data email dari tabel pendaftar
+				$this->load->model('pendaftar_models/PendaftarModels');
+				$data_email = $this->PendaftarModels->get_data_invoice($transidmerchant)->row();
+
+				//Kirim email notifikasi jika sudah daftar event dan sudah sukses melakukan pembayaran
+				$data['isi_transid'] = array(
+										'transid'=>$transidmerchant
+									   );
+				$data['subject'] = 'Notify for Event'.$nama_event;
+				$data['link_invoice'] = site_url('payment/invoice/'.$transidmerchant);
+				$isi = $this->load->view('skin/email/content_sukses_bayar_email', $data, true);
+				$data['content'] = $isi;
+				$msg = $this->load->view('skin/email/template_email', $data, true);
+				$email = $data_email->email;
+    			$this->kirim_email($data['subject'], $msg, $email);
+
 				$this->session->set_flashdata('msg_berhasil', 'Terima kasih telah mendaftar pada event ini, silahkan cek email anda.');
 			}
 
@@ -59,7 +69,7 @@
 		public function result()
 		{
 			$this->load->model('pendaftar_models/PendaftarModels');
-			
+
 			$data['active']=1;
 			$data_redirect = array(
 						   'amount'=>$this->input->post('AMOUNT'),
@@ -72,8 +82,20 @@
 						   'currency'=>$this->input->post('CURRENCY'),
 						   'purchasecurrency'=>$this->input->post('PURCHASECURRENCY')
 						   );
+			$data['kirim_email'] = array(
+						   'amount'=>$this->input->post('AMOUNT'),
+						   'transidmerchant'=>$this->input->post('TRANSIDMERCHANT'),
+						   'words'=>$this->input->post('WORDS'),
+						   'statuscode'=>$this->input->post('STATUSCODE'),
+						   'payment_channel'=>$this->input->post('PAYMENTCHANNEL'),
+						   'session_id'=>$this->input->post('SESSIONID'),
+						   'paymentcode'=>$this->input->post('PAYMENTCODE'),
+						   'currency'=>$this->input->post('CURRENCY'),
+						   'purchasecurrency'=>$this->input->post('PURCHASECURRENCY')
+						   );
 			$transid = $this->input->post('TRANSIDMERCHANT');
 			$statuscode = $this->input->post('STATUSCODE');
+			$data_email = $this->PendaftarModels->get_data_invoice($transidmerchant)->row();
 			//$statuspayment['status_payment'] = $this->input->post('STATUSCODE');
 
 			//Check status hasil dari redirect
@@ -90,12 +112,28 @@
 				{
 					//Lakukan update status pada tabel DOKU untuk update response code
 					$data_update_status = array(
-						   'response_code'=>$statuscode
+						   'response_code'=>$statuscode,
+						   'payment_channel'=>$data_redirect['payment_channel'],
+						   'paymentcode'=>$data_redirect['paymentcode'],
+						   'session_id'=>$data_redirect['session_id']
 						   );
 					$this->db->update('doku', $data_update_status, array('transidmerchant'=>$transid));
+					$this->db->update('pendaftar', array('status_bayar'=>$statuscode), array('no_pendaftar'=>$transid));
+
+					//Kirim email notifikasi jika sudah daftar event dan sudah sukses melakukan pembayaran
+					$data['isi_transid'] = array(
+											'transid'=>$transidmerchant
+										   );
+					$data['subject'] = 'Notify for boloku.id payment transaction'.$nama_event;
+					$data['link_pending_payment'] = site_url('payment/pending_page/'.$transidmerchant);
+					$isi = $this->load->view('skin/email/content_petunjuk_bayar_email', $data, true);
+					$data['content'] = $isi;
+					$msg = $this->load->view('skin/email/template_email', $data, true);
+					$email = $data_email->email;
+					$this->kirim_email($data['subject'], $msg, $email);
 
 					//Tampilkan halaman waiting page penyelesaian pembayaran
-					Redirect('payment/pending_page/'.$statuscode);
+					Redirect('payment/pending_page/'.$transid);
 				}
 				elseif ($data_doku->response_code == "0000") //Jika nilai response code == 0000, pembayaran sudah sukses lanjutkan halaman invoice
 				{
@@ -105,7 +143,7 @@
 			else //Jika status diluar yang diberikan berarti pembyarana failed
 			{
 				//Tampilkan halaman waiting page penyelesaian pembayaran
-					Redirect('payment/pending_page/'.$statuscode);
+				Redirect('payment/pending_page/'.$transid);
 			}
 		}
 
@@ -120,13 +158,14 @@
 		}
 
 		//function untuk menampilkan halaman pending page
-		public function pending_page($statuscode)
+		public function pending_page($transid)
 		{
-			$statuscode['status'] = $statuscode;
+			$this->load->model('pendaftar_models/PendaftarModels');
+			$data_invoice['data_doku'] = $this->PendaftarModels->get_data_invoice_doku($transid)->row();
 
 			//Tampilkan halaman waiting page penyelesaian pembayaran
 			$this->load->view('skin/front_end/header_menu_front_end');
-			$this->load->view('content_front_end/pending_page_doku', $statuscode);
+			$this->load->view('content_front_end/pending_page_doku', $data_invoice);
 			$this->load->view('skin/front_end/footer_menu_front_end');
 		}
 

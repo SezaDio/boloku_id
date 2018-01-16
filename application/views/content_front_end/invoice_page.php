@@ -125,7 +125,18 @@
                               <tr>
                                 <td>Payment Code</td>
                                 <td>:</td>
-                                <td><?php echo $data_doku->paymentcode; ?></td>
+                                <td>
+                                    <?php 
+                                        if ($data_doku->paymentcode == "")
+                                        {
+                                            echo "-";
+                                        }
+                                        else
+                                        {
+                                            echo $data_doku->paymentcode; 
+                                        }
+                                    ?>
+                                </td>
                               </tr>
                               <tr>
                                 <td>Currency</td>
@@ -185,7 +196,7 @@
                         </div>
                         <div class="row">
                           <div class="col-md-12" style="padding-bottom: 15px; text-align: center;">
-                            <a href="<?php echo base_url(''); ?>"><button class="btn btn-warning hidden-print"><i class="glyphicon glyphicon-home"></i> Back to Home</button></a>
+                            <a href="<?php echo base_url(''); ?>"><button class="btn btn-colored-blog hidden-print"><i class="glyphicon glyphicon-home"></i> Back to Home</button></a>
                             <button onclick="PrintDoc()" class="btn btn-primary hidden-print"><i class="glyphicon glyphicon-floppy-save"></i> Save</button>
                           </div>
                         </div>

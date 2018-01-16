@@ -50,7 +50,7 @@
 		//Mengambil data coming coming terdekat
 		function get_data_coming_terdekat()
 		{
-			$query = $this->db->query("SELECT * FROM `coming` WHERE status='1' limit 5");
+			$query = $this->db->query("SELECT * FROM `coming` WHERE `tgl_mulai` >= CURRENT_DATE() ORDER BY `tgl_mulai` ASC LIMIT 5");
 		
 			$indeks = 0;
 			$result = array();

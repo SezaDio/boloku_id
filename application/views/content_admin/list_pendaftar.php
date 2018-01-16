@@ -69,15 +69,43 @@
                                                             <td><?php echo $item['email'] ?></td>
                                                             <td><?php echo $item['telepon'] ?></td>
                                                             <td><?php echo $item['alamat'] ?></td>
-															<?php if($jenis_event==0){?>
-                                                            <td style="text-align:center"><?php if($item['status_bayar']==0){?> <b style="color:red">Belum Bayar</b> <?php } elseif ($item['status_bayar']==1){?><b style="color:red">Menunggu Verifikasi</b> <?php } else {?> <b style="color:green">Sudah Bayar</b> <?php } ?></td>
-															<?php }?>
-                                                            <td align="center">
-                                                                <!-- Tombol lihat detail -->
+															<?php 
+																if($jenis_event==0)
+																{ ?>
+                                                            		<td style="text-align:center">
+                                                            			<?php 
+                                                            				if($item['status_bayar']=="0")
+                                                            				{ ?> 
+                                                            					<b style="color:red">Belum Bayar</b> 
+                                                            		  <?php } 
+                                                            				elseif ($item['status_bayar']=="5511")
+                                                            				{ ?>
+                                                            					<b style="color:orange">Menunggu Pembayaran</b> 
+                                                            		  <?php } 
+                                                            		  		elseif ($item['status_bayar']=="1")
+                                                            		  		{ ?> 
+                                                            		  			<b style="color:green">Sudah Bayar</b> 
+                                                            		  <?php } 
+                                                            		  		else
+                                                            		  		{ ?>
+                                                            		  			<b style="color:black">Cancel</b>
+                                                            		  <?php } ?>
+                                                            		</td>
+														  <?php } ?>
+														  	<td align="center">
+															    <!-- Tombol Cancel -->
 																<?php if($jenis_event==0){?>
-																        <a href="#"><button <?php if($item['status_bayar']==0){?>class="btn btn-danger btn-sm" disabled="disabled" <?php } elseif($item['status_bayar']==1) {?> class="btn btn-danger btn-sm" onclick="verifikasi_bayar(<?php echo $item['id_pendaftar']?>)" <?php } else {?>class="btn btn-success btn-sm" disabled<?php } ?>><i class="glyphicon glyphicon-eye-open" ></i> Verifikasi Bayar</button></a>
+																        <a href="javascript:void(0)">
+																        	<button <?php 
+																        				if($item['status_bayar']=="9999")
+																        				{ ?> 
+																        					class="btn btn-danger btn-sm" disabled="disabled" 
+																        		  <?php } ?> onclick="cancel_pendaftar(<?php echo $item['id_pendaftar']?>)" >
+																        		<i class="glyphicon glyphicon-eye-open" ></i> Cancel
+																        	</button>
+																        </a>
 																<?php }?>
-                                                            </td>
+															</td>
                                                         </tr>
                                                     <?php } ?>
                                             </tbody>
@@ -171,6 +199,22 @@
 		document.getElementById("verifikasi_bayar").style.display = "block";
 	}
 	
+	//fungsi ajax untuk cancel pendaftar event
+	function cancel_pendaftar(id_pendaftar){
+		$.ajax({
+			url: '../cancel_pendaftar',	
+			type: 'POST',
+			data: {id_pendaftar:id_pendaftar},
+			success: function(){
+						alert('Pendaftar, berhasil di cancel');
+						location.reload();
+					},
+			error: function(){
+						alert('Pendaftar, gagal di cancel');
+					}
+		});
+	}
+
 	function verifikasi_bayar_check(id_pendaftar){
 		$.ajax({
 			url: '../verifikasi_bayar_check',	

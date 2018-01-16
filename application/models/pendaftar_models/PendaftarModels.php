@@ -91,6 +91,17 @@
 			$this->db->where('id_pendaftar',$id_pendaftar);
 			$this->db->update('pendaftar',$data);
 		}
+
+		//cancel pendaftar
+		function cancel_check($id_pendaftar)
+		{
+			$data = array(
+				'status_bayar' => 9999
+				
+			);
+			$this->db->where('id_pendaftar',$id_pendaftar);
+			$this->db->update('pendaftar',$data);
+		}
 		
 		//Mengambil data pendaftar yang butuh validasi
 		function get_data_pendaftar_pend()

@@ -9,7 +9,7 @@
                           <div class="row">
                             <div class="col-md-3"></div>
                             <div class="col-md-6">
-                              <img style="padding-top: 10px; text-align: center;" src="<?php echo base_url('asset/img/Logo_Boloku_new3.png'); ?>" class="img-responsive" alt="logo">
+                              <img style="padding-top: 10px; text-align: center;" src="<?php echo base_url('asset/img/Logo_Boloku_new3.png'); ?>" alt="logo">
                             </div>
                             <div class="col-md-3"></div>
                           </div>
@@ -32,7 +32,7 @@
                 </div>
 
                 <!--Field Hidden untuk POST data ke website DOKU-->
-                <form action="https://staging.doku.com/Suite/Receive" id="MerchatPaymentPage" name="MerchatPaymentPage" method="POST" >
+                <form action="https://pay.doku.com/Suite/Receive" id="MerchatPaymentPage" name="MerchatPaymentPage" method="POST" >
                    <input type="hidden" name="BASKET" id="BASKET" value="<?php echo htmlspecialchars($data_payment_doku['basket']); ?>">
                    <input type="hidden" name="MALLID" id="MALLID" value="<?php echo $data_payment_doku['mallid']; ?>">
                    <input type="hidden" name="CHAINMERCHANT" id="CHAINMERCHANT" value="<?php echo $data_payment_doku['chainmerchant']; ?>">

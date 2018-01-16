@@ -225,7 +225,11 @@ class KelolaNews extends CI_Controller {
 	  $news = $this->NewsModels->select_by_id_news($id_news)->row_array();
 	  
 	  $hits = $news['hits'] + 1;
-	  $data_hits = array('hits' => $hits);
+	  $tanggal = $news['waktu_posting'];
+	  $data_hits = array(
+	  					'hits' => $hits,
+	  					'waktu_posting' => $tanggal
+	  					);
 	  $where = array('id_news' => $id_news);
 	  $this->db->update('news', $data_hits, $where);
 	  

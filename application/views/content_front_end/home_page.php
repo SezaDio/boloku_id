@@ -245,13 +245,52 @@
                                  ?>
 
                            </div>
-                           <h4 style="font-size: medium; color: white;"><strong> <a href="<?php echo site_url('/'.$topevent['id_coming'].'?ev='.strtolower(str_replace(" ","-",$topevent['nama_coming']))); ?>" style="color: white;"> <?php echo $topevent['nama_coming']; ?> </a></strong> </h4>
+                           <h4 style="font-size: medium; color: white;">
+                              <strong> 
+                                 <a href="<?php echo site_url('/'.$topevent['id_coming'].'?ev='.strtolower(str_replace(" ","-",$topevent['nama_coming']))); ?>" style="color: white;">
+                                    <?php
+                                       $panjang = strlen($topevent['nama_coming']);
+                                       if ($panjang > 40)
+                                       {
+                                          $isi=strip_tags($topevent['nama_coming']);
+                                          $isi=substr($isi,0,40);
+                                          echo $isi." ...";
+                                       }
+                                       else
+                                       {
+                                          echo $topevent['nama_coming'];
+                                       }
+                                       
+                                    ?>
+                                 </a>
+                              </strong> 
+                           </h4>
                            <div class="row">
                               <div class="col-md-12">
                                  <div class="col-md-2"></div>
                                     <div class="col-md-9">
                                        <ul class="post-tools">
-                                          <li style="color: white;"> By <a href=""><strong style="color: white;"> <?php echo $topevent['posted_by']; ?></strong></a> </li>
+                                          <li style="color: white;"> By 
+                                             <a href="">
+                                                <strong style="color: white;">
+                                                   <?php
+                                                      $panjang = strlen($topevent['posted_by']);
+                                                      if ($panjang > 13)
+                                                      {
+                                                         $isi=strip_tags($topevent['posted_by']);
+                                                         $isi=substr($isi,0,13);
+                                                         echo $isi." ...";
+                                                      }
+                                                      else
+                                                      {
+                                                         echo $topevent['posted_by'];
+                                                      }
+                                                   ?>
+
+                                                   <?php //echo $topevent['posted_by']; ?>
+                                                </strong>
+                                             </a> 
+                                          </li>
                                           <li> <a style="color: white;" href=""><i class="glyphicon glyphicon-thumbs-up"></i> <?php echo $topevent['like']; ?></a> </li>
                                           <li style="color: white;"><i class="glyphicon glyphicon-eye-open"></i> <?php echo $topevent['hits']; ?></li>
                                        </ul>
@@ -645,13 +684,30 @@
                               </ul>
 
                               <div class="tab-content">
-                                 <!--Tab Deskripsi Event-->
+                                 <!--Tab Artikel-->
                                  <div style="background-color: white; padding: 10px;" class="tab-pane active" id="popular" role="tabpanel">
                                     <ul class="tabs-posts">
-                                       <?php  $this->load->model('home_models/HomeModels'); foreach($listArtikel as $artikel){ ?>
+                                       <?php  $this->load->model('home_models/HomeModels'); 
+                                       foreach($listArtikel as $artikel){ ?>
                                        <li>
                                           <div class="pic"> <a href="<?php echo site_url('artikel/'.$artikel['id_artikel'].'?ev='.strtolower(str_replace(" ","-",$artikel['judul_artikel']))); ?>"><img alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_artikel/thumb85_'.$artikel['path_gambar']); ?>"></a> </div>
-                                          <div class="caption"> <a href="<?php echo site_url('artikel/'.$artikel['id_artikel'].'?ev='.strtolower(str_replace(" ","-",$artikel['judul_artikel']))); ?>"><?php echo $artikel['judul_artikel']; ?></a> </div>
+                                          <div class="caption"> 
+                                             <a href="<?php echo site_url('artikel/'.$artikel['id_artikel'].'?ev='.strtolower(str_replace(" ","-",$artikel['judul_artikel']))); ?>">
+                                                <?php
+                                                   $panjang = strlen($artikel['judul_artikel']);
+                                                   if ($panjang > 50)
+                                                   {
+                                                      $isi=strip_tags($artikel['judul_artikel']);
+                                                      $isi=substr($isi,0,50);
+                                                      echo $isi." ...";
+                                                   }
+                                                   else
+                                                   {
+                                                      echo $artikel['judul_artikel'];
+                                                   }
+                                                ?>
+                                             </a> 
+                                          </div>
                                           <ul class="post-tools">
                                              <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $artikel['hits'];?></a></li>
                                              <li title="Comments"> <i class="ti-thought"></i> <?php echo $data['jumlahKomentar'] = $this->HomeModels->jumlah_komentar($artikel['id_artikel']); ?></li>
@@ -669,7 +725,23 @@
                                           <div class="pic"> 
                                              <a href="<?php echo site_url('liputan/'.$liputan['id_news'].'?ev='.strtolower(str_replace(" ","-",$liputan['judul_news']))); ?>"><img style="width: 100px;" alt="" class="img-responsive" src="<?php echo base_url('asset/upload_img_news/thumb_'.$liputan['gambar_news']); ?>"></a> 
                                           </div>
-                                          <div class="caption"> <a href="<?php echo site_url('liputan/'.$liputan['id_news'].'?ev='.strtolower(str_replace(" ","-",$liputan['judul_news']))); ?>"><?php echo $liputan['judul_news']; ?></a> </div>
+                                          <div class="caption"> 
+                                             <a href="<?php echo site_url('liputan/'.$liputan['id_news'].'?ev='.strtolower(str_replace(" ","-",$liputan['judul_news']))); ?>">
+                                                <?php
+                                                   $panjang = strlen($liputan['judul_news']);
+                                                   if ($panjang > 45)
+                                                   {
+                                                      $isi=strip_tags($liputan['judul_news']);
+                                                      $isi=substr($isi,0,45);
+                                                      echo $isi." ...";
+                                                   }
+                                                   else
+                                                   {
+                                                      echo $liputan['judul_news'];
+                                                   }
+                                                ?>
+                                             </a> 
+                                          </div>
                                           <ul class="post-tools">
                                              <li><i class="glyphicon glyphicon-eye-open"></i> <?php echo $liputan['hits'];?></a></li>
                                              <li title="Comments"> <i class="ti-thought"></i> <?php echo $data['jumlahKomentar'] = $this->HomeModels->jumlah_komentar($liputan['id_news']); ?></li>

@@ -55,7 +55,7 @@ class FrontControl_Event extends CI_Controller {
 		$data['page'] = ($this->uri->segment(2)) ? $this->uri->segment(2) : 0;
 
 		//panggil model get daftar new event data		
-		$data['listEvent'] = $this->HomeModels->get_event($config['per_page'], $data['page']);
+		$data['listEvent'] = $this->HomeModels->get_new_event($config['per_page'], $data['page']);
 
 		//create links pagination
 		$data['pagination'] = $this->pagination->create_links();

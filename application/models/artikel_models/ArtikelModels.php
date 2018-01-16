@@ -11,7 +11,7 @@
 		function get_data_artikel()
 		{
 			
-			$query = $this->db->query("SELECT * FROM `artikel`");
+			$query = $this->db->query("SELECT * FROM `artikel` ORDER BY `tanggal_posting` DESC");
 		
 			$indeks = 0;
 			$result = array();

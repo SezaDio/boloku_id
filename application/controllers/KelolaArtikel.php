@@ -223,7 +223,11 @@ class KelolaArtikel extends CI_Controller {
 	  $artikel = $this->ArtikelModels->select_by_id_artikel($id_artikel)->row_array();
 	  
 	  $hits = $artikel['hits'] + 1;
-	  $data_hits = array('hits' => $hits);
+	  $tanggal = $artikel['tanggal_posting'];
+	  $data_hits = array(
+	  					'hits' => $hits,
+	  					'tanggal_posting' => $tanggal
+	  					);
 	  $where = array('id_artikel' => $id_artikel);
 	  $this->db->update('artikel', $data_hits, $where);
 	  

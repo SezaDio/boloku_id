@@ -35,6 +35,7 @@
                                                     <th class="title-center" style="font-size:1em; text-align:center;">E-Mail</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Subject</th>
                                                     <th class="title-center" style="font-size:1em; text-align:center;">Telepon</th>
+                                                    <th class="title-center" style="font-size:1em; text-align:center;">Tanggal Masuk</th>
                                                     <th class="title-center" style="width: 150px; font-size:1em; text-align:center;">Aksi</th>
                                                 </tr>
                                             </thead>
@@ -48,6 +49,7 @@
                                                             <td><?php echo $item['email'] ?></td>
                                                             <td><?php echo $item['subject'] ?></td>
                                                             <td><?php echo $item['telepon'] ?></td>
+                                                            <td><?php echo $item['tgl_pesan'] ?></td>
                                                             <td align="center">
                                                                 <!-- Tombol lihat detail -->
                                                                 <a href="<?php echo site_url('FrontControl_ContactUs/balas_pesan/'.$item['id_pesan']);?>"><button class="btn btn-primary btn-sm"><i class="glyphicon glyphicon-send" ></i> Reply </button></a>
