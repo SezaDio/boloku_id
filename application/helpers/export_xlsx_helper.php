@@ -193,6 +193,11 @@ function do_export_xlsx($listPendaftar, $nama_event, $jenis_event/*, $simpulan, 
 			}
 			else
 			{
+				//Deklarasi variabel tanggal untuk status expired
+				$tanggal_daftar_event = strtotime($itemResult['payment_date_time']);
+				$tanggal_expired = date ('Y-m-d H:i:s', strtotime($tanggal_daftar_event.'+3 hours'));
+				$status_pendaftar = $item['status_bayar'];
+
 				if ($itemResult['status_bayar'] == "1")
 				{
 					$FontColor = new PHPExcel_Style_Color();
@@ -204,21 +209,51 @@ function do_export_xlsx($listPendaftar, $nama_event, $jenis_event/*, $simpulan, 
 				}
 				elseif ($itemResult['status_bayar'] == "0")
 				{
-					$FontColor = new PHPExcel_Style_Color();
-					$worksheetReport->setCellValueByColumnAndRow(
-					IDX_COL_HOME+7, $currentRow, 'Belum Bayar');
+					if($status_pendaftar == "0")
+    				{ 
+    					if ($tanggal_daftar_event > $tanggal_expired)
+						{
+							$FontColor = new PHPExcel_Style_Color();
+							$worksheetReport->setCellValueByColumnAndRow(
+							IDX_COL_HOME+7, $currentRow, 'Expired');
+							
+							$worksheetReport->getStyleByColumnAndRow(
+								IDX_COL_HOME+7, $currentRow)->getFont()->getColor()->setArgb($FontColor::COLOR_BLACK);
+				  		} 
+				  		else
+				  		{  
+						  	$FontColor = new PHPExcel_Style_Color();
+							$worksheetReport->setCellValueByColumnAndRow(
+							IDX_COL_HOME+7, $currentRow, 'Belum Bayar');
+							
+							$worksheetReport->getStyleByColumnAndRow(
+								IDX_COL_HOME+7, $currentRow)->getFont()->getColor()->setArgb($FontColor::COLOR_BLACK); 
+				  		}
+				  	}
 					
-					$worksheetReport->getStyleByColumnAndRow(
-						IDX_COL_HOME+7, $currentRow)->getFont()->getColor()->setArgb($FontColor::COLOR_BLACK);
 				}
 				elseif ($itemResult['status_bayar'] == "5511")
 				{
-					$FontColor = new PHPExcel_Style_Color();
-					$worksheetReport->setCellValueByColumnAndRow(
-					IDX_COL_HOME+7, $currentRow, 'Menunggu Pembayaran');
+					if ($tanggal_daftar_event > $tanggal_expired)
+					{
+						$FontColor = new PHPExcel_Style_Color();
+						$worksheetReport->setCellValueByColumnAndRow(
+						IDX_COL_HOME+7, $currentRow, 'Expired');
+						
+						$worksheetReport->getStyleByColumnAndRow(
+							IDX_COL_HOME+7, $currentRow)->getFont()->getColor()->setArgb($FontColor::COLOR_BLACK);
+			  		} 
+			  		else
+			  		{  
+					  	$FontColor = new PHPExcel_Style_Color();
+						$worksheetReport->setCellValueByColumnAndRow(
+						IDX_COL_HOME+7, $currentRow, 'Menunggu Pembayaran');
+						
+						$worksheetReport->getStyleByColumnAndRow(
+						IDX_COL_HOME+7, $currentRow)->getFont()->getColor()->setArgb($FontColor::COLOR_GRAY); 
+			  		}
+
 					
-					$worksheetReport->getStyleByColumnAndRow(
-						IDX_COL_HOME+7, $currentRow)->getFont()->getColor()->setArgb($FontColor::COLOR_GRAY);
 				}
 				else
 				{

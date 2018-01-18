@@ -60,6 +60,18 @@
                                         <td> <strong>Nomor Invoice</strong> </td>
                                         <td> <strong> <?php echo $data_doku->transidmerchant; ?></strong> </td>
                                       </tr>
+                                      <tr>
+                                        <td> <strong>Batas Akhir Pembayaran</strong> </td>
+                                        <td> 
+                                          <strong style="color: red;"> 
+                                                <?php
+                                                    $tanggal_pesan = $data_doku->payment_date_time;
+                                                    $tanggal = date ('d F Y | H:i:s', strtotime($tanggal_pesan.'+3 hours')); 
+                                                    echo $tanggal." WIB";
+                                                ?>
+                                            </strong>  
+                                        </td>
+                                      </tr>
                                   </table>
                               </div>
                           </div>

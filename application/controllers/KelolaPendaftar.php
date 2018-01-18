@@ -488,6 +488,14 @@ class Kelolapendaftar extends CI_Controller {
 						}
 						else //jika jumlah seat tersedia di tabel tiket bukan NULL
 						{
+							//cek jumlah tiket yang tersedia di database
+							if ($jumlah_seat_tersedia == 0) 
+							{
+								//redirect kembali ke halaman event
+			    				$this->session->set_flashdata('msg_gagal', 'Maaf jumlah tiket yang anda pesan sudah habis');
+								redirect('FrontControl_Event/event_click/'.$id_event);
+							}
+
 							// kurangi jumlah seat tersedia sesuai dengan jumlah seat yang dibeli
 							$jumlah_seat_tersedia = $jumlah_seat_tersedia - $jml_tiket;
 

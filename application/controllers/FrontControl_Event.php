@@ -29,7 +29,7 @@ class FrontControl_Event extends CI_Controller {
 		$config['per_page'] = 5;
 		$config['uri_segment'] = 2;
 		$choice = $config['total_rows'] / $config['per_page'];
-		$config['num_links'] = floor($choice);
+		$config['num_links'] = 2;//floor($choice);
 
 		//configuration for bootsrap pagination class
 		$config['full_tag_open'] = '<ul class="pagination">';

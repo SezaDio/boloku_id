@@ -69,20 +69,45 @@
                                                             <td><?php echo $item['email'] ?></td>
                                                             <td><?php echo $item['telepon'] ?></td>
                                                             <td><?php echo $item['alamat'] ?></td>
-															<?php 
+															
+														  	<td align="center">
+														  	<?php
+																$tanggal_daftar_event = strtotime($item['payment_date_time']);
+																$tanggal_expired = date ('Y-m-d H:i:s', strtotime($tanggal_daftar_event.'+3 hours'));
+																$status_pendaftar = $item['status_bayar'];
+
 																if($jenis_event==0)
 																{ ?>
                                                             		<td style="text-align:center">
                                                             			<?php 
-                                                            				if($item['status_bayar']=="0")
-                                                            				{ ?> 
-                                                            					<b style="color:red">Belum Bayar</b> 
+                                                            				if($status_pendaftar == "0")
+                                                            				{ 
+                                                            					if ($tanggal_daftar_event > $tanggal_expired)
+																				{ ?>
+																					<b style="color:gray">Expired</b>
+																		  <?php } 
+																		  		else
+																		  		{ ?> 
+																		  			<b style="color:red">Belum Bayar</b> 
+																		  <?php } ?>
+                                                            					
                                                             		  <?php } 
-                                                            				elseif ($item['status_bayar']=="5511")
-                                                            				{ ?>
-                                                            					<b style="color:orange">Menunggu Pembayaran</b> 
+                                                            				elseif ($status_pendaftar == "5511")
+                                                            				{ 
+                                                            					if ($tanggal_daftar_event > $tanggal_expired)
+																				{ ?>
+																					<b style="color:gray">Expired</b>
+																		  <?php } 
+																		  		else
+																		  		{ ?> 
+																		  			<b style="color:orange">Menunggu Pembayaran</b>
+																		  <?php } ?>
+                                                            		  <?php }
+                                                            		  		elseif ($status_pendaftar == "99") 
+                                                            		  		{ ?>
+                                                            		  		 	<b style="color:gray">Expired</b> 
                                                             		  <?php } 
-                                                            		  		elseif ($item['status_bayar']=="1")
+                                                            		  		elseif ($status_pendaftar == "1")
                                                             		  		{ ?> 
                                                             		  			<b style="color:green">Sudah Bayar</b> 
                                                             		  <?php } 
@@ -92,7 +117,6 @@
                                                             		  <?php } ?>
                                                             		</td>
 														  <?php } ?>
-														  	<td align="center">
 															    <!-- Tombol Cancel -->
 																<?php if($jenis_event==0){?>
 																        <a href="javascript:void(0)">
