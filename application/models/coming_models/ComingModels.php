@@ -76,7 +76,7 @@
 			return $this->db->get();
 		}
 		
-		//Select tiket by id coming
+		//Select tiket by id tiket
 		function select_tiket_by_id_tiket($id_jenis_tiket)
 		{
 			$this->db->select('*');

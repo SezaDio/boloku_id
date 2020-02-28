@@ -119,10 +119,30 @@ class Kelolapendaftar extends CI_Controller {
 	}
 
 	//Fungsi ajax untuk mengubah status bayar di tabel pendaftar jika di cancel
-	function cancel_pendaftar($id_pendaftar){
+	function cancel_pendaftar($id_pendaftar)
+	{
 		$id_pendaftar = $_POST['id_pendaftar'];
 		$this->load->model('pendaftar_models/PendaftarModels');
+		$this->load->model('coming_models/ComingModels');
 		$this->PendaftarModels->cancel_check($id_pendaftar);
+	
+		// Ambil data pendaftar yang akan dicancel
+		$dataPendaftar_cancel = $this->PendaftarModels->get_data_pendaftar_cancel($id_pendaftar)->row();
+		$data_id_tiket = $dataPendaftar_cancel->id_tiket;
+
+		// Ambil data tiket yang akan di cancel
+		$dataTiket_cancel = $this->ComingModels->select_tiket_by_id_tiket($data_id_tiket)->row();
+		$jumlah_seat_tiket_cancel = $dataTiket_cancel->seat;
+
+		// Kondisional update seat pada tiket
+		if ($jumlah_seat_tiket_cancel != NULL) // Jika jumlah seat not NULL
+		{
+			//Tambah +1 jumlah seat tiket
+			$jumlah_seat_tiket_cancel = $jumlah_seat_tiket_cancel + 1;
+
+			//update tabel tiket untuk mengurangi jumlah seat
+			$this->db->update('tiket', array('seat'=>$jumlah_seat_tiket_cancel), array('id_jenis_tiket'=>$data_id_tiket));
+		}
 	}
 	
 	//Lihat detail produk
@@ -458,6 +478,7 @@ class Kelolapendaftar extends CI_Controller {
 										'email'=>$this->input->post('email'),
 										'telepon'=>$this->input->post('telepon'),
 										'alamat'=>$this->input->post('alamat'),
+										'id_tiket'=>$id_jenis_tiket,
 										'nama_tiket'=>$nama_tiket,
 										'harga'=>$harga,
 										'status_bayar'=>0,

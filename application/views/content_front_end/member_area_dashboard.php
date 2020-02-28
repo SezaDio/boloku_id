@@ -48,7 +48,7 @@
 	                                <table class="table">
 	                                	<tr>
 	                                		<td style="padding: inherit;">
-                                				<a id="dashboard-member" style="text-align: left; width: 100%;" href="javascript:void(0)" class="btn btn-colored-blog-member-area" onclick="closeEdit()">
+                                				<a id="dashboard-member" style="text-align: left; width: 100%;" href="id="dashboard-member"id="dashboard-member"" class="btn btn-colored-blog-member-area" onclick="closeEdit()">
                                 					<i class="glyphicon glyphicon-dashboard"></i> My Published Event
                                 				</a>
 	                                		</td>

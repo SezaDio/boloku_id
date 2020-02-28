@@ -82,6 +82,9 @@
 						   'currency'=>$this->input->post('CURRENCY'),
 						   'purchasecurrency'=>$this->input->post('PURCHASECURRENCY')
 						   );
+			$transid = $this->input->post('TRANSIDMERCHANT');
+			$statuscode = $this->input->post('STATUSCODE');
+			$data_email = $this->PendaftarModels->get_data_invoice($transid)->row();
 			$data['kirim_email'] = array(
 						   'amount'=>$this->input->post('AMOUNT'),
 						   'transidmerchant'=>$this->input->post('TRANSIDMERCHANT'),
@@ -91,11 +94,9 @@
 						   'session_id'=>$this->input->post('SESSIONID'),
 						   'paymentcode'=>$this->input->post('PAYMENTCODE'),
 						   'currency'=>$this->input->post('CURRENCY'),
-						   'purchasecurrency'=>$this->input->post('PURCHASECURRENCY')
+						   'purchasecurrency'=>$this->input->post('PURCHASECURRENCY'),
+						   'payment_date_time'=>$data_email->payment_date_time
 						   );
-			$transid = $this->input->post('TRANSIDMERCHANT');
-			$statuscode = $this->input->post('STATUSCODE');
-			$data_email = $this->PendaftarModels->get_data_invoice($transidmerchant)->row();
 			//$statuspayment['status_payment'] = $this->input->post('STATUSCODE');
 
 			//Check status hasil dari redirect
@@ -120,12 +121,12 @@
 					$this->db->update('doku', $data_update_status, array('transidmerchant'=>$transid));
 					$this->db->update('pendaftar', array('status_bayar'=>$statuscode), array('no_pendaftar'=>$transid));
 
-					//Kirim email notifikasi jika sudah daftar event dan sudah sukses melakukan pembayaran
+					//Kirim email notifikasi jika sudah daftar event tapi belum melakukan pembayaran
 					$data['isi_transid'] = array(
 											'transid'=>$transidmerchant
 										   );
 					$data['subject'] = 'Notify for boloku.id payment transaction'.$nama_event;
-					$data['link_pending_payment'] = site_url('payment/pending_page/'.$transidmerchant);
+					$data['link_pending_payment'] = site_url('payment/pending_page/'.$transid);
 					$isi = $this->load->view('skin/email/content_petunjuk_bayar_email', $data, true);
 					$data['content'] = $isi;
 					$msg = $this->load->view('skin/email/template_email', $data, true);

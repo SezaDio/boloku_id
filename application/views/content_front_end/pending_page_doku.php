@@ -69,7 +69,7 @@
                                                     $tanggal = date ('d F Y | H:i:s', strtotime($tanggal_pesan.'+3 hours')); 
                                                     echo $tanggal." WIB";
                                                 ?>
-                                            </strong>  
+                                          </strong>  
                                         </td>
                                       </tr>
                                   </table>

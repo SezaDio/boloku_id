@@ -68,7 +68,7 @@
 
 			return $this->db->get();
 		}
-		
+
 		function get_jumlah_pendaftar($id_event)
 		{
 			$this->db->select('*');
@@ -151,4 +151,24 @@
 		{
 			$this->db->insert('pendaftar', $data_pendaftar);
 		}
+
+		
+		//Get data pendaftar yang di cancel
+		function get_data_pendaftar_cancel($id_pendaftar)
+		{
+			$this->db->select('*');
+			$this->db->from('pendaftar');
+			$this->db->where('id_pendaftar',$id_pendaftar);
+
+			return $this->db->get();
+		}
+
+		//Mengambil semua data pendaftar yang tanggal bayarnya sudah expired dan status nya bukan 9999
+		function get_data_pendaftar_expired()
+		{
+			$query = $this->db->query("SELECT * FROM `pendaftar` WHERE CURRENT_TIMESTAMP() > DATE_ADD(payment_date_time, INTERVAL +3 HOUR) AND status_bayar IN(5511,0) ");
+		
+			return $query;
+		}
+		
 	}

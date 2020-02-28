@@ -15,18 +15,21 @@ class AdminDashboard extends CI_Controller {
 
 	public function index()
 	{
-		if($this->session->userdata('admin_logged_in')){
-		$this->load->helper('url');
-		$this->load->model('dashboard_models/DashboardModels');
+		if($this->session->userdata('admin_logged_in'))
+		{
+			$this->load->helper('url');
+			$this->load->model('dashboard_models/DashboardModels');
 
-		$data['jum_approve_event'] = $this->DashboardModels->get_jumlah_approved_event();
-		$data['jum_pending_event'] = $this->DashboardModels->get_jumlah_pending_event();
-		$data['jum_pending_pepak'] = $this->DashboardModels->get_jumlah_pending_pepak();
-		$data['jum_pesan'] = $this->DashboardModels->get_jumlah_pesan();
-		$data['daftar_event_terdekat'] = $this->DashboardModels->get_data_coming_terdekat();
+			$data['jum_approve_event'] = $this->DashboardModels->get_jumlah_approved_event();
+			$data['jum_pending_event'] = $this->DashboardModels->get_jumlah_pending_event();
+			$data['jum_pending_pepak'] = $this->DashboardModels->get_jumlah_pending_pepak();
+			$data['jum_pesan'] = $this->DashboardModels->get_jumlah_pesan();
+			$data['daftar_event_terdekat'] = $this->DashboardModels->get_data_coming_terdekat();
 
-		$this->load->view('skin/admin/welcome', $data);
-		} else {
+			$this->load->view('skin/admin/welcome', $data);
+		} 
+		else 
+		{
 			redirect(site_url('Account'));
 		}
 	}

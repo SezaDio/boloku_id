@@ -16,6 +16,18 @@
 	    <td> <strong>Nomor Invoice</strong> </td>
 	    <td> <strong> <?php echo $kirim_email['transidmerchant']; ?></strong> </td>
 	</tr>
+	<tr>
+	    <td> <strong>Batas Akhir Pembayaran</strong> </td>
+	    <td> 
+          <strong style="color: red;"> 
+                <?php
+                    $tanggal_pesan = $kirim_email['payment_date_time'];
+                    $tanggal = date ('d F Y | H:i:s', strtotime($tanggal_pesan.'+3 hours')); 
+                    echo $tanggal." WIB";
+                ?>
+          </strong>  
+        </td>
+	</tr>
 
 	<!--Keterangan Cara pembayaran-->
 	<?php 
